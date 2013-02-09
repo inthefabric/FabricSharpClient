@@ -1,22 +1,57 @@
 using System.Collections.Generic;
+using System;
 
 namespace Fabric.Clients.Cs.Gen {
 	
 	/*================================================================================================*/
 	public class Traversal {
 		
-		public IList<ITraversalStep> Steps { get; private set; }
+		private IList<ITraversalStep> vSteps;
+		private FabRootStep vRoot;
+		private string vUri;
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public Traversal() {
-			Steps = new List<ITraversalStep>();
+			vSteps = new List<ITraversalStep>();
+			vUri = "/Trav/Root";
+			
+			vRoot = new FabRootStep(this);
+			AddStep(vRoot);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public void AddStep(ITraversalStep pStep) {
-			Steps.Add(pStep);
+		public FabRootStep RootStep() {
+			return vRoot;
+		}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		internal void AddStep(ITraversalStep pStep) {
+			vSteps.Add(pStep);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		internal void AppendToUri(string pPartialUri) {
+			vUri += pPartialUri;
+			Console.WriteLine("Traversal URI: "+vUri);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		internal FabResponse Execute() {
+			return null;
+		}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public static FabRootStep Root {
+			get {
+				var t = new Traversal();
+				return t.RootStep();
+			}
 		}
 		
 	}

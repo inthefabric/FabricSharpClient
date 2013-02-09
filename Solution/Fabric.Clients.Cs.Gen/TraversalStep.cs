@@ -3,16 +3,38 @@ using System.Collections.Generic;
 namespace Fabric.Clients.Cs.Gen {
 	
 	/*================================================================================================*/
-	public class TraversalStep : ITraversalStep {
+	public abstract class TraversalStep<T> : ITraversalStep<T> where T : FabObject {
 		
-		protected Traversal TraversalRef { get; private set; }
+		protected Traversal Trav { get; private set; }
+		protected long? Id { get; private set; }
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public void AddToTraversal(Traversal pTrav) {
-			TraversalRef = pTrav;
-			TraversalRef.AddStep(this);
+		protected TraversalStep(Traversal pTrav) {
+			Trav = pTrav;
+		}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabResponse Response() {
+			return Trav.Execute();
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public IList<T> Get() {
+			var data = Response().Data;
+			return null;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public T Get(long pId) {
+			Id = pId;
+			Trav.AppendToUri("("+Id+")");
+			
+			FabResponse r = Response();
+			return null; //(r.Count == 0 ? null : (T)r.Data[0]);
 		}
 		
 	}

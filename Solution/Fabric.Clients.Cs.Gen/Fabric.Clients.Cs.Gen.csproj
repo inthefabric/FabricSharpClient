@@ -38,10 +38,10 @@
     </Compile>
     <Compile Include="Traversal.cs" />
     <Compile Include="TraversalStep.cs" />
-    <Compile Include="ITraversalStep.cs" />
     <Compile Include="FabObjectSteps.cs">
       <DependentUpon>FabObjectSteps.tt</DependentUpon>
     </Compile>
+    <Compile Include="ITraversalStep.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

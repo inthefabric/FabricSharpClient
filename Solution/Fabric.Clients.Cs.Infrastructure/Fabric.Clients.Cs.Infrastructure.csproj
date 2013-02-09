@@ -58,4 +58,7 @@
     <Folder Include="Properties\" />
     <Folder Include="SpecDto\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>
