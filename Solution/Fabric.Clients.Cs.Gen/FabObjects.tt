@@ -1,0 +1,53 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="/Users/zachkinstner/Documents/FabricProject/FabricClients/Solution/Fabric.Clients.Cs.Infrastructure/bin/Debug/Fabric.Clients.Cs.Infrastructure.dll" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="Fabric.Clients.Cs.Infrastructure" #>
+<#@ import namespace="Fabric.Clients.Cs.Infrastructure.SpecDto" #>
+<#@ output extension=".cs" #>
+namespace Fabric.Clients.Cs.Gen {
+
+<#
+FabSpec spec = SpecBuilder.Spec;
+	
+foreach ( FabSpecObject o in spec.Objects ) {
+	if ( o.Name.IndexOf("FabSpec") == 0 ) {
+		continue;
+	}
+	
+	string extends = (o.Extends == null ? "" : " : "+o.Extends);
+	
+	string summary = o.Description.Substring(0, o.Description.IndexOf(". ")+1);
+	summary = SpecBuilder.RemoveMarkup(summary).Replace("\r\n", " ");
+	
+	string desc = SpecBuilder.RemoveMarkup(o.Description)
+		.Replace("\r\n\r\n", "\r\n")
+		.Replace("\r\n", "</para>\n\t///    <para>");
+#>
+	/*================================================================================================*/
+	///<summary>
+	///    <#= summary #>
+	///</summary>
+	///<remarks>
+	///    <para><#= desc #></para>
+	///</remarks>
+	public class <#= o.Name+extends #> {
+	
+<#
+	foreach ( FabSpecObjectProp p in o.Properties ) {
+		summary = p.Description.Substring(0, p.Description.IndexOf(". ")+1);
+#>
+		///<summary>
+		///    <#= p.Description.Replace("\r\n", " ") #>
+		///</summary>
+		public <#= p.Type #> <#= p.Name #> { get; set; }
+		
+<#
+	}
+#>
+	}
+	
+	
+<#
+}
+#>
+}

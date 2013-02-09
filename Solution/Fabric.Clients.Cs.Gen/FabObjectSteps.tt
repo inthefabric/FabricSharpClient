@@ -1,0 +1,66 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="/Users/zachkinstner/Documents/FabricProject/FabricClients/Solution/Fabric.Clients.Cs.Infrastructure/bin/Debug/Fabric.Clients.Cs.Infrastructure.dll" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="Fabric.Clients.Cs.Infrastructure" #>
+<#@ import namespace="Fabric.Clients.Cs.Infrastructure.SpecDto" #>
+<#@ output extension=".cs" #>
+using System.Collections.Generic;
+
+namespace Fabric.Clients.Cs.Gen {
+
+<#
+FabSpec spec = SpecBuilder.Spec;
+	
+foreach ( FabSpecObject o in spec.Objects ) {
+	if ( o.Name.IndexOf("FabSpec") == 0 ) {
+		continue;
+	}
+	
+	if ( o.TraversalLinks == null ) { continue; }
+#>
+	/*================================================================================================*/
+	public class <#= o.Name+"Step" #> : TraversalStep {
+	
+<#
+	foreach ( FabSpecTravLink link in o.TraversalLinks ) {
+		string summ = SpecBuilder.RemoveMarkup(link.Description).Replace("\r\n", " ");
+		string step;
+		string conn;
+				
+		if ( link.IsOutgoing ) {
+			step = link.To;
+			conn = link.ToConn;
+		}
+		else {
+			step = link.From;
+			conn = link.FromConn;
+		}
+		
+		bool many = (conn.IndexOf("More") != -1);
+		string type = (many ? "IList<" : "")+step+(many ? ">" : "");
+#>
+		///<summary>
+		///    <#= summ #>
+		///</summary>
+		///<remarks>
+		///    Type: <#= link.Type #>
+		///    Relation: <#= link.Relation #>
+		///    Connection: <#= conn #>
+		///</remarks>
+		public <#= step #>Step <#= link.Name #> { get; set; }
+		
+		///<summary>
+		///    Complete the Traversal request with the <#= link.Name #> step.
+		///</summary>
+		public <#= type #> <#= link.Name #>Get() { return null; }
+		
+<#
+	}
+#>
+	}
+	
+	
+<#
+}
+#>
+}

@@ -1,0 +1,24 @@
+syntax: glob
+_Local/*
+*.suo
+*.user
+*/bin/*
+*/obj/*
+*.Publish.xml
+_Publish/*
+Global/GlobalConnectionStrings.config
+VisualizeHg.bat
+Fabric.*.log
+_Publish_*/*
+Fabric.*.log.*
+Solution/_ReSharper.Fabric/*
+DbServer/Neo4j/data/graph.db/*
+Solution/test-results
+Solution/Fabric.Test/test-results
+Weaver.dll.mdb
+*/Bin/*
+*.resources
+Fabric.Test.Integration.csproj-Debug-*.xml
+Fabric.Test.Integration.csproj.test-cache
+*.test-cache
+Fabric.Clients.Cs.Test.csproj-Debug-2013-02-09.xml

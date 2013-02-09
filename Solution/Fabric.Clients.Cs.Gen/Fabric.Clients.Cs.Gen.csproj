@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6CBF197A-4F71-4565-B8F8-F752BDD25B4F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Fabric.Clients.Cs.Gen</RootNamespace>
+    <AssemblyName>Fabric.Clients.Cs.Gen</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FabObjects.cs">
+      <DependentUpon>FabObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Traversal.cs" />
+    <Compile Include="TraversalStep.cs" />
+    <Compile Include="ITraversalStep.cs" />
+    <Compile Include="FabObjectSteps.cs">
+      <DependentUpon>FabObjectSteps.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FabObjects.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FabObjects.cs</LastGenOutput>
+    </None>
+    <None Include="FabObjectSteps.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FabObjectSteps.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fabric.Clients.Cs.Infrastructure\Fabric.Clients.Cs.Infrastructure.csproj">
+      <Project>{1FA2D2C0-9E8A-449F-B8D2-0AAA533ECC20}</Project>
+      <Name>Fabric.Clients.Cs.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
