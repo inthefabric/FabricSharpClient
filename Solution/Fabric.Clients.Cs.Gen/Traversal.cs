@@ -40,6 +40,11 @@ namespace Fabric.Clients.Cs.Gen {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
+		internal IList<ITraversalStep> GetSteps() {
+			return vSteps;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
 		internal FabResponse Execute() {
 			return null;
 		}

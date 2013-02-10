@@ -1,0 +1,64 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="/Users/zachkinstner/Documents/FabricProject/FabricSharpClient/Solution/Fabric.Clients.Cs.Infrastructure/bin/Debug/Fabric.Clients.Cs.Infrastructure.dll" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="Fabric.Clients.Cs.Infrastructure" #>
+<#@ import namespace="Fabric.Clients.Cs.Infrastructure.SpecDto" #>
+<#@ output extension=".cs" #>
+namespace Fabric.Clients.Cs.Gen {
+
+	/*================================================================================================*/
+	public class TraversalFuncs {
+	
+		protected Traversal Trav { get; private set; }
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public TraversalFuncs(Traversal pTrav) {
+			Trav = pTrav;
+		}
+		
+
+<#
+FabSpec spec = SpecBuilder.Spec;
+FabSpecService trav = null;
+
+foreach ( FabSpecService s in spec.Services ) {
+	if ( s.Name == "Traversal" ) {
+		trav = s;
+		break;
+	}	
+}
+
+foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
+	string funcParams = "";
+	string uriParams = "";
+	string paramComments = "";
+	
+	foreach ( FabSpecTravFuncParam fp in f.Parameters ) {
+		funcParams += (funcParams == "" ? "" : ", ");
+		funcParams += fp.Type+" p"+fp.Name;
+		
+		uriParams += (uriParams == "" ? "" : "+\",\"+");
+		uriParams += "p"+fp.Name;
+		
+		paramComments += (paramComments == "" ? "" : "\r\n\t\t");
+		paramComments += "///<param name=\""+fp.Name+"\">\r\n\t\t///    "+
+			fp.Description.Replace("\r\n", " ")+"\r\n\t\t///</param>";
+	}
+#>
+		/*--------------------------------------------------------------------------------------------*/
+		///<summary>
+		///    <#= f.Description.Replace("\r\n", " ") #>
+		///</summary>
+		<#= paramComments #>
+		public void <#= f.Name #>(<#= funcParams #>) {
+			Trav.AppendToUri("/<#= f.Name #>("+<#= uriParams #>+")");
+		}
+		
+<#
+}
+#>
+	}
+	
+}

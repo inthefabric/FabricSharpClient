@@ -33,15 +33,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FabObjects.cs">
-      <DependentUpon>FabObjects.tt</DependentUpon>
-    </Compile>
     <Compile Include="Traversal.cs" />
-    <Compile Include="TraversalStep.cs" />
     <Compile Include="FabObjectSteps.cs">
       <DependentUpon>FabObjectSteps.tt</DependentUpon>
     </Compile>
     <Compile Include="ITraversalStep.cs" />
+    <Compile Include="TraversalStepT.cs" />
+    <Compile Include="FabObjects.cs">
+      <DependentUpon>FabObjects.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TraversalFuncs.cs">
+      <DependentUpon>TraversalFuncs.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TraversalStep.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -55,6 +59,10 @@
     <None Include="FabObjectSteps.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FabObjectSteps.cs</LastGenOutput>
+    </None>
+    <None Include="TraversalFuncs.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TraversalFuncs.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

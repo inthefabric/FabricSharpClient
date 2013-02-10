@@ -20,6 +20,17 @@ namespace Fabric.Clients.Cs.Test {
 			Assert.NotNull(result);	
 		}
 		
+		/*--------------------------------------------------------------------------------------------*/
+		[Test]
+		public void Back() {
+			IFabArtifactStep artStep;
+			
+			/*var result = Traversal.Root
+				.ContainsClassList.HasArtifact.Alias(out artStep).InFactorListUsesPrimary
+				.InMemberCreates.Back(artStep);
+			Assert.NotNull(result);	*/
+		}
+		
 	}
 }
 
