@@ -4,6 +4,9 @@
 <#@ import namespace="Fabric.Clients.Cs.Infrastructure" #>
 <#@ import namespace="Fabric.Clients.Cs.Infrastructure.SpecDto" #>
 <#@ output extension=".cs" #>
+// GENERATED CODE
+// Changes made to this source file will be overwritten
+// Generated on <#= DateTime.Now.ToString() #>
 
 namespace Fabric.Clients.Cs.Gen {
 

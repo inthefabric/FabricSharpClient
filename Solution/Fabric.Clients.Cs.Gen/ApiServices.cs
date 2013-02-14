@@ -1,4 +1,8 @@
-﻿namespace Fabric.Clients.Cs.Gen {
+﻿// GENERATED CODE
+// Changes made to this source file will be overwritten
+// Generated on 2/14/2013 2:11:11 PM
+
+namespace Fabric.Clients.Cs.Gen {
 
 	/*================================================================================================*/
 	///<summary>
