@@ -11,7 +11,7 @@
 namespace Fabric.Clients.Cs.Gen {
 
 	/*================================================================================================*/
-	public interface IFabric : IService {
+	public interface IFabricServices {
 
 <#
 FabSpec spec = SpecBuilder.Spec;
@@ -26,6 +26,33 @@ foreach ( FabSpecService s in spec.Services ) {
 <#
 }
 #>
+	}
+
+	
+	/*================================================================================================*/
+	public class FabricServices : IFabricServices {
+
+<#
+foreach ( FabSpecService s in spec.Services ) {
+#>
+		public I<#= s.Name #>Service <#= s.Name #> { get; private set; }
+<#
+}
+#>
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabricServices() {
+<#
+foreach ( FabSpecService s in spec.Services ) {
+#>
+			<#= s.Name #> = new <#= s.Name #>Service();
+<#
+}
+#>
+		}
+
 	}
 
 }

@@ -1,11 +1,11 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/14/2013 2:11:11 PM
+// Generated on 2/14/2013 2:17:45 PM
 
 namespace Fabric.Clients.Cs.Gen {
 
 	/*================================================================================================*/
-	public interface IFabric : IService {
+	public interface IFabricServices {
 
 		///<summary>
 		///  TODO
@@ -26,6 +26,27 @@ namespace Fabric.Clients.Cs.Gen {
 		///  TODO
 		///</summary>
 		ISpecService Spec { get; }
+
+	}
+
+	
+	/*================================================================================================*/
+	public class FabricServices : IFabricServices {
+
+		public ITraversalService Traversal { get; private set; }
+		public IOauthService Oauth { get; private set; }
+		public IModifyService Modify { get; private set; }
+		public ISpecService Spec { get; private set; }
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabricServices() {
+			Traversal = new TraversalService();
+			Oauth = new OauthService();
+			Modify = new ModifyService();
+			Spec = new SpecService();
+		}
 
 	}
 

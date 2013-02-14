@@ -31,13 +31,40 @@ foreach ( FabSpecService s in spec.Services ) {
 		///<summary>
 		///  <#= SpecBuilder.ToXmlDocSentence(op.Description) #>
 		///</summary>
-		I<#= op.Name #>Operation <#= op.Name #>();
+		I<#= op.Name #>Operation <#= op.Name #> { get; }
 
 <#
 	}
 #>
+	}
+
+
+	/*================================================================================================*/
+	public class <#= s.Name #>Service : I<#= s.Name #>Service {
+
+<#
+	foreach ( FabSpecServiceOperation op in s.Operations ) {
+#>
+		public I<#= op.Name #>Operation <#= op.Name #> { get; private set; }
+<#
+	}
+#>
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public <#= s.Name #>Service() {
+<#
+foreach ( FabSpecServiceOperation op in s.Operations ) {
+#>
+			<#= op.Name #> = new <#= op.Name #>Operation();
+<#
+}
+#>
+		}
 
 	}
+
 
 <#
 }
