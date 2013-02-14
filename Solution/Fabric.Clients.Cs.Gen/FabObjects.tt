@@ -1,5 +1,5 @@
 ﻿<#@ template debug="true" hostspecific="true" language="C#" #>
-<#@ assembly name="/Users/zachkinstner/Documents/FabricProject/FabricSharpClient/Solution/Fabric.Clients.Cs.Infrastructure/bin/Debug/Fabric.Clients.Cs.Infrastructure.dll" #>
+<#@ assembly name="$(SolutionDir)Fabric.Clients.Cs.Infrastructure\bin\Debug\Fabric.Clients.Cs.Infrastructure.dll" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="Fabric.Clients.Cs.Infrastructure" #>
 <#@ import namespace="Fabric.Clients.Cs.Infrastructure.SpecDto" #>
@@ -21,7 +21,7 @@ foreach ( FabSpecObject o in spec.Objects ) {
 	
 	string desc = SpecBuilder.RemoveMarkup(o.Description)
 		.Replace("\r\n\r\n", "\r\n")
-		.Replace("\r\n", "</para>\n\t///    <para>");
+		.Replace("\r\n", "</para>\r\n\t///    <para>");
 #>
 	/*================================================================================================*/
 	///<summary>

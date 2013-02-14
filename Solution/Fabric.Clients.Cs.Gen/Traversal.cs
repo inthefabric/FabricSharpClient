@@ -1,13 +1,12 @@
 using System.Collections.Generic;
-using System;
 
 namespace Fabric.Clients.Cs.Gen {
 	
 	/*================================================================================================*/
 	public class Traversal {
 		
-		private IList<ITraversalStep> vSteps;
-		private FabRootStep vRoot;
+		private readonly IList<ITraversalStep> vSteps;
+		private readonly FabRootStep vRoot;
 		private string vUri;
 		
 		
@@ -36,7 +35,6 @@ namespace Fabric.Clients.Cs.Gen {
 		/*--------------------------------------------------------------------------------------------*/
 		internal void AppendToUri(string pPartialUri) {
 			vUri += pPartialUri;
-			Console.WriteLine("Traversal URI: "+vUri);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/

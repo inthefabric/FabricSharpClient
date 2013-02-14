@@ -1,14 +1,11 @@
-using System;
-using NUnit.Framework;
-using Fabric.Clients.Cs.Infrastructure;
 using Fabric.Clients.Cs.Gen;
-using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace Fabric.Clients.Cs.Test {
 	
 	/*================================================================================================*/
 	[TestFixture]
-	public class MyClass {
+	public class TTraversal {
 	
 			
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,14 +20,16 @@ namespace Fabric.Clients.Cs.Test {
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
 		public void Back() {
-			IFabArtifactStep artStep;
+			const string asArt = "ART";
+			ITraversalStepAlias<IFabArtifactStep> artAlias;
 			
-			/*var result = Traversal.Root
-				.ContainsClassList.HasArtifact.Alias(out artStep).InFactorListUsesPrimary
-				.InMemberCreates.Back(artStep);
-			Assert.NotNull(result);	*/
+			var result = Traversal.Root
+				.ContainsClassList.HasArtifact.As(asArt, out artAlias).InFactorListUsesPrimary
+				.InMemberCreates.Back(artAlias);
+
+			Assert.NotNull(result);
 		}
 		
 	}
-}
 
+}

@@ -1,10 +1,9 @@
 ﻿<#@ template debug="true" hostspecific="true" language="C#" #>
-<#@ assembly name="/Users/zachkinstner/Documents/FabricProject/FabricSharpClient/Solution/Fabric.Clients.Cs.Infrastructure/bin/Debug/Fabric.Clients.Cs.Infrastructure.dll" #>
+<#@ assembly name="$(SolutionDir)Fabric.Clients.Cs.Infrastructure\bin\Debug\Fabric.Clients.Cs.Infrastructure.dll" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="Fabric.Clients.Cs.Infrastructure" #>
 <#@ import namespace="Fabric.Clients.Cs.Infrastructure.SpecDto" #>
 <#@ output extension=".cs" #>
-using System.Collections.Generic;
 
 namespace Fabric.Clients.Cs.Gen {
 
@@ -14,9 +13,14 @@ FabSpec spec = SpecBuilder.Spec;
 foreach ( FabSpecObject o in spec.Objects ) {
 	if ( o.Name.IndexOf("FabSpec") == 0 ) { continue; }
 	if ( o.TraversalLinks == null ) { continue; }
+	string interfaces = "";
+
+	foreach ( string funcName in o.TraversalFunctions ) {
+		interfaces += ", IFunc"+funcName;
+	}
 #>
 	/*================================================================================================*/
-	public interface I<#= o.Name #>Step : ITraversalStep<<#= o.Name #>> {
+	public interface I<#= o.Name #>Step : ITraversalStep<<#= o.Name #>><#= interfaces #> {
 	
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -39,6 +43,7 @@ foreach ( FabSpecObject o in spec.Objects ) {
 		
 <#
 	}
+
 #>
 	}
 	

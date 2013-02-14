@@ -1,6 +1,22 @@
 ﻿namespace Fabric.Clients.Cs.Gen {
 
 	/*================================================================================================*/
+	public interface IFuncAs : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	public interface IFuncBack : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	public interface IFuncLimit : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	public interface IFuncWhereId : ITraversalStep {}
+
+		
+	/*================================================================================================*/
 	public class TraversalFuncs {
 	
 		protected Traversal Trav { get; private set; }
@@ -17,11 +33,22 @@
 		///<summary>
 		///    TODO
 		///</summary>
-		///<param name="Count">
+		///<param name="Alias">
 		///    TODO
 		///</param>
-		public void Back(int pCount) {
-			Trav.AppendToUri("/Back("+pCount+")");
+		public void As(string Alias) {
+			Trav.AppendToUri("/As("+Alias+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		///<summary>
+		///    TODO
+		///</summary>
+		///<param name="Alias">
+		///    TODO
+		///</param>
+		public void Back(string Alias) {
+			Trav.AppendToUri("/Back("+Alias+")");
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -34,8 +61,19 @@
 		///<param name="Count">
 		///    TODO
 		///</param>
-		public void Limit(long pIndex, int pCount) {
-			Trav.AppendToUri("/Limit("+pIndex+","+pCount+")");
+		public void Limit(long Index, int Count) {
+			Trav.AppendToUri("/Limit("+Index+","+Count+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		///<summary>
+		///    TODO
+		///</summary>
+		///<param name="Id">
+		///    TODO
+		///</param>
+		public void WhereId(long Id) {
+			Trav.AppendToUri("/WhereId("+Id+")");
 		}
 		
 	}

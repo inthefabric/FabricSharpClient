@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System;
 
 namespace Fabric.Clients.Cs.Gen {
 	
@@ -20,32 +18,6 @@ namespace Fabric.Clients.Cs.Gen {
 			return Trav.Execute();
 		}
 		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public T Back<T>(T pStepAlias) where T : ITraversalStep {
-			IList<ITraversalStep> steps = Trav.GetSteps();
-			int count = steps.Count;
-			int index = -1;
-			
-			for ( int i = count-1 ; i >= 0 ; --i ) {
-				if ( steps[i] != (ITraversalStep)pStepAlias ) {
-					continue;
-				}
-				
-				index = i;
-				break;
-			}
-			
-			if ( index == -1 ) {
-				throw new Exception("Alias not found: "+pStepAlias);
-			}
-			
-			var funcs = new TraversalFuncs(Trav);
-			funcs.Back(count-index);
-			return pStepAlias;
-		}
-		
 	}
 	
 	
@@ -55,14 +27,35 @@ namespace Fabric.Clients.Cs.Gen {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public static T Alias<T>(this T pCurrentStep, out T pStepAlias) where T : ITraversalStep {
-			return (pStepAlias = pCurrentStep);
+		public static T As<T>(this T pCurrentStep, string pAlias, out ITraversalStepAlias<T> pStepAlias)
+																			where T : IFuncAs {
+			pStepAlias = new TraversalStepAlias<T>(pAlias);
+			var funcs = new TraversalFuncs(pCurrentStep.Trav);
+			funcs.As(pAlias);
+			return pCurrentStep;
 		}
-		
+
 		/*--------------------------------------------------------------------------------------------*/
-		public static T Limit<T>(this T pCurrentStep, int pIndex, int pCount) where T : TraversalStep {
+		public static T Back<T,TAlias>(this T pCurrentStep, ITraversalStepAlias<TAlias> pStepAlias)
+													where T : ITraversalStep where TAlias : IFuncBack {
+			var funcs = new TraversalFuncs(pCurrentStep.Trav);
+			funcs.Back(pStepAlias.Alias);
+			return pCurrentStep;
+		}
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public static T Limit<T>(this T pCurrentStep, int pIndex, int pCount) where T : IFuncLimit {
 			var funcs = new TraversalFuncs(pCurrentStep.Trav);
 			funcs.Limit(pIndex, pCount);
+			return pCurrentStep;
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public static T WhereId<T>(this T pCurrentStep, long pId) where T : IFuncWhereId {
+			var funcs = new TraversalFuncs(pCurrentStep.Trav);
+			funcs.WhereId(pId);
 			return pCurrentStep;
 		}
 		

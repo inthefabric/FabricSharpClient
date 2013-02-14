@@ -1,9 +1,7 @@
-using System.Collections.Generic;
-using System.IO;
-using System.Web;
-using ServiceStack.Text;
-using Fabric.Clients.Cs.Infrastructure.SpecDto;
 using System.Text.RegularExpressions;
+using Fabric.Clients.Cs.Infrastructure.Data;
+using Fabric.Clients.Cs.Infrastructure.SpecDto;
+using ServiceStack.Text;
 
 namespace Fabric.Clients.Cs.Infrastructure {
 	
@@ -21,11 +19,7 @@ namespace Fabric.Clients.Cs.Infrastructure {
 		
 		/*--------------------------------------------------------------------------------------------*/
 		private static FabSpec Build() {
-			string path = typeof(SpecBuilder).Assembly.Location;
-			path = path.Substring(0, path.LastIndexOf('/'));
-			
-			string json = File.ReadAllText(path+"/Data/Fabric.1.0.2.json");
-			return JsonSerializer.DeserializeFromString<FabSpec>(json);
+			return JsonSerializer.DeserializeFromString<FabSpec>(FabricResource.FabricJson);
 		}
 		
 		

@@ -22,3 +22,4 @@ Fabric.Test.Integration.csproj-Debug-*.xml
 Fabric.Test.Integration.csproj.test-cache
 *.test-cache
 Fabric.Clients.Cs.Test.csproj-Debug-2013-02-09.xml
+Solution/_ReSharper.FabricSharpClient*
