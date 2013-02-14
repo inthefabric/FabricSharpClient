@@ -33,19 +33,111 @@
       <HintPath>..\..\Packages\ServiceStack.Text.3.9.35\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ApiHome.cs">
+      <DependentUpon>ApiHome.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Api\ApiOperations.cs">
+      <DependentUpon>ApiOperations.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Api\ApiServices.cs">
+      <DependentUpon>ApiServices.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Api\FabObjects.cs">
+      <DependentUpon>FabObjects.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Api\FabObjectSteps.cs">
+      <DependentUpon>FabObjectSteps.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Api\IOperation.cs" />
+    <Compile Include="Api\IService.cs" />
+    <Compile Include="Api\ITraversalStep.cs" />
+    <Compile Include="Api\ITraversalStepAlias.cs" />
+    <Compile Include="Api\ITraversalStepT.cs" />
+    <Compile Include="Api\Traversal.cs" />
+    <Compile Include="Api\TraversalFuncs.cs">
+      <DependentUpon>TraversalFuncs.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Api\TraversalStep.cs" />
+    <Compile Include="Api\TraversalStepAlias.cs" />
+    <Compile Include="Api\TraversalStepT.cs" />
+    <Compile Include="FabricClientConfig.cs" />
+    <Compile Include="FabricErrorException.cs" />
+    <Compile Include="IFabricClient.cs" />
+    <Compile Include="IFabricClientConfig.cs" />
+    <Compile Include="IHideSystemIntellisense.cs" />
+    <Compile Include="Logging\FabricLog.cs" />
+    <Compile Include="Logging\IFabricLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FabricClient.cs" />
+    <Compile Include="Session\AppDataProvSession.cs" />
+    <Compile Include="Session\AppSession.cs" />
+    <Compile Include="Session\ClientContext.cs" />
+    <Compile Include="Session\FabricSessionContainer.cs" />
+    <Compile Include="Session\IFabricAppDataProvSession.cs" />
+    <Compile Include="Session\IFabricAppSession.cs" />
+    <Compile Include="Session\IFabricOauthSession.cs" />
+    <Compile Include="Session\IFabricPersonSession.cs" />
+    <Compile Include="Session\IFabricSessionContainer.cs" />
+    <Compile Include="Session\OauthSession.cs" />
+    <Compile Include="Session\PersonSession.cs" />
+    <Compile Include="Web\FabricHttpProvider.cs" />
+    <Compile Include="Web\FabricHttpRequest.cs" />
+    <Compile Include="Web\FabricHttpResponse.cs" />
+    <Compile Include="Web\FabricRequest.cs" />
+    <Compile Include="Web\FabricResponse.cs" />
+    <Compile Include="Web\IFabricHttpRequest.cs" />
+    <Compile Include="Web\IFabricHttpResponse.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Fabric.Clients.Cs.Gen\Fabric.Clients.Cs.Gen.csproj">
-      <Project>{6CBF197A-4F71-4565-B8F8-F752BDD25B4F}</Project>
-      <Name>Fabric.Clients.Cs.Gen</Name>
+    <ProjectReference Include="..\Fabric.Clients.Cs.Infrastructure\Fabric.Clients.Cs.Infrastructure.csproj">
+      <Project>{1FA2D2C0-9E8A-449F-B8D2-0AAA533ECC20}</Project>
+      <Name>Fabric.Clients.Cs.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Api\ApiHome.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ApiHome.cs</LastGenOutput>
+    </None>
+    <None Include="Api\ApiOperations.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ApiOperations.cs</LastGenOutput>
+    </None>
+    <None Include="Api\ApiServices.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ApiServices.cs</LastGenOutput>
+    </None>
+    <None Include="Api\FabObjects.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FabObjects.cs</LastGenOutput>
+    </None>
+    <None Include="Api\FabObjectSteps.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FabObjectSteps.cs</LastGenOutput>
+    </None>
+    <None Include="Api\TraversalFuncs.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TraversalFuncs.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
 </Project>

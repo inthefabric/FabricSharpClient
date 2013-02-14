@@ -1,5 +1,5 @@
 using System;
-using Fabric.Clients.Cs.Gen;
+using Fabric.Clients.Cs.Api;
 using NUnit.Framework;
 
 namespace Fabric.Clients.Cs.Test {
@@ -34,17 +34,17 @@ namespace Fabric.Clients.Cs.Test {
 			Console.WriteLine(result.GetReturnType());
 		}
 
-		/*--------------------------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------------------------* /
 		[Test]
 		public void Client() {
 			var fc = new FabricClient();
-			IFabDescriptorTypeStep fdts = fc.Traversal().ContainsAppList.DefinesMemberList
-				.InUserDefines.HasArtifact.InDescriptorListRefinesPrimaryWith
+			IFabDescriptorTypeStep fdts = fc.Services.Traversal.GetRoot.ContainsAppList
+				.DefinesMemberList.InUserDefines.HasArtifact.InDescriptorListRefinesPrimaryWith
 				.UsesDescriptorType.WhereId(3);
 
 			Console.WriteLine(fdts.Trav.GetTraversalUri());
 			Console.WriteLine(fdts.GetReturnType());
-		}
+		}*/
 		
 	}
 

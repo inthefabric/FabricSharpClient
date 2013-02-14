@@ -1,5 +1,5 @@
 using System;
-using Fabric.Clients.Cs.Gen;
+using Fabric.Clients.Cs.Api;
 using NUnit.Framework;
 
 namespace Fabric.Clients.Cs.Test {
