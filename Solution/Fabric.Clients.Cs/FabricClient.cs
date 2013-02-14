@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using Fabric.Clients.Cs.Api;
 using Fabric.Clients.Cs.Session;
 
-[assembly:InternalsVisibleTo("Fluent.Tests")]
+[assembly:InternalsVisibleTo("Fabric.Clients.Cs.Test")]
 [assembly:InternalsVisibleTo("Moq")]
 [assembly:InternalsVisibleTo("DynamicProxyGenAssembly2")]
 
