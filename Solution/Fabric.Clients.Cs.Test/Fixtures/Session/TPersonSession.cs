@@ -76,7 +76,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		[TestCase(false)]
 		[TestCase(true)]
 		public virtual void GetGrantCodeUrl(bool pSwitchUser) {
-			var perSess = new PersonSession(Config, new OauthService());
+			var perSess = new PersonSession(Config, new OauthService(null));
 			string expectUrl = BuildGrantCodeUrl(perSess, pSwitchUser);
 
 			string url = perSess.GetGrantCodeUrl(pSwitchUser);
@@ -88,7 +88,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		[TestCase(null)]
 		[TestCase("http://testurl.com/whatever/dude")]
 		public virtual void GetGrantWindowOpenScript(string pGrantCodeUrl) {
-			var perSess = new PersonSession(Config, new OauthService());
+			var perSess = new PersonSession(Config, new OauthService(null));
 			string url = (pGrantCodeUrl ?? BuildGrantCodeUrl(perSess));
 			string expectScript = "window.open('"+url+"', 'fabOauth', 'status=0,toolbar=0,menubar=0,"+
 				"directories=0,width=500,height=400,resizable=1,scrollbars=1');";

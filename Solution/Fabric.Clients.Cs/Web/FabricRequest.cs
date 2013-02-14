@@ -38,7 +38,7 @@ namespace Fabric.Clients.Cs.Web {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public T Send(ClientContext pContext) {
+		public T Send(IClientContext pContext) {
 			FabricResponse<T> resp = GetFabricResponse(pContext);
 
 			if ( resp.Error != null ) {
@@ -57,7 +57,7 @@ namespace Fabric.Clients.Cs.Web {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private FabricResponse<T> GetFabricResponse(ClientContext pContext) {
+		private FabricResponse<T> GetFabricResponse(IClientContext pContext) {
 			string fullPath = pContext.Config.ApiPath+Path+(Query != null ? "?"+Query : "");
 			pContext.Config.LogInfo("Request initiated...");
 
@@ -94,7 +94,7 @@ namespace Fabric.Clients.Cs.Web {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private IFabricHttpResponse GetHttpWebResponse(ClientContext pContext, string pFullPath) {
+		private IFabricHttpResponse GetHttpWebResponse(IClientContext pContext, string pFullPath) {
 			IFabricHttpRequest req = vWebReqProv.CreateRequest(pFullPath);
 			req.Method = Method;
 			req.Accept = "application/json";

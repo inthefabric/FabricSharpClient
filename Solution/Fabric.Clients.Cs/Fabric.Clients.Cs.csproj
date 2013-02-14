@@ -87,6 +87,7 @@
     <Compile Include="Session\AppDataProvSession.cs" />
     <Compile Include="Session\AppSession.cs" />
     <Compile Include="Session\ClientContext.cs" />
+    <Compile Include="Session\IClientContext.cs" />
     <Compile Include="Session\FabricSessionContainer.cs" />
     <Compile Include="Session\IFabricAppDataProvSession.cs" />
     <Compile Include="Session\IFabricAppSession.cs" />

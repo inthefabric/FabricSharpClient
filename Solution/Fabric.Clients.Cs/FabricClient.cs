@@ -19,7 +19,7 @@ namespace Fabric.Clients.Cs {
 			new Dictionary<string, ConfigGroup>();
 		private static string DefaultConfigKey;
 
-		internal ClientContext Context { get; private set; }
+		internal IClientContext Context { get; private set; }
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -113,8 +113,7 @@ namespace Fabric.Clients.Cs {
 			}
 
 			Context.Config.LogInfo("New FabricClient");
-
-			Services = new FabricServices();
+			Services = new FabricServices(Context);
 		}
 
 

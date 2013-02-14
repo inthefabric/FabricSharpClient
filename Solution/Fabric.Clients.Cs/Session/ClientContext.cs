@@ -1,7 +1,7 @@
 ﻿namespace Fabric.Clients.Cs.Session {
 	
 	/*================================================================================================*/
-	internal class ClientContext {
+	internal class ClientContext : IClientContext {
 
 		public IFabricClientConfig Config { get; private set; }
 		public IFabricAppSession AppSess { get; private set; }

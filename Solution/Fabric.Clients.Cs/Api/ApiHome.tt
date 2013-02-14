@@ -8,6 +8,8 @@
 // Changes made to this source file will be overwritten
 // Generated on <#= DateTime.Now.ToString() #>
 
+using Fabric.Clients.Cs.Session;
+
 namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
@@ -30,29 +32,30 @@ foreach ( FabSpecService s in spec.Services ) {
 
 	
 	/*================================================================================================*/
-	public class FabricServices : IFabricServices {
-
-<#
-foreach ( FabSpecService s in spec.Services ) {
-#>
-		public I<#= s.Name #>Service <#= s.Name #> { get; private set; }
-<#
-}
-#>
+	internal class FabricServices : IFabricServices {
+		
+		private readonly IClientContext vContext;
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricServices() {
+		public FabricServices(IClientContext pContext) {
+			vContext = pContext;
+		}
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
 <#
 foreach ( FabSpecService s in spec.Services ) {
 #>
-			<#= s.Name #> = new <#= s.Name #>Service();
+		/*--------------------------------------------------------------------------------------------*/
+		public I<#= s.Name #>Service <#= s.Name #> {
+			get { return new <#= s.Name #>Service(vContext); }
+		}
+
 <#
 }
 #>
-		}
-
 	}
 
 }

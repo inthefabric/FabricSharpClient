@@ -1,6 +1,8 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/14/2013 3:23:29 PM
+// Generated on 2/14/2013 4:15:02 PM
+
+using Fabric.Clients.Cs.Session;
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -37,21 +39,37 @@ namespace Fabric.Clients.Cs.Api {
 
 
 	/*================================================================================================*/
-	public class TraversalService : ITraversalService {
-
-		public IGetActiveAppOperation GetActiveApp { get; private set; }
-		public IGetActiveMemberOperation GetActiveMember { get; private set; }
-		public IGetActiveUserOperation GetActiveUser { get; private set; }
-		public IGetRootOperation GetRoot { get; private set; }
+	internal class TraversalService : ITraversalService {
+	
+		private readonly IClientContext vContext;
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public TraversalService() {
-			GetActiveApp = new GetActiveAppOperation();
-			GetActiveMember = new GetActiveMemberOperation();
-			GetActiveUser = new GetActiveUserOperation();
-			GetRoot = new GetRootOperation();
+		public TraversalService(IClientContext pContext) {
+			vContext = pContext;
+		}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public IGetActiveAppOperation GetActiveApp {
+			get { return new GetActiveAppOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IGetActiveMemberOperation GetActiveMember {
+			get { return new GetActiveMemberOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IGetActiveUserOperation GetActiveUser {
+			get { return new GetActiveUserOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IGetRootOperation GetRoot {
+			get { return new GetRootOperation(vContext); }
 		}
 
 	}
@@ -105,27 +123,52 @@ namespace Fabric.Clients.Cs.Api {
 
 
 	/*================================================================================================*/
-	public class OauthService : IOauthService {
-
-		public IAccessTokenOperation AccessToken { get; private set; }
-		public IAccessTokenAuthCodeOperation AccessTokenAuthCode { get; private set; }
-		public IAccessTokenClientCredentialsOperation AccessTokenClientCredentials { get; private set; }
-		public IAccessTokenClientDataProvOperation AccessTokenClientDataProv { get; private set; }
-		public IAccessTokenRefreshOperation AccessTokenRefresh { get; private set; }
-		public ILoginOperation Login { get; private set; }
-		public ILogoutOperation Logout { get; private set; }
+	internal class OauthService : IOauthService {
+	
+		private readonly IClientContext vContext;
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public OauthService() {
-			AccessToken = new AccessTokenOperation();
-			AccessTokenAuthCode = new AccessTokenAuthCodeOperation();
-			AccessTokenClientCredentials = new AccessTokenClientCredentialsOperation();
-			AccessTokenClientDataProv = new AccessTokenClientDataProvOperation();
-			AccessTokenRefresh = new AccessTokenRefreshOperation();
-			Login = new LoginOperation();
-			Logout = new LogoutOperation();
+		public OauthService(IClientContext pContext) {
+			vContext = pContext;
+		}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public IAccessTokenOperation AccessToken {
+			get { return new AccessTokenOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IAccessTokenAuthCodeOperation AccessTokenAuthCode {
+			get { return new AccessTokenAuthCodeOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IAccessTokenClientCredentialsOperation AccessTokenClientCredentials {
+			get { return new AccessTokenClientCredentialsOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IAccessTokenClientDataProvOperation AccessTokenClientDataProv {
+			get { return new AccessTokenClientDataProvOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IAccessTokenRefreshOperation AccessTokenRefresh {
+			get { return new AccessTokenRefreshOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public ILoginOperation Login {
+			get { return new LoginOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public ILogoutOperation Logout {
+			get { return new LogoutOperation(vContext); }
 		}
 
 	}
@@ -214,41 +257,87 @@ namespace Fabric.Clients.Cs.Api {
 
 
 	/*================================================================================================*/
-	public class ModifyService : IModifyService {
-
-		public IAddAppOperation AddApp { get; private set; }
-		public IAddClassOperation AddClass { get; private set; }
-		public IAddFactorOperation AddFactor { get; private set; }
-		public IAddInstanceOperation AddInstance { get; private set; }
-		public IAddUrlOperation AddUrl { get; private set; }
-		public IAddUserOperation AddUser { get; private set; }
-		public IAttachDescriptorToFactorOperation AttachDescriptorToFactor { get; private set; }
-		public IAttachDirectorToFactorOperation AttachDirectorToFactor { get; private set; }
-		public IAttachEventorToFactorOperation AttachEventorToFactor { get; private set; }
-		public IAttachIdentorToFactorOperation AttachIdentorToFactor { get; private set; }
-		public IAttachLocatorToFactorOperation AttachLocatorToFactor { get; private set; }
-		public IAttachVectorToFactorOperation AttachVectorToFactor { get; private set; }
-		public ICompleteFactorOperation CompleteFactor { get; private set; }
-		public IDeleteFactorOperation DeleteFactor { get; private set; }
+	internal class ModifyService : IModifyService {
+	
+		private readonly IClientContext vContext;
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public ModifyService() {
-			AddApp = new AddAppOperation();
-			AddClass = new AddClassOperation();
-			AddFactor = new AddFactorOperation();
-			AddInstance = new AddInstanceOperation();
-			AddUrl = new AddUrlOperation();
-			AddUser = new AddUserOperation();
-			AttachDescriptorToFactor = new AttachDescriptorToFactorOperation();
-			AttachDirectorToFactor = new AttachDirectorToFactorOperation();
-			AttachEventorToFactor = new AttachEventorToFactorOperation();
-			AttachIdentorToFactor = new AttachIdentorToFactorOperation();
-			AttachLocatorToFactor = new AttachLocatorToFactorOperation();
-			AttachVectorToFactor = new AttachVectorToFactorOperation();
-			CompleteFactor = new CompleteFactorOperation();
-			DeleteFactor = new DeleteFactorOperation();
+		public ModifyService(IClientContext pContext) {
+			vContext = pContext;
+		}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public IAddAppOperation AddApp {
+			get { return new AddAppOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IAddClassOperation AddClass {
+			get { return new AddClassOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IAddFactorOperation AddFactor {
+			get { return new AddFactorOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IAddInstanceOperation AddInstance {
+			get { return new AddInstanceOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IAddUrlOperation AddUrl {
+			get { return new AddUrlOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IAddUserOperation AddUser {
+			get { return new AddUserOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IAttachDescriptorToFactorOperation AttachDescriptorToFactor {
+			get { return new AttachDescriptorToFactorOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IAttachDirectorToFactorOperation AttachDirectorToFactor {
+			get { return new AttachDirectorToFactorOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IAttachEventorToFactorOperation AttachEventorToFactor {
+			get { return new AttachEventorToFactorOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IAttachIdentorToFactorOperation AttachIdentorToFactor {
+			get { return new AttachIdentorToFactorOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IAttachLocatorToFactorOperation AttachLocatorToFactor {
+			get { return new AttachLocatorToFactorOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IAttachVectorToFactorOperation AttachVectorToFactor {
+			get { return new AttachVectorToFactorOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public ICompleteFactorOperation CompleteFactor {
+			get { return new CompleteFactorOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IDeleteFactorOperation DeleteFactor {
+			get { return new DeleteFactorOperation(vContext); }
 		}
 
 	}
@@ -272,15 +361,22 @@ namespace Fabric.Clients.Cs.Api {
 
 
 	/*================================================================================================*/
-	public class SpecService : ISpecService {
-
-		public IDocumentOperation Document { get; private set; }
+	internal class SpecService : ISpecService {
+	
+		private readonly IClientContext vContext;
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public SpecService() {
-			Document = new DocumentOperation();
+		public SpecService(IClientContext pContext) {
+			vContext = pContext;
+		}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public IDocumentOperation Document {
+			get { return new DocumentOperation(vContext); }
 		}
 
 	}

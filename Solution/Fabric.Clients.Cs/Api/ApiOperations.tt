@@ -8,6 +8,7 @@
 // Changes made to this source file will be overwritten
 // Generated on <#= DateTime.Now.ToString() #>
 
+using Fabric.Clients.Cs.Session;
 using Fabric.Clients.Cs.Web;
 
 namespace Fabric.Clients.Cs.Api {
@@ -76,15 +77,24 @@ foreach ( FabSpecService s in spec.Services ) {
 	
 
 	/*================================================================================================*/
-	public class <#= op.Name #>Operation : I<#= op.Name #>Operation {
+	internal class <#= op.Name #>Operation : I<#= op.Name #>Operation {
 		
 		public string Method { get { return "<#= op.Method #>"; } }
 		public string RequiredAuth { get { return "<#= op.RequiredAuth #>"; } }
+		
+		private readonly IClientContext vContext;
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public <#= op.Name #>Operation(IClientContext pContext) {
+			vContext = pContext;
+		}
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<<#= op.ReturnType #>> Request(<#= paramList #>) {
+		public FabricRequest<<#= op.ReturnType #>> Request(<#= paramList #>) {
 			return new FabricRequest<<#= op.ReturnType #>>(
 				"<#= op.Method #>",
 				"<#= s.Uri+op.Uri #>", 
@@ -95,7 +105,7 @@ foreach ( FabSpecService s in spec.Services ) {
 		
 		/*--------------------------------------------------------------------------------------------*/
 		public <#= op.ReturnType #> <#= method #>(<#= paramList #>) {
-			return Request(<#= paramFill #>).Send(null);
+			return Request(<#= paramFill #>).Send(vContext);
 		}
 
 	}
