@@ -1,0 +1,19 @@
+﻿<h1>Fabric Client Demo</h1>
+<p>
+	@Html.ActionLink("Artifact 1", "Artifact", new { id=1 })<br />
+	@Html.ActionLink("Artifact 2", "Artifact", new { id=2 })<br />
+	@Html.ActionLink("Artifact 3", "Artifact", new { id=3 })<br />
+	<br />
+	@Html.ActionLink("ArtifactType 1", "ArtifactTypes", new { id=1 })<br />
+	@Html.ActionLink("ArtifactType 2", "ArtifactTypes", new { id=2 })<br />
+	@Html.ActionLink("ArtifactType List", "ArtifactTypes")<br />
+	<br />
+	@Html.ActionLink("OAuth", "Index", "Oauth")<br />
+	<br />
+	@Html.ActionLink("Current App", "MyApp")<br />
+	@Html.ActionLink("Current App DataProvider", "MyAppDataProv")<br />
+	@Html.ActionLink("Current Person", "Me") ... requires Person authentication<br />
+	<br />
+	@Html.ActionLink("Fabric API Version", "ApiVersion") ... client generated from version 
+	@FabricClient.ApiVersion<br />
+</p>

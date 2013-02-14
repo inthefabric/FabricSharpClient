@@ -14,6 +14,11 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	public interface IFabricServices {
+		
+		///<summary>
+		///  The API version used to generate the Fabric client code.
+		///</summary>
+		string ApiVersion { get; }
 
 <#
 FabSpec spec = SpecBuilder.Spec;
@@ -42,6 +47,9 @@ foreach ( FabSpecService s in spec.Services ) {
 		public FabricServices(IClientContext pContext) {
 			vContext = pContext;
 		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public string ApiVersion { get { return "<#= spec.ApiVersion #>"; } }
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////

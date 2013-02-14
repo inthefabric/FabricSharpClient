@@ -1,0 +1,5 @@
+﻿@model List<FabObject>
+@{
+	var grid = new FabricDataGrid(Model);
+}
+@Html.Raw(grid.getHtml())

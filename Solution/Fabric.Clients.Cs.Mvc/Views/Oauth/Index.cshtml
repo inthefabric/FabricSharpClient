@@ -1,0 +1,52 @@
+﻿@model IFabricClient
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+	IFabricAppSession app = Model.AppSession;
+	IFabricAppDataProvSession dp = Model.AppDataProvSession;
+	IFabricPersonSession per = Model.PersonSession;
+}
+<h1>Example Site</h1>
+<h2>OAuth Demonstration</h2>
+<p>
+	@Html.ActionLink("Home", "Index", "Home")<br />
+	<br />
+	<b>App Session</b><Br />
+	SessionId: @app.SessionId<Br />
+	IsAuthenticated: @app.IsAuthenticated<Br />
+	Expiration: @app.Expiration<Br />
+	GrantCode: @app.GrantCode<Br />
+	BearerToken: @app.BearerToken<Br />
+	RefreshToken: @app.RefreshToken<Br />
+	@Html.ActionLink("RequestAuthentication", "RequestAppAuth") ... forces re-authentication<Br />
+	@Html.ActionLink("RefreshIfNecessary", "AppRefresh")<Br />
+	@Html.ActionLink("Logout", "AppLogout")<Br />
+	<br />
+	<b>App's DataProvider Session</b><Br />
+	SessionId: @dp.SessionId<Br />
+	IsAuthenticated: @dp.IsAuthenticated<Br />
+	Expiration: @dp.Expiration<Br />
+	GrantCode: @dp.GrantCode<Br />
+	BearerToken: @dp.BearerToken<Br />
+	RefreshToken: @dp.RefreshToken<Br />
+	@Html.ActionLink("RequestAuthentication", "RequestDpAuth") ... forces re-authentication<Br />
+	@Html.ActionLink("RefreshIfNecessary", "DpRefresh")<Br />
+	@Html.ActionLink("Logout", "DpLogout")<Br />
+	<Br />
+	<b>Person Session</b><Br />
+	SessionId: @per.SessionId<Br />
+	IsAuthenticated: @per.IsAuthenticated<Br />
+	Expiration: @per.Expiration<Br />
+	GrantCode: @per.GrantCode<Br />
+	BearerToken: @per.BearerToken<Br />
+	RefreshToken: @per.RefreshToken<Br />
+	<a href="#" onclick="@per.GetGrantWindowOpenScript()">
+		GetGrantWindowOpenScript()</a> ... Fabric login popup<Br />
+	<a href="#" onclick="@per.GetGrantWindowOpenScript(per.GetGrantCodeUrl(true))">
+		GetGrantWindowOpenScript(switch)</a> ... Fabric login popup, forces re-login<Br />
+	<a href="@per.GetGrantCodeUrl(false)">
+		GetGrantCodeUrl()</a> (link to Fabric login page)<Br />
+	<a href="@per.GetGrantCodeUrl(true)">
+		GetGrantCodeUrl(switch)</a> ... link to Fabric login page, forces re-login<Br />
+	@Html.ActionLink("RefreshIfNecessary", "PersonRefresh") ... only works if previously authenticated<Br />
+	@Html.ActionLink("Logout", "PersonLogout")<Br />
+</p>

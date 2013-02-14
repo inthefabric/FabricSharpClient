@@ -19,6 +19,9 @@ namespace Fabric.Clients.Cs {
 			new Dictionary<string, ConfigGroup>();
 		private static string DefaultConfigKey;
 
+		/// <summary />
+		public static string ApiVersion;
+
 		internal IClientContext Context { get; private set; }
 
 
@@ -114,6 +117,7 @@ namespace Fabric.Clients.Cs {
 
 			Context.Config.LogInfo("New FabricClient");
 			Services = new FabricServices(Context);
+			ApiVersion = Services.ApiVersion;
 		}
 
 

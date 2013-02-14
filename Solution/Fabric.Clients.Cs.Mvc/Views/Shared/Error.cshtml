@@ -1,0 +1,17 @@
+﻿@model FabricErrorException
+@if ( Model.Error != null ) {
+	<h1>FabricErrorException</h1>
+	<h2>@Model.Error.Name</h2>
+	<p>
+		@Model.Error.Message<br />
+		<br />
+		(Code: @Model.Error.Code)
+	</p>
+}
+else {
+	<h1>FabricErrorException (OAuth)</h1>
+	<h2>@Model.OauthError.error</h2>
+	<p>
+		@Model.OauthError.error_description
+	</p>
+}
