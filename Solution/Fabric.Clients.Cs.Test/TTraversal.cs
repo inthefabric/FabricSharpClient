@@ -33,6 +33,18 @@ namespace Fabric.Clients.Cs.Test {
 			Console.WriteLine(result.Trav.GetTraversalUri());
 			Console.WriteLine(result.GetReturnType());
 		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		[Test]
+		public void Client() {
+			var fc = new FabricClient();
+			IFabDescriptorTypeStep fdts = fc.Traversal().ContainsAppList.DefinesMemberList
+				.InUserDefines.HasArtifact.InDescriptorListRefinesPrimaryWith
+				.UsesDescriptorType.WhereId(3);
+
+			Console.WriteLine(fdts.Trav.GetTraversalUri());
+			Console.WriteLine(fdts.GetReturnType());
+		}
 		
 	}
 

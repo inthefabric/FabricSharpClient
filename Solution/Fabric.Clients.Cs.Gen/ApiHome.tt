@@ -1,0 +1,23 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="$(SolutionDir)Fabric.Clients.Cs.Infrastructure/bin/Debug/Fabric.Clients.Cs.Infrastructure.dll" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="Fabric.Clients.Cs.Infrastructure" #>
+<#@ import namespace="Fabric.Clients.Cs.Infrastructure.SpecDto" #>
+<#@ output extension=".cs" #>
+namespace Fabric.Clients.Cs.Gen {
+
+	/*================================================================================================*/
+	public interface IFabric : IService {
+
+<#
+FabSpec spec = SpecBuilder.Spec;
+
+foreach ( FabSpecService s in spec.Services ) {
+#>
+		IService<#= s.Name #> <#= s.Name #> { get; }
+<#
+}
+#>
+	}
+
+}

@@ -48,6 +48,10 @@
       <Project>{6CBF197A-4F71-4565-B8F8-F752BDD25B4F}</Project>
       <Name>Fabric.Clients.Cs.Gen</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Fabric.Clients.Cs\Fabric.Clients.Cs.csproj">
+      <Project>{FB2BFA00-0193-4DB1-9D1F-71DBBC321972}</Project>
+      <Name>Fabric.Clients.Cs</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
