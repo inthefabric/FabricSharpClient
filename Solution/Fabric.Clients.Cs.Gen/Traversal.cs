@@ -24,6 +24,11 @@ namespace Fabric.Clients.Cs.Gen {
 		public FabRootStep RootStep() {
 			return vRoot;
 		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public string GetTraversalUri() {
+			return vUri+"";
+		}
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////

@@ -27,20 +27,20 @@ namespace Fabric.Clients.Cs.Gen {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public static T As<T>(this T pCurrentStep, string pAlias, out ITraversalStepAlias<T> pStepAlias)
+		public static T As<T>(this T pCurrStep, string pAlias, out ITraversalStepAlias<T> pStepAlias)
 																			where T : IFuncAs {
-			pStepAlias = new TraversalStepAlias<T>(pAlias);
-			var funcs = new TraversalFuncs(pCurrentStep.Trav);
+			pStepAlias = new TraversalStepAlias<T>(pAlias, pCurrStep);
+			var funcs = new TraversalFuncs(pCurrStep.Trav);
 			funcs.As(pAlias);
-			return pCurrentStep;
+			return pCurrStep;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public static T Back<T,TAlias>(this T pCurrentStep, ITraversalStepAlias<TAlias> pStepAlias)
+		public static TAlias Back<T,TAlias>(this T pCurrStep, ITraversalStepAlias<TAlias> pStepAlias)
 													where T : ITraversalStep where TAlias : IFuncBack {
-			var funcs = new TraversalFuncs(pCurrentStep.Trav);
+			var funcs = new TraversalFuncs(pCurrStep.Trav);
 			funcs.Back(pStepAlias.Alias);
-			return pCurrentStep;
+			return pStepAlias.AsStep;
 		}
 
 

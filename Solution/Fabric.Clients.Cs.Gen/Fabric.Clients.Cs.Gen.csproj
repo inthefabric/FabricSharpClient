@@ -32,6 +32,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ITraversalStepT.cs" />
     <Compile Include="ITraversalStepAlias.cs" />
     <Compile Include="TraversalStepAlias.cs" />
     <Compile Include="ITraversalStep.cs" />

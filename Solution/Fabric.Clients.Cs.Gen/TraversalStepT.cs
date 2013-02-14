@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Fabric.Clients.Cs.Gen {
@@ -21,12 +22,8 @@ namespace Fabric.Clients.Cs.Gen {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public T Get(long pId) {
-			Id = pId;
-			Trav.AppendToUri("("+Id+")");
-			
-			FabResponse r = Response();
-			return null; //(r.Count == 0 ? null : (T)r.Data[0]);
+		public Type GetReturnType() {
+			return typeof(T);
 		}
 		
 	}

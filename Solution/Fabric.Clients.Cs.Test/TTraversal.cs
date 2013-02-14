@@ -1,3 +1,4 @@
+using System;
 using Fabric.Clients.Cs.Gen;
 using NUnit.Framework;
 
@@ -12,9 +13,11 @@ namespace Fabric.Clients.Cs.Test {
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
 		public void Basic() {
-			var result = Traversal.Root
-				.ContainsClassList.HasArtifact.InFactorListUsesPrimary.Get(123);
-			Assert.NotNull(result);	
+			IFabFactorStep result = Traversal.Root
+				.ContainsClassList.HasArtifact.InFactorListUsesPrimary;
+
+			Console.WriteLine(result.Trav.GetTraversalUri());
+			Console.WriteLine(result.GetReturnType());
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -23,11 +26,12 @@ namespace Fabric.Clients.Cs.Test {
 			const string asArt = "ART";
 			ITraversalStepAlias<IFabArtifactStep> artAlias;
 			
-			var result = Traversal.Root
+			IFabArtifactStep result = Traversal.Root
 				.ContainsClassList.HasArtifact.As(asArt, out artAlias).InFactorListUsesPrimary
 				.InMemberCreates.Back(artAlias);
 
-			Assert.NotNull(result);
+			Console.WriteLine(result.Trav.GetTraversalUri());
+			Console.WriteLine(result.GetReturnType());
 		}
 		
 	}

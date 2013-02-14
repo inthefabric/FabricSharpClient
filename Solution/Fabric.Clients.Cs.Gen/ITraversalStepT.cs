@@ -1,19 +1,17 @@
+using System;
+using System.Collections.Generic;
+
 namespace Fabric.Clients.Cs.Gen {
 	
 	/*================================================================================================*/
-	public class TraversalStepAlias<T> : ITraversalStepAlias<T> where T : ITraversalStep {
+	public interface ITraversalStep<T> : ITraversalStep where T : FabObject {
 
-		public string Alias { get; private set; }
-		public T AsStep { get; private set; }
-		
-		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public TraversalStepAlias(string pAlias, T pAsStep) {
-			Alias = pAlias;
-			AsStep = pAsStep;
-		}
-
+		IList<T> Get();
+		Type GetReturnType();
+		
 	}
 	
 }
