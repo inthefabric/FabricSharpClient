@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/14/2013 3:03:34 PM
+// Generated on 2/14/2013 3:23:29 PM
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -1050,6 +1050,396 @@ namespace Fabric.Clients.Cs.Api {
 		///  TODO
 		///</summary>
 		public string Uri { get; set; }
+		
+	}
+	
+	
+	/*================================================================================================*/
+	///<summary>
+	///  
+	///</summary>
+	///<remarks>
+	///  
+	///</remarks>
+	public class FabSpec : FabObject {
+	
+		///<summary>
+		///  
+		///</summary>
+		public string ApiVersion { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public FabSpecObject[] Objects { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public FabSpecService[] Services { get; set; }
+		
+	}
+	
+	
+	/*================================================================================================*/
+	///<summary>
+	///  
+	///</summary>
+	///<remarks>
+	///  
+	///</remarks>
+	public class FabSpecObject : FabObject {
+	
+		///<summary>
+		///  
+		///</summary>
+		public string Description { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string Extends { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string Name { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public FabSpecObjectProp[] Properties { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string[] TraversalFunctions { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public FabSpecTravLink[] TraversalLinks { get; set; }
+		
+	}
+	
+	
+	/*================================================================================================*/
+	///<summary>
+	///  
+	///</summary>
+	///<remarks>
+	///  
+	///</remarks>
+	public class FabSpecObjectProp : FabSpecValue {
+	
+		///<summary>
+		///  
+		///</summary>
+		public bool? IsCaseInsensitive { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public bool? IsNullable { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public bool? IsPrimaryKey { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public bool? IsTimestamp { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public bool? IsUnique { get; set; }
+		
+	}
+	
+	
+	/*================================================================================================*/
+	///<summary>
+	///  
+	///</summary>
+	///<remarks>
+	///  
+	///</remarks>
+	public class FabSpecService : FabObject {
+	
+		///<summary>
+		///  
+		///</summary>
+		public string Abstract { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string Description { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string Name { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public FabSpecServiceOperation[] Operations { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string ResponseWrapper { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public FabSpecTravFunc[] TraversalFunctions { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string Uri { get; set; }
+		
+	}
+	
+	
+	/*================================================================================================*/
+	///<summary>
+	///  
+	///</summary>
+	///<remarks>
+	///  
+	///</remarks>
+	public class FabSpecServiceOperation : FabObject {
+	
+		///<summary>
+		///  
+		///</summary>
+		public string AuthMemberOwns { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string Description { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string Method { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string Name { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public FabSpecServiceOperationParam[] Parameters { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string RequiredAuth { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string ReturnType { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string Uri { get; set; }
+		
+	}
+	
+	
+	/*================================================================================================*/
+	///<summary>
+	///  
+	///</summary>
+	///<remarks>
+	///  
+	///</remarks>
+	public class FabSpecServiceOperationParam : FabSpecValue {
+	
+		///<summary>
+		///  
+		///</summary>
+		public string ParamType { get; set; }
+		
+	}
+	
+	
+	/*================================================================================================*/
+	///<summary>
+	///  
+	///</summary>
+	///<remarks>
+	///  
+	///</remarks>
+	public class FabSpecTravFunc : FabObject {
+	
+		///<summary>
+		///  
+		///</summary>
+		public string Description { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string Name { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public FabSpecTravFuncParam[] Parameters { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string Uri { get; set; }
+		
+	}
+	
+	
+	/*================================================================================================*/
+	///<summary>
+	///  
+	///</summary>
+	///<remarks>
+	///  
+	///</remarks>
+	public class FabSpecTravFuncParam : FabSpecValue {
+	
+		///<summary>
+		///  
+		///</summary>
+		public int Index { get; set; }
+		
+	}
+	
+	
+	/*================================================================================================*/
+	///<summary>
+	///  
+	///</summary>
+	///<remarks>
+	///  
+	///</remarks>
+	public class FabSpecTravLink : FabObject {
+	
+		///<summary>
+		///  
+		///</summary>
+		public string Description { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string From { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string FromConn { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public bool IsOutgoing { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string Name { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string Relation { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string To { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string ToConn { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string Type { get; set; }
+		
+	}
+	
+	
+	/*================================================================================================*/
+	///<summary>
+	///  
+	///</summary>
+	///<remarks>
+	///  
+	///</remarks>
+	public class FabSpecValue : FabObject {
+	
+		///<summary>
+		///  
+		///</summary>
+		public string Description { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public bool? IsOptional { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public int? Len { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public int? LenMax { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public int? LenMin { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public int? Max { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public int? Min { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string Name { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string Type { get; set; }
+		
+		///<summary>
+		///  
+		///</summary>
+		public string ValidRegex { get; set; }
 		
 	}
 	

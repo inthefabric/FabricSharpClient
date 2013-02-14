@@ -105,12 +105,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Fabric.Clients.Cs.Infrastructure\Fabric.Clients.Cs.Infrastructure.csproj">
-      <Project>{1FA2D2C0-9E8A-449F-B8D2-0AAA533ECC20}</Project>
-      <Name>Fabric.Clients.Cs.Infrastructure</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Api\ApiHome.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ApiHome.cs</LastGenOutput>

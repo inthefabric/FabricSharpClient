@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Web;
 using Fabric.Clients.Cs.Api;
-using FabOauthAccess = Fabric.Clients.Cs.Api.FabOauthAccess;
-using IOauthService = Fabric.Clients.Cs.Api.IOauthService;
 
 namespace Fabric.Clients.Cs.Session {
 
@@ -22,7 +20,9 @@ namespace Fabric.Clients.Cs.Session {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public override string SessionDebugName { get { return "DataProv"; } }
+		public override string SessionDebugName {
+			get { return "DataProv"; }
+		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public FabOauthAccess RequestAuthentication() {

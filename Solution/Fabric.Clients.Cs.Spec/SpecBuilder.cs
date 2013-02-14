@@ -1,9 +1,9 @@
 using System.Text.RegularExpressions;
-using Fabric.Clients.Cs.Infrastructure.Data;
-using Fabric.Clients.Cs.Infrastructure.SpecDto;
+using Fabric.Clients.Cs.Spec.Data;
+using Fabric.Clients.Cs.Spec.SpecDto;
 using ServiceStack.Text;
 
-namespace Fabric.Clients.Cs.Infrastructure {
+namespace Fabric.Clients.Cs.Spec {
 	
 	/*================================================================================================*/
 	public static class SpecBuilder {
@@ -26,6 +26,10 @@ namespace Fabric.Clients.Cs.Infrastructure {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public static string RemoveMarkup(string pText) {
+			if ( pText == null ) {
+				return "";
+			}
+
 			string s = pText;
 			s = Regex.Replace(s, @"\[\[([^\|]+)\|([^\]]+)\|([^\]]+)\]\]", "$1");
 			s = Regex.Replace(s, @"\b_([^\s].+?)_\b", "$1");
@@ -35,6 +39,10 @@ namespace Fabric.Clients.Cs.Infrastructure {
 
 		/*--------------------------------------------------------------------------------------------*/
 		public static string ToXmlDoc(string pText, bool pMultiLine) {
+			if ( pText == null ) {
+				return "";
+			}
+
 			string s = RemoveMarkup(pText)
 				.Replace("\r\n\r\n", (pMultiLine ? "\r\n" : " "))
 				.Replace("\r\n", "</para>\r\n\t///  <para>");
@@ -48,6 +56,10 @@ namespace Fabric.Clients.Cs.Infrastructure {
 
 		/*--------------------------------------------------------------------------------------------*/
 		public static string ToXmlDocSentence(string pText) {
+			if ( pText == null ) {
+				return "";
+			}
+
 			bool found = false;
 			int i = 0;
 

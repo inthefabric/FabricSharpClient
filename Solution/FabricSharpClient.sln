@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fabric.Clients.Cs", "Fabric.Clients.Cs\Fabric.Clients.Cs.csproj", "{FB2BFA00-0193-4DB1-9D1F-71DBBC321972}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fabric.Clients.Cs.Infrastructure", "Fabric.Clients.Cs.Infrastructure\Fabric.Clients.Cs.Infrastructure.csproj", "{1FA2D2C0-9E8A-449F-B8D2-0AAA533ECC20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fabric.Clients.Cs.Spec", "Fabric.Clients.Cs.Spec\Fabric.Clients.Cs.Spec.csproj", "{1FA2D2C0-9E8A-449F-B8D2-0AAA533ECC20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fabric.Clients.Cs.Test", "Fabric.Clients.Cs.Test\Fabric.Clients.Cs.Test.csproj", "{F89ED714-A9B2-4D6C-A519-14F7C9678952}"
 EndProject

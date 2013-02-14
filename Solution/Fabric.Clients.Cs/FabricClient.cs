@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Fabric.Clients.Cs.Api;
 using Fabric.Clients.Cs.Session;
-using FabricServices = Fabric.Clients.Cs.Api.FabricServices;
-using IFabricServices = Fabric.Clients.Cs.Api.IFabricServices;
 
 [assembly:InternalsVisibleTo("Fluent.Tests")]
 [assembly:InternalsVisibleTo("Moq")]

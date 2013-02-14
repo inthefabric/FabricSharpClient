@@ -1,4 +1,4 @@
 using System.Reflection;
 
-[assembly: AssemblyTitle("Fabric.Clients.Cs.Infrastructure")]
+[assembly: AssemblyTitle("Fabric.Clients.Cs.Spec")]
 [assembly: AssemblyDescription("")]

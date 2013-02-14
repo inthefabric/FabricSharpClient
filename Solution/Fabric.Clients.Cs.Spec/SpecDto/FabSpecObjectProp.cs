@@ -1,4 +1,4 @@
-﻿namespace Fabric.Clients.Cs.Infrastructure.SpecDto {
+﻿namespace Fabric.Clients.Cs.Spec.SpecDto {
 
 	/*================================================================================================*/
 	public class FabSpecObjectProp : FabSpecValue {

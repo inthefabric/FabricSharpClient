@@ -19,10 +19,13 @@ namespace Fabric.Clients.Cs {
 
 		/// <summary />
 		public int AppId { get; private set; }
+
 		/// <summary />
 		public string AppSecret { get; private set; }
+
 		/// <summary />
 		public int AppDataProvPersonId { get; private set; }
+
 		/// <summary />
 		public string AppOAuthRedirectUri { get; private set; }
 
@@ -94,12 +97,20 @@ namespace Fabric.Clients.Cs {
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		public void LogInfo(string pText) { Logger.Info(this, pText); }
+
+		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		public void LogDebug(string pText) { Logger.Debug(this, pText); }
+
+		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		public void LogError(string pText) { Logger.Error(this, pText); }
+
+		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		public void LogFatal(string pText) { Logger.Fatal(this, pText); }
+
+		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		public void LogWarn(string pText) { Logger.Warn(this, pText); }
 

@@ -1,8 +1,5 @@
 ﻿using System;
 using Fabric.Clients.Cs.Api;
-using FabOauthAccess = Fabric.Clients.Cs.Api.FabOauthAccess;
-using FabOauthLogout = Fabric.Clients.Cs.Api.FabOauthLogout;
-using IOauthService = Fabric.Clients.Cs.Api.IOauthService;
 
 namespace Fabric.Clients.Cs.Session {
 
@@ -14,7 +11,7 @@ namespace Fabric.Clients.Cs.Session {
 		public string RefreshToken { get; internal set; }
 		public bool IsAuthenticated { get { return (BearerToken != null); } }
 		public DateTime Expiration { get; internal set; }
-		public virtual string SessionId { get; internal set; }
+		public string SessionId { get; internal set; }
 
 		internal IFabricClientConfig Config { get; private set; }
 		internal IOauthService ClientOauth { get; private set; }
@@ -22,10 +19,9 @@ namespace Fabric.Clients.Cs.Session {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public OauthSession(IFabricClientConfig pConfig, IOauthService pClientOauth) {
+		protected OauthSession(IFabricClientConfig pConfig, IOauthService pClientOauth) {
 			Config = pConfig;
 			ClientOauth = pClientOauth;
-
 			SessionId = Guid.NewGuid().ToString("N");
 			ClearToken();
 		}
@@ -48,7 +44,7 @@ namespace Fabric.Clients.Cs.Session {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		protected FabOauthAccess GetAccessToken(Func<FabOauthAccess> pAccessFunc) {
-			FabOauthAccess oa = null;
+			FabOauthAccess oa;
 
 			try {
 				oa = pAccessFunc();

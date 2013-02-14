@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Fabric.Clients.Cs.Infrastructure.Data {
+namespace Fabric.Clients.Cs.Spec.Data {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Fabric.Clients.Cs.Infrastructure.Data {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Fabric.Clients.Cs.Infrastructure.Data.FabricResource", typeof(FabricResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Fabric.Clients.Cs.Spec.Data.FabricResource", typeof(FabricResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

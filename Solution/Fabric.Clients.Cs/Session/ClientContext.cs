@@ -6,7 +6,6 @@
 		public IFabricClientConfig Config { get; private set; }
 		public IFabricAppSession AppSess { get; private set; }
 		public IFabricAppDataProvSession AppDataProvSess { get; private set; }
-
 		public bool UseDataProvPerson { get; set; }
 
 

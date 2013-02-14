@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Fabric.Clients.Cs.Infrastructure.SpecDto {
+namespace Fabric.Clients.Cs.Spec.SpecDto {
 
 	/*================================================================================================*/
 	public class FabSpec {

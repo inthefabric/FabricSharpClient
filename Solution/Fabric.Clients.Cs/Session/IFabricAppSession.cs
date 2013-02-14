@@ -1,5 +1,4 @@
 ﻿using Fabric.Clients.Cs.Api;
-using FabOauthAccess = Fabric.Clients.Cs.Api.FabOauthAccess;
 
 namespace Fabric.Clients.Cs.Session {
 

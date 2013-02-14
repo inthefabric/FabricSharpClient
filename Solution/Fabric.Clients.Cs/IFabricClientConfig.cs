@@ -5,7 +5,7 @@ namespace Fabric.Clients.Cs {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public partial interface IFabricClientConfig {
+	public interface IFabricClientConfig {
 
 		/// <summary />
 		string ConfigKey { get; }
@@ -15,10 +15,13 @@ namespace Fabric.Clients.Cs {
 
 		/// <summary />
 		int AppId { get; }
+
 		/// <summary />
 		string AppSecret { get; }
+
 		/// <summary />
 		int AppDataProvPersonId { get; }
+
 		/// <summary />
 		string AppOAuthRedirectUri { get; }
 
@@ -32,15 +35,24 @@ namespace Fabric.Clients.Cs {
 		IFabricSessionContainer GetSessionContainer();
 
 
+		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		void LogInfo(string text);
+
+		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		void LogDebug(string text);
+
+		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		void LogError(string text);
+
+		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		void LogFatal(string text);
+
+		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		void LogWarn(string text);
 

@@ -1,8 +1,8 @@
 ﻿<#@ template debug="true" hostspecific="true" language="C#" #>
-<#@ assembly name="$(SolutionDir)Fabric.Clients.Cs.Infrastructure\bin\Debug\Fabric.Clients.Cs.Infrastructure.dll" #>
+<#@ assembly name="$(SolutionDir)Fabric.Clients.Cs.Spec\bin\Debug\Fabric.Clients.Cs.Spec.dll" #>
 <#@ import namespace="System.IO" #>
-<#@ import namespace="Fabric.Clients.Cs.Infrastructure" #>
-<#@ import namespace="Fabric.Clients.Cs.Infrastructure.SpecDto" #>
+<#@ import namespace="Fabric.Clients.Cs.Spec" #>
+<#@ import namespace="Fabric.Clients.Cs.Spec.SpecDto" #>
 <#@ output extension=".cs" #>
 // GENERATED CODE
 // Changes made to this source file will be overwritten
@@ -14,10 +14,6 @@ namespace Fabric.Clients.Cs.Api {
 FabSpec spec = SpecBuilder.Spec;
 
 foreach ( FabSpecObject o in spec.Objects ) {
-	if ( o.Name.IndexOf("FabSpec") == 0 ) {
-		continue;
-	}
-	
 	string extends = (o.Extends == null ? "" : " : "+o.Extends);
 #>
 	/*================================================================================================*/

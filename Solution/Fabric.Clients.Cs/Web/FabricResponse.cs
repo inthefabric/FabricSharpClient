@@ -1,6 +1,4 @@
 ﻿using Fabric.Clients.Cs.Api;
-using FabError = Fabric.Clients.Cs.Api.FabError;
-using FabOauthError = Fabric.Clients.Cs.Api.FabOauthError;
 
 namespace Fabric.Clients.Cs.Web {
 	

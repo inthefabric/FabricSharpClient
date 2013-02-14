@@ -1,6 +1,4 @@
 ﻿using Fabric.Clients.Cs.Api;
-using FabOauthAccess = Fabric.Clients.Cs.Api.FabOauthAccess;
-using IOauthService = Fabric.Clients.Cs.Api.IOauthService;
 
 namespace Fabric.Clients.Cs.Session {
 
@@ -12,13 +10,15 @@ namespace Fabric.Clients.Cs.Session {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public AppSession(IFabricClientConfig pConfig, IOauthService pClientOauth)
-																		: base(pConfig, pClientOauth) {
+		public AppSession(IFabricClientConfig pConfig, IOauthService pClientOauth) :
+																		base(pConfig, pClientOauth) {
 			vAccessLock = new object();
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public override string SessionDebugName { get { return "App"; } }
+		public override string SessionDebugName {
+			get { return "App"; }
+		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public FabOauthAccess RequestAuthentication() {

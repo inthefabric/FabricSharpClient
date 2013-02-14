@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{1FA2D2C0-9E8A-449F-B8D2-0AAA533ECC20}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Fabric.Clients.Cs.Infrastructure</RootNamespace>
-    <AssemblyName>Fabric.Clients.Cs.Infrastructure</AssemblyName>
+    <RootNamespace>Fabric.Clients.Cs.Spec</RootNamespace>
+    <AssemblyName>Fabric.Clients.Cs.Spec</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>

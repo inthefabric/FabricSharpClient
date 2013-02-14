@@ -1,11 +1,10 @@
 ﻿using Fabric.Clients.Cs.Api;
-using FabOauthAccess = Fabric.Clients.Cs.Api.FabOauthAccess;
 
 namespace Fabric.Clients.Cs.Session {
 
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabricAppDataProvSession : IFabricOauthSession, IFabricPersonSession {
+	public interface IFabricAppDataProvSession : IFabricPersonSession {
 
 		/// <summary />
 		IFabricAppSession AppSess { get; }

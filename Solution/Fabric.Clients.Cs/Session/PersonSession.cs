@@ -3,10 +3,6 @@ using System.Collections.Specialized;
 using System.Web;
 using Fabric.Clients.Cs.Api;
 using Fabric.Clients.Cs.Web;
-using FabOauthAccess = Fabric.Clients.Cs.Api.FabOauthAccess;
-using FabOauthLogin = Fabric.Clients.Cs.Api.FabOauthLogin;
-using IOauthService = Fabric.Clients.Cs.Api.IOauthService;
-using LoginOperation = Fabric.Clients.Cs.Api.LoginOperation;
 
 namespace Fabric.Clients.Cs.Session {
 
@@ -16,16 +12,22 @@ namespace Fabric.Clients.Cs.Session {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public PersonSession(IFabricClientConfig pConfig, IOauthService pClientOauth)
-																		: base(pConfig, pClientOauth) {}
+		public PersonSession(IFabricClientConfig pConfig, IOauthService pClientOauth) :
+																		base(pConfig, pClientOauth) {}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public override string SessionDebugName { get { return "Person"; } }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		public override bool RefreshTokenIfNecessary() {
-			if ( RefreshToken == null ) { return false; }
-			if ( !IsRefreshNecessary() ) { return false; }
+			if ( RefreshToken == null ) {
+				return false;
+			}
+
+			if ( !IsRefreshNecessary() ) {
+				return false;
+			}
+
 			Config.LogInfo("Refreshing Person token...");
 
 			GetAccessToken(() => ClientOauth.AccessTokenRefresh

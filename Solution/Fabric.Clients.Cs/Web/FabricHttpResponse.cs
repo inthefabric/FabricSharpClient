@@ -6,7 +6,7 @@ namespace Fabric.Clients.Cs.Web {
 	/*================================================================================================*/
 	internal class FabricHttpResponse : IFabricHttpResponse {
 
-		private HttpWebResponse vResp;
+		private readonly HttpWebResponse vResp;
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////

@@ -6,13 +6,13 @@ namespace Fabric.Clients.Cs.Web {
 	/*================================================================================================*/
 	internal class FabricHttpRequest : IFabricHttpRequest {
 
-		private HttpWebRequest vReq;
+		private readonly HttpWebRequest vReq;
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricHttpRequest(string pRequestUri) {
-			vReq = (HttpWebRequest)HttpWebRequest.Create(pRequestUri);
+			vReq = (HttpWebRequest)WebRequest.Create(pRequestUri);
 		}
 
 

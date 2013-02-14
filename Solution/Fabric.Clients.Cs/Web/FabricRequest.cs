@@ -2,10 +2,9 @@
 using System.IO;
 using System.Net;
 using System.Text;
+using Fabric.Clients.Cs.Api;
 using Fabric.Clients.Cs.Session;
 using ServiceStack.Text;
-using FabError = Fabric.Clients.Cs.Api.FabError;
-using FabOauthError = Fabric.Clients.Cs.Api.FabOauthError;
 
 namespace Fabric.Clients.Cs.Web {
 	
@@ -17,18 +16,18 @@ namespace Fabric.Clients.Cs.Web {
 		public string Query { get; private set; }
 		public string Post { get; private set; }
 
-		private FabricHttpProvider vWebReqProv;
+		private readonly FabricHttpProvider vWebReqProv;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest(string pMethod, string pPath, string pQuery=null, string pPost=null) 
-							: this(new FabricHttpProvider(), pMethod, pPath, pQuery, pPost) {
+		public FabricRequest(string pMethod, string pPath, string pQuery=null, string pPost=null) :
+										this(new FabricHttpProvider(), pMethod, pPath, pQuery, pPost) {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest(FabricHttpProvider pProvider,
-								string pMethod, string pPath, string pQuery=null, string pPost=null) {
+		public FabricRequest(FabricHttpProvider pProvider, string pMethod, string pPath, 
+																string pQuery=null, string pPost=null) {
 			vWebReqProv = pProvider;
 			Method = pMethod;
 			Path = pPath;
@@ -64,10 +63,8 @@ namespace Fabric.Clients.Cs.Web {
 
 			////
 
-			IFabricHttpResponse wr = null;
-			
 			try {
-				wr = GetHttpWebResponse(pContext, fullPath);
+				IFabricHttpResponse wr = GetHttpWebResponse(pContext, fullPath);
 				pContext.Config.LogInfo("Request Path: "+Method+" "+Path);
 				pContext.Config.LogInfo("Request URL: "+fullPath);
 
@@ -90,10 +87,9 @@ namespace Fabric.Clients.Cs.Web {
 					FabOauthError oerr = JsonSerializer.DeserializeFromString<FabOauthError>(data);
 					return new FabricResponse<T>(oerr);
 				}
-				else {
-					FabError err = JsonSerializer.DeserializeFromString<FabError>(data);
-					return new FabricResponse<T>(err);
-				}
+
+				FabError err = JsonSerializer.DeserializeFromString<FabError>(data);
+				return new FabricResponse<T>(err);
 			}
 		}
 
@@ -132,7 +128,7 @@ namespace Fabric.Clients.Cs.Web {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private string StreamToString(Stream pStream) {
+		private static string StreamToString(Stream pStream) {
 			return new StreamReader(pStream).ReadToEnd();
 		}
 
