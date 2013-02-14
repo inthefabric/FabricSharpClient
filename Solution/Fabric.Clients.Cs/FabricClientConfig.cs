@@ -72,7 +72,7 @@ namespace Fabric.Clients.Cs {
 			ConfigKey = configKey;
 
 			ApiPath = apiPath;
-			if ( ApiPath[ApiPath.Length-1] != '/' ) { ApiPath += "/"; }
+			//if ( ApiPath[ApiPath.Length-1] != '/' ) { ApiPath += "/"; }
 
 			AppId = appId;
 			AppSecret = appSecret;

@@ -24,10 +24,11 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 
 		/*--------------------------------------------------------------------------------------------*/
 		private string BuildGrantCodeUrl(PersonSession pPerSess, bool pSwitchUser=false) {
-			return Config.ApiPath+"oauth/?"+
-				"response_type=code"+
-				"&client_id="+Config.AppId+
+			return Config.ApiPath+"/Oauth/Login?"+
+				"client_id="+Config.AppId+
 				"&redirect_uri="+Config.AppOAuthRedirectUri+
+				"&response_type=code"+
+				"&scope="+
 				"&state="+pPerSess.SessionId+
 				"&switchMode="+(pSwitchUser ? "1" : "0");
 		}
@@ -102,7 +103,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
 		public virtual void HandleGrantCodeRedirect() {
-			string grantCode = "GrantCode1234";
+			const string grantCode = "GrantCode1234";
 
 			var q = new NameValueCollection();
 			q.Add("code", grantCode);

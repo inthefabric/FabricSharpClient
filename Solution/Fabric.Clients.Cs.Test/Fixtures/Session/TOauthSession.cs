@@ -23,7 +23,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		public virtual void SetUp() {
 			vSessContain = new FabricSessionContainer();
 
-			Config = new FabricClientConfig("Test", "http://testFabric.com/api/", 1,
+			Config = new FabricClientConfig("Test", "http://testFabric.com/api", 1,
 				"MySecretCode", 1, "http://testdomain.com/oauth", FabricSessionContainerProvider);
 			MockOauth = new Mock<IOauthService>();
 			OauthSess = NewOauthSess(Config, MockOauth.Object);

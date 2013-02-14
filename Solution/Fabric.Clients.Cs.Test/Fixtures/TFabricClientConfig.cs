@@ -68,14 +68,6 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 			Assert.AreEqual(vSessContain, config.GetSessionContainer(), "Incorrect SessionContainer.");
 		}
 
-		/*--------------------------------------------------------------------------------------------*/
-		[Test]
-		public void ApiPathSlash() {
-			vApiPath = "http://testFabric.com/api";
-			FabricClientConfig config = GetConfig();
-			Assert.AreEqual(vApiPath+"/", config.ApiPath, "Incorrect ApiPath.");
-		}
-
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/

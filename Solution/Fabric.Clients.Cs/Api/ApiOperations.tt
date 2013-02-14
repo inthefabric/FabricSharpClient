@@ -13,6 +13,7 @@ using Fabric.Clients.Cs.Web;
 namespace Fabric.Clients.Cs.Api {
 
 	// ReSharper disable InconsistentNaming
+	// ReSharper disable RedundantArgumentDefaultValue
 
 <#
 FabSpec spec = SpecBuilder.Spec;
@@ -22,21 +23,40 @@ foreach ( FabSpecService s in spec.Services ) {
 		string method = op.Method.Substring(0,1)+op.Method.Substring(1).ToLower();
 
 		string paramList = "";
+		string paramFill = "";
 		string paramComments = "";
+		string query = "";
+		string form = "";
 
 		if ( op.Parameters != null ) {
 			foreach ( FabSpecServiceOperationParam p in op.Parameters ) {
 				if ( paramList != "" ) {
 					paramList += ", ";
+					paramFill += ", ";
 				}
 
 				paramList += p.Type+" "+p.Name;
+				paramFill += p.Name;
 				
 				paramComments += "\r\n\t\t";
 				paramComments += "///<param name=\""+p.Name+"\">\r\n\t\t///  "+
 					SpecBuilder.ToXmlDoc(p.Description, false)+"\r\n\t\t///</param>";
+
+				switch ( p.ParamType ) {
+
+					case "Query":
+						query += (query == "" ? "" : "&")+p.Name+"=\"+"+p.Name+"+\"";
+						break;
+						
+					case "Form":
+						form += (form == "" ? "" : "&")+p.Name+"=\"+"+p.Name+"+\"";
+						break;
+				}
 			}
 		}
+		
+		query = (query == "" ? "null" : "\""+query.Substring(0, query.Length-2));
+		form = (form == "" ? "null" : "\""+form.Substring(0, form.Length-2));
 #>
 	/*================================================================================================*/
 	///<summary>
@@ -51,11 +71,6 @@ foreach ( FabSpecService s in spec.Services ) {
 		///  Perform the operation.
 		///</summary><#= paramComments #>
 		<#= op.ReturnType #> <#= method #>(<#= paramList #>);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary><#= paramComments #>
-		string ToUri(<#= paramList #>);
 
 	}
 	
@@ -69,18 +84,18 @@ foreach ( FabSpecService s in spec.Services ) {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public <#= op.ReturnType #> <#= method #>(<#= paramList #>) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(<#= paramList #>) {
-			return null;
+		internal FabricRequest<<#= op.ReturnType #>> Request(<#= paramList #>) {
+			return new FabricRequest<<#= op.ReturnType #>>(
+				"<#= op.Method #>",
+				"<#= s.Uri+op.Uri #>", 
+				<#= query #>,
+				<#= form #>
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<<#= op.ReturnType #>> Request(<#= paramList #>) {
-			return null;
+		public <#= op.ReturnType #> <#= method #>(<#= paramList #>) {
+			return Request(<#= paramFill #>).Send(null);
 		}
 
 	}
@@ -91,5 +106,6 @@ foreach ( FabSpecService s in spec.Services ) {
 }
 #>
 	// ReSharper restore InconsistentNaming
+	// ReSharper restore RedundantArgumentDefaultValue
 
 }

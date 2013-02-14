@@ -1,12 +1,13 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/14/2013 3:23:29 PM
+// Generated on 2/14/2013 4:02:39 PM
 
 using Fabric.Clients.Cs.Web;
 
 namespace Fabric.Clients.Cs.Api {
 
 	// ReSharper disable InconsistentNaming
+	// ReSharper disable RedundantArgumentDefaultValue
 
 	/*================================================================================================*/
 	///<summary>
@@ -21,11 +22,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  Perform the operation.
 		///</summary>
 		FabApp Get();
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		string ToUri();
 
 	}
 	
@@ -39,18 +35,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabApp Get() {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri() {
-			return null;
+		internal FabricRequest<FabApp> Request() {
+			return new FabricRequest<FabApp>(
+				"GET",
+				"/Trav/ActiveApp", 
+				null,
+				null
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabApp> Request() {
-			return null;
+		public FabApp Get() {
+			return Request().Send(null);
 		}
 
 	}
@@ -69,11 +65,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  Perform the operation.
 		///</summary>
 		FabMember Get();
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		string ToUri();
 
 	}
 	
@@ -87,18 +78,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabMember Get() {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri() {
-			return null;
+		internal FabricRequest<FabMember> Request() {
+			return new FabricRequest<FabMember>(
+				"GET",
+				"/Trav/ActiveMember", 
+				null,
+				null
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabMember> Request() {
-			return null;
+		public FabMember Get() {
+			return Request().Send(null);
 		}
 
 	}
@@ -117,11 +108,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  Perform the operation.
 		///</summary>
 		FabUser Get();
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		string ToUri();
 
 	}
 	
@@ -135,18 +121,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabUser Get() {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri() {
-			return null;
+		internal FabricRequest<FabUser> Request() {
+			return new FabricRequest<FabUser>(
+				"GET",
+				"/Trav/ActiveUser", 
+				null,
+				null
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabUser> Request() {
-			return null;
+		public FabUser Get() {
+			return Request().Send(null);
 		}
 
 	}
@@ -165,11 +151,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  Perform the operation.
 		///</summary>
 		FabRoot Get();
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		string ToUri();
 
 	}
 	
@@ -183,18 +164,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabRoot Get() {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri() {
-			return null;
+		internal FabricRequest<FabRoot> Request() {
+			return new FabricRequest<FabRoot>(
+				"GET",
+				"/Trav/Root", 
+				null,
+				null
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabRoot> Request() {
-			return null;
+		public FabRoot Get() {
+			return Request().Send(null);
 		}
 
 	}
@@ -236,32 +217,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  The refresh token obtained after a successful 'Authorization Code' access token flow.  A refresh token only applies to User-based OAuth sessions, not for App-based OAuth sessions.  This parameter is only used by the 'Refresh' flow.
 		///</param>
 		FabOauthAccess Get(string client_id, string client_secret, string code, string data_prov_userid, string grant_type, string redirect_uri, string refresh_token);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="client_id">
-		///  The App ID value (an integer) for the App making the request. This parameter is only used by the 'Client Credentials' and 'Client Data Provider' flows.
-		///</param>
-		///<param name="client_secret">
-		///  The alpha-numeric Secret for the App making the request. This verifies that the App itself is making the request, and not an imposter.  For this reason, the secret code should not be shared with anyone.
-		///</param>
-		///<param name="code">
-		///  The authorization code obtained after a successful OAuth entry process. This parameter is only used by the 'Authorization Code' flow.
-		///</param>
-		///<param name="data_prov_userid">
-		///  The User ID value (an integer) for the Data Provider of the App making the request. Upon App creation, Fabric creates a special 'Data Provider' User which the App uses for creating items in the Fabric system. This parameter is only used by the 'Client Data Provider' flow.
-		///</param>
-		///<param name="grant_type">
-		///  Defines the desired access token flow.  The four accepted (case-sensitive) values are 'authorization_code', 'refresh', 'client_credentials', and 'client_data_provider'.
-		///</param>
-		///<param name="redirect_uri">
-		///  This value must be exactly the same as the redirect URI provided for the OAuth entry process.
-		///</param>
-		///<param name="refresh_token">
-		///  The refresh token obtained after a successful 'Authorization Code' access token flow.  A refresh token only applies to User-based OAuth sessions, not for App-based OAuth sessions.  This parameter is only used by the 'Refresh' flow.
-		///</param>
-		string ToUri(string client_id, string client_secret, string code, string data_prov_userid, string grant_type, string redirect_uri, string refresh_token);
 
 	}
 	
@@ -275,18 +230,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthAccess Get(string client_id, string client_secret, string code, string data_prov_userid, string grant_type, string redirect_uri, string refresh_token) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(string client_id, string client_secret, string code, string data_prov_userid, string grant_type, string redirect_uri, string refresh_token) {
-			return null;
+		internal FabricRequest<FabOauthAccess> Request(string client_id, string client_secret, string code, string data_prov_userid, string grant_type, string redirect_uri, string refresh_token) {
+			return new FabricRequest<FabOauthAccess>(
+				"GET",
+				"/Oauth/AccessToken", 
+				"client_id="+client_id+"&client_secret="+client_secret+"&code="+code+"&data_prov_userid="+data_prov_userid+"&grant_type="+grant_type+"&redirect_uri="+redirect_uri+"&refresh_token="+refresh_token,
+				null
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabOauthAccess> Request(string client_id, string client_secret, string code, string data_prov_userid, string grant_type, string redirect_uri, string refresh_token) {
-			return null;
+		public FabOauthAccess Get(string client_id, string client_secret, string code, string data_prov_userid, string grant_type, string redirect_uri, string refresh_token) {
+			return Request(client_id, client_secret, code, data_prov_userid, grant_type, redirect_uri, refresh_token).Send(null);
 		}
 
 	}
@@ -315,20 +270,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  This value must be exactly the same as the redirect URI provided for the OAuth entry process.
 		///</param>
 		FabOauthAccess Get(string client_secret, string code, string redirect_uri);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="client_secret">
-		///  The alpha-numeric Secret for the App making the request. This verifies that the App itself is making the request, and not an imposter.  For this reason, the secret code should not be shared with anyone.
-		///</param>
-		///<param name="code">
-		///  The authorization code obtained after a successful OAuth entry process. This parameter is only used by the 'Authorization Code' flow.
-		///</param>
-		///<param name="redirect_uri">
-		///  This value must be exactly the same as the redirect URI provided for the OAuth entry process.
-		///</param>
-		string ToUri(string client_secret, string code, string redirect_uri);
 
 	}
 	
@@ -342,18 +283,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthAccess Get(string client_secret, string code, string redirect_uri) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(string client_secret, string code, string redirect_uri) {
-			return null;
+		internal FabricRequest<FabOauthAccess> Request(string client_secret, string code, string redirect_uri) {
+			return new FabricRequest<FabOauthAccess>(
+				"GET",
+				"/Oauth/AccessTokenAuthCode", 
+				"client_secret="+client_secret+"&code="+code+"&redirect_uri="+redirect_uri,
+				null
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabOauthAccess> Request(string client_secret, string code, string redirect_uri) {
-			return null;
+		public FabOauthAccess Get(string client_secret, string code, string redirect_uri) {
+			return Request(client_secret, code, redirect_uri).Send(null);
 		}
 
 	}
@@ -382,20 +323,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  This value must be exactly the same as the redirect URI provided for the OAuth entry process.
 		///</param>
 		FabOauthAccess Get(string client_id, string client_secret, string redirect_uri);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="client_id">
-		///  The App ID value (an integer) for the App making the request. This parameter is only used by the 'Client Credentials' and 'Client Data Provider' flows.
-		///</param>
-		///<param name="client_secret">
-		///  The alpha-numeric Secret for the App making the request. This verifies that the App itself is making the request, and not an imposter.  For this reason, the secret code should not be shared with anyone.
-		///</param>
-		///<param name="redirect_uri">
-		///  This value must be exactly the same as the redirect URI provided for the OAuth entry process.
-		///</param>
-		string ToUri(string client_id, string client_secret, string redirect_uri);
 
 	}
 	
@@ -409,18 +336,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthAccess Get(string client_id, string client_secret, string redirect_uri) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(string client_id, string client_secret, string redirect_uri) {
-			return null;
+		internal FabricRequest<FabOauthAccess> Request(string client_id, string client_secret, string redirect_uri) {
+			return new FabricRequest<FabOauthAccess>(
+				"GET",
+				"/Oauth/AccessTokenClientCredentials", 
+				"client_id="+client_id+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri,
+				null
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabOauthAccess> Request(string client_id, string client_secret, string redirect_uri) {
-			return null;
+		public FabOauthAccess Get(string client_id, string client_secret, string redirect_uri) {
+			return Request(client_id, client_secret, redirect_uri).Send(null);
 		}
 
 	}
@@ -452,23 +379,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  This value must be exactly the same as the redirect URI provided for the OAuth entry process.
 		///</param>
 		FabOauthAccess Get(string client_id, string client_secret, string data_prov_userid, string redirect_uri);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="client_id">
-		///  The App ID value (an integer) for the App making the request. This parameter is only used by the 'Client Credentials' and 'Client Data Provider' flows.
-		///</param>
-		///<param name="client_secret">
-		///  The alpha-numeric Secret for the App making the request. This verifies that the App itself is making the request, and not an imposter.  For this reason, the secret code should not be shared with anyone.
-		///</param>
-		///<param name="data_prov_userid">
-		///  The User ID value (an integer) for the Data Provider of the App making the request. Upon App creation, Fabric creates a special 'Data Provider' User which the App uses for creating items in the Fabric system. This parameter is only used by the 'Client Data Provider' flow.
-		///</param>
-		///<param name="redirect_uri">
-		///  This value must be exactly the same as the redirect URI provided for the OAuth entry process.
-		///</param>
-		string ToUri(string client_id, string client_secret, string data_prov_userid, string redirect_uri);
 
 	}
 	
@@ -482,18 +392,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthAccess Get(string client_id, string client_secret, string data_prov_userid, string redirect_uri) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(string client_id, string client_secret, string data_prov_userid, string redirect_uri) {
-			return null;
+		internal FabricRequest<FabOauthAccess> Request(string client_id, string client_secret, string data_prov_userid, string redirect_uri) {
+			return new FabricRequest<FabOauthAccess>(
+				"GET",
+				"/Oauth/AccessTokenClientDataProv", 
+				"client_id="+client_id+"&client_secret="+client_secret+"&data_prov_userid="+data_prov_userid+"&redirect_uri="+redirect_uri,
+				null
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabOauthAccess> Request(string client_id, string client_secret, string data_prov_userid, string redirect_uri) {
-			return null;
+		public FabOauthAccess Get(string client_id, string client_secret, string data_prov_userid, string redirect_uri) {
+			return Request(client_id, client_secret, data_prov_userid, redirect_uri).Send(null);
 		}
 
 	}
@@ -523,20 +433,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  The refresh token obtained after a successful 'Authorization Code' access token flow.  A refresh token only applies to User-based OAuth sessions, not for App-based OAuth sessions.  This parameter is only used by the 'Refresh' flow.
 		///</param>
 		FabOauthAccess Get(string client_secret, string redirect_uri, string refresh_token);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="client_secret">
-		///  The alpha-numeric Secret for the App making the request. This verifies that the App itself is making the request, and not an imposter.  For this reason, the secret code should not be shared with anyone.
-		///</param>
-		///<param name="redirect_uri">
-		///  This value must be exactly the same as the redirect URI provided for the OAuth entry process.
-		///</param>
-		///<param name="refresh_token">
-		///  The refresh token obtained after a successful 'Authorization Code' access token flow.  A refresh token only applies to User-based OAuth sessions, not for App-based OAuth sessions.  This parameter is only used by the 'Refresh' flow.
-		///</param>
-		string ToUri(string client_secret, string redirect_uri, string refresh_token);
 
 	}
 	
@@ -550,18 +446,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthAccess Get(string client_secret, string redirect_uri, string refresh_token) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(string client_secret, string redirect_uri, string refresh_token) {
-			return null;
+		internal FabricRequest<FabOauthAccess> Request(string client_secret, string redirect_uri, string refresh_token) {
+			return new FabricRequest<FabOauthAccess>(
+				"GET",
+				"/Oauth/AccessTokenRefresh", 
+				"client_secret="+client_secret+"&redirect_uri="+redirect_uri+"&refresh_token="+refresh_token,
+				null
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabOauthAccess> Request(string client_secret, string redirect_uri, string refresh_token) {
-			return null;
+		public FabOauthAccess Get(string client_secret, string redirect_uri, string refresh_token) {
+			return Request(client_secret, redirect_uri, refresh_token).Send(null);
 		}
 
 	}
@@ -607,29 +503,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  Causes the login process to behave in different ways.  If a value of '1' is provided, the user will see the login page even if they are currently authenticated with Fabric.  This is useful shared-computer scenarios, where the most-recently authenticated user may be different from the user making the current request.
 		///</param>
 		FabOauthLogin Get(string client_id, string redirect_uri, string response_type, string scope, string state, string switchMode);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="client_id">
-		///  The ID of the Fabric App making the OAuth Login request.  The access code provided after a successful OAuth process will be associated with this App ID and the authenticated User's ID.
-		///</param>
-		///<param name="redirect_uri">
-		///  The URL which will receive success/error redirects from the OAuth Login process.  This URL should handle the following query-string parameters: access_code, error, error_description, state.
-		///</param>
-		///<param name="response_type">
-		///  Describes which type of authentication should be performed. For now, this value should always be 'code'. Fabric may accept more response types in the future.
-		///</param>
-		///<param name="scope">
-		///  Describes the level of access the App will have to the User's account.  This value is required by the OAuth 2.0 specification, however, Fabric currently ignores it.  All OAuth requests currently receive the same level of access to the User's account.  Fabric may begin using this parameter in the future.
-		///</param>
-		///<param name="state">
-		///  Provides a security function for a Fabric App.  All success/message redirect responses include a 'state' query-string parameter.  The App should check this value against the state value provided in the initial request.  The two values should always be equal. If the values are not equal, then the redirect did not come from the Fabric OAuth process (or from a different user's process), and should be handled accordingly.
-		///</param>
-		///<param name="switchMode">
-		///  Causes the login process to behave in different ways.  If a value of '1' is provided, the user will see the login page even if they are currently authenticated with Fabric.  This is useful shared-computer scenarios, where the most-recently authenticated user may be different from the user making the current request.
-		///</param>
-		string ToUri(string client_id, string redirect_uri, string response_type, string scope, string state, string switchMode);
 
 	}
 	
@@ -643,18 +516,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthLogin Get(string client_id, string redirect_uri, string response_type, string scope, string state, string switchMode) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(string client_id, string redirect_uri, string response_type, string scope, string state, string switchMode) {
-			return null;
+		internal FabricRequest<FabOauthLogin> Request(string client_id, string redirect_uri, string response_type, string scope, string state, string switchMode) {
+			return new FabricRequest<FabOauthLogin>(
+				"GET",
+				"/Oauth/Login", 
+				"client_id="+client_id+"&redirect_uri="+redirect_uri+"&response_type="+response_type+"&scope="+scope+"&state="+state+"&switchMode="+switchMode,
+				null
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabOauthLogin> Request(string client_id, string redirect_uri, string response_type, string scope, string state, string switchMode) {
-			return null;
+		public FabOauthLogin Get(string client_id, string redirect_uri, string response_type, string scope, string state, string switchMode) {
+			return Request(client_id, redirect_uri, response_type, scope, state, switchMode).Send(null);
 		}
 
 	}
@@ -677,14 +550,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  The access token for the desired OAuth session. This request will fail if the token has already been invalidated by a previous logout.
 		///</param>
 		FabOauthLogout Get(string access_token);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="access_token">
-		///  The access token for the desired OAuth session. This request will fail if the token has already been invalidated by a previous logout.
-		///</param>
-		string ToUri(string access_token);
 
 	}
 	
@@ -698,18 +563,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthLogout Get(string access_token) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(string access_token) {
-			return null;
+		internal FabricRequest<FabOauthLogout> Request(string access_token) {
+			return new FabricRequest<FabOauthLogout>(
+				"GET",
+				"/Oauth/Logout", 
+				"access_token="+access_token,
+				null
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabOauthLogout> Request(string access_token) {
-			return null;
+		public FabOauthLogout Get(string access_token) {
+			return Request(access_token).Send(null);
 		}
 
 	}
@@ -734,17 +599,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  Identifies the User that is creating the App. This User will receive the App's 'DataProvider' Member.
 		///</param>
 		FabApp Post(string Name, long UserId);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="Name">
-		///  The name of the new App.
-		///</param>
-		///<param name="UserId">
-		///  Identifies the User that is creating the App. This User will receive the App's 'DataProvider' Member.
-		///</param>
-		string ToUri(string Name, long UserId);
 
 	}
 	
@@ -758,18 +612,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabApp Post(string Name, long UserId) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(string Name, long UserId) {
-			return null;
+		internal FabricRequest<FabApp> Request(string Name, long UserId) {
+			return new FabricRequest<FabApp>(
+				"POST",
+				"/Mod/Apps", 
+				null,
+				"Name="+Name+"&UserId="+UserId
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabApp> Request(string Name, long UserId) {
-			return null;
+		public FabApp Post(string Name, long UserId) {
+			return Request(Name, UserId).Send(null);
 		}
 
 	}
@@ -797,20 +651,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  A brief description of the new Class. It can be useful for helping others understand the creator's intended purpose or meaning.
 		///</param>
 		FabClass Post(string Disamb, string Name, string Note);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="Disamb">
-		///  The disambiguation text for the new Class.  When provided, the disambiguation text permits the use of a non-unique name.
-		///</param>
-		///<param name="Name">
-		///  The name of the new Class. It must be unique on its own, or be unique in combination with the disambiguation text.
-		///</param>
-		///<param name="Note">
-		///  A brief description of the new Class. It can be useful for helping others understand the creator's intended purpose or meaning.
-		///</param>
-		string ToUri(string Disamb, string Name, string Note);
 
 	}
 	
@@ -824,18 +664,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabClass Post(string Disamb, string Name, string Note) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(string Disamb, string Name, string Note) {
-			return null;
+		internal FabricRequest<FabClass> Request(string Disamb, string Name, string Note) {
+			return new FabricRequest<FabClass>(
+				"POST",
+				"/Mod/Classes", 
+				null,
+				"Disamb="+Disamb+"&Name="+Name+"&Note="+Note
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabClass> Request(string Disamb, string Name, string Note) {
-			return null;
+		public FabClass Post(string Disamb, string Name, string Note) {
+			return Request(Disamb, Name, Note).Send(null);
 		}
 
 	}
@@ -869,26 +709,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  Identifies the related Artifact for the new Factor. The related Artifact cannot be the same as the primary Artifact.
 		///</param>
 		FabFactor Post(long FactorAssertionId, bool IsDefining, string Note, long PrimaryArtifactId, long RelatedArtifactId);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="FactorAssertionId">
-		///  Identifies the FactorAssertion for the new Factor. In cases where the assertion type is unclear or not known, please use the 'Undefined' FactorAssertion.
-		///</param>
-		///<param name="IsDefining">
-		///  The IsDefining value for the new Factor.
-		///</param>
-		///<param name="Note">
-		///  A sentence or short paragraph describing (in a human-readable format) the intended meaning of the new Factor. A descriptive note can help others understand the creator's intended purpose or meaning for the Factor.
-		///</param>
-		///<param name="PrimaryArtifactId">
-		///  Identifies the primary Artifact for the new Factor.
-		///</param>
-		///<param name="RelatedArtifactId">
-		///  Identifies the related Artifact for the new Factor. The related Artifact cannot be the same as the primary Artifact.
-		///</param>
-		string ToUri(long FactorAssertionId, bool IsDefining, string Note, long PrimaryArtifactId, long RelatedArtifactId);
 
 	}
 	
@@ -902,18 +722,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabFactor Post(long FactorAssertionId, bool IsDefining, string Note, long PrimaryArtifactId, long RelatedArtifactId) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(long FactorAssertionId, bool IsDefining, string Note, long PrimaryArtifactId, long RelatedArtifactId) {
-			return null;
+		internal FabricRequest<FabFactor> Request(long FactorAssertionId, bool IsDefining, string Note, long PrimaryArtifactId, long RelatedArtifactId) {
+			return new FabricRequest<FabFactor>(
+				"POST",
+				"/Mod/Factors", 
+				null,
+				"FactorAssertionId="+FactorAssertionId+"&IsDefining="+IsDefining+"&Note="+Note+"&PrimaryArtifactId="+PrimaryArtifactId+"&RelatedArtifactId="+RelatedArtifactId
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabFactor> Request(long FactorAssertionId, bool IsDefining, string Note, long PrimaryArtifactId, long RelatedArtifactId) {
-			return null;
+		public FabFactor Post(long FactorAssertionId, bool IsDefining, string Note, long PrimaryArtifactId, long RelatedArtifactId) {
+			return Request(FactorAssertionId, IsDefining, Note, PrimaryArtifactId, RelatedArtifactId).Send(null);
 		}
 
 	}
@@ -941,20 +761,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  A brief description of the new Instance.  It can be useful for helping others understand the creator's intended purpose or meaning.
 		///</param>
 		FabInstance Post(string Disamb, string Name, string Note);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="Disamb">
-		///  The disambiguation text for the new Instance. When provided, the disambiguation text permits the use of a non-unique name.
-		///</param>
-		///<param name="Name">
-		///  The name of the new Instance. It does not need to be unique.
-		///</param>
-		///<param name="Note">
-		///  A brief description of the new Instance.  It can be useful for helping others understand the creator's intended purpose or meaning.
-		///</param>
-		string ToUri(string Disamb, string Name, string Note);
 
 	}
 	
@@ -968,18 +774,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabInstance Post(string Disamb, string Name, string Note) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(string Disamb, string Name, string Note) {
-			return null;
+		internal FabricRequest<FabInstance> Request(string Disamb, string Name, string Note) {
+			return new FabricRequest<FabInstance>(
+				"POST",
+				"/Mod/Instances", 
+				null,
+				"Disamb="+Disamb+"&Name="+Name+"&Note="+Note
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabInstance> Request(string Disamb, string Name, string Note) {
-			return null;
+		public FabInstance Post(string Disamb, string Name, string Note) {
+			return Request(Disamb, Name, Note).Send(null);
 		}
 
 	}
@@ -1004,17 +810,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  The name of the new Url.
 		///</param>
 		FabUrl Post(string AbsoluteUrl, string Name);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="AbsoluteUrl">
-		///  The complete absolute URL for new Url object. It must include the URL's protocol (such as 'http://').
-		///</param>
-		///<param name="Name">
-		///  The name of the new Url.
-		///</param>
-		string ToUri(string AbsoluteUrl, string Name);
 
 	}
 	
@@ -1028,18 +823,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabUrl Post(string AbsoluteUrl, string Name) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(string AbsoluteUrl, string Name) {
-			return null;
+		internal FabricRequest<FabUrl> Request(string AbsoluteUrl, string Name) {
+			return new FabricRequest<FabUrl>(
+				"POST",
+				"/Mod/Urls", 
+				null,
+				"AbsoluteUrl="+AbsoluteUrl+"&Name="+Name
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabUrl> Request(string AbsoluteUrl, string Name) {
-			return null;
+		public FabUrl Post(string AbsoluteUrl, string Name) {
+			return Request(AbsoluteUrl, Name).Send(null);
 		}
 
 	}
@@ -1067,20 +862,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  The password for the new User.
 		///</param>
 		FabUser Post(string Email, string Name, string Password);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="Email">
-		///  The email address for the new User.
-		///</param>
-		///<param name="Name">
-		///  The username for the new User.
-		///</param>
-		///<param name="Password">
-		///  The password for the new User.
-		///</param>
-		string ToUri(string Email, string Name, string Password);
 
 	}
 	
@@ -1094,18 +875,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabUser Post(string Email, string Name, string Password) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(string Email, string Name, string Password) {
-			return null;
+		internal FabricRequest<FabUser> Request(string Email, string Name, string Password) {
+			return new FabricRequest<FabUser>(
+				"POST",
+				"/Mod/Users", 
+				null,
+				"Email="+Email+"&Name="+Name+"&Password="+Password
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabUser> Request(string Email, string Name, string Password) {
-			return null;
+		public FabUser Post(string Email, string Name, string Password) {
+			return Request(Email, Name, Password).Send(null);
 		}
 
 	}
@@ -1139,26 +920,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  Identifies the Artifact that refines the Factor's related Artifact.
 		///</param>
 		FabDescriptor Post(long DescriptorTypeId, long? DescriptorTypeRefineId, long FactorId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="DescriptorTypeId">
-		///  Identifies the DescriptorType for the new Descriptor.
-		///</param>
-		///<param name="DescriptorTypeRefineId">
-		///  Identifies the Artifact that refines the new Descriptor's DescriptorType.
-		///</param>
-		///<param name="FactorId">
-		///  Identifies the incomplete Factor that will receive the Descriptor attachment.
-		///</param>
-		///<param name="PrimaryArtifactRefineId">
-		///  Identifies the Artifact that refines the Factor's primary Artifact.
-		///</param>
-		///<param name="RelatedArtifactRefineId">
-		///  Identifies the Artifact that refines the Factor's related Artifact.
-		///</param>
-		string ToUri(long DescriptorTypeId, long? DescriptorTypeRefineId, long FactorId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId);
 
 	}
 	
@@ -1172,18 +933,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabDescriptor Post(long DescriptorTypeId, long? DescriptorTypeRefineId, long FactorId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(long DescriptorTypeId, long? DescriptorTypeRefineId, long FactorId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId) {
-			return null;
+		internal FabricRequest<FabDescriptor> Request(long DescriptorTypeId, long? DescriptorTypeRefineId, long FactorId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId) {
+			return new FabricRequest<FabDescriptor>(
+				"POST",
+				"/Mod/Descriptors", 
+				null,
+				"DescriptorTypeId="+DescriptorTypeId+"&DescriptorTypeRefineId="+DescriptorTypeRefineId+"&FactorId="+FactorId+"&PrimaryArtifactRefineId="+PrimaryArtifactRefineId+"&RelatedArtifactRefineId="+RelatedArtifactRefineId
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabDescriptor> Request(long DescriptorTypeId, long? DescriptorTypeRefineId, long FactorId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId) {
-			return null;
+		public FabDescriptor Post(long DescriptorTypeId, long? DescriptorTypeRefineId, long FactorId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId) {
+			return Request(DescriptorTypeId, DescriptorTypeRefineId, FactorId, PrimaryArtifactRefineId, RelatedArtifactRefineId).Send(null);
 		}
 
 	}
@@ -1214,23 +975,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  Identifies the DirectorAction associated with the Factor's related Artifact.
 		///</param>
 		FabDirector Post(long DirectorTypeId, long FactorId, long PrimaryDirectorActionId, long RelatedDirectorActionId);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="DirectorTypeId">
-		///  Identifies the DirectorType for the new Director.
-		///</param>
-		///<param name="FactorId">
-		///  Identifies the incomplete Factor that will receive the Director attachment.
-		///</param>
-		///<param name="PrimaryDirectorActionId">
-		///  Identifies the DirectorAction associated with the Factor's primary Artifact.
-		///</param>
-		///<param name="RelatedDirectorActionId">
-		///  Identifies the DirectorAction associated with the Factor's related Artifact.
-		///</param>
-		string ToUri(long DirectorTypeId, long FactorId, long PrimaryDirectorActionId, long RelatedDirectorActionId);
 
 	}
 	
@@ -1244,18 +988,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabDirector Post(long DirectorTypeId, long FactorId, long PrimaryDirectorActionId, long RelatedDirectorActionId) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(long DirectorTypeId, long FactorId, long PrimaryDirectorActionId, long RelatedDirectorActionId) {
-			return null;
+		internal FabricRequest<FabDirector> Request(long DirectorTypeId, long FactorId, long PrimaryDirectorActionId, long RelatedDirectorActionId) {
+			return new FabricRequest<FabDirector>(
+				"POST",
+				"/Mod/Directors", 
+				null,
+				"DirectorTypeId="+DirectorTypeId+"&FactorId="+FactorId+"&PrimaryDirectorActionId="+PrimaryDirectorActionId+"&RelatedDirectorActionId="+RelatedDirectorActionId
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabDirector> Request(long DirectorTypeId, long FactorId, long PrimaryDirectorActionId, long RelatedDirectorActionId) {
-			return null;
+		public FabDirector Post(long DirectorTypeId, long FactorId, long PrimaryDirectorActionId, long RelatedDirectorActionId) {
+			return Request(DirectorTypeId, FactorId, PrimaryDirectorActionId, RelatedDirectorActionId).Send(null);
 		}
 
 	}
@@ -1286,23 +1030,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  Identifies the incomplete Factor that will receive the Eventor attachment.
 		///</param>
 		FabEventor Post(long DateTime, long EventorPrecisionId, long EventorTypeId, long FactorId);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="DateTime">
-		///  The date and time for the new Eventor. This value must be accurate to the level of precision defined by the specified EventorPrecision. Set unused month/day values to 1, and unused hour/minute values (and beyond) to 0.
-		///</param>
-		///<param name="EventorPrecisionId">
-		///  Identifies the EventorPrecision for the new Eventor.
-		///</param>
-		///<param name="EventorTypeId">
-		///  Identifies the EventorType for the new Eventor.
-		///</param>
-		///<param name="FactorId">
-		///  Identifies the incomplete Factor that will receive the Eventor attachment.
-		///</param>
-		string ToUri(long DateTime, long EventorPrecisionId, long EventorTypeId, long FactorId);
 
 	}
 	
@@ -1316,18 +1043,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabEventor Post(long DateTime, long EventorPrecisionId, long EventorTypeId, long FactorId) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(long DateTime, long EventorPrecisionId, long EventorTypeId, long FactorId) {
-			return null;
+		internal FabricRequest<FabEventor> Request(long DateTime, long EventorPrecisionId, long EventorTypeId, long FactorId) {
+			return new FabricRequest<FabEventor>(
+				"POST",
+				"/Mod/Eventors", 
+				null,
+				"DateTime="+DateTime+"&EventorPrecisionId="+EventorPrecisionId+"&EventorTypeId="+EventorTypeId+"&FactorId="+FactorId
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabEventor> Request(long DateTime, long EventorPrecisionId, long EventorTypeId, long FactorId) {
-			return null;
+		public FabEventor Post(long DateTime, long EventorPrecisionId, long EventorTypeId, long FactorId) {
+			return Request(DateTime, EventorPrecisionId, EventorTypeId, FactorId).Send(null);
 		}
 
 	}
@@ -1355,20 +1082,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  The text-based value for the new Identor.
 		///</param>
 		FabIdentor Post(long FactorId, long IdentorTypeId, string Value);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="FactorId">
-		///  Identifies the incomplete Factor that will receive the Identor attachment.
-		///</param>
-		///<param name="IdentorTypeId">
-		///  Identifies the IdentorType for the new Identor.
-		///</param>
-		///<param name="Value">
-		///  The text-based value for the new Identor.
-		///</param>
-		string ToUri(long FactorId, long IdentorTypeId, string Value);
 
 	}
 	
@@ -1382,18 +1095,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabIdentor Post(long FactorId, long IdentorTypeId, string Value) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(long FactorId, long IdentorTypeId, string Value) {
-			return null;
+		internal FabricRequest<FabIdentor> Request(long FactorId, long IdentorTypeId, string Value) {
+			return new FabricRequest<FabIdentor>(
+				"POST",
+				"/Mod/Identors", 
+				null,
+				"FactorId="+FactorId+"&IdentorTypeId="+IdentorTypeId+"&Value="+Value
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabIdentor> Request(long FactorId, long IdentorTypeId, string Value) {
-			return null;
+		public FabIdentor Post(long FactorId, long IdentorTypeId, string Value) {
+			return Request(FactorId, IdentorTypeId, Value).Send(null);
 		}
 
 	}
@@ -1427,26 +1140,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  The Z value for the new Locator.
 		///</param>
 		FabLocator Post(long FactorId, long LocatorTypeId, double ValueX, double ValueY, double ValueZ);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="FactorId">
-		///  Identifies the incomplete Factor that will receive the Locator attachment.
-		///</param>
-		///<param name="LocatorTypeId">
-		///  Identifies the LocatorType for the new Locator.
-		///</param>
-		///<param name="ValueX">
-		///  The X value for the new Locator.
-		///</param>
-		///<param name="ValueY">
-		///  The Y value for the new Locator.
-		///</param>
-		///<param name="ValueZ">
-		///  The Z value for the new Locator.
-		///</param>
-		string ToUri(long FactorId, long LocatorTypeId, double ValueX, double ValueY, double ValueZ);
 
 	}
 	
@@ -1460,18 +1153,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabLocator Post(long FactorId, long LocatorTypeId, double ValueX, double ValueY, double ValueZ) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(long FactorId, long LocatorTypeId, double ValueX, double ValueY, double ValueZ) {
-			return null;
+		internal FabricRequest<FabLocator> Request(long FactorId, long LocatorTypeId, double ValueX, double ValueY, double ValueZ) {
+			return new FabricRequest<FabLocator>(
+				"POST",
+				"/Mod/Locators", 
+				null,
+				"FactorId="+FactorId+"&LocatorTypeId="+LocatorTypeId+"&ValueX="+ValueX+"&ValueY="+ValueY+"&ValueZ="+ValueZ
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabLocator> Request(long FactorId, long LocatorTypeId, double ValueX, double ValueY, double ValueZ) {
-			return null;
+		public FabLocator Post(long FactorId, long LocatorTypeId, double ValueX, double ValueY, double ValueZ) {
+			return Request(FactorId, LocatorTypeId, ValueX, ValueY, ValueZ).Send(null);
 		}
 
 	}
@@ -1508,29 +1201,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  Identifies the VectorUnitPrefix for the new Vector.
 		///</param>
 		FabVector Post(long AxisArtifactId, long FactorId, long Value, long VectorTypeId, long VectorUnitId, long VectorUnitPrefixId);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="AxisArtifactId">
-		///  The Artifact which provides meaning for the new Vector.
-		///</param>
-		///<param name="FactorId">
-		///  Identifies the incomplete Factor that will receive the Vector attachment.
-		///</param>
-		///<param name="Value">
-		///  The value for the new Vector. This value must be within the range specified by the VectorType. Decimal values are not supported; if additional precision is required, use a VectorUnitPrefix such as Milli or Micro.
-		///</param>
-		///<param name="VectorTypeId">
-		///  Identifies the VectorType for the new Vector.
-		///</param>
-		///<param name="VectorUnitId">
-		///  Identifies the VectorUnit for the new Vector.
-		///</param>
-		///<param name="VectorUnitPrefixId">
-		///  Identifies the VectorUnitPrefix for the new Vector.
-		///</param>
-		string ToUri(long AxisArtifactId, long FactorId, long Value, long VectorTypeId, long VectorUnitId, long VectorUnitPrefixId);
 
 	}
 	
@@ -1544,18 +1214,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabVector Post(long AxisArtifactId, long FactorId, long Value, long VectorTypeId, long VectorUnitId, long VectorUnitPrefixId) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(long AxisArtifactId, long FactorId, long Value, long VectorTypeId, long VectorUnitId, long VectorUnitPrefixId) {
-			return null;
+		internal FabricRequest<FabVector> Request(long AxisArtifactId, long FactorId, long Value, long VectorTypeId, long VectorUnitId, long VectorUnitPrefixId) {
+			return new FabricRequest<FabVector>(
+				"POST",
+				"/Mod/Vectors", 
+				null,
+				"AxisArtifactId="+AxisArtifactId+"&FactorId="+FactorId+"&Value="+Value+"&VectorTypeId="+VectorTypeId+"&VectorUnitId="+VectorUnitId+"&VectorUnitPrefixId="+VectorUnitPrefixId
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabVector> Request(long AxisArtifactId, long FactorId, long Value, long VectorTypeId, long VectorUnitId, long VectorUnitPrefixId) {
-			return null;
+		public FabVector Post(long AxisArtifactId, long FactorId, long Value, long VectorTypeId, long VectorUnitId, long VectorUnitPrefixId) {
+			return Request(AxisArtifactId, FactorId, Value, VectorTypeId, VectorUnitId, VectorUnitPrefixId).Send(null);
 		}
 
 	}
@@ -1580,17 +1250,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  The IsCompleted value must be 'true'.
 		///</param>
 		FabFactor Put(long FactorId, bool IsCompleted);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="FactorId">
-		///  Identifies the incomplete Factor to be completed.
-		///</param>
-		///<param name="IsCompleted">
-		///  The IsCompleted value must be 'true'.
-		///</param>
-		string ToUri(long FactorId, bool IsCompleted);
 
 	}
 	
@@ -1604,18 +1263,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabFactor Put(long FactorId, bool IsCompleted) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(long FactorId, bool IsCompleted) {
-			return null;
+		internal FabricRequest<FabFactor> Request(long FactorId, bool IsCompleted) {
+			return new FabricRequest<FabFactor>(
+				"PUT",
+				"/Mod/Factors", 
+				null,
+				"FactorId="+FactorId+"&IsCompleted="+IsCompleted
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabFactor> Request(long FactorId, bool IsCompleted) {
-			return null;
+		public FabFactor Put(long FactorId, bool IsCompleted) {
+			return Request(FactorId, IsCompleted).Send(null);
 		}
 
 	}
@@ -1640,17 +1299,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  The IsDeleted value must be 'true'.
 		///</param>
 		FabFactor Delete(long FactorId, bool IsDeleted);
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		///<param name="FactorId">
-		///  Identifies the Factor to be deleted.
-		///</param>
-		///<param name="IsDeleted">
-		///  The IsDeleted value must be 'true'.
-		///</param>
-		string ToUri(long FactorId, bool IsDeleted);
 
 	}
 	
@@ -1664,18 +1312,18 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabFactor Delete(long FactorId, bool IsDeleted) {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri(long FactorId, bool IsDeleted) {
-			return null;
+		internal FabricRequest<FabFactor> Request(long FactorId, bool IsDeleted) {
+			return new FabricRequest<FabFactor>(
+				"DELETE",
+				"/Mod/Factors", 
+				null,
+				"FactorId="+FactorId+"&IsDeleted="+IsDeleted
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabFactor> Request(long FactorId, bool IsDeleted) {
-			return null;
+		public FabFactor Delete(long FactorId, bool IsDeleted) {
+			return Request(FactorId, IsDeleted).Send(null);
 		}
 
 	}
@@ -1694,11 +1342,6 @@ namespace Fabric.Clients.Cs.Api {
 		///  Perform the operation.
 		///</summary>
 		FabSpec Get();
-		
-		///<summary>
-		///  Obtain the URI of the operation.
-		///</summary>
-		string ToUri();
 
 	}
 	
@@ -1712,23 +1355,24 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabSpec Get() {
-			return null;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public string ToUri() {
-			return null;
+		internal FabricRequest<FabSpec> Request() {
+			return new FabricRequest<FabSpec>(
+				"GET",
+				"/Spec/Doc", 
+				null,
+				null
+			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricRequest<FabSpec> Request() {
-			return null;
+		public FabSpec Get() {
+			return Request().Send(null);
 		}
 
 	}
 
 
 	// ReSharper restore InconsistentNaming
+	// ReSharper restore RedundantArgumentDefaultValue
 
 }
