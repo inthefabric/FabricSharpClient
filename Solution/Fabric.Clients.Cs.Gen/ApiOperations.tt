@@ -1,0 +1,86 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="$(SolutionDir)Fabric.Clients.Cs.Infrastructure/bin/Debug/Fabric.Clients.Cs.Infrastructure.dll" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="Fabric.Clients.Cs.Infrastructure" #>
+<#@ import namespace="Fabric.Clients.Cs.Infrastructure.SpecDto" #>
+<#@ output extension=".cs" #>
+using Fabric.Clients.Cs.Infrastructure.SpecDto;
+
+namespace Fabric.Clients.Cs.Gen {
+
+	// ReSharper disable InconsistentNaming
+
+<#
+FabSpec spec = SpecBuilder.Spec;
+
+foreach ( FabSpecService s in spec.Services ) {
+	foreach ( FabSpecServiceOperation op in s.Operations ) {
+		string method = op.Method.Substring(0,1)+op.Method.Substring(1).ToLower();
+
+		string paramList = "";
+		string paramComments = "";
+
+		if ( op.Parameters != null ) {
+			foreach ( FabSpecServiceOperationParam p in op.Parameters ) {
+				if ( paramList != "" ) {
+					paramList += ", ";
+				}
+
+				paramList += p.Type+" "+p.Name;
+				
+				paramComments += "\r\n\t\t";
+				paramComments += "///<param name=\""+p.Name+"\">\r\n\t\t///  "+
+					SpecBuilder.ToXmlDoc(p.Description, false)+"\r\n\t\t///</param>";
+			}
+		}
+#>
+	/*================================================================================================*/
+	///<summary>
+	///  <#= SpecBuilder.ToXmlDocSentence(op.Description) #>
+	///</summary>
+	///<remarks>
+	///  <#= SpecBuilder.ToXmlDoc(op.Description, true) #>
+	///</remarks>
+	public interface I<#= op.Name #>Operation : IOperation {
+		
+		///<summary>
+		///  Perform the operation.
+		///</summary><#= paramComments #>
+		<#= op.ReturnType #> <#= method #>(<#= paramList #>);
+		
+		///<summary>
+		///  Obtain the URI of the operation.
+		///</summary><#= paramComments #>
+		string ToUri(<#= paramList #>);
+
+	}
+	
+
+	/*================================================================================================*/
+	public class <#= op.Name #>Operation : I<#= op.Name #>Operation {
+		
+		public string Method { get { return "<#= op.Method #>"; } }
+		public string RequiredAuth { get { return "<#= op.RequiredAuth #>"; } }
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public <#= op.ReturnType #> <#= method #>(<#= paramList #>) {
+			return null;
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public string ToUri(<#= paramList #>) {
+			return null;
+		}
+
+	}
+
+
+<#
+	}
+}
+#>
+	// ReSharper restore InconsistentNaming
+
+}

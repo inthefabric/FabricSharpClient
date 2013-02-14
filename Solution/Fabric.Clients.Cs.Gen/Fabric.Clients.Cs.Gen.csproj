@@ -32,11 +32,22 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiHome.cs">
+      <DependentUpon>ApiHome.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="ApiServices.cs">
       <DependentUpon>ApiServices.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="ApiOperations.cs">
+      <DependentUpon>ApiOperations.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="IOperation.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="ITraversalStepT.cs" />
     <Compile Include="ITraversalStepAlias.cs" />
@@ -65,9 +76,17 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
   <ItemGroup>
+    <None Include="ApiHome.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ApiHome.cs</LastGenOutput>
+    </None>
     <None Include="ApiServices.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ApiServices.cs</LastGenOutput>
+    </None>
+    <None Include="ApiOperations.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ApiOperations.cs</LastGenOutput>
     </None>
     <None Include="FabObjects.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

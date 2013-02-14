@@ -1,5 +1,7 @@
 ﻿namespace Fabric.Clients.Cs.Gen {
 
+	// ReSharper disable InconsistentNaming
+
 	/*================================================================================================*/
 	public interface IFuncAs : ITraversalStep {}
 
@@ -31,10 +33,10 @@
 
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    TODO
+		///  TODO
 		///</summary>
 		///<param name="Alias">
-		///    TODO
+		///  TODO
 		///</param>
 		public void As(string Alias) {
 			Trav.AppendToUri("/As("+Alias+")");
@@ -42,10 +44,10 @@
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    TODO
+		///  TODO
 		///</summary>
 		///<param name="Alias">
-		///    TODO
+		///  TODO
 		///</param>
 		public void Back(string Alias) {
 			Trav.AppendToUri("/Back("+Alias+")");
@@ -53,13 +55,13 @@
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    TODO
+		///  TODO
 		///</summary>
 		///<param name="Index">
-		///    TODO
+		///  TODO
 		///</param>
 		///<param name="Count">
-		///    TODO
+		///  TODO
 		///</param>
 		public void Limit(long Index, int Count) {
 			Trav.AppendToUri("/Limit("+Index+","+Count+")");
@@ -67,15 +69,17 @@
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    TODO
+		///  TODO
 		///</summary>
 		///<param name="Id">
-		///    TODO
+		///  TODO
 		///</param>
 		public void WhereId(long Id) {
 			Trav.AppendToUri("/WhereId("+Id+")");
 		}
 		
 	}
+
+	// ReSharper restore InconsistentNaming
 	
 }

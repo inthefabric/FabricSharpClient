@@ -32,6 +32,42 @@ namespace Fabric.Clients.Cs.Infrastructure {
 			s = Regex.Replace(s, @"\[\(EX\|(.+?)\|(.+?)\)\]", "$1: $2", RegexOptions.Singleline);
 			return s;
 		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public static string ToXmlDoc(string pText, bool pMultiLine) {
+			string s = RemoveMarkup(pText)
+				.Replace("\r\n\r\n", (pMultiLine ? "\r\n" : " "))
+				.Replace("\r\n", "</para>\r\n\t///  <para>");
+
+			if ( pMultiLine ) {
+				return "<para>"+s+"</para>";
+			}
+
+			return s;
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public static string ToXmlDocSentence(string pText) {
+			bool found = false;
+			int i = 0;
+
+			while ( true ) {
+				i = pText.IndexOf(".", i+1);
+
+				if ( i == -1 ) {
+					break;
+				}
+
+				found = true;
+
+				if ( i+1 >= pText.Length || pText[i+1] == ' ') {
+					break;
+				}
+			}
+
+			string s = (found ? pText.Substring(0, i+1) : pText);
+			return ToXmlDoc(s, false);
+		}
 		
 	}
 	

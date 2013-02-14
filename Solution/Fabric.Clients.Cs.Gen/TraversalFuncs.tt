@@ -6,6 +6,8 @@
 <#@ output extension=".cs" #>
 namespace Fabric.Clients.Cs.Gen {
 
+	// ReSharper disable InconsistentNaming
+
 <#
 FabSpec spec = SpecBuilder.Spec;
 FabSpecService trav = null;
@@ -18,21 +20,6 @@ foreach ( FabSpecService s in spec.Services ) {
 }
 
 foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
-	string funcParams = "";
-	string uriParams = "";
-	string paramComments = "";
-	
-	foreach ( FabSpecTravFuncParam fp in f.Parameters ) {
-		funcParams += (funcParams == "" ? "" : ", ");
-		funcParams += fp.Type+" "+fp.Name;
-		
-		uriParams += (uriParams == "" ? "" : "+\",\"+");
-		uriParams += fp.Name;
-		
-		paramComments += (paramComments == "" ? "" : "\r\n\t\t");
-		paramComments += "///<param name=\""+fp.Name+"\">\r\n\t\t///    "+
-			fp.Description.Replace("\r\n", " ")+"\r\n\t\t///</param>";
-	}
 #>
 	/*================================================================================================*/
 	public interface IFunc<#= f.Name #> : ITraversalStep {}
@@ -75,13 +62,13 @@ foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
 		uriParams += fp.Name;
 		
 		paramComments += (paramComments == "" ? "" : "\r\n\t\t");
-		paramComments += "///<param name=\""+fp.Name+"\">\r\n\t\t///    "+
-			fp.Description.Replace("\r\n", " ")+"\r\n\t\t///</param>";
+		paramComments += "///<param name=\""+fp.Name+"\">\r\n\t\t///  "+
+			SpecBuilder.ToXmlDoc(fp.Description, false)+"\r\n\t\t///</param>";
 	}
 #>
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    <#= f.Description.Replace("\r\n", " ") #>
+		///  <#= SpecBuilder.ToXmlDoc(f.Description, false) #>
 		///</summary>
 		<#= paramComments #>
 		public void <#= f.Name #>(<#= funcParams #>) {
@@ -92,5 +79,7 @@ foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
 }
 #>
 	}
+
+	// ReSharper restore InconsistentNaming
 	
 }

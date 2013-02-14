@@ -8,23 +8,25 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links an App to the Artifact that it owns. (OutToOne FabArtifact)
+		///  Links an App to the Artifact that it owns. (OutToOne FabArtifact)
 		///</summary>
 		///<remarks>
-		///    Type: AppHasArtifact
-		///    Relation: Has
-		///    Connection: OutToOne
+		///  <para>Links an App to the Artifact that it owns.</para>
+		///  <para>Type: AppHasArtifact</para>
+		///  <para>Relation: Has</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabArtifactStep HasArtifact { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links an App to a particular Member. (OutToOneOrMore FabMember)
+		///  Links an App to a particular Member. (OutToOneOrMore FabMember)
 		///</summary>
 		///<remarks>
-		///    Type: AppDefinesMember
-		///    Relation: Defines
-		///    Connection: OutToOneOrMore
+		///  <para>Links an App to a particular Member.</para>
+		///  <para>Type: AppDefinesMember</para>
+		///  <para>Relation: Defines</para>
+		///  <para>Connection: OutToOneOrMore</para>
 		///</remarks>
 		IFabMemberStep DefinesMemberList { get; }
 		
@@ -38,144 +40,157 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links an App to the Artifact that it owns. (InFromZeroOrOne FabApp)
+		///  Links an App to the Artifact that it owns. (InFromZeroOrOne FabApp)
 		///</summary>
 		///<remarks>
-		///    Type: AppHasArtifact
-		///    Relation: Has
-		///    Connection: InFromZeroOrOne
+		///  <para>Links an App to the Artifact that it owns.</para>
+		///  <para>Type: AppHasArtifact</para>
+		///  <para>Relation: Has</para>
+		///  <para>Connection: InFromZeroOrOne</para>
 		///</remarks>
 		IFabAppStep InAppHas { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links an Artifact to an ArtifactType that describes the type of the associated ArtifactOwnerNode. (OutToOne FabArtifactType)
+		///  Links an Artifact to an ArtifactType that describes the type of the associated ArtifactOwnerNode. (OutToOne FabArtifactType)
 		///</summary>
 		///<remarks>
-		///    Type: ArtifactUsesArtifactType
-		///    Relation: Uses
-		///    Connection: OutToOne
+		///  <para>Links an Artifact to an ArtifactType that describes the type of the associated ArtifactOwnerNode.</para>
+		///  <para>Type: ArtifactUsesArtifactType</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabArtifactTypeStep UsesArtifactType { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links an App to the Class that it owns. (InFromZeroOrOne FabClass)
+		///  Links an App to the Class that it owns. (InFromZeroOrOne FabClass)
 		///</summary>
 		///<remarks>
-		///    Type: ClassHasArtifact
-		///    Relation: Has
-		///    Connection: InFromZeroOrOne
+		///  <para>Links an App to the Class that it owns.</para>
+		///  <para>Type: ClassHasArtifact</para>
+		///  <para>Relation: Has</para>
+		///  <para>Connection: InFromZeroOrOne</para>
 		///</remarks>
 		IFabClassStep InClassHas { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links an App to the Instance that it owns. (InFromZeroOrOne FabInstance)
+		///  Links an App to the Instance that it owns. (InFromZeroOrOne FabInstance)
 		///</summary>
 		///<remarks>
-		///    Type: InstanceHasArtifact
-		///    Relation: Has
-		///    Connection: InFromZeroOrOne
+		///  <para>Links an App to the Instance that it owns.</para>
+		///  <para>Type: InstanceHasArtifact</para>
+		///  <para>Relation: Has</para>
+		///  <para>Connection: InFromZeroOrOne</para>
 		///</remarks>
 		IFabInstanceStep InInstanceHas { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Member to the Artifact that it created. (InFromOne FabMember)
+		///  Links a Member to the Artifact that it created. (InFromOne FabMember)
 		///</summary>
 		///<remarks>
-		///    Type: MemberCreatesArtifact
-		///    Relation: Creates
-		///    Connection: InFromOne
+		///  <para>Links a Member to the Artifact that it created.</para>
+		///  <para>Type: MemberCreatesArtifact</para>
+		///  <para>Relation: Creates</para>
+		///  <para>Connection: InFromOne</para>
 		///</remarks>
 		IFabMemberStep InMemberCreates { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Url to the Artifact that it owns. (InFromZeroOrOne FabUrl)
+		///  Links a Url to the Artifact that it owns. (InFromZeroOrOne FabUrl)
 		///</summary>
 		///<remarks>
-		///    Type: UrlHasArtifact
-		///    Relation: Has
-		///    Connection: InFromZeroOrOne
+		///  <para>Links a Url to the Artifact that it owns.</para>
+		///  <para>Type: UrlHasArtifact</para>
+		///  <para>Relation: Has</para>
+		///  <para>Connection: InFromZeroOrOne</para>
 		///</remarks>
 		IFabUrlStep InUrlHas { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a User to the Artifact that it owns. (InFromZeroOrOne FabUser)
+		///  Links a User to the Artifact that it owns. (InFromZeroOrOne FabUser)
 		///</summary>
 		///<remarks>
-		///    Type: UserHasArtifact
-		///    Relation: Has
-		///    Connection: InFromZeroOrOne
+		///  <para>Links a User to the Artifact that it owns.</para>
+		///  <para>Type: UserHasArtifact</para>
+		///  <para>Relation: Has</para>
+		///  <para>Connection: InFromZeroOrOne</para>
 		///</remarks>
 		IFabUserStep InUserHas { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to its primary Artifact, which represents the starting point of the Factor's directional Artifact relationship. (InFromZeroOrMore FabFactor)
+		///  Links a Factor to its primary Artifact, which represents the starting point of the Factor's directional Artifact relationship. (InFromZeroOrMore FabFactor)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesPrimaryArtifact
-		///    Relation: UsesPrimary
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a Factor to its primary Artifact, which represents the starting point of the Factor's directional Artifact relationship.</para>
+		///  <para>Type: FactorUsesPrimaryArtifact</para>
+		///  <para>Relation: UsesPrimary</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabFactorStep InFactorListUsesPrimary { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to its related Artifact, which represents the ending point of the Factor's directional Artifact relationship. (InFromZeroOrMore FabFactor)
+		///  Links a Factor to its related Artifact, which represents the ending point of the Factor's directional Artifact relationship. (InFromZeroOrMore FabFactor)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesRelatedArtifact
-		///    Relation: UsesRelated
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a Factor to its related Artifact, which represents the ending point of the Factor's directional Artifact relationship.</para>
+		///  <para>Type: FactorUsesRelatedArtifact</para>
+		///  <para>Relation: UsesRelated</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabFactorStep InFactorListUsesRelated { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's primary Artifact. (InFromZeroOrMore FabDescriptor)
+		///  Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's primary Artifact. (InFromZeroOrMore FabDescriptor)
 		///</summary>
 		///<remarks>
-		///    Type: DescriptorRefinesPrimaryWithArtifact
-		///    Relation: RefinesPrimaryWith
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's primary Artifact.</para>
+		///  <para>Type: DescriptorRefinesPrimaryWithArtifact</para>
+		///  <para>Relation: RefinesPrimaryWith</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabDescriptorStep InDescriptorListRefinesPrimaryWith { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's related Artifact. (InFromZeroOrMore FabDescriptor)
+		///  Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's related Artifact. (InFromZeroOrMore FabDescriptor)
 		///</summary>
 		///<remarks>
-		///    Type: DescriptorRefinesRelatedWithArtifact
-		///    Relation: RefinesRelatedWith
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's related Artifact.</para>
+		///  <para>Type: DescriptorRefinesRelatedWithArtifact</para>
+		///  <para>Relation: RefinesRelatedWith</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabDescriptorStep InDescriptorListRefinesRelatedWith { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the DescriptorType's meaning or purpose. (InFromZeroOrMore FabDescriptor)
+		///  Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the DescriptorType's meaning or purpose. (InFromZeroOrMore FabDescriptor)
 		///</summary>
 		///<remarks>
-		///    Type: DescriptorRefinesTypeWithArtifact
-		///    Relation: RefinesTypeWith
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the DescriptorType's meaning or purpose.</para>
+		///  <para>Type: DescriptorRefinesTypeWithArtifact</para>
+		///  <para>Relation: RefinesTypeWith</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabDescriptorStep InDescriptorListRefinesTypeWith { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Vector to an Artifact that 'labels' its value's axis. (InFromZeroOrMore FabVector)
+		///  Links a Vector to an Artifact that 'labels' its value's axis. (InFromZeroOrMore FabVector)
 		///</summary>
 		///<remarks>
-		///    Type: VectorUsesAxisArtifact
-		///    Relation: UsesAxis
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a Vector to an Artifact that 'labels' its value's axis.</para>
+		///  <para>Type: VectorUsesAxisArtifact</para>
+		///  <para>Relation: UsesAxis</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabVectorStep InVectorListUsesAxis { get; }
 		
@@ -189,12 +204,13 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links an Artifact to an ArtifactType that describes the type of the associated ArtifactOwnerNode. (InFromZeroOrMore FabArtifact)
+		///  Links an Artifact to an ArtifactType that describes the type of the associated ArtifactOwnerNode. (InFromZeroOrMore FabArtifact)
 		///</summary>
 		///<remarks>
-		///    Type: ArtifactUsesArtifactType
-		///    Relation: Uses
-		///    Connection: InFromZeroOrMore
+		///  <para>Links an Artifact to an ArtifactType that describes the type of the associated ArtifactOwnerNode.</para>
+		///  <para>Type: ArtifactUsesArtifactType</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabArtifactStep InArtifactListUses { get; }
 		
@@ -208,12 +224,13 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links an App to the Class that it owns. (OutToOne FabArtifact)
+		///  Links an App to the Class that it owns. (OutToOne FabArtifact)
 		///</summary>
 		///<remarks>
-		///    Type: ClassHasArtifact
-		///    Relation: Has
-		///    Connection: OutToOne
+		///  <para>Links an App to the Class that it owns.</para>
+		///  <para>Type: ClassHasArtifact</para>
+		///  <para>Relation: Has</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabArtifactStep HasArtifact { get; }
 		
@@ -227,56 +244,61 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to its Descriptor Element, which defines the relationship between the primary and related Artifact. (InFromOneOrMore FabFactor)
+		///  Links a Factor to its Descriptor Element, which defines the relationship between the primary and related Artifact. (InFromOneOrMore FabFactor)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesDescriptor
-		///    Relation: Uses
-		///    Connection: InFromOneOrMore
+		///  <para>Links a Factor to its Descriptor Element, which defines the relationship between the primary and related Artifact.</para>
+		///  <para>Type: FactorUsesDescriptor</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromOneOrMore</para>
 		///</remarks>
 		IFabFactorStep InFactorListUses { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Descriptor to a DescriptorType that specifies the type of relationship or connection. (OutToOne FabDescriptorType)
+		///  Links a Descriptor to a DescriptorType that specifies the type of relationship or connection. (OutToOne FabDescriptorType)
 		///</summary>
 		///<remarks>
-		///    Type: DescriptorUsesDescriptorType
-		///    Relation: Uses
-		///    Connection: OutToOne
+		///  <para>Links a Descriptor to a DescriptorType that specifies the type of relationship or connection.</para>
+		///  <para>Type: DescriptorUsesDescriptorType</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabDescriptorTypeStep UsesDescriptorType { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's primary Artifact. (OutToZeroOrOne FabArtifact)
+		///  Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's primary Artifact. (OutToZeroOrOne FabArtifact)
 		///</summary>
 		///<remarks>
-		///    Type: DescriptorRefinesPrimaryWithArtifact
-		///    Relation: RefinesPrimaryWith
-		///    Connection: OutToZeroOrOne
+		///  <para>Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's primary Artifact.</para>
+		///  <para>Type: DescriptorRefinesPrimaryWithArtifact</para>
+		///  <para>Relation: RefinesPrimaryWith</para>
+		///  <para>Connection: OutToZeroOrOne</para>
 		///</remarks>
 		IFabArtifactStep RefinesPrimaryWithArtifact { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's related Artifact. (OutToZeroOrOne FabArtifact)
+		///  Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's related Artifact. (OutToZeroOrOne FabArtifact)
 		///</summary>
 		///<remarks>
-		///    Type: DescriptorRefinesRelatedWithArtifact
-		///    Relation: RefinesRelatedWith
-		///    Connection: OutToZeroOrOne
+		///  <para>Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's related Artifact.</para>
+		///  <para>Type: DescriptorRefinesRelatedWithArtifact</para>
+		///  <para>Relation: RefinesRelatedWith</para>
+		///  <para>Connection: OutToZeroOrOne</para>
 		///</remarks>
 		IFabArtifactStep RefinesRelatedWithArtifact { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the DescriptorType's meaning or purpose. (OutToZeroOrOne FabArtifact)
+		///  Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the DescriptorType's meaning or purpose. (OutToZeroOrOne FabArtifact)
 		///</summary>
 		///<remarks>
-		///    Type: DescriptorRefinesTypeWithArtifact
-		///    Relation: RefinesTypeWith
-		///    Connection: OutToZeroOrOne
+		///  <para>Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the DescriptorType's meaning or purpose.</para>
+		///  <para>Type: DescriptorRefinesTypeWithArtifact</para>
+		///  <para>Relation: RefinesTypeWith</para>
+		///  <para>Connection: OutToZeroOrOne</para>
 		///</remarks>
 		IFabArtifactStep RefinesTypeWithArtifact { get; }
 		
@@ -290,12 +312,13 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Descriptor to a DescriptorType that specifies the type of relationship or connection. (InFromZeroOrMore FabDescriptor)
+		///  Links a Descriptor to a DescriptorType that specifies the type of relationship or connection. (InFromZeroOrMore FabDescriptor)
 		///</summary>
 		///<remarks>
-		///    Type: DescriptorUsesDescriptorType
-		///    Relation: Uses
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a Descriptor to a DescriptorType that specifies the type of relationship or connection.</para>
+		///  <para>Type: DescriptorUsesDescriptorType</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabDescriptorStep InDescriptorListUses { get; }
 		
@@ -309,45 +332,49 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to its Director Element, which creates a directional pathway between the primary and related Artifacts. (InFromOneOrMore FabFactor)
+		///  Links a Factor to its Director Element, which creates a directional pathway between the primary and related Artifacts. (InFromOneOrMore FabFactor)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesDirector
-		///    Relation: Uses
-		///    Connection: InFromOneOrMore
+		///  <para>Links a Factor to its Director Element, which creates a directional pathway between the primary and related Artifacts.</para>
+		///  <para>Type: FactorUsesDirector</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromOneOrMore</para>
 		///</remarks>
 		IFabFactorStep InFactorListUses { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Director to a DirectorType that specifies the type and reason for the pathway. (OutToOne FabDirectorType)
+		///  Links a Director to a DirectorType that specifies the type and reason for the pathway. (OutToOne FabDirectorType)
 		///</summary>
 		///<remarks>
-		///    Type: DirectorUsesDirectorType
-		///    Relation: Uses
-		///    Connection: OutToOne
+		///  <para>Links a Director to a DirectorType that specifies the type and reason for the pathway.</para>
+		///  <para>Type: DirectorUsesDirectorType</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabDirectorTypeStep UsesDirectorType { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Director to a DirectorAction that specifies the action to be performed on the Factor's primary Artifact. (OutToOne FabDirectorAction)
+		///  Links a Director to a DirectorAction that specifies the action to be performed on the Factor's primary Artifact. (OutToOne FabDirectorAction)
 		///</summary>
 		///<remarks>
-		///    Type: DirectorUsesPrimaryDirectorAction
-		///    Relation: UsesPrimary
-		///    Connection: OutToOne
+		///  <para>Links a Director to a DirectorAction that specifies the action to be performed on the Factor's primary Artifact.</para>
+		///  <para>Type: DirectorUsesPrimaryDirectorAction</para>
+		///  <para>Relation: UsesPrimary</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabDirectorActionStep UsesPrimaryDirectorAction { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Director to a DirectorAction that specifies the action to be performed on the Factor's related Artifact. (OutToOne FabDirectorAction)
+		///  Links a Director to a DirectorAction that specifies the action to be performed on the Factor's related Artifact. (OutToOne FabDirectorAction)
 		///</summary>
 		///<remarks>
-		///    Type: DirectorUsesRelatedDirectorAction
-		///    Relation: UsesRelated
-		///    Connection: OutToOne
+		///  <para>Links a Director to a DirectorAction that specifies the action to be performed on the Factor's related Artifact.</para>
+		///  <para>Type: DirectorUsesRelatedDirectorAction</para>
+		///  <para>Relation: UsesRelated</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabDirectorActionStep UsesRelatedDirectorAction { get; }
 		
@@ -361,23 +388,25 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Director to a DirectorAction that specifies the action to be performed on the Factor's primary Artifact. (InFromZeroOrMore FabDirector)
+		///  Links a Director to a DirectorAction that specifies the action to be performed on the Factor's primary Artifact. (InFromZeroOrMore FabDirector)
 		///</summary>
 		///<remarks>
-		///    Type: DirectorUsesPrimaryDirectorAction
-		///    Relation: UsesPrimary
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a Director to a DirectorAction that specifies the action to be performed on the Factor's primary Artifact.</para>
+		///  <para>Type: DirectorUsesPrimaryDirectorAction</para>
+		///  <para>Relation: UsesPrimary</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabDirectorStep InDirectorListUsesPrimary { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Director to a DirectorAction that specifies the action to be performed on the Factor's related Artifact. (InFromZeroOrMore FabDirector)
+		///  Links a Director to a DirectorAction that specifies the action to be performed on the Factor's related Artifact. (InFromZeroOrMore FabDirector)
 		///</summary>
 		///<remarks>
-		///    Type: DirectorUsesRelatedDirectorAction
-		///    Relation: UsesRelated
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a Director to a DirectorAction that specifies the action to be performed on the Factor's related Artifact.</para>
+		///  <para>Type: DirectorUsesRelatedDirectorAction</para>
+		///  <para>Relation: UsesRelated</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabDirectorStep InDirectorListUsesRelated { get; }
 		
@@ -391,12 +420,13 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Director to a DirectorType that specifies the type and reason for the pathway. (InFromZeroOrMore FabDirector)
+		///  Links a Director to a DirectorType that specifies the type and reason for the pathway. (InFromZeroOrMore FabDirector)
 		///</summary>
 		///<remarks>
-		///    Type: DirectorUsesDirectorType
-		///    Relation: Uses
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a Director to a DirectorType that specifies the type and reason for the pathway.</para>
+		///  <para>Type: DirectorUsesDirectorType</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabDirectorStep InDirectorListUses { get; }
 		
@@ -410,34 +440,37 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to its Eventor Element, which applies the concept of time. (InFromOneOrMore FabFactor)
+		///  Links a Factor to its Eventor Element, which applies the concept of time. (InFromOneOrMore FabFactor)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesEventor
-		///    Relation: Uses
-		///    Connection: InFromOneOrMore
+		///  <para>Links a Factor to its Eventor Element, which applies the concept of time.</para>
+		///  <para>Type: FactorUsesEventor</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromOneOrMore</para>
 		///</remarks>
 		IFabFactorStep InFactorListUses { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links an Eventor to an EventorType that specifies the significance of this point in time. (OutToOne FabEventorType)
+		///  Links an Eventor to an EventorType that specifies the significance of this point in time. (OutToOne FabEventorType)
 		///</summary>
 		///<remarks>
-		///    Type: EventorUsesEventorType
-		///    Relation: Uses
-		///    Connection: OutToOne
+		///  <para>Links an Eventor to an EventorType that specifies the significance of this point in time.</para>
+		///  <para>Type: EventorUsesEventorType</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabEventorTypeStep UsesEventorType { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links an Eventor to an EventorPrecision that specifies the level of accuracy given to this point in time. (OutToOne FabEventorPrecision)
+		///  Links an Eventor to an EventorPrecision that specifies the level of accuracy given to this point in time. (OutToOne FabEventorPrecision)
 		///</summary>
 		///<remarks>
-		///    Type: EventorUsesEventorPrecision
-		///    Relation: Uses
-		///    Connection: OutToOne
+		///  <para>Links an Eventor to an EventorPrecision that specifies the level of accuracy given to this point in time.</para>
+		///  <para>Type: EventorUsesEventorPrecision</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabEventorPrecisionStep UsesEventorPrecision { get; }
 		
@@ -451,12 +484,13 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links an Eventor to an EventorPrecision that specifies the level of accuracy given to this point in time. (InFromZeroOrMore FabEventor)
+		///  Links an Eventor to an EventorPrecision that specifies the level of accuracy given to this point in time. (InFromZeroOrMore FabEventor)
 		///</summary>
 		///<remarks>
-		///    Type: EventorUsesEventorPrecision
-		///    Relation: Uses
-		///    Connection: InFromZeroOrMore
+		///  <para>Links an Eventor to an EventorPrecision that specifies the level of accuracy given to this point in time.</para>
+		///  <para>Type: EventorUsesEventorPrecision</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabEventorStep InEventorListUses { get; }
 		
@@ -470,12 +504,13 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links an Eventor to an EventorType that specifies the significance of this point in time. (InFromZeroOrMore FabEventor)
+		///  Links an Eventor to an EventorType that specifies the significance of this point in time. (InFromZeroOrMore FabEventor)
 		///</summary>
 		///<remarks>
-		///    Type: EventorUsesEventorType
-		///    Relation: Uses
-		///    Connection: InFromZeroOrMore
+		///  <para>Links an Eventor to an EventorType that specifies the significance of this point in time.</para>
+		///  <para>Type: EventorUsesEventorType</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabEventorStep InEventorListUses { get; }
 		
@@ -489,122 +524,133 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Member to the Factor that it created. (InFromOne FabMember)
+		///  Links a Member to the Factor that it created. (InFromOne FabMember)
 		///</summary>
 		///<remarks>
-		///    Type: MemberCreatesFactor
-		///    Relation: Creates
-		///    Connection: InFromOne
+		///  <para>Links a Member to the Factor that it created.</para>
+		///  <para>Type: MemberCreatesFactor</para>
+		///  <para>Relation: Creates</para>
+		///  <para>Connection: InFromOne</para>
 		///</remarks>
 		IFabMemberStep InMemberCreates { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to its primary Artifact, which represents the starting point of the Factor's directional Artifact relationship. (OutToOne FabArtifact)
+		///  Links a Factor to its primary Artifact, which represents the starting point of the Factor's directional Artifact relationship. (OutToOne FabArtifact)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesPrimaryArtifact
-		///    Relation: UsesPrimary
-		///    Connection: OutToOne
+		///  <para>Links a Factor to its primary Artifact, which represents the starting point of the Factor's directional Artifact relationship.</para>
+		///  <para>Type: FactorUsesPrimaryArtifact</para>
+		///  <para>Relation: UsesPrimary</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabArtifactStep UsesPrimaryArtifact { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to its related Artifact, which represents the ending point of the Factor's directional Artifact relationship. (OutToOne FabArtifact)
+		///  Links a Factor to its related Artifact, which represents the ending point of the Factor's directional Artifact relationship. (OutToOne FabArtifact)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesRelatedArtifact
-		///    Relation: UsesRelated
-		///    Connection: OutToOne
+		///  <para>Links a Factor to its related Artifact, which represents the ending point of the Factor's directional Artifact relationship.</para>
+		///  <para>Type: FactorUsesRelatedArtifact</para>
+		///  <para>Relation: UsesRelated</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabArtifactStep UsesRelatedArtifact { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to a FactorAssertion that specifies the type of information and/or level of confidence. (OutToOne FabFactorAssertion)
+		///  Links a Factor to a FactorAssertion that specifies the type of information and/or level of confidence. (OutToOne FabFactorAssertion)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesFactorAssertion
-		///    Relation: Uses
-		///    Connection: OutToOne
+		///  <para>Links a Factor to a FactorAssertion that specifies the type of information and/or level of confidence.</para>
+		///  <para>Type: FactorUsesFactorAssertion</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabFactorAssertionStep UsesFactorAssertion { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a new Factor to the Factor that it has replaced. (OutToZeroOrOne FabFactor)
+		///  Links a new Factor to the Factor that it has replaced. (OutToZeroOrOne FabFactor)
 		///</summary>
 		///<remarks>
-		///    Type: FactorReplacesFactor
-		///    Relation: Replaces
-		///    Connection: OutToZeroOrOne
+		///  <para>Links a new Factor to the Factor that it has replaced.</para>
+		///  <para>Type: FactorReplacesFactor</para>
+		///  <para>Relation: Replaces</para>
+		///  <para>Connection: OutToZeroOrOne</para>
 		///</remarks>
 		IFabFactorStep ReplacesFactor { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to its Descriptor Element, which defines the relationship between the primary and related Artifact. (OutToOne FabDescriptor)
+		///  Links a Factor to its Descriptor Element, which defines the relationship between the primary and related Artifact. (OutToOne FabDescriptor)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesDescriptor
-		///    Relation: Uses
-		///    Connection: OutToOne
+		///  <para>Links a Factor to its Descriptor Element, which defines the relationship between the primary and related Artifact.</para>
+		///  <para>Type: FactorUsesDescriptor</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabDescriptorStep UsesDescriptor { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to its Director Element, which creates a directional pathway between the primary and related Artifacts. (OutToZeroOrOne FabDirector)
+		///  Links a Factor to its Director Element, which creates a directional pathway between the primary and related Artifacts. (OutToZeroOrOne FabDirector)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesDirector
-		///    Relation: Uses
-		///    Connection: OutToZeroOrOne
+		///  <para>Links a Factor to its Director Element, which creates a directional pathway between the primary and related Artifacts.</para>
+		///  <para>Type: FactorUsesDirector</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToZeroOrOne</para>
 		///</remarks>
 		IFabDirectorStep UsesDirector { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to its Eventor Element, which applies the concept of time. (OutToZeroOrOne FabEventor)
+		///  Links a Factor to its Eventor Element, which applies the concept of time. (OutToZeroOrOne FabEventor)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesEventor
-		///    Relation: Uses
-		///    Connection: OutToZeroOrOne
+		///  <para>Links a Factor to its Eventor Element, which applies the concept of time.</para>
+		///  <para>Type: FactorUsesEventor</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToZeroOrOne</para>
 		///</remarks>
 		IFabEventorStep UsesEventor { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to its Identor Element, which applies a name or identifier. (OutToZeroOrOne FabIdentor)
+		///  Links a Factor to its Identor Element, which applies a name or identifier. (OutToZeroOrOne FabIdentor)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesIdentor
-		///    Relation: Uses
-		///    Connection: OutToZeroOrOne
+		///  <para>Links a Factor to its Identor Element, which applies a name or identifier.</para>
+		///  <para>Type: FactorUsesIdentor</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToZeroOrOne</para>
 		///</remarks>
 		IFabIdentorStep UsesIdentor { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to its Locator Element, which provides a geographical or relative position. (OutToZeroOrOne FabLocator)
+		///  Links a Factor to its Locator Element, which provides a geographical or relative position. (OutToZeroOrOne FabLocator)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesLocator
-		///    Relation: Uses
-		///    Connection: OutToZeroOrOne
+		///  <para>Links a Factor to its Locator Element, which provides a geographical or relative position.</para>
+		///  <para>Type: FactorUsesLocator</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToZeroOrOne</para>
 		///</remarks>
 		IFabLocatorStep UsesLocator { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to its Vector Element, which applies a numeric axis and value. (OutToZeroOrOne FabVector)
+		///  Links a Factor to its Vector Element, which applies a numeric axis and value. (OutToZeroOrOne FabVector)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesVector
-		///    Relation: Uses
-		///    Connection: OutToZeroOrOne
+		///  <para>Links a Factor to its Vector Element, which applies a numeric axis and value.</para>
+		///  <para>Type: FactorUsesVector</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToZeroOrOne</para>
 		///</remarks>
 		IFabVectorStep UsesVector { get; }
 		
@@ -618,12 +664,13 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to a FactorAssertion that specifies the type of information and/or level of confidence. (InFromZeroOrMore FabFactor)
+		///  Links a Factor to a FactorAssertion that specifies the type of information and/or level of confidence. (InFromZeroOrMore FabFactor)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesFactorAssertion
-		///    Relation: Uses
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a Factor to a FactorAssertion that specifies the type of information and/or level of confidence.</para>
+		///  <para>Type: FactorUsesFactorAssertion</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabFactorStep InFactorListUses { get; }
 		
@@ -637,23 +684,25 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to its Identor Element, which applies a name or identifier. (InFromOneOrMore FabFactor)
+		///  Links a Factor to its Identor Element, which applies a name or identifier. (InFromOneOrMore FabFactor)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesIdentor
-		///    Relation: Uses
-		///    Connection: InFromOneOrMore
+		///  <para>Links a Factor to its Identor Element, which applies a name or identifier.</para>
+		///  <para>Type: FactorUsesIdentor</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromOneOrMore</para>
 		///</remarks>
 		IFabFactorStep InFactorListUses { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links an Identor to an IdentorType that specifies the value's purpose or intent. (OutToOne FabIdentorType)
+		///  Links an Identor to an IdentorType that specifies the value's purpose or intent. (OutToOne FabIdentorType)
 		///</summary>
 		///<remarks>
-		///    Type: IdentorUsesIdentorType
-		///    Relation: Uses
-		///    Connection: OutToOne
+		///  <para>Links an Identor to an IdentorType that specifies the value's purpose or intent.</para>
+		///  <para>Type: IdentorUsesIdentorType</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabIdentorTypeStep UsesIdentorType { get; }
 		
@@ -667,12 +716,13 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links an Identor to an IdentorType that specifies the value's purpose or intent. (InFromZeroOrMore FabIdentor)
+		///  Links an Identor to an IdentorType that specifies the value's purpose or intent. (InFromZeroOrMore FabIdentor)
 		///</summary>
 		///<remarks>
-		///    Type: IdentorUsesIdentorType
-		///    Relation: Uses
-		///    Connection: InFromZeroOrMore
+		///  <para>Links an Identor to an IdentorType that specifies the value's purpose or intent.</para>
+		///  <para>Type: IdentorUsesIdentorType</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabIdentorStep InIdentorListUses { get; }
 		
@@ -686,12 +736,13 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links an App to the Instance that it owns. (OutToOne FabArtifact)
+		///  Links an App to the Instance that it owns. (OutToOne FabArtifact)
 		///</summary>
 		///<remarks>
-		///    Type: InstanceHasArtifact
-		///    Relation: Has
-		///    Connection: OutToOne
+		///  <para>Links an App to the Instance that it owns.</para>
+		///  <para>Type: InstanceHasArtifact</para>
+		///  <para>Relation: Has</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabArtifactStep HasArtifact { get; }
 		
@@ -705,23 +756,25 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to its Locator Element, which provides a geographical or relative position. (InFromOneOrMore FabFactor)
+		///  Links a Factor to its Locator Element, which provides a geographical or relative position. (InFromOneOrMore FabFactor)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesLocator
-		///    Relation: Uses
-		///    Connection: InFromOneOrMore
+		///  <para>Links a Factor to its Locator Element, which provides a geographical or relative position.</para>
+		///  <para>Type: FactorUsesLocator</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromOneOrMore</para>
 		///</remarks>
 		IFabFactorStep InFactorListUses { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Locator to a LocatorType that specifies the spatial context of the coordinate. (OutToOne FabLocatorType)
+		///  Links a Locator to a LocatorType that specifies the spatial context of the coordinate. (OutToOne FabLocatorType)
 		///</summary>
 		///<remarks>
-		///    Type: LocatorUsesLocatorType
-		///    Relation: Uses
-		///    Connection: OutToOne
+		///  <para>Links a Locator to a LocatorType that specifies the spatial context of the coordinate.</para>
+		///  <para>Type: LocatorUsesLocatorType</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabLocatorTypeStep UsesLocatorType { get; }
 		
@@ -735,12 +788,13 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Locator to a LocatorType that specifies the spatial context of the coordinate. (InFromZeroOrMore FabLocator)
+		///  Links a Locator to a LocatorType that specifies the spatial context of the coordinate. (InFromZeroOrMore FabLocator)
 		///</summary>
 		///<remarks>
-		///    Type: LocatorUsesLocatorType
-		///    Relation: Uses
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a Locator to a LocatorType that specifies the spatial context of the coordinate.</para>
+		///  <para>Type: LocatorUsesLocatorType</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabLocatorStep InLocatorListUses { get; }
 		
@@ -754,78 +808,85 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links an App to a particular Member. (InFromOne FabApp)
+		///  Links an App to a particular Member. (InFromOne FabApp)
 		///</summary>
 		///<remarks>
-		///    Type: AppDefinesMember
-		///    Relation: Defines
-		///    Connection: InFromOne
+		///  <para>Links an App to a particular Member.</para>
+		///  <para>Type: AppDefinesMember</para>
+		///  <para>Relation: Defines</para>
+		///  <para>Connection: InFromOne</para>
 		///</remarks>
 		IFabAppStep InAppDefines { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Member to its active MemberTypeAssign. (OutToOne FabMemberTypeAssign)
+		///  Links a Member to its active MemberTypeAssign. (OutToOne FabMemberTypeAssign)
 		///</summary>
 		///<remarks>
-		///    Type: MemberHasMemberTypeAssign
-		///    Relation: Has
-		///    Connection: OutToOne
+		///  <para>Links a Member to its active MemberTypeAssign.</para>
+		///  <para>Type: MemberHasMemberTypeAssign</para>
+		///  <para>Relation: Has</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabMemberTypeAssignStep HasMemberTypeAssign { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Member to a historical MemberTypeAssign. (OutToZeroOrMore FabMemberTypeAssign)
+		///  Links a Member to a historical MemberTypeAssign. (OutToZeroOrMore FabMemberTypeAssign)
 		///</summary>
 		///<remarks>
-		///    Type: MemberHasHistoricMemberTypeAssign
-		///    Relation: HasHistoric
-		///    Connection: OutToZeroOrMore
+		///  <para>Links a Member to a historical MemberTypeAssign.</para>
+		///  <para>Type: MemberHasHistoricMemberTypeAssign</para>
+		///  <para>Relation: HasHistoric</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabMemberTypeAssignStep HasHistoricMemberTypeAssignList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Member to the Artifact that it created. (OutToZeroOrMore FabArtifact)
+		///  Links a Member to the Artifact that it created. (OutToZeroOrMore FabArtifact)
 		///</summary>
 		///<remarks>
-		///    Type: MemberCreatesArtifact
-		///    Relation: Creates
-		///    Connection: OutToZeroOrMore
+		///  <para>Links a Member to the Artifact that it created.</para>
+		///  <para>Type: MemberCreatesArtifact</para>
+		///  <para>Relation: Creates</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabArtifactStep CreatesArtifactList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Member to the MemberTypeAssign that it created. (OutToZeroOrMore FabMemberTypeAssign)
+		///  Links a Member to the MemberTypeAssign that it created. (OutToZeroOrMore FabMemberTypeAssign)
 		///</summary>
 		///<remarks>
-		///    Type: MemberCreatesMemberTypeAssign
-		///    Relation: Creates
-		///    Connection: OutToZeroOrMore
+		///  <para>Links a Member to the MemberTypeAssign that it created.</para>
+		///  <para>Type: MemberCreatesMemberTypeAssign</para>
+		///  <para>Relation: Creates</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabMemberTypeAssignStep CreatesMemberTypeAssignList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Member to the Factor that it created. (OutToZeroOrMore FabFactor)
+		///  Links a Member to the Factor that it created. (OutToZeroOrMore FabFactor)
 		///</summary>
 		///<remarks>
-		///    Type: MemberCreatesFactor
-		///    Relation: Creates
-		///    Connection: OutToZeroOrMore
+		///  <para>Links a Member to the Factor that it created.</para>
+		///  <para>Type: MemberCreatesFactor</para>
+		///  <para>Relation: Creates</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabFactorStep CreatesFactorList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a User to a particular Member. (InFromOne FabUser)
+		///  Links a User to a particular Member. (InFromOne FabUser)
 		///</summary>
 		///<remarks>
-		///    Type: UserDefinesMember
-		///    Relation: Defines
-		///    Connection: InFromOne
+		///  <para>Links a User to a particular Member.</para>
+		///  <para>Type: UserDefinesMember</para>
+		///  <para>Relation: Defines</para>
+		///  <para>Connection: InFromOne</para>
 		///</remarks>
 		IFabUserStep InUserDefines { get; }
 		
@@ -839,12 +900,13 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a MemberTypeAssign to a MemberType that specifies the Member's state and/or access privileges. (InFromZeroOrMore FabMemberTypeAssign)
+		///  Links a MemberTypeAssign to a MemberType that specifies the Member's state and/or access privileges. (InFromZeroOrMore FabMemberTypeAssign)
 		///</summary>
 		///<remarks>
-		///    Type: MemberTypeAssignUsesMemberType
-		///    Relation: Uses
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a MemberTypeAssign to a MemberType that specifies the Member's state and/or access privileges.</para>
+		///  <para>Type: MemberTypeAssignUsesMemberType</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabMemberTypeAssignStep InMemberTypeAssignListUses { get; }
 		
@@ -858,45 +920,49 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Member to its active MemberTypeAssign. (InFromOne FabMember)
+		///  Links a Member to its active MemberTypeAssign. (InFromOne FabMember)
 		///</summary>
 		///<remarks>
-		///    Type: MemberHasMemberTypeAssign
-		///    Relation: Has
-		///    Connection: InFromOne
+		///  <para>Links a Member to its active MemberTypeAssign.</para>
+		///  <para>Type: MemberHasMemberTypeAssign</para>
+		///  <para>Relation: Has</para>
+		///  <para>Connection: InFromOne</para>
 		///</remarks>
 		IFabMemberStep InMemberHas { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Member to a historical MemberTypeAssign. (InFromOne FabMember)
+		///  Links a Member to a historical MemberTypeAssign. (InFromOne FabMember)
 		///</summary>
 		///<remarks>
-		///    Type: MemberHasHistoricMemberTypeAssign
-		///    Relation: HasHistoric
-		///    Connection: InFromOne
+		///  <para>Links a Member to a historical MemberTypeAssign.</para>
+		///  <para>Type: MemberHasHistoricMemberTypeAssign</para>
+		///  <para>Relation: HasHistoric</para>
+		///  <para>Connection: InFromOne</para>
 		///</remarks>
 		IFabMemberStep InMemberHasHistoric { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Member to the MemberTypeAssign that it created. (InFromOne FabMember)
+		///  Links a Member to the MemberTypeAssign that it created. (InFromOne FabMember)
 		///</summary>
 		///<remarks>
-		///    Type: MemberCreatesMemberTypeAssign
-		///    Relation: Creates
-		///    Connection: InFromOne
+		///  <para>Links a Member to the MemberTypeAssign that it created.</para>
+		///  <para>Type: MemberCreatesMemberTypeAssign</para>
+		///  <para>Relation: Creates</para>
+		///  <para>Connection: InFromOne</para>
 		///</remarks>
 		IFabMemberStep InMemberCreates { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a MemberTypeAssign to a MemberType that specifies the Member's state and/or access privileges. (OutToOne FabMemberType)
+		///  Links a MemberTypeAssign to a MemberType that specifies the Member's state and/or access privileges. (OutToOne FabMemberType)
 		///</summary>
 		///<remarks>
-		///    Type: MemberTypeAssignUsesMemberType
-		///    Relation: Uses
-		///    Connection: OutToOne
+		///  <para>Links a MemberTypeAssign to a MemberType that specifies the Member's state and/or access privileges.</para>
+		///  <para>Type: MemberTypeAssignUsesMemberType</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabMemberTypeStep UsesMemberType { get; }
 		
@@ -910,342 +976,373 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to an App. (OutToZeroOrMore FabApp)
+		///  Links the Root node to an App. (OutToZeroOrMore FabApp)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsApp
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to an App.</para>
+		///  <para>Type: RootContainsApp</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabAppStep ContainsAppList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to an Artifact. (OutToZeroOrMore FabArtifact)
+		///  Links the Root node to an Artifact. (OutToZeroOrMore FabArtifact)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsArtifact
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to an Artifact.</para>
+		///  <para>Type: RootContainsArtifact</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabArtifactStep ContainsArtifactList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to an ArtifactType. (OutToZeroOrMore FabArtifactType)
+		///  Links the Root node to an ArtifactType. (OutToZeroOrMore FabArtifactType)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsArtifactType
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to an ArtifactType.</para>
+		///  <para>Type: RootContainsArtifactType</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabArtifactTypeStep ContainsArtifactTypeList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a Class. (OutToZeroOrMore FabClass)
+		///  Links the Root node to a Class. (OutToZeroOrMore FabClass)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsClass
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a Class.</para>
+		///  <para>Type: RootContainsClass</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabClassStep ContainsClassList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to an Instance. (OutToZeroOrMore FabInstance)
+		///  Links the Root node to an Instance. (OutToZeroOrMore FabInstance)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsInstance
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to an Instance.</para>
+		///  <para>Type: RootContainsInstance</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabInstanceStep ContainsInstanceList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a Member. (OutToZeroOrMore FabMember)
+		///  Links the Root node to a Member. (OutToZeroOrMore FabMember)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsMember
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a Member.</para>
+		///  <para>Type: RootContainsMember</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabMemberStep ContainsMemberList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a MemberType. (OutToZeroOrMore FabMemberType)
+		///  Links the Root node to a MemberType. (OutToZeroOrMore FabMemberType)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsMemberType
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a MemberType.</para>
+		///  <para>Type: RootContainsMemberType</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabMemberTypeStep ContainsMemberTypeList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a MemberTypeAssign. (OutToZeroOrMore FabMemberTypeAssign)
+		///  Links the Root node to a MemberTypeAssign. (OutToZeroOrMore FabMemberTypeAssign)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsMemberTypeAssign
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a MemberTypeAssign.</para>
+		///  <para>Type: RootContainsMemberTypeAssign</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabMemberTypeAssignStep ContainsMemberTypeAssignList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a Url. (OutToZeroOrMore FabUrl)
+		///  Links the Root node to a Url. (OutToZeroOrMore FabUrl)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsUrl
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a Url.</para>
+		///  <para>Type: RootContainsUrl</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabUrlStep ContainsUrlList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a User. (OutToZeroOrMore FabUser)
+		///  Links the Root node to a User. (OutToZeroOrMore FabUser)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsUser
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a User.</para>
+		///  <para>Type: RootContainsUser</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabUserStep ContainsUserList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a Factor. (OutToZeroOrMore FabFactor)
+		///  Links the Root node to a Factor. (OutToZeroOrMore FabFactor)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsFactor
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a Factor.</para>
+		///  <para>Type: RootContainsFactor</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabFactorStep ContainsFactorList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a FactorAssertion. (OutToZeroOrMore FabFactorAssertion)
+		///  Links the Root node to a FactorAssertion. (OutToZeroOrMore FabFactorAssertion)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsFactorAssertion
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a FactorAssertion.</para>
+		///  <para>Type: RootContainsFactorAssertion</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabFactorAssertionStep ContainsFactorAssertionList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a Descriptor. (OutToZeroOrMore FabDescriptor)
+		///  Links the Root node to a Descriptor. (OutToZeroOrMore FabDescriptor)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsDescriptor
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a Descriptor.</para>
+		///  <para>Type: RootContainsDescriptor</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabDescriptorStep ContainsDescriptorList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a DescriptorType. (OutToZeroOrMore FabDescriptorType)
+		///  Links the Root node to a DescriptorType. (OutToZeroOrMore FabDescriptorType)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsDescriptorType
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a DescriptorType.</para>
+		///  <para>Type: RootContainsDescriptorType</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabDescriptorTypeStep ContainsDescriptorTypeList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a Director. (OutToZeroOrMore FabDirector)
+		///  Links the Root node to a Director. (OutToZeroOrMore FabDirector)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsDirector
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a Director.</para>
+		///  <para>Type: RootContainsDirector</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabDirectorStep ContainsDirectorList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a DirectorType. (OutToZeroOrMore FabDirectorType)
+		///  Links the Root node to a DirectorType. (OutToZeroOrMore FabDirectorType)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsDirectorType
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a DirectorType.</para>
+		///  <para>Type: RootContainsDirectorType</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabDirectorTypeStep ContainsDirectorTypeList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a DirectorAction. (OutToZeroOrMore FabDirectorAction)
+		///  Links the Root node to a DirectorAction. (OutToZeroOrMore FabDirectorAction)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsDirectorAction
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a DirectorAction.</para>
+		///  <para>Type: RootContainsDirectorAction</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabDirectorActionStep ContainsDirectorActionList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to an Eventor. (OutToZeroOrMore FabEventor)
+		///  Links the Root node to an Eventor. (OutToZeroOrMore FabEventor)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsEventor
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to an Eventor.</para>
+		///  <para>Type: RootContainsEventor</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabEventorStep ContainsEventorList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to an EventorType. (OutToZeroOrMore FabEventorType)
+		///  Links the Root node to an EventorType. (OutToZeroOrMore FabEventorType)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsEventorType
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to an EventorType.</para>
+		///  <para>Type: RootContainsEventorType</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabEventorTypeStep ContainsEventorTypeList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to an EventorPrecision. (OutToZeroOrMore FabEventorPrecision)
+		///  Links the Root node to an EventorPrecision. (OutToZeroOrMore FabEventorPrecision)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsEventorPrecision
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to an EventorPrecision.</para>
+		///  <para>Type: RootContainsEventorPrecision</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabEventorPrecisionStep ContainsEventorPrecisionList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to an Identor. (OutToZeroOrMore FabIdentor)
+		///  Links the Root node to an Identor. (OutToZeroOrMore FabIdentor)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsIdentor
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to an Identor.</para>
+		///  <para>Type: RootContainsIdentor</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabIdentorStep ContainsIdentorList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to an IdentorType. (OutToZeroOrMore FabIdentorType)
+		///  Links the Root node to an IdentorType. (OutToZeroOrMore FabIdentorType)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsIdentorType
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to an IdentorType.</para>
+		///  <para>Type: RootContainsIdentorType</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabIdentorTypeStep ContainsIdentorTypeList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a Locator. (OutToZeroOrMore FabLocator)
+		///  Links the Root node to a Locator. (OutToZeroOrMore FabLocator)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsLocator
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a Locator.</para>
+		///  <para>Type: RootContainsLocator</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabLocatorStep ContainsLocatorList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a LocatorType. (OutToZeroOrMore FabLocatorType)
+		///  Links the Root node to a LocatorType. (OutToZeroOrMore FabLocatorType)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsLocatorType
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a LocatorType.</para>
+		///  <para>Type: RootContainsLocatorType</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabLocatorTypeStep ContainsLocatorTypeList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a Vector. (OutToZeroOrMore FabVector)
+		///  Links the Root node to a Vector. (OutToZeroOrMore FabVector)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsVector
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a Vector.</para>
+		///  <para>Type: RootContainsVector</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabVectorStep ContainsVectorList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a VectorType. (OutToZeroOrMore FabVectorType)
+		///  Links the Root node to a VectorType. (OutToZeroOrMore FabVectorType)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsVectorType
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a VectorType.</para>
+		///  <para>Type: RootContainsVectorType</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabVectorTypeStep ContainsVectorTypeList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a VectorRange. (OutToZeroOrMore FabVectorRange)
+		///  Links the Root node to a VectorRange. (OutToZeroOrMore FabVectorRange)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsVectorRange
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a VectorRange.</para>
+		///  <para>Type: RootContainsVectorRange</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabVectorRangeStep ContainsVectorRangeList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a VectorRangeLevel. (OutToZeroOrMore FabVectorRangeLevel)
+		///  Links the Root node to a VectorRangeLevel. (OutToZeroOrMore FabVectorRangeLevel)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsVectorRangeLevel
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a VectorRangeLevel.</para>
+		///  <para>Type: RootContainsVectorRangeLevel</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabVectorRangeLevelStep ContainsVectorRangeLevelList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a VectorUnit. (OutToZeroOrMore FabVectorUnit)
+		///  Links the Root node to a VectorUnit. (OutToZeroOrMore FabVectorUnit)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsVectorUnit
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a VectorUnit.</para>
+		///  <para>Type: RootContainsVectorUnit</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabVectorUnitStep ContainsVectorUnitList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a VectorUnitPrefix. (OutToZeroOrMore FabVectorUnitPrefix)
+		///  Links the Root node to a VectorUnitPrefix. (OutToZeroOrMore FabVectorUnitPrefix)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsVectorUnitPrefix
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a VectorUnitPrefix.</para>
+		///  <para>Type: RootContainsVectorUnitPrefix</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabVectorUnitPrefixStep ContainsVectorUnitPrefixList { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links the Root node to a VectorUnitDerived. (OutToZeroOrMore FabVectorUnitDerived)
+		///  Links the Root node to a VectorUnitDerived. (OutToZeroOrMore FabVectorUnitDerived)
 		///</summary>
 		///<remarks>
-		///    Type: RootContainsVectorUnitDerived
-		///    Relation: Contains
-		///    Connection: OutToZeroOrMore
+		///  <para>Links the Root node to a VectorUnitDerived.</para>
+		///  <para>Type: RootContainsVectorUnitDerived</para>
+		///  <para>Relation: Contains</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabVectorUnitDerivedStep ContainsVectorUnitDerivedList { get; }
 		
@@ -1259,12 +1356,13 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Url to the Artifact that it owns. (OutToOne FabArtifact)
+		///  Links a Url to the Artifact that it owns. (OutToOne FabArtifact)
 		///</summary>
 		///<remarks>
-		///    Type: UrlHasArtifact
-		///    Relation: Has
-		///    Connection: OutToOne
+		///  <para>Links a Url to the Artifact that it owns.</para>
+		///  <para>Type: UrlHasArtifact</para>
+		///  <para>Relation: Has</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabArtifactStep HasArtifact { get; }
 		
@@ -1278,23 +1376,25 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a User to the Artifact that it owns. (OutToOne FabArtifact)
+		///  Links a User to the Artifact that it owns. (OutToOne FabArtifact)
 		///</summary>
 		///<remarks>
-		///    Type: UserHasArtifact
-		///    Relation: Has
-		///    Connection: OutToOne
+		///  <para>Links a User to the Artifact that it owns.</para>
+		///  <para>Type: UserHasArtifact</para>
+		///  <para>Relation: Has</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabArtifactStep HasArtifact { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a User to a particular Member. (OutToOneOrMore FabMember)
+		///  Links a User to a particular Member. (OutToOneOrMore FabMember)
 		///</summary>
 		///<remarks>
-		///    Type: UserDefinesMember
-		///    Relation: Defines
-		///    Connection: OutToOneOrMore
+		///  <para>Links a User to a particular Member.</para>
+		///  <para>Type: UserDefinesMember</para>
+		///  <para>Relation: Defines</para>
+		///  <para>Connection: OutToOneOrMore</para>
 		///</remarks>
 		IFabMemberStep DefinesMemberList { get; }
 		
@@ -1308,56 +1408,61 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Factor to its Vector Element, which applies a numeric axis and value. (InFromOneOrMore FabFactor)
+		///  Links a Factor to its Vector Element, which applies a numeric axis and value. (InFromOneOrMore FabFactor)
 		///</summary>
 		///<remarks>
-		///    Type: FactorUsesVector
-		///    Relation: Uses
-		///    Connection: InFromOneOrMore
+		///  <para>Links a Factor to its Vector Element, which applies a numeric axis and value.</para>
+		///  <para>Type: FactorUsesVector</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromOneOrMore</para>
 		///</remarks>
 		IFabFactorStep InFactorListUses { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Vector to an Artifact that 'labels' its value's axis. (OutToOne FabArtifact)
+		///  Links a Vector to an Artifact that 'labels' its value's axis. (OutToOne FabArtifact)
 		///</summary>
 		///<remarks>
-		///    Type: VectorUsesAxisArtifact
-		///    Relation: UsesAxis
-		///    Connection: OutToOne
+		///  <para>Links a Vector to an Artifact that 'labels' its value's axis.</para>
+		///  <para>Type: VectorUsesAxisArtifact</para>
+		///  <para>Relation: UsesAxis</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabArtifactStep UsesAxisArtifact { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Vector to a VectorType that specifies its value's boundaries and context. (OutToOne FabVectorType)
+		///  Links a Vector to a VectorType that specifies its value's boundaries and context. (OutToOne FabVectorType)
 		///</summary>
 		///<remarks>
-		///    Type: VectorUsesVectorType
-		///    Relation: Uses
-		///    Connection: OutToOne
+		///  <para>Links a Vector to a VectorType that specifies its value's boundaries and context.</para>
+		///  <para>Type: VectorUsesVectorType</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabVectorTypeStep UsesVectorType { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Vector to a VectorUnit that specifies its value's unit of measurement. (OutToOne FabVectorUnit)
+		///  Links a Vector to a VectorUnit that specifies its value's unit of measurement. (OutToOne FabVectorUnit)
 		///</summary>
 		///<remarks>
-		///    Type: VectorUsesVectorUnit
-		///    Relation: Uses
-		///    Connection: OutToOne
+		///  <para>Links a Vector to a VectorUnit that specifies its value's unit of measurement.</para>
+		///  <para>Type: VectorUsesVectorUnit</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabVectorUnitStep UsesVectorUnit { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Vector to a VectorUnitPrefix that specifies its value's order of magnitude. (OutToOne FabVectorUnitPrefix)
+		///  Links a Vector to a VectorUnitPrefix that specifies its value's order of magnitude. (OutToOne FabVectorUnitPrefix)
 		///</summary>
 		///<remarks>
-		///    Type: VectorUsesVectorUnitPrefix
-		///    Relation: Uses
-		///    Connection: OutToOne
+		///  <para>Links a Vector to a VectorUnitPrefix that specifies its value's order of magnitude.</para>
+		///  <para>Type: VectorUsesVectorUnitPrefix</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabVectorUnitPrefixStep UsesVectorUnitPrefix { get; }
 		
@@ -1371,23 +1476,25 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a VectorType to a VectorRange that specifies a meaningful points/labels mapped to the numerical range. (InFromZeroOrMore FabVectorType)
+		///  Links a VectorType to a VectorRange that specifies a meaningful points/labels mapped to the numerical range. (InFromZeroOrMore FabVectorType)
 		///</summary>
 		///<remarks>
-		///    Type: VectorTypeUsesVectorRange
-		///    Relation: Uses
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a VectorType to a VectorRange that specifies a meaningful points/labels mapped to the numerical range.</para>
+		///  <para>Type: VectorTypeUsesVectorRange</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabVectorTypeStep InVectorTypeListUses { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a VectorRange to one of the VectorRangeLevels that help give it meaning. (OutToZeroOrMore FabVectorRangeLevel)
+		///  Links a VectorRange to one of the VectorRangeLevels that help give it meaning. (OutToZeroOrMore FabVectorRangeLevel)
 		///</summary>
 		///<remarks>
-		///    Type: VectorRangeUsesVectorRangeLevel
-		///    Relation: Uses
-		///    Connection: OutToZeroOrMore
+		///  <para>Links a VectorRange to one of the VectorRangeLevels that help give it meaning.</para>
+		///  <para>Type: VectorRangeUsesVectorRangeLevel</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToZeroOrMore</para>
 		///</remarks>
 		IFabVectorRangeLevelStep UsesVectorRangeLevelList { get; }
 		
@@ -1401,12 +1508,13 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a VectorRange to one of the VectorRangeLevels that help give it meaning. (InFromZeroOrMore FabVectorRange)
+		///  Links a VectorRange to one of the VectorRangeLevels that help give it meaning. (InFromZeroOrMore FabVectorRange)
 		///</summary>
 		///<remarks>
-		///    Type: VectorRangeUsesVectorRangeLevel
-		///    Relation: Uses
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a VectorRange to one of the VectorRangeLevels that help give it meaning.</para>
+		///  <para>Type: VectorRangeUsesVectorRangeLevel</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabVectorRangeStep InVectorRangeListUses { get; }
 		
@@ -1420,23 +1528,25 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Vector to a VectorType that specifies its value's boundaries and context. (InFromZeroOrMore FabVector)
+		///  Links a Vector to a VectorType that specifies its value's boundaries and context. (InFromZeroOrMore FabVector)
 		///</summary>
 		///<remarks>
-		///    Type: VectorUsesVectorType
-		///    Relation: Uses
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a Vector to a VectorType that specifies its value's boundaries and context.</para>
+		///  <para>Type: VectorUsesVectorType</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabVectorStep InVectorListUses { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a VectorType to a VectorRange that specifies a meaningful points/labels mapped to the numerical range. (OutToOne FabVectorRange)
+		///  Links a VectorType to a VectorRange that specifies a meaningful points/labels mapped to the numerical range. (OutToOne FabVectorRange)
 		///</summary>
 		///<remarks>
-		///    Type: VectorTypeUsesVectorRange
-		///    Relation: Uses
-		///    Connection: OutToOne
+		///  <para>Links a VectorType to a VectorRange that specifies a meaningful points/labels mapped to the numerical range.</para>
+		///  <para>Type: VectorTypeUsesVectorRange</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabVectorRangeStep UsesVectorRange { get; }
 		
@@ -1450,34 +1560,37 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Vector to a VectorUnit that specifies its value's unit of measurement. (InFromZeroOrMore FabVector)
+		///  Links a Vector to a VectorUnit that specifies its value's unit of measurement. (InFromZeroOrMore FabVector)
 		///</summary>
 		///<remarks>
-		///    Type: VectorUsesVectorUnit
-		///    Relation: Uses
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a Vector to a VectorUnit that specifies its value's unit of measurement.</para>
+		///  <para>Type: VectorUsesVectorUnit</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabVectorStep InVectorListUses { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    TODO (InFromZeroOrMore FabVectorUnitDerived)
+		///  TODO (InFromZeroOrMore FabVectorUnitDerived)
 		///</summary>
 		///<remarks>
-		///    Type: VectorUnitDerivedDefinesVectorUnit
-		///    Relation: Defines
-		///    Connection: InFromZeroOrMore
+		///  <para>TODO</para>
+		///  <para>Type: VectorUnitDerivedDefinesVectorUnit</para>
+		///  <para>Relation: Defines</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabVectorUnitDerivedStep InVectorUnitDerivedListDefines { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    TODO (InFromZeroOrMore FabVectorUnitDerived)
+		///  TODO (InFromZeroOrMore FabVectorUnitDerived)
 		///</summary>
 		///<remarks>
-		///    Type: VectorUnitDerivedRaisesToExpVectorUnit
-		///    Relation: RaisesToExp
-		///    Connection: InFromZeroOrMore
+		///  <para>TODO</para>
+		///  <para>Type: VectorUnitDerivedRaisesToExpVectorUnit</para>
+		///  <para>Relation: RaisesToExp</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabVectorUnitDerivedStep InVectorUnitDerivedListRaisesToExp { get; }
 		
@@ -1491,34 +1604,37 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    TODO (OutToOne FabVectorUnit)
+		///  TODO (OutToOne FabVectorUnit)
 		///</summary>
 		///<remarks>
-		///    Type: VectorUnitDerivedDefinesVectorUnit
-		///    Relation: Defines
-		///    Connection: OutToOne
+		///  <para>TODO</para>
+		///  <para>Type: VectorUnitDerivedDefinesVectorUnit</para>
+		///  <para>Relation: Defines</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabVectorUnitStep DefinesVectorUnit { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    TODO (OutToOne FabVectorUnit)
+		///  TODO (OutToOne FabVectorUnit)
 		///</summary>
 		///<remarks>
-		///    Type: VectorUnitDerivedRaisesToExpVectorUnit
-		///    Relation: RaisesToExp
-		///    Connection: OutToOne
+		///  <para>TODO</para>
+		///  <para>Type: VectorUnitDerivedRaisesToExpVectorUnit</para>
+		///  <para>Relation: RaisesToExp</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabVectorUnitStep RaisesToExpVectorUnit { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    TODO (OutToOne FabVectorUnitPrefix)
+		///  TODO (OutToOne FabVectorUnitPrefix)
 		///</summary>
 		///<remarks>
-		///    Type: VectorUnitDerivedUsesVectorUnitPrefix
-		///    Relation: Uses
-		///    Connection: OutToOne
+		///  <para>TODO</para>
+		///  <para>Type: VectorUnitDerivedUsesVectorUnitPrefix</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: OutToOne</para>
 		///</remarks>
 		IFabVectorUnitPrefixStep UsesVectorUnitPrefix { get; }
 		
@@ -1532,23 +1648,25 @@ namespace Fabric.Clients.Cs.Gen {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    Links a Vector to a VectorUnitPrefix that specifies its value's order of magnitude. (InFromZeroOrMore FabVector)
+		///  Links a Vector to a VectorUnitPrefix that specifies its value's order of magnitude. (InFromZeroOrMore FabVector)
 		///</summary>
 		///<remarks>
-		///    Type: VectorUsesVectorUnitPrefix
-		///    Relation: Uses
-		///    Connection: InFromZeroOrMore
+		///  <para>Links a Vector to a VectorUnitPrefix that specifies its value's order of magnitude.</para>
+		///  <para>Type: VectorUsesVectorUnitPrefix</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabVectorStep InVectorListUses { get; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    TODO (InFromZeroOrMore FabVectorUnitDerived)
+		///  TODO (InFromZeroOrMore FabVectorUnitDerived)
 		///</summary>
 		///<remarks>
-		///    Type: VectorUnitDerivedUsesVectorUnitPrefix
-		///    Relation: Uses
-		///    Connection: InFromZeroOrMore
+		///  <para>TODO</para>
+		///  <para>Type: VectorUnitDerivedUsesVectorUnitPrefix</para>
+		///  <para>Relation: Uses</para>
+		///  <para>Connection: InFromZeroOrMore</para>
 		///</remarks>
 		IFabVectorUnitDerivedStep InVectorUnitDerivedListUses { get; }
 		

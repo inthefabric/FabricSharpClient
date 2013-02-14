@@ -13,12 +13,22 @@ FabSpec spec = SpecBuilder.Spec;
 foreach ( FabSpecService s in spec.Services ) {
 #>
 	/*================================================================================================*/
-	public interface IService<#= s.Name #> : IService {
+	///<summary>
+	///  <#= SpecBuilder.ToXmlDocSentence(s.Description) #>
+	///</summary>
+	///<remarks>
+	///  <#= SpecBuilder.ToXmlDoc(s.Description, true) #>
+	///</remarks>
+	public interface I<#= s.Name #>Service : IService {
 
 <#
 	foreach ( FabSpecServiceOperation op in s.Operations ) {
 #>
-		I<#= op.Name #> <#= op.Name #>();
+		///<summary>
+		///  <#= SpecBuilder.ToXmlDocSentence(op.Description) #>
+		///</summary>
+		I<#= op.Name #>Operation <#= op.Name #>();
+
 <#
 	}
 #>
@@ -28,3 +38,4 @@ foreach ( FabSpecService s in spec.Services ) {
 <#
 }
 #>
+}

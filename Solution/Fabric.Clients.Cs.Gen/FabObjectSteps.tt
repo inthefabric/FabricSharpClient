@@ -32,12 +32,13 @@ foreach ( FabSpecObject o in spec.Objects ) {
 #>
 		/*--------------------------------------------------------------------------------------------*/
 		///<summary>
-		///    <#= summ #> (<#= conn #> <#= step #>)
+		///  <#= SpecBuilder.ToXmlDoc(link.Description, false) #> (<#= conn #> <#= step #>)
 		///</summary>
 		///<remarks>
-		///    Type: <#= link.Type #>
-		///    Relation: <#= link.Relation #>
-		///    Connection: <#= conn #>
+		///  <#= SpecBuilder.ToXmlDoc(link.Description, true) #>
+		///  <para>Type: <#= link.Type #></para>
+		///  <para>Relation: <#= link.Relation #></para>
+		///  <para>Connection: <#= conn #></para>
 		///</remarks>
 		I<#= step #>Step <#= link.Name #> { get; }
 		

@@ -14,7 +14,11 @@ FabSpec spec = SpecBuilder.Spec;
 
 foreach ( FabSpecService s in spec.Services ) {
 #>
-		IService<#= s.Name #> <#= s.Name #> { get; }
+		///<summary>
+		///  <#= SpecBuilder.ToXmlDocSentence(s.Description) #>
+		///</summary>
+		I<#= s.Name #>Service <#= s.Name #> { get; }
+
 <#
 }
 #>

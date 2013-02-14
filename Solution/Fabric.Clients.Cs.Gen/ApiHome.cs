@@ -3,10 +3,26 @@
 	/*================================================================================================*/
 	public interface IFabric : IService {
 
-		IServiceTraversal Traversal { get; }
-		IServiceOauth Oauth { get; }
-		IServiceModify Modify { get; }
-		IServiceSpec Spec { get; }
+		///<summary>
+		///  TODO
+		///</summary>
+		ITraversalService Traversal { get; }
+
+		///<summary>
+		///  TODO
+		///</summary>
+		IOauthService Oauth { get; }
+
+		///<summary>
+		///  TODO
+		///</summary>
+		IModifyService Modify { get; }
+
+		///<summary>
+		///  TODO
+		///</summary>
+		ISpecService Spec { get; }
+
 	}
 
 }

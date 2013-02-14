@@ -15,29 +15,21 @@ foreach ( FabSpecObject o in spec.Objects ) {
 	}
 	
 	string extends = (o.Extends == null ? "" : " : "+o.Extends);
-	
-	string summary = o.Description.Substring(0, o.Description.IndexOf(". ")+1);
-	summary = SpecBuilder.RemoveMarkup(summary).Replace("\r\n", " ");
-	
-	string desc = SpecBuilder.RemoveMarkup(o.Description)
-		.Replace("\r\n\r\n", "\r\n")
-		.Replace("\r\n", "</para>\r\n\t///    <para>");
 #>
 	/*================================================================================================*/
 	///<summary>
-	///    <#= summary #>
+	///  <#= SpecBuilder.ToXmlDocSentence(o.Description) #>
 	///</summary>
 	///<remarks>
-	///    <para><#= desc #></para>
+	///  <#= SpecBuilder.ToXmlDoc(o.Description, true) #>
 	///</remarks>
 	public class <#= o.Name+extends #> {
 	
 <#
 	foreach ( FabSpecObjectProp p in o.Properties ) {
-		summary = p.Description.Substring(0, p.Description.IndexOf(". ")+1);
 #>
 		///<summary>
-		///    <#= p.Description.Replace("\r\n", " ") #>
+		///  <#= SpecBuilder.ToXmlDocSentence(p.Description) #>
 		///</summary>
 		public <#= p.Type #> <#= p.Name #> { get; set; }
 		
