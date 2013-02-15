@@ -4,30 +4,40 @@ using System.Collections.Generic;
 namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
-	/// <summary />
-	public class TraversalStep<T> : TraversalStep, ITraversalStep<T> where T : IFabObject {
-		
-		//protected long? Id { get; private set; }
+	internal class TraversalStep<T> : TraversalStep, ITraversalStep<T> where T : IFabObject {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
 		protected TraversalStep(Traversal pTrav) : base(pTrav) {}
-		
+
+
+		/*--------------------------------------------------------------------------------------------*/
+		public Type GetReturnType() {
+			return typeof(T);
+		}
+
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
-		public IList<T> Get() {
-			var data = Response().Data;
-			return null;
+		public IFabResponse<T> Get() {
+			return Trav.Execute(this);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public IList<T> GetList() {
+			return Get().Data;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
-		public Type GetReturnType() {
-			return typeof(T);
+		public T GetSingle() {
+			IList<T> d = Get().Data;
+
+			if ( d == null || d.Count == 0 ) {
+				return default(T);
+			}
+
+			return d[0];
 		}
 		
 	}

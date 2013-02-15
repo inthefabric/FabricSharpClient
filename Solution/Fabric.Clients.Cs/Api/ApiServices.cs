@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/15/2013 4:50:06 PM
+// Generated on 2/15/2013 5:33:13 PM
 
 using Fabric.Clients.Cs.Session;
 
@@ -13,7 +13,7 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>TODO</para>
 	/// </remarks>
-	public interface ITraversalService : IService {
+	public partial interface ITraversalService : IService {
 
 		/// <summary>
 		///   TODO
@@ -39,7 +39,7 @@ namespace Fabric.Clients.Cs.Api {
 
 
 	/*================================================================================================*/
-	internal class TraversalService : ITraversalService {
+	internal partial class TraversalService : ITraversalService {
 	
 		private readonly IClientContext vContext;
 

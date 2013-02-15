@@ -78,6 +78,8 @@ foreach ( FabSpecService s in spec.Services ) {
 
 	/*================================================================================================*/
 	internal class <#= op.Name #>Operation : I<#= op.Name #>Operation {
+
+		public const string Uri = "<#= s.Uri+op.Uri #>";
 		
 		public string Method { get { return "<#= op.Method #>"; } }
 		public string RequiredAuth { get { return "<#= op.RequiredAuth #>"; } }
@@ -95,9 +97,7 @@ foreach ( FabSpecService s in spec.Services ) {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<I<#= op.ReturnType #>, <#= op.ReturnType #>> Request(<#= paramList #>) {
-			return new FabricRequest<I<#= op.ReturnType #>, <#= op.ReturnType #>>(
-				"<#= op.Method #>",
-				"<#= s.Uri+op.Uri #>", 
+			return new FabricRequest<I<#= op.ReturnType #>, <#= op.ReturnType #>>("<#= op.Method #>", Uri, 
 				<#= query #>,
 				<#= form #>
 			);

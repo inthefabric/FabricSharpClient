@@ -17,6 +17,7 @@ FabSpec spec = SpecBuilder.Spec;
 
 
 foreach ( FabSpecService s in spec.Services ) {
+	string partial = (s.Name == "Traversal" ? "partial " : "");
 #>
 	/*================================================================================================*/
 	/// <summary>
@@ -25,7 +26,7 @@ foreach ( FabSpecService s in spec.Services ) {
 	/// <remarks>
 	///   <#= SpecBuilder.ToXmlDoc(s.Description, true) #>
 	/// </remarks>
-	public interface I<#= s.Name #>Service : IService {
+	public <#= partial #>interface I<#= s.Name #>Service : IService {
 
 <#
 	foreach ( FabSpecServiceOperation op in s.Operations ) {
@@ -42,7 +43,7 @@ foreach ( FabSpecService s in spec.Services ) {
 
 
 	/*================================================================================================*/
-	internal class <#= s.Name #>Service : I<#= s.Name #>Service {
+	internal <#= partial #>class <#= s.Name #>Service : I<#= s.Name #>Service {
 	
 		private readonly IClientContext vContext;
 

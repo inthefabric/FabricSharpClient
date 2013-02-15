@@ -1,24 +1,15 @@
 namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
-	/// <summary />
-	public abstract class TraversalStep : ITraversalStep {
+	internal abstract class TraversalStep : ITraversalStep {
 
-		/// <summary />
 		public Traversal Trav { get; private set; }
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
 		protected TraversalStep(Traversal pTrav) {
 			Trav = pTrav;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
-		public IFabResponse Response() {
-			return Trav.Execute();
 		}
 		
 	}
@@ -33,7 +24,7 @@ namespace Fabric.Clients.Cs.Api {
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		public static T As<T>(this T pCurrStep, string pAlias, out ITraversalStepAlias<T> pStepAlias)
-																			where T : IFuncAs {
+																					where T : IFuncAs {
 			pStepAlias = new TraversalStepAlias<T>(pAlias, pCurrStep);
 			var funcs = new TraversalFuncs(pCurrStep.Trav);
 			funcs.As(pAlias);

@@ -1,41 +1,43 @@
 using System.Collections.Generic;
+using Fabric.Clients.Cs.Session;
+using Fabric.Clients.Cs.Web;
 
 namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
 	public class Traversal {
-		
+
+		private readonly IClientContext vContext;
+		private string vUri;
 		private readonly IList<ITraversalStep> vSteps;
 		private readonly FabRootStep vRoot;
-		private string vUri;
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
-		public Traversal() {
+		internal Traversal(IClientContext pContext, string pBaseUri) {
+			vContext = pContext;
+			vUri = pBaseUri+"";
 			vSteps = new List<ITraversalStep>();
-			vUri = "/Trav/Root";
-			
 			vRoot = new FabRootStep(this);
+
 			AddStep(vRoot);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		public IFabRootStep RootStep() {
-			return vRoot;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
-		public string GetTraversalUri() {
+		public string GetFullTraversalUri() {
 			return vUri+"";
 		}
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		internal IFabRootStep RootStep() {
+			return vRoot;
+		}
+
 		/*--------------------------------------------------------------------------------------------*/
 		internal void AddStep(ITraversalStep pStep) {
 			vSteps.Add(pStep);
@@ -52,19 +54,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabResponse Execute() {
-			return null;
-		}
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
-		public static IFabRootStep Root {
-			get {
-				var t = new Traversal();
-				return t.RootStep();
-			}
+		internal IFabResponse<T> Execute<T>(ITraversalStep<T> pStep) where T : IFabObject {
+			return new FabricRequest<IFabResponse<T>, FabResponse<T>>("GET", vUri).Send(vContext);
 		}
 		
 	}

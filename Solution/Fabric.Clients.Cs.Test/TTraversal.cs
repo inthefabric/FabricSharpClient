@@ -1,5 +1,3 @@
-using System;
-using Fabric.Clients.Cs.Api;
 using NUnit.Framework;
 
 namespace Fabric.Clients.Cs.Test {
@@ -10,7 +8,7 @@ namespace Fabric.Clients.Cs.Test {
 	
 			
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------------------------* /
 		[Test]
 		public void Basic() {
 			IFabFactorStep result = Traversal.Root
@@ -20,7 +18,7 @@ namespace Fabric.Clients.Cs.Test {
 			Console.WriteLine(result.GetReturnType());
 		}
 		
-		/*--------------------------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------------------------* /
 		[Test]
 		public void Back() {
 			const string asArt = "ART";

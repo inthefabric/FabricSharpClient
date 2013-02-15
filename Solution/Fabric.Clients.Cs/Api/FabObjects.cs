@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/15/2013 5:09:07 PM
+// Generated on 2/15/2013 5:50:46 PM
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -1219,7 +1219,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   TODO
 		/// </summary>
-		object Data { get; set; }
+		string Data { get; set; }
 		
 		/// <summary>
 		///   TODO
@@ -1290,7 +1290,7 @@ namespace Fabric.Clients.Cs.Api {
 		public long AppId { get; set; }
 		public string BaseUri { get; set; }
 		public int Count { get; set; }
-		public object Data { get; set; }
+		public virtual string Data { get; set; }
 		public int DataLen { get; set; }
 		public int DbMs { get; set; }
 		public string[] Functions { get; set; }

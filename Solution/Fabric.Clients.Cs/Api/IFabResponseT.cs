@@ -1,12 +1,14 @@
+using System.Collections.Generic;
+
 namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary />
-	public interface ITraversalStep {
+	public interface IFabResponse<T> : IFabResponse where T : IFabObject {
 
 		/// <summary />
-		Traversal Trav { get; }
-
+		new IList<T> Data { get; set; }
+		
 	}
 	
 }

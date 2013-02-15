@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/15/2013 5:12:28 PM
+// Generated on 2/15/2013 6:04:33 PM
 
 using Fabric.Clients.Cs.Session;
 using Fabric.Clients.Cs.Web;
@@ -29,6 +29,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class GetActiveAppOperation : IGetActiveAppOperation {
+
+		public const string Uri = "/Trav/ActiveApp";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -46,9 +48,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabApp, FabApp> Request() {
-			return new FabricRequest<IFabApp, FabApp>(
-				"GET",
-				"/Trav/ActiveApp", 
+			return new FabricRequest<IFabApp, FabApp>("GET", Uri, 
 				null,
 				null
 			);
@@ -81,6 +81,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class GetActiveMemberOperation : IGetActiveMemberOperation {
+
+		public const string Uri = "/Trav/ActiveMember";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -98,9 +100,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabMember, FabMember> Request() {
-			return new FabricRequest<IFabMember, FabMember>(
-				"GET",
-				"/Trav/ActiveMember", 
+			return new FabricRequest<IFabMember, FabMember>("GET", Uri, 
 				null,
 				null
 			);
@@ -133,6 +133,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class GetActiveUserOperation : IGetActiveUserOperation {
+
+		public const string Uri = "/Trav/ActiveUser";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -150,9 +152,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabUser, FabUser> Request() {
-			return new FabricRequest<IFabUser, FabUser>(
-				"GET",
-				"/Trav/ActiveUser", 
+			return new FabricRequest<IFabUser, FabUser>("GET", Uri, 
 				null,
 				null
 			);
@@ -185,6 +185,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class GetRootOperation : IGetRootOperation {
+
+		public const string Uri = "/Trav/Root";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -202,9 +204,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabRoot, FabRoot> Request() {
-			return new FabricRequest<IFabRoot, FabRoot>(
-				"GET",
-				"/Trav/Root", 
+			return new FabricRequest<IFabRoot, FabRoot>("GET", Uri, 
 				null,
 				null
 			);
@@ -260,6 +260,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AccessTokenOperation : IAccessTokenOperation {
+
+		public const string Uri = "/Oauth/AccessToken";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -277,9 +279,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabOauthAccess, FabOauthAccess> Request(string client_id, string client_secret, string code, string data_prov_userid, string grant_type, string redirect_uri, string refresh_token) {
-			return new FabricRequest<IFabOauthAccess, FabOauthAccess>(
-				"GET",
-				"/Oauth/AccessToken", 
+			return new FabricRequest<IFabOauthAccess, FabOauthAccess>("GET", Uri, 
 				"client_id="+client_id+"&client_secret="+client_secret+"&code="+code+"&data_prov_userid="+data_prov_userid+"&grant_type="+grant_type+"&redirect_uri="+redirect_uri+"&refresh_token="+refresh_token,
 				null
 			);
@@ -322,6 +322,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AccessTokenAuthCodeOperation : IAccessTokenAuthCodeOperation {
+
+		public const string Uri = "/Oauth/AccessTokenAuthCode";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -339,9 +341,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabOauthAccess, FabOauthAccess> Request(string client_secret, string code, string redirect_uri) {
-			return new FabricRequest<IFabOauthAccess, FabOauthAccess>(
-				"GET",
-				"/Oauth/AccessTokenAuthCode", 
+			return new FabricRequest<IFabOauthAccess, FabOauthAccess>("GET", Uri, 
 				"client_secret="+client_secret+"&code="+code+"&redirect_uri="+redirect_uri,
 				null
 			);
@@ -384,6 +384,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AccessTokenClientCredentialsOperation : IAccessTokenClientCredentialsOperation {
+
+		public const string Uri = "/Oauth/AccessTokenClientCredentials";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -401,9 +403,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabOauthAccess, FabOauthAccess> Request(string client_id, string client_secret, string redirect_uri) {
-			return new FabricRequest<IFabOauthAccess, FabOauthAccess>(
-				"GET",
-				"/Oauth/AccessTokenClientCredentials", 
+			return new FabricRequest<IFabOauthAccess, FabOauthAccess>("GET", Uri, 
 				"client_id="+client_id+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri,
 				null
 			);
@@ -449,6 +449,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AccessTokenClientDataProvOperation : IAccessTokenClientDataProvOperation {
+
+		public const string Uri = "/Oauth/AccessTokenClientDataProv";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -466,9 +468,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabOauthAccess, FabOauthAccess> Request(string client_id, string client_secret, string data_prov_userid, string redirect_uri) {
-			return new FabricRequest<IFabOauthAccess, FabOauthAccess>(
-				"GET",
-				"/Oauth/AccessTokenClientDataProv", 
+			return new FabricRequest<IFabOauthAccess, FabOauthAccess>("GET", Uri, 
 				"client_id="+client_id+"&client_secret="+client_secret+"&data_prov_userid="+data_prov_userid+"&redirect_uri="+redirect_uri,
 				null
 			);
@@ -512,6 +512,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AccessTokenRefreshOperation : IAccessTokenRefreshOperation {
+
+		public const string Uri = "/Oauth/AccessTokenRefresh";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -529,9 +531,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabOauthAccess, FabOauthAccess> Request(string client_secret, string redirect_uri, string refresh_token) {
-			return new FabricRequest<IFabOauthAccess, FabOauthAccess>(
-				"GET",
-				"/Oauth/AccessTokenRefresh", 
+			return new FabricRequest<IFabOauthAccess, FabOauthAccess>("GET", Uri, 
 				"client_secret="+client_secret+"&redirect_uri="+redirect_uri+"&refresh_token="+refresh_token,
 				null
 			);
@@ -591,6 +591,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class LoginOperation : ILoginOperation {
+
+		public const string Uri = "/Oauth/Login";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -608,9 +610,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabOauthLogin, FabOauthLogin> Request(string client_id, string redirect_uri, string response_type, string scope, string state, string switchMode) {
-			return new FabricRequest<IFabOauthLogin, FabOauthLogin>(
-				"GET",
-				"/Oauth/Login", 
+			return new FabricRequest<IFabOauthLogin, FabOauthLogin>("GET", Uri, 
 				"client_id="+client_id+"&redirect_uri="+redirect_uri+"&response_type="+response_type+"&scope="+scope+"&state="+state+"&switchMode="+switchMode,
 				null
 			);
@@ -647,6 +647,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class LogoutOperation : ILogoutOperation {
+
+		public const string Uri = "/Oauth/Logout";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -664,9 +666,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabOauthLogout, FabOauthLogout> Request(string access_token) {
-			return new FabricRequest<IFabOauthLogout, FabOauthLogout>(
-				"GET",
-				"/Oauth/Logout", 
+			return new FabricRequest<IFabOauthLogout, FabOauthLogout>("GET", Uri, 
 				"access_token="+access_token,
 				null
 			);
@@ -705,6 +705,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AddAppOperation : IAddAppOperation {
+
+		public const string Uri = "/Mod/Apps";
 		
 		public string Method { get { return "POST"; } }
 		public string RequiredAuth { get { return "Fabric"; } }
@@ -722,9 +724,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabApp, FabApp> Request(string Name, long UserId) {
-			return new FabricRequest<IFabApp, FabApp>(
-				"POST",
-				"/Mod/Apps", 
+			return new FabricRequest<IFabApp, FabApp>("POST", Uri, 
 				null,
 				"Name="+Name+"&UserId="+UserId
 			);
@@ -766,6 +766,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AddClassOperation : IAddClassOperation {
+
+		public const string Uri = "/Mod/Classes";
 		
 		public string Method { get { return "POST"; } }
 		public string RequiredAuth { get { return "Member"; } }
@@ -783,9 +785,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabClass, FabClass> Request(string Disamb, string Name, string Note) {
-			return new FabricRequest<IFabClass, FabClass>(
-				"POST",
-				"/Mod/Classes", 
+			return new FabricRequest<IFabClass, FabClass>("POST", Uri, 
 				null,
 				"Disamb="+Disamb+"&Name="+Name+"&Note="+Note
 			);
@@ -833,6 +833,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AddFactorOperation : IAddFactorOperation {
+
+		public const string Uri = "/Mod/Factors";
 		
 		public string Method { get { return "POST"; } }
 		public string RequiredAuth { get { return "Member"; } }
@@ -850,9 +852,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabFactor, FabFactor> Request(long FactorAssertionId, bool IsDefining, string Note, long PrimaryArtifactId, long RelatedArtifactId) {
-			return new FabricRequest<IFabFactor, FabFactor>(
-				"POST",
-				"/Mod/Factors", 
+			return new FabricRequest<IFabFactor, FabFactor>("POST", Uri, 
 				null,
 				"FactorAssertionId="+FactorAssertionId+"&IsDefining="+IsDefining+"&Note="+Note+"&PrimaryArtifactId="+PrimaryArtifactId+"&RelatedArtifactId="+RelatedArtifactId
 			);
@@ -894,6 +894,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AddInstanceOperation : IAddInstanceOperation {
+
+		public const string Uri = "/Mod/Instances";
 		
 		public string Method { get { return "POST"; } }
 		public string RequiredAuth { get { return "Member"; } }
@@ -911,9 +913,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabInstance, FabInstance> Request(string Disamb, string Name, string Note) {
-			return new FabricRequest<IFabInstance, FabInstance>(
-				"POST",
-				"/Mod/Instances", 
+			return new FabricRequest<IFabInstance, FabInstance>("POST", Uri, 
 				null,
 				"Disamb="+Disamb+"&Name="+Name+"&Note="+Note
 			);
@@ -952,6 +952,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AddUrlOperation : IAddUrlOperation {
+
+		public const string Uri = "/Mod/Urls";
 		
 		public string Method { get { return "POST"; } }
 		public string RequiredAuth { get { return "Member"; } }
@@ -969,9 +971,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabUrl, FabUrl> Request(string AbsoluteUrl, string Name) {
-			return new FabricRequest<IFabUrl, FabUrl>(
-				"POST",
-				"/Mod/Urls", 
+			return new FabricRequest<IFabUrl, FabUrl>("POST", Uri, 
 				null,
 				"AbsoluteUrl="+AbsoluteUrl+"&Name="+Name
 			);
@@ -1013,6 +1013,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AddUserOperation : IAddUserOperation {
+
+		public const string Uri = "/Mod/Users";
 		
 		public string Method { get { return "POST"; } }
 		public string RequiredAuth { get { return "Fabric"; } }
@@ -1030,9 +1032,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabUser, FabUser> Request(string Email, string Name, string Password) {
-			return new FabricRequest<IFabUser, FabUser>(
-				"POST",
-				"/Mod/Users", 
+			return new FabricRequest<IFabUser, FabUser>("POST", Uri, 
 				null,
 				"Email="+Email+"&Name="+Name+"&Password="+Password
 			);
@@ -1080,6 +1080,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AttachDescriptorToFactorOperation : IAttachDescriptorToFactorOperation {
+
+		public const string Uri = "/Mod/Descriptors";
 		
 		public string Method { get { return "POST"; } }
 		public string RequiredAuth { get { return "Member"; } }
@@ -1097,9 +1099,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabDescriptor, FabDescriptor> Request(long DescriptorTypeId, long? DescriptorTypeRefineId, long FactorId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId) {
-			return new FabricRequest<IFabDescriptor, FabDescriptor>(
-				"POST",
-				"/Mod/Descriptors", 
+			return new FabricRequest<IFabDescriptor, FabDescriptor>("POST", Uri, 
 				null,
 				"DescriptorTypeId="+DescriptorTypeId+"&DescriptorTypeRefineId="+DescriptorTypeRefineId+"&FactorId="+FactorId+"&PrimaryArtifactRefineId="+PrimaryArtifactRefineId+"&RelatedArtifactRefineId="+RelatedArtifactRefineId
 			);
@@ -1144,6 +1144,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AttachDirectorToFactorOperation : IAttachDirectorToFactorOperation {
+
+		public const string Uri = "/Mod/Directors";
 		
 		public string Method { get { return "POST"; } }
 		public string RequiredAuth { get { return "Member"; } }
@@ -1161,9 +1163,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabDirector, FabDirector> Request(long DirectorTypeId, long FactorId, long PrimaryDirectorActionId, long RelatedDirectorActionId) {
-			return new FabricRequest<IFabDirector, FabDirector>(
-				"POST",
-				"/Mod/Directors", 
+			return new FabricRequest<IFabDirector, FabDirector>("POST", Uri, 
 				null,
 				"DirectorTypeId="+DirectorTypeId+"&FactorId="+FactorId+"&PrimaryDirectorActionId="+PrimaryDirectorActionId+"&RelatedDirectorActionId="+RelatedDirectorActionId
 			);
@@ -1208,6 +1208,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AttachEventorToFactorOperation : IAttachEventorToFactorOperation {
+
+		public const string Uri = "/Mod/Eventors";
 		
 		public string Method { get { return "POST"; } }
 		public string RequiredAuth { get { return "Member"; } }
@@ -1225,9 +1227,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabEventor, FabEventor> Request(long DateTime, long EventorPrecisionId, long EventorTypeId, long FactorId) {
-			return new FabricRequest<IFabEventor, FabEventor>(
-				"POST",
-				"/Mod/Eventors", 
+			return new FabricRequest<IFabEventor, FabEventor>("POST", Uri, 
 				null,
 				"DateTime="+DateTime+"&EventorPrecisionId="+EventorPrecisionId+"&EventorTypeId="+EventorTypeId+"&FactorId="+FactorId
 			);
@@ -1269,6 +1269,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AttachIdentorToFactorOperation : IAttachIdentorToFactorOperation {
+
+		public const string Uri = "/Mod/Identors";
 		
 		public string Method { get { return "POST"; } }
 		public string RequiredAuth { get { return "Member"; } }
@@ -1286,9 +1288,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabIdentor, FabIdentor> Request(long FactorId, long IdentorTypeId, string Value) {
-			return new FabricRequest<IFabIdentor, FabIdentor>(
-				"POST",
-				"/Mod/Identors", 
+			return new FabricRequest<IFabIdentor, FabIdentor>("POST", Uri, 
 				null,
 				"FactorId="+FactorId+"&IdentorTypeId="+IdentorTypeId+"&Value="+Value
 			);
@@ -1336,6 +1336,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AttachLocatorToFactorOperation : IAttachLocatorToFactorOperation {
+
+		public const string Uri = "/Mod/Locators";
 		
 		public string Method { get { return "POST"; } }
 		public string RequiredAuth { get { return "Member"; } }
@@ -1353,9 +1355,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabLocator, FabLocator> Request(long FactorId, long LocatorTypeId, double ValueX, double ValueY, double ValueZ) {
-			return new FabricRequest<IFabLocator, FabLocator>(
-				"POST",
-				"/Mod/Locators", 
+			return new FabricRequest<IFabLocator, FabLocator>("POST", Uri, 
 				null,
 				"FactorId="+FactorId+"&LocatorTypeId="+LocatorTypeId+"&ValueX="+ValueX+"&ValueY="+ValueY+"&ValueZ="+ValueZ
 			);
@@ -1406,6 +1406,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class AttachVectorToFactorOperation : IAttachVectorToFactorOperation {
+
+		public const string Uri = "/Mod/Vectors";
 		
 		public string Method { get { return "POST"; } }
 		public string RequiredAuth { get { return "Member"; } }
@@ -1423,9 +1425,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabVector, FabVector> Request(long AxisArtifactId, long FactorId, long Value, long VectorTypeId, long VectorUnitId, long VectorUnitPrefixId) {
-			return new FabricRequest<IFabVector, FabVector>(
-				"POST",
-				"/Mod/Vectors", 
+			return new FabricRequest<IFabVector, FabVector>("POST", Uri, 
 				null,
 				"AxisArtifactId="+AxisArtifactId+"&FactorId="+FactorId+"&Value="+Value+"&VectorTypeId="+VectorTypeId+"&VectorUnitId="+VectorUnitId+"&VectorUnitPrefixId="+VectorUnitPrefixId
 			);
@@ -1464,6 +1464,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class CompleteFactorOperation : ICompleteFactorOperation {
+
+		public const string Uri = "/Mod/Factors";
 		
 		public string Method { get { return "PUT"; } }
 		public string RequiredAuth { get { return "Member"; } }
@@ -1481,9 +1483,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabFactor, FabFactor> Request(long FactorId, bool IsCompleted) {
-			return new FabricRequest<IFabFactor, FabFactor>(
-				"PUT",
-				"/Mod/Factors", 
+			return new FabricRequest<IFabFactor, FabFactor>("PUT", Uri, 
 				null,
 				"FactorId="+FactorId+"&IsCompleted="+IsCompleted
 			);
@@ -1522,6 +1522,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class DeleteFactorOperation : IDeleteFactorOperation {
+
+		public const string Uri = "/Mod/Factors";
 		
 		public string Method { get { return "DELETE"; } }
 		public string RequiredAuth { get { return "Member"; } }
@@ -1539,9 +1541,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabFactor, FabFactor> Request(long FactorId, bool IsDeleted) {
-			return new FabricRequest<IFabFactor, FabFactor>(
-				"DELETE",
-				"/Mod/Factors", 
+			return new FabricRequest<IFabFactor, FabFactor>("DELETE", Uri, 
 				null,
 				"FactorId="+FactorId+"&IsDeleted="+IsDeleted
 			);
@@ -1574,6 +1574,8 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	internal class DocumentOperation : IDocumentOperation {
+
+		public const string Uri = "/Spec/Doc";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -1591,9 +1593,7 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<IFabSpec, FabSpec> Request() {
-			return new FabricRequest<IFabSpec, FabSpec>(
-				"GET",
-				"/Spec/Doc", 
+			return new FabricRequest<IFabSpec, FabSpec>("GET", Uri, 
 				null,
 				null
 			);

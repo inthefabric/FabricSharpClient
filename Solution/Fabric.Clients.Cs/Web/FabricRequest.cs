@@ -9,7 +9,7 @@ using ServiceStack.Text;
 namespace Fabric.Clients.Cs.Web {
 	
 	/*================================================================================================*/
-	internal class FabricRequest<T, TClass> where T : IFabObject where TClass : FabObject, T {
+	internal class FabricRequest<T, TClass> where TClass : T {
 
 		public string Method { get; private set; }
 		public string Path { get; private set; }

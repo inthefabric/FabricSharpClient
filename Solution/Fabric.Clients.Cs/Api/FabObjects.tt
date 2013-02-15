@@ -29,6 +29,10 @@ foreach ( FabSpecObject o in spec.Objects ) {
 <#
 	foreach ( FabSpecObjectProp p in o.Properties ) {
 		string type = (p.Type.IndexOf("Fab") == 0 ? "I" : "")+p.Type;
+
+		if ( o.Name == "FabResponse" && p.Name == "Data" ) {
+			type = "string";
+		}
 #>
 		/// <summary>
 		///   <#= SpecBuilder.ToXmlDocSentence(p.Description) #>
@@ -47,6 +51,10 @@ foreach ( FabSpecObject o in spec.Objects ) {
 <#
 	foreach ( FabSpecObjectProp p in o.Properties ) {
 		string type = (p.Type.IndexOf("Fab") == 0 ? "I" : "")+p.Type;
+
+		if ( o.Name == "FabResponse" && p.Name == "Data" ) {
+			type = "virtual string";
+		}
 #>
 		public <#= type #> <#= p.Name #> { get; set; }
 <#
