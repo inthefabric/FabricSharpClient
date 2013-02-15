@@ -1,37 +1,38 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/14/2013 4:34:45 PM
+// Generated on 2/15/2013 4:50:05 PM
 
 using Fabric.Clients.Cs.Session;
 
 namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
+	/// <summary />
 	public interface IFabricServices {
 		
-		///<summary>
-		///  The API version used to generate the Fabric client code.
-		///</summary>
+		/// <summary>
+		///   The API version used to generate the Fabric client code.
+		/// </summary>
 		string ApiVersion { get; }
 
-		///<summary>
-		///  TODO
-		///</summary>
+		/// <summary>
+		///   TODO
+		/// </summary>
 		ITraversalService Traversal { get; }
 
-		///<summary>
-		///  TODO
-		///</summary>
+		/// <summary>
+		///   TODO
+		/// </summary>
 		IOauthService Oauth { get; }
 
-		///<summary>
-		///  TODO
-		///</summary>
+		/// <summary>
+		///   TODO
+		/// </summary>
 		IModifyService Modify { get; }
 
-		///<summary>
-		///  TODO
-		///</summary>
+		/// <summary>
+		///   TODO
+		/// </summary>
 		ISpecService Spec { get; }
 
 	}

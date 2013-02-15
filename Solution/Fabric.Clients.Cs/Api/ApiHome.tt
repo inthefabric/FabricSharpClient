@@ -13,11 +13,12 @@ using Fabric.Clients.Cs.Session;
 namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
+	/// <summary />
 	public interface IFabricServices {
 		
-		///<summary>
-		///  The API version used to generate the Fabric client code.
-		///</summary>
+		/// <summary>
+		///   The API version used to generate the Fabric client code.
+		/// </summary>
 		string ApiVersion { get; }
 
 <#
@@ -25,9 +26,9 @@ FabSpec spec = SpecBuilder.Spec;
 
 foreach ( FabSpecService s in spec.Services ) {
 #>
-		///<summary>
-		///  <#= SpecBuilder.ToXmlDocSentence(s.Description) #>
-		///</summary>
+		/// <summary>
+		///   <#= SpecBuilder.ToXmlDocSentence(s.Description) #>
+		/// </summary>
 		I<#= s.Name #>Service <#= s.Name #> { get; }
 
 <#

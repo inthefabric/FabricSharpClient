@@ -28,7 +28,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 
 		/*--------------------------------------------------------------------------------------------*/
 		public ActionResult FabricRedirect() {
-			FabOauthAccess result = vFab.PersonSession.HandleGrantCodeRedirect(Request);
+			IFabOauthAccess result = vFab.PersonSession.HandleGrantCodeRedirect(Request);
 
 			//close the login popup if authentication was successful
 			if ( vFab.PersonSession.IsAuthenticated ) {

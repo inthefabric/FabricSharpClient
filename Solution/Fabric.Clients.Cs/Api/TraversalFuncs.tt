@@ -26,6 +26,7 @@ foreach ( FabSpecService s in spec.Services ) {
 foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
 #>
 	/*================================================================================================*/
+	/// <summary />
 	public interface IFunc<#= f.Name #> : ITraversalStep {}
 
 		
@@ -33,7 +34,7 @@ foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
 }
 #>
 	/*================================================================================================*/
-	public class TraversalFuncs {
+	internal class TraversalFuncs {
 	
 		protected Traversal Trav { get; private set; }
 		
@@ -66,14 +67,14 @@ foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
 		uriParams += fp.Name;
 		
 		paramComments += (paramComments == "" ? "" : "\r\n\t\t");
-		paramComments += "///<param name=\""+fp.Name+"\">\r\n\t\t///  "+
-			SpecBuilder.ToXmlDoc(fp.Description, false)+"\r\n\t\t///</param>";
+		paramComments += "/// <param name=\""+fp.Name+"\">\r\n\t\t///   "+
+			SpecBuilder.ToXmlDoc(fp.Description, false)+"\r\n\t\t/// </param>";
 	}
 #>
 		/*--------------------------------------------------------------------------------------------*/
-		///<summary>
-		///  <#= SpecBuilder.ToXmlDoc(f.Description, false) #>
-		///</summary>
+		/// <summary>
+		///   <#= SpecBuilder.ToXmlDoc(f.Description, false) #>
+		/// </summary>
 		<#= paramComments #>
 		public void <#= f.Name #>(<#= funcParams #>) {
 			Trav.AppendToUri("/<#= f.Name #>("+<#= uriParams #>+")");

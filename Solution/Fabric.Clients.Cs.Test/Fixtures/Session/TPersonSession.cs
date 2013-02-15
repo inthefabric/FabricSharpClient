@@ -47,12 +47,12 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			PersonSess.RefreshToken = refresh;
 			PersonSess.Expiration = expiry;
 
-			FabOauthAccess expectResult = NewFabOauthAccess();
+			IFabOauthAccess expectResult = NewFabOauthAccess();
 
 			MockOauth
 				.Setup(x => x.AccessTokenRefresh.Get(
-					Config.AppOAuthRedirectUri,
 					Config.AppSecret,
+					Config.AppOAuthRedirectUri,
 					refresh
 				))
 				.Returns(expectResult);
@@ -116,13 +116,13 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 
 			MockOauth
 				.Setup(x => x.AccessTokenAuthCode.Get(
-					Config.AppOAuthRedirectUri,
 					Config.AppSecret,
-					grantCode
+					grantCode,
+					Config.AppOAuthRedirectUri
 				))
 				.Returns(expectResult);
 
-			FabOauthAccess result = PersonSess.HandleGrantCodeRedirect(mockReq.Object);
+			IFabOauthAccess result = PersonSess.HandleGrantCodeRedirect(mockReq.Object);
 
 			Assert.AreEqual(expectResult, result, "Incorrect result.");
 			Assert.AreEqual(grantCode, PersonSess.GrantCode, "Incorrect GrantCode.");

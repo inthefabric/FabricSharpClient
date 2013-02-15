@@ -1,38 +1,38 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/14/2013 4:15:02 PM
+// Generated on 2/15/2013 4:50:06 PM
 
 using Fabric.Clients.Cs.Session;
 
 namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
-	///<summary>
-	///  TODO
-	///</summary>
-	///<remarks>
-	///  <para>TODO</para>
-	///</remarks>
+	/// <summary>
+	///   TODO
+	/// </summary>
+	/// <remarks>
+	///   <para>TODO</para>
+	/// </remarks>
 	public interface ITraversalService : IService {
 
-		///<summary>
-		///  TODO
-		///</summary>
+		/// <summary>
+		///   TODO
+		/// </summary>
 		IGetActiveAppOperation GetActiveApp { get; }
 
-		///<summary>
-		///  TODO
-		///</summary>
+		/// <summary>
+		///   TODO
+		/// </summary>
 		IGetActiveMemberOperation GetActiveMember { get; }
 
-		///<summary>
-		///  TODO
-		///</summary>
+		/// <summary>
+		///   TODO
+		/// </summary>
 		IGetActiveUserOperation GetActiveUser { get; }
 
-		///<summary>
-		///  The starting point for all traversal queries.
-		///</summary>
+		/// <summary>
+		///   The starting point for all traversal queries.
+		/// </summary>
 		IGetRootOperation GetRoot { get; }
 
 	}
@@ -76,47 +76,47 @@ namespace Fabric.Clients.Cs.Api {
 
 
 	/*================================================================================================*/
-	///<summary>
-	///  TODO
-	///</summary>
-	///<remarks>
-	///  <para>TODO</para>
-	///</remarks>
+	/// <summary>
+	///   TODO
+	/// </summary>
+	/// <remarks>
+	///   <para>TODO</para>
+	/// </remarks>
 	public interface IOauthService : IService {
 
-		///<summary>
-		///  Get an OAuth access token using one of four 'flows'.
-		///</summary>
+		/// <summary>
+		///   Get an OAuth access token using one of four 'flows'.
+		/// </summary>
 		IAccessTokenOperation AccessToken { get; }
 
-		///<summary>
-		///  This OAuth flow should be used immediately after obtaining an authorization code from the OAuth entry process.
-		///</summary>
+		/// <summary>
+		///   This OAuth flow should be used immediately after obtaining an authorization code from the OAuth entry process.
+		/// </summary>
 		IAccessTokenAuthCodeOperation AccessTokenAuthCode { get; }
 
-		///<summary>
-		///  This OAuth flow should be used to begin an OAuth session for your Fabric App.
-		///</summary>
+		/// <summary>
+		///   This OAuth flow should be used to begin an OAuth session for your Fabric App.
+		/// </summary>
 		IAccessTokenClientCredentialsOperation AccessTokenClientCredentials { get; }
 
-		///<summary>
-		///  This OAuth flow should be used to begin an OAuth session for your Fabric App's Data Provider User.
-		///</summary>
+		/// <summary>
+		///   This OAuth flow should be used to begin an OAuth session for your Fabric App's Data Provider User.
+		/// </summary>
 		IAccessTokenClientDataProvOperation AccessTokenClientDataProv { get; }
 
-		///<summary>
-		///  This OAuth flow should be used to refresh an expired access token.
-		///</summary>
+		/// <summary>
+		///   This OAuth flow should be used to refresh an expired access token.
+		/// </summary>
 		IAccessTokenRefreshOperation AccessTokenRefresh { get; }
 
-		///<summary>
-		///  This API request is unique -- it represents the entry point for Fabric's OAuth 2.0 authentication process.
-		///</summary>
+		/// <summary>
+		///   This API request is unique -- it represents the entry point for Fabric's OAuth 2.0 authentication process.
+		/// </summary>
 		ILoginOperation Login { get; }
 
-		///<summary>
-		///  Terminates a particular OAuth session by invalidating the session's access token.
-		///</summary>
+		/// <summary>
+		///   Terminates a particular OAuth session by invalidating the session's access token.
+		/// </summary>
 		ILogoutOperation Logout { get; }
 
 	}
@@ -175,82 +175,82 @@ namespace Fabric.Clients.Cs.Api {
 
 
 	/*================================================================================================*/
-	///<summary>
-	///  TODO
-	///</summary>
-	///<remarks>
-	///  <para>TODO</para>
-	///</remarks>
+	/// <summary>
+	///   TODO
+	/// </summary>
+	/// <remarks>
+	///   <para>TODO</para>
+	/// </remarks>
 	public interface IModifyService : IService {
 
-		///<summary>
-		///  Create a new App.
-		///</summary>
+		/// <summary>
+		///   Create a new App.
+		/// </summary>
 		IAddAppOperation AddApp { get; }
 
-		///<summary>
-		///  Create a new Class.
-		///</summary>
+		/// <summary>
+		///   Create a new Class.
+		/// </summary>
 		IAddClassOperation AddClass { get; }
 
-		///<summary>
-		///  Create a new Factor.
-		///</summary>
+		/// <summary>
+		///   Create a new Factor.
+		/// </summary>
 		IAddFactorOperation AddFactor { get; }
 
-		///<summary>
-		///  Create a new Instance.
-		///</summary>
+		/// <summary>
+		///   Create a new Instance.
+		/// </summary>
 		IAddInstanceOperation AddInstance { get; }
 
-		///<summary>
-		///  Create a new Url.
-		///</summary>
+		/// <summary>
+		///   Create a new Url.
+		/// </summary>
 		IAddUrlOperation AddUrl { get; }
 
-		///<summary>
-		///  Create a new User.
-		///</summary>
+		/// <summary>
+		///   Create a new User.
+		/// </summary>
 		IAddUserOperation AddUser { get; }
 
-		///<summary>
-		///  Create a new Descriptor and attach it to the specified Factor.
-		///</summary>
+		/// <summary>
+		///   Create a new Descriptor and attach it to the specified Factor.
+		/// </summary>
 		IAttachDescriptorToFactorOperation AttachDescriptorToFactor { get; }
 
-		///<summary>
-		///  Create a new Director and attach it to the specified Factor.
-		///</summary>
+		/// <summary>
+		///   Create a new Director and attach it to the specified Factor.
+		/// </summary>
 		IAttachDirectorToFactorOperation AttachDirectorToFactor { get; }
 
-		///<summary>
-		///  Create a new Eventor and attach it to the specified Factor.
-		///</summary>
+		/// <summary>
+		///   Create a new Eventor and attach it to the specified Factor.
+		/// </summary>
 		IAttachEventorToFactorOperation AttachEventorToFactor { get; }
 
-		///<summary>
-		///  Create a new Identor and attach it to the specified Factor.
-		///</summary>
+		/// <summary>
+		///   Create a new Identor and attach it to the specified Factor.
+		/// </summary>
 		IAttachIdentorToFactorOperation AttachIdentorToFactor { get; }
 
-		///<summary>
-		///  Create a new Locator and attach it to the specified Factor.
-		///</summary>
+		/// <summary>
+		///   Create a new Locator and attach it to the specified Factor.
+		/// </summary>
 		IAttachLocatorToFactorOperation AttachLocatorToFactor { get; }
 
-		///<summary>
-		///  Create a new Vector and attach it to the specified Factor.
-		///</summary>
+		/// <summary>
+		///   Create a new Vector and attach it to the specified Factor.
+		/// </summary>
 		IAttachVectorToFactorOperation AttachVectorToFactor { get; }
 
-		///<summary>
-		///  Move a Factor from the 'incomplete' state to the 'complete' state.
-		///</summary>
+		/// <summary>
+		///   Move a Factor from the 'incomplete' state to the 'complete' state.
+		/// </summary>
 		ICompleteFactorOperation CompleteFactor { get; }
 
-		///<summary>
-		///  Delete a Factor.
-		///</summary>
+		/// <summary>
+		///   Delete a Factor.
+		/// </summary>
 		IDeleteFactorOperation DeleteFactor { get; }
 
 	}
@@ -344,17 +344,17 @@ namespace Fabric.Clients.Cs.Api {
 
 
 	/*================================================================================================*/
-	///<summary>
-	///  TODO
-	///</summary>
-	///<remarks>
-	///  <para>TODO</para>
-	///</remarks>
+	/// <summary>
+	///   TODO
+	/// </summary>
+	/// <remarks>
+	///   <para>TODO</para>
+	/// </remarks>
 	public interface ISpecService : IService {
 
-		///<summary>
-		///  The latest specification and documentation for all Fabric API services.
-		///</summary>
+		/// <summary>
+		///   The latest specification and documentation for all Fabric API services.
+		/// </summary>
 		IDocumentOperation Document { get; }
 
 	}

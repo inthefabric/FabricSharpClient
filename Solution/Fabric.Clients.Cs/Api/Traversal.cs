@@ -3,6 +3,7 @@ using System.Collections.Generic;
 namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
+	/// <summary />
 	public class Traversal {
 		
 		private readonly IList<ITraversalStep> vSteps;
@@ -12,6 +13,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
 		public Traversal() {
 			vSteps = new List<ITraversalStep>();
 			vUri = "/Trav/Root";
@@ -19,13 +21,15 @@ namespace Fabric.Clients.Cs.Api {
 			vRoot = new FabRootStep(this);
 			AddStep(vRoot);
 		}
-		
+
 		/*--------------------------------------------------------------------------------------------*/
-		public FabRootStep RootStep() {
+		/// <summary />
+		public IFabRootStep RootStep() {
 			return vRoot;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
 		public string GetTraversalUri() {
 			return vUri+"";
 		}
@@ -55,7 +59,8 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public static FabRootStep Root {
+		/// <summary />
+		public static IFabRootStep Root {
 			get {
 				var t = new Traversal();
 				return t.RootStep();

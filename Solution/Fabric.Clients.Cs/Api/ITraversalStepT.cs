@@ -2,14 +2,19 @@ using System;
 using System.Collections.Generic;
 
 namespace Fabric.Clients.Cs.Api {
-	
+
 	/*================================================================================================*/
-	public interface ITraversalStep<T> : ITraversalStep where T : FabObject {
+	/// <summary />
+	public interface ITraversalStep<T> : ITraversalStep where T : IFabObject {
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
 		IList<T> Get();
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
 		Type GetReturnType();
 		
 	}

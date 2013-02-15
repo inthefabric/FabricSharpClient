@@ -40,8 +40,8 @@ foreach ( FabSpecService s in spec.Services ) {
 				paramFill += p.Name;
 				
 				paramComments += "\r\n\t\t";
-				paramComments += "///<param name=\""+p.Name+"\">\r\n\t\t///  "+
-					SpecBuilder.ToXmlDoc(p.Description, false)+"\r\n\t\t///</param>";
+				paramComments += "/// <param name=\""+p.Name+"\">\r\n\t\t///   "+
+					SpecBuilder.ToXmlDoc(p.Description, false)+"\r\n\t\t/// </param>";
 
 				switch ( p.ParamType ) {
 
@@ -60,18 +60,18 @@ foreach ( FabSpecService s in spec.Services ) {
 		form = (form == "" ? "null" : "\""+form.Substring(0, form.Length-2));
 #>
 	/*================================================================================================*/
-	///<summary>
-	///  <#= SpecBuilder.ToXmlDocSentence(op.Description) #>
-	///</summary>
-	///<remarks>
-	///  <#= SpecBuilder.ToXmlDoc(op.Description, true) #>
-	///</remarks>
+	/// <summary>
+	///   <#= SpecBuilder.ToXmlDocSentence(op.Description) #>
+	/// </summary>
+	/// <remarks>
+	///   <#= SpecBuilder.ToXmlDoc(op.Description, true) #>
+	/// </remarks>
 	public interface I<#= op.Name #>Operation : IOperation {
 		
-		///<summary>
-		///  Perform the operation.
-		///</summary><#= paramComments #>
-		<#= op.ReturnType #> <#= method #>(<#= paramList #>);
+		/// <summary>
+		///   Perform the operation.
+		/// </summary><#= paramComments #>
+		I<#= op.ReturnType #> <#= method #>(<#= paramList #>);
 
 	}
 	
@@ -94,8 +94,8 @@ foreach ( FabSpecService s in spec.Services ) {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<<#= op.ReturnType #>> Request(<#= paramList #>) {
-			return new FabricRequest<<#= op.ReturnType #>>(
+		public FabricRequest<I<#= op.ReturnType #>> Request(<#= paramList #>) {
+			return new FabricRequest<I<#= op.ReturnType #>>(
 				"<#= op.Method #>",
 				"<#= s.Uri+op.Uri #>", 
 				<#= query #>,
@@ -104,7 +104,7 @@ foreach ( FabSpecService s in spec.Services ) {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public <#= op.ReturnType #> <#= method #>(<#= paramList #>) {
+		public I<#= op.ReturnType #> <#= method #>(<#= paramList #>) {
 			return Request(<#= paramFill #>).Send(vContext);
 		}
 

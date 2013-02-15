@@ -14,30 +14,47 @@ namespace Fabric.Clients.Cs.Api {
 FabSpec spec = SpecBuilder.Spec;
 
 foreach ( FabSpecObject o in spec.Objects ) {
-	string extends = (o.Extends == null ? "" : " : "+o.Extends);
+	string extendsInt = (o.Extends == null ? "" : " : I"+o.Extends);
+	string extends = (o.Extends == null ? "" : o.Extends+", ");
 #>
 	/*================================================================================================*/
-	///<summary>
-	///  <#= SpecBuilder.ToXmlDocSentence(o.Description) #>
-	///</summary>
-	///<remarks>
-	///  <#= SpecBuilder.ToXmlDoc(o.Description, true) #>
-	///</remarks>
-	public class <#= o.Name+extends #> {
+	/// <summary>
+	///   <#= SpecBuilder.ToXmlDocSentence(o.Description) #>
+	/// </summary>
+	/// <remarks>
+	///   <#= SpecBuilder.ToXmlDoc(o.Description, true) #>
+	/// </remarks>
+	public interface I<#= o.Name+extendsInt #> {
 	
 <#
 	foreach ( FabSpecObjectProp p in o.Properties ) {
+		string type = (p.Type.IndexOf("Fab") == 0 ? "I" : "")+p.Type;
 #>
-		///<summary>
-		///  <#= SpecBuilder.ToXmlDocSentence(p.Description) #>
-		///</summary>
-		public <#= p.Type #> <#= p.Name #> { get; set; }
+		/// <summary>
+		///   <#= SpecBuilder.ToXmlDocSentence(p.Description) #>
+		/// </summary>
+		<#= type #> <#= p.Name #> { get; }
 		
 <#
 	}
 #>
 	}
 	
+	
+	/*================================================================================================*/
+	internal class <#= o.Name #> : <#= extends #>I<#= o.Name #> {
+	
+<#
+	foreach ( FabSpecObjectProp p in o.Properties ) {
+		string type = (p.Type.IndexOf("Fab") == 0 ? "I" : "")+p.Type;
+#>
+		public <#= type #> <#= p.Name #> { get; set; }
+<#
+	}
+#>
+
+	}
+
 	
 <#
 }

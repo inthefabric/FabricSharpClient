@@ -45,7 +45,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 																			IOauthService pClientOauth);
 
 		/*--------------------------------------------------------------------------------------------*/
-		protected FabOauthAccess NewFabOauthAccess() {
+		protected IFabOauthAccess NewFabOauthAccess() {
 			var oa = new FabOauthAccess();
 			oa.token_type = "Bearer";
 			oa.access_token = "AccessToken1234";
@@ -55,7 +55,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		protected void CheckSessionProperties(FabOauthAccess pAccess) {
+		protected void CheckSessionProperties(IFabOauthAccess pAccess) {
 			Assert.AreEqual(pAccess.access_token, OauthSess.BearerToken, "Incorrect BearerToken.");
 			Assert.AreEqual(pAccess.refresh_token, OauthSess.RefreshToken, "Incorrect RefreshToken.");
 			CheckExpiration(DateTime.Now.AddSeconds(3600-60));
@@ -107,7 +107,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 				.Setup(x => x.Logout.Get(It.IsAny<string>()))
 				.Returns(expectResult);
 
-			FabOauthLogout result = OauthSess.Logout();
+			IFabOauthLogout result = OauthSess.Logout();
 
 			Assert.AreEqual(expectResult, result, "Incorrect result.");
 

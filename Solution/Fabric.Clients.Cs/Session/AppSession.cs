@@ -21,7 +21,7 @@ namespace Fabric.Clients.Cs.Session {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthAccess RequestAuthentication() {
+		public IFabOauthAccess RequestAuthentication() {
 			return GetAccessToken(GetClientAccess);
 		}
 		
@@ -40,7 +40,7 @@ namespace Fabric.Clients.Cs.Session {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private FabOauthAccess GetClientAccess() {
+		private IFabOauthAccess GetClientAccess() {
 			//Config.LogDebug("GetClientAccess()");
 
 			lock ( vAccessLock ) {

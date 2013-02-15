@@ -23,7 +23,8 @@ foreach ( FabSpecObject o in spec.Objects ) {
 	}
 #>
 	/*================================================================================================*/
-	public interface I<#= o.Name #>Step : ITraversalStep<<#= o.Name #>><#= interfaces #> {
+	/// <summary />
+	public interface I<#= o.Name #>Step : ITraversalStep<I<#= o.Name #>><#= interfaces #> {
 	
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,33 +35,25 @@ foreach ( FabSpecObject o in spec.Objects ) {
 		string conn = GetConn(link);
 #>
 		/*--------------------------------------------------------------------------------------------*/
-		///<summary>
-		///  <#= SpecBuilder.ToXmlDoc(link.Description, false) #> (<#= conn #> <#= step #>)
-		///</summary>
-		///<remarks>
-		///  <#= SpecBuilder.ToXmlDoc(link.Description, true) #>
-		///  <para>Type: <#= link.Type #></para>
-		///  <para>Relation: <#= link.Relation #></para>
-		///  <para>Connection: <#= conn #></para>
-		///</remarks>
+		/// <summary>
+		///   <#= SpecBuilder.ToXmlDoc(link.Description, false) #> (<#= conn #> <#= step #>)
+		/// </summary>
+		/// <remarks>
+		///   <#= SpecBuilder.ToXmlDoc(link.Description, true) #>
+		///   <para>Type: <#= link.Type #></para>
+		///   <para>Relation: <#= link.Relation #></para>
+		///   <para>Connection: <#= conn #></para>
+		/// </remarks>
 		I<#= step #>Step <#= link.Name #> { get; }
-		
+	
 <#
 	}
-
 #>
 	}
 	
-	
-<#
-}
 
-foreach ( FabSpecObject o in spec.Objects ) {
-	if ( o.Name.IndexOf("FabSpec") == 0 ) { continue; }
-	if ( o.TraversalLinks == null ) { continue; }
-#>
 	/*================================================================================================*/
-	public class <#= o.Name #>Step : TraversalStep<<#= o.Name #>>, I<#= o.Name #>Step {
+	internal class <#= o.Name #>Step : TraversalStep<I<#= o.Name #>>, I<#= o.Name #>Step {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////

@@ -40,12 +40,12 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		protected void SetupMockAccessToken(FabOauthAccess pResult, Action pCallback=null) {
+		protected void SetupMockAccessToken(IFabOauthAccess pResult, Action pCallback=null) {
 			IReturnsResult<IOauthService> rr = MockOauth
 				.Setup(x => x.AccessTokenClientCredentials.Get(
-					Config.AppOAuthRedirectUri,
+					Config.AppId+"",
 					Config.AppSecret,
-					Config.AppId+""
+					Config.AppOAuthRedirectUri
 				))
 				.Returns(pResult);
 
@@ -59,10 +59,10 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
 		public void RequestAuthentication() {
-			FabOauthAccess expectResult = NewFabOauthAccess();
+			IFabOauthAccess expectResult = NewFabOauthAccess();
 			SetupMockAccessToken(expectResult);
 
-			FabOauthAccess result = AppSess.RequestAuthentication();
+			IFabOauthAccess result = AppSess.RequestAuthentication();
 
 			Assert.AreEqual(expectResult, result, "Incorrect result.");
 			CheckSessionProperties(expectResult);
@@ -79,7 +79,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			AppSess.BearerToken = bearer;
 			AppSess.Expiration = expiry;
 
-			FabOauthAccess expectResult = NewFabOauthAccess();
+			IFabOauthAccess expectResult = NewFabOauthAccess();
 			SetupMockAccessToken(expectResult);
 
 			bool result = AppSess.RefreshTokenIfNecessary();

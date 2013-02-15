@@ -1,9 +1,13 @@
 namespace Fabric.Clients.Cs.Api {
-	
-	/*================================================================================================*/
-	public interface ITraversalStepAlias<T> where T : ITraversalStep {
 
+	/*================================================================================================*/
+	/// <summary />
+	public interface ITraversalStepAlias<out T> where T : ITraversalStep {
+
+		/// <summary />
 		string Alias { get; }
+
+		/// <summary />
 		T AsStep { get; }
 
 	}

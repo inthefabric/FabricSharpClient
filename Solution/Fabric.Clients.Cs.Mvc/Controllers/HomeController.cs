@@ -28,7 +28,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 		/*--------------------------------------------------------------------------------------------*/
 		public ActionResult Artifact(uint? id) {
 			if ( id == null ) { return View("404"); }
-			FabArtifact model;
+			IFabArtifact model;
 
 			try {
 				model = null;//vFab.Services.Traversal.GetRoot.Get().Artifacts.ArtifactId((uint)id).Get();
@@ -46,7 +46,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 				return ArtifactTypeListView();
 			}
 
-			FabArtifactType model;
+			IFabArtifactType model;
 
 			try {
 				model = null;//vFab.Core.Artifacts.Types.ArtifactTypeId((uint)id).Get();
@@ -60,12 +60,12 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 
 		/*--------------------------------------------------------------------------------------------*/
 		private ActionResult ArtifactTypeListView() {
-			List<FabArtifactType> result;
-			var model = new List<FabObject>();
+			List<IFabArtifactType> result;
+			var model = new List<IFabObject>();
 
 			try {
 				result = null;//vFab.Core.Artifacts.Types.Get();
-				foreach ( FabObject t in result ) { model.Add(t); }
+				foreach ( IFabObject t in result ) { model.Add(t); }
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
@@ -78,7 +78,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public ActionResult MyApp() {
-			FabApp model;
+			IFabApp model;
 
 			try {
 				model = null;//vFab.Core.Myapp.Get();
@@ -92,7 +92,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 
 		/*--------------------------------------------------------------------------------------------*/
 		public ActionResult MyAppDataProv() {
-			FabUser model;
+			IFabUser model;
 
 			try {
 				vFab.UseDataProviderPerson = true;
@@ -107,7 +107,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 
 		/*--------------------------------------------------------------------------------------------*/
 		public ActionResult Me() {
-			FabUser model;
+			IFabUser model;
 
 			try {
 				model = null;//vFab.Core.Me.Get();

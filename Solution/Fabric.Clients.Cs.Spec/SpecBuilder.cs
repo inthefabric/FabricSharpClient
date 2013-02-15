@@ -45,7 +45,7 @@ namespace Fabric.Clients.Cs.Spec {
 
 			string s = RemoveMarkup(pText)
 				.Replace("\r\n\r\n", (pMultiLine ? "\r\n" : " "))
-				.Replace("\r\n", "</para>\r\n\t///  <para>");
+				.Replace("\r\n", "</para>\r\n\t///   <para>");
 
 			if ( pMultiLine ) {
 				return "<para>"+s+"</para>";
