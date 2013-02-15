@@ -94,8 +94,8 @@ foreach ( FabSpecService s in spec.Services ) {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<I<#= op.ReturnType #>> Request(<#= paramList #>) {
-			return new FabricRequest<I<#= op.ReturnType #>>(
+		public FabricRequest<I<#= op.ReturnType #>, <#= op.ReturnType #>> Request(<#= paramList #>) {
+			return new FabricRequest<I<#= op.ReturnType #>, <#= op.ReturnType #>>(
 				"<#= op.Method #>",
 				"<#= s.Uri+op.Uri #>", 
 				<#= query #>,

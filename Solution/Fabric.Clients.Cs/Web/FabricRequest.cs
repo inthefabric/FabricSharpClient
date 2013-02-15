@@ -9,7 +9,7 @@ using ServiceStack.Text;
 namespace Fabric.Clients.Cs.Web {
 	
 	/*================================================================================================*/
-	internal class FabricRequest<T> {
+	internal class FabricRequest<T, TClass> where T : IFabObject where TClass : FabObject, T {
 
 		public string Method { get; private set; }
 		public string Path { get; private set; }
@@ -71,7 +71,7 @@ namespace Fabric.Clients.Cs.Web {
 
 				string data = StreamToString(wr.GetResponseStream());
 				pContext.Config.LogDebug("Request Response: "+data);
-				return new FabricResponse<T>(JsonSerializer.DeserializeFromString<T>(data));
+				return new FabricResponse<T>(JsonSerializer.DeserializeFromString<TClass>(data));
 				/*return new FabricResponse<T>(
 					JsonSerializer.DeserializeFromStream<T>(wr.GetResponseStream()));*/
 			}

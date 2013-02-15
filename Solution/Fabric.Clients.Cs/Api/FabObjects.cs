@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/15/2013 4:50:06 PM
+// Generated on 2/15/2013 5:09:07 PM
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -20,12 +20,12 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long AppId { get; }
+		long AppId { get; set; }
 		
 		/// <summary>
 		///   A unique title or identifier.
 		/// </summary>
-		string Name { get; }
+		string Name { get; set; }
 		
 	}
 	
@@ -54,17 +54,17 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long ArtifactId { get; }
+		long ArtifactId { get; set; }
 		
 		/// <summary>
 		///   The date/time of creation.
 		/// </summary>
-		long Created { get; }
+		long Created { get; set; }
 		
 		/// <summary>
 		///   Specifies the accessibility level.
 		/// </summary>
-		bool IsPrivate { get; }
+		bool IsPrivate { get; set; }
 		
 	}
 	
@@ -110,7 +110,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long ArtifactTypeId { get; }
+		long ArtifactTypeId { get; set; }
 		
 	}
 	
@@ -142,22 +142,22 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long ClassId { get; }
+		long ClassId { get; set; }
 		
 		/// <summary>
 		///   A secondary label or identifier, used to resolve unique-name conflicts.
 		/// </summary>
-		string Disamb { get; }
+		string Disamb { get; set; }
 		
 		/// <summary>
 		///   A descriptive name or title.
 		/// </summary>
-		string Name { get; }
+		string Name { get; set; }
 		
 		/// <summary>
 		///   A summary of the Class's intended meaning or purpose.
 		/// </summary>
-		string Note { get; }
+		string Note { get; set; }
 		
 	}
 	
@@ -203,7 +203,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long DescriptorId { get; }
+		long DescriptorId { get; set; }
 		
 	}
 	
@@ -228,7 +228,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long DescriptorTypeId { get; }
+		long DescriptorTypeId { get; set; }
 		
 	}
 	
@@ -270,7 +270,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long DirectorId { get; }
+		long DirectorId { get; set; }
 		
 	}
 	
@@ -295,7 +295,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long DirectorActionId { get; }
+		long DirectorActionId { get; set; }
 		
 	}
 	
@@ -320,7 +320,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long DirectorTypeId { get; }
+		long DirectorTypeId { get; set; }
 		
 	}
 	
@@ -345,17 +345,17 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   A numeric value which identifies the specific error type.
 		/// </summary>
-		int Code { get; }
+		int Code { get; set; }
 		
 		/// <summary>
 		///   A sentence or paragraph providing details about the error.
 		/// </summary>
-		string Message { get; }
+		string Message { get; set; }
 		
 		/// <summary>
 		///   A descriptive name that is associated with the error code.
 		/// </summary>
-		string Name { get; }
+		string Name { get; set; }
 		
 	}
 	
@@ -400,12 +400,12 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   A particular point in time, with a level of accuracy defined by EventorPrecision.
 		/// </summary>
-		long DateTime { get; }
+		long DateTime { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long EventorId { get; }
+		long EventorId { get; set; }
 		
 	}
 	
@@ -431,7 +431,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long EventorPrecisionId { get; }
+		long EventorPrecisionId { get; set; }
 		
 	}
 	
@@ -456,7 +456,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long EventorTypeId { get; }
+		long EventorTypeId { get; set; }
 		
 	}
 	
@@ -485,27 +485,27 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   The date/time of completion.
 		/// </summary>
-		long? Completed { get; }
+		long? Completed { get; set; }
 		
 		/// <summary>
 		///   The date/time of creation.
 		/// </summary>
-		long Created { get; }
+		long Created { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long FactorId { get; }
+		long FactorId { get; set; }
 		
 		/// <summary>
 		///   Specifies whether this Factor helps to uniquely define the primary Artifact.
 		/// </summary>
-		bool IsDefining { get; }
+		bool IsDefining { get; set; }
 		
 		/// <summary>
 		///   A summary of the Factor's intended meaning or purpose.
 		/// </summary>
-		string Note { get; }
+		string Note { get; set; }
 		
 	}
 	
@@ -534,7 +534,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long FactorAssertionId { get; }
+		long FactorAssertionId { get; set; }
 		
 	}
 	
@@ -578,7 +578,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   TODO
 		/// </summary>
-		IFabService[] Services { get; }
+		IFabService[] Services { get; set; }
 		
 	}
 	
@@ -627,12 +627,12 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long IdentorId { get; }
+		long IdentorId { get; set; }
 		
 		/// <summary>
 		///   A text-based value that can represent names, numbers, IDs, GUIDs, etc.
 		/// </summary>
-		string Value { get; }
+		string Value { get; set; }
 		
 	}
 	
@@ -658,7 +658,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long IdentorTypeId { get; }
+		long IdentorTypeId { get; set; }
 		
 	}
 	
@@ -691,22 +691,22 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   A secondary label or identifier, used to resolve unique-name conflicts.
 		/// </summary>
-		string Disamb { get; }
+		string Disamb { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long InstanceId { get; }
+		long InstanceId { get; set; }
 		
 		/// <summary>
 		///   A descriptive name or title.
 		/// </summary>
-		string Name { get; }
+		string Name { get; set; }
 		
 		/// <summary>
 		///   A summary of the Instance's intended meaning or purpose.
 		/// </summary>
-		string Note { get; }
+		string Note { get; set; }
 		
 	}
 	
@@ -763,22 +763,22 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long LocatorId { get; }
+		long LocatorId { get; set; }
 		
 		/// <summary>
 		///   A value representing longitude, time/progress, width, or a particular three-dimensional axis.
 		/// </summary>
-		double ValueX { get; }
+		double ValueX { get; set; }
 		
 		/// <summary>
 		///   A value representing latitude, height, or a particular three-dimensional axis.
 		/// </summary>
-		double ValueY { get; }
+		double ValueY { get; set; }
 		
 		/// <summary>
 		///   A value representing elevation or a particular three-dimensional axis.
 		/// </summary>
-		double ValueZ { get; }
+		double ValueZ { get; set; }
 		
 	}
 	
@@ -806,37 +806,37 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long LocatorTypeId { get; }
+		long LocatorTypeId { get; set; }
 		
 		/// <summary>
 		///   The maximum Locator X-coordinate value.
 		/// </summary>
-		double MaxX { get; }
+		double MaxX { get; set; }
 		
 		/// <summary>
 		///   The maximum Locator Y-coordinate value.
 		/// </summary>
-		double MaxY { get; }
+		double MaxY { get; set; }
 		
 		/// <summary>
 		///   The maximum Locator Z-coordinate value.
 		/// </summary>
-		double MaxZ { get; }
+		double MaxZ { get; set; }
 		
 		/// <summary>
 		///   The minimum Locator X-coordinate value.
 		/// </summary>
-		double MinX { get; }
+		double MinX { get; set; }
 		
 		/// <summary>
 		///   The minimum Locator Y-coordinate value.
 		/// </summary>
-		double MinY { get; }
+		double MinY { get; set; }
 		
 		/// <summary>
 		///   The minimum Locator Z-coordinate value.
 		/// </summary>
-		double MinZ { get; }
+		double MinZ { get; set; }
 		
 	}
 	
@@ -868,7 +868,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long MemberId { get; }
+		long MemberId { get; set; }
 		
 	}
 	
@@ -893,7 +893,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long MemberTypeId { get; }
+		long MemberTypeId { get; set; }
 		
 	}
 	
@@ -918,7 +918,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long MemberTypeAssignId { get; }
+		long MemberTypeAssignId { get; set; }
 		
 	}
 	
@@ -943,7 +943,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string Uri { get; }
+		string Uri { get; set; }
 		
 	}
 	
@@ -968,12 +968,12 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string Note { get; }
+		string Note { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		long Performed { get; }
+		long Performed { get; set; }
 		
 	}
 	
@@ -999,12 +999,12 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   A summary of this object's intended meaning or purpose.
 		/// </summary>
-		string Description { get; }
+		string Description { get; set; }
 		
 		/// <summary>
 		///   A descriptive name or title.
 		/// </summary>
-		string Name { get; }
+		string Name { get; set; }
 		
 	}
 	
@@ -1030,22 +1030,22 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   A code that maps to various authentication information.
 		/// </summary>
-		string access_token { get; }
+		string access_token { get; set; }
 		
 		/// <summary>
 		///   The number of seconds until the access token expires.
 		/// </summary>
-		int expires_in { get; }
+		int expires_in { get; set; }
 		
 		/// <summary>
 		///   A code that refreshes the authentication session for an expired OAuth access token.
 		/// </summary>
-		string refresh_token { get; }
+		string refresh_token { get; set; }
 		
 		/// <summary>
 		///   For the current Fabric OAuth implementation, this value is always equal to "bearer".
 		/// </summary>
-		string token_type { get; }
+		string token_type { get; set; }
 		
 	}
 	
@@ -1073,12 +1073,12 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   An error code as defined by the OAuth 2.0 specification.
 		/// </summary>
-		string error { get; }
+		string error { get; set; }
 		
 		/// <summary>
 		///   Provides specific details about the error.
 		/// </summary>
-		string error_description { get; }
+		string error_description { get; set; }
 		
 	}
 	
@@ -1105,22 +1105,22 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Use this code (also called the 'authorization code') to generate a new OAuth access token.
 		/// </summary>
-		string code { get; }
+		string code { get; set; }
 		
 		/// <summary>
 		///   An error code as defined by the OAuth 2.0 specification.
 		/// </summary>
-		string error { get; }
+		string error { get; set; }
 		
 		/// <summary>
 		///   Provides specific details about the error.
 		/// </summary>
-		string error_description { get; }
+		string error_description { get; set; }
 		
 		/// <summary>
 		///   Returns the 'state' value that the App provided in the original Oauth request.
 		/// </summary>
-		string state { get; }
+		string state { get; set; }
 		
 	}
 	
@@ -1148,12 +1148,12 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Identifies a particular OAuth session.
 		/// </summary>
-		string access_token { get; }
+		string access_token { get; set; }
 		
 		/// <summary>
 		///   Describes the result of the logout attempt.
 		/// </summary>
-		int success { get; }
+		int success { get; set; }
 		
 	}
 	
@@ -1179,7 +1179,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   The data type of this object.
 		/// </summary>
-		string FabType { get; }
+		string FabType { get; set; }
 		
 	}
 	
@@ -1204,82 +1204,82 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   TODO
 		/// </summary>
-		long AppId { get; }
+		long AppId { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string BaseUri { get; }
+		string BaseUri { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		int Count { get; }
+		int Count { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		object Data { get; }
+		object Data { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		int DataLen { get; }
+		int DataLen { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		int DbMs { get; }
+		int DbMs { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string[] Functions { get; }
+		string[] Functions { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		bool HasMore { get; }
+		bool HasMore { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		int HttpStatus { get; }
+		int HttpStatus { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		bool IsError { get; }
+		bool IsError { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		IFabStepLink[] Links { get; }
+		IFabStepLink[] Links { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string RequestUri { get; }
+		string RequestUri { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		long StartIndex { get; }
+		long StartIndex { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		long Timestamp { get; }
+		long Timestamp { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		int TotalMs { get; }
+		int TotalMs { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		long UserId { get; }
+		long UserId { get; set; }
 		
 	}
 	
@@ -1319,7 +1319,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		int RootId { get; }
+		int RootId { get; set; }
 		
 	}
 	
@@ -1344,17 +1344,17 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string Name { get; }
+		string Name { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		IFabServiceOperation[] Operations { get; }
+		IFabServiceOperation[] Operations { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string Uri { get; }
+		string Uri { get; set; }
 		
 	}
 	
@@ -1381,22 +1381,22 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string Method { get; }
+		string Method { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string Name { get; }
+		string Name { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string ReturnType { get; }
+		string ReturnType { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string Uri { get; }
+		string Uri { get; set; }
 		
 	}
 	
@@ -1424,17 +1424,17 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   
 		/// </summary>
-		string ApiVersion { get; }
+		string ApiVersion { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		IFabSpecObject[] Objects { get; }
+		IFabSpecObject[] Objects { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		IFabSpecService[] Services { get; }
+		IFabSpecService[] Services { get; set; }
 		
 	}
 	
@@ -1461,32 +1461,32 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   
 		/// </summary>
-		string Description { get; }
+		string Description { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string Extends { get; }
+		string Extends { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string Name { get; }
+		string Name { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		IFabSpecObjectProp[] Properties { get; }
+		IFabSpecObjectProp[] Properties { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string[] TraversalFunctions { get; }
+		string[] TraversalFunctions { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		IFabSpecTravLink[] TraversalLinks { get; }
+		IFabSpecTravLink[] TraversalLinks { get; set; }
 		
 	}
 	
@@ -1516,27 +1516,27 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   
 		/// </summary>
-		bool? IsCaseInsensitive { get; }
+		bool? IsCaseInsensitive { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		bool? IsNullable { get; }
+		bool? IsNullable { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		bool? IsPrimaryKey { get; }
+		bool? IsPrimaryKey { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		bool? IsTimestamp { get; }
+		bool? IsTimestamp { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		bool? IsUnique { get; }
+		bool? IsUnique { get; set; }
 		
 	}
 	
@@ -1565,37 +1565,37 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   
 		/// </summary>
-		string Abstract { get; }
+		string Abstract { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string Description { get; }
+		string Description { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string Name { get; }
+		string Name { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		IFabSpecServiceOperation[] Operations { get; }
+		IFabSpecServiceOperation[] Operations { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string ResponseWrapper { get; }
+		string ResponseWrapper { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		IFabSpecTravFunc[] TraversalFunctions { get; }
+		IFabSpecTravFunc[] TraversalFunctions { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string Uri { get; }
+		string Uri { get; set; }
 		
 	}
 	
@@ -1626,42 +1626,42 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   
 		/// </summary>
-		string AuthMemberOwns { get; }
+		string AuthMemberOwns { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string Description { get; }
+		string Description { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string Method { get; }
+		string Method { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string Name { get; }
+		string Name { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		IFabSpecServiceOperationParam[] Parameters { get; }
+		IFabSpecServiceOperationParam[] Parameters { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string RequiredAuth { get; }
+		string RequiredAuth { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string ReturnType { get; }
+		string ReturnType { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string Uri { get; }
+		string Uri { get; set; }
 		
 	}
 	
@@ -1693,7 +1693,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   
 		/// </summary>
-		string ParamType { get; }
+		string ParamType { get; set; }
 		
 	}
 	
@@ -1718,22 +1718,22 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   
 		/// </summary>
-		string Description { get; }
+		string Description { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string Name { get; }
+		string Name { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		IFabSpecTravFuncParam[] Parameters { get; }
+		IFabSpecTravFuncParam[] Parameters { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string Uri { get; }
+		string Uri { get; set; }
 		
 	}
 	
@@ -1761,7 +1761,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   
 		/// </summary>
-		int Index { get; }
+		int Index { get; set; }
 		
 	}
 	
@@ -1786,47 +1786,47 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   
 		/// </summary>
-		string Description { get; }
+		string Description { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string From { get; }
+		string From { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string FromConn { get; }
+		string FromConn { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		bool IsOutgoing { get; }
+		bool IsOutgoing { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string Name { get; }
+		string Name { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string Relation { get; }
+		string Relation { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string To { get; }
+		string To { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string ToConn { get; }
+		string ToConn { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string Type { get; }
+		string Type { get; set; }
 		
 	}
 	
@@ -1859,52 +1859,52 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   
 		/// </summary>
-		string Description { get; }
+		string Description { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		bool? IsOptional { get; }
+		bool? IsOptional { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		int? Len { get; }
+		int? Len { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		int? LenMax { get; }
+		int? LenMax { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		int? LenMin { get; }
+		int? LenMin { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		int? Max { get; }
+		int? Max { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		int? Min { get; }
+		int? Min { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string Name { get; }
+		string Name { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string Type { get; }
+		string Type { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		string ValidRegex { get; }
+		string ValidRegex { get; set; }
 		
 	}
 	
@@ -1938,22 +1938,22 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string Class { get; }
+		string Class { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		bool IsOut { get; }
+		bool IsOut { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string Rel { get; }
+		string Rel { get; set; }
 		
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string Uri { get; }
+		string Uri { get; set; }
 		
 	}
 	
@@ -1985,17 +1985,17 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   A unique, valid absolute URL.
 		/// </summary>
-		string AbsoluteUrl { get; }
+		string AbsoluteUrl { get; set; }
 		
 		/// <summary>
 		///   A descriptive name or title.
 		/// </summary>
-		string Name { get; }
+		string Name { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long UrlId { get; }
+		long UrlId { get; set; }
 		
 	}
 	
@@ -2024,12 +2024,12 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   A unique username.
 		/// </summary>
-		string Name { get; }
+		string Name { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long UserId { get; }
+		long UserId { get; set; }
 		
 	}
 	
@@ -2080,12 +2080,12 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   An integral value which is to be plotted along the specified axis.
 		/// </summary>
-		long Value { get; }
+		long Value { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long VectorId { get; }
+		long VectorId { get; set; }
 		
 	}
 	
@@ -2111,7 +2111,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long VectorRangeId { get; }
+		long VectorRangeId { get; set; }
 		
 	}
 	
@@ -2136,12 +2136,12 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   A value (between 0.0 and 1.0) which defines the relative position between a numeric range's minimum and maximum boundaries.
 		/// </summary>
-		float Position { get; }
+		float Position { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long VectorRangeLevelId { get; }
+		long VectorRangeLevelId { get; set; }
 		
 	}
 	
@@ -2167,17 +2167,17 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   The maximum Vector value allowed.
 		/// </summary>
-		long Max { get; }
+		long Max { get; set; }
 		
 		/// <summary>
 		///   The minimum Vector value allowed.
 		/// </summary>
-		long Min { get; }
+		long Min { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long VectorTypeId { get; }
+		long VectorTypeId { get; set; }
 		
 	}
 	
@@ -2204,12 +2204,12 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   A unique symbol or abbreviation.
 		/// </summary>
-		string Symbol { get; }
+		string Symbol { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long VectorUnitId { get; }
+		long VectorUnitId { get; set; }
 		
 	}
 	
@@ -2235,12 +2235,12 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   TODO
 		/// </summary>
-		int Exponent { get; }
+		int Exponent { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long VectorUnitDerivedId { get; }
+		long VectorUnitDerivedId { get; set; }
 		
 	}
 	
@@ -2266,17 +2266,17 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   The difference in magnitude (a multipler) relative to the base unit.
 		/// </summary>
-		double Amount { get; }
+		double Amount { get; set; }
 		
 		/// <summary>
 		///   An abbreviation, which is typically placed directly before the VectorUnit symbol.
 		/// </summary>
-		string Symbol { get; }
+		string Symbol { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long VectorUnitPrefixId { get; }
+		long VectorUnitPrefixId { get; set; }
 		
 	}
 	

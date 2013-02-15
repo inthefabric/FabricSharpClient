@@ -75,8 +75,9 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private FabricRequest<T> NewFabricRequest<T>() {
-			return new FabricRequest<T>(vMoqHttpProv.Object, vMethod, vPath, vQuery, vPost);
+		private FabricRequest<T, TClass> NewFabricRequest<T, TClass>()
+													where T : IFabObject where TClass : FabObject, T {
+			return new FabricRequest<T, TClass>(vMoqHttpProv.Object, vMethod, vPath, vQuery, vPost);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -103,7 +104,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
 		public void NewRequest() {
-			var req = NewFabricRequest<FabApp>();
+			var req = NewFabricRequest<IFabApp, FabApp>();
 
 			Assert.AreEqual(vMethod, req.Method, "Incorrect Method.");
 			Assert.AreEqual(vPath, req.Path, "Incorrect Path.");
@@ -116,11 +117,11 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
 		public void SendSuccess() {
-			var req = NewFabricRequest<FabApp>();
+			var req = NewFabricRequest<IFabApp, FabApp>();
 			var app = new FabApp { Name = "TestApp" };
 			SetupResponseStream(app);
 
-			FabApp result = req.Send(vContext);
+			IFabApp result = req.Send(vContext);
 
 			Assert.NotNull(result, "Result should be filled.");
 			Assert.AreEqual(app.Name, result.Name, "Incorrect result.");
@@ -133,7 +134,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 				.Setup(x => x.GetResponse(vHttpReq))
 				.Throws(new WebException("NoResponse"));
 
-			var req = NewFabricRequest<FabApp>();
+			var req = NewFabricRequest<IFabApp, FabApp>();
 
 			try {
 				req.Send(vContext);
@@ -171,7 +172,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 				.Setup(x => x.GetResponse(vHttpReq))
 				.Throws(we);
 
-			var req = NewFabricRequest<FabApp>();
+			var req = NewFabricRequest<IFabApp, FabApp>();
 
 			try {
 				req.Send(vContext);
@@ -212,7 +213,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 			var expect = vConfig.ApiPath+pPath;
 			if ( pQuery != null ) { expect += "?"+pQuery; }
 
-			var req = NewFabricRequest<FabApp>();
+			var req = NewFabricRequest<IFabApp, FabApp>();
 			SetupResponseStream(new FabApp());
 
 			req.Send(vContext);
@@ -227,7 +228,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 			vMethod = "POST";
 			vPost = pPost;
 
-			var req = NewFabricRequest<FabApp>();
+			var req = NewFabricRequest<IFabApp, FabApp>();
 			SetupResponseStream(new FabApp());
 			req.Send(vContext);
 
@@ -249,7 +250,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		public void MethodAccept(string pMethod) {
 			vMethod = pMethod;
 
-			var req = NewFabricRequest<FabApp>();
+			var req = NewFabricRequest<IFabApp, FabApp>();
 			SetupResponseStream(new FabApp());
 			req.Send(vContext);
 
@@ -269,7 +270,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 				vMockAppSess.SetupGet(x => x.BearerToken).Returns(pBearer);
 			}
 
-			var req = NewFabricRequest<FabApp>();
+			var req = NewFabricRequest<IFabApp, FabApp>();
 			SetupResponseStream(new FabApp());
 			req.Send(vContext);
 
@@ -288,7 +289,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
 		public void RefreshPerson() {
-			var req = NewFabricRequest<FabApp>();
+			var req = NewFabricRequest<IFabApp, FabApp>();
 			SetupResponseStream(new FabApp());
 			req.Send(vContext);
 			vMockPerSess.Verify(x => x.RefreshTokenIfNecessary(), Times.Once());
@@ -300,7 +301,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		public void RefreshApp(string pBearer, bool pAppRefresh) {
 			vMockPerSess.SetupGet(x => x.BearerToken).Returns(pBearer);
 
-			var req = NewFabricRequest<FabApp>();
+			var req = NewFabricRequest<IFabApp, FabApp>();
 			SetupResponseStream(new FabApp());
 			req.Send(vContext);
 

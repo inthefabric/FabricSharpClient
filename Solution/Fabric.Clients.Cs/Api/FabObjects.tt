@@ -33,7 +33,7 @@ foreach ( FabSpecObject o in spec.Objects ) {
 		/// <summary>
 		///   <#= SpecBuilder.ToXmlDocSentence(p.Description) #>
 		/// </summary>
-		<#= type #> <#= p.Name #> { get; }
+		<#= type #> <#= p.Name #> { get; set; }
 		
 <#
 	}
