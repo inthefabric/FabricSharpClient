@@ -31,7 +31,7 @@ namespace Fabric.Clients.Cs.Session {
 			Config.LogInfo("Refreshing Person token...");
 
 			GetAccessToken(() => ClientOauth.AccessTokenRefresh
-				.Get(Config.AppOAuthRedirectUri, Config.AppSecret, RefreshToken));
+				.Get(Config.AppSecret, Config.AppOAuthRedirectUri, RefreshToken));
 			return true;
 		}
 
@@ -73,7 +73,7 @@ namespace Fabric.Clients.Cs.Session {
 			GrantCode = pRedirectRequest.QueryString["code"];
 
 			return GetAccessToken(() => ClientOauth.AccessTokenAuthCode
-				.Get(Config.AppOAuthRedirectUri, Config.AppSecret, GrantCode));
+				.Get(Config.AppSecret, GrantCode, Config.AppOAuthRedirectUri));
 		}
 
 	}

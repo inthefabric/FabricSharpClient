@@ -64,9 +64,10 @@ namespace Fabric.Clients.Cs.Web {
 			////
 
 			try {
-				IFabricHttpResponse wr = GetHttpWebResponse(pContext, fullPath);
 				pContext.Config.LogInfo("Request Path: "+Method+" "+Path);
 				pContext.Config.LogInfo("Request URL: "+fullPath);
+
+				IFabricHttpResponse wr = GetHttpWebResponse(pContext, fullPath);
 
 				string data = StreamToString(wr.GetResponseStream());
 				pContext.Config.LogDebug("Request Response: "+data);

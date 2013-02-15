@@ -63,8 +63,9 @@ namespace Fabric.Clients.Cs.Session {
 		/*--------------------------------------------------------------------------------------------*/
 		private FabOauthAccess GetDataProvAccess() {
 			lock ( vAccessLock ) {
-				return ClientOauth.AccessTokenClientDataProv.Get(Config.AppOAuthRedirectUri,
-					Config.AppSecret, Config.AppId+"", Config.AppDataProvPersonId+"");
+				return ClientOauth.AccessTokenClientDataProv.Get(
+					Config.AppId+"", Config.AppSecret, Config.AppDataProvPersonId+"",
+					Config.AppOAuthRedirectUri);
 			}
 		}
 

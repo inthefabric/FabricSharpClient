@@ -18,25 +18,15 @@ namespace Fabric.Clients.Cs.Mvc {
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-			FabricClientInit();
-		}
-
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		private static void FabricClientInit() {
-			var config = new FabricClientConfig(
-				"App2", //ConfigKey
-				"http://inthefabric.com/api", /* local testing: http://localhost:53109/ */
-				4, //AppId
-				"73602b8dc62541e39884312cd8b80090", //App Secret
-				2, //App DataProvider PersonId
-				"http://localhost:44444/OAuth/FabricRedirect",
+			var config = new FabricClientConfig("ClientTest", "http://localhost:9000", 1,
+				"abcdefghijklmnopqrstuvwxyZ012345", 1, "http://localhost:55555/OAuth/FabricRedirect",
 				FabricSessionContainerProvider);
 
 			FabricClient.InitOnce(config);
 		}
 
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		private static IFabricSessionContainer FabricSessionContainerProvider(string pConfigKey) {
 			string key = "Fabric_"+pConfigKey;
