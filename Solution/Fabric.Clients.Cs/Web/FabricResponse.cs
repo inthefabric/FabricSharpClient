@@ -6,7 +6,7 @@ namespace Fabric.Clients.Cs.Web {
 	internal class FabricResponse<T> {
 
 		public T Data { get; private set; }
-		public FabError Error { get; private set; }
+		public FabResponse RespError { get; private set; }
 		public FabOauthError OauthError { get; private set; }
 
 		
@@ -17,8 +17,8 @@ namespace Fabric.Clients.Cs.Web {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricResponse(FabError pError) {
-			Error = pError;
+		public FabricResponse(FabResponse pRespError) {
+			RespError = pRespError;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/

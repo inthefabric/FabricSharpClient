@@ -47,7 +47,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		protected void SetupMockAccessToken(IFabOauthAccess pResult, Action pCallback=null) {
+		protected void SetupMockAccessToken(FabOauthAccess pResult, Action pCallback=null) {
 			IReturnsResult<IOauthService> rr = MockOauth
 				.Setup(x => x.AccessTokenClientDataProv.Get(
 					Config.AppId+"",
@@ -67,10 +67,10 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
 		public void RequestAuthentication() {
-			IFabOauthAccess expectResult = NewFabOauthAccess();
+			FabOauthAccess expectResult = NewFabOauthAccess();
 			SetupMockAccessToken(expectResult);
 
-			IFabOauthAccess result = DpSess.RequestAuthentication();
+			FabOauthAccess result = DpSess.RequestAuthentication();
 
 			Assert.AreEqual(expectResult, result, "Incorrect result.");
 			CheckSessionProperties(expectResult);
@@ -91,7 +91,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		[Test]
 		public void RefreshTokenNotAuthenticated() {
 			DpSess.BearerToken = null;
-			IFabOauthAccess accessResult = NewFabOauthAccess();
+			FabOauthAccess accessResult = NewFabOauthAccess();
 			SetupMockAccessToken(accessResult);
 
 			bool result = DpSess.RefreshTokenIfNecessary();

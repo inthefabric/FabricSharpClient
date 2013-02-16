@@ -9,7 +9,7 @@ using ServiceStack.Text;
 namespace Fabric.Clients.Cs.Web {
 	
 	/*================================================================================================*/
-	internal class FabricRequest<T, TClass> where TClass : T {
+	internal class FabricRequest<T> {
 
 		public string Method { get; private set; }
 		public string Path { get; private set; }
@@ -41,10 +41,10 @@ namespace Fabric.Clients.Cs.Web {
 		public T Send(IClientContext pContext) {
 			FabricResponse<T> resp = GetFabricResponse(pContext);
 
-			if ( resp.Error != null ) {
-				pContext.Config.LogError("Request Exception: "+
-					resp.Error.Code+" / "+resp.Error.Name+" / "+resp.Error.Message);
-				throw new FabricErrorException(resp.Error);
+			if ( resp.RespError != null ) {
+				pContext.Config.LogError("Request Exception: "+resp.RespError.Error.Code+" / "+
+					resp.RespError.Error.Name+" / "+resp.RespError.Error.Message);
+				throw new FabricErrorException(resp.RespError);
 			}
 
 			if ( resp.OauthError != null ) {
@@ -71,7 +71,7 @@ namespace Fabric.Clients.Cs.Web {
 
 				string data = StreamToString(wr.GetResponseStream());
 				pContext.Config.LogDebug("Request Response: "+data);
-				return new FabricResponse<T>(JsonSerializer.DeserializeFromString<TClass>(data));
+				return new FabricResponse<T>(JsonSerializer.DeserializeFromString<T>(data));
 				/*return new FabricResponse<T>(
 					JsonSerializer.DeserializeFromStream<T>(wr.GetResponseStream()));*/
 			}
@@ -81,16 +81,24 @@ namespace Fabric.Clients.Cs.Web {
 				}
 
 				string data = StreamToString(we.Response.GetResponseStream());
-				bool isOauthErr = (data.Substring(0,9) == "{\"error\":");
-				pContext.Config.LogDebug("Request Error: "+data+" (IsOauthError="+isOauthErr+")");
+				bool isOauthErr = (data.Substring(0, 9) == "{\"error\":");
+				bool isRespErr = typeof(FabResponse).IsAssignableFrom(typeof(T));
+
+				pContext.Config.LogDebug("Request Error: "+data+
+					" (IsError="+isRespErr+", IsOauthError="+isOauthErr+")");
+
+				if ( isRespErr ) {
+					FabResponse respErr = JsonSerializer.DeserializeFromString<FabResponse>(data);
+					respErr.Error = JsonSerializer.DeserializeFromString<FabError>(respErr.Data);
+					return new FabricResponse<T>(respErr);
+				}
 
 				if ( isOauthErr ) {
 					FabOauthError oerr = JsonSerializer.DeserializeFromString<FabOauthError>(data);
 					return new FabricResponse<T>(oerr);
 				}
 
-				FabError err = JsonSerializer.DeserializeFromString<FabError>(data);
-				return new FabricResponse<T>(err);
+				throw;
 			}
 		}
 

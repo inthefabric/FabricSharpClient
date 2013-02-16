@@ -19,7 +19,7 @@ namespace Fabric.Clients.Cs.Session {
 		
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		IFabOauthAccess HandleGrantCodeRedirect(HttpRequestBase pRedirectRequest);
+		FabOauthAccess HandleGrantCodeRedirect(HttpRequestBase pRedirectRequest);
 
 	}
 

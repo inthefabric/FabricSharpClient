@@ -54,8 +54,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		internal IFabResponse<T> Execute<T>(ITraversalStep<T> pStep) where T : IFabObject {
-			return new FabricRequest<IFabResponse<T>, FabResponse<T>>("GET", vUri).Send(vContext);
+		internal FabResponse<T> Execute<T>(ITraversalStep<T> pStep) where T : FabObject {
+			return new FabricRequest<FabResponse<T>>("GET", vUri).Send(vContext);
 		}
 		
 	}

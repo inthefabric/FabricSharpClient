@@ -1,43 +1,23 @@
 using System;
-using System.Collections.Generic;
 
 namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
-	internal class TraversalStep<T> : TraversalStep, ITraversalStep<T> where T : IFabObject {
+	internal class TraversalStep<T> : TraversalStep, ITraversalStep<T> where T : FabObject {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		protected TraversalStep(Traversal pTrav) : base(pTrav) {}
 
-
 		/*--------------------------------------------------------------------------------------------*/
-		public Type GetReturnType() {
+		public Type GetDataType() {
 			return typeof(T);
 		}
 
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public IFabResponse<T> Get() {
+		public FabResponse<T> Get() {
 			return Trav.Execute(this);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public IList<T> GetList() {
-			return Get().Data;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public T GetSingle() {
-			IList<T> d = Get().Data;
-
-			if ( d == null || d.Count == 0 ) {
-				return default(T);
-			}
-
-			return d[0];
 		}
 		
 	}

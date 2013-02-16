@@ -24,7 +24,7 @@ foreach ( FabSpecObject o in spec.Objects ) {
 #>
 	/*================================================================================================*/
 	/// <summary />
-	public interface I<#= o.Name #>Step : ITraversalStep<I<#= o.Name #>><#= interfaces #> {
+	public interface I<#= o.Name #>Step : ITraversalStep<<#= o.Name #>><#= interfaces #> {
 	
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -53,7 +53,7 @@ foreach ( FabSpecObject o in spec.Objects ) {
 	
 
 	/*================================================================================================*/
-	internal class <#= o.Name #>Step : TraversalStep<I<#= o.Name #>>, I<#= o.Name #>Step {
+	internal class <#= o.Name #>Step : TraversalStep<<#= o.Name #>>, I<#= o.Name #>Step {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////

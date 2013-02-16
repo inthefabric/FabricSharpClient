@@ -75,9 +75,8 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private FabricRequest<T, TClass> NewFabricRequest<T, TClass>()
-													where T : IFabObject where TClass : FabObject, T {
-			return new FabricRequest<T, TClass>(vMoqHttpProv.Object, vMethod, vPath, vQuery, vPost);
+		private FabricRequest<T> NewFabricRequest<T>() {
+			return new FabricRequest<T>(vMoqHttpProv.Object, vMethod, vPath, vQuery, vPost);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -94,8 +93,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		
 		/*--------------------------------------------------------------------------------------------*/
 		private Stream GetStream<T>(T pObject) {
-			string json = JsonSerializer.SerializeToString(pObject, typeof(T));
-			byte[] byteArray = Encoding.ASCII.GetBytes(json);
+			byte[] byteArray = Encoding.ASCII.GetBytes(pObject.ToJson());
 			return new MemoryStream(byteArray);
 		}
 
@@ -104,7 +102,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
 		public void NewRequest() {
-			var req = NewFabricRequest<IFabApp, FabApp>();
+			var req = NewFabricRequest<FabApp>();
 
 			Assert.AreEqual(vMethod, req.Method, "Incorrect Method.");
 			Assert.AreEqual(vPath, req.Path, "Incorrect Path.");
@@ -117,11 +115,11 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
 		public void SendSuccess() {
-			var req = NewFabricRequest<IFabApp, FabApp>();
+			var req = NewFabricRequest<FabApp>();
 			var app = new FabApp { Name = "TestApp" };
 			SetupResponseStream(app);
 
-			IFabApp result = req.Send(vContext);
+			FabApp result = req.Send(vContext);
 
 			Assert.NotNull(result, "Result should be filled.");
 			Assert.AreEqual(app.Name, result.Name, "Incorrect result.");
@@ -134,7 +132,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 				.Setup(x => x.GetResponse(vHttpReq))
 				.Throws(new WebException("NoResponse"));
 
-			var req = NewFabricRequest<IFabApp, FabApp>();
+			var req = NewFabricRequest<FabApp>();
 
 			try {
 				req.Send(vContext);
@@ -144,55 +142,67 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		[TestCase(true)]
-		[TestCase(false)]
-		public void SendFabricErrorException(bool pFabError) {
-			Stream errStream;
-			FabError fe = null;
-			FabOauthError foe = null;
+		[Test]
+		public void SendFabricError() {
+			var fe = new FabError();
+			fe.Name = "Test";
+			fe.Message = "Desc";
+			fe.Code = 500;
 
-			if ( pFabError) {
-				fe = new FabError();
-				fe.Name = "Test";
-				fe.Message = "Desc";
-				fe.Code = 500;
-				errStream = GetStream(fe);
-			}
-			else {
-				foe = new FabOauthError();
-				foe.error = "Test";
-				foe.error_description = "Desc";
-				errStream = GetStream(foe);
-			}
+			var fr = new FabResponse();
+			fr.Data = fe.ToJson();
 
-			var wr = new TestWebResponse(errStream);
+			var wr = new TestWebResponse(GetStream(fr));
 			var we = new WebException("Error", null, WebExceptionStatus.UnknownError, wr);
 			
 			vMoqHttpProv
 				.Setup(x => x.GetResponse(vHttpReq))
 				.Throws(we);
 
-			var req = NewFabricRequest<IFabApp, FabApp>();
+			var req = NewFabricRequest<FabResponse<FabApp>>();
 
 			try {
 				req.Send(vContext);
 				Assert.Fail("WebException expected, but not thrown.");
 			}
 			catch ( FabricErrorException errEx ) {
-				if ( pFabError ) {
-					Assert.NotNull(errEx.Error, "Error should be filled.");
-					Assert.Null(errEx.OauthError, "OauthError should be null.");
-					Assert.AreEqual(fe.Name, errEx.Error.Name, "Incorrect Error.Name.");
-					Assert.AreEqual(fe.Message, errEx.Error.Message, "Incorrect Error.Message.");
-					Assert.AreEqual(fe.Code, errEx.Error.Code, "Incorrect Error.Code.");
-				}
-				else {
-					Assert.Null(errEx.Error, "Error should be null.");
-					Assert.NotNull(errEx.OauthError, "OauthError should be filled.");
-					Assert.AreEqual(foe.error, errEx.OauthError.error, "Incorrect OauthError.error.");
-					Assert.AreEqual(foe.error_description, errEx.OauthError.error_description,
-						"Incorrect OauthError.error_description.");
-				}
+				Assert.NotNull(errEx.RespError, "Error should be filled.");
+				Assert.Null(errEx.OauthError, "OauthError should be null.");
+				Assert.AreEqual(fe.Code, errEx.RespError.Error.Code, "Incorrect Error.Code.");
+				Assert.AreEqual(fe.Name, errEx.RespError.Error.Name, "Incorrect Error.Name.");
+				Assert.AreEqual(fe.Message, errEx.RespError.Error.Message, "Incorrect Error.Message.");
+			}
+			catch ( Exception e ) {
+				Assert.Fail("WebException expected: "+e);
+			}
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		[Test]
+		public void SendFabricOauthError() {
+			FabOauthError foe = new FabOauthError();
+			foe.error = "Test";
+			foe.error_description = "Desc";
+
+			var wr = new TestWebResponse(GetStream(foe));
+			var we = new WebException("Error", null, WebExceptionStatus.UnknownError, wr);
+
+			vMoqHttpProv
+				.Setup(x => x.GetResponse(vHttpReq))
+				.Throws(we);
+
+			var req = NewFabricRequest<FabOauthAccess>();
+
+			try {
+				req.Send(vContext);
+				Assert.Fail("WebException expected, but not thrown.");
+			}
+			catch ( FabricErrorException errEx ) {
+				Assert.Null(errEx.RespError, "Error should be null.");
+				Assert.NotNull(errEx.OauthError, "OauthError should be filled.");
+				Assert.AreEqual(foe.error, errEx.OauthError.error, "Incorrect OauthError.error.");
+				Assert.AreEqual(foe.error_description, errEx.OauthError.error_description,
+					"Incorrect OauthError.error_description.");
 			}
 			catch ( Exception e ) {
 				Assert.Fail("WebException expected: "+e);
@@ -213,7 +223,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 			var expect = vConfig.ApiPath+pPath;
 			if ( pQuery != null ) { expect += "?"+pQuery; }
 
-			var req = NewFabricRequest<IFabApp, FabApp>();
+			var req = NewFabricRequest<FabApp>();
 			SetupResponseStream(new FabApp());
 
 			req.Send(vContext);
@@ -228,7 +238,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 			vMethod = "POST";
 			vPost = pPost;
 
-			var req = NewFabricRequest<IFabApp, FabApp>();
+			var req = NewFabricRequest<FabApp>();
 			SetupResponseStream(new FabApp());
 			req.Send(vContext);
 
@@ -250,7 +260,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		public void MethodAccept(string pMethod) {
 			vMethod = pMethod;
 
-			var req = NewFabricRequest<IFabApp, FabApp>();
+			var req = NewFabricRequest<FabApp>();
 			SetupResponseStream(new FabApp());
 			req.Send(vContext);
 
@@ -270,7 +280,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 				vMockAppSess.SetupGet(x => x.BearerToken).Returns(pBearer);
 			}
 
-			var req = NewFabricRequest<IFabApp, FabApp>();
+			var req = NewFabricRequest<FabApp>();
 			SetupResponseStream(new FabApp());
 			req.Send(vContext);
 
@@ -289,7 +299,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
 		public void RefreshPerson() {
-			var req = NewFabricRequest<IFabApp, FabApp>();
+			var req = NewFabricRequest<FabApp>();
 			SetupResponseStream(new FabApp());
 			req.Send(vContext);
 			vMockPerSess.Verify(x => x.RefreshTokenIfNecessary(), Times.Once());
@@ -301,7 +311,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		public void RefreshApp(string pBearer, bool pAppRefresh) {
 			vMockPerSess.SetupGet(x => x.BearerToken).Returns(pBearer);
 
-			var req = NewFabricRequest<IFabApp, FabApp>();
+			var req = NewFabricRequest<FabApp>();
 			SetupResponseStream(new FabApp());
 			req.Send(vContext);
 

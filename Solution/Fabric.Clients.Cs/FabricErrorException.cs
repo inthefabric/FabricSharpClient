@@ -8,22 +8,24 @@ namespace Fabric.Clients.Cs {
 	public class FabricErrorException : Exception {
 
 		/// <summary />
-		public IFabError Error { get; private set; }
+		public FabResponse RespError { get; private set; }
 
 		/// <summary />
-		public IFabOauthError OauthError { get; private set; }
+		public FabOauthError OauthError { get; private set; }
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		public FabricErrorException(IFabError pError) : base(pError.Name) {
-			Error = pError;
+		public FabricErrorException(FabResponse pRespError) :
+				base(pRespError.Error.Name+" ("+pRespError.Error.Code+"): "+pRespError.Error.Message) {
+			RespError = pRespError;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		public FabricErrorException(IFabOauthError pOauthError) : base(pOauthError.error) {
+		public FabricErrorException(FabOauthError pOauthError) :
+										base(pOauthError.error+" / "+pOauthError.error_description) {
 			OauthError = pOauthError;
 		}
 

@@ -22,6 +22,11 @@ FabSpec spec = SpecBuilder.Spec;
 foreach ( FabSpecService s in spec.Services ) {
 	foreach ( FabSpecServiceOperation op in s.Operations ) {
 		string method = op.Method.Substring(0,1)+op.Method.Substring(1).ToLower();
+		string returns = op.ReturnType;
+
+		if ( s.ResponseWrapper != null ) {
+			returns = s.ResponseWrapper+"<"+returns+">";
+		}
 
 		string paramList = "";
 		string paramFill = "";
@@ -71,7 +76,7 @@ foreach ( FabSpecService s in spec.Services ) {
 		/// <summary>
 		///   Perform the operation.
 		/// </summary><#= paramComments #>
-		I<#= op.ReturnType #> <#= method #>(<#= paramList #>);
+		<#= returns #> <#= method #>(<#= paramList #>);
 
 	}
 	
@@ -96,15 +101,15 @@ foreach ( FabSpecService s in spec.Services ) {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<I<#= op.ReturnType #>, <#= op.ReturnType #>> Request(<#= paramList #>) {
-			return new FabricRequest<I<#= op.ReturnType #>, <#= op.ReturnType #>>("<#= op.Method #>", Uri, 
+		public FabricRequest<<#= returns #>> Request(<#= paramList #>) {
+			return new FabricRequest<<#= returns #>>("<#= op.Method #>", Uri, 
 				<#= query #>,
 				<#= form #>
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public I<#= op.ReturnType #> <#= method #>(<#= paramList #>) {
+		public <#= returns #> <#= method #>(<#= paramList #>) {
 			return Request(<#= paramFill #>).Send(vContext);
 		}
 

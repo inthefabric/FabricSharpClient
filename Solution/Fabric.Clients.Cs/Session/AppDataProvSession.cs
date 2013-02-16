@@ -25,7 +25,7 @@ namespace Fabric.Clients.Cs.Session {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public IFabOauthAccess RequestAuthentication() {
+		public FabOauthAccess RequestAuthentication() {
 			return GetAccessToken(GetDataProvAccess);
 		}
 
@@ -54,14 +54,14 @@ namespace Fabric.Clients.Cs.Session {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public override IFabOauthAccess HandleGrantCodeRedirect(HttpRequestBase pRedirectRequest) {
+		public override FabOauthAccess HandleGrantCodeRedirect(HttpRequestBase pRedirectRequest) {
 			throw new NotSupportedException("Not available for DataProvider.");
 		}
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private IFabOauthAccess GetDataProvAccess() {
+		private FabOauthAccess GetDataProvAccess() {
 			lock ( vAccessLock ) {
 				return ClientOauth.AccessTokenClientDataProv.Get(
 					Config.AppId+"", Config.AppSecret, Config.AppDataProvPersonId+"",

@@ -40,7 +40,6 @@ namespace Fabric.Clients.Cs.Mvc.Models {
 
 			PropertyInfo[] props = innerType.GetProperties();
 			PropertyInfo prop;
-			Object val;
 
 			html += "<table class='FabricDataGridTable"+
 				(pDepth > 0 ? " FabricDataGridTableInner" : "")+"'><tr>";
@@ -68,7 +67,7 @@ namespace Fabric.Clients.Cs.Mvc.Models {
 
 				foreach ( PropertyInfo t in props ) {
 					prop = t;
-					val = prop.GetValue(obj, null);
+					Object val = prop.GetValue(obj, null);
 
 					if ( val != null && hasSubObj(prop) ) {
 						IList<Object> subList = new List<Object>();

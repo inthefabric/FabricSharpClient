@@ -13,7 +13,7 @@ namespace Fabric.Clients.Cs.Session {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		IFabOauthAccess RequestAuthentication();
+		FabOauthAccess RequestAuthentication();
 
 	}
 

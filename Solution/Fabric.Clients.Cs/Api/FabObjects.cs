@@ -1,8 +1,10 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/15/2013 5:50:46 PM
+// Generated on 2/15/2013 7:39:06 PM
 
 namespace Fabric.Clients.Cs.Api {
+
+	// ReSharper disable InconsistentNaming
 
 	/*================================================================================================*/
 	/// <summary>
@@ -15,27 +17,18 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>Every App has a special 'Data Provider' Member, which is typically controlled by that App's administrator. The 'Data Provider' allows the App to interact with Fabric as itself (rather than on behalf of a particular User).</para>
 	///   <para>Every item added to Fabric is associated with (via Member) a User and and an App. Thus, Fabric can determine which App is responsible for any particular item, enforce applicable access rights, analyze the data for a particular App or Member, etc.</para>
 	/// </remarks>
-	public interface IFabApp : IFabArtifactOwnerNode {
+	public class FabApp : FabArtifactOwnerNode {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long AppId { get; set; }
+		public long AppId { get; set; }
 		
 		/// <summary>
 		///   A unique title or identifier.
 		/// </summary>
-		string Name { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabApp : FabArtifactOwnerNode, IFabApp {
-	
-		public long AppId { get; set; }
 		public string Name { get; set; }
-
+		
 	}
 
 	
@@ -49,33 +42,23 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>There are no restrictions on what an Artifact can represent.  Fabric encourages the generous use of Factors to identify and describe each new Artifact. Ideally, the Factor connections will distinguish an Artifact from all others.</para>
 	///   <para>Each Artifact is linked to exactly one ArtifactOwnerNode item, where the type of this item is specified by the ArtifactType.</para>
 	/// </remarks>
-	public interface IFabArtifact : IFabNode {
+	public class FabArtifact : FabNode {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long ArtifactId { get; set; }
+		public long ArtifactId { get; set; }
 		
 		/// <summary>
 		///   The date/time of creation.
 		/// </summary>
-		long Created { get; set; }
+		public long Created { get; set; }
 		
 		/// <summary>
 		///   Specifies the accessibility level.
 		/// </summary>
-		bool IsPrivate { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabArtifact : FabNode, IFabArtifact {
-	
-		public long ArtifactId { get; set; }
-		public long Created { get; set; }
 		public bool IsPrivate { get; set; }
-
+		
 	}
 
 	
@@ -86,15 +69,8 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>TODO</para>
 	/// </remarks>
-	public interface IFabArtifactOwnerNode : IFabNode {
+	public class FabArtifactOwnerNode : FabNode {
 	
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabArtifactOwnerNode : FabNode, IFabArtifactOwnerNode {
-	
-
 	}
 
 	
@@ -105,21 +81,13 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Describes the object type associated with a particular Artifact. Example types include: App, Class, Instance, etc.</para>
 	/// </remarks>
-	public interface IFabArtifactType : IFabNodeForType {
+	public class FabArtifactType : FabNodeForType {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long ArtifactTypeId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabArtifactType : FabNodeForType, IFabArtifactType {
-	
 		public long ArtifactTypeId { get; set; }
-
+		
 	}
 
 	
@@ -137,39 +105,28 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>Ellie's Class Example: Ellie is building an App for dog lovers, but there are not yet animal-related Classes for Ellie to use. She first creates broad Classes (like 'Animal', 'Mammal', and 'Canine') and relationships between them (like 'Canine is a Mammal').</para>
 	///   <para>She then creates narrower Classes for each dog grouping (like 'Working Dog') and breed (like 'Great Dane'), adding relevant relationships along the way. A Class named 'Boxer' already exists, but it has a sports-related meaning. She adds a new 'Boxer' Class with a 'Dog Breed' disambiguation value to resolve this conflict.</para>
 	/// </remarks>
-	public interface IFabClass : IFabArtifactOwnerNode {
+	public class FabClass : FabArtifactOwnerNode {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long ClassId { get; set; }
+		public long ClassId { get; set; }
 		
 		/// <summary>
 		///   A secondary label or identifier, used to resolve unique-name conflicts.
 		/// </summary>
-		string Disamb { get; set; }
+		public string Disamb { get; set; }
 		
 		/// <summary>
 		///   A descriptive name or title.
 		/// </summary>
-		string Name { get; set; }
+		public string Name { get; set; }
 		
 		/// <summary>
 		///   A summary of the Class's intended meaning or purpose.
 		/// </summary>
-		string Note { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabClass : FabArtifactOwnerNode, IFabClass {
-	
-		public long ClassId { get; set; }
-		public string Disamb { get; set; }
-		public string Name { get; set; }
 		public string Note { get; set; }
-
+		
 	}
 
 	
@@ -198,21 +155,13 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>Car A (more specifically, its) Headlight ... Is Similar To (more specifically, by) Shape ... Car B (more specifically, its) Headlight.</para>
 	///   <para>Descriptors are the only required Factor Element. If a Factor is completed without a Descriptor, Fabric automatically attaches one. The default Descriptor uses the 'Is Related To' DescriptorType with no refinements.</para>
 	/// </remarks>
-	public interface IFabDescriptor : IFabFactorElementNode {
+	public class FabDescriptor : FabFactorElementNode {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long DescriptorId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabDescriptor : FabFactorElementNode, IFabDescriptor {
-	
 		public long DescriptorId { get; set; }
-
+		
 	}
 
 	
@@ -223,21 +172,13 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Provides meaning (via Descriptor) to the relationship between the two Artifacts in a particular Factor. Example types include: Is A, Refers To, Sounds Like, etc.</para>
 	/// </remarks>
-	public interface IFabDescriptorType : IFabNodeForType {
+	public class FabDescriptorType : FabNodeForType {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long DescriptorTypeId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabDescriptorType : FabNodeForType, IFabDescriptorType {
-	
 		public long DescriptorTypeId { get; set; }
-
+		
 	}
 
 	
@@ -265,21 +206,13 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>Factor Phrase:</para>
 	///   <para>Song A ... Is Related To ... Song B.  (Performing the) Listen (action on) ... Song A ... (leads via) Suggested Path (toward) ... (performing the) Learn (action on) ... Singer B.</para>
 	/// </remarks>
-	public interface IFabDirector : IFabFactorElementNode {
+	public class FabDirector : FabFactorElementNode {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long DirectorId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabDirector : FabFactorElementNode, IFabDirector {
-	
 		public long DirectorId { get; set; }
-
+		
 	}
 
 	
@@ -290,21 +223,13 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Describes an action to be taken (via Director) on one of the two Artifacts in a particular Factor. Example actions include: Read, Learn, Obtain, etc.</para>
 	/// </remarks>
-	public interface IFabDirectorAction : IFabNodeForType {
+	public class FabDirectorAction : FabNodeForType {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long DirectorActionId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabDirectorAction : FabNodeForType, IFabDirectorAction {
-	
 		public long DirectorActionId { get; set; }
-
+		
 	}
 
 	
@@ -315,21 +240,13 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Provides meaning (via Director) to the directional connection between the two Artifacts in a particular Factor. Example types include: Hyperlink, Suggested Path, Defined Path, etc.</para>
 	/// </remarks>
-	public interface IFabDirectorType : IFabNodeForType {
+	public class FabDirectorType : FabNodeForType {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long DirectorTypeId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabDirectorType : FabNodeForType, IFabDirectorType {
-	
 		public long DirectorTypeId { get; set; }
-
+		
 	}
 
 	
@@ -340,33 +257,23 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>When a fault or error occurs, a FabError is returned in place of the expected response data. The information it provides should help determine what caused the issue for the given request.</para>
 	/// </remarks>
-	public interface IFabError : IFabObject {
+	public class FabError : FabObject {
 	
 		/// <summary>
 		///   A numeric value which identifies the specific error type.
 		/// </summary>
-		int Code { get; set; }
+		public int Code { get; set; }
 		
 		/// <summary>
 		///   A sentence or paragraph providing details about the error.
 		/// </summary>
-		string Message { get; set; }
+		public string Message { get; set; }
 		
 		/// <summary>
 		///   A descriptive name that is associated with the error code.
 		/// </summary>
-		string Name { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabError : FabObject, IFabError {
-	
-		public int Code { get; set; }
-		public string Message { get; set; }
 		public string Name { get; set; }
-
+		
 	}
 
 	
@@ -395,27 +302,18 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>Person A ... Participates In (more specifically, by) Attend(ing) ... College B, ... (an event which) Is Expected (to occur) ... (in the) Year ... 2024.</para>
 	///   <para>Note: every Factor recieves a timestamp upon creation. This timestamp is not related to the Eventor.</para>
 	/// </remarks>
-	public interface IFabEventor : IFabFactorElementNode {
+	public class FabEventor : FabFactorElementNode {
 	
 		/// <summary>
 		///   A particular point in time, with a level of accuracy defined by EventorPrecision.
 		/// </summary>
-		long DateTime { get; set; }
+		public long DateTime { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long EventorId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabEventor : FabFactorElementNode, IFabEventor {
-	
-		public long DateTime { get; set; }
 		public long EventorId { get; set; }
-
+		
 	}
 
 	
@@ -426,21 +324,13 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Describes the level of date/time precision (via Eventor) given to a particular Factor. Example precisions include: Year, Day, Second, etc.</para>
 	/// </remarks>
-	public interface IFabEventorPrecision : IFabNodeForType {
+	public class FabEventorPrecision : FabNodeForType {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long EventorPrecisionId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabEventorPrecision : FabNodeForType, IFabEventorPrecision {
-	
 		public long EventorPrecisionId { get; set; }
-
+		
 	}
 
 	
@@ -451,21 +341,13 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Provides temporal significance (via Eventor) for a particular Factor.  Example types include: Start, Occur, Expected, etc.</para>
 	/// </remarks>
-	public interface IFabEventorType : IFabNodeForType {
+	public class FabEventorType : FabNodeForType {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long EventorTypeId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabEventorType : FabNodeForType, IFabEventorType {
-	
 		public long EventorTypeId { get; set; }
-
+		
 	}
 
 	
@@ -480,45 +362,33 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>Just as there are no restrictions on what a particular Artifact can represent, there are no restrictions on the type of meaning or information a Factors can provide. The FactorAssertionKey allows a Factor to specify that it represents (among other things) a fact or an opinion. This level of confidence for a particular Factor allows Users and Apps to more effectively find the type of information they desire.</para>
 	///   <para>Each Factor has a trio of boolean states. IsComplete states whether the Factor is completed or still under construction. IsDefining states whether the Factor is a vital piece of data, which could be useful in uniquely identifying the primary Artifact. IsPublic states whether the Factor is public (available to all Apps and Users) or not. Non-public Factors are primarily accessible to the App responsible for creating it, but may be accessible by other Apps which have certain access rights.</para>
 	/// </remarks>
-	public interface IFabFactor : IFabNode {
+	public class FabFactor : FabNode {
 	
 		/// <summary>
 		///   The date/time of completion.
 		/// </summary>
-		long? Completed { get; set; }
+		public long? Completed { get; set; }
 		
 		/// <summary>
 		///   The date/time of creation.
 		/// </summary>
-		long Created { get; set; }
+		public long Created { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long FactorId { get; set; }
+		public long FactorId { get; set; }
 		
 		/// <summary>
 		///   Specifies whether this Factor helps to uniquely define the primary Artifact.
 		/// </summary>
-		bool IsDefining { get; set; }
+		public bool IsDefining { get; set; }
 		
 		/// <summary>
 		///   A summary of the Factor's intended meaning or purpose.
 		/// </summary>
-		string Note { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabFactor : FabNode, IFabFactor {
-	
-		public long? Completed { get; set; }
-		public long Created { get; set; }
-		public long FactorId { get; set; }
-		public bool IsDefining { get; set; }
 		public string Note { get; set; }
-
+		
 	}
 
 	
@@ -529,21 +399,25 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Describes the type of information (and/or level of confidence) provided by a particular Factor. Example assertions include: Fact, Opinion, Guess, etc.</para>
 	/// </remarks>
-	public interface IFabFactorAssertion : IFabNodeForType {
+	public class FabFactorAssertion : FabNodeForType {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long FactorAssertionId { get; set; }
+		public long FactorAssertionId { get; set; }
 		
 	}
-	
+
 	
 	/*================================================================================================*/
-	internal class FabFactorAssertion : FabNodeForType, IFabFactorAssertion {
+	/// <summary>
+	///   TODO
+	/// </summary>
+	/// <remarks>
+	///   <para>TODO</para>
+	/// </remarks>
+	public class FabFactorElementNode : FabNode {
 	
-		public long FactorAssertionId { get; set; }
-
 	}
 
 	
@@ -554,40 +428,13 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>TODO</para>
 	/// </remarks>
-	public interface IFabFactorElementNode : IFabNode {
-	
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabFactorElementNode : FabNode, IFabFactorElementNode {
-	
-
-	}
-
-	
-	/*================================================================================================*/
-	/// <summary>
-	///   TODO
-	/// </summary>
-	/// <remarks>
-	///   <para>TODO</para>
-	/// </remarks>
-	public interface IFabHome : IFabObject {
+	public class FabHome : FabObject {
 	
 		/// <summary>
 		///   TODO
 		/// </summary>
-		IFabService[] Services { get; set; }
+		public FabService[] Services { get; set; }
 		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabHome : FabObject, IFabHome {
-	
-		public IFabService[] Services { get; set; }
-
 	}
 
 	
@@ -622,27 +469,18 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>Factor Phrase:</para>
 	///   <para>Game A ... Is Found In ... Store B, ... (identified by the) Key ... '123a-45678'.</para>
 	/// </remarks>
-	public interface IFabIdentor : IFabFactorElementNode {
+	public class FabIdentor : FabFactorElementNode {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long IdentorId { get; set; }
+		public long IdentorId { get; set; }
 		
 		/// <summary>
 		///   A text-based value that can represent names, numbers, IDs, GUIDs, etc.
 		/// </summary>
-		string Value { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabIdentor : FabFactorElementNode, IFabIdentor {
-	
-		public long IdentorId { get; set; }
 		public string Value { get; set; }
-
+		
 	}
 
 	
@@ -653,21 +491,13 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Provides a hint about the text (via Identor) that identifies a particular Factor. Example types include: Text, Key, etc.</para>
 	/// </remarks>
-	public interface IFabIdentorType : IFabNodeForType {
+	public class FabIdentorType : FabNodeForType {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long IdentorTypeId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabIdentorType : FabNodeForType, IFabIdentorType {
-	
 		public long IdentorTypeId { get; set; }
-
+		
 	}
 
 	
@@ -686,39 +516,28 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>After completing her new Classes, Ellie would like to add her own dog. She creates an Instance named 'Gulliver', and attaches several Factors to make the Instance as unique as possible. Her Factors define that Gulliver is a Lhasa Apso breed, is owned by Ellie, and was born in September 2007. Zach's Instance Example: Zach built an App that allows users to rate restaurants and individual meals. He created Classes for restaurant chains and meal types. He also created Instances for specific restaurants (with relevant relationships for each).</para>
 	///   <para>When Users rate a particular meal, they also specify the restaurant, the day/time the meal was served, and the meal type. Behind the scenes, the App uses this data to construct a new Instance and its relationships. Because Zach's Instances are well-defined, one User could rate the same meal (at the same restaurant) every day, creating a unique and meaningful Instance each time.</para>
 	/// </remarks>
-	public interface IFabInstance : IFabArtifactOwnerNode {
+	public class FabInstance : FabArtifactOwnerNode {
 	
 		/// <summary>
 		///   A secondary label or identifier, used to resolve unique-name conflicts.
 		/// </summary>
-		string Disamb { get; set; }
+		public string Disamb { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long InstanceId { get; set; }
+		public long InstanceId { get; set; }
 		
 		/// <summary>
 		///   A descriptive name or title.
 		/// </summary>
-		string Name { get; set; }
+		public string Name { get; set; }
 		
 		/// <summary>
 		///   A summary of the Instance's intended meaning or purpose.
 		/// </summary>
-		string Note { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabInstance : FabArtifactOwnerNode, IFabInstance {
-	
-		public string Disamb { get; set; }
-		public long InstanceId { get; set; }
-		public string Name { get; set; }
 		public string Note { get; set; }
-
+		
 	}
 
 	
@@ -758,39 +577,28 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>Factor Phrase:</para>
 	///   <para>Photo A ... Refers To ... Person B, ... (at a) Relative 2D (location of) ... X (width) = '0.84' ... Y (height) = '0.25'.</para>
 	/// </remarks>
-	public interface IFabLocator : IFabFactorElementNode {
+	public class FabLocator : FabFactorElementNode {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long LocatorId { get; set; }
+		public long LocatorId { get; set; }
 		
 		/// <summary>
 		///   A value representing longitude, time/progress, width, or a particular three-dimensional axis.
 		/// </summary>
-		double ValueX { get; set; }
+		public double ValueX { get; set; }
 		
 		/// <summary>
 		///   A value representing latitude, height, or a particular three-dimensional axis.
 		/// </summary>
-		double ValueY { get; set; }
+		public double ValueY { get; set; }
 		
 		/// <summary>
 		///   A value representing elevation or a particular three-dimensional axis.
 		/// </summary>
-		double ValueZ { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabLocator : FabFactorElementNode, IFabLocator {
-	
-		public long LocatorId { get; set; }
-		public double ValueX { get; set; }
-		public double ValueY { get; set; }
 		public double ValueZ { get; set; }
-
+		
 	}
 
 	
@@ -801,57 +609,43 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Provides spatial context and boundaries (via Locator) for a particular Factor. Example types include: Earth Coordinate, Mars Coordinate, Relative 3D Position, etc.</para>
 	/// </remarks>
-	public interface IFabLocatorType : IFabNodeForType {
+	public class FabLocatorType : FabNodeForType {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long LocatorTypeId { get; set; }
+		public long LocatorTypeId { get; set; }
 		
 		/// <summary>
 		///   The maximum Locator X-coordinate value.
 		/// </summary>
-		double MaxX { get; set; }
+		public double MaxX { get; set; }
 		
 		/// <summary>
 		///   The maximum Locator Y-coordinate value.
 		/// </summary>
-		double MaxY { get; set; }
+		public double MaxY { get; set; }
 		
 		/// <summary>
 		///   The maximum Locator Z-coordinate value.
 		/// </summary>
-		double MaxZ { get; set; }
+		public double MaxZ { get; set; }
 		
 		/// <summary>
 		///   The minimum Locator X-coordinate value.
 		/// </summary>
-		double MinX { get; set; }
+		public double MinX { get; set; }
 		
 		/// <summary>
 		///   The minimum Locator Y-coordinate value.
 		/// </summary>
-		double MinY { get; set; }
+		public double MinY { get; set; }
 		
 		/// <summary>
 		///   The minimum Locator Z-coordinate value.
 		/// </summary>
-		double MinZ { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabLocatorType : FabNodeForType, IFabLocatorType {
-	
-		public long LocatorTypeId { get; set; }
-		public double MaxX { get; set; }
-		public double MaxY { get; set; }
-		public double MaxZ { get; set; }
-		public double MinX { get; set; }
-		public double MinY { get; set; }
 		public double MinZ { get; set; }
-
+		
 	}
 
 	
@@ -863,21 +657,13 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>An association between a User and an App. The App administrator(s) can grant various access privileges to a Member by adjusting its MemberType.</para>
 	///   <para>Every item added to Fabric is associated with a particular Member. Thus, Fabric can determine which App or User is responsible for any particular item, enforce applicable access rights, analyze the data for a particular App and/or User, etc.</para>
 	/// </remarks>
-	public interface IFabMember : IFabNode {
+	public class FabMember : FabNode {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long MemberId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabMember : FabNode, IFabMember {
-	
 		public long MemberId { get; set; }
-
+		
 	}
 
 	
@@ -888,21 +674,13 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Describes the level of access and control given to a particular Member.  Example types include: Member, Admin, Data Provider, etc.</para>
 	/// </remarks>
-	public interface IFabMemberType : IFabNodeForType {
+	public class FabMemberType : FabNodeForType {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long MemberTypeId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabMemberType : FabNodeForType, IFabMemberType {
-	
 		public long MemberTypeId { get; set; }
-
+		
 	}
 
 	
@@ -913,21 +691,13 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>TODO</para>
 	/// </remarks>
-	public interface IFabMemberTypeAssign : IFabNodeForAction {
+	public class FabMemberTypeAssign : FabNodeForAction {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long MemberTypeAssignId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabMemberTypeAssign : FabNodeForAction, IFabMemberTypeAssign {
-	
 		public long MemberTypeAssignId { get; set; }
-
+		
 	}
 
 	
@@ -938,21 +708,13 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>TODO</para>
 	/// </remarks>
-	public interface IFabNode : IFabObject {
+	public class FabNode : FabObject {
 	
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string Uri { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabNode : FabObject, IFabNode {
-	
 		public string Uri { get; set; }
-
+		
 	}
 
 	
@@ -963,27 +725,18 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>TODO</para>
 	/// </remarks>
-	public interface IFabNodeForAction : IFabNode {
+	public class FabNodeForAction : FabNode {
 	
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string Note { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		long Performed { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabNodeForAction : FabNode, IFabNodeForAction {
-	
 		public string Note { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public long Performed { get; set; }
-
+		
 	}
 
 	
@@ -994,27 +747,18 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>TODO</para>
 	/// </remarks>
-	public interface IFabNodeForType : IFabNode {
+	public class FabNodeForType : FabNode {
 	
 		/// <summary>
 		///   A summary of this object's intended meaning or purpose.
 		/// </summary>
-		string Description { get; set; }
+		public string Description { get; set; }
 		
 		/// <summary>
 		///   A descriptive name or title.
 		/// </summary>
-		string Name { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabNodeForType : FabNode, IFabNodeForType {
-	
-		public string Description { get; set; }
 		public string Name { get; set; }
-
+		
 	}
 
 	
@@ -1025,39 +769,28 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Provides an OAuth access token and other related information. Every Fabric API request requires an access token. To include an OAuth access token with a FabricAPI request, add an "Authorization" header to the HTTP request with a value of "Bearer=[your OAuth access code here]".</para>
 	/// </remarks>
-	public interface IFabOauthAccess : IFabObject {
+	public class FabOauthAccess : FabObject {
 	
 		/// <summary>
 		///   A code that maps to various authentication information.
 		/// </summary>
-		string access_token { get; set; }
+		public string access_token { get; set; }
 		
 		/// <summary>
 		///   The number of seconds until the access token expires.
 		/// </summary>
-		int expires_in { get; set; }
+		public int expires_in { get; set; }
 		
 		/// <summary>
 		///   A code that refreshes the authentication session for an expired OAuth access token.
 		/// </summary>
-		string refresh_token { get; set; }
+		public string refresh_token { get; set; }
 		
 		/// <summary>
 		///   For the current Fabric OAuth implementation, this value is always equal to "bearer".
 		/// </summary>
-		string token_type { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabOauthAccess : FabObject, IFabOauthAccess {
-	
-		public string access_token { get; set; }
-		public int expires_in { get; set; }
-		public string refresh_token { get; set; }
 		public string token_type { get; set; }
-
+		
 	}
 
 	
@@ -1068,27 +801,18 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>To comply with the OAuth 2.0 specification, all Fabric OAuth requests return a FabOauthError (instead of FabFault or FabError) when errors occur.</para>
 	/// </remarks>
-	public interface IFabOauthError : IFabObject {
+	public class FabOauthError : FabObject {
 	
 		/// <summary>
 		///   An error code as defined by the OAuth 2.0 specification.
 		/// </summary>
-		string error { get; set; }
+		public string error { get; set; }
 		
 		/// <summary>
 		///   Provides specific details about the error.
 		/// </summary>
-		string error_description { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabOauthError : FabObject, IFabOauthError {
-	
-		public string error { get; set; }
 		public string error_description { get; set; }
-
+		
 	}
 
 	
@@ -1100,39 +824,28 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>This object is unique -- the API never returns this object directly. Instead, the properties shown below are included as query-string parameters for a redirect URI. This URI is provided by an App, and the App is responsible for accepting (and reacting to) the incoming redirect.</para>
 	///   <para>This redirect is used in one particular scenario: the OAuth login process. After the user completes this process, Fabric performs a redirect with success or failure information.  The success redirect includes the 'code' and 'state' parameters. The failure redirect includes the 'error', 'error_description', and 'state' parameters.</para>
 	/// </remarks>
-	public interface IFabOauthLogin : IFabObject {
+	public class FabOauthLogin : FabObject {
 	
 		/// <summary>
 		///   Use this code (also called the 'authorization code') to generate a new OAuth access token.
 		/// </summary>
-		string code { get; set; }
+		public string code { get; set; }
 		
 		/// <summary>
 		///   An error code as defined by the OAuth 2.0 specification.
 		/// </summary>
-		string error { get; set; }
+		public string error { get; set; }
 		
 		/// <summary>
 		///   Provides specific details about the error.
 		/// </summary>
-		string error_description { get; set; }
+		public string error_description { get; set; }
 		
 		/// <summary>
 		///   Returns the 'state' value that the App provided in the original Oauth request.
 		/// </summary>
-		string state { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabOauthLogin : FabObject, IFabOauthLogin {
-	
-		public string code { get; set; }
-		public string error { get; set; }
-		public string error_description { get; set; }
 		public string state { get; set; }
-
+		
 	}
 
 	
@@ -1143,27 +856,18 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>The result of an OAuth logout.</para>
 	/// </remarks>
-	public interface IFabOauthLogout : IFabObject {
+	public class FabOauthLogout : FabObject {
 	
 		/// <summary>
 		///   Identifies a particular OAuth session.
 		/// </summary>
-		string access_token { get; set; }
+		public string access_token { get; set; }
 		
 		/// <summary>
 		///   Describes the result of the logout attempt.
 		/// </summary>
-		int success { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabOauthLogout : FabObject, IFabOauthLogout {
-	
-		public string access_token { get; set; }
 		public int success { get; set; }
-
+		
 	}
 
 	
@@ -1174,21 +878,13 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>The base class for all Objects returned by Fabric's services.</para>
 	/// </remarks>
-	public interface IFabObject {
+	public class FabObject {
 	
 		/// <summary>
 		///   The data type of this object.
 		/// </summary>
-		string FabType { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabObject : IFabObject {
-	
 		public string FabType { get; set; }
-
+		
 	}
 
 	
@@ -1199,111 +895,88 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>The API response wrapper; contains the Data payload and other metadata.</para>
 	/// </remarks>
-	public interface IFabResponse {
+	public partial class FabResponse {
 	
 		/// <summary>
 		///   TODO
 		/// </summary>
-		long AppId { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		string BaseUri { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		int Count { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		string Data { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		int DataLen { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		int DbMs { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		string[] Functions { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		bool HasMore { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		int HttpStatus { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		bool IsError { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		IFabStepLink[] Links { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		string RequestUri { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		long StartIndex { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		long Timestamp { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		int TotalMs { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		long UserId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabResponse : IFabResponse {
-	
 		public long AppId { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public string BaseUri { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public int Count { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public virtual string Data { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public int DataLen { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public int DbMs { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public string[] Functions { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public bool HasMore { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public int HttpStatus { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public bool IsError { get; set; }
-		public IFabStepLink[] Links { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public FabStepLink[] Links { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public string RequestUri { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public long StartIndex { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public long Timestamp { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public int TotalMs { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public long UserId { get; set; }
-
+		
 	}
 
 	
@@ -1314,21 +987,13 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Represents the root, or starting point, of all Traversal Service queries. The Root provides traversal links to all other available objects.</para>
 	/// </remarks>
-	public interface IFabRoot : IFabNode {
+	public class FabRoot : FabNode {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		int RootId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabRoot : FabNode, IFabRoot {
-	
 		public int RootId { get; set; }
-
+		
 	}
 
 	
@@ -1339,33 +1004,23 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>A collection of similar ServiceOperations which all share a similar purpose.</para>
 	/// </remarks>
-	public interface IFabService : IFabObject {
+	public class FabService : FabObject {
 	
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string Name { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		IFabServiceOperation[] Operations { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		string Uri { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabService : FabObject, IFabService {
-	
 		public string Name { get; set; }
-		public IFabServiceOperation[] Operations { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public FabServiceOperation[] Operations { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public string Uri { get; set; }
-
+		
 	}
 
 	
@@ -1376,39 +1031,28 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>A task, query, or operation that belongs to a Service.</para>
 	/// </remarks>
-	public interface IFabServiceOperation : IFabObject {
+	public class FabServiceOperation : FabObject {
 	
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string Method { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		string Name { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		string ReturnType { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		string Uri { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabServiceOperation : FabObject, IFabServiceOperation {
-	
 		public string Method { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public string Name { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public string ReturnType { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public string Uri { get; set; }
-
+		
 	}
 
 	
@@ -1419,33 +1063,23 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   
 	/// </remarks>
-	public interface IFabSpec : IFabObject {
+	public class FabSpec : FabObject {
 	
 		/// <summary>
 		///   
 		/// </summary>
-		string ApiVersion { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		IFabSpecObject[] Objects { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		IFabSpecService[] Services { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabSpec : FabObject, IFabSpec {
-	
 		public string ApiVersion { get; set; }
-		public IFabSpecObject[] Objects { get; set; }
-		public IFabSpecService[] Services { get; set; }
-
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public FabSpecObject[] Objects { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public FabSpecService[] Services { get; set; }
+		
 	}
 
 	
@@ -1456,51 +1090,38 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   
 	/// </remarks>
-	public interface IFabSpecObject : IFabObject {
+	public class FabSpecObject : FabObject {
 	
 		/// <summary>
 		///   
 		/// </summary>
-		string Description { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string Extends { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string Name { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		IFabSpecObjectProp[] Properties { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string[] TraversalFunctions { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		IFabSpecTravLink[] TraversalLinks { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabSpecObject : FabObject, IFabSpecObject {
-	
 		public string Description { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string Extends { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string Name { get; set; }
-		public IFabSpecObjectProp[] Properties { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public FabSpecObjectProp[] Properties { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string[] TraversalFunctions { get; set; }
-		public IFabSpecTravLink[] TraversalLinks { get; set; }
-
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public FabSpecTravLink[] TraversalLinks { get; set; }
+		
 	}
 
 	
@@ -1511,45 +1132,33 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   
 	/// </remarks>
-	public interface IFabSpecObjectProp : IFabSpecValue {
+	public class FabSpecObjectProp : FabSpecValue {
 	
 		/// <summary>
 		///   
 		/// </summary>
-		bool? IsCaseInsensitive { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		bool? IsNullable { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		bool? IsPrimaryKey { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		bool? IsTimestamp { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		bool? IsUnique { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabSpecObjectProp : FabSpecValue, IFabSpecObjectProp {
-	
 		public bool? IsCaseInsensitive { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public bool? IsNullable { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public bool? IsPrimaryKey { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public bool? IsTimestamp { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public bool? IsUnique { get; set; }
-
+		
 	}
 
 	
@@ -1560,57 +1169,43 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   
 	/// </remarks>
-	public interface IFabSpecService : IFabObject {
+	public class FabSpecService : FabObject {
 	
 		/// <summary>
 		///   
 		/// </summary>
-		string Abstract { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string Description { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string Name { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		IFabSpecServiceOperation[] Operations { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string ResponseWrapper { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		IFabSpecTravFunc[] TraversalFunctions { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string Uri { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabSpecService : FabObject, IFabSpecService {
-	
 		public string Abstract { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string Description { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string Name { get; set; }
-		public IFabSpecServiceOperation[] Operations { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public FabSpecServiceOperation[] Operations { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string ResponseWrapper { get; set; }
-		public IFabSpecTravFunc[] TraversalFunctions { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public FabSpecTravFunc[] TraversalFunctions { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string Uri { get; set; }
-
+		
 	}
 
 	
@@ -1621,63 +1216,48 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   
 	/// </remarks>
-	public interface IFabSpecServiceOperation : IFabObject {
+	public class FabSpecServiceOperation : FabObject {
 	
 		/// <summary>
 		///   
 		/// </summary>
-		string AuthMemberOwns { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string Description { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string Method { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string Name { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		IFabSpecServiceOperationParam[] Parameters { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string RequiredAuth { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string ReturnType { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string Uri { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabSpecServiceOperation : FabObject, IFabSpecServiceOperation {
-	
 		public string AuthMemberOwns { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string Description { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string Method { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string Name { get; set; }
-		public IFabSpecServiceOperationParam[] Parameters { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public FabSpecServiceOperationParam[] Parameters { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string RequiredAuth { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string ReturnType { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string Uri { get; set; }
-
+		
 	}
 
 	
@@ -1688,21 +1268,13 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   
 	/// </remarks>
-	public interface IFabSpecServiceOperationParam : IFabSpecValue {
+	public class FabSpecServiceOperationParam : FabSpecValue {
 	
 		/// <summary>
 		///   
 		/// </summary>
-		string ParamType { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabSpecServiceOperationParam : FabSpecValue, IFabSpecServiceOperationParam {
-	
 		public string ParamType { get; set; }
-
+		
 	}
 
 	
@@ -1713,39 +1285,28 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   
 	/// </remarks>
-	public interface IFabSpecTravFunc : IFabObject {
+	public class FabSpecTravFunc : FabObject {
 	
 		/// <summary>
 		///   
 		/// </summary>
-		string Description { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string Name { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		IFabSpecTravFuncParam[] Parameters { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string Uri { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabSpecTravFunc : FabObject, IFabSpecTravFunc {
-	
 		public string Description { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string Name { get; set; }
-		public IFabSpecTravFuncParam[] Parameters { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public FabSpecTravFuncParam[] Parameters { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string Uri { get; set; }
-
+		
 	}
 
 	
@@ -1756,21 +1317,13 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   
 	/// </remarks>
-	public interface IFabSpecTravFuncParam : IFabSpecValue {
+	public class FabSpecTravFuncParam : FabSpecValue {
 	
 		/// <summary>
 		///   
 		/// </summary>
-		int Index { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabSpecTravFuncParam : FabSpecValue, IFabSpecTravFuncParam {
-	
 		public int Index { get; set; }
-
+		
 	}
 
 	
@@ -1781,69 +1334,53 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   
 	/// </remarks>
-	public interface IFabSpecTravLink : IFabObject {
+	public class FabSpecTravLink : FabObject {
 	
 		/// <summary>
 		///   
 		/// </summary>
-		string Description { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string From { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string FromConn { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		bool IsOutgoing { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string Name { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string Relation { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string To { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string ToConn { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string Type { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabSpecTravLink : FabObject, IFabSpecTravLink {
-	
 		public string Description { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string From { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string FromConn { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public bool IsOutgoing { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string Name { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string Relation { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string To { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string ToConn { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string Type { get; set; }
-
+		
 	}
 
 	
@@ -1854,75 +1391,58 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   
 	/// </remarks>
-	public interface IFabSpecValue : IFabObject {
+	public class FabSpecValue : FabObject {
 	
 		/// <summary>
 		///   
 		/// </summary>
-		string Description { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		bool? IsOptional { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		int? Len { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		int? LenMax { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		int? LenMin { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		int? Max { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		int? Min { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string Name { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string Type { get; set; }
-		
-		/// <summary>
-		///   
-		/// </summary>
-		string ValidRegex { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabSpecValue : FabObject, IFabSpecValue {
-	
 		public string Description { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public bool? IsOptional { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public int? Len { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public int? LenMax { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public int? LenMin { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public int? Max { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public int? Min { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string Name { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string Type { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
 		public string ValidRegex { get; set; }
-
+		
 	}
 
 	
@@ -1933,39 +1453,28 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>TODO</para>
 	/// </remarks>
-	public interface IFabStepLink : IFabObject {
+	public class FabStepLink : FabObject {
 	
 		/// <summary>
 		///   TODO
 		/// </summary>
-		string Class { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		bool IsOut { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		string Rel { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		string Uri { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabStepLink : FabObject, IFabStepLink {
-	
 		public string Class { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public bool IsOut { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public string Rel { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public string Uri { get; set; }
-
+		
 	}
 
 	
@@ -1980,33 +1489,23 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>- The Url (via its Artifact) should only receive Factors related to the actual web page, its design, etc.</para>
 	///   <para>- Every Url that displays this particular news article can refer the same news article Instance.</para>
 	/// </remarks>
-	public interface IFabUrl : IFabArtifactOwnerNode {
+	public class FabUrl : FabArtifactOwnerNode {
 	
 		/// <summary>
 		///   A unique, valid absolute URL.
 		/// </summary>
-		string AbsoluteUrl { get; set; }
+		public string AbsoluteUrl { get; set; }
 		
 		/// <summary>
 		///   A descriptive name or title.
 		/// </summary>
-		string Name { get; set; }
+		public string Name { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long UrlId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabUrl : FabArtifactOwnerNode, IFabUrl {
-	
-		public string AbsoluteUrl { get; set; }
-		public string Name { get; set; }
 		public long UrlId { get; set; }
-
+		
 	}
 
 	
@@ -2019,27 +1518,18 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>Users control their private account data and preferences using the Fabric website.</para>
 	///   <para>Every item added to Fabric is associated with (via Member) a User and and an App. Thus, Fabric can determine which User is responsible for any particular item, enforce applicable access rights, analyze the data for a particular User or Member, etc.</para>
 	/// </remarks>
-	public interface IFabUser : IFabArtifactOwnerNode {
+	public class FabUser : FabArtifactOwnerNode {
 	
 		/// <summary>
 		///   A unique username.
 		/// </summary>
-		string Name { get; set; }
+		public string Name { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long UserId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabUser : FabArtifactOwnerNode, IFabUser {
-	
-		public string Name { get; set; }
 		public long UserId { get; set; }
-
+		
 	}
 
 	
@@ -2075,27 +1565,18 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>Factor Phrase:</para>
 	///   <para>Article A ... Refers To ... Person B, ... (which, along the) Fairness (axis) ... (with a) Opposable Favorabillity (numerical range), ... (has a value) '-80'.</para>
 	/// </remarks>
-	public interface IFabVector : IFabFactorElementNode {
+	public class FabVector : FabFactorElementNode {
 	
 		/// <summary>
 		///   An integral value which is to be plotted along the specified axis.
 		/// </summary>
-		long Value { get; set; }
+		public long Value { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long VectorId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabVector : FabFactorElementNode, IFabVector {
-	
-		public long Value { get; set; }
 		public long VectorId { get; set; }
-
+		
 	}
 
 	
@@ -2106,21 +1587,13 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Provides meaning (using relatively-positioned points/labels) across the numerical range of a particular VectorType. Example ranges include: Negative Numeric, Full Agreement, Positive Favorability, etc.</para>
 	/// </remarks>
-	public interface IFabVectorRange : IFabNodeForType {
+	public class FabVectorRange : FabNodeForType {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long VectorRangeId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabVectorRange : FabNodeForType, IFabVectorRange {
-	
 		public long VectorRangeId { get; set; }
-
+		
 	}
 
 	
@@ -2131,27 +1604,18 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>A relatively-positioned point which provides meaning to a numerical range. Example levels include: Maximum, Somewhat Disagree, Mostly Favorable, etc.</para>
 	/// </remarks>
-	public interface IFabVectorRangeLevel : IFabNodeForType {
+	public class FabVectorRangeLevel : FabNodeForType {
 	
 		/// <summary>
 		///   A value (between 0.0 and 1.0) which defines the relative position between a numeric range's minimum and maximum boundaries.
 		/// </summary>
-		float Position { get; set; }
+		public float Position { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long VectorRangeLevelId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabVectorRangeLevel : FabNodeForType, IFabVectorRangeLevel {
-	
-		public float Position { get; set; }
 		public long VectorRangeLevelId { get; set; }
-
+		
 	}
 
 	
@@ -2162,33 +1626,23 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Provides meaning and boundaries (via Vector) for a numeric value given to a particular Factor. Example types include: Full Percentage, Standard Agreement, Opposable Favorability, etc.</para>
 	/// </remarks>
-	public interface IFabVectorType : IFabNodeForType {
+	public class FabVectorType : FabNodeForType {
 	
 		/// <summary>
 		///   The maximum Vector value allowed.
 		/// </summary>
-		long Max { get; set; }
+		public long Max { get; set; }
 		
 		/// <summary>
 		///   The minimum Vector value allowed.
 		/// </summary>
-		long Min { get; set; }
+		public long Min { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long VectorTypeId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabVectorType : FabNodeForType, IFabVectorType {
-	
-		public long Max { get; set; }
-		public long Min { get; set; }
 		public long VectorTypeId { get; set; }
-
+		
 	}
 
 	
@@ -2199,27 +1653,18 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Provides a unit of measurement for the numeric value of a particular Vector. Example units include: Metre, Second, Byte, etc.</para>
 	/// </remarks>
-	public interface IFabVectorUnit : IFabNodeForType {
+	public class FabVectorUnit : FabNodeForType {
 	
 		/// <summary>
 		///   A unique symbol or abbreviation.
 		/// </summary>
-		string Symbol { get; set; }
+		public string Symbol { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long VectorUnitId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabVectorUnit : FabNodeForType, IFabVectorUnit {
-	
-		public string Symbol { get; set; }
 		public long VectorUnitId { get; set; }
-
+		
 	}
 
 	
@@ -2230,27 +1675,18 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>TODO</para>
 	/// </remarks>
-	public interface IFabVectorUnitDerived : IFabNodeForType {
+	public class FabVectorUnitDerived : FabNodeForType {
 	
 		/// <summary>
 		///   TODO
 		/// </summary>
-		int Exponent { get; set; }
+		public int Exponent { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long VectorUnitDerivedId { get; set; }
-		
-	}
-	
-	
-	/*================================================================================================*/
-	internal class FabVectorUnitDerived : FabNodeForType, IFabVectorUnitDerived {
-	
-		public int Exponent { get; set; }
 		public long VectorUnitDerivedId { get; set; }
-
+		
 	}
 
 	
@@ -2261,34 +1697,26 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Provides a level of magnitude for the numeric value of a particular Vector. Example unit prefixes include: Kilo, Nano, Gibi, etc.</para>
 	/// </remarks>
-	public interface IFabVectorUnitPrefix : IFabNodeForType {
+	public class FabVectorUnitPrefix : FabNodeForType {
 	
 		/// <summary>
 		///   The difference in magnitude (a multipler) relative to the base unit.
 		/// </summary>
-		double Amount { get; set; }
+		public double Amount { get; set; }
 		
 		/// <summary>
 		///   An abbreviation, which is typically placed directly before the VectorUnit symbol.
 		/// </summary>
-		string Symbol { get; set; }
+		public string Symbol { get; set; }
 		
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
-		long VectorUnitPrefixId { get; set; }
+		public long VectorUnitPrefixId { get; set; }
 		
 	}
-	
-	
-	/*================================================================================================*/
-	internal class FabVectorUnitPrefix : FabNodeForType, IFabVectorUnitPrefix {
-	
-		public double Amount { get; set; }
-		public string Symbol { get; set; }
-		public long VectorUnitPrefixId { get; set; }
-
-	}
 
 	
+	// ReSharper resume InconsistentNaming
+
 }

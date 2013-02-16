@@ -10,12 +10,14 @@
 
 namespace Fabric.Clients.Cs.Api {
 
+	// ReSharper disable InconsistentNaming
+
 <#
 FabSpec spec = SpecBuilder.Spec;
 
 foreach ( FabSpecObject o in spec.Objects ) {
-	string extendsInt = (o.Extends == null ? "" : " : I"+o.Extends);
-	string extends = (o.Extends == null ? "" : o.Extends+", ");
+	string extends = (o.Extends == null ? "" : " : "+o.Extends);
+	string partial = (o.Name == "FabResponse" ? "partial " : "");
 #>
 	/*================================================================================================*/
 	/// <summary>
@@ -24,47 +26,30 @@ foreach ( FabSpecObject o in spec.Objects ) {
 	/// <remarks>
 	///   <#= SpecBuilder.ToXmlDoc(o.Description, true) #>
 	/// </remarks>
-	public interface I<#= o.Name+extendsInt #> {
+	public <#= partial #>class <#= o.Name+extends #> {
 	
 <#
 	foreach ( FabSpecObjectProp p in o.Properties ) {
-		string type = (p.Type.IndexOf("Fab") == 0 ? "I" : "")+p.Type;
-
-		if ( o.Name == "FabResponse" && p.Name == "Data" ) {
-			type = "string";
-		}
-#>
-		/// <summary>
-		///   <#= SpecBuilder.ToXmlDocSentence(p.Description) #>
-		/// </summary>
-		<#= type #> <#= p.Name #> { get; set; }
-		
-<#
-	}
-#>
-	}
-	
-	
-	/*================================================================================================*/
-	internal class <#= o.Name #> : <#= extends #>I<#= o.Name #> {
-	
-<#
-	foreach ( FabSpecObjectProp p in o.Properties ) {
-		string type = (p.Type.IndexOf("Fab") == 0 ? "I" : "")+p.Type;
+		string type = p.Type;
 
 		if ( o.Name == "FabResponse" && p.Name == "Data" ) {
 			type = "virtual string";
 		}
 #>
+		/// <summary>
+		///   <#= SpecBuilder.ToXmlDocSentence(p.Description) #>
+		/// </summary>
 		public <#= type #> <#= p.Name #> { get; set; }
+		
 <#
 	}
 #>
-
 	}
 
 	
 <#
 }
 #>
+	// ReSharper resume InconsistentNaming
+
 }

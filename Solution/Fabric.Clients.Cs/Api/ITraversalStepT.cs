@@ -1,29 +1,20 @@
 using System;
-using System.Collections.Generic;
 
 namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary />
-	public interface ITraversalStep<T> : ITraversalStep where T : IFabObject {
+	public interface ITraversalStep<T> : ITraversalStep where T : FabObject {
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		Type GetReturnType();
+		Type GetDataType();
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		IFabResponse<T> Get();
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
-		IList<T> GetList();
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
-		T GetSingle();
+		FabResponse<T> Get();
 		
 	}
 	

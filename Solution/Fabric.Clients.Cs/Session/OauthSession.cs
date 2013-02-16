@@ -29,8 +29,8 @@ namespace Fabric.Clients.Cs.Session {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public IFabOauthLogout Logout() {
-			IFabOauthLogout logout = ClientOauth.Logout.Get(BearerToken);
+		public FabOauthLogout Logout() {
+			FabOauthLogout logout = ClientOauth.Logout.Get(BearerToken);
 			ClearToken();
 			Config.LogInfo("Logout: success="+logout.success+", access_token="+logout.access_token);
 			return logout;
@@ -43,8 +43,8 @@ namespace Fabric.Clients.Cs.Session {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		protected IFabOauthAccess GetAccessToken(Func<IFabOauthAccess> pAccessFunc) {
-			IFabOauthAccess oa;
+		protected FabOauthAccess GetAccessToken(Func<FabOauthAccess> pAccessFunc) {
+			FabOauthAccess oa;
 
 			try {
 				oa = pAccessFunc();
