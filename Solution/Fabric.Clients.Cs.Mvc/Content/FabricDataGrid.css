@@ -1,4 +1,4 @@
-﻿TABLE.FabricDataGridTable {
+﻿table.FabricDataGridTable {
 	font-family: Tahoma, Verdana, Arial;
 	font-size: 11px;
 	border-collapse: collapse;
@@ -6,11 +6,11 @@
 	margin: 5px 5px 5px 0px;
 }
 
-TABLE.FabricDataGridTableInner {
+table.FabricDataGridTable table.Inner {
 	margin: 3px;
 }
 
-TD.FabricDataGridHeader {
+table.FabricDataGridTable td.Header {
 	font-weight: bold;
 	background-color: #cccccc;
 	border: 1px solid #aaaaaa;
@@ -18,25 +18,24 @@ TD.FabricDataGridHeader {
 	font-size: 9px;
 }
 
-.FabricDataGridHeaderType {
+table.FabricDataGridTable .HeaderType {
 	font-weight: normal;
 	font-style: italic;
 	font-size: 9px;
 	color: #666666;
 }
 
-TD.FabricDataGridCell {
+table.FabricDataGridTable td.Cell {
 	padding: 3px;
 	background-color: #ffffff;
 	border: 1px solid #dddddd;
 }
 
-TD.FabricDataGridCellAlt {
+table.FabricDataGridTable td.CellAlt {
 	background-color: #f6f6f6;
 }
 
-TD.FabricDataGridCellType {
+table.FabricDataGridTable td.CellType {
 	color: #777777;
-	font-style: italic;
 	font-size: 9px;
 }

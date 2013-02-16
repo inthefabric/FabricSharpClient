@@ -9,7 +9,11 @@ namespace Fabric.Clients.Cs.Mvc {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public static void RegisterBundles(BundleCollection pBundles) {
-			pBundles.Add(new StyleBundle("~/Content/css").Include("~/Content/Site.css"));
+			pBundles.Add(
+				new StyleBundle("~/Content/css")
+					.Include("~/Content/Site.css")
+					.Include("~/Content/FabricDataGrid.css")
+			);
 		}
 
 	}

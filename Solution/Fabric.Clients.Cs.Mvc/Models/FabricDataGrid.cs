@@ -33,23 +33,25 @@ namespace Fabric.Clients.Cs.Mvc.Models {
 			string html = "";
 
 			IEnumerator<Object> enu = pTableData.GetEnumerator();
-			if ( !enu.MoveNext() ) { return html; }
+			if ( !enu.MoveNext() ) { return "<i>No results</i>"; }
 
 			Object obj = enu.Current;
+			if ( obj == null ) { return "<i>No results</i>"; }
+
 			Type innerType = obj.GetType();
 
 			PropertyInfo[] props = innerType.GetProperties();
 			PropertyInfo prop;
 
 			html += "<table class='FabricDataGridTable"+
-				(pDepth > 0 ? " FabricDataGridTableInner" : "")+"'><tr>";
+				(pDepth > 0 ? " Inner" : "")+"'><tr>";
 			
-			if ( pDepth == 0 ) { html += "<td class='FabricDataGridHeader'>DataType</td>"; }
+			if ( pDepth == 0 ) { html += "<td class='Header'>DataType</td>"; }
 			
 			foreach ( PropertyInfo t in props ) {
 				prop = t;
-				html += "<td class='FabricDataGridHeader'>"+prop.Name+(hasSubObj(prop) ?
-					"<br/><span class='FabricDataGridHeaderType'>"+prop.PropertyType.Name+"</span>" :
+				html += "<td class='Header'>"+prop.Name+(hasSubObj(prop) ?
+					"<br/><span class='HeaderType'>"+prop.PropertyType.Name+"</span>" :
 					"")+"</td>";
 			}
 
@@ -58,11 +60,11 @@ namespace Fabric.Clients.Cs.Mvc.Models {
 
 			while ( enu.Current != null ) {
 				obj = enu.Current;
-				string cellClass = "FabricDataGridCell";
+				string cellClass = "Cell";
 				if ( index % 2 == 1 ) { cellClass += " "+cellClass+"Alt"; }
 
 				if ( pDepth == 0 ) {
-					html += "<tr><td class='"+cellClass+" FabricDataGridCellType'>"+innerType.Name+"</td>";
+					html += "<tr><td class='"+cellClass+" CellType'>"+innerType.Name+"</td>";
 				}
 
 				foreach ( PropertyInfo t in props ) {

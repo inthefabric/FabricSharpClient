@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/15/2013 7:39:06 PM
+// Generated on 2/15/2013 8:23:49 PM
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -915,7 +915,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   TODO
 		/// </summary>
-		public virtual string Data { get; set; }
+		public virtual object DataString { get; set; }
 		
 		/// <summary>
 		///   TODO

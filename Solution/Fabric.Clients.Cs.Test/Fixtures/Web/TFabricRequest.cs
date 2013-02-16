@@ -92,8 +92,13 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		private Stream GetStream<T>(T pObject) {
-			byte[] byteArray = Encoding.ASCII.GetBytes(pObject.ToJson());
+		private static Stream GetStream<T>(T pObject) {
+			return GetStream(pObject.ToJson());
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		private static Stream GetStream(string pJson) {
+			byte[] byteArray = Encoding.ASCII.GetBytes(pJson);
 			return new MemoryStream(byteArray);
 		}
 
@@ -150,9 +155,13 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 			fe.Code = 500;
 
 			var fr = new FabResponse();
-			fr.Data = fe.ToJson();
+			fr.DataString = "{{DATA}}";
 
-			var wr = new TestWebResponse(GetStream(fr));
+			string frString = fr.ToJson()
+				.Replace("DataString", "Data")
+				.Replace("{{DATA}}", fe.ToJson());
+
+			var wr = new TestWebResponse(GetStream(frString));
 			var we = new WebException("Error", null, WebExceptionStatus.UnknownError, wr);
 			
 			vMoqHttpProv

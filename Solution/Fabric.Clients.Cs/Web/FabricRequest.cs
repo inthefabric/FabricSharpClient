@@ -57,7 +57,7 @@ namespace Fabric.Clients.Cs.Web {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private FabricResponse<T> GetFabricResponse(IClientContext pContext) {
+		protected virtual FabricResponse<T> GetFabricResponse(IClientContext pContext) {
 			string fullPath = pContext.Config.ApiPath+Path+(Query != null ? "?"+Query : "");
 			pContext.Config.LogInfo("Request initiated...");
 
@@ -71,7 +71,8 @@ namespace Fabric.Clients.Cs.Web {
 
 				string data = StreamToString(wr.GetResponseStream());
 				pContext.Config.LogDebug("Request Response: "+data);
-				return new FabricResponse<T>(JsonSerializer.DeserializeFromString<T>(data));
+				var test = new FabricResponse<T>(JsonSerializer.DeserializeFromString<T>(data));
+				return test;
 				/*return new FabricResponse<T>(
 					JsonSerializer.DeserializeFromStream<T>(wr.GetResponseStream()));*/
 			}
@@ -88,8 +89,9 @@ namespace Fabric.Clients.Cs.Web {
 					" (IsError="+isRespErr+", IsOauthError="+isOauthErr+")");
 
 				if ( isRespErr ) {
+					string payload = GetErrorPayload(data);
 					FabResponse respErr = JsonSerializer.DeserializeFromString<FabResponse>(data);
-					respErr.Error = JsonSerializer.DeserializeFromString<FabError>(respErr.Data);
+					respErr.Error = JsonSerializer.DeserializeFromString<FabError>(payload);
 					return new FabricResponse<T>(respErr);
 				}
 
@@ -103,7 +105,7 @@ namespace Fabric.Clients.Cs.Web {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private IFabricHttpResponse GetHttpWebResponse(IClientContext pContext, string pFullPath) {
+		protected IFabricHttpResponse GetHttpWebResponse(IClientContext pContext, string pFullPath) {
 			IFabricHttpRequest req = vWebReqProv.CreateRequest(pFullPath);
 			req.Method = Method;
 			req.Accept = "application/json";
@@ -136,11 +138,94 @@ namespace Fabric.Clients.Cs.Web {
 			return vWebReqProv.GetResponse(req);
 		}
 
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private static string StreamToString(Stream pStream) {
+		protected static string StreamToString(Stream pStream) {
 			return new StreamReader(pStream).ReadToEnd();
 		}
 
+		/*--------------------------------------------------------------------------------------------*/
+		protected static string GetErrorPayload(string pFabResponseJson) {
+			int i0 = pFabResponseJson.IndexOf("\"Data\":\"");
+
+			if ( i0 == -1 ) {
+				return null;
+			}
+
+			i0 += 8;
+			int count = 0;
+			int n = pFabResponseJson.Length;
+			int i1 = -1;
+
+			for ( int i = i0 ; i < n ; ++i ) {
+				char c = pFabResponseJson[i];
+				if ( c == '{' ) { ++count; }
+				if ( c == '}' ) { --count; }
+
+				if ( count == 0 ) {
+					i1 = i+1;
+					break;
+				}
+			}
+
+			return pFabResponseJson.Substring(i0, i1-i0);
+		}
+
 	}
+
+	/*================================================================================================* /
+	internal class FabricRequestWrapped<T> : FabricRequest<FabResponse<T>> where T : FabObject {
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------* /
+		public FabricRequestWrapped(string pMethod, string pPath, string pQuery=null,
+											string pPost=null) : base(pMethod, pPath, pQuery, pPost) {}
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------* /
+		protected override FabricResponse<FabResponse<T>> GetFabricResponse(IClientContext pContext) {
+			string fullPath = pContext.Config.ApiPath+Path+(Query != null ? "?"+Query : "");
+			pContext.Config.LogInfo("Request initiated...");
+
+			////
+
+			try {
+				pContext.Config.LogInfo("Request Path: "+Method+" "+Path);
+				pContext.Config.LogInfo("Request URL: "+fullPath);
+
+				IFabricHttpResponse wr = GetHttpWebResponse(pContext, fullPath);
+
+				string data = StreamToString(wr.GetResponseStream());
+				pContext.Config.LogDebug("Request Response: "+data);
+
+				FabResponse<T> fr = JsonSerializer.DeserializeFromString<FabResponse<T>>(data);
+				var test = new FabricResponse<FabResponse<T>>(fr);
+				return test;
+			}
+			catch ( WebException we ) {
+				if ( we.Response == null ) {
+					throw new Exception("No Fabric response from "+Method+" "+fullPath);
+				}
+
+				string data = StreamToString(we.Response.GetResponseStream());
+				bool isRespErr = typeof(FabResponse).IsAssignableFrom(typeof(T));
+
+				pContext.Config.LogDebug("Request Error: "+data+" (IsError="+isRespErr+")");
+
+				if ( isRespErr ) {
+					string payload = GetDataPayload(data);
+					FabResponse respErr = JsonSerializer.DeserializeFromString<FabResponse>(data);
+					respErr.Error = JsonSerializer.DeserializeFromString<FabError>(payload);
+					return new FabricResponse<FabResponse<T>>(respErr);
+				}
+
+				throw;
+			}
+		}
+
+	}*/
 
 }

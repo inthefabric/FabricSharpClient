@@ -6,7 +6,7 @@
 		/// <summary>
 		///   TODO
 		/// </summary>
-		IFabRootStep GetRootStep();
+		IFabRootStep GetRootStep { get; }
 
 	}
 
@@ -17,9 +17,11 @@
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public IFabRootStep GetRootStep() {
-			var t = new Traversal(vContext, GetRootOperation.Uri);
-			return t.RootStep();
+		public IFabRootStep GetRootStep {
+			get {
+				var t = new Traversal(vContext, GetRootOperation.Uri);
+				return t.RootStep();
+			}
 		}
 
 	}
