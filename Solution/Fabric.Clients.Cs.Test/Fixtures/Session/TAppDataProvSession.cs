@@ -51,8 +51,8 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			IReturnsResult<IOauthService> rr = MockOauth
 				.Setup(x => x.AccessTokenClientDataProv.Get(
 					Config.AppId+"",
-					Config.AppSecret,
 					Config.AppDataProvPersonId+"",
+					Config.AppSecret,
 					Config.AppOAuthRedirectUri
 				))
 				.Returns(pResult);

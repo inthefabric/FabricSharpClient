@@ -31,7 +31,7 @@ namespace Fabric.Clients.Cs.Session {
 			Config.LogInfo("Refreshing Person token...");
 
 			GetAccessToken(() => ClientOauth.AccessTokenRefresh
-				.Get(Config.AppSecret, Config.AppOAuthRedirectUri, RefreshToken));
+				.Get(RefreshToken, Config.AppSecret, Config.AppOAuthRedirectUri));
 			return true;
 		}
 
@@ -40,8 +40,8 @@ namespace Fabric.Clients.Cs.Session {
 		/*--------------------------------------------------------------------------------------------*/
 		public virtual string GetGrantCodeUrl(bool pSwitchUser=false) {
 			LoginOperation op = (LoginOperation)ClientOauth.Login;
-			FabricRequest<FabOauthLogin> req = op.Request(Config.AppId+"",
-				Config.AppOAuthRedirectUri, "code", null, SessionId, (pSwitchUser ? "1" : "0"));
+			FabricRequest<FabOauthLogin> req = op.Request("code", Config.AppId+"",
+				Config.AppOAuthRedirectUri, null, SessionId, (pSwitchUser ? "1" : "0"));
 			return Config.ApiPath+req.Path+"?"+req.Query;
 		}
 		
@@ -73,7 +73,7 @@ namespace Fabric.Clients.Cs.Session {
 			GrantCode = pRedirectRequest.QueryString["code"];
 
 			return GetAccessToken(() => ClientOauth.AccessTokenAuthCode
-				.Get(Config.AppSecret, GrantCode, Config.AppOAuthRedirectUri));
+				.Get(GrantCode, Config.AppSecret, Config.AppOAuthRedirectUri));
 		}
 
 	}

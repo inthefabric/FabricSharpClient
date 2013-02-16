@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/15/2013 8:23:49 PM
+// Generated on 2/16/2013 1:52:54 PM
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -708,6 +708,115 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>TODO</para>
 	/// </remarks>
+	public class FabMetaTime : FabObject {
+	
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public int Day { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public int Hour { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public double Millisecond { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public int Minute { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public int Month { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public int Second { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public long Ticks { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public long Unix { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public int Year { get; set; }
+		
+	}
+
+	
+	/*================================================================================================*/
+	/// <summary>
+	///   TODO
+	/// </summary>
+	/// <remarks>
+	///   <para>TODO</para>
+	/// </remarks>
+	public class FabMetaVersion : FabObject {
+	
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public int Day { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public int Major { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public int Minor { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public int Month { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public int Patch { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public string Revision { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public string Version { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
+		public int Year { get; set; }
+		
+	}
+
+	
+	/*================================================================================================*/
+	/// <summary>
+	///   TODO
+	/// </summary>
+	/// <remarks>
+	///   <para>TODO</para>
+	/// </remarks>
 	public class FabNode : FabObject {
 	
 		/// <summary>
@@ -1270,6 +1379,11 @@ namespace Fabric.Clients.Cs.Api {
 	/// </remarks>
 	public class FabSpecServiceOperationParam : FabSpecValue {
 	
+		/// <summary>
+		///   
+		/// </summary>
+		public int Index { get; set; }
+		
 		/// <summary>
 		///   
 		/// </summary>

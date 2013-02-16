@@ -1,5 +1,5 @@
 ﻿{
-    "ApiVersion": "1.0.3.135bbc2b0fa1",
+    "ApiVersion": "0.1.4.b8639526d587",
     "Objects": [
       {
         "Name": "FabApp",
@@ -1553,6 +1553,124 @@
         "FabType": "FabSpecObject"
       },
       {
+        "Name": "FabMetaTime",
+        "Extends": "FabObject",
+        "Description": "TODO",
+        "Properties": [
+          {
+            "Name": "Day",
+            "Type": "int",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          },
+          {
+            "Name": "Hour",
+            "Type": "int",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          },
+          {
+            "Name": "Millisecond",
+            "Type": "double",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          },
+          {
+            "Name": "Minute",
+            "Type": "int",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          },
+          {
+            "Name": "Month",
+            "Type": "int",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          },
+          {
+            "Name": "Second",
+            "Type": "int",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          },
+          {
+            "Name": "Ticks",
+            "Type": "long",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          },
+          {
+            "Name": "Unix",
+            "Type": "long",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          },
+          {
+            "Name": "Year",
+            "Type": "int",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          }
+        ],
+        "FabType": "FabSpecObject"
+      },
+      {
+        "Name": "FabMetaVersion",
+        "Extends": "FabObject",
+        "Description": "TODO",
+        "Properties": [
+          {
+            "Name": "Day",
+            "Type": "int",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          },
+          {
+            "Name": "Major",
+            "Type": "int",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          },
+          {
+            "Name": "Minor",
+            "Type": "int",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          },
+          {
+            "Name": "Month",
+            "Type": "int",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          },
+          {
+            "Name": "Patch",
+            "Type": "int",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          },
+          {
+            "Name": "Revision",
+            "Type": "string",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          },
+          {
+            "Name": "Version",
+            "Type": "string",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          },
+          {
+            "Name": "Year",
+            "Type": "int",
+            "Description": "TODO",
+            "FabType": "FabSpecObjectProp"
+          }
+        ],
+        "FabType": "FabSpecObject"
+      },
+      {
         "Name": "FabNode",
         "Extends": "FabObject",
         "Description": "TODO",
@@ -2476,6 +2594,11 @@
         "Extends": "FabSpecValue",
         "Properties": [
           {
+            "Name": "Index",
+            "Type": "int",
+            "FabType": "FabSpecObjectProp"
+          },
+          {
             "Name": "ParamType",
             "Type": "string",
             "FabType": "FabSpecObjectProp"
@@ -3340,6 +3463,15 @@
             "Parameters": [
               {
                 "ParamType": "Query",
+                "Index": 0,
+                "Name": "grant_type",
+                "Type": "string",
+                "Description": "Defines the desired access token flow.  The four accepted (case-sensitive) values are '[[authorization_code|Oper|Oauth.AccessTokenAuthCode]]', '[[refresh|Oper|Oauth.AccessTokenRefresh]]', '[[client_credentials|Oper|Oauth.AccessTokenClientCredentials]]', and '[[client_data_provider|Oper|Oauth.AccessTokenClientDataProv]]'.",
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Query",
+                "Index": 1,
                 "Name": "client_id",
                 "Type": "string",
                 "Description": "The [[App|Object|FabApp]] ID value (an integer) for the [[App|Object|FabApp]] making the request. This parameter is only used by the '[[Client Credentials|Oper|Oauth.AccessTokenClientCredentials]]' and '[[Client Data Provider|Oper|Oauth.AccessTokenClientDataProv]]' flows.",
@@ -3347,6 +3479,7 @@
               },
               {
                 "ParamType": "Query",
+                "Index": 2,
                 "Name": "client_secret",
                 "Type": "string",
                 "Description": "The alpha-numeric Secret for the [[App|Object|FabApp]] making the request. This verifies that the [[App|Object|FabApp]] itself is making the request, and not an imposter.  For this reason, the secret code should not be shared with anyone.",
@@ -3356,6 +3489,7 @@
               },
               {
                 "ParamType": "Query",
+                "Index": 3,
                 "Name": "code",
                 "Type": "string",
                 "Description": "The authorization code obtained after a successful OAuth entry process. This parameter is only used by the '[[Authorization Code|Oper|Oauth.AccessTokenAuthCode]]' flow.",
@@ -3365,20 +3499,17 @@
               },
               {
                 "ParamType": "Query",
-                "Name": "data_prov_userid",
+                "Index": 4,
+                "Name": "refresh_token",
                 "Type": "string",
-                "Description": "The [[User|Object|FabUser]] ID value (an integer) for the Data Provider of the [[App|Object|FabApp]] making the request. Upon [[App|Object|FabApp]] creation, Fabric creates a special 'Data Provider' [[User|Object|FabUser]] which the [[App|Object|FabApp]] uses for creating items in the Fabric system. This parameter is only used by the '[[Client Data Provider|Oper|Oauth.AccessTokenClientDataProv]]' flow.",
+                "Description": "The refresh token obtained after a successful '[[Authorization Code|Oper|Oauth.AccessTokenAuthCode]]' access token flow.  A refresh token only applies to [[User|Object|FabUser]]-based OAuth sessions, not for [[App|Object|FabApp]]-based OAuth sessions.  This parameter is only used by the '[[Refresh|Oper|Oauth.AccessTokenRefresh]]' flow.",
+                "Len": 32,
+                "ValidRegex": "^[a-zA-Z0-9]*$",
                 "FabType": "FabSpecServiceOperationParam"
               },
               {
                 "ParamType": "Query",
-                "Name": "grant_type",
-                "Type": "string",
-                "Description": "Defines the desired access token flow.  The four accepted (case-sensitive) values are '[[authorization_code|Oper|Oauth.AccessTokenAuthCode]]', '[[refresh|Oper|Oauth.AccessTokenRefresh]]', '[[client_credentials|Oper|Oauth.AccessTokenClientCredentials]]', and '[[client_data_provider|Oper|Oauth.AccessTokenClientDataProv]]'.",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Query",
+                "Index": 5,
                 "Name": "redirect_uri",
                 "Type": "string",
                 "Description": "This value must be exactly the same as the redirect URI provided for the OAuth entry process.",
@@ -3387,11 +3518,10 @@
               },
               {
                 "ParamType": "Query",
-                "Name": "refresh_token",
+                "Index": 6,
+                "Name": "data_prov_userid",
                 "Type": "string",
-                "Description": "The refresh token obtained after a successful '[[Authorization Code|Oper|Oauth.AccessTokenAuthCode]]' access token flow.  A refresh token only applies to [[User|Object|FabUser]]-based OAuth sessions, not for [[App|Object|FabApp]]-based OAuth sessions.  This parameter is only used by the '[[Refresh|Oper|Oauth.AccessTokenRefresh]]' flow.",
-                "Len": 32,
-                "ValidRegex": "^[a-zA-Z0-9]*$",
+                "Description": "The [[User|Object|FabUser]] ID value (an integer) for the Data Provider of the [[App|Object|FabApp]] making the request. Upon [[App|Object|FabApp]] creation, Fabric creates a special 'Data Provider' [[User|Object|FabUser]] which the [[App|Object|FabApp]] uses for creating items in the Fabric system. This parameter is only used by the '[[Client Data Provider|Oper|Oauth.AccessTokenClientDataProv]]' flow.",
                 "FabType": "FabSpecServiceOperationParam"
               }
             ],
@@ -3407,15 +3537,7 @@
             "Parameters": [
               {
                 "ParamType": "Query",
-                "Name": "client_secret",
-                "Type": "string",
-                "Description": "The alpha-numeric Secret for the [[App|Object|FabApp]] making the request. This verifies that the [[App|Object|FabApp]] itself is making the request, and not an imposter.  For this reason, the secret code should not be shared with anyone.",
-                "Len": 32,
-                "ValidRegex": "^[a-zA-Z0-9]*$",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Query",
+                "Index": 0,
                 "Name": "code",
                 "Type": "string",
                 "Description": "The authorization code obtained after a successful OAuth entry process. This parameter is only used by the '[[Authorization Code|Oper|Oauth.AccessTokenAuthCode]]' flow.",
@@ -3425,6 +3547,17 @@
               },
               {
                 "ParamType": "Query",
+                "Index": 1,
+                "Name": "client_secret",
+                "Type": "string",
+                "Description": "The alpha-numeric Secret for the [[App|Object|FabApp]] making the request. This verifies that the [[App|Object|FabApp]] itself is making the request, and not an imposter.  For this reason, the secret code should not be shared with anyone.",
+                "Len": 32,
+                "ValidRegex": "^[a-zA-Z0-9]*$",
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Query",
+                "Index": 2,
                 "Name": "redirect_uri",
                 "Type": "string",
                 "Description": "This value must be exactly the same as the redirect URI provided for the OAuth entry process.",
@@ -3444,6 +3577,7 @@
             "Parameters": [
               {
                 "ParamType": "Query",
+                "Index": 0,
                 "Name": "client_id",
                 "Type": "string",
                 "Description": "The [[App|Object|FabApp]] ID value (an integer) for the [[App|Object|FabApp]] making the request. This parameter is only used by the '[[Client Credentials|Oper|Oauth.AccessTokenClientCredentials]]' and '[[Client Data Provider|Oper|Oauth.AccessTokenClientDataProv]]' flows.",
@@ -3451,6 +3585,7 @@
               },
               {
                 "ParamType": "Query",
+                "Index": 1,
                 "Name": "client_secret",
                 "Type": "string",
                 "Description": "The alpha-numeric Secret for the [[App|Object|FabApp]] making the request. This verifies that the [[App|Object|FabApp]] itself is making the request, and not an imposter.  For this reason, the secret code should not be shared with anyone.",
@@ -3460,6 +3595,7 @@
               },
               {
                 "ParamType": "Query",
+                "Index": 2,
                 "Name": "redirect_uri",
                 "Type": "string",
                 "Description": "This value must be exactly the same as the redirect URI provided for the OAuth entry process.",
@@ -3479,6 +3615,7 @@
             "Parameters": [
               {
                 "ParamType": "Query",
+                "Index": 0,
                 "Name": "client_id",
                 "Type": "string",
                 "Description": "The [[App|Object|FabApp]] ID value (an integer) for the [[App|Object|FabApp]] making the request. This parameter is only used by the '[[Client Credentials|Oper|Oauth.AccessTokenClientCredentials]]' and '[[Client Data Provider|Oper|Oauth.AccessTokenClientDataProv]]' flows.",
@@ -3486,6 +3623,15 @@
               },
               {
                 "ParamType": "Query",
+                "Index": 0,
+                "Name": "data_prov_userid",
+                "Type": "string",
+                "Description": "The [[User|Object|FabUser]] ID value (an integer) for the Data Provider of the [[App|Object|FabApp]] making the request. Upon [[App|Object|FabApp]] creation, Fabric creates a special 'Data Provider' [[User|Object|FabUser]] which the [[App|Object|FabApp]] uses for creating items in the Fabric system. This parameter is only used by the '[[Client Data Provider|Oper|Oauth.AccessTokenClientDataProv]]' flow.",
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Query",
+                "Index": 1,
                 "Name": "client_secret",
                 "Type": "string",
                 "Description": "The alpha-numeric Secret for the [[App|Object|FabApp]] making the request. This verifies that the [[App|Object|FabApp]] itself is making the request, and not an imposter.  For this reason, the secret code should not be shared with anyone.",
@@ -3495,13 +3641,7 @@
               },
               {
                 "ParamType": "Query",
-                "Name": "data_prov_userid",
-                "Type": "string",
-                "Description": "The [[User|Object|FabUser]] ID value (an integer) for the Data Provider of the [[App|Object|FabApp]] making the request. Upon [[App|Object|FabApp]] creation, Fabric creates a special 'Data Provider' [[User|Object|FabUser]] which the [[App|Object|FabApp]] uses for creating items in the Fabric system. This parameter is only used by the '[[Client Data Provider|Oper|Oauth.AccessTokenClientDataProv]]' flow.",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Query",
+                "Index": 2,
                 "Name": "redirect_uri",
                 "Type": "string",
                 "Description": "This value must be exactly the same as the redirect URI provided for the OAuth entry process.",
@@ -3521,6 +3661,17 @@
             "Parameters": [
               {
                 "ParamType": "Query",
+                "Index": 0,
+                "Name": "refresh_token",
+                "Type": "string",
+                "Description": "The refresh token obtained after a successful '[[Authorization Code|Oper|Oauth.AccessTokenAuthCode]]' access token flow.  A refresh token only applies to [[User|Object|FabUser]]-based OAuth sessions, not for [[App|Object|FabApp]]-based OAuth sessions.  This parameter is only used by the '[[Refresh|Oper|Oauth.AccessTokenRefresh]]' flow.",
+                "Len": 32,
+                "ValidRegex": "^[a-zA-Z0-9]*$",
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Query",
+                "Index": 1,
                 "Name": "client_secret",
                 "Type": "string",
                 "Description": "The alpha-numeric Secret for the [[App|Object|FabApp]] making the request. This verifies that the [[App|Object|FabApp]] itself is making the request, and not an imposter.  For this reason, the secret code should not be shared with anyone.",
@@ -3530,19 +3681,11 @@
               },
               {
                 "ParamType": "Query",
+                "Index": 2,
                 "Name": "redirect_uri",
                 "Type": "string",
                 "Description": "This value must be exactly the same as the redirect URI provided for the OAuth entry process.",
                 "LenMax": 450,
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Query",
-                "Name": "refresh_token",
-                "Type": "string",
-                "Description": "The refresh token obtained after a successful '[[Authorization Code|Oper|Oauth.AccessTokenAuthCode]]' access token flow.  A refresh token only applies to [[User|Object|FabUser]]-based OAuth sessions, not for [[App|Object|FabApp]]-based OAuth sessions.  This parameter is only used by the '[[Refresh|Oper|Oauth.AccessTokenRefresh]]' flow.",
-                "Len": 32,
-                "ValidRegex": "^[a-zA-Z0-9]*$",
                 "FabType": "FabSpecServiceOperationParam"
               }
             ],
@@ -3558,6 +3701,15 @@
             "Parameters": [
               {
                 "ParamType": "Query",
+                "Index": 0,
+                "Name": "response_type",
+                "Type": "string",
+                "Description": "Describes which type of authentication should be performed. For now, this value should always be 'code'. Fabric may accept more response types in the future.",
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Query",
+                "Index": 1,
                 "Name": "client_id",
                 "Type": "string",
                 "Description": "The ID of the Fabric [[App|Object|FabApp]] making the OAuth Login request.  The access code provided after a successful OAuth process will be associated with this [[App|Object|FabApp]] ID and the authenticated [[User|Object|FabUser]]'s ID.",
@@ -3565,6 +3717,7 @@
               },
               {
                 "ParamType": "Query",
+                "Index": 2,
                 "Name": "redirect_uri",
                 "Type": "string",
                 "Description": "The URL which will receive success/error redirects from the OAuth Login process.  This URL should handle the following query-string parameters: access_code, error, error_description, state.",
@@ -3573,13 +3726,7 @@
               },
               {
                 "ParamType": "Query",
-                "Name": "response_type",
-                "Type": "string",
-                "Description": "Describes which type of authentication should be performed. For now, this value should always be 'code'. Fabric may accept more response types in the future.",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Query",
+                "Index": 3,
                 "Name": "scope",
                 "Type": "string",
                 "Description": "Describes the level of access the [[App|Object|FabApp]] will have to the [[User|Object|FabUser]]'s account.  This value is required by the OAuth 2.0 specification, however, Fabric currently ignores it.  All OAuth requests currently receive the same level of access to the [[User|Object|FabUser]]'s account.  Fabric may begin using this parameter in the future.",
@@ -3587,6 +3734,7 @@
               },
               {
                 "ParamType": "Query",
+                "Index": 4,
                 "Name": "state",
                 "Type": "string",
                 "Description": "Provides a security function for a Fabric [[App|Object|FabApp]].  All success/message redirect responses include a 'state' query-string parameter.  The [[App|Object|FabApp]] should check this value against the state value provided in the initial request.  The two values should always be equal. If the values are not equal, then the redirect did not come from the Fabric OAuth process (or from a different user's process), and should be handled accordingly.",
@@ -3594,6 +3742,7 @@
               },
               {
                 "ParamType": "Query",
+                "Index": 5,
                 "Name": "switchMode",
                 "Type": "string",
                 "Description": "Causes the login process to behave in different ways.  If a value of '1' is provided, the user will see the login page even if they are currently authenticated with Fabric.  This is useful shared-computer scenarios, where the most-recently authenticated user may be different from the user making the current request.",
@@ -3612,6 +3761,7 @@
             "Parameters": [
               {
                 "ParamType": "Query",
+                "Index": 0,
                 "Name": "access_token",
                 "Type": "string",
                 "Description": "The access token for the desired OAuth session. This request will fail if the token has already been invalidated by a previous logout.",
@@ -3642,6 +3792,7 @@
             "Parameters": [
               {
                 "ParamType": "Form",
+                "Index": 0,
                 "Name": "Name",
                 "Type": "string",
                 "Description": "The name of the new [[App|Object|FabApp]].",
@@ -3652,6 +3803,7 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 1,
                 "Name": "UserId",
                 "Type": "long",
                 "Description": "Identifies the [[User|Object|FabUser]] that is creating the [[App|Object|FabApp]]. This [[User|Object|FabUser]] will receive the [[App|Object|FabApp]]'s 'DataProvider' [[Member|Object|FabMember]].",
@@ -3670,6 +3822,17 @@
             "Parameters": [
               {
                 "ParamType": "Form",
+                "Index": 0,
+                "Name": "Name",
+                "Type": "string",
+                "Description": "The name of the new [[Class|Object|FabClass]]. It must be unique on its own, or be unique in combination with the disambiguation text.",
+                "LenMax": 128,
+                "ValidRegex": "^[a-zA-Z0-9 \\[\\]\\+\\?\\|\\(\\)\\{\\}\\^\\*\\-\\.\\\\/!@#$%&=_,:;'\"<>~]*$",
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Form",
+                "Index": 1,
                 "Name": "Disamb",
                 "Type": "string",
                 "Description": "The disambiguation text for the new [[Class|Object|FabClass]].  When provided, the disambiguation text permits the use of a non-unique name.",
@@ -3680,15 +3843,7 @@
               },
               {
                 "ParamType": "Form",
-                "Name": "Name",
-                "Type": "string",
-                "Description": "The name of the new [[Class|Object|FabClass]]. It must be unique on its own, or be unique in combination with the disambiguation text.",
-                "LenMax": 128,
-                "ValidRegex": "^[a-zA-Z0-9 \\[\\]\\+\\?\\|\\(\\)\\{\\}\\^\\*\\-\\.\\\\/!@#$%&=_,:;'\"<>~]*$",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Form",
+                "Index": 2,
                 "Name": "Note",
                 "Type": "string",
                 "Description": "A brief description of the new [[Class|Object|FabClass]]. It can be useful for helping others understand the creator's intended purpose or meaning.",
@@ -3709,29 +3864,7 @@
             "Parameters": [
               {
                 "ParamType": "Form",
-                "Name": "FactorAssertionId",
-                "Type": "long",
-                "Description": "Identifies the [[FactorAssertion|Object|FabFactorAssertion]] for the new [[Factor|Object|FabFactor]]. In cases where the assertion type is unclear or not known, please use the 'Undefined' [[FactorAssertion|Object|FabFactorAssertion]].",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Form",
-                "Name": "IsDefining",
-                "Type": "bool",
-                "Description": "The IsDefining value for the new [[Factor|Object|FabFactor]].",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Form",
-                "Name": "Note",
-                "Type": "string",
-                "Description": "A sentence or short paragraph describing (in a human-readable format) the intended meaning of the new [[Factor|Object|FabFactor]]. A descriptive note can help others understand the creator's intended purpose or meaning for the [[Factor|Object|FabFactor]].",
-                "IsOptional": true,
-                "LenMax": 256,
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Form",
+                "Index": 0,
                 "Name": "PrimaryArtifactId",
                 "Type": "long",
                 "Description": "Identifies the primary [[Artifact|Object|FabArtifact]] for the new [[Factor|Object|FabFactor]].",
@@ -3739,9 +3872,36 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 1,
                 "Name": "RelatedArtifactId",
                 "Type": "long",
                 "Description": "Identifies the related [[Artifact|Object|FabArtifact]] for the new [[Factor|Object|FabFactor]]. The related [[Artifact|Object|FabArtifact]] cannot be the same as the primary [[Artifact|Object|FabArtifact]].",
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Form",
+                "Index": 2,
+                "Name": "FactorAssertionId",
+                "Type": "long",
+                "Description": "Identifies the [[FactorAssertion|Object|FabFactorAssertion]] for the new [[Factor|Object|FabFactor]]. In cases where the assertion type is unclear or not known, please use the 'Undefined' [[FactorAssertion|Object|FabFactorAssertion]].",
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Form",
+                "Index": 3,
+                "Name": "IsDefining",
+                "Type": "bool",
+                "Description": "The IsDefining value for the new [[Factor|Object|FabFactor]].",
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Form",
+                "Index": 4,
+                "Name": "Note",
+                "Type": "string",
+                "Description": "A sentence or short paragraph describing (in a human-readable format) the intended meaning of the new [[Factor|Object|FabFactor]]. A descriptive note can help others understand the creator's intended purpose or meaning for the [[Factor|Object|FabFactor]].",
+                "IsOptional": true,
+                "LenMax": 256,
                 "FabType": "FabSpecServiceOperationParam"
               }
             ],
@@ -3757,16 +3917,7 @@
             "Parameters": [
               {
                 "ParamType": "Form",
-                "Name": "Disamb",
-                "Type": "string",
-                "Description": "The disambiguation text for the new [[Instance|Object|FabInstance]]. When provided, the disambiguation text permits the use of a non-unique name.",
-                "IsOptional": true,
-                "LenMax": 128,
-                "ValidRegex": "^[a-zA-Z0-9 \\[\\]\\+\\?\\|\\(\\)\\{\\}\\^\\*\\-\\.\\\\/!@#$%&=_,:;'\"<>~]*$",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Form",
+                "Index": 0,
                 "Name": "Name",
                 "Type": "string",
                 "Description": "The name of the new [[Instance|Object|FabInstance]]. It does not need to be unique.",
@@ -3777,6 +3928,18 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 1,
+                "Name": "Disamb",
+                "Type": "string",
+                "Description": "The disambiguation text for the new [[Instance|Object|FabInstance]]. When provided, the disambiguation text permits the use of a non-unique name.",
+                "IsOptional": true,
+                "LenMax": 128,
+                "ValidRegex": "^[a-zA-Z0-9 \\[\\]\\+\\?\\|\\(\\)\\{\\}\\^\\*\\-\\.\\\\/!@#$%&=_,:;'\"<>~]*$",
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Form",
+                "Index": 2,
                 "Name": "Note",
                 "Type": "string",
                 "Description": "A brief description of the new [[Instance|Object|FabInstance]].  It can be useful for helping others understand the creator's intended purpose or meaning.",
@@ -3797,6 +3960,7 @@
             "Parameters": [
               {
                 "ParamType": "Form",
+                "Index": 0,
                 "Name": "AbsoluteUrl",
                 "Type": "string",
                 "Description": "The complete absolute URL for new [[Url|Object|FabUrl]] object. It must include the URL's protocol (such as 'http://').",
@@ -3805,6 +3969,7 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 1,
                 "Name": "Name",
                 "Type": "string",
                 "Description": "The name of the new [[Url|Object|FabUrl]].",
@@ -3824,15 +3989,7 @@
             "Parameters": [
               {
                 "ParamType": "Form",
-                "Name": "Email",
-                "Type": "string",
-                "Description": "The email address for the new [[User|Object|FabUser]].",
-                "LenMax": 256,
-                "ValidRegex": "^(([^<>()[\\]\\\\.,;:\\s@\\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\\"]+)*)|(\\\".+\\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Form",
+                "Index": 0,
                 "Name": "Name",
                 "Type": "string",
                 "Description": "The username for the new [[User|Object|FabUser]].",
@@ -3843,11 +4000,22 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 1,
                 "Name": "Password",
                 "Type": "string",
                 "Description": "The password for the new [[User|Object|FabUser]].",
                 "LenMax": 32,
                 "LenMin": 8,
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Form",
+                "Index": 2,
+                "Name": "Email",
+                "Type": "string",
+                "Description": "The email address for the new [[User|Object|FabUser]].",
+                "LenMax": 256,
+                "ValidRegex": "^(([^<>()[\\]\\\\.,;:\\s@\\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\\"]+)*)|(\\\".+\\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
                 "FabType": "FabSpecServiceOperationParam"
               }
             ],
@@ -3864,21 +4032,7 @@
             "Parameters": [
               {
                 "ParamType": "Form",
-                "Name": "DescriptorTypeId",
-                "Type": "long",
-                "Description": "Identifies the [[DescriptorType|Object|FabDescriptorType]] for the new [[Descriptor|Object|FabDescriptor]].",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Form",
-                "Name": "DescriptorTypeRefineId",
-                "Type": "long?",
-                "Description": "Identifies the [[Artifact|Object|FabArtifact]] that refines the new [[Descriptor|Object|FabDescriptor]]'s [[DescriptorType|Object|FabDescriptorType]].",
-                "IsOptional": true,
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Form",
+                "Index": 0,
                 "Name": "FactorId",
                 "Type": "long",
                 "Description": "Identifies the incomplete [[Factor|Object|FabFactor]] that will receive the [[Descriptor|Object|FabDescriptor]] attachment.",
@@ -3886,6 +4040,15 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 1,
+                "Name": "DescriptorTypeId",
+                "Type": "long",
+                "Description": "Identifies the [[DescriptorType|Object|FabDescriptorType]] for the new [[Descriptor|Object|FabDescriptor]].",
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Form",
+                "Index": 2,
                 "Name": "PrimaryArtifactRefineId",
                 "Type": "long?",
                 "Description": "Identifies the [[Artifact|Object|FabArtifact]] that refines the [[Factor|Object|FabFactor]]'s primary [[Artifact|Object|FabArtifact]].",
@@ -3894,9 +4057,19 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 3,
                 "Name": "RelatedArtifactRefineId",
                 "Type": "long?",
                 "Description": "Identifies the [[Artifact|Object|FabArtifact]] that refines the [[Factor|Object|FabFactor]]'s related [[Artifact|Object|FabArtifact]].",
+                "IsOptional": true,
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Form",
+                "Index": 4,
+                "Name": "DescriptorTypeRefineId",
+                "Type": "long?",
+                "Description": "Identifies the [[Artifact|Object|FabArtifact]] that refines the new [[Descriptor|Object|FabDescriptor]]'s [[DescriptorType|Object|FabDescriptorType]].",
                 "IsOptional": true,
                 "FabType": "FabSpecServiceOperationParam"
               }
@@ -3914,13 +4087,7 @@
             "Parameters": [
               {
                 "ParamType": "Form",
-                "Name": "DirectorTypeId",
-                "Type": "long",
-                "Description": "Identifies the [[DirectorType|Object|FabDirectorType]] for the new [[Director|Object|FabDirector]].",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Form",
+                "Index": 0,
                 "Name": "FactorId",
                 "Type": "long",
                 "Description": "Identifies the incomplete [[Factor|Object|FabFactor]] that will receive the [[Director|Object|FabDirector]] attachment.",
@@ -3928,6 +4095,15 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 1,
+                "Name": "DirectorTypeId",
+                "Type": "long",
+                "Description": "Identifies the [[DirectorType|Object|FabDirectorType]] for the new [[Director|Object|FabDirector]].",
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Form",
+                "Index": 2,
                 "Name": "PrimaryDirectorActionId",
                 "Type": "long",
                 "Description": "Identifies the [[DirectorAction|Object|FabDirectorAction]] associated with the [[Factor|Object|FabFactor]]'s primary [[Artifact|Object|FabArtifact]].",
@@ -3935,6 +4111,7 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 3,
                 "Name": "RelatedDirectorActionId",
                 "Type": "long",
                 "Description": "Identifies the [[DirectorAction|Object|FabDirectorAction]] associated with the [[Factor|Object|FabFactor]]'s related [[Artifact|Object|FabArtifact]].",
@@ -3954,20 +4131,15 @@
             "Parameters": [
               {
                 "ParamType": "Form",
-                "Name": "DateTime",
+                "Index": 0,
+                "Name": "FactorId",
                 "Type": "long",
-                "Description": "The date and time for the new [[Eventor|Object|FabEventor]]. This value must be accurate to the level of precision defined by the specified [[EventorPrecision|Object|FabEventorPrecision]]. Set unused month/day values to 1, and unused hour/minute values (and beyond) to 0.",
+                "Description": "Identifies the incomplete [[Factor|Object|FabFactor]] that will receive the [[Eventor|Object|FabEventor]] attachment.",
                 "FabType": "FabSpecServiceOperationParam"
               },
               {
                 "ParamType": "Form",
-                "Name": "EventorPrecisionId",
-                "Type": "long",
-                "Description": "Identifies the [[EventorPrecision|Object|FabEventorPrecision]] for the new [[Eventor|Object|FabEventor]].",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Form",
+                "Index": 1,
                 "Name": "EventorTypeId",
                 "Type": "long",
                 "Description": "Identifies the [[EventorType|Object|FabEventorType]] for the new [[Eventor|Object|FabEventor]].",
@@ -3975,9 +4147,18 @@
               },
               {
                 "ParamType": "Form",
-                "Name": "FactorId",
+                "Index": 2,
+                "Name": "EventorPrecisionId",
                 "Type": "long",
-                "Description": "Identifies the incomplete [[Factor|Object|FabFactor]] that will receive the [[Eventor|Object|FabEventor]] attachment.",
+                "Description": "Identifies the [[EventorPrecision|Object|FabEventorPrecision]] for the new [[Eventor|Object|FabEventor]].",
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Form",
+                "Index": 3,
+                "Name": "DateTime",
+                "Type": "long",
+                "Description": "The date and time for the new [[Eventor|Object|FabEventor]]. This value must be accurate to the level of precision defined by the specified [[EventorPrecision|Object|FabEventorPrecision]]. Set unused month/day values to 1, and unused hour/minute values (and beyond) to 0.",
                 "FabType": "FabSpecServiceOperationParam"
               }
             ],
@@ -3994,6 +4175,7 @@
             "Parameters": [
               {
                 "ParamType": "Form",
+                "Index": 0,
                 "Name": "FactorId",
                 "Type": "long",
                 "Description": "Identifies the incomplete [[Factor|Object|FabFactor]] that will receive the [[Identor|Object|FabIdentor]] attachment.",
@@ -4001,6 +4183,7 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 1,
                 "Name": "IdentorTypeId",
                 "Type": "long",
                 "Description": "Identifies the [[IdentorType|Object|FabIdentorType]] for the new [[Identor|Object|FabIdentor]].",
@@ -4008,6 +4191,7 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 2,
                 "Name": "Value",
                 "Type": "string",
                 "Description": "The text-based value for the new [[Identor|Object|FabIdentor]].",
@@ -4028,6 +4212,7 @@
             "Parameters": [
               {
                 "ParamType": "Form",
+                "Index": 0,
                 "Name": "FactorId",
                 "Type": "long",
                 "Description": "Identifies the incomplete [[Factor|Object|FabFactor]] that will receive the [[Locator|Object|FabLocator]] attachment.",
@@ -4035,6 +4220,7 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 1,
                 "Name": "LocatorTypeId",
                 "Type": "long",
                 "Description": "Identifies the [[LocatorType|Object|FabLocatorType]] for the new [[Locator|Object|FabLocator]].",
@@ -4042,6 +4228,7 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 2,
                 "Name": "ValueX",
                 "Type": "double",
                 "Description": "The X value for the new [[Locator|Object|FabLocator]].",
@@ -4049,6 +4236,7 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 3,
                 "Name": "ValueY",
                 "Type": "double",
                 "Description": "The Y value for the new [[Locator|Object|FabLocator]].",
@@ -4056,6 +4244,7 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 4,
                 "Name": "ValueZ",
                 "Type": "double",
                 "Description": "The Z value for the new [[Locator|Object|FabLocator]].",
@@ -4075,13 +4264,7 @@
             "Parameters": [
               {
                 "ParamType": "Form",
-                "Name": "AxisArtifactId",
-                "Type": "long",
-                "Description": "The [[Artifact|Object|FabArtifact]] which provides meaning for the new [[Vector|Object|FabVector]].",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Form",
+                "Index": 0,
                 "Name": "FactorId",
                 "Type": "long",
                 "Description": "Identifies the incomplete [[Factor|Object|FabFactor]] that will receive the [[Vector|Object|FabVector]] attachment.",
@@ -4089,13 +4272,7 @@
               },
               {
                 "ParamType": "Form",
-                "Name": "Value",
-                "Type": "long",
-                "Description": "The value for the new [[Vector|Object|FabVector]]. This value must be within the range specified by the [[VectorType|Object|FabVectorType]]. Decimal values are not supported; if additional precision is required, use a [[VectorUnitPrefix|Object|FabVectorUnitPrefix]] such as Milli or Micro.",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Form",
+                "Index": 1,
                 "Name": "VectorTypeId",
                 "Type": "long",
                 "Description": "Identifies the [[VectorType|Object|FabVectorType]] for the new [[Vector|Object|FabVector]].",
@@ -4103,6 +4280,23 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 2,
+                "Name": "Value",
+                "Type": "long",
+                "Description": "The value for the new [[Vector|Object|FabVector]]. This value must be within the range specified by the [[VectorType|Object|FabVectorType]]. Decimal values are not supported; if additional precision is required, use a [[VectorUnitPrefix|Object|FabVectorUnitPrefix]] such as Milli or Micro.",
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Form",
+                "Index": 3,
+                "Name": "AxisArtifactId",
+                "Type": "long",
+                "Description": "The [[Artifact|Object|FabArtifact]] which provides meaning for the new [[Vector|Object|FabVector]].",
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Form",
+                "Index": 4,
                 "Name": "VectorUnitId",
                 "Type": "long",
                 "Description": "Identifies the [[VectorUnit|Object|FabVectorUnit]] for the new [[Vector|Object|FabVector]].",
@@ -4110,6 +4304,7 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 5,
                 "Name": "VectorUnitPrefixId",
                 "Type": "long",
                 "Description": "Identifies the [[VectorUnitPrefix|Object|FabVectorUnitPrefix]] for the new [[Vector|Object|FabVector]].",
@@ -4129,6 +4324,7 @@
             "Parameters": [
               {
                 "ParamType": "Form",
+                "Index": 0,
                 "Name": "FactorId",
                 "Type": "long",
                 "Description": "Identifies the incomplete [[Factor|Object|FabFactor]] to be completed.",
@@ -4136,6 +4332,7 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 1,
                 "Name": "IsCompleted",
                 "Type": "bool",
                 "Description": "The IsCompleted value must be 'true'.",
@@ -4155,6 +4352,7 @@
             "Parameters": [
               {
                 "ParamType": "Form",
+                "Index": 0,
                 "Name": "FactorId",
                 "Type": "long",
                 "Description": "Identifies the [[Factor|Object|FabFactor]] to be deleted.",
@@ -4162,6 +4360,7 @@
               },
               {
                 "ParamType": "Form",
+                "Index": 1,
                 "Name": "IsDeleted",
                 "Type": "bool",
                 "Description": "The IsDeleted value must be 'true'.",
@@ -4174,18 +4373,36 @@
         "FabType": "FabSpecService"
       },
       {
-        "Name": "Spec",
-        "Uri": "/Spec",
-        "Abstract": "Load the latest specifications and documentation for all Fabric API services.",
+        "Name": "Meta",
+        "Uri": "/Meta",
+        "Abstract": "Load information about the API and its services.",
         "Description": "TODO",
         "ResponseWrapper": "FabResponse",
         "Operations": [
           {
-            "Name": "Document",
-            "Uri": "/Doc",
+            "Name": "GetSpecification",
+            "Uri": "/Spec",
             "Method": "GET",
             "ReturnType": "FabSpec",
-            "Description": "The latest specification and documentation for all Fabric API services. This is useful for building Fabric API clients and reference documentation sites like the one you are viewing right now.",
+            "Description": "Load the latest specifications and documentation for all Fabric API services.",
+            "RequiredAuth": "None",
+            "FabType": "FabSpecServiceOperation"
+          },
+          {
+            "Name": "GetTime",
+            "Uri": "/Time",
+            "Method": "GET",
+            "ReturnType": "FabMetaTime",
+            "Description": "TODO",
+            "RequiredAuth": "None",
+            "FabType": "FabSpecServiceOperation"
+          },
+          {
+            "Name": "GetVersion",
+            "Uri": "/Version",
+            "Method": "GET",
+            "ReturnType": "FabMetaVersion",
+            "Description": "TODO",
             "RequiredAuth": "None",
             "FabType": "FabSpecServiceOperation"
           }

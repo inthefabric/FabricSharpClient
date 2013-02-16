@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/15/2013 7:39:05 PM
+// Generated on 2/16/2013 1:52:53 PM
 
 using Fabric.Clients.Cs.Session;
 
@@ -33,7 +33,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   TODO
 		/// </summary>
-		ISpecService Spec { get; }
+		IMetaService Meta { get; }
 
 	}
 
@@ -51,7 +51,7 @@ namespace Fabric.Clients.Cs.Api {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public string ApiVersion { get { return "1.0.3.135bbc2b0fa1"; } }
+		public string ApiVersion { get { return "0.1.4.b8639526d587"; } }
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -71,8 +71,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public ISpecService Spec {
-			get { return new SpecService(vContext); }
+		public IMetaService Meta {
+			get { return new MetaService(vContext); }
 		}
 
 	}

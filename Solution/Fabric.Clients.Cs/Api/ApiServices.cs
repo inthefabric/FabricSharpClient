@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/15/2013 7:39:06 PM
+// Generated on 2/16/2013 1:52:54 PM
 
 using Fabric.Clients.Cs.Session;
 
@@ -350,33 +350,53 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>TODO</para>
 	/// </remarks>
-	public interface ISpecService : IService {
+	public interface IMetaService : IService {
 
 		/// <summary>
-		///   The latest specification and documentation for all Fabric API services.
+		///   Load the latest specifications and documentation for all Fabric API services.
 		/// </summary>
-		IDocumentOperation Document { get; }
+		IGetSpecificationOperation GetSpecification { get; }
+
+		/// <summary>
+		///   TODO
+		/// </summary>
+		IGetTimeOperation GetTime { get; }
+
+		/// <summary>
+		///   TODO
+		/// </summary>
+		IGetVersionOperation GetVersion { get; }
 
 	}
 
 
 	/*================================================================================================*/
-	internal class SpecService : ISpecService {
+	internal class MetaService : IMetaService {
 	
 		private readonly IClientContext vContext;
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public SpecService(IClientContext pContext) {
+		public MetaService(IClientContext pContext) {
 			vContext = pContext;
 		}
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public IDocumentOperation Document {
-			get { return new DocumentOperation(vContext); }
+		public IGetSpecificationOperation GetSpecification {
+			get { return new GetSpecificationOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IGetTimeOperation GetTime {
+			get { return new GetTimeOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IGetVersionOperation GetVersion {
+			get { return new GetVersionOperation(vContext); }
 		}
 
 	}

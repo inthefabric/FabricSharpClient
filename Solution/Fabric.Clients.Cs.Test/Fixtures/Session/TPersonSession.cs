@@ -25,9 +25,9 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		/*--------------------------------------------------------------------------------------------*/
 		private string BuildGrantCodeUrl(PersonSession pPerSess, bool pSwitchUser=false) {
 			return Config.ApiPath+"/Oauth/Login?"+
-				"client_id="+Config.AppId+
+				"response_type=code"+
+				"&client_id="+Config.AppId+
 				"&redirect_uri="+Config.AppOAuthRedirectUri+
-				"&response_type=code"+
 				"&scope="+
 				"&state="+pPerSess.SessionId+
 				"&switchMode="+(pSwitchUser ? "1" : "0");
@@ -51,9 +51,9 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 
 			MockOauth
 				.Setup(x => x.AccessTokenRefresh.Get(
+					refresh,
 					Config.AppSecret,
-					Config.AppOAuthRedirectUri,
-					refresh
+					Config.AppOAuthRedirectUri
 				))
 				.Returns(expectResult);
 
@@ -116,8 +116,8 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 
 			MockOauth
 				.Setup(x => x.AccessTokenAuthCode.Get(
-					Config.AppSecret,
 					grantCode,
+					Config.AppSecret,
 					Config.AppOAuthRedirectUri
 				))
 				.Returns(expectResult);
