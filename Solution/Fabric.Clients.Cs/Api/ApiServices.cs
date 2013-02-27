@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/16/2013 1:52:54 PM
+// Generated on 2/27/2013 2:08:43 PM
 
 using Fabric.Clients.Cs.Session;
 
@@ -184,11 +184,6 @@ namespace Fabric.Clients.Cs.Api {
 	public interface IModifyService : IService {
 
 		/// <summary>
-		///   Create a new App.
-		/// </summary>
-		IAddAppOperation AddApp { get; }
-
-		/// <summary>
 		///   Create a new Class.
 		/// </summary>
 		IAddClassOperation AddClass { get; }
@@ -207,11 +202,6 @@ namespace Fabric.Clients.Cs.Api {
 		///   Create a new Url.
 		/// </summary>
 		IAddUrlOperation AddUrl { get; }
-
-		/// <summary>
-		///   Create a new User.
-		/// </summary>
-		IAddUserOperation AddUser { get; }
 
 		/// <summary>
 		///   Create a new Descriptor and attach it to the specified Factor.
@@ -271,11 +261,6 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public IAddAppOperation AddApp {
-			get { return new AddAppOperation(vContext); }
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
 		public IAddClassOperation AddClass {
 			get { return new AddClassOperation(vContext); }
 		}
@@ -293,11 +278,6 @@ namespace Fabric.Clients.Cs.Api {
 		/*--------------------------------------------------------------------------------------------*/
 		public IAddUrlOperation AddUrl {
 			get { return new AddUrlOperation(vContext); }
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public IAddUserOperation AddUser {
-			get { return new AddUserOperation(vContext); }
 		}
 
 		/*--------------------------------------------------------------------------------------------*/

@@ -18,10 +18,10 @@ namespace Fabric.Clients.Cs.Mvc {
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-			var config = new FabricClientConfig("ClientTest", "http://localhost:9000", 1,
-				"abcdefghijklmnopqrstuvwxyZ012345", 1, "http://localhost:55555/OAuth/FabricRedirect",
+			var config = new FabricClientConfig("ClientTest", "http://localhost:9000", 2,
+				"377b5e0721614cc5b78209bc44cf8701", 4, "http://localhost:55555/OAuth/FabricRedirect",
 				FabricSessionContainerProvider);
-
+			
 			FabricClient.InitOnce(config);
 		}
 

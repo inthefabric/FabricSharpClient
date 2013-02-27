@@ -57,14 +57,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Data\FabricResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>FabricResource.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>FabricResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\Fabric.0.1.4.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="Data\FabricSpec.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

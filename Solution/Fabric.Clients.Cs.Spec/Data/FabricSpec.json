@@ -1,5 +1,5 @@
 ﻿{
-    "ApiVersion": "0.1.4.b8639526d587",
+    "ApiVersion": "0.1.8.322adcbc3087",
     "Objects": [
       {
         "Name": "FabApp",
@@ -3623,14 +3623,6 @@
               },
               {
                 "ParamType": "Query",
-                "Index": 0,
-                "Name": "data_prov_userid",
-                "Type": "string",
-                "Description": "The [[User|Object|FabUser]] ID value (an integer) for the Data Provider of the [[App|Object|FabApp]] making the request. Upon [[App|Object|FabApp]] creation, Fabric creates a special 'Data Provider' [[User|Object|FabUser]] which the [[App|Object|FabApp]] uses for creating items in the Fabric system. This parameter is only used by the '[[Client Data Provider|Oper|Oauth.AccessTokenClientDataProv]]' flow.",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Query",
                 "Index": 1,
                 "Name": "client_secret",
                 "Type": "string",
@@ -3646,6 +3638,14 @@
                 "Type": "string",
                 "Description": "This value must be exactly the same as the redirect URI provided for the OAuth entry process.",
                 "LenMax": 450,
+                "FabType": "FabSpecServiceOperationParam"
+              },
+              {
+                "ParamType": "Query",
+                "Index": 4,
+                "Name": "data_prov_userid",
+                "Type": "string",
+                "Description": "The [[User|Object|FabUser]] ID value (an integer) for the Data Provider of the [[App|Object|FabApp]] making the request. Upon [[App|Object|FabApp]] creation, Fabric creates a special 'Data Provider' [[User|Object|FabUser]] which the [[App|Object|FabApp]] uses for creating items in the Fabric system. This parameter is only used by the '[[Client Data Provider|Oper|Oauth.AccessTokenClientDataProv]]' flow.",
                 "FabType": "FabSpecServiceOperationParam"
               }
             ],
@@ -3782,36 +3782,6 @@
         "Description": "TODO",
         "ResponseWrapper": "FabResponse",
         "Operations": [
-          {
-            "Name": "AddApp",
-            "Uri": "/Apps",
-            "Method": "POST",
-            "ReturnType": "FabApp",
-            "Description": "Create a new [[App|Object|FabApp]].",
-            "RequiredAuth": "Fabric",
-            "Parameters": [
-              {
-                "ParamType": "Form",
-                "Index": 0,
-                "Name": "Name",
-                "Type": "string",
-                "Description": "The name of the new [[App|Object|FabApp]].",
-                "LenMax": 64,
-                "LenMin": 3,
-                "ValidRegex": "^[a-zA-Z0-9 \\[\\]\\+\\?\\|\\(\\)\\{\\}\\^\\*\\-\\.\\\\/!@#$%&=_,:;'\"<>~]*$",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Form",
-                "Index": 1,
-                "Name": "UserId",
-                "Type": "long",
-                "Description": "Identifies the [[User|Object|FabUser]] that is creating the [[App|Object|FabApp]]. This [[User|Object|FabUser]] will receive the [[App|Object|FabApp]]'s 'DataProvider' [[Member|Object|FabMember]].",
-                "FabType": "FabSpecServiceOperationParam"
-              }
-            ],
-            "FabType": "FabSpecServiceOperation"
-          },
           {
             "Name": "AddClass",
             "Uri": "/Classes",
@@ -3974,48 +3944,6 @@
                 "Type": "string",
                 "Description": "The name of the new [[Url|Object|FabUrl]].",
                 "LenMax": 128,
-                "FabType": "FabSpecServiceOperationParam"
-              }
-            ],
-            "FabType": "FabSpecServiceOperation"
-          },
-          {
-            "Name": "AddUser",
-            "Uri": "/Users",
-            "Method": "POST",
-            "ReturnType": "FabUser",
-            "Description": "Create a new [[User|Object|FabUser]].",
-            "RequiredAuth": "Fabric",
-            "Parameters": [
-              {
-                "ParamType": "Form",
-                "Index": 0,
-                "Name": "Name",
-                "Type": "string",
-                "Description": "The username for the new [[User|Object|FabUser]].",
-                "LenMax": 16,
-                "LenMin": 4,
-                "ValidRegex": "^[a-zA-Z0-9_]*$",
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Form",
-                "Index": 1,
-                "Name": "Password",
-                "Type": "string",
-                "Description": "The password for the new [[User|Object|FabUser]].",
-                "LenMax": 32,
-                "LenMin": 8,
-                "FabType": "FabSpecServiceOperationParam"
-              },
-              {
-                "ParamType": "Form",
-                "Index": 2,
-                "Name": "Email",
-                "Type": "string",
-                "Description": "The email address for the new [[User|Object|FabUser]].",
-                "LenMax": 256,
-                "ValidRegex": "^(([^<>()[\\]\\\\.,;:\\s@\\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\\"]+)*)|(\\\".+\\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",
                 "FabType": "FabSpecServiceOperationParam"
               }
             ],

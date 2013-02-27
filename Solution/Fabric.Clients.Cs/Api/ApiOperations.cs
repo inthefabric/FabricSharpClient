@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/16/2013 1:52:54 PM
+// Generated on 2/27/2013 2:08:43 PM
 
 using Fabric.Clients.Cs.Session;
 using Fabric.Clients.Cs.Web;
@@ -433,16 +433,16 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="client_id">
 		///   The App ID value (an integer) for the App making the request. This parameter is only used by the 'Client Credentials' and 'Client Data Provider' flows.
 		/// </param>
-		/// <param name="data_prov_userid">
-		///   The User ID value (an integer) for the Data Provider of the App making the request. Upon App creation, Fabric creates a special 'Data Provider' User which the App uses for creating items in the Fabric system. This parameter is only used by the 'Client Data Provider' flow.
-		/// </param>
 		/// <param name="client_secret">
 		///   The alpha-numeric Secret for the App making the request. This verifies that the App itself is making the request, and not an imposter.  For this reason, the secret code should not be shared with anyone.
 		/// </param>
 		/// <param name="redirect_uri">
 		///   This value must be exactly the same as the redirect URI provided for the OAuth entry process.
 		/// </param>
-		FabOauthAccess Get(string client_id, string data_prov_userid, string client_secret, string redirect_uri);
+		/// <param name="data_prov_userid">
+		///   The User ID value (an integer) for the Data Provider of the App making the request. Upon App creation, Fabric creates a special 'Data Provider' User which the App uses for creating items in the Fabric system. This parameter is only used by the 'Client Data Provider' flow.
+		/// </param>
+		FabOauthAccess Get(string client_id, string client_secret, string redirect_uri, string data_prov_userid);
 
 	}
 	
@@ -467,16 +467,16 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabOauthAccess> Request(string client_id, string data_prov_userid, string client_secret, string redirect_uri) {
+		public FabricRequest<FabOauthAccess> Request(string client_id, string client_secret, string redirect_uri, string data_prov_userid) {
 			return new FabricRequest<FabOauthAccess>("GET", Uri, 
-				"client_id="+client_id+"&data_prov_userid="+data_prov_userid+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri,
+				"client_id="+client_id+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri+"&data_prov_userid="+data_prov_userid,
 				null
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthAccess Get(string client_id, string data_prov_userid, string client_secret, string redirect_uri) {
-			return Request(client_id, data_prov_userid, client_secret, redirect_uri).Send(vContext);
+		public FabOauthAccess Get(string client_id, string client_secret, string redirect_uri, string data_prov_userid) {
+			return Request(client_id, client_secret, redirect_uri, data_prov_userid).Send(vContext);
 		}
 
 	}
@@ -675,64 +675,6 @@ namespace Fabric.Clients.Cs.Api {
 		/*--------------------------------------------------------------------------------------------*/
 		public FabOauthLogout Get(string access_token) {
 			return Request(access_token).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Create a new App.
-	/// </summary>
-	/// <remarks>
-	///   <para>Create a new App.</para>
-	/// </remarks>
-	public interface IAddAppOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="Name">
-		///   The name of the new App.
-		/// </param>
-		/// <param name="UserId">
-		///   Identifies the User that is creating the App. This User will receive the App's 'DataProvider' Member.
-		/// </param>
-		FabResponse<FabApp> Post(string Name, long UserId);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class AddAppOperation : IAddAppOperation {
-
-		public const string Uri = "/Mod/Apps";
-		
-		public string Method { get { return "POST"; } }
-		public string RequiredAuth { get { return "Fabric"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public AddAppOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabApp>> Request(string Name, long UserId) {
-			return new FabricRequest<FabResponse<FabApp>>("POST", Uri, 
-				null,
-				"Name="+Name+"&UserId="+UserId
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabApp> Post(string Name, long UserId) {
-			return Request(Name, UserId).Send(vContext);
 		}
 
 	}
@@ -980,67 +922,6 @@ namespace Fabric.Clients.Cs.Api {
 		/*--------------------------------------------------------------------------------------------*/
 		public FabResponse<FabUrl> Post(string AbsoluteUrl, string Name) {
 			return Request(AbsoluteUrl, Name).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Create a new User.
-	/// </summary>
-	/// <remarks>
-	///   <para>Create a new User.</para>
-	/// </remarks>
-	public interface IAddUserOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="Name">
-		///   The username for the new User.
-		/// </param>
-		/// <param name="Password">
-		///   The password for the new User.
-		/// </param>
-		/// <param name="Email">
-		///   The email address for the new User.
-		/// </param>
-		FabResponse<FabUser> Post(string Name, string Password, string Email);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class AddUserOperation : IAddUserOperation {
-
-		public const string Uri = "/Mod/Users";
-		
-		public string Method { get { return "POST"; } }
-		public string RequiredAuth { get { return "Fabric"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public AddUserOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabUser>> Request(string Name, string Password, string Email) {
-			return new FabricRequest<FabResponse<FabUser>>("POST", Uri, 
-				null,
-				"Name="+Name+"&Password="+Password+"&Email="+Email
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabUser> Post(string Name, string Password, string Email) {
-			return Request(Name, Password, Email).Send(vContext);
 		}
 
 	}

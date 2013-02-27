@@ -19,7 +19,7 @@ namespace Fabric.Clients.Cs.Spec {
 		
 		/*--------------------------------------------------------------------------------------------*/
 		private static FabSpec Build() {
-			return JsonSerializer.DeserializeFromString<FabSpec>(FabricResource.Fabric_0_1_4);
+			return JsonSerializer.DeserializeFromString<FabSpec>(FabricResource.SpecJson);
 		}
 		
 		
