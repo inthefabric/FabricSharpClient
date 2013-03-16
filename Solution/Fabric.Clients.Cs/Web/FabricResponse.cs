@@ -1,4 +1,5 @@
-﻿using Fabric.Clients.Cs.Api;
+﻿using System;
+using Fabric.Clients.Cs.Api;
 
 namespace Fabric.Clients.Cs.Web {
 	
@@ -8,6 +9,7 @@ namespace Fabric.Clients.Cs.Web {
 		public T Data { get; private set; }
 		public FabResponse RespError { get; private set; }
 		public FabOauthError OauthError { get; private set; }
+		public Exception Excep { get; private set; }
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -17,13 +19,15 @@ namespace Fabric.Clients.Cs.Web {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricResponse(FabResponse pRespError) {
+		public FabricResponse(FabResponse pRespError, Exception pExcep) {
 			RespError = pRespError;
+			Excep = pExcep;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricResponse(FabOauthError pOauthError) {
+		public FabricResponse(FabOauthError pOauthError, Exception pExcep) {
 			OauthError = pOauthError;
+			Excep = pExcep;
 		}
 
 	}

@@ -71,8 +71,7 @@ namespace Fabric.Clients.Cs.Web {
 
 				string data = StreamToString(wr.GetResponseStream());
 				pContext.Config.LogDebug("Request Response: "+data);
-				var test = new FabricResponse<T>(JsonSerializer.DeserializeFromString<T>(data));
-				return test;
+				return new FabricResponse<T>(JsonSerializer.DeserializeFromString<T>(data));
 				/*return new FabricResponse<T>(
 					JsonSerializer.DeserializeFromStream<T>(wr.GetResponseStream()));*/
 			}
@@ -89,15 +88,13 @@ namespace Fabric.Clients.Cs.Web {
 					" (IsError="+isRespErr+", IsOauthError="+isOauthErr+")");
 
 				if ( isRespErr ) {
-					string payload = GetErrorPayload(data);
-					FabResponse respErr = JsonSerializer.DeserializeFromString<FabResponse>(data);
-					respErr.Error = JsonSerializer.DeserializeFromString<FabError>(payload);
-					return new FabricResponse<T>(respErr);
+					FabResponse frErr = JsonSerializer.DeserializeFromString<FabResponse>(data);
+					return new FabricResponse<T>(frErr, we);
 				}
 
 				if ( isOauthErr ) {
 					FabOauthError oerr = JsonSerializer.DeserializeFromString<FabOauthError>(data);
-					return new FabricResponse<T>(oerr);
+					return new FabricResponse<T>(oerr, we);
 				}
 
 				throw;

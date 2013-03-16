@@ -145,19 +145,47 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------* /
-		public ActionResult ApiVersion() {
-			string model;
+		/*--------------------------------------------------------------------------------------------*/
+		public ActionResult Version() {
+			FabMetaVersion model;
 
 			try {
-				model = vFab.Services.ApiVersion;
+				model = vFab.Services.Meta.GetVersion.Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
 			}
 
 			return View("Item", model);
-		}*/
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public ActionResult Time() {
+			FabMetaTime model;
+
+			try {
+				model = vFab.Services.Meta.GetTime.Get().FirstDataItem();
+			}
+			catch ( FabricErrorException e ) {
+				return View("Error", e);
+			}
+
+			return View("Item", model);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public ActionResult Spec() {
+			FabSpec model;
+
+			try {
+				model = vFab.Services.Meta.GetSpecification.Get().FirstDataItem();
+			}
+			catch ( FabricErrorException e ) {
+				return View("Error", e);
+			}
+
+			return View("Item", model);
+		}
 
 	}
 

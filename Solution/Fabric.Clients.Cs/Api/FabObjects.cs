@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 2/16/2013 1:52:54 PM
+// Generated on 3/16/2013 12:14:42 PM
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -1039,6 +1039,11 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   TODO
 		/// </summary>
+		public FabError Error { get; set; }
+		
+		/// <summary>
+		///   TODO
+		/// </summary>
 		public string[] Functions { get; set; }
 		
 		/// <summary>
@@ -1050,11 +1055,6 @@ namespace Fabric.Clients.Cs.Api {
 		///   TODO
 		/// </summary>
 		public int HttpStatus { get; set; }
-		
-		/// <summary>
-		///   TODO
-		/// </summary>
-		public bool IsError { get; set; }
 		
 		/// <summary>
 		///   TODO

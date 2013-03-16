@@ -50,7 +50,7 @@ namespace Fabric.Clients.Cs.Mvc.Models {
 			
 			foreach ( PropertyInfo t in props ) {
 				prop = t;
-				html += "<td class='Header'>"+prop.Name+(hasSubObj(prop) ?
+				html += "<td class='Header'>"+prop.Name+(HasSubObj(prop) ?
 					"<br/><span class='HeaderType'>"+prop.PropertyType.Name+"</span>" :
 					"")+"</td>";
 			}
@@ -71,7 +71,13 @@ namespace Fabric.Clients.Cs.Mvc.Models {
 					prop = t;
 					Object val = prop.GetValue(obj, null);
 
-					if ( val != null && hasSubObj(prop) ) {
+					if ( val != null && IsSubList(prop) ) {
+						var list = new List<object>((IEnumerable<object>)val);
+						html += "<td class='"+cellClass+"'>"+BuildTableHtml(list, pDepth+1)+"</td>";
+						continue;
+					}
+					
+					if ( val != null && HasSubObj(prop) ) {
 						IList<Object> subList = new List<Object>();
 						subList.Add(val);
 						html += "<td class='"+cellClass+"'>"+BuildTableHtml(subList, pDepth+1)+"</td>";
@@ -91,12 +97,21 @@ namespace Fabric.Clients.Cs.Mvc.Models {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private bool hasSubObj(PropertyInfo pProp) {
+		private static bool HasSubObj(PropertyInfo pProp) {
 			if ( pProp.PropertyType.FullName == null ) {
 				return false;
 			}
 
 			return (pProp.PropertyType.FullName.IndexOf(".Fab") > 0);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		private static bool IsSubList(PropertyInfo pProp) {
+			if ( pProp.PropertyType.FullName == null ) {
+				return false;
+			}
+
+			return (HasSubObj(pProp) && pProp.PropertyType.FullName.IndexOf("[]") > 0);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/

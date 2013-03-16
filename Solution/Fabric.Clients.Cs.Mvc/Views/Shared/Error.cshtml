@@ -1,11 +1,11 @@
 ﻿@model FabricErrorException
 @if ( Model.RespError != null ) {
-	<h1>FabricErrorException</h1>
-	<h2>@Model.RespError.Name</h2>
+	<h1>Fabric Error/Exception</h1>
+	<h2>@Model.RespError.Error.Name</h2>
 	<p>
-		@Model.RespError.Message<br />
+		@Model.RespError.Error.Message<br />
 		<br />
-		(Code: @Model.RespError.Code)
+		(Code: @Model.RespError.Error.Code)
 	</p>
 }
 else {

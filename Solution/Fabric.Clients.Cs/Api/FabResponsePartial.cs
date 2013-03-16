@@ -6,9 +6,6 @@ namespace Fabric.Clients.Cs.Api {
 	/// <summary />
 	public partial class FabResponse {
 
-		/// <summary />
-		public FabError Error { get; set; }
-
 	}
 
 
