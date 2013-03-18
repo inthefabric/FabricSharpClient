@@ -14,13 +14,13 @@ namespace Fabric.Clients.Cs {
 		string ApiPath { get; }
 
 		/// <summary />
-		int AppId { get; }
+		long AppId { get; }
 
 		/// <summary />
 		string AppSecret { get; }
 
 		/// <summary />
-		int AppDataProvPersonId { get; }
+		long AppDataProvPersonId { get; }
 
 		/// <summary />
 		string AppOAuthRedirectUri { get; }

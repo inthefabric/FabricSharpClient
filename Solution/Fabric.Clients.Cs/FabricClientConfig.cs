@@ -18,13 +18,13 @@ namespace Fabric.Clients.Cs {
 		public string ApiPath { get; private set; }
 
 		/// <summary />
-		public int AppId { get; private set; }
+		public long AppId { get; private set; }
 
 		/// <summary />
 		public string AppSecret { get; private set; }
 
 		/// <summary />
-		public int AppDataProvPersonId { get; private set; }
+		public long AppDataProvPersonId { get; private set; }
 
 		/// <summary />
 		public string AppOAuthRedirectUri { get; private set; }
@@ -38,9 +38,9 @@ namespace Fabric.Clients.Cs {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		public FabricClientConfig(string configKey, string apiPath, int appId, string appSecret,
-													int appDataProvPersonId, string appOauthRedirectUri,
-													SessionContainerProvider sessionContainerProvider) {
+		public FabricClientConfig(string configKey, string apiPath, long appId, string appSecret,
+												long appDataProvPersonId, string appOauthRedirectUri,
+												SessionContainerProvider sessionContainerProvider) {
 
 			if ( string.IsNullOrWhiteSpace(configKey) ) {
 				throw new Exception("Invalid ConfigKey.");
