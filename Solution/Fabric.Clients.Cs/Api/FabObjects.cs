@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 3/16/2013 12:14:42 PM
+// Generated on 3/24/2013 12:25:32 PM
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -87,6 +87,77 @@ namespace Fabric.Clients.Cs.Api {
 		///   Uniquely identifies this object amongst all other objects of this type.
 		/// </summary>
 		public long ArtifactTypeId { get; set; }
+		
+	}
+
+	
+	/*================================================================================================*/
+	/// <summary>
+	///   MISSING:BatchNewClass
+	/// </summary>
+	/// <remarks>
+	///   <para>MISSING:BatchNewClass</para>
+	/// </remarks>
+	public class FabBatchNewClass : FabBatchNewObject {
+	
+		/// <summary>
+		///   MISSING:BatchNewClass_Disamb
+		/// </summary>
+		public string Disamb { get; set; }
+		
+		/// <summary>
+		///   MISSING:BatchNewClass_Name
+		/// </summary>
+		public string Name { get; set; }
+		
+		/// <summary>
+		///   MISSING:BatchNewClass_Note
+		/// </summary>
+		public string Note { get; set; }
+		
+	}
+
+	
+	/*================================================================================================*/
+	/// <summary>
+	///   MISSING:BatchNewObject
+	/// </summary>
+	/// <remarks>
+	///   <para>MISSING:BatchNewObject</para>
+	/// </remarks>
+	public class FabBatchNewObject : FabObject {
+	
+		/// <summary>
+		///   MISSING:BatchNewObject_BatchId
+		/// </summary>
+		public long BatchId { get; set; }
+		
+	}
+
+	
+	/*================================================================================================*/
+	/// <summary>
+	///   MISSING:BatchResult
+	/// </summary>
+	/// <remarks>
+	///   <para>MISSING:BatchResult</para>
+	/// </remarks>
+	public class FabBatchResult : FabObject {
+	
+		/// <summary>
+		///   MISSING:BatchResult_BatchId
+		/// </summary>
+		public long BatchId { get; set; }
+		
+		/// <summary>
+		///   MISSING:BatchResult_Error
+		/// </summary>
+		public FabError Error { get; set; }
+		
+		/// <summary>
+		///   MISSING:BatchResult_ResultId
+		/// </summary>
+		public long ResultId { get; set; }
 		
 	}
 

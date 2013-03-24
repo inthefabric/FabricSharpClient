@@ -1,5 +1,5 @@
 ﻿{
-      "ApiVersion": "0.1.14.fb59a8850b81",
+      "ApiVersion": "0.1.19.fb755e936927",
       "Objects": [
         {
           "Name": "FabApp",
@@ -293,6 +293,72 @@
             "Back",
             "Limit",
             "WhereId"
+          ],
+          "FabType": "FabSpecObject"
+        },
+        {
+          "Name": "FabBatchNewClass",
+          "Extends": "FabBatchNewObject",
+          "Description": "MISSING:BatchNewClass",
+          "Properties": [
+            {
+              "Name": "Disamb",
+              "Type": "string",
+              "Description": "MISSING:BatchNewClass_Disamb",
+              "FabType": "FabSpecObjectProp"
+            },
+            {
+              "Name": "Name",
+              "Type": "string",
+              "Description": "MISSING:BatchNewClass_Name",
+              "FabType": "FabSpecObjectProp"
+            },
+            {
+              "Name": "Note",
+              "Type": "string",
+              "Description": "MISSING:BatchNewClass_Note",
+              "FabType": "FabSpecObjectProp"
+            }
+          ],
+          "FabType": "FabSpecObject"
+        },
+        {
+          "Name": "FabBatchNewObject",
+          "Extends": "FabObject",
+          "Description": "MISSING:BatchNewObject",
+          "Properties": [
+            {
+              "Name": "BatchId",
+              "Type": "long",
+              "Description": "MISSING:BatchNewObject_BatchId",
+              "FabType": "FabSpecObjectProp"
+            }
+          ],
+          "FabType": "FabSpecObject"
+        },
+        {
+          "Name": "FabBatchResult",
+          "Extends": "FabObject",
+          "Description": "MISSING:BatchResult",
+          "Properties": [
+            {
+              "Name": "BatchId",
+              "Type": "long",
+              "Description": "MISSING:BatchResult_BatchId",
+              "FabType": "FabSpecObjectProp"
+            },
+            {
+              "Name": "Error",
+              "Type": "FabError",
+              "Description": "MISSING:BatchResult_Error",
+              "FabType": "FabSpecObjectProp"
+            },
+            {
+              "Name": "ResultId",
+              "Type": "long",
+              "Description": "MISSING:BatchResult_ResultId",
+              "FabType": "FabSpecObjectProp"
+            }
           ],
           "FabType": "FabSpecObject"
         },
@@ -3819,6 +3885,25 @@
                   "Description": "A brief description of the new [[Class|Object|FabClass]]. It can be useful for helping others understand the creator's intended purpose or meaning.",
                   "IsOptional": true,
                   "LenMax": 256,
+                  "FabType": "FabSpecServiceOperationParam"
+                }
+              ],
+              "FabType": "FabSpecServiceOperation"
+            },
+            {
+              "Name": "AddClasses",
+              "Uri": "/Classes/Batch",
+              "Method": "POST",
+              "ReturnType": "FabBatchResult",
+              "Description": "MISSING:Modify_AddClasses",
+              "RequiredAuth": "Member",
+              "Parameters": [
+                {
+                  "ParamType": "Form",
+                  "Index": 0,
+                  "Name": "Classes",
+                  "Type": "FabBatchNewClass[]",
+                  "Description": "MISSING:Modify_AddClasses_Classes",
                   "FabType": "FabSpecServiceOperationParam"
                 }
               ],

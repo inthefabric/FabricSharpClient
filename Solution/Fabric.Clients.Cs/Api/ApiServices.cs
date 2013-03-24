@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 3/16/2013 12:14:42 PM
+// Generated on 3/24/2013 12:25:32 PM
 
 using Fabric.Clients.Cs.Session;
 
@@ -189,6 +189,11 @@ namespace Fabric.Clients.Cs.Api {
 		IAddClassOperation AddClass { get; }
 
 		/// <summary>
+		///   MISSING:Modify_AddClasses
+		/// </summary>
+		IAddClassesOperation AddClasses { get; }
+
+		/// <summary>
 		///   Create a new Factor.
 		/// </summary>
 		IAddFactorOperation AddFactor { get; }
@@ -263,6 +268,11 @@ namespace Fabric.Clients.Cs.Api {
 		/*--------------------------------------------------------------------------------------------*/
 		public IAddClassOperation AddClass {
 			get { return new AddClassOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IAddClassesOperation AddClasses {
+			get { return new AddClassesOperation(vContext); }
 		}
 
 		/*--------------------------------------------------------------------------------------------*/

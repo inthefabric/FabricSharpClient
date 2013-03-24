@@ -1,9 +1,10 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 3/16/2013 12:14:41 PM
+// Generated on 3/24/2013 12:28:01 PM
 
 using Fabric.Clients.Cs.Session;
 using Fabric.Clients.Cs.Web;
+using ServiceStack.Text;
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -736,6 +737,61 @@ namespace Fabric.Clients.Cs.Api {
 		/*--------------------------------------------------------------------------------------------*/
 		public FabResponse<FabClass> Post(string Name, string Disamb, string Note) {
 			return Request(Name, Disamb, Note).Send(vContext);
+		}
+
+	}
+
+
+	/*================================================================================================*/
+	/// <summary>
+	///   MISSING:Modify_AddClasses
+	/// </summary>
+	/// <remarks>
+	///   <para>MISSING:Modify_AddClasses</para>
+	/// </remarks>
+	public interface IAddClassesOperation : IOperation {
+		
+		/// <summary>
+		///   Perform the operation.
+		/// </summary>
+		/// <param name="Classes">
+		///   MISSING:Modify_AddClasses_Classes
+		/// </param>
+		FabResponse<FabBatchResult> Post(FabBatchNewClass[] Classes);
+
+	}
+	
+
+	/*================================================================================================*/
+	internal class AddClassesOperation : IAddClassesOperation {
+
+		public const string Uri = "/Mod/Classes/Batch";
+		
+		public string Method { get { return "POST"; } }
+		public string RequiredAuth { get { return "Member"; } }
+		
+		private readonly IClientContext vContext;
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public AddClassesOperation(IClientContext pContext) {
+			vContext = pContext;
+		}
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabricRequest<FabResponse<FabBatchResult>> Request(FabBatchNewClass[] Classes) {
+			return new FabricRequest<FabResponse<FabBatchResult>>("POST", Uri, 
+				null,
+				"Classes="+Classes.ToJson()
+			);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public FabResponse<FabBatchResult> Post(FabBatchNewClass[] Classes) {
+			return Request(Classes).Send(vContext);
 		}
 
 	}

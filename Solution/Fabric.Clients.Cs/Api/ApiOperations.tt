@@ -10,6 +10,7 @@
 
 using Fabric.Clients.Cs.Session;
 using Fabric.Clients.Cs.Web;
+using ServiceStack.Text;
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -33,6 +34,7 @@ foreach ( FabSpecService s in spec.Services ) {
 		string paramComments = "";
 		string query = "";
 		string form = "";
+		string paramFunc = "";
 
 		if ( op.Parameters != null ) {
 			foreach ( FabSpecServiceOperationParam p in op.Parameters ) {
@@ -48,14 +50,16 @@ foreach ( FabSpecService s in spec.Services ) {
 				paramComments += "/// <param name=\""+p.Name+"\">\r\n\t\t///   "+
 					SpecBuilder.ToXmlDoc(p.Description, false)+"\r\n\t\t/// </param>";
 
+				paramFunc = (p.Type.Substring(0,3) == "Fab" ? ".ToJson()" : "");
+
 				switch ( p.ParamType ) {
 
 					case "Query":
-						query += (query == "" ? "" : "&")+p.Name+"=\"+"+p.Name+"+\"";
+						query += (query == "" ? "" : "&")+p.Name+"=\"+"+p.Name+paramFunc+"+\"";
 						break;
 						
 					case "Form":
-						form += (form == "" ? "" : "&")+p.Name+"=\"+"+p.Name+"+\"";
+						form += (form == "" ? "" : "&")+p.Name+"=\"+"+p.Name+paramFunc+"+\"";
 						break;
 				}
 			}
