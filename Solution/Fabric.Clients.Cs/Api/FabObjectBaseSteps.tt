@@ -15,7 +15,7 @@ namespace Fabric.Clients.Cs.Api {
 FabSpec spec = SpecBuilder.Spec;
 
 foreach ( FabSpecObject o in spec.Objects ) {
-	if ( o.IsBaseClass ) {
+	if ( !o.IsBaseClass ) {
 		continue;
 	}
 
@@ -40,7 +40,7 @@ foreach ( FabSpecObject o in spec.Objects ) {
 #>
 	/*================================================================================================*/
 	/// <summary />
-	public interface I<#= o.Name #>Step : I<#= extends #>Step<<#= o.Name #>><#= interfaces #> {
+	public interface I<#= o.Name #>Step<T> : I<#= extends #>Step<T><#= interfaces #> where T : FabObject {
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -63,12 +63,13 @@ foreach ( FabSpecObject o in spec.Objects ) {
 		I<#= step #>Step <#= link.Name #> { get; }
 	
 <#
-	} //end link loop
+	}
 #>
 	}
+	
 
 	/*================================================================================================*/
-	internal class <#= o.Name #>Step : <#= extends #>Step<<#= o.Name #>>, I<#= o.Name #>Step {
+	internal class <#= o.Name #>Step<T> : <#= extends #>Step<T>, I<#= o.Name #>Step<T> where T : FabObject {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -98,6 +99,23 @@ foreach ( FabSpecObject o in spec.Objects ) {
 #>
 	}
 	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface I<#= o.Name #>Step : I<#= o.Name #>Step<<#= o.Name #>> {
+
+	}
+
+	
+	/*================================================================================================*/
+	internal class <#= o.Name #>Step : <#= o.Name #>Step<<#= o.Name #>>, I<#= o.Name #>Step {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public <#= o.Name #>Step(Traversal pTrav) : base(pTrav) {}
+
+	}
 	
 <#
 }

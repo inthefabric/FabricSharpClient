@@ -1,20 +1,31 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 4/6/2013 11:08:11 AM
+// Generated on 4/6/2013 1:59:09 PM
 
 namespace Fabric.Clients.Cs.Api {
-
+	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabAppStep : ITraversalStep<FabApp> {
-	
+	public interface IFabAppStep : IFabArtifactStep<FabApp>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Links an App to a particular Member. (OutToOneOrMore FabMember)
+		/// </summary>
+		/// <remarks>
+		///   <para>Links an App to a particular Member.</para>
+		///   <para>Type: AppDefinesMember</para>
+		///   <para>Relation: Defines</para>
+		///   <para>Connection: OutToOneOrMore</para>
+		/// </remarks>
+		IFabMemberStep DefinesMemberList { get; }
 	
+	}
 
 	/*================================================================================================*/
-	internal class FabAppStep : TraversalStep<FabApp>, IFabAppStep {
+	internal class FabAppStep : FabArtifactStep<FabApp>, IFabAppStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,42 +34,29 @@ namespace Fabric.Clients.Cs.Api {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-	
-	/*================================================================================================*/
-	/// <summary />
-	public interface IFabArtifactStep : ITraversalStep<FabArtifact> {
-	
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-
-	/*================================================================================================*/
-	internal class FabArtifactStep : TraversalStep<FabArtifact>, IFabArtifactStep {
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabArtifactStep(Traversal pTrav) : base(pTrav) {}
+		public IFabMemberStep DefinesMemberList {
+			get {
+				var s = new FabMemberStep(Trav);
+				Trav.AddStep(s);
+				Trav.AppendToUri("/DefinesMemberList");
+				return s;
+			}
+		}
 		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
 	
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabBatchNewClassStep : ITraversalStep<FabBatchNewClass> {
-	
+	public interface IFabBatchNewClassStep : IFabBatchNewObjectStep<FabBatchNewClass> {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabBatchNewClassStep : TraversalStep<FabBatchNewClass>, IFabBatchNewClassStep {
+	internal class FabBatchNewClassStep : FabBatchNewObjectStep<FabBatchNewClass>, IFabBatchNewClassStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -72,37 +70,14 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabBatchNewObjectStep : ITraversalStep<FabBatchNewObject> {
-	
+	public interface IFabBatchResultStep : IFabObjectStep<FabBatchResult> {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabBatchNewObjectStep : TraversalStep<FabBatchNewObject>, IFabBatchNewObjectStep {
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabBatchNewObjectStep(Traversal pTrav) : base(pTrav) {}
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-	
-	/*================================================================================================*/
-	/// <summary />
-	public interface IFabBatchResultStep : ITraversalStep<FabBatchResult> {
-	
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-
-	/*================================================================================================*/
-	internal class FabBatchResultStep : TraversalStep<FabBatchResult>, IFabBatchResultStep {
+	internal class FabBatchResultStep : FabObjectStep<FabBatchResult>, IFabBatchResultStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -116,15 +91,14 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabClassStep : ITraversalStep<FabClass>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabClassStep : IFabArtifactStep<FabClass>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabClassStep : TraversalStep<FabClass>, IFabClassStep {
+	internal class FabClassStep : FabArtifactStep<FabClass>, IFabClassStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -138,9 +112,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabDescriptorStep : ITraversalStep<FabDescriptor>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabDescriptorStep : IFabFactorElementNodeStep<FabDescriptor>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -203,10 +177,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabArtifactStep RefinesTypeWithArtifact { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabDescriptorStep : TraversalStep<FabDescriptor>, IFabDescriptorStep {
+	internal class FabDescriptorStep : FabFactorElementNodeStep<FabDescriptor>, IFabDescriptorStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -270,9 +243,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabDescriptorTypeStep : ITraversalStep<FabDescriptorType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabDescriptorTypeStep : IFabNodeForTypeStep<FabDescriptorType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -287,10 +260,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabDescriptorStep InDescriptorListUses { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabDescriptorTypeStep : TraversalStep<FabDescriptorType>, IFabDescriptorTypeStep {
+	internal class FabDescriptorTypeStep : FabNodeForTypeStep<FabDescriptorType>, IFabDescriptorTypeStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -314,9 +286,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabDirectorStep : ITraversalStep<FabDirector>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabDirectorStep : IFabFactorElementNodeStep<FabDirector>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -367,10 +339,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabDirectorActionStep UsesRelatedDirectorAction { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabDirectorStep : TraversalStep<FabDirector>, IFabDirectorStep {
+	internal class FabDirectorStep : FabFactorElementNodeStep<FabDirector>, IFabDirectorStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -424,9 +395,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabDirectorActionStep : ITraversalStep<FabDirectorAction>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabDirectorActionStep : IFabNodeForTypeStep<FabDirectorAction>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -453,10 +424,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabDirectorStep InDirectorListUsesRelated { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabDirectorActionStep : TraversalStep<FabDirectorAction>, IFabDirectorActionStep {
+	internal class FabDirectorActionStep : FabNodeForTypeStep<FabDirectorAction>, IFabDirectorActionStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -490,9 +460,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabDirectorTypeStep : ITraversalStep<FabDirectorType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabDirectorTypeStep : IFabNodeForTypeStep<FabDirectorType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -507,10 +477,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabDirectorStep InDirectorListUses { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabDirectorTypeStep : TraversalStep<FabDirectorType>, IFabDirectorTypeStep {
+	internal class FabDirectorTypeStep : FabNodeForTypeStep<FabDirectorType>, IFabDirectorTypeStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -534,15 +503,14 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabErrorStep : ITraversalStep<FabError> {
-	
+	public interface IFabErrorStep : IFabObjectStep<FabError> {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabErrorStep : TraversalStep<FabError>, IFabErrorStep {
+	internal class FabErrorStep : FabObjectStep<FabError>, IFabErrorStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -556,9 +524,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabEventorStep : ITraversalStep<FabEventor>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabEventorStep : IFabFactorElementNodeStep<FabEventor>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -597,10 +565,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabEventorPrecisionStep UsesEventorPrecision { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabEventorStep : TraversalStep<FabEventor>, IFabEventorStep {
+	internal class FabEventorStep : FabFactorElementNodeStep<FabEventor>, IFabEventorStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -644,9 +611,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabEventorPrecisionStep : ITraversalStep<FabEventorPrecision>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabEventorPrecisionStep : IFabNodeForTypeStep<FabEventorPrecision>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -661,10 +628,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabEventorStep InEventorListUses { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabEventorPrecisionStep : TraversalStep<FabEventorPrecision>, IFabEventorPrecisionStep {
+	internal class FabEventorPrecisionStep : FabNodeForTypeStep<FabEventorPrecision>, IFabEventorPrecisionStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -688,9 +654,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabEventorTypeStep : ITraversalStep<FabEventorType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabEventorTypeStep : IFabNodeForTypeStep<FabEventorType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -705,10 +671,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabEventorStep InEventorListUses { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabEventorTypeStep : TraversalStep<FabEventorType>, IFabEventorTypeStep {
+	internal class FabEventorTypeStep : FabNodeForTypeStep<FabEventorType>, IFabEventorTypeStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -732,9 +697,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabFactorStep : ITraversalStep<FabFactor>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabFactorStep : IFabNodeStep<FabFactor>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -869,10 +834,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabVectorStep UsesVector { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabFactorStep : TraversalStep<FabFactor>, IFabFactorStep {
+	internal class FabFactorStep : FabNodeStep<FabFactor>, IFabFactorStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -996,9 +960,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabFactorAssertionStep : ITraversalStep<FabFactorAssertion>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabFactorAssertionStep : IFabNodeForTypeStep<FabFactorAssertion>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -1013,10 +977,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabFactorStep InFactorListUses { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabFactorAssertionStep : TraversalStep<FabFactorAssertion>, IFabFactorAssertionStep {
+	internal class FabFactorAssertionStep : FabNodeForTypeStep<FabFactorAssertion>, IFabFactorAssertionStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1040,37 +1003,14 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabFactorElementNodeStep : ITraversalStep<FabFactorElementNode>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabHomeStep : IFabObjectStep<FabHome> {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabFactorElementNodeStep : TraversalStep<FabFactorElementNode>, IFabFactorElementNodeStep {
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabFactorElementNodeStep(Traversal pTrav) : base(pTrav) {}
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-	
-	/*================================================================================================*/
-	/// <summary />
-	public interface IFabHomeStep : ITraversalStep<FabHome> {
-	
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-
-	/*================================================================================================*/
-	internal class FabHomeStep : TraversalStep<FabHome>, IFabHomeStep {
+	internal class FabHomeStep : FabObjectStep<FabHome>, IFabHomeStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1084,9 +1024,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabIdentorStep : ITraversalStep<FabIdentor>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabIdentorStep : IFabFactorElementNodeStep<FabIdentor>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -1113,10 +1053,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabIdentorTypeStep UsesIdentorType { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabIdentorStep : TraversalStep<FabIdentor>, IFabIdentorStep {
+	internal class FabIdentorStep : FabFactorElementNodeStep<FabIdentor>, IFabIdentorStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1150,9 +1089,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabIdentorTypeStep : ITraversalStep<FabIdentorType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabIdentorTypeStep : IFabNodeForTypeStep<FabIdentorType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -1167,10 +1106,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabIdentorStep InIdentorListUses { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabIdentorTypeStep : TraversalStep<FabIdentorType>, IFabIdentorTypeStep {
+	internal class FabIdentorTypeStep : FabNodeForTypeStep<FabIdentorType>, IFabIdentorTypeStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1194,15 +1132,14 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabInstanceStep : ITraversalStep<FabInstance>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabInstanceStep : IFabArtifactStep<FabInstance>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabInstanceStep : TraversalStep<FabInstance>, IFabInstanceStep {
+	internal class FabInstanceStep : FabArtifactStep<FabInstance>, IFabInstanceStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1216,9 +1153,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabLocatorStep : ITraversalStep<FabLocator>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabLocatorStep : IFabFactorElementNodeStep<FabLocator>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -1245,10 +1182,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabLocatorTypeStep UsesLocatorType { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabLocatorStep : TraversalStep<FabLocator>, IFabLocatorStep {
+	internal class FabLocatorStep : FabFactorElementNodeStep<FabLocator>, IFabLocatorStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1282,9 +1218,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabLocatorTypeStep : ITraversalStep<FabLocatorType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabLocatorTypeStep : IFabNodeForTypeStep<FabLocatorType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -1299,10 +1235,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabLocatorStep InLocatorListUses { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabLocatorTypeStep : TraversalStep<FabLocatorType>, IFabLocatorTypeStep {
+	internal class FabLocatorTypeStep : FabNodeForTypeStep<FabLocatorType>, IFabLocatorTypeStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1326,9 +1261,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabMemberStep : ITraversalStep<FabMember>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabMemberStep : IFabNodeStep<FabMember>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -1415,10 +1350,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabUserStep InUserDefines { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabMemberStep : TraversalStep<FabMember>, IFabMemberStep {
+	internal class FabMemberStep : FabNodeStep<FabMember>, IFabMemberStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1502,9 +1436,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabMemberTypeStep : ITraversalStep<FabMemberType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabMemberTypeStep : IFabNodeForTypeStep<FabMemberType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -1519,10 +1453,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabMemberTypeAssignStep InMemberTypeAssignListUses { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabMemberTypeStep : TraversalStep<FabMemberType>, IFabMemberTypeStep {
+	internal class FabMemberTypeStep : FabNodeForTypeStep<FabMemberType>, IFabMemberTypeStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1546,9 +1479,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabMemberTypeAssignStep : ITraversalStep<FabMemberTypeAssign>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabMemberTypeAssignStep : IFabNodeForActionStep<FabMemberTypeAssign>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -1599,10 +1532,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabMemberTypeStep UsesMemberType { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabMemberTypeAssignStep : TraversalStep<FabMemberTypeAssign>, IFabMemberTypeAssignStep {
+	internal class FabMemberTypeAssignStep : FabNodeForActionStep<FabMemberTypeAssign>, IFabMemberTypeAssignStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1656,15 +1588,14 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabMetaTimeStep : ITraversalStep<FabMetaTime> {
-	
+	public interface IFabMetaTimeStep : IFabObjectStep<FabMetaTime> {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabMetaTimeStep : TraversalStep<FabMetaTime>, IFabMetaTimeStep {
+	internal class FabMetaTimeStep : FabObjectStep<FabMetaTime>, IFabMetaTimeStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1678,15 +1609,14 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabMetaVersionStep : ITraversalStep<FabMetaVersion> {
-	
+	public interface IFabMetaVersionStep : IFabObjectStep<FabMetaVersion> {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabMetaVersionStep : TraversalStep<FabMetaVersion>, IFabMetaVersionStep {
+	internal class FabMetaVersionStep : FabObjectStep<FabMetaVersion>, IFabMetaVersionStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1700,81 +1630,14 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabNodeStep : ITraversalStep<FabNode> {
-	
+	public interface IFabOauthAccessStep : IFabObjectStep<FabOauthAccess> {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabNodeStep : TraversalStep<FabNode>, IFabNodeStep {
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabNodeStep(Traversal pTrav) : base(pTrav) {}
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-	
-	/*================================================================================================*/
-	/// <summary />
-	public interface IFabNodeForActionStep : ITraversalStep<FabNodeForAction>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-
-	/*================================================================================================*/
-	internal class FabNodeForActionStep : TraversalStep<FabNodeForAction>, IFabNodeForActionStep {
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabNodeForActionStep(Traversal pTrav) : base(pTrav) {}
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-	
-	/*================================================================================================*/
-	/// <summary />
-	public interface IFabNodeForTypeStep : ITraversalStep<FabNodeForType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-
-	/*================================================================================================*/
-	internal class FabNodeForTypeStep : TraversalStep<FabNodeForType>, IFabNodeForTypeStep {
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabNodeForTypeStep(Traversal pTrav) : base(pTrav) {}
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-	
-	/*================================================================================================*/
-	/// <summary />
-	public interface IFabOauthAccessStep : ITraversalStep<FabOauthAccess> {
-	
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-
-	/*================================================================================================*/
-	internal class FabOauthAccessStep : TraversalStep<FabOauthAccess>, IFabOauthAccessStep {
+	internal class FabOauthAccessStep : FabObjectStep<FabOauthAccess>, IFabOauthAccessStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1788,15 +1651,14 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabOauthErrorStep : ITraversalStep<FabOauthError> {
-	
+	public interface IFabOauthErrorStep : IFabObjectStep<FabOauthError> {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabOauthErrorStep : TraversalStep<FabOauthError>, IFabOauthErrorStep {
+	internal class FabOauthErrorStep : FabObjectStep<FabOauthError>, IFabOauthErrorStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1810,15 +1672,14 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabOauthLoginStep : ITraversalStep<FabOauthLogin> {
-	
+	public interface IFabOauthLoginStep : IFabObjectStep<FabOauthLogin> {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabOauthLoginStep : TraversalStep<FabOauthLogin>, IFabOauthLoginStep {
+	internal class FabOauthLoginStep : FabObjectStep<FabOauthLogin>, IFabOauthLoginStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1832,15 +1693,14 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabOauthLogoutStep : ITraversalStep<FabOauthLogout> {
-	
+	public interface IFabOauthLogoutStep : IFabObjectStep<FabOauthLogout> {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabOauthLogoutStep : TraversalStep<FabOauthLogout>, IFabOauthLogoutStep {
+	internal class FabOauthLogoutStep : FabObjectStep<FabOauthLogout>, IFabOauthLogoutStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1854,31 +1714,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabObjectStep : ITraversalStep<FabObject> {
-	
+	public interface IFabRootStep : IFabNodeStep<FabRoot> {
 		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
 
-	/*================================================================================================*/
-	internal class FabObjectStep : TraversalStep<FabObject>, IFabObjectStep {
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabObjectStep(Traversal pTrav) : base(pTrav) {}
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-	
-	/*================================================================================================*/
-	/// <summary />
-	public interface IFabRootStep : ITraversalStep<FabRoot> {
-	
-		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -2229,10 +2067,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabVectorUnitDerivedStep ContainsVectorUnitDerivedList { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabRootStep : TraversalStep<FabRoot>, IFabRootStep {
+	internal class FabRootStep : FabNodeStep<FabRoot>, IFabRootStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2536,15 +2373,14 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabServiceStep : ITraversalStep<FabService> {
-	
+	public interface IFabServiceStep : IFabObjectStep<FabService> {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabServiceStep : TraversalStep<FabService>, IFabServiceStep {
+	internal class FabServiceStep : FabObjectStep<FabService>, IFabServiceStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2558,15 +2394,14 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabServiceOperationStep : ITraversalStep<FabServiceOperation> {
-	
+	public interface IFabServiceOperationStep : IFabObjectStep<FabServiceOperation> {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabServiceOperationStep : TraversalStep<FabServiceOperation>, IFabServiceOperationStep {
+	internal class FabServiceOperationStep : FabObjectStep<FabServiceOperation>, IFabServiceOperationStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2580,15 +2415,14 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabStepLinkStep : ITraversalStep<FabStepLink> {
-	
+	public interface IFabStepLinkStep : IFabObjectStep<FabStepLink> {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabStepLinkStep : TraversalStep<FabStepLink>, IFabStepLinkStep {
+	internal class FabStepLinkStep : FabObjectStep<FabStepLink>, IFabStepLinkStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2602,15 +2436,14 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabUrlStep : ITraversalStep<FabUrl>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabUrlStep : IFabArtifactStep<FabUrl>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabUrlStep : TraversalStep<FabUrl>, IFabUrlStep {
+	internal class FabUrlStep : FabArtifactStep<FabUrl>, IFabUrlStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2624,9 +2457,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabUserStep : ITraversalStep<FabUser>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabUserStep : IFabArtifactStep<FabUser>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -2641,10 +2474,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabMemberStep DefinesMemberList { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabUserStep : TraversalStep<FabUser>, IFabUserStep {
+	internal class FabUserStep : FabArtifactStep<FabUser>, IFabUserStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2668,9 +2500,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabVectorStep : ITraversalStep<FabVector>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabVectorStep : IFabFactorElementNodeStep<FabVector>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -2733,10 +2565,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabVectorUnitPrefixStep UsesVectorUnitPrefix { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabVectorStep : TraversalStep<FabVector>, IFabVectorStep {
+	internal class FabVectorStep : FabFactorElementNodeStep<FabVector>, IFabVectorStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2800,9 +2631,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabVectorRangeStep : ITraversalStep<FabVectorRange>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabVectorRangeStep : IFabNodeForTypeStep<FabVectorRange>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -2829,10 +2660,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabVectorRangeLevelStep UsesVectorRangeLevelList { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabVectorRangeStep : TraversalStep<FabVectorRange>, IFabVectorRangeStep {
+	internal class FabVectorRangeStep : FabNodeForTypeStep<FabVectorRange>, IFabVectorRangeStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2866,9 +2696,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabVectorRangeLevelStep : ITraversalStep<FabVectorRangeLevel>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabVectorRangeLevelStep : IFabNodeForTypeStep<FabVectorRangeLevel>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -2883,10 +2713,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabVectorRangeStep InVectorRangeListUses { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabVectorRangeLevelStep : TraversalStep<FabVectorRangeLevel>, IFabVectorRangeLevelStep {
+	internal class FabVectorRangeLevelStep : FabNodeForTypeStep<FabVectorRangeLevel>, IFabVectorRangeLevelStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2910,9 +2739,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabVectorTypeStep : ITraversalStep<FabVectorType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabVectorTypeStep : IFabNodeForTypeStep<FabVectorType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -2939,10 +2768,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabVectorRangeStep UsesVectorRange { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabVectorTypeStep : TraversalStep<FabVectorType>, IFabVectorTypeStep {
+	internal class FabVectorTypeStep : FabNodeForTypeStep<FabVectorType>, IFabVectorTypeStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2976,9 +2804,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabVectorUnitStep : ITraversalStep<FabVectorUnit>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabVectorUnitStep : IFabNodeForTypeStep<FabVectorUnit>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -3017,10 +2845,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabVectorUnitDerivedStep InVectorUnitDerivedListRaisesToExp { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabVectorUnitStep : TraversalStep<FabVectorUnit>, IFabVectorUnitStep {
+	internal class FabVectorUnitStep : FabNodeForTypeStep<FabVectorUnit>, IFabVectorUnitStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3064,9 +2891,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabVectorUnitDerivedStep : ITraversalStep<FabVectorUnitDerived>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabVectorUnitDerivedStep : IFabNodeForTypeStep<FabVectorUnitDerived>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -3105,10 +2932,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabVectorUnitPrefixStep UsesVectorUnitPrefix { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabVectorUnitDerivedStep : TraversalStep<FabVectorUnitDerived>, IFabVectorUnitDerivedStep {
+	internal class FabVectorUnitDerivedStep : FabNodeForTypeStep<FabVectorUnitDerived>, IFabVectorUnitDerivedStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3152,9 +2978,9 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabVectorUnitPrefixStep : ITraversalStep<FabVectorUnitPrefix>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
-	
+	public interface IFabVectorUnitPrefixStep : IFabNodeForTypeStep<FabVectorUnitPrefix>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -3181,10 +3007,9 @@ namespace Fabric.Clients.Cs.Api {
 		IFabVectorUnitDerivedStep InVectorUnitDerivedListUses { get; }
 	
 	}
-	
 
 	/*================================================================================================*/
-	internal class FabVectorUnitPrefixStep : TraversalStep<FabVectorUnitPrefix>, IFabVectorUnitPrefixStep {
+	internal class FabVectorUnitPrefixStep : FabNodeForTypeStep<FabVectorUnitPrefix>, IFabVectorUnitPrefixStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////

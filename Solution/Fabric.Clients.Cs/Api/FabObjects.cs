@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 4/6/2013 10:58:30 AM
+// Generated on 4/6/2013 1:49:16 PM
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -1242,6 +1242,11 @@ namespace Fabric.Clients.Cs.Api {
 		///   
 		/// </summary>
 		public string Extends { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public bool IsBaseClass { get; set; }
 		
 		/// <summary>
 		///   

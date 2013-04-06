@@ -28,7 +28,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 		/*--------------------------------------------------------------------------------------------*/
 		public ActionResult Class(long? id) {
 			if ( id == null ) { return View("404"); }
-			FabArtifact model;
+			FabClass model;
 
 			try {
 				model = vFab.Services.Traversal.GetRootStep
@@ -42,16 +42,16 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public ActionResult DescriptorTypes(long? id) {
+		public ActionResult DirectorTypes(long? id) {
 			if ( id == null ) {
-				return DescriptorTypeListView();
+				return DirectorTypeListView();
 			}
 
-			FabDescriptorType model;
+			FabDirectorType model;
 
 			try {
 				model = vFab.Services.Traversal.GetRootStep
-					.ContainsDescriptorTypeList.WhereId((long)id).Get().FirstDataItem();
+					.ContainsDirectorTypeList.WhereId((long)id).Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
@@ -61,14 +61,14 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private ActionResult DescriptorTypeListView() {
+		private ActionResult DirectorTypeListView() {
 			var model = new List<FabObject>();
 
 			try {
-				IList<FabDescriptorType> result = vFab.Services.Traversal.GetRootStep
-					.ContainsDescriptorTypeList.Get().Data;
+				IList<FabDirectorType> result = vFab.Services.Traversal.GetRootStep
+					.ContainsDirectorTypeList.Get().Data;
 
-				foreach ( FabDescriptorType at in result ) {
+				foreach ( FabDirectorType at in result ) {
 					model.Add(at);
 				}
 			}

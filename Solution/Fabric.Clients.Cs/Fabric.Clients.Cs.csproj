@@ -53,6 +53,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Api\FabObjectBaseSteps.cs">
+      <DependentUpon>FabObjectBaseSteps.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Api\FabResponsePartial.cs" />
     <Compile Include="Api\FabObjects.cs">
       <DependentUpon>FabObjects.tt</DependentUpon>
@@ -121,6 +126,10 @@
     <None Include="Api\ApiServices.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ApiServices.cs</LastGenOutput>
+    </None>
+    <None Include="Api\FabObjectBaseSteps.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FabObjectBaseSteps.cs</LastGenOutput>
     </None>
     <None Include="Api\FabObjects.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
