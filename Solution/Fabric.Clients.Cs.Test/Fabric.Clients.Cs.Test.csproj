@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ThreadedTest.cs" />
+    <Compile Include="Fixtures\TSpec.cs" />
     <Compile Include="Fixtures\Session\TAppDataProvSession.cs" />
     <Compile Include="Fixtures\Session\TAppSession.cs" />
     <Compile Include="Fixtures\Session\TClientContext.cs" />

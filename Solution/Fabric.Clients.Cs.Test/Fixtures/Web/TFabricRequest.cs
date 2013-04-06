@@ -155,15 +155,11 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 			fe.Code = 500;
 
 			var fr = new FabResponse();
-			fr.DataString = "{{DATA}}";
+			fr.Error = fe;
 
-			string frString = fr.ToJson()
-				.Replace("DataString", "Data")
-				.Replace("{{DATA}}", fe.ToJson());
-
-			var wr = new TestWebResponse(GetStream(frString));
+			var wr = new TestWebResponse(GetStream(fr.ToJson()));
 			var we = new WebException("Error", null, WebExceptionStatus.UnknownError, wr);
-			
+
 			vMoqHttpProv
 				.Setup(x => x.GetResponse(vHttpReq))
 				.Throws(we);

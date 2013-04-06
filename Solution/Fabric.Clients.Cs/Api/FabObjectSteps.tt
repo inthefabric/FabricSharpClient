@@ -3,6 +3,7 @@
 <#@ import namespace="System.IO" #>
 <#@ import namespace="Fabric.Clients.Cs.Spec" #>
 <#@ import namespace="Fabric.Clients.Cs.Spec.SpecDto" #>
+<#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 // GENERATED CODE
 // Changes made to this source file will be overwritten
@@ -14,9 +15,19 @@ namespace Fabric.Clients.Cs.Api {
 FabSpec spec = SpecBuilder.Spec;
 
 foreach ( FabSpecObject o in spec.Objects ) {
-	if ( o.Name.IndexOf("FabSpec") == 0 ) { continue; }
-	if ( o.TraversalLinks == null ) { continue; }
+	if ( o.Name.IndexOf("FabSpec") == 0 || o.Name.IndexOf("FabResponse") == 0 ) {
+		continue;
+	}
+
 	string interfaces = "";
+
+	if ( o.TraversalFunctions == null ) {
+		o.TraversalFunctions = new List<string>();
+	}
+	
+	if ( o.TraversalLinks == null ) {
+		o.TraversalLinks = new List<FabSpecTravLink>();
+	}
 
 	foreach ( string funcName in o.TraversalFunctions ) {
 		interfaces += ", IFunc"+funcName;

@@ -1,39 +1,15 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 3/24/2013 12:25:33 PM
+// Generated on 4/6/2013 11:08:11 AM
 
 namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabAppStep : ITraversalStep<FabApp>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
+	public interface IFabAppStep : ITraversalStep<FabApp> {
 	
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links an App to the Artifact that it owns. (OutToOne FabArtifact)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links an App to the Artifact that it owns.</para>
-		///   <para>Type: AppHasArtifact</para>
-		///   <para>Relation: Has</para>
-		///   <para>Connection: OutToOne</para>
-		/// </remarks>
-		IFabArtifactStep HasArtifact { get; }
-	
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links an App to a particular Member. (OutToOneOrMore FabMember)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links an App to a particular Member.</para>
-		///   <para>Type: AppDefinesMember</para>
-		///   <para>Relation: Defines</para>
-		///   <para>Connection: OutToOneOrMore</para>
-		/// </remarks>
-		IFabMemberStep DefinesMemberList { get; }
-	
 	}
 	
 
@@ -47,191 +23,15 @@ namespace Fabric.Clients.Cs.Api {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabArtifactStep HasArtifact {
-			get {
-				var s = new FabArtifactStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/HasArtifact");
-				return s;
-			}
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabMemberStep DefinesMemberList {
-			get {
-				var s = new FabMemberStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/DefinesMemberList");
-				return s;
-			}
-		}
-		
 	}
 	
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabArtifactStep : ITraversalStep<FabArtifact>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
+	public interface IFabArtifactStep : ITraversalStep<FabArtifact> {
 	
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links an App to the Artifact that it owns. (InFromZeroOrOne FabApp)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links an App to the Artifact that it owns.</para>
-		///   <para>Type: AppHasArtifact</para>
-		///   <para>Relation: Has</para>
-		///   <para>Connection: InFromZeroOrOne</para>
-		/// </remarks>
-		IFabAppStep InAppHas { get; }
-	
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links an Artifact to an ArtifactType that describes the type of the associated ArtifactOwnerNode. (OutToOne FabArtifactType)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links an Artifact to an ArtifactType that describes the type of the associated ArtifactOwnerNode.</para>
-		///   <para>Type: ArtifactUsesArtifactType</para>
-		///   <para>Relation: Uses</para>
-		///   <para>Connection: OutToOne</para>
-		/// </remarks>
-		IFabArtifactTypeStep UsesArtifactType { get; }
-	
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links an App to the Class that it owns. (InFromZeroOrOne FabClass)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links an App to the Class that it owns.</para>
-		///   <para>Type: ClassHasArtifact</para>
-		///   <para>Relation: Has</para>
-		///   <para>Connection: InFromZeroOrOne</para>
-		/// </remarks>
-		IFabClassStep InClassHas { get; }
-	
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links an App to the Instance that it owns. (InFromZeroOrOne FabInstance)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links an App to the Instance that it owns.</para>
-		///   <para>Type: InstanceHasArtifact</para>
-		///   <para>Relation: Has</para>
-		///   <para>Connection: InFromZeroOrOne</para>
-		/// </remarks>
-		IFabInstanceStep InInstanceHas { get; }
-	
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links a Member to the Artifact that it created. (InFromOne FabMember)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links a Member to the Artifact that it created.</para>
-		///   <para>Type: MemberCreatesArtifact</para>
-		///   <para>Relation: Creates</para>
-		///   <para>Connection: InFromOne</para>
-		/// </remarks>
-		IFabMemberStep InMemberCreates { get; }
-	
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links a Url to the Artifact that it owns. (InFromZeroOrOne FabUrl)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links a Url to the Artifact that it owns.</para>
-		///   <para>Type: UrlHasArtifact</para>
-		///   <para>Relation: Has</para>
-		///   <para>Connection: InFromZeroOrOne</para>
-		/// </remarks>
-		IFabUrlStep InUrlHas { get; }
-	
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links a User to the Artifact that it owns. (InFromZeroOrOne FabUser)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links a User to the Artifact that it owns.</para>
-		///   <para>Type: UserHasArtifact</para>
-		///   <para>Relation: Has</para>
-		///   <para>Connection: InFromZeroOrOne</para>
-		/// </remarks>
-		IFabUserStep InUserHas { get; }
-	
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links a Factor to its primary Artifact, which represents the starting point of the Factor's directional Artifact relationship. (InFromZeroOrMore FabFactor)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links a Factor to its primary Artifact, which represents the starting point of the Factor's directional Artifact relationship.</para>
-		///   <para>Type: FactorUsesPrimaryArtifact</para>
-		///   <para>Relation: UsesPrimary</para>
-		///   <para>Connection: InFromZeroOrMore</para>
-		/// </remarks>
-		IFabFactorStep InFactorListUsesPrimary { get; }
-	
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links a Factor to its related Artifact, which represents the ending point of the Factor's directional Artifact relationship. (InFromZeroOrMore FabFactor)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links a Factor to its related Artifact, which represents the ending point of the Factor's directional Artifact relationship.</para>
-		///   <para>Type: FactorUsesRelatedArtifact</para>
-		///   <para>Relation: UsesRelated</para>
-		///   <para>Connection: InFromZeroOrMore</para>
-		/// </remarks>
-		IFabFactorStep InFactorListUsesRelated { get; }
-	
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's primary Artifact. (InFromZeroOrMore FabDescriptor)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's primary Artifact.</para>
-		///   <para>Type: DescriptorRefinesPrimaryWithArtifact</para>
-		///   <para>Relation: RefinesPrimaryWith</para>
-		///   <para>Connection: InFromZeroOrMore</para>
-		/// </remarks>
-		IFabDescriptorStep InDescriptorListRefinesPrimaryWith { get; }
-	
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's related Artifact. (InFromZeroOrMore FabDescriptor)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's related Artifact.</para>
-		///   <para>Type: DescriptorRefinesRelatedWithArtifact</para>
-		///   <para>Relation: RefinesRelatedWith</para>
-		///   <para>Connection: InFromZeroOrMore</para>
-		/// </remarks>
-		IFabDescriptorStep InDescriptorListRefinesRelatedWith { get; }
-	
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the DescriptorType's meaning or purpose. (InFromZeroOrMore FabDescriptor)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the DescriptorType's meaning or purpose.</para>
-		///   <para>Type: DescriptorRefinesTypeWithArtifact</para>
-		///   <para>Relation: RefinesTypeWith</para>
-		///   <para>Connection: InFromZeroOrMore</para>
-		/// </remarks>
-		IFabDescriptorStep InDescriptorListRefinesTypeWith { get; }
-	
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links a Vector to an Artifact that 'labels' its value's axis. (InFromZeroOrMore FabVector)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links a Vector to an Artifact that 'labels' its value's axis.</para>
-		///   <para>Type: VectorUsesAxisArtifact</para>
-		///   <para>Relation: UsesAxis</para>
-		///   <para>Connection: InFromZeroOrMore</para>
-		/// </remarks>
-		IFabVectorStep InVectorListUsesAxis { get; }
-	
 	}
 	
 
@@ -245,180 +45,72 @@ namespace Fabric.Clients.Cs.Api {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabAppStep InAppHas {
-			get {
-				var s = new FabAppStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/InAppHas");
-				return s;
-			}
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabArtifactTypeStep UsesArtifactType {
-			get {
-				var s = new FabArtifactTypeStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/UsesArtifactType");
-				return s;
-			}
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabClassStep InClassHas {
-			get {
-				var s = new FabClassStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/InClassHas");
-				return s;
-			}
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabInstanceStep InInstanceHas {
-			get {
-				var s = new FabInstanceStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/InInstanceHas");
-				return s;
-			}
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabMemberStep InMemberCreates {
-			get {
-				var s = new FabMemberStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/InMemberCreates");
-				return s;
-			}
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabUrlStep InUrlHas {
-			get {
-				var s = new FabUrlStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/InUrlHas");
-				return s;
-			}
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabUserStep InUserHas {
-			get {
-				var s = new FabUserStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/InUserHas");
-				return s;
-			}
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabFactorStep InFactorListUsesPrimary {
-			get {
-				var s = new FabFactorStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/InFactorListUsesPrimary");
-				return s;
-			}
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabFactorStep InFactorListUsesRelated {
-			get {
-				var s = new FabFactorStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/InFactorListUsesRelated");
-				return s;
-			}
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabDescriptorStep InDescriptorListRefinesPrimaryWith {
-			get {
-				var s = new FabDescriptorStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/InDescriptorListRefinesPrimaryWith");
-				return s;
-			}
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabDescriptorStep InDescriptorListRefinesRelatedWith {
-			get {
-				var s = new FabDescriptorStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/InDescriptorListRefinesRelatedWith");
-				return s;
-			}
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabDescriptorStep InDescriptorListRefinesTypeWith {
-			get {
-				var s = new FabDescriptorStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/InDescriptorListRefinesTypeWith");
-				return s;
-			}
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabVectorStep InVectorListUsesAxis {
-			get {
-				var s = new FabVectorStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/InVectorListUsesAxis");
-				return s;
-			}
-		}
-		
 	}
 	
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabArtifactTypeStep : ITraversalStep<FabArtifactType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
+	public interface IFabBatchNewClassStep : ITraversalStep<FabBatchNewClass> {
 	
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links an Artifact to an ArtifactType that describes the type of the associated ArtifactOwnerNode. (InFromZeroOrMore FabArtifact)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links an Artifact to an ArtifactType that describes the type of the associated ArtifactOwnerNode.</para>
-		///   <para>Type: ArtifactUsesArtifactType</para>
-		///   <para>Relation: Uses</para>
-		///   <para>Connection: InFromZeroOrMore</para>
-		/// </remarks>
-		IFabArtifactStep InArtifactListUses { get; }
-	
 	}
 	
 
 	/*================================================================================================*/
-	internal class FabArtifactTypeStep : TraversalStep<FabArtifactType>, IFabArtifactTypeStep {
+	internal class FabBatchNewClassStep : TraversalStep<FabBatchNewClass>, IFabBatchNewClassStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabArtifactTypeStep(Traversal pTrav) : base(pTrav) {}
+		public FabBatchNewClassStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabBatchNewObjectStep : ITraversalStep<FabBatchNewObject> {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabBatchNewObjectStep : TraversalStep<FabBatchNewObject>, IFabBatchNewObjectStep {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public IFabArtifactStep InArtifactListUses {
-			get {
-				var s = new FabArtifactStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/InArtifactListUses");
-				return s;
-			}
-		}
+		public FabBatchNewObjectStep(Traversal pTrav) : base(pTrav) {}
 		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabBatchResultStep : ITraversalStep<FabBatchResult> {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabBatchResultStep : TraversalStep<FabBatchResult>, IFabBatchResultStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabBatchResultStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
 	
 	
@@ -428,18 +120,6 @@ namespace Fabric.Clients.Cs.Api {
 	
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links an App to the Class that it owns. (OutToOne FabArtifact)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links an App to the Class that it owns.</para>
-		///   <para>Type: ClassHasArtifact</para>
-		///   <para>Relation: Has</para>
-		///   <para>Connection: OutToOne</para>
-		/// </remarks>
-		IFabArtifactStep HasArtifact { get; }
-	
 	}
 	
 
@@ -453,16 +133,6 @@ namespace Fabric.Clients.Cs.Api {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabArtifactStep HasArtifact {
-			get {
-				var s = new FabArtifactStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/HasArtifact");
-				return s;
-			}
-		}
-		
 	}
 	
 	
@@ -859,6 +529,28 @@ namespace Fabric.Clients.Cs.Api {
 			}
 		}
 		
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabErrorStep : ITraversalStep<FabError> {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabErrorStep : TraversalStep<FabError>, IFabErrorStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabErrorStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
 	}
 	
 	
@@ -1348,6 +1040,50 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
+	public interface IFabFactorElementNodeStep : ITraversalStep<FabFactorElementNode>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabFactorElementNodeStep : TraversalStep<FabFactorElementNode>, IFabFactorElementNodeStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabFactorElementNodeStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabHomeStep : ITraversalStep<FabHome> {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabHomeStep : TraversalStep<FabHome>, IFabHomeStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabHomeStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
 	public interface IFabIdentorStep : ITraversalStep<FabIdentor>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 	
 		
@@ -1462,18 +1198,6 @@ namespace Fabric.Clients.Cs.Api {
 	
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links an App to the Instance that it owns. (OutToOne FabArtifact)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links an App to the Instance that it owns.</para>
-		///   <para>Type: InstanceHasArtifact</para>
-		///   <para>Relation: Has</para>
-		///   <para>Connection: OutToOne</para>
-		/// </remarks>
-		IFabArtifactStep HasArtifact { get; }
-	
 	}
 	
 
@@ -1487,16 +1211,6 @@ namespace Fabric.Clients.Cs.Api {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabArtifactStep HasArtifact {
-			get {
-				var s = new FabArtifactStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/HasArtifact");
-				return s;
-			}
-		}
-		
 	}
 	
 	
@@ -1942,379 +1656,575 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabRootStep : ITraversalStep<FabRoot>, IFuncAs {
+	public interface IFabMetaTimeStep : ITraversalStep<FabMetaTime> {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabMetaTimeStep : TraversalStep<FabMetaTime>, IFabMetaTimeStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabMetaTimeStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabMetaVersionStep : ITraversalStep<FabMetaVersion> {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabMetaVersionStep : TraversalStep<FabMetaVersion>, IFabMetaVersionStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabMetaVersionStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabNodeStep : ITraversalStep<FabNode> {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabNodeStep : TraversalStep<FabNode>, IFabNodeStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabNodeStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabNodeForActionStep : ITraversalStep<FabNodeForAction>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabNodeForActionStep : TraversalStep<FabNodeForAction>, IFabNodeForActionStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabNodeForActionStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabNodeForTypeStep : ITraversalStep<FabNodeForType>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabNodeForTypeStep : TraversalStep<FabNodeForType>, IFabNodeForTypeStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabNodeForTypeStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabOauthAccessStep : ITraversalStep<FabOauthAccess> {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabOauthAccessStep : TraversalStep<FabOauthAccess>, IFabOauthAccessStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabOauthAccessStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabOauthErrorStep : ITraversalStep<FabOauthError> {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabOauthErrorStep : TraversalStep<FabOauthError>, IFabOauthErrorStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabOauthErrorStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabOauthLoginStep : ITraversalStep<FabOauthLogin> {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabOauthLoginStep : TraversalStep<FabOauthLogin>, IFabOauthLoginStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabOauthLoginStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabOauthLogoutStep : ITraversalStep<FabOauthLogout> {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabOauthLogoutStep : TraversalStep<FabOauthLogout>, IFabOauthLogoutStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabOauthLogoutStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabObjectStep : ITraversalStep<FabObject> {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabObjectStep : TraversalStep<FabObject>, IFabObjectStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabObjectStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabRootStep : ITraversalStep<FabRoot> {
 	
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to an App. (OutToZeroOrMore FabApp)
+		///   Links the Root node to an App. (InFromOne FabApp)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to an App.</para>
 		///   <para>Type: RootContainsApp</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabAppStep ContainsAppList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to an Artifact. (OutToZeroOrMore FabArtifact)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links the Root node to an Artifact.</para>
-		///   <para>Type: RootContainsArtifact</para>
-		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
-		/// </remarks>
-		IFabArtifactStep ContainsArtifactList { get; }
-	
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links the Root node to an ArtifactType. (OutToZeroOrMore FabArtifactType)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links the Root node to an ArtifactType.</para>
-		///   <para>Type: RootContainsArtifactType</para>
-		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
-		/// </remarks>
-		IFabArtifactTypeStep ContainsArtifactTypeList { get; }
-	
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links the Root node to a Class. (OutToZeroOrMore FabClass)
+		///   Links the Root node to a Class. (InFromOne FabClass)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a Class.</para>
 		///   <para>Type: RootContainsClass</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabClassStep ContainsClassList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to an Instance. (OutToZeroOrMore FabInstance)
+		///   Links the Root node to an Instance. (InFromOne FabInstance)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to an Instance.</para>
 		///   <para>Type: RootContainsInstance</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabInstanceStep ContainsInstanceList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a Member. (OutToZeroOrMore FabMember)
+		///   Links the Root node to a Member. (InFromOne FabMember)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a Member.</para>
 		///   <para>Type: RootContainsMember</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabMemberStep ContainsMemberList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a MemberType. (OutToZeroOrMore FabMemberType)
+		///   Links the Root node to a MemberType. (InFromOne FabMemberType)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a MemberType.</para>
 		///   <para>Type: RootContainsMemberType</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabMemberTypeStep ContainsMemberTypeList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a MemberTypeAssign. (OutToZeroOrMore FabMemberTypeAssign)
+		///   Links the Root node to a MemberTypeAssign. (InFromOne FabMemberTypeAssign)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a MemberTypeAssign.</para>
 		///   <para>Type: RootContainsMemberTypeAssign</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabMemberTypeAssignStep ContainsMemberTypeAssignList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a Url. (OutToZeroOrMore FabUrl)
+		///   Links the Root node to a Url. (InFromOne FabUrl)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a Url.</para>
 		///   <para>Type: RootContainsUrl</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabUrlStep ContainsUrlList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a User. (OutToZeroOrMore FabUser)
+		///   Links the Root node to a User. (InFromOne FabUser)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a User.</para>
 		///   <para>Type: RootContainsUser</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabUserStep ContainsUserList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a Factor. (OutToZeroOrMore FabFactor)
+		///   Links the Root node to a Factor. (InFromOne FabFactor)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a Factor.</para>
 		///   <para>Type: RootContainsFactor</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabFactorStep ContainsFactorList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a FactorAssertion. (OutToZeroOrMore FabFactorAssertion)
+		///   Links the Root node to a FactorAssertion. (InFromOne FabFactorAssertion)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a FactorAssertion.</para>
 		///   <para>Type: RootContainsFactorAssertion</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabFactorAssertionStep ContainsFactorAssertionList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a Descriptor. (OutToZeroOrMore FabDescriptor)
+		///   Links the Root node to a Descriptor. (InFromOne FabDescriptor)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a Descriptor.</para>
 		///   <para>Type: RootContainsDescriptor</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabDescriptorStep ContainsDescriptorList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a DescriptorType. (OutToZeroOrMore FabDescriptorType)
+		///   Links the Root node to a DescriptorType. (InFromOne FabDescriptorType)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a DescriptorType.</para>
 		///   <para>Type: RootContainsDescriptorType</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabDescriptorTypeStep ContainsDescriptorTypeList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a Director. (OutToZeroOrMore FabDirector)
+		///   Links the Root node to a Director. (InFromOne FabDirector)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a Director.</para>
 		///   <para>Type: RootContainsDirector</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabDirectorStep ContainsDirectorList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a DirectorType. (OutToZeroOrMore FabDirectorType)
+		///   Links the Root node to a DirectorType. (InFromOne FabDirectorType)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a DirectorType.</para>
 		///   <para>Type: RootContainsDirectorType</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabDirectorTypeStep ContainsDirectorTypeList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a DirectorAction. (OutToZeroOrMore FabDirectorAction)
+		///   Links the Root node to a DirectorAction. (InFromOne FabDirectorAction)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a DirectorAction.</para>
 		///   <para>Type: RootContainsDirectorAction</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabDirectorActionStep ContainsDirectorActionList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to an Eventor. (OutToZeroOrMore FabEventor)
+		///   Links the Root node to an Eventor. (InFromOne FabEventor)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to an Eventor.</para>
 		///   <para>Type: RootContainsEventor</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabEventorStep ContainsEventorList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to an EventorType. (OutToZeroOrMore FabEventorType)
+		///   Links the Root node to an EventorType. (InFromOne FabEventorType)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to an EventorType.</para>
 		///   <para>Type: RootContainsEventorType</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabEventorTypeStep ContainsEventorTypeList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to an EventorPrecision. (OutToZeroOrMore FabEventorPrecision)
+		///   Links the Root node to an EventorPrecision. (InFromOne FabEventorPrecision)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to an EventorPrecision.</para>
 		///   <para>Type: RootContainsEventorPrecision</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabEventorPrecisionStep ContainsEventorPrecisionList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to an Identor. (OutToZeroOrMore FabIdentor)
+		///   Links the Root node to an Identor. (InFromOne FabIdentor)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to an Identor.</para>
 		///   <para>Type: RootContainsIdentor</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabIdentorStep ContainsIdentorList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to an IdentorType. (OutToZeroOrMore FabIdentorType)
+		///   Links the Root node to an IdentorType. (InFromOne FabIdentorType)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to an IdentorType.</para>
 		///   <para>Type: RootContainsIdentorType</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabIdentorTypeStep ContainsIdentorTypeList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a Locator. (OutToZeroOrMore FabLocator)
+		///   Links the Root node to a Locator. (InFromOne FabLocator)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a Locator.</para>
 		///   <para>Type: RootContainsLocator</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabLocatorStep ContainsLocatorList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a LocatorType. (OutToZeroOrMore FabLocatorType)
+		///   Links the Root node to a LocatorType. (InFromOne FabLocatorType)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a LocatorType.</para>
 		///   <para>Type: RootContainsLocatorType</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabLocatorTypeStep ContainsLocatorTypeList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a Vector. (OutToZeroOrMore FabVector)
+		///   Links the Root node to a Vector. (InFromOne FabVector)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a Vector.</para>
 		///   <para>Type: RootContainsVector</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabVectorStep ContainsVectorList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a VectorType. (OutToZeroOrMore FabVectorType)
+		///   Links the Root node to a VectorType. (InFromOne FabVectorType)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a VectorType.</para>
 		///   <para>Type: RootContainsVectorType</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabVectorTypeStep ContainsVectorTypeList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a VectorRange. (OutToZeroOrMore FabVectorRange)
+		///   Links the Root node to a VectorRange. (InFromOne FabVectorRange)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a VectorRange.</para>
 		///   <para>Type: RootContainsVectorRange</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabVectorRangeStep ContainsVectorRangeList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a VectorRangeLevel. (OutToZeroOrMore FabVectorRangeLevel)
+		///   Links the Root node to a VectorRangeLevel. (InFromOne FabVectorRangeLevel)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a VectorRangeLevel.</para>
 		///   <para>Type: RootContainsVectorRangeLevel</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabVectorRangeLevelStep ContainsVectorRangeLevelList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a VectorUnit. (OutToZeroOrMore FabVectorUnit)
+		///   Links the Root node to a VectorUnit. (InFromOne FabVectorUnit)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a VectorUnit.</para>
 		///   <para>Type: RootContainsVectorUnit</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabVectorUnitStep ContainsVectorUnitList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a VectorUnitPrefix. (OutToZeroOrMore FabVectorUnitPrefix)
+		///   Links the Root node to a VectorUnitPrefix. (InFromOne FabVectorUnitPrefix)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a VectorUnitPrefix.</para>
 		///   <para>Type: RootContainsVectorUnitPrefix</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabVectorUnitPrefixStep ContainsVectorUnitPrefixList { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links the Root node to a VectorUnitDerived. (OutToZeroOrMore FabVectorUnitDerived)
+		///   Links the Root node to a VectorUnitDerived. (InFromOne FabVectorUnitDerived)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links the Root node to a VectorUnitDerived.</para>
 		///   <para>Type: RootContainsVectorUnitDerived</para>
 		///   <para>Relation: Contains</para>
-		///   <para>Connection: OutToZeroOrMore</para>
+		///   <para>Connection: InFromOne</para>
 		/// </remarks>
 		IFabVectorUnitDerivedStep ContainsVectorUnitDerivedList { get; }
 	
@@ -2337,26 +2247,6 @@ namespace Fabric.Clients.Cs.Api {
 				var s = new FabAppStep(Trav);
 				Trav.AddStep(s);
 				Trav.AppendToUri("/ContainsAppList");
-				return s;
-			}
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabArtifactStep ContainsArtifactList {
-			get {
-				var s = new FabArtifactStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/ContainsArtifactList");
-				return s;
-			}
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabArtifactTypeStep ContainsArtifactTypeList {
-			get {
-				var s = new FabArtifactTypeStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/ContainsArtifactTypeList");
 				return s;
 			}
 		}
@@ -2646,22 +2536,76 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
+	public interface IFabServiceStep : ITraversalStep<FabService> {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabServiceStep : TraversalStep<FabService>, IFabServiceStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabServiceStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabServiceOperationStep : ITraversalStep<FabServiceOperation> {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabServiceOperationStep : TraversalStep<FabServiceOperation>, IFabServiceOperationStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabServiceOperationStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabStepLinkStep : ITraversalStep<FabStepLink> {
+	
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabStepLinkStep : TraversalStep<FabStepLink>, IFabStepLinkStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabStepLinkStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
 	public interface IFabUrlStep : ITraversalStep<FabUrl>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId {
 	
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links a Url to the Artifact that it owns. (OutToOne FabArtifact)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links a Url to the Artifact that it owns.</para>
-		///   <para>Type: UrlHasArtifact</para>
-		///   <para>Relation: Has</para>
-		///   <para>Connection: OutToOne</para>
-		/// </remarks>
-		IFabArtifactStep HasArtifact { get; }
-	
 	}
 	
 
@@ -2675,16 +2619,6 @@ namespace Fabric.Clients.Cs.Api {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabArtifactStep HasArtifact {
-			get {
-				var s = new FabArtifactStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/HasArtifact");
-				return s;
-			}
-		}
-		
 	}
 	
 	
@@ -2694,18 +2628,6 @@ namespace Fabric.Clients.Cs.Api {
 	
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary>
-		///   Links a User to the Artifact that it owns. (OutToOne FabArtifact)
-		/// </summary>
-		/// <remarks>
-		///   <para>Links a User to the Artifact that it owns.</para>
-		///   <para>Type: UserHasArtifact</para>
-		///   <para>Relation: Has</para>
-		///   <para>Connection: OutToOne</para>
-		/// </remarks>
-		IFabArtifactStep HasArtifact { get; }
-	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
 		///   Links a User to a particular Member. (OutToOneOrMore FabMember)
@@ -2731,16 +2653,6 @@ namespace Fabric.Clients.Cs.Api {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public IFabArtifactStep HasArtifact {
-			get {
-				var s = new FabArtifactStep(Trav);
-				Trav.AddStep(s);
-				Trav.AppendToUri("/HasArtifact");
-				return s;
-			}
-		}
-		
 		/*--------------------------------------------------------------------------------------------*/
 		public IFabMemberStep DefinesMemberList {
 			get {

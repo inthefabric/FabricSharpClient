@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 3/24/2013 12:25:32 PM
+// Generated on 4/6/2013 10:58:30 AM
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -17,7 +17,7 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>Every App has a special 'Data Provider' Member, which is typically controlled by that App's administrator. The 'Data Provider' allows the App to interact with Fabric as itself (rather than on behalf of a particular User).</para>
 	///   <para>Every item added to Fabric is associated with (via Member) a User and and an App. Thus, Fabric can determine which App is responsible for any particular item, enforce applicable access rights, analyze the data for a particular App or Member, etc.</para>
 	/// </remarks>
-	public class FabApp : FabArtifactOwnerNode {
+	public class FabApp : FabArtifact {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
@@ -53,40 +53,6 @@ namespace Fabric.Clients.Cs.Api {
 		///   The date/time of creation.
 		/// </summary>
 		public long Created { get; set; }
-		
-		/// <summary>
-		///   Specifies the accessibility level.
-		/// </summary>
-		public bool IsPrivate { get; set; }
-		
-	}
-
-	
-	/*================================================================================================*/
-	/// <summary>
-	///   TODO
-	/// </summary>
-	/// <remarks>
-	///   <para>TODO</para>
-	/// </remarks>
-	public class FabArtifactOwnerNode : FabNode {
-	
-	}
-
-	
-	/*================================================================================================*/
-	/// <summary>
-	///   Describes the object type associated with a particular Artifact.
-	/// </summary>
-	/// <remarks>
-	///   <para>Describes the object type associated with a particular Artifact. Example types include: App, Class, Instance, etc.</para>
-	/// </remarks>
-	public class FabArtifactType : FabNodeForType {
-	
-		/// <summary>
-		///   Uniquely identifies this object amongst all other objects of this type.
-		/// </summary>
-		public long ArtifactTypeId { get; set; }
 		
 	}
 
@@ -176,7 +142,7 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>Ellie's Class Example: Ellie is building an App for dog lovers, but there are not yet animal-related Classes for Ellie to use. She first creates broad Classes (like 'Animal', 'Mammal', and 'Canine') and relationships between them (like 'Canine is a Mammal').</para>
 	///   <para>She then creates narrower Classes for each dog grouping (like 'Working Dog') and breed (like 'Great Dane'), adding relevant relationships along the way. A Class named 'Boxer' already exists, but it has a sports-related meaning. She adds a new 'Boxer' Class with a 'Dog Breed' disambiguation value to resolve this conflict.</para>
 	/// </remarks>
-	public class FabClass : FabArtifactOwnerNode {
+	public class FabClass : FabArtifact {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
@@ -587,7 +553,7 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>After completing her new Classes, Ellie would like to add her own dog. She creates an Instance named 'Gulliver', and attaches several Factors to make the Instance as unique as possible. Her Factors define that Gulliver is a Lhasa Apso breed, is owned by Ellie, and was born in September 2007. Zach's Instance Example: Zach built an App that allows users to rate restaurants and individual meals. He created Classes for restaurant chains and meal types. He also created Instances for specific restaurants (with relevant relationships for each).</para>
 	///   <para>When Users rate a particular meal, they also specify the restaurant, the day/time the meal was served, and the meal type. Behind the scenes, the App uses this data to construct a new Instance and its relationships. Because Zach's Instances are well-defined, one User could rate the same meal (at the same restaurant) every day, creating a unique and meaningful Instance each time.</para>
 	/// </remarks>
-	public class FabInstance : FabArtifactOwnerNode {
+	public class FabInstance : FabArtifact {
 	
 		/// <summary>
 		///   A secondary label or identifier, used to resolve unique-name conflicts.
@@ -1169,11 +1135,6 @@ namespace Fabric.Clients.Cs.Api {
 	/// </remarks>
 	public class FabRoot : FabNode {
 	
-		/// <summary>
-		///   Uniquely identifies this object amongst all other objects of this type.
-		/// </summary>
-		public int RootId { get; set; }
-		
 	}
 
 	
@@ -1674,7 +1635,7 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>- The Url (via its Artifact) should only receive Factors related to the actual web page, its design, etc.</para>
 	///   <para>- Every Url that displays this particular news article can refer the same news article Instance.</para>
 	/// </remarks>
-	public class FabUrl : FabArtifactOwnerNode {
+	public class FabUrl : FabArtifact {
 	
 		/// <summary>
 		///   A unique, valid absolute URL.
@@ -1703,7 +1664,7 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>Users control their private account data and preferences using the Fabric website.</para>
 	///   <para>Every item added to Fabric is associated with (via Member) a User and and an App. Thus, Fabric can determine which User is responsible for any particular item, enforce applicable access rights, analyze the data for a particular User or Member, etc.</para>
 	/// </remarks>
-	public class FabUser : FabArtifactOwnerNode {
+	public class FabUser : FabArtifact {
 	
 		/// <summary>
 		///   A unique username.

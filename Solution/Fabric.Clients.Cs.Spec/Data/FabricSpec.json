@@ -1,9 +1,9 @@
 ﻿{
-      "ApiVersion": "0.1.19.fb755e936927",
+      "ApiVersion": "0.1.22.3ff24e495dbb",
       "Objects": [
         {
           "Name": "FabApp",
-          "Extends": "FabArtifactOwnerNode",
+          "Extends": "FabArtifact",
           "Description": "A registered project, application, or business that has direct access to the Fabric API.\r\n\r\nAn App's primary purpose is to facilitate [[User|Object|FabUser]] interaction with Fabric. To accomplish this, an App typically creates an interface for its [[Users|Object|FabUser]]. This interface hides the complex details of the Fabric API, and instead provides intuitive features like custom inputs, searches, summaries, and visualizations. \r\n\r\nWhen a [[User|Object|FabUser]] becomes a [[Member|Object|FabMember]] of an App, they are granting that App permission to perform various actions on their behalf (via the App's interface). It is vital for an App to provide each [[User|Object|FabUser]] with a positive experience and do nothing to violate the [[User|Object|FabUser]]'s trust.\r\n\r\nEvery App has a special 'Data Provider' [[Member|Object|FabMember]], which is typically controlled by that App's administrator. The 'Data Provider' allows the App to interact with Fabric as itself (rather than on behalf of a particular [[User|Object|FabUser]]).\r\n\r\nEvery item added to Fabric is associated with (via [[Member|Object|FabMember]]) a [[User|Object|FabUser]] and and an App. Thus, Fabric can determine which App is responsible for any particular item, enforce applicable access rights, analyze the data for a particular App or [[Member|Object|FabMember]], etc.",
           "Properties": [
             {
@@ -28,18 +28,6 @@
           ],
           "TraversalLinks": [
             {
-              "Name": "HasArtifact",
-              "Type": "AppHasArtifact",
-              "Description": "Links an [[App|Object|FabApp]] to the [[Artifact|Object|FabArtifact]] that it owns.",
-              "IsOutgoing": true,
-              "From": "FabApp",
-              "FromConn": "OutToOne",
-              "Relation": "Has",
-              "To": "FabArtifact",
-              "ToConn": "InFromZeroOrOne",
-              "FabType": "FabSpecTravLink"
-            },
-            {
               "Name": "DefinesMemberList",
               "Type": "AppDefinesMember",
               "Description": "Links an [[App|Object|FabApp]] to a particular [[Member|Object|FabMember]].",
@@ -63,7 +51,7 @@
         {
           "Name": "FabArtifact",
           "Extends": "FabNode",
-          "Description": "An object which is able to (via [[Factor|Object|FabFactor]] connections) accumulate meaning, context, user sentiment, and relationships.  Artifacts and [[Factors|Object|FabFactor]] are the central components of the Fabric architecture.\r\n\r\nEvery Artifact maps exclusively to one other item in the Fabric architecture (such as an [[App|Object|FabApp]], [[Class|Object|FabClass]], [[Instance|Object|FabInstance]], or [[User|Object|FabUser]]). Fabric generates an Artifact automatically each time a new Artifact-enabled item is created.  Technically, each of these items 'has' an associated Artifact. However, due to the item's exclusive ownership, it is conceptually correct to say that each of these items 'is' an Artifact.\r\n\r\nThere are no restrictions on what an Artifact can represent.  Fabric encourages the generous use of [[Factors|Object|FabFactor]] to identify and describe each new Artifact. Ideally, the [[Factor|Object|FabFactor]] connections will distinguish an Artifact from all others.\r\n\r\nEach Artifact is linked to exactly one [[ArtifactOwnerNode|Object|FabArtifactOwnerNode]] item, where the type of this item is specified by the [[ArtifactType|Object|FabArtifactType]].",
+          "Description": "An object which is able to (via [[Factor|Object|FabFactor]] connections) accumulate meaning, context, user sentiment, and relationships.  Artifacts and [[Factors|Object|FabFactor]] are the central components of the Fabric architecture.\r\n\r\nEvery Artifact maps exclusively to one other item in the Fabric architecture (such as an [[App|Object|FabApp]], [[Class|Object|FabClass]], [[Instance|Object|FabInstance]], or [[User|Object|FabUser]]). Fabric generates an Artifact automatically each time a new Artifact-enabled item is created.  Technically, each of these items 'has' an associated Artifact. However, due to the item's exclusive ownership, it is conceptually correct to say that each of these items 'is' an Artifact.\r\n\r\nThere are no restrictions on what an Artifact can represent.  Fabric encourages the generous use of [[Factors|Object|FabFactor]] to identify and describe each new Artifact. Ideally, the [[Factor|Object|FabFactor]] connections will distinguish an Artifact from all others.\r\n\r\nEach Artifact is linked to exactly one ArtifactOwnerNode item, where the type of this item is specified by the ArtifactType.",
           "Properties": [
             {
               "IsPrimaryKey": true,
@@ -79,63 +67,9 @@
               "Type": "long",
               "Description": "The date/time of creation.",
               "FabType": "FabSpecObjectProp"
-            },
-            {
-              "Name": "IsPrivate",
-              "Type": "bool",
-              "Description": "Specifies the accessibility level. When true, access is limited to the creating [[User|Object|FabUser]].",
-              "FabType": "FabSpecObjectProp"
             }
           ],
           "TraversalLinks": [
-            {
-              "Name": "InAppHas",
-              "Type": "AppHasArtifact",
-              "Description": "Links an [[App|Object|FabApp]] to the [[Artifact|Object|FabArtifact]] that it owns.",
-              "IsOutgoing": false,
-              "From": "FabApp",
-              "FromConn": "OutToOne",
-              "Relation": "Has",
-              "To": "FabArtifact",
-              "ToConn": "InFromZeroOrOne",
-              "FabType": "FabSpecTravLink"
-            },
-            {
-              "Name": "UsesArtifactType",
-              "Type": "ArtifactUsesArtifactType",
-              "Description": "Links an [[Artifact|Object|FabArtifact]] to an [[ArtifactType|Object|FabArtifactType]] that describes the type of the associated [[ArtifactOwnerNode|Object|FabArtifactOwnerNode]].",
-              "IsOutgoing": true,
-              "From": "FabArtifact",
-              "FromConn": "OutToOne",
-              "Relation": "Uses",
-              "To": "FabArtifactType",
-              "ToConn": "InFromZeroOrMore",
-              "FabType": "FabSpecTravLink"
-            },
-            {
-              "Name": "InClassHas",
-              "Type": "ClassHasArtifact",
-              "Description": "Links an [[App|Object|FabApp]] to the [[Class|Object|FabClass]] that it owns.",
-              "IsOutgoing": false,
-              "From": "FabClass",
-              "FromConn": "OutToOne",
-              "Relation": "Has",
-              "To": "FabArtifact",
-              "ToConn": "InFromZeroOrOne",
-              "FabType": "FabSpecTravLink"
-            },
-            {
-              "Name": "InInstanceHas",
-              "Type": "InstanceHasArtifact",
-              "Description": "Links an [[App|Object|FabApp]] to the [[Instance|Object|FabInstance]] that it owns.",
-              "IsOutgoing": false,
-              "From": "FabInstance",
-              "FromConn": "OutToOne",
-              "Relation": "Has",
-              "To": "FabArtifact",
-              "ToConn": "InFromZeroOrOne",
-              "FabType": "FabSpecTravLink"
-            },
             {
               "Name": "InMemberCreates",
               "Type": "MemberCreatesArtifact",
@@ -146,30 +80,6 @@
               "Relation": "Creates",
               "To": "FabArtifact",
               "ToConn": "InFromOne",
-              "FabType": "FabSpecTravLink"
-            },
-            {
-              "Name": "InUrlHas",
-              "Type": "UrlHasArtifact",
-              "Description": "Links a [[Url|Object|FabUrl]] to the [[Artifact|Object|FabArtifact]] that it owns.",
-              "IsOutgoing": false,
-              "From": "FabUrl",
-              "FromConn": "OutToOne",
-              "Relation": "Has",
-              "To": "FabArtifact",
-              "ToConn": "InFromZeroOrOne",
-              "FabType": "FabSpecTravLink"
-            },
-            {
-              "Name": "InUserHas",
-              "Type": "UserHasArtifact",
-              "Description": "Links a [[User|Object|FabUser]] to the [[Artifact|Object|FabArtifact]] that it owns.",
-              "IsOutgoing": false,
-              "From": "FabUser",
-              "FromConn": "OutToOne",
-              "Relation": "Has",
-              "To": "FabArtifact",
-              "ToConn": "InFromZeroOrOne",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -254,49 +164,6 @@
           "FabType": "FabSpecObject"
         },
         {
-          "Name": "FabArtifactOwnerNode",
-          "Extends": "FabNode",
-          "Description": "TODO",
-          "Properties": [],
-          "FabType": "FabSpecObject"
-        },
-        {
-          "Name": "FabArtifactType",
-          "Extends": "FabNodeForType",
-          "Description": "Describes the object type associated with a particular [[Artifact|Object|FabArtifact]]. Example types include: App, Class, Instance, etc.",
-          "Properties": [
-            {
-              "IsPrimaryKey": true,
-              "IsUnique": true,
-              "Name": "ArtifactTypeId",
-              "Type": "long",
-              "Description": "Uniquely identifies this object amongst all other objects of this type.",
-              "FabType": "FabSpecObjectProp"
-            }
-          ],
-          "TraversalLinks": [
-            {
-              "Name": "InArtifactListUses",
-              "Type": "ArtifactUsesArtifactType",
-              "Description": "Links an [[Artifact|Object|FabArtifact]] to an [[ArtifactType|Object|FabArtifactType]] that describes the type of the associated [[ArtifactOwnerNode|Object|FabArtifactOwnerNode]].",
-              "IsOutgoing": false,
-              "From": "FabArtifact",
-              "FromConn": "OutToOne",
-              "Relation": "Uses",
-              "To": "FabArtifactType",
-              "ToConn": "InFromZeroOrMore",
-              "FabType": "FabSpecTravLink"
-            }
-          ],
-          "TraversalFunctions": [
-            "As",
-            "Back",
-            "Limit",
-            "WhereId"
-          ],
-          "FabType": "FabSpecObject"
-        },
-        {
           "Name": "FabBatchNewClass",
           "Extends": "FabBatchNewObject",
           "Description": "MISSING:BatchNewClass",
@@ -364,7 +231,7 @@
         },
         {
           "Name": "FabClass",
-          "Extends": "FabArtifactOwnerNode",
+          "Extends": "FabArtifact",
           "Description": "Represents any item (real, imaginary, virtual, conceptual, or otherwise) that an [[App|Object|FabApp]] or [[User|Object|FabUser]] can define and/or use to generate meaning. Classes and [[Instances|Object|FabInstance]] are closely related, and are the primary method for generating new [[Artifacts|Object|FabArtifact]].\r\n[(EX|Documentation Note|To explain the Class object more intuitively, this documentation simplifies some concepts of the Fabric architecture. Please be aware of the full complexity:\r\n- A Class receives [[Factors|Object|FabFactor]] via its associated [[Artifact|Object|FabArtifact]].\r\n- Each [[Factor|Object|FabFactor]] references two [[Artifacts|Object|FabArtifact]], which creates a relationship between them.\r\n- An 'is a' relationship refers to a [[Factor|Object|FabFactor]] that uses an 'Is A' [[Descriptor|Object|FabDescriptor]].)]\r\n\r\nA Class represents a particular group, type, set, or category of items. Each Class must uniquely identifiable (via name and disambiguation) amonst all other Classes. An [[Artifact|Object|FabArtifact]] (of any type) can only have 'is a' relationships with Classes.\r\n[(EX|Ellie's [[Class|Object|FabClass]] Example|Ellie is building an [[App|Object|FabApp]] for dog lovers, but there are not yet animal-related Classes for Ellie to use. She first creates broad Classes (like 'Animal', 'Mammal', and 'Canine') and relationships between them (like 'Canine is a Mammal').\r\n\r\nShe then creates narrower Classes for each dog grouping (like 'Working Dog') and breed (like 'Great Dane'), adding relevant relationships along the way. A Class named 'Boxer' already exists, but it has a sports-related meaning. She adds a new 'Boxer' Class with a 'Dog Breed' disambiguation value to resolve this conflict.)]",
           "Properties": [
             {
@@ -382,6 +249,7 @@
               "Description": "A secondary label or identifier, used to resolve unique-name conflicts.",
               "IsOptional": true,
               "LenMax": 128,
+              "LenMin": 1,
               "ValidRegex": "^[a-zA-Z0-9 \\[\\]\\+\\?\\|\\(\\)\\{\\}\\^\\*\\-\\.\\\\/!@#$%&=_,:;'\"<>~]*$",
               "FabType": "FabSpecObjectProp"
             },
@@ -390,6 +258,7 @@
               "Type": "string",
               "Description": "A descriptive name or title.",
               "LenMax": 128,
+              "LenMin": 1,
               "ValidRegex": "^[a-zA-Z0-9 \\[\\]\\+\\?\\|\\(\\)\\{\\}\\^\\*\\-\\.\\\\/!@#$%&=_,:;'\"<>~]*$",
               "FabType": "FabSpecObjectProp"
             },
@@ -400,21 +269,8 @@
               "Description": "A summary of the Class's intended meaning or purpose. This can resolve confusion in cases where a Class has vague or missing [[Factors|Object|FabFactor]].",
               "IsOptional": true,
               "LenMax": 256,
+              "LenMin": 1,
               "FabType": "FabSpecObjectProp"
-            }
-          ],
-          "TraversalLinks": [
-            {
-              "Name": "HasArtifact",
-              "Type": "ClassHasArtifact",
-              "Description": "Links an [[App|Object|FabApp]] to the [[Class|Object|FabClass]] that it owns.",
-              "IsOutgoing": true,
-              "From": "FabClass",
-              "FromConn": "OutToOne",
-              "Relation": "Has",
-              "To": "FabArtifact",
-              "ToConn": "InFromZeroOrOne",
-              "FabType": "FabSpecTravLink"
             }
           ],
           "TraversalFunctions": [
@@ -906,6 +762,7 @@
               "Description": "A summary of the Factor's intended meaning or purpose. This is useful in cases when the Factor is vague, complex, or confusing. It can help resolve issues in cases where the [[Factor|Object|FabFactor]]'s Elements inaccurately model the intended meaning. Typically, this value is not written directly by a [[User|Object|FabUser]]; the [[App|Object|FabApp]] should have enough information about a particular Factor-creating action to form a reasonable sentence or phrase.",
               "IsOptional": true,
               "LenMax": 256,
+              "LenMin": 1,
               "FabType": "FabSpecObjectProp"
             }
           ],
@@ -1092,6 +949,12 @@
           "Extends": "FabNode",
           "Description": "TODO",
           "Properties": [],
+          "TraversalFunctions": [
+            "As",
+            "Back",
+            "Limit",
+            "WhereId"
+          ],
           "FabType": "FabSpecObject"
         },
         {
@@ -1126,6 +989,7 @@
               "Type": "string",
               "Description": "A text-based value that can represent names, numbers, IDs, GUIDs, etc.",
               "LenMax": 256,
+              "LenMin": 1,
               "FabType": "FabSpecObjectProp"
             }
           ],
@@ -1201,7 +1065,7 @@
         },
         {
           "Name": "FabInstance",
-          "Extends": "FabArtifactOwnerNode",
+          "Extends": "FabArtifact",
           "Description": "Represents any item (real, imaginary, virtual, conceptual, or otherwise) that an [[App|Object|FabApp]] or [[User|Object|FabUser]] can define and/or use to generate meaning. [[Classes|Object|FabClass]] and Instances are closely related, and are the primary method for generating new [[Artifacts|Object|FabArtifact]].\r\n[(EX|Documentation Note|To explain the Instance object more intuitively, this documentation simplifies some concepts of the Fabric architecture. Please be aware of the full complexity:\r\n- An Instance receives [[Factors|Object|FabFactor]] via its associated [[Artifact|Object|FabArtifact]].\r\n- Each [[Factor|Object|FabFactor]] references two [[Artifacts|Object|FabArtifact]], which creates a relationship between them.\r\n- An 'is a' relationship refers to a [[Factor|Object|FabFactor]] that uses an 'Is A' [[Descriptor|Object|FabDescriptor]].)]\r\n\r\nAn Instance represents a singular, unique item. It may have a specific name, however, the name is not required to be unique. Instead, the creator should apply [[Factors|Object|FabFactor]] to make the [[Instance|Object|FabInstance]] as specific and meaningful as possible. Each [[Instance|Object|FabInstance]] must have an 'is a' relationship with at least one [[Class|Object|FabClass]].\r\n[(EX|Ellie's [[Instance|Object|FabInstance]] Example|_Continued from Ellie's [[Class|Object|FabClass]] Example..._\r\n\r\nAfter completing her new [[Classes|Object|FabClass]], Ellie would like to add her own dog. She creates an Instance named 'Gulliver', and attaches several [[Factors|Object|FabFactor]] to make the [[Instance|Object|FabInstance]] as unique as possible. Her [[Factors|Object|FabFactor]] define that Gulliver is a Lhasa Apso breed, is owned by Ellie, and was born in September 2007.)] [(EX|Zach's [[Instance|Object|FabInstance]] Example|Zach built an [[App|Object|FabApp]] that allows users to rate restaurants and individual meals. He created [[Classes|Object|FabClass]] for restaurant chains and meal types. He also created Instances for specific restaurants (with relevant relationships for each).\r\n\r\nWhen [[Users|Object|FabUser]] rate a particular meal, they also specify the restaurant, the day/time the meal was served, and the meal type. Behind the scenes, the [[App|Object|FabApp]] uses this data to construct a new Instance and its relationships. Because Zach's Instances are well-defined, one [[User|Object|FabUser]] could rate the same meal (at the same restaurant) every day, creating a unique and meaningful [[Instance|Object|FabInstance]] each time.)]",
           "Properties": [
             {
@@ -1211,6 +1075,7 @@
               "Description": "A secondary label or identifier, used to resolve unique-name conflicts.",
               "IsOptional": true,
               "LenMax": 128,
+              "LenMin": 1,
               "ValidRegex": "^[a-zA-Z0-9 \\[\\]\\+\\?\\|\\(\\)\\{\\}\\^\\*\\-\\.\\\\/!@#$%&=_,:;'\"<>~]*$",
               "FabType": "FabSpecObjectProp"
             },
@@ -1229,6 +1094,7 @@
               "Description": "A descriptive name or title.",
               "IsOptional": true,
               "LenMax": 128,
+              "LenMin": 1,
               "ValidRegex": "^[a-zA-Z0-9 \\[\\]\\+\\?\\|\\(\\)\\{\\}\\^\\*\\-\\.\\\\/!@#$%&=_,:;'\"<>~]*$",
               "FabType": "FabSpecObjectProp"
             },
@@ -1239,21 +1105,8 @@
               "Description": "A summary of the Instance's intended meaning or purpose. This can resolve confusion in cases where an Instance has vague or missing [[Factors|Object|FabFactor]].",
               "IsOptional": true,
               "LenMax": 256,
+              "LenMin": 1,
               "FabType": "FabSpecObjectProp"
-            }
-          ],
-          "TraversalLinks": [
-            {
-              "Name": "HasArtifact",
-              "Type": "InstanceHasArtifact",
-              "Description": "Links an [[App|Object|FabApp]] to the [[Instance|Object|FabInstance]] that it owns.",
-              "IsOutgoing": true,
-              "From": "FabInstance",
-              "FromConn": "OutToOne",
-              "Relation": "Has",
-              "To": "FabArtifact",
-              "ToConn": "InFromZeroOrOne",
-              "FabType": "FabSpecTravLink"
             }
           ],
           "TraversalFunctions": [
@@ -1762,6 +1615,7 @@
               "Description": "TODO",
               "IsOptional": true,
               "LenMax": 256,
+              "LenMin": 1,
               "FabType": "FabSpecObjectProp"
             },
             {
@@ -1771,6 +1625,12 @@
               "Description": "TODO",
               "FabType": "FabSpecObjectProp"
             }
+          ],
+          "TraversalFunctions": [
+            "As",
+            "Back",
+            "Limit",
+            "WhereId"
           ],
           "FabType": "FabSpecObject"
         },
@@ -1784,6 +1644,7 @@
               "Type": "string",
               "Description": "A summary of this object's intended meaning or purpose.",
               "LenMax": 256,
+              "LenMin": 1,
               "ValidRegex": "^[a-zA-Z0-9 \\[\\]\\+\\?\\|\\(\\)\\{\\}\\^\\*\\-\\.\\\\/!@#$%&=_,:;'\"<>~]*$",
               "FabType": "FabSpecObjectProp"
             },
@@ -1797,6 +1658,12 @@
               "ValidRegex": "^[a-zA-Z0-9 \\[\\]\\+\\?\\|\\(\\)\\{\\}\\^\\*\\-\\.\\\\/!@#$%&=_,:;'\"<>~]*$",
               "FabType": "FabSpecObjectProp"
             }
+          ],
+          "TraversalFunctions": [
+            "As",
+            "Back",
+            "Limit",
+            "WhereId"
           ],
           "FabType": "FabSpecObject"
         },
@@ -2028,16 +1895,7 @@
           "Name": "FabRoot",
           "Extends": "FabNode",
           "Description": "Represents the root, or starting point, of all [[Traversal Service|Serv|Traversal]] queries. The Root provides traversal links to all other available objects.",
-          "Properties": [
-            {
-              "IsPrimaryKey": true,
-              "IsUnique": true,
-              "Name": "RootId",
-              "Type": "int",
-              "Description": "Uniquely identifies this object amongst all other objects of this type.",
-              "FabType": "FabSpecObjectProp"
-            }
-          ],
+          "Properties": [],
           "TraversalLinks": [
             {
               "Name": "ContainsAppList",
@@ -2045,34 +1903,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to an [[App|Object|FabApp]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabApp",
-              "ToConn": "InFromOne",
-              "FabType": "FabSpecTravLink"
-            },
-            {
-              "Name": "ContainsArtifactList",
-              "Type": "RootContainsArtifact",
-              "Description": "Links the [[Root|Object|FabRoot]] node to an [[Artifact|Object|FabArtifact]].",
-              "IsOutgoing": true,
-              "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
-              "Relation": "Contains",
-              "To": "FabArtifact",
-              "ToConn": "InFromOne",
-              "FabType": "FabSpecTravLink"
-            },
-            {
-              "Name": "ContainsArtifactTypeList",
-              "Type": "RootContainsArtifactType",
-              "Description": "Links the [[Root|Object|FabRoot]] node to an [[ArtifactType|Object|FabArtifactType]].",
-              "IsOutgoing": true,
-              "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
-              "Relation": "Contains",
-              "To": "FabArtifactType",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2081,10 +1915,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[Class|Object|FabClass]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabClass",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2093,10 +1927,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to an [[Instance|Object|FabInstance]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabInstance",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2105,10 +1939,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[Member|Object|FabMember]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabMember",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2117,10 +1951,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[MemberType|Object|FabMemberType]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabMemberType",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2129,10 +1963,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[MemberTypeAssign|Object|FabMemberTypeAssign]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabMemberTypeAssign",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2141,10 +1975,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[Url|Object|FabUrl]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabUrl",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2153,10 +1987,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[User|Object|FabUser]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabUser",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2165,10 +1999,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[Factor|Object|FabFactor]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabFactor",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2177,10 +2011,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[FactorAssertion|Object|FabFactorAssertion]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabFactorAssertion",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2189,10 +2023,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[Descriptor|Object|FabDescriptor]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabDescriptor",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2201,10 +2035,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[DescriptorType|Object|FabDescriptorType]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabDescriptorType",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2213,10 +2047,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[Director|Object|FabDirector]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabDirector",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2225,10 +2059,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[DirectorType|Object|FabDirectorType]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabDirectorType",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2237,10 +2071,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[DirectorAction|Object|FabDirectorAction]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabDirectorAction",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2249,10 +2083,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to an [[Eventor|Object|FabEventor]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabEventor",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2261,10 +2095,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to an [[EventorType|Object|FabEventorType]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabEventorType",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2273,10 +2107,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to an [[EventorPrecision|Object|FabEventorPrecision]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabEventorPrecision",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2285,10 +2119,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to an [[Identor|Object|FabIdentor]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabIdentor",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2297,10 +2131,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to an [[IdentorType|Object|FabIdentorType]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabIdentorType",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2309,10 +2143,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[Locator|Object|FabLocator]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabLocator",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2321,10 +2155,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[LocatorType|Object|FabLocatorType]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabLocatorType",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2333,10 +2167,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[Vector|Object|FabVector]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabVector",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2345,10 +2179,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[VectorType|Object|FabVectorType]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabVectorType",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2357,10 +2191,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[VectorRange|Object|FabVectorRange]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabVectorRange",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2369,10 +2203,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[VectorRangeLevel|Object|FabVectorRangeLevel]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabVectorRangeLevel",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2381,10 +2215,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[VectorUnit|Object|FabVectorUnit]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabVectorUnit",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2393,10 +2227,10 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[VectorUnitPrefix|Object|FabVectorUnitPrefix]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabVectorUnitPrefix",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -2405,15 +2239,12 @@
               "Description": "Links the [[Root|Object|FabRoot]] node to a [[VectorUnitDerived|Object|FabVectorUnitDerived]].",
               "IsOutgoing": true,
               "From": "FabRoot",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "InFromOne",
               "Relation": "Contains",
               "To": "FabVectorUnitDerived",
-              "ToConn": "InFromOne",
+              "ToConn": "OutToZeroOrMore",
               "FabType": "FabSpecTravLink"
             }
-          ],
-          "TraversalFunctions": [
-            "As"
           ],
           "FabType": "FabSpecObject"
         },
@@ -2854,7 +2685,7 @@
         },
         {
           "Name": "FabUrl",
-          "Extends": "FabArtifactOwnerNode",
+          "Extends": "FabArtifact",
           "Description": "A hyperlink or path (uniform resource locator) to some web page, a file, or some other type of content.\r\n\r\nWhile a Url does have an associated [[Artifact|Object|FabArtifact]], it should be used with certain constraints. Consider an scenario where a Url leads to web page with a news article and a photo. The proper prodedure is to create a new [[Instance|Object|FabInstance]] for both the news article and photo. With this method:\r\n- The news article and photo (via their [[Artifacts|Object|FabArtifact]]) can receive [[Factors|Object|FabFactor]] independently.\r\n- The Url (via its [[Artifact|Object|FabArtifact]]) should only receive [[Factors|Object|FabFactor]] related to the actual web page, its design, etc.\r\n- Every Url that displays this particular news article can refer the same news article [[Instance|Object|FabInstance]].",
           "Properties": [
             {
@@ -2864,6 +2695,7 @@
               "Type": "string",
               "Description": "A unique, valid absolute URL. The string must include the link's protocol (such as 'http://').",
               "LenMax": 2048,
+              "LenMin": 1,
               "FabType": "FabSpecObjectProp"
             },
             {
@@ -2871,6 +2703,7 @@
               "Type": "string",
               "Description": "A descriptive name or title.",
               "LenMax": 128,
+              "LenMin": 1,
               "FabType": "FabSpecObjectProp"
             },
             {
@@ -2880,20 +2713,6 @@
               "Type": "long",
               "Description": "Uniquely identifies this object amongst all other objects of this type.",
               "FabType": "FabSpecObjectProp"
-            }
-          ],
-          "TraversalLinks": [
-            {
-              "Name": "HasArtifact",
-              "Type": "UrlHasArtifact",
-              "Description": "Links a [[Url|Object|FabUrl]] to the [[Artifact|Object|FabArtifact]] that it owns.",
-              "IsOutgoing": true,
-              "From": "FabUrl",
-              "FromConn": "OutToOne",
-              "Relation": "Has",
-              "To": "FabArtifact",
-              "ToConn": "InFromZeroOrOne",
-              "FabType": "FabSpecTravLink"
             }
           ],
           "TraversalFunctions": [
@@ -2906,7 +2725,7 @@
         },
         {
           "Name": "FabUser",
-          "Extends": "FabArtifactOwnerNode",
+          "Extends": "FabArtifact",
           "Description": "A registered Fabric account that has indirect access (via [[Apps|Object|FabApp]]) to the Fabric API. A User can become a [[Member|Object|FabMember]] of an [[App|Object|FabApp]], and then use the [[App|Object|FabApp]]'s interface to interact with Fabric. An [[App|Object|FabApp]]'s interface hides the complex details of the Fabric API, and instead provides intuitive features like custom inputs, searches, summaries, and visualizations. \r\n\r\nUsers control their private account data and preferences using the Fabric website.\r\n\r\nEvery item added to Fabric is associated with (via [[Member|Object|FabMember]]) a User and and an [[App|Object|FabApp]]. Thus, Fabric can determine which User is responsible for any particular item, enforce applicable access rights, analyze the data for a particular User or [[Member|Object|FabMember]], etc.",
           "Properties": [
             {
@@ -2930,18 +2749,6 @@
             }
           ],
           "TraversalLinks": [
-            {
-              "Name": "HasArtifact",
-              "Type": "UserHasArtifact",
-              "Description": "Links a [[User|Object|FabUser]] to the [[Artifact|Object|FabArtifact]] that it owns.",
-              "IsOutgoing": true,
-              "From": "FabUser",
-              "FromConn": "OutToOne",
-              "Relation": "Has",
-              "To": "FabArtifact",
-              "ToConn": "InFromZeroOrOne",
-              "FabType": "FabSpecTravLink"
-            },
             {
               "Name": "DefinesMemberList",
               "Type": "UserDefinesMember",
@@ -3213,6 +3020,7 @@
               "Type": "string",
               "Description": "A unique symbol or abbreviation.",
               "LenMax": 8,
+              "LenMin": 1,
               "FabType": "FabSpecObjectProp"
             },
             {
@@ -3352,6 +3160,7 @@
               "Type": "string",
               "Description": "An abbreviation, which is typically placed directly before the [[VectorUnit|Object|FabVectorUnit]] symbol.",
               "LenMax": 8,
+              "LenMin": 1,
               "FabType": "FabSpecObjectProp"
             },
             {
@@ -3580,6 +3389,7 @@
                   "Type": "string",
                   "Description": "This value must be exactly the same as the redirect URI provided for the OAuth entry process.",
                   "LenMax": 450,
+                  "LenMin": 1,
                   "FabType": "FabSpecServiceOperationParam"
                 },
                 {
@@ -3628,6 +3438,7 @@
                   "Type": "string",
                   "Description": "This value must be exactly the same as the redirect URI provided for the OAuth entry process.",
                   "LenMax": 450,
+                  "LenMin": 1,
                   "FabType": "FabSpecServiceOperationParam"
                 }
               ],
@@ -3666,6 +3477,7 @@
                   "Type": "string",
                   "Description": "This value must be exactly the same as the redirect URI provided for the OAuth entry process.",
                   "LenMax": 450,
+                  "LenMin": 1,
                   "FabType": "FabSpecServiceOperationParam"
                 }
               ],
@@ -3704,6 +3516,7 @@
                   "Type": "string",
                   "Description": "This value must be exactly the same as the redirect URI provided for the OAuth entry process.",
                   "LenMax": 450,
+                  "LenMin": 1,
                   "FabType": "FabSpecServiceOperationParam"
                 },
                 {
@@ -3752,6 +3565,7 @@
                   "Type": "string",
                   "Description": "This value must be exactly the same as the redirect URI provided for the OAuth entry process.",
                   "LenMax": 450,
+                  "LenMin": 1,
                   "FabType": "FabSpecServiceOperationParam"
                 }
               ],
@@ -3788,6 +3602,7 @@
                   "Type": "string",
                   "Description": "The URL which will receive success/error redirects from the OAuth Login process.  This URL should handle the following query-string parameters: access_code, error, error_description, state.",
                   "LenMax": 450,
+                  "LenMin": 1,
                   "FabType": "FabSpecServiceOperationParam"
                 },
                 {
@@ -3863,6 +3678,7 @@
                   "Type": "string",
                   "Description": "The name of the new [[Class|Object|FabClass]]. It must be unique on its own, or be unique in combination with the disambiguation text.",
                   "LenMax": 128,
+                  "LenMin": 1,
                   "ValidRegex": "^[a-zA-Z0-9 \\[\\]\\+\\?\\|\\(\\)\\{\\}\\^\\*\\-\\.\\\\/!@#$%&=_,:;'\"<>~]*$",
                   "FabType": "FabSpecServiceOperationParam"
                 },
@@ -3874,6 +3690,7 @@
                   "Description": "The disambiguation text for the new [[Class|Object|FabClass]].  When provided, the disambiguation text permits the use of a non-unique name.",
                   "IsOptional": true,
                   "LenMax": 128,
+                  "LenMin": 1,
                   "ValidRegex": "^[a-zA-Z0-9 \\[\\]\\+\\?\\|\\(\\)\\{\\}\\^\\*\\-\\.\\\\/!@#$%&=_,:;'\"<>~]*$",
                   "FabType": "FabSpecServiceOperationParam"
                 },
@@ -3885,6 +3702,7 @@
                   "Description": "A brief description of the new [[Class|Object|FabClass]]. It can be useful for helping others understand the creator's intended purpose or meaning.",
                   "IsOptional": true,
                   "LenMax": 256,
+                  "LenMin": 1,
                   "FabType": "FabSpecServiceOperationParam"
                 }
               ],
@@ -3957,6 +3775,7 @@
                   "Description": "A sentence or short paragraph describing (in a human-readable format) the intended meaning of the new [[Factor|Object|FabFactor]]. A descriptive note can help others understand the creator's intended purpose or meaning for the [[Factor|Object|FabFactor]].",
                   "IsOptional": true,
                   "LenMax": 256,
+                  "LenMin": 1,
                   "FabType": "FabSpecServiceOperationParam"
                 }
               ],
@@ -3978,6 +3797,7 @@
                   "Description": "The name of the new [[Instance|Object|FabInstance]]. It does not need to be unique.",
                   "IsOptional": true,
                   "LenMax": 128,
+                  "LenMin": 1,
                   "ValidRegex": "^[a-zA-Z0-9 \\[\\]\\+\\?\\|\\(\\)\\{\\}\\^\\*\\-\\.\\\\/!@#$%&=_,:;'\"<>~]*$",
                   "FabType": "FabSpecServiceOperationParam"
                 },
@@ -3989,6 +3809,7 @@
                   "Description": "The disambiguation text for the new [[Instance|Object|FabInstance]]. When provided, the disambiguation text permits the use of a non-unique name.",
                   "IsOptional": true,
                   "LenMax": 128,
+                  "LenMin": 1,
                   "ValidRegex": "^[a-zA-Z0-9 \\[\\]\\+\\?\\|\\(\\)\\{\\}\\^\\*\\-\\.\\\\/!@#$%&=_,:;'\"<>~]*$",
                   "FabType": "FabSpecServiceOperationParam"
                 },
@@ -4000,6 +3821,7 @@
                   "Description": "A brief description of the new [[Instance|Object|FabInstance]].  It can be useful for helping others understand the creator's intended purpose or meaning.",
                   "IsOptional": true,
                   "LenMax": 256,
+                  "LenMin": 1,
                   "FabType": "FabSpecServiceOperationParam"
                 }
               ],
@@ -4020,6 +3842,7 @@
                   "Type": "string",
                   "Description": "The complete absolute URL for new [[Url|Object|FabUrl]] object. It must include the URL's protocol (such as 'http://').",
                   "LenMax": 2048,
+                  "LenMin": 1,
                   "FabType": "FabSpecServiceOperationParam"
                 },
                 {
@@ -4029,6 +3852,7 @@
                   "Type": "string",
                   "Description": "The name of the new [[Url|Object|FabUrl]].",
                   "LenMax": 128,
+                  "LenMin": 1,
                   "FabType": "FabSpecServiceOperationParam"
                 }
               ],
@@ -4209,6 +4033,7 @@
                   "Type": "string",
                   "Description": "The text-based value for the new [[Identor|Object|FabIdentor]].",
                   "LenMax": 256,
+                  "LenMin": 1,
                   "FabType": "FabSpecServiceOperationParam"
                 }
               ],

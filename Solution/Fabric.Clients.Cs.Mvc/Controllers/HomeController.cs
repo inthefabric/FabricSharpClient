@@ -26,13 +26,13 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public ActionResult Artifact(long? id) {
+		public ActionResult Class(long? id) {
 			if ( id == null ) { return View("404"); }
 			FabArtifact model;
 
 			try {
 				model = vFab.Services.Traversal.GetRootStep
-					.ContainsArtifactList.WhereId((long)id).Get().FirstDataItem();
+					.ContainsClassList.WhereId((long)id).Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
@@ -42,16 +42,16 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public ActionResult ArtifactTypes(long? id) {
+		public ActionResult DescriptorTypes(long? id) {
 			if ( id == null ) {
-				return ArtifactTypeListView();
+				return DescriptorTypeListView();
 			}
 
-			FabArtifactType model;
+			FabDescriptorType model;
 
 			try {
 				model = vFab.Services.Traversal.GetRootStep
-					.ContainsArtifactTypeList.WhereId((long)id).Get().FirstDataItem();
+					.ContainsDescriptorTypeList.WhereId((long)id).Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
@@ -61,14 +61,14 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private ActionResult ArtifactTypeListView() {
+		private ActionResult DescriptorTypeListView() {
 			var model = new List<FabObject>();
 
 			try {
-				IList<FabArtifactType> result = vFab.Services.Traversal.GetRootStep
-					.ContainsArtifactTypeList.Get().Data;
+				IList<FabDescriptorType> result = vFab.Services.Traversal.GetRootStep
+					.ContainsDescriptorTypeList.Get().Data;
 
-				foreach ( FabArtifactType at in result ) {
+				foreach ( FabDescriptorType at in result ) {
 					model.Add(at);
 				}
 			}
