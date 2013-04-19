@@ -56,7 +56,7 @@ namespace Fabric.Clients.Cs.Spec {
 
 		/*--------------------------------------------------------------------------------------------*/
 		public static string ToXmlDocSentence(string pText) {
-			if ( pText == null ) {
+			if ( string.IsNullOrWhiteSpace(pText) ) {
 				return "";
 			}
 

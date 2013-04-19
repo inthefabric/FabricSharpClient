@@ -65,6 +65,10 @@ foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
 		
 		uriParams += (uriParams == "" ? "" : "+\",\"+");
 		uriParams += fp.Name;
+
+		if ( uriParams.Length > 0 ) {
+			uriParams = "\"+"+uriParams+"+\"";
+		}
 		
 		paramComments += (paramComments == "" ? "" : "\r\n\t\t");
 		paramComments += "/// <param name=\""+fp.Name+"\">\r\n\t\t///   "+
@@ -73,11 +77,11 @@ foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
 #>
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   <#= SpecBuilder.ToXmlDoc(f.Description, false) #>
+		///   <#= SpecBuilder.ToXmlDocSentence(f.Description) #>
 		/// </summary>
 		<#= paramComments #>
 		public void <#= f.Name #>(<#= funcParams #>) {
-			Trav.AppendToUri("/<#= f.Name #>("+<#= uriParams #>+")");
+			Trav.AppendToUri("/<#= f.Name #>(<#= uriParams #>)");
 		}
 		
 <#

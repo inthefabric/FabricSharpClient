@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 4/6/2013 10:58:30 AM
+// Generated on 4/19/2013 5:20:29 PM
 
 using Fabric.Clients.Cs.Session;
 
@@ -16,17 +16,17 @@ namespace Fabric.Clients.Cs.Api {
 	public partial interface ITraversalService : IService {
 
 		/// <summary>
-		///   TODO
+		///   Get the App that is associated with the currently authenticated Member.
 		/// </summary>
 		IGetActiveAppOperation GetActiveApp { get; }
 
 		/// <summary>
-		///   TODO
+		///   Get the the currently authenticated Member.
 		/// </summary>
 		IGetActiveMemberOperation GetActiveMember { get; }
 
 		/// <summary>
-		///   TODO
+		///   Get the User that is associated with the currently authenticated Member.
 		/// </summary>
 		IGetActiveUserOperation GetActiveUser { get; }
 
@@ -189,7 +189,7 @@ namespace Fabric.Clients.Cs.Api {
 		IAddClassOperation AddClass { get; }
 
 		/// <summary>
-		///   MISSING:Modify_AddClasses
+		///   TODO
 		/// </summary>
 		IAddClassesOperation AddClasses { get; }
 
@@ -197,6 +197,11 @@ namespace Fabric.Clients.Cs.Api {
 		///   Create a new Factor.
 		/// </summary>
 		IAddFactorOperation AddFactor { get; }
+
+		/// <summary>
+		///   TODO
+		/// </summary>
+		IAddFactorsOperation AddFactors { get; }
 
 		/// <summary>
 		///   Create a new Instance.
@@ -281,6 +286,11 @@ namespace Fabric.Clients.Cs.Api {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
+		public IAddFactorsOperation AddFactors {
+			get { return new AddFactorsOperation(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
 		public IAddInstanceOperation AddInstance {
 			get { return new AddInstanceOperation(vContext); }
 		}
@@ -343,17 +353,17 @@ namespace Fabric.Clients.Cs.Api {
 	public interface IMetaService : IService {
 
 		/// <summary>
-		///   Load the latest specifications and documentation for all Fabric API services.
+		///   Get the latest specifications and documentation for all Fabric API services.
 		/// </summary>
 		IGetSpecificationOperation GetSpecification { get; }
 
 		/// <summary>
-		///   TODO
+		///   Get the current Fabric server time.
 		/// </summary>
 		IGetTimeOperation GetTime { get; }
 
 		/// <summary>
-		///   TODO
+		///   Get the current Fabric version.
 		/// </summary>
 		IGetVersionOperation GetVersion { get; }
 

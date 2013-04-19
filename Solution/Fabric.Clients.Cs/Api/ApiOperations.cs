@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 4/6/2013 10:58:30 AM
+// Generated on 4/19/2013 5:20:29 PM
 
 using Fabric.Clients.Cs.Session;
 using Fabric.Clients.Cs.Web;
@@ -13,10 +13,10 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary>
-	///   TODO
+	///   Get the App that is associated with the currently authenticated Member.
 	/// </summary>
 	/// <remarks>
-	///   <para>TODO</para>
+	///   <para>Get the App that is associated with the currently authenticated Member.</para>
 	/// </remarks>
 	public interface IGetActiveAppOperation : IOperation {
 		
@@ -65,10 +65,10 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary>
-	///   TODO
+	///   Get the the currently authenticated Member.
 	/// </summary>
 	/// <remarks>
-	///   <para>TODO</para>
+	///   <para>Get the the currently authenticated Member.</para>
 	/// </remarks>
 	public interface IGetActiveMemberOperation : IOperation {
 		
@@ -117,10 +117,10 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary>
-	///   TODO
+	///   Get the User that is associated with the currently authenticated Member.
 	/// </summary>
 	/// <remarks>
-	///   <para>TODO</para>
+	///   <para>Get the User that is associated with the currently authenticated Member.</para>
 	/// </remarks>
 	public interface IGetActiveUserOperation : IOperation {
 		
@@ -744,10 +744,10 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary>
-	///   MISSING:Modify_AddClasses
+	///   TODO
 	/// </summary>
 	/// <remarks>
-	///   <para>MISSING:Modify_AddClasses</para>
+	///   <para>TODO</para>
 	/// </remarks>
 	public interface IAddClassesOperation : IOperation {
 		
@@ -755,7 +755,7 @@ namespace Fabric.Clients.Cs.Api {
 		///   Perform the operation.
 		/// </summary>
 		/// <param name="Classes">
-		///   MISSING:Modify_AddClasses_Classes
+		///   TODO
 		/// </param>
 		FabResponse<FabBatchResult> Post(FabBatchNewClass[] Classes);
 
@@ -824,7 +824,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Note">
 		///   A sentence or short paragraph describing (in a human-readable format) the intended meaning of the new Factor. A descriptive note can help others understand the creator's intended purpose or meaning for the Factor.
 		/// </param>
-		FabResponse<FabFactor> Post(long PrimaryArtifactId, long RelatedArtifactId, long FactorAssertionId, bool IsDefining, string Note);
+		FabResponse<FabFactor> Post(long PrimaryArtifactId, long RelatedArtifactId, byte FactorAssertionId, bool IsDefining, string Note);
 
 	}
 	
@@ -849,7 +849,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabFactor>> Request(long PrimaryArtifactId, long RelatedArtifactId, long FactorAssertionId, bool IsDefining, string Note) {
+		public FabricRequest<FabResponse<FabFactor>> Request(long PrimaryArtifactId, long RelatedArtifactId, byte FactorAssertionId, bool IsDefining, string Note) {
 			return new FabricRequest<FabResponse<FabFactor>>("POST", Uri, 
 				null,
 				"PrimaryArtifactId="+PrimaryArtifactId+"&RelatedArtifactId="+RelatedArtifactId+"&FactorAssertionId="+FactorAssertionId+"&IsDefining="+IsDefining+"&Note="+Note
@@ -857,8 +857,63 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabFactor> Post(long PrimaryArtifactId, long RelatedArtifactId, long FactorAssertionId, bool IsDefining, string Note) {
+		public FabResponse<FabFactor> Post(long PrimaryArtifactId, long RelatedArtifactId, byte FactorAssertionId, bool IsDefining, string Note) {
 			return Request(PrimaryArtifactId, RelatedArtifactId, FactorAssertionId, IsDefining, Note).Send(vContext);
+		}
+
+	}
+
+
+	/*================================================================================================*/
+	/// <summary>
+	///   TODO
+	/// </summary>
+	/// <remarks>
+	///   <para>TODO</para>
+	/// </remarks>
+	public interface IAddFactorsOperation : IOperation {
+		
+		/// <summary>
+		///   Perform the operation.
+		/// </summary>
+		/// <param name="Factors">
+		///   TODO
+		/// </param>
+		FabResponse<FabBatchResult> Post(FabBatchNewFactor[] Factors);
+
+	}
+	
+
+	/*================================================================================================*/
+	internal class AddFactorsOperation : IAddFactorsOperation {
+
+		public const string Uri = "/Mod/Factors/Batch";
+		
+		public string Method { get { return "POST"; } }
+		public string RequiredAuth { get { return "Member"; } }
+		
+		private readonly IClientContext vContext;
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public AddFactorsOperation(IClientContext pContext) {
+			vContext = pContext;
+		}
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabricRequest<FabResponse<FabBatchResult>> Request(FabBatchNewFactor[] Factors) {
+			return new FabricRequest<FabResponse<FabBatchResult>>("POST", Uri, 
+				null,
+				"Factors="+Factors.ToJson()
+			);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public FabResponse<FabBatchResult> Post(FabBatchNewFactor[] Factors) {
+			return Request(Factors).Send(vContext);
 		}
 
 	}
@@ -1010,7 +1065,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="DescriptorTypeRefineId">
 		///   Identifies the Artifact that refines the new Descriptor's DescriptorType.
 		/// </param>
-		FabResponse<FabDescriptor> Post(long FactorId, long DescriptorTypeId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId, long? DescriptorTypeRefineId);
+		FabResponse<bool> Post(long FactorId, byte DescriptorTypeId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId, long? DescriptorTypeRefineId);
 
 	}
 	
@@ -1035,15 +1090,15 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabDescriptor>> Request(long FactorId, long DescriptorTypeId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId, long? DescriptorTypeRefineId) {
-			return new FabricRequest<FabResponse<FabDescriptor>>("POST", Uri, 
+		public FabricRequest<FabResponse<bool>> Request(long FactorId, byte DescriptorTypeId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId, long? DescriptorTypeRefineId) {
+			return new FabricRequest<FabResponse<bool>>("POST", Uri, 
 				null,
 				"FactorId="+FactorId+"&DescriptorTypeId="+DescriptorTypeId+"&PrimaryArtifactRefineId="+PrimaryArtifactRefineId+"&RelatedArtifactRefineId="+RelatedArtifactRefineId+"&DescriptorTypeRefineId="+DescriptorTypeRefineId
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabDescriptor> Post(long FactorId, long DescriptorTypeId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId, long? DescriptorTypeRefineId) {
+		public FabResponse<bool> Post(long FactorId, byte DescriptorTypeId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId, long? DescriptorTypeRefineId) {
 			return Request(FactorId, DescriptorTypeId, PrimaryArtifactRefineId, RelatedArtifactRefineId, DescriptorTypeRefineId).Send(vContext);
 		}
 
@@ -1074,7 +1129,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="RelatedDirectorActionId">
 		///   Identifies the DirectorAction associated with the Factor's related Artifact.
 		/// </param>
-		FabResponse<FabDirector> Post(long FactorId, long DirectorTypeId, long PrimaryDirectorActionId, long RelatedDirectorActionId);
+		FabResponse<bool> Post(long FactorId, byte DirectorTypeId, byte PrimaryDirectorActionId, byte RelatedDirectorActionId);
 
 	}
 	
@@ -1099,15 +1154,15 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabDirector>> Request(long FactorId, long DirectorTypeId, long PrimaryDirectorActionId, long RelatedDirectorActionId) {
-			return new FabricRequest<FabResponse<FabDirector>>("POST", Uri, 
+		public FabricRequest<FabResponse<bool>> Request(long FactorId, byte DirectorTypeId, byte PrimaryDirectorActionId, byte RelatedDirectorActionId) {
+			return new FabricRequest<FabResponse<bool>>("POST", Uri, 
 				null,
 				"FactorId="+FactorId+"&DirectorTypeId="+DirectorTypeId+"&PrimaryDirectorActionId="+PrimaryDirectorActionId+"&RelatedDirectorActionId="+RelatedDirectorActionId
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabDirector> Post(long FactorId, long DirectorTypeId, long PrimaryDirectorActionId, long RelatedDirectorActionId) {
+		public FabResponse<bool> Post(long FactorId, byte DirectorTypeId, byte PrimaryDirectorActionId, byte RelatedDirectorActionId) {
 			return Request(FactorId, DirectorTypeId, PrimaryDirectorActionId, RelatedDirectorActionId).Send(vContext);
 		}
 
@@ -1138,7 +1193,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="DateTime">
 		///   The date and time for the new Eventor. This value must be accurate to the level of precision defined by the specified EventorPrecision. Set unused month/day values to 1, and unused hour/minute values (and beyond) to 0.
 		/// </param>
-		FabResponse<FabEventor> Post(long FactorId, long EventorTypeId, long EventorPrecisionId, long DateTime);
+		FabResponse<bool> Post(long FactorId, byte EventorTypeId, byte EventorPrecisionId, long DateTime);
 
 	}
 	
@@ -1163,15 +1218,15 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabEventor>> Request(long FactorId, long EventorTypeId, long EventorPrecisionId, long DateTime) {
-			return new FabricRequest<FabResponse<FabEventor>>("POST", Uri, 
+		public FabricRequest<FabResponse<bool>> Request(long FactorId, byte EventorTypeId, byte EventorPrecisionId, long DateTime) {
+			return new FabricRequest<FabResponse<bool>>("POST", Uri, 
 				null,
 				"FactorId="+FactorId+"&EventorTypeId="+EventorTypeId+"&EventorPrecisionId="+EventorPrecisionId+"&DateTime="+DateTime
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabEventor> Post(long FactorId, long EventorTypeId, long EventorPrecisionId, long DateTime) {
+		public FabResponse<bool> Post(long FactorId, byte EventorTypeId, byte EventorPrecisionId, long DateTime) {
 			return Request(FactorId, EventorTypeId, EventorPrecisionId, DateTime).Send(vContext);
 		}
 
@@ -1199,7 +1254,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The text-based value for the new Identor.
 		/// </param>
-		FabResponse<FabIdentor> Post(long FactorId, long IdentorTypeId, string Value);
+		FabResponse<bool> Post(long FactorId, byte IdentorTypeId, string Value);
 
 	}
 	
@@ -1224,15 +1279,15 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabIdentor>> Request(long FactorId, long IdentorTypeId, string Value) {
-			return new FabricRequest<FabResponse<FabIdentor>>("POST", Uri, 
+		public FabricRequest<FabResponse<bool>> Request(long FactorId, byte IdentorTypeId, string Value) {
+			return new FabricRequest<FabResponse<bool>>("POST", Uri, 
 				null,
 				"FactorId="+FactorId+"&IdentorTypeId="+IdentorTypeId+"&Value="+Value
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabIdentor> Post(long FactorId, long IdentorTypeId, string Value) {
+		public FabResponse<bool> Post(long FactorId, byte IdentorTypeId, string Value) {
 			return Request(FactorId, IdentorTypeId, Value).Send(vContext);
 		}
 
@@ -1266,7 +1321,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="ValueZ">
 		///   The Z value for the new Locator.
 		/// </param>
-		FabResponse<FabLocator> Post(long FactorId, long LocatorTypeId, double ValueX, double ValueY, double ValueZ);
+		FabResponse<bool> Post(long FactorId, byte LocatorTypeId, double ValueX, double ValueY, double ValueZ);
 
 	}
 	
@@ -1291,15 +1346,15 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabLocator>> Request(long FactorId, long LocatorTypeId, double ValueX, double ValueY, double ValueZ) {
-			return new FabricRequest<FabResponse<FabLocator>>("POST", Uri, 
+		public FabricRequest<FabResponse<bool>> Request(long FactorId, byte LocatorTypeId, double ValueX, double ValueY, double ValueZ) {
+			return new FabricRequest<FabResponse<bool>>("POST", Uri, 
 				null,
 				"FactorId="+FactorId+"&LocatorTypeId="+LocatorTypeId+"&ValueX="+ValueX+"&ValueY="+ValueY+"&ValueZ="+ValueZ
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabLocator> Post(long FactorId, long LocatorTypeId, double ValueX, double ValueY, double ValueZ) {
+		public FabResponse<bool> Post(long FactorId, byte LocatorTypeId, double ValueX, double ValueY, double ValueZ) {
 			return Request(FactorId, LocatorTypeId, ValueX, ValueY, ValueZ).Send(vContext);
 		}
 
@@ -1336,7 +1391,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="VectorUnitPrefixId">
 		///   Identifies the VectorUnitPrefix for the new Vector.
 		/// </param>
-		FabResponse<FabVector> Post(long FactorId, long VectorTypeId, long Value, long AxisArtifactId, long VectorUnitId, long VectorUnitPrefixId);
+		FabResponse<bool> Post(long FactorId, byte VectorTypeId, long Value, long AxisArtifactId, byte VectorUnitId, byte VectorUnitPrefixId);
 
 	}
 	
@@ -1361,15 +1416,15 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabVector>> Request(long FactorId, long VectorTypeId, long Value, long AxisArtifactId, long VectorUnitId, long VectorUnitPrefixId) {
-			return new FabricRequest<FabResponse<FabVector>>("POST", Uri, 
+		public FabricRequest<FabResponse<bool>> Request(long FactorId, byte VectorTypeId, long Value, long AxisArtifactId, byte VectorUnitId, byte VectorUnitPrefixId) {
+			return new FabricRequest<FabResponse<bool>>("POST", Uri, 
 				null,
 				"FactorId="+FactorId+"&VectorTypeId="+VectorTypeId+"&Value="+Value+"&AxisArtifactId="+AxisArtifactId+"&VectorUnitId="+VectorUnitId+"&VectorUnitPrefixId="+VectorUnitPrefixId
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabVector> Post(long FactorId, long VectorTypeId, long Value, long AxisArtifactId, long VectorUnitId, long VectorUnitPrefixId) {
+		public FabResponse<bool> Post(long FactorId, byte VectorTypeId, long Value, long AxisArtifactId, byte VectorUnitId, byte VectorUnitPrefixId) {
 			return Request(FactorId, VectorTypeId, Value, AxisArtifactId, VectorUnitId, VectorUnitPrefixId).Send(vContext);
 		}
 
@@ -1494,10 +1549,10 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary>
-	///   Load the latest specifications and documentation for all Fabric API services.
+	///   Get the latest specifications and documentation for all Fabric API services.
 	/// </summary>
 	/// <remarks>
-	///   <para>Load the latest specifications and documentation for all Fabric API services.</para>
+	///   <para>Get the latest specifications and documentation for all Fabric API services.</para>
 	/// </remarks>
 	public interface IGetSpecificationOperation : IOperation {
 		
@@ -1546,10 +1601,10 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary>
-	///   TODO
+	///   Get the current Fabric server time.
 	/// </summary>
 	/// <remarks>
-	///   <para>TODO</para>
+	///   <para>Get the current Fabric server time.</para>
 	/// </remarks>
 	public interface IGetTimeOperation : IOperation {
 		
@@ -1598,10 +1653,10 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary>
-	///   TODO
+	///   Get the current Fabric version.
 	/// </summary>
 	/// <remarks>
-	///   <para>TODO</para>
+	///   <para>Get the current Fabric version.</para>
 	/// </remarks>
 	public interface IGetVersionOperation : IOperation {
 		

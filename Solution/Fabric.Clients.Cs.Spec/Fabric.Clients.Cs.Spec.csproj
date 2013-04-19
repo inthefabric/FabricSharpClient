@@ -42,6 +42,7 @@
     </Compile>
     <Compile Include="SpecBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpecDto\FabSpecEnum.cs" />
     <Compile Include="SpecDto\FabSpec.cs" />
     <Compile Include="SpecDto\FabSpecObject.cs" />
     <Compile Include="SpecDto\FabSpecObjectProp.cs" />

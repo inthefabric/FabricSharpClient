@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 4/6/2013 1:49:15 PM
+// Generated on 4/19/2013 5:20:29 PM
 
 using Fabric.Clients.Cs.Session;
 
@@ -51,7 +51,7 @@ namespace Fabric.Clients.Cs.Api {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public string ApiVersion { get { return "0.1.22.29fc060ce66b"; } }
+		public string ApiVersion { get { return "0.1.25.ddfa20f08013"; } }
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////

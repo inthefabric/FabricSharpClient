@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Fabric.Clients.Cs.Api;
 
@@ -42,54 +43,12 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public ActionResult DirectorTypes(long? id) {
-			if ( id == null ) {
-				return DirectorTypeListView();
-			}
-
-			FabDirectorType model;
-
-			try {
-				model = vFab.Services.Traversal.GetRootStep
-					.ContainsDirectorTypeList.WhereId((long)id).Get().FirstDataItem();
-			}
-			catch ( FabricErrorException e ) {
-				return View("Error", e);
-			}
-
-			return View("Item", model);
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		private ActionResult DirectorTypeListView() {
+		public ActionResult Users() {
 			var model = new List<FabObject>();
 
 			try {
-				IList<FabDirectorType> result = vFab.Services.Traversal.GetRootStep
-					.ContainsDirectorTypeList.Get().Data;
-
-				foreach ( FabDirectorType at in result ) {
-					model.Add(at);
-				}
-			}
-			catch ( FabricErrorException e ) {
-				return View("Error", e);
-			}
-
-			return View("ItemList", model);
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public ActionResult DescriptorTypes() {
-			var model = new List<FabObject>();
-
-			try {
-				IList<FabDescriptorType> result = vFab.Services.Traversal.GetRootStep
-					.ContainsDescriptorTypeList.Get().Data;
-
-				foreach ( FabDescriptorType dt in result ) {
-					model.Add(dt);
-				}
+				IList<FabUser> users = vFab.Services.Traversal.GetRootStep.ContainsUserList.Get().Data;
+				model.AddRange(users);
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);

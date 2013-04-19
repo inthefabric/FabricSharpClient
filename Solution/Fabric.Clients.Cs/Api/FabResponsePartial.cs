@@ -11,7 +11,7 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary />
-	public class FabResponse<T> : FabResponse where T : FabObject {
+	public class FabResponse<T> : FabResponse {
 
 		/// <summary />
 		public IList<T> Data { get; set; }

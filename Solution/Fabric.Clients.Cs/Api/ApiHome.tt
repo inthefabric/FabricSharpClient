@@ -50,7 +50,7 @@ foreach ( FabSpecService s in spec.Services ) {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public string ApiVersion { get { return "<#= spec.ApiVersion #>"; } }
+		public string ApiVersion { get { return "<#= spec.BuildVersion #>"; } }
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////

@@ -34,8 +34,12 @@ foreach ( FabSpecObject o in spec.Objects ) {
 		string name = p.Name;
 
 		if ( o.Name == "FabResponse" && p.Name == "Data" ) {
-			type = "virtual "+type;
+			type = "virtual object";
 			name = "DataString";
+		}
+
+		if ( o.Name == "FabSpecEnum" && p.Name == "Data" ) { //TODO: resolve this workaround
+			continue;
 		}
 #>
 		/// <summary>

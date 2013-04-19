@@ -18,9 +18,19 @@ namespace Fabric.Clients.Cs.Mvc {
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-			var config = new FabricClientConfig("ClientTest", "http://localhost:9000", 2,
-				"0123456789abcdefghijkLMNOPqrstuv", 4, "http://localhost:49316/OAuth/FabricRedirect",
-				FabricSessionContainerProvider);
+			const bool LOCAL = false;
+			FabricClientConfig config = null;
+
+			if ( LOCAL ) {
+				config = new FabricClientConfig("ClientTest", "http://localhost:9000", 2,
+					"0123456789abcdefghijkLMNOPqrstuv", 4, "http://localhost:49316/OAuth/FabricRedirect",
+					FabricSessionContainerProvider);
+			}
+			else {
+				config = new FabricClientConfig("ClientTest", "http://api.inthefabric.com", 1,
+					"abcdefghijklmnopqrstuvwxyZ012345", 1, "http://localhost:49316/OAuth/FabricRedirect",
+					FabricSessionContainerProvider);
+			}
 			
 			FabricClient.InitOnce(config);
 		}
