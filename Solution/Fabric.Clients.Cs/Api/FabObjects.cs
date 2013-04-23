@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 4/19/2013 5:20:29 PM
+// Generated on 4/23/2013 12:22:30 AM
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -1322,6 +1322,11 @@ namespace Fabric.Clients.Cs.Api {
 	/// </remarks>
 	public class FabSpecEnum : FabSpecObject {
 	
+		/// <summary>
+		///   
+		/// </summary>
+		public Dictionary<string, object>[] Data { get; set; }
+		
 	}
 
 	

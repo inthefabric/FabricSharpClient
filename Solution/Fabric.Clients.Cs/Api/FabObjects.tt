@@ -37,10 +37,6 @@ foreach ( FabSpecObject o in spec.Objects ) {
 			type = "virtual object";
 			name = "DataString";
 		}
-
-		if ( o.Name == "FabSpecEnum" && p.Name == "Data" ) { //TODO: resolve this workaround
-			continue;
-		}
 #>
 		/// <summary>
 		///   <#= SpecBuilder.ToXmlDocSentence(p.Description) #>
