@@ -10,6 +10,8 @@
 
 namespace Fabric.Clients.Cs.Api {
 
+	using System.Collections.Generic;
+
 	// ReSharper disable InconsistentNaming
 
 <#

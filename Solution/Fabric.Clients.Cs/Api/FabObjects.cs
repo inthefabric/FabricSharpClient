@@ -1,8 +1,10 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 4/23/2013 12:22:30 AM
+// Generated on 4/23/2013 12:28:47 AM
 
 namespace Fabric.Clients.Cs.Api {
+
+	using System.Collections.Generic;
 
 	// ReSharper disable InconsistentNaming
 
