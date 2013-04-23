@@ -1,5 +1,5 @@
 ﻿{
-      "BuildVersion": "0.1.25.ddfa20f08013",
+      "BuildVersion": "0.1.25.d956bb32cb56",
       "BuildYear": 2013,
       "BuildMonth": 4,
       "BuildDay": 17,
@@ -1760,7 +1760,7 @@
           "Properties": [
             {
               "Name": "Data",
-              "Type": "Dictionary`2[]",
+              "Type": "Dictionary<string, object>[]",
               "FabType": "FabSpecObjectProp"
             }
           ],
