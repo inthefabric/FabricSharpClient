@@ -1,0 +1,45 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="$(SolutionDir)Fabric.Clients.Cs.Spec\bin\Debug\Fabric.Clients.Cs.Spec.dll" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="Fabric.Clients.Cs.Spec" #>
+<#@ import namespace="Fabric.Clients.Cs.Spec.SpecDto" #>
+<#@ output extension=".cs" #>
+// GENERATED CODE
+// Changes made to this source file will be overwritten
+// Generated on <#= DateTime.Now.ToString() #>
+
+namespace Fabric.Clients.Cs.Api {
+
+<#
+FabSpec spec = SpecBuilder.Spec;
+
+foreach ( FabSpecEnum e in spec.Enums ) {
+	string extends = (e.Extends == null ? "" : " : "+e.Extends);
+#>
+	/*================================================================================================*/
+	/// <summary>
+	///   <#= SpecBuilder.ToXmlDocSentence(e.Description) #>
+	/// </summary>
+	/// <remarks>
+	///   <#= SpecBuilder.ToXmlDoc(e.Description, true) #>
+	/// </remarks>
+	public class <#= e.Name+extends #> {
+	
+<#
+	foreach ( FabSpecObjectProp p in e.Properties ) {
+#>
+		/// <summary>
+		///   <#= SpecBuilder.ToXmlDocSentence(p.Description) #>
+		/// </summary>
+		public <#= p.Type #> <#= p.Name #> { get; set; }
+		
+<#
+	} //end prop loop
+#>
+	}
+
+	
+<#
+} //end enum loop
+#>
+}

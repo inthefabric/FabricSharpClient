@@ -53,6 +53,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Api\FabEnumsData.cs">
+      <DependentUpon>FabEnumsData.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Api\FabEnums.cs">
+      <DependentUpon>FabEnums.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Api\FabObjectBaseSteps.cs">
       <DependentUpon>FabObjectBaseSteps.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -126,6 +136,14 @@
     <None Include="Api\ApiServices.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ApiServices.cs</LastGenOutput>
+    </None>
+    <None Include="Api\FabEnumsData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FabEnumsData.cs</LastGenOutput>
+    </None>
+    <None Include="Api\FabEnums.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FabEnums.cs</LastGenOutput>
     </None>
     <None Include="Api\FabObjectBaseSteps.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
