@@ -105,10 +105,8 @@ foreach ( FabSpecEnum e in spec.Enums ) {
 				val = val.Substring(1, val.Length-2).Replace("\r\n", " ").Replace("  ", "");
 				val = "new byte[] {"+val+"}";
 			}
-
-			//TODO: fix the issue the JSON "long" value precision
 #>
-				<#= (p.Type == "long" ? "//" : "") #><#= p.Name #> = (<#= p.Type #>)<#= val #>,
+				<#= p.Name #> = (<#= p.Type #>)<#= val #>,
 <#
 		} //end prop loop
 #>

@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 4/23/2013 5:05:57 PM
+// Generated on 4/23/2013 9:13:52 PM
 
 using System.Collections.Generic;
 
@@ -1753,8 +1753,8 @@ namespace Fabric.Clients.Cs.Api {
 				Name = (string)"Full Bounds",
 				Description = (string)"",
 				VectorRangeId = (byte)1,
-				//Min = (long)-9223372036854776000,
-				//Max = (long)9223372036854776000,
+				Min = (long)-9223372036854775808,
+				Max = (long)9223372036854775807,
 			});
 
 			VectorTypeMap.Add(2, new VectorType {
@@ -1763,8 +1763,8 @@ namespace Fabric.Clients.Cs.Api {
 				Name = (string)"Positive Bounds",
 				Description = (string)"",
 				VectorRangeId = (byte)2,
-				//Min = (long)0,
-				//Max = (long)9223372036854776000,
+				Min = (long)0,
+				Max = (long)9223372036854775807,
 			});
 
 			VectorTypeMap.Add(3, new VectorType {
@@ -1773,8 +1773,8 @@ namespace Fabric.Clients.Cs.Api {
 				Name = (string)"Negative Bounds",
 				Description = (string)"",
 				VectorRangeId = (byte)3,
-				//Min = (long)-9223372036854776000,
-				//Max = (long)0,
+				Min = (long)-9223372036854775808,
+				Max = (long)0,
 			});
 
 			VectorTypeMap.Add(4, new VectorType {
@@ -1783,8 +1783,8 @@ namespace Fabric.Clients.Cs.Api {
 				Name = (string)"Full Percentage",
 				Description = (string)"",
 				VectorRangeId = (byte)1,
-				//Min = (long)-9223372036854776000,
-				//Max = (long)9223372036854776000,
+				Min = (long)-9223372036854775808,
+				Max = (long)9223372036854775807,
 			});
 
 			VectorTypeMap.Add(5, new VectorType {
@@ -1793,8 +1793,8 @@ namespace Fabric.Clients.Cs.Api {
 				Name = (string)"Standard Percentage",
 				Description = (string)"",
 				VectorRangeId = (byte)2,
-				//Min = (long)0,
-				//Max = (long)100,
+				Min = (long)0,
+				Max = (long)100,
 			});
 
 			VectorTypeMap.Add(6, new VectorType {
@@ -1803,8 +1803,8 @@ namespace Fabric.Clients.Cs.Api {
 				Name = (string)"Opposable Percentage",
 				Description = (string)"",
 				VectorRangeId = (byte)1,
-				//Min = (long)-100,
-				//Max = (long)100,
+				Min = (long)-100,
+				Max = (long)100,
 			});
 
 			VectorTypeMap.Add(7, new VectorType {
@@ -1813,8 +1813,8 @@ namespace Fabric.Clients.Cs.Api {
 				Name = (string)"Standard Agreement",
 				Description = (string)"",
 				VectorRangeId = (byte)5,
-				//Min = (long)0,
-				//Max = (long)100,
+				Min = (long)0,
+				Max = (long)100,
 			});
 
 			VectorTypeMap.Add(8, new VectorType {
@@ -1823,8 +1823,8 @@ namespace Fabric.Clients.Cs.Api {
 				Name = (string)"Opposable Agreement",
 				Description = (string)"",
 				VectorRangeId = (byte)4,
-				//Min = (long)-100,
-				//Max = (long)100,
+				Min = (long)-100,
+				Max = (long)100,
 			});
 
 			VectorTypeMap.Add(9, new VectorType {
@@ -1833,8 +1833,8 @@ namespace Fabric.Clients.Cs.Api {
 				Name = (string)"Standard Favorability",
 				Description = (string)"",
 				VectorRangeId = (byte)7,
-				//Min = (long)0,
-				//Max = (long)100,
+				Min = (long)0,
+				Max = (long)100,
 			});
 
 			VectorTypeMap.Add(10, new VectorType {
@@ -1843,8 +1843,8 @@ namespace Fabric.Clients.Cs.Api {
 				Name = (string)"Opposable Favorability",
 				Description = (string)"",
 				VectorRangeId = (byte)6,
-				//Min = (long)-100,
-				//Max = (long)100,
+				Min = (long)-100,
+				Max = (long)100,
 			});
 		}
 
