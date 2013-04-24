@@ -8,11 +8,10 @@
 // Changes made to this source file will be overwritten
 // Generated on <#= DateTime.Now.ToString() #>
 
+using System;
+using System.Collections.Generic;
+
 namespace Fabric.Clients.Cs.Api {
-
-	using System.Collections.Generic;
-
-	// ReSharper disable InconsistentNaming
 
 <#
 FabSpec spec = SpecBuilder.Spec;
@@ -47,6 +46,26 @@ foreach ( FabSpecObject o in spec.Objects ) {
 		
 <#
 	}
+
+	foreach ( FabSpecObjectProp p in o.Properties ) {
+		if ( string.IsNullOrWhiteSpace(p.Enum) ) { continue; }
+#>
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Get the static <#= p.Enum #> data that is associated with this object's <#= p.Name #> value.
+		/// </summary>
+		public <#= p.Enum #> Get<#= p.Name.Substring(0, p.Name.Length-2) #>Data() {
+			<#= p.Enum #> data;
+			
+			if ( FabEnumsData.<#= p.Enum #>Map.TryGetValue(<#= p.Name #>, out data) ) {
+				return data;
+			}
+
+			throw new Exception("No <#= p.Enum #> data associated with <#= p.Name #>="+<#= p.Name #>+".");
+		}
+		
+<#
+	}
 #>
 	}
 
@@ -54,6 +73,5 @@ foreach ( FabSpecObject o in spec.Objects ) {
 <#
 }
 #>
-	// ReSharper resume InconsistentNaming
 
 }

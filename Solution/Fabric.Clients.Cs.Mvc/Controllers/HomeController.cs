@@ -44,17 +44,34 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 
 		/*--------------------------------------------------------------------------------------------*/
 		public ActionResult Users() {
-			var model = new List<FabObject>();
+			IList<FabUser> model;
 
 			try {
-				IList<FabUser> users = vFab.Services.Traversal.GetRootStep.ContainsUserList.Get().Data;
-				model.AddRange(users);
+				model = vFab.Services.Traversal.GetRootStep.ContainsUserList.Get().Data;
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
 			}
 
-			return View("ItemList", model);
+			return View("ItemList", model.ToList<object>());
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public ActionResult DescriptorTypes(byte? id) {
+			if ( id == null ) {
+				return View("ItemList", FabEnumsData.DescriptorTypeMap.Values.ToList<object>());
+			}
+
+			DescriptorType model;
+
+			try {
+				model = FabEnumsData.DescriptorTypeMap[(byte)id];
+			}
+			catch ( FabricErrorException e ) {
+				return View("Error", e);
+			}
+
+			return View("Item", model);
 		}
 
 

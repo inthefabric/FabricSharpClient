@@ -1,12 +1,11 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 4/23/2013 12:28:47 AM
+// Generated on 4/23/2013 9:27:43 PM
+
+using System;
+using System.Collections.Generic;
 
 namespace Fabric.Clients.Cs.Api {
-
-	using System.Collections.Generic;
-
-	// ReSharper disable InconsistentNaming
 
 	/*================================================================================================*/
 	/// <summary>
@@ -437,6 +436,20 @@ namespace Fabric.Clients.Cs.Api {
 		/// </summary>
 		public byte TypeId { get; set; }
 		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Get the static DescriptorType data that is associated with this object's TypeId value.
+		/// </summary>
+		public DescriptorType GetTypeData() {
+			DescriptorType data;
+			
+			if ( FabEnumsData.DescriptorTypeMap.TryGetValue(TypeId, out data) ) {
+				return data;
+			}
+
+			throw new Exception("No DescriptorType data associated with TypeId="+TypeId+".");
+		}
+		
 	}
 
 	
@@ -480,6 +493,48 @@ namespace Fabric.Clients.Cs.Api {
 		///   Specifies the type and reason for the pathway.
 		/// </summary>
 		public byte TypeId { get; set; }
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Get the static DirectorAction data that is associated with this object's PrimaryActionId value.
+		/// </summary>
+		public DirectorAction GetPrimaryActionData() {
+			DirectorAction data;
+			
+			if ( FabEnumsData.DirectorActionMap.TryGetValue(PrimaryActionId, out data) ) {
+				return data;
+			}
+
+			throw new Exception("No DirectorAction data associated with PrimaryActionId="+PrimaryActionId+".");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Get the static DirectorAction data that is associated with this object's RelatedActionId value.
+		/// </summary>
+		public DirectorAction GetRelatedActionData() {
+			DirectorAction data;
+			
+			if ( FabEnumsData.DirectorActionMap.TryGetValue(RelatedActionId, out data) ) {
+				return data;
+			}
+
+			throw new Exception("No DirectorAction data associated with RelatedActionId="+RelatedActionId+".");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Get the static DirectorType data that is associated with this object's TypeId value.
+		/// </summary>
+		public DirectorType GetTypeData() {
+			DirectorType data;
+			
+			if ( FabEnumsData.DirectorTypeMap.TryGetValue(TypeId, out data) ) {
+				return data;
+			}
+
+			throw new Exception("No DirectorType data associated with TypeId="+TypeId+".");
+		}
 		
 	}
 
@@ -552,6 +607,34 @@ namespace Fabric.Clients.Cs.Api {
 		///   Specifies the significance of this point in time.
 		/// </summary>
 		public byte TypeId { get; set; }
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Get the static EventorPrecision data that is associated with this object's PrecisionId value.
+		/// </summary>
+		public EventorPrecision GetPrecisionData() {
+			EventorPrecision data;
+			
+			if ( FabEnumsData.EventorPrecisionMap.TryGetValue(PrecisionId, out data) ) {
+				return data;
+			}
+
+			throw new Exception("No EventorPrecision data associated with PrecisionId="+PrecisionId+".");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Get the static EventorType data that is associated with this object's TypeId value.
+		/// </summary>
+		public EventorType GetTypeData() {
+			EventorType data;
+			
+			if ( FabEnumsData.EventorTypeMap.TryGetValue(TypeId, out data) ) {
+				return data;
+			}
+
+			throw new Exception("No EventorType data associated with TypeId="+TypeId+".");
+		}
 		
 	}
 
@@ -628,6 +711,20 @@ namespace Fabric.Clients.Cs.Api {
 		/// </summary>
 		public FabVector Vector { get; set; }
 		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Get the static FactorAssertion data that is associated with this object's FactorAssertionId value.
+		/// </summary>
+		public FactorAssertion GetFactorAssertionData() {
+			FactorAssertion data;
+			
+			if ( FabEnumsData.FactorAssertionMap.TryGetValue(FactorAssertionId, out data) ) {
+				return data;
+			}
+
+			throw new Exception("No FactorAssertion data associated with FactorAssertionId="+FactorAssertionId+".");
+		}
+		
 	}
 
 	
@@ -690,6 +787,20 @@ namespace Fabric.Clients.Cs.Api {
 		///   A text-based value that can represent names, numbers, IDs, GUIDs, etc.
 		/// </summary>
 		public string Value { get; set; }
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Get the static IdentorType data that is associated with this object's TypeId value.
+		/// </summary>
+		public IdentorType GetTypeData() {
+			IdentorType data;
+			
+			if ( FabEnumsData.IdentorTypeMap.TryGetValue(TypeId, out data) ) {
+				return data;
+			}
+
+			throw new Exception("No IdentorType data associated with TypeId="+TypeId+".");
+		}
 		
 	}
 
@@ -788,6 +899,20 @@ namespace Fabric.Clients.Cs.Api {
 		/// </summary>
 		public double ValueZ { get; set; }
 		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Get the static LocatorType data that is associated with this object's TypeId value.
+		/// </summary>
+		public LocatorType GetTypeData() {
+			LocatorType data;
+			
+			if ( FabEnumsData.LocatorTypeMap.TryGetValue(TypeId, out data) ) {
+				return data;
+			}
+
+			throw new Exception("No LocatorType data associated with TypeId="+TypeId+".");
+		}
+		
 	}
 
 	
@@ -827,6 +952,20 @@ namespace Fabric.Clients.Cs.Api {
 		///   Specifies the Member's state and/or access privileges.
 		/// </summary>
 		public byte MemberTypeId { get; set; }
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Get the static MemberType data that is associated with this object's MemberTypeId value.
+		/// </summary>
+		public MemberType GetMemberTypeData() {
+			MemberType data;
+			
+			if ( FabEnumsData.MemberTypeMap.TryGetValue(MemberTypeId, out data) ) {
+				return data;
+			}
+
+			throw new Exception("No MemberType data associated with MemberTypeId="+MemberTypeId+".");
+		}
 		
 	}
 
@@ -1851,9 +1990,50 @@ namespace Fabric.Clients.Cs.Api {
 		/// </summary>
 		public long Value { get; set; }
 		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Get the static VectorType data that is associated with this object's TypeId value.
+		/// </summary>
+		public VectorType GetTypeData() {
+			VectorType data;
+			
+			if ( FabEnumsData.VectorTypeMap.TryGetValue(TypeId, out data) ) {
+				return data;
+			}
+
+			throw new Exception("No VectorType data associated with TypeId="+TypeId+".");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Get the static VectorUnit data that is associated with this object's UnitId value.
+		/// </summary>
+		public VectorUnit GetUnitData() {
+			VectorUnit data;
+			
+			if ( FabEnumsData.VectorUnitMap.TryGetValue(UnitId, out data) ) {
+				return data;
+			}
+
+			throw new Exception("No VectorUnit data associated with UnitId="+UnitId+".");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Get the static VectorUnitPrefix data that is associated with this object's UnitPrefixId value.
+		/// </summary>
+		public VectorUnitPrefix GetUnitPrefixData() {
+			VectorUnitPrefix data;
+			
+			if ( FabEnumsData.VectorUnitPrefixMap.TryGetValue(UnitPrefixId, out data) ) {
+				return data;
+			}
+
+			throw new Exception("No VectorUnitPrefix data associated with UnitPrefixId="+UnitPrefixId+".");
+		}
+		
 	}
 
 	
-	// ReSharper resume InconsistentNaming
 
 }
