@@ -81,7 +81,7 @@ namespace Fabric.Clients.Cs.Web {
 				}
 
 				string data = StreamToString(we.Response.GetResponseStream());
-				bool isOauthErr = (data.Substring(0, 9) == "{\"error\":");
+				bool isOauthErr = (data.Length > 9 && data.Substring(0, 9) == "{\"error\":");
 				bool isRespErr = typeof(FabResponse).IsAssignableFrom(typeof(T));
 
 				pContext.Config.LogDebug("Request Error: "+data+
