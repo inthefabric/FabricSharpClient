@@ -1,8 +1,8 @@
 ﻿{
-      "BuildVersion": "0.1.25.d956bb32cb56",
+      "BuildVersion": "0.1.28.cdce7dd",
       "BuildYear": 2013,
-      "BuildMonth": 4,
-      "BuildDay": 17,
+      "BuildMonth": 5,
+      "BuildDay": 6,
       "Objects": [
         {
           "Name": "FabApp",
@@ -10,13 +10,6 @@
           "Description": "A registered project, application, or business that has direct access to the Fabric API.\r\n\r\nAn App's primary purpose is to facilitate [[User|Object|FabUser]] interaction with Fabric. To accomplish this, an App typically creates an interface for its [[Users|Object|FabUser]]. This interface hides the complex details of the Fabric API, and instead provides intuitive features like custom inputs, searches, summaries, and visualizations. \r\n\r\nWhen a [[User|Object|FabUser]] becomes a [[Member|Object|FabMember]] of an App, they are granting that App permission to perform various actions on their behalf (via the App's interface). It is vital for an App to provide each [[User|Object|FabUser]] with a positive experience and do nothing to violate the [[User|Object|FabUser]]'s trust.\r\n\r\nEvery App has a special 'Data Provider' [[Member|Object|FabMember]], which is typically controlled by that App's administrator. The 'Data Provider' allows the App to interact with Fabric as itself (rather than on behalf of a particular [[User|Object|FabUser]]).\r\n\r\nEvery item added to Fabric is associated with (via [[Member|Object|FabMember]]) a [[User|Object|FabUser]] and and an App. Thus, Fabric can determine which App is responsible for any particular item, enforce applicable access rights, analyze the data for a particular App or [[Member|Object|FabMember]], etc.",
           "IsBaseClass": false,
           "Properties": [
-            {
-              "IsPrimaryKey": true,
-              "Name": "AppId",
-              "Type": "long",
-              "Description": "Uniquely identifies this object amongst all other objects of this type.",
-              "FabType": "FabSpecObjectProp"
-            },
             {
               "IsCaseInsensitive": true,
               "IsUnique": true,
@@ -513,13 +506,6 @@
           "IsBaseClass": false,
           "Properties": [
             {
-              "IsPrimaryKey": true,
-              "Name": "ClassId",
-              "Type": "long",
-              "Description": "Uniquely identifies this object amongst all other objects of this type.",
-              "FabType": "FabSpecObjectProp"
-            },
-            {
               "IsNullable": true,
               "Name": "Disamb",
               "Type": "string",
@@ -899,13 +885,6 @@
               "LenMax": 128,
               "LenMin": 1,
               "ValidRegex": "^[a-zA-Z0-9 \\[\\]\\+\\?\\|\\(\\)\\{\\}\\^\\*\\-\\.\\\\/!@#$%&=_,:;'\"<>~]*$",
-              "FabType": "FabSpecObjectProp"
-            },
-            {
-              "IsPrimaryKey": true,
-              "Name": "InstanceId",
-              "Type": "long",
-              "Description": "Uniquely identifies this object amongst all other objects of this type.",
               "FabType": "FabSpecObjectProp"
             },
             {
@@ -2164,13 +2143,6 @@
               "LenMax": 128,
               "LenMin": 1,
               "FabType": "FabSpecObjectProp"
-            },
-            {
-              "IsPrimaryKey": true,
-              "Name": "UrlId",
-              "Type": "long",
-              "Description": "Uniquely identifies this object amongst all other objects of this type.",
-              "FabType": "FabSpecObjectProp"
             }
           ],
           "TraversalFunctions": [
@@ -2196,13 +2168,6 @@
               "LenMax": 16,
               "LenMin": 4,
               "ValidRegex": "^[a-zA-Z0-9_]*$",
-              "FabType": "FabSpecObjectProp"
-            },
-            {
-              "IsPrimaryKey": true,
-              "Name": "UserId",
-              "Type": "long",
-              "Description": "Uniquely identifies this object amongst all other objects of this type.",
               "FabType": "FabSpecObjectProp"
             }
           ],

@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 4/23/2013 9:27:43 PM
+// Generated on 5/6/2013 3:35:44 PM
 
 using System;
 using System.Collections.Generic;
@@ -20,11 +20,6 @@ namespace Fabric.Clients.Cs.Api {
 	/// </remarks>
 	public class FabApp : FabArtifact {
 	
-		/// <summary>
-		///   Uniquely identifies this object amongst all other objects of this type.
-		/// </summary>
-		public long AppId { get; set; }
-		
 		/// <summary>
 		///   A unique title or identifier.
 		/// </summary>
@@ -383,11 +378,6 @@ namespace Fabric.Clients.Cs.Api {
 	/// </remarks>
 	public class FabClass : FabArtifact {
 	
-		/// <summary>
-		///   Uniquely identifies this object amongst all other objects of this type.
-		/// </summary>
-		public long ClassId { get; set; }
-		
 		/// <summary>
 		///   A secondary label or identifier, used to resolve unique-name conflicts.
 		/// </summary>
@@ -822,11 +812,6 @@ namespace Fabric.Clients.Cs.Api {
 		///   A secondary label or identifier, used to resolve unique-name conflicts.
 		/// </summary>
 		public string Disamb { get; set; }
-		
-		/// <summary>
-		///   Uniquely identifies this object amongst all other objects of this type.
-		/// </summary>
-		public long InstanceId { get; set; }
 		
 		/// <summary>
 		///   A descriptive name or title.
@@ -1904,11 +1889,6 @@ namespace Fabric.Clients.Cs.Api {
 		/// </summary>
 		public string Name { get; set; }
 		
-		/// <summary>
-		///   Uniquely identifies this object amongst all other objects of this type.
-		/// </summary>
-		public long UrlId { get; set; }
-		
 	}
 
 	
@@ -1927,11 +1907,6 @@ namespace Fabric.Clients.Cs.Api {
 		///   A unique username.
 		/// </summary>
 		public string Name { get; set; }
-		
-		/// <summary>
-		///   Uniquely identifies this object amongst all other objects of this type.
-		/// </summary>
-		public long UserId { get; set; }
 		
 	}
 
