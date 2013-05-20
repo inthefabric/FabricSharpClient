@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 5/6/2013 3:35:44 PM
+// Generated on 5/19/2013 9:27:15 PM
 
 using System.Collections.Generic;
 
@@ -191,32 +191,32 @@ namespace Fabric.Clients.Cs.Api {
 			/// <summary>
 			///   Looks Like: The primary Artifact looks like (has the appearance of) the related Artifact.
 			/// </summary>
-			LooksLike = 17,
+			LooksLike = 18,
 			
 			/// <summary>
 			///   Smells Like: The primary Artifact smells like (has the odor, aroma, or fragrance of) the related Artifact.
 			/// </summary>
-			SmellsLike = 18,
+			SmellsLike = 19,
 			
 			/// <summary>
 			///   Tastes Like: The primary Artifact tastes like (has the flavor of) the related Artifact.
 			/// </summary>
-			TastesLike = 19,
+			TastesLike = 20,
 			
 			/// <summary>
 			///   Sounds Like: The primary Artifact sounds like (has the aural characteristics of) the related Artifact.
 			/// </summary>
-			SoundsLike = 20,
+			SoundsLike = 21,
 			
 			/// <summary>
 			///   Feels Like: The primary Artifact feels like (has the tactile characteristics of) the related Artifact.
 			/// </summary>
-			FeelsLike = 21,
+			FeelsLike = 22,
 			
 			/// <summary>
 			///   Emotes Like: The primary Artifact emotes like (causes the emotion of) the related Artifact.
 			/// </summary>
-			EmotesLike = 22,
+			EmotesLike = 23,
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -1300,43 +1300,43 @@ namespace Fabric.Clients.Cs.Api {
 				Description = (string)"The primary Artifact requires, implies, needs, or demands the related Artifact.",
 			});
 
-			DescriptorTypeMap.Add(17, new DescriptorType {
-				Id = (byte)17,
+			DescriptorTypeMap.Add(18, new DescriptorType {
+				Id = (byte)18,
 				EnumId = (string)"LooksLike",
 				Name = (string)"Looks Like",
 				Description = (string)"The primary Artifact looks like (has the appearance of) the related Artifact.",
 			});
 
-			DescriptorTypeMap.Add(18, new DescriptorType {
-				Id = (byte)18,
+			DescriptorTypeMap.Add(19, new DescriptorType {
+				Id = (byte)19,
 				EnumId = (string)"SmellsLike",
 				Name = (string)"Smells Like",
 				Description = (string)"The primary Artifact smells like (has the odor, aroma, or fragrance of) the related Artifact.",
 			});
 
-			DescriptorTypeMap.Add(19, new DescriptorType {
-				Id = (byte)19,
+			DescriptorTypeMap.Add(20, new DescriptorType {
+				Id = (byte)20,
 				EnumId = (string)"TastesLike",
 				Name = (string)"Tastes Like",
 				Description = (string)"The primary Artifact tastes like (has the flavor of) the related Artifact.",
 			});
 
-			DescriptorTypeMap.Add(20, new DescriptorType {
-				Id = (byte)20,
+			DescriptorTypeMap.Add(21, new DescriptorType {
+				Id = (byte)21,
 				EnumId = (string)"SoundsLike",
 				Name = (string)"Sounds Like",
 				Description = (string)"The primary Artifact sounds like (has the aural characteristics of) the related Artifact.",
 			});
 
-			DescriptorTypeMap.Add(21, new DescriptorType {
-				Id = (byte)21,
+			DescriptorTypeMap.Add(22, new DescriptorType {
+				Id = (byte)22,
 				EnumId = (string)"FeelsLike",
 				Name = (string)"Feels Like",
 				Description = (string)"The primary Artifact feels like (has the tactile characteristics of) the related Artifact.",
 			});
 
-			DescriptorTypeMap.Add(22, new DescriptorType {
-				Id = (byte)22,
+			DescriptorTypeMap.Add(23, new DescriptorType {
+				Id = (byte)23,
 				EnumId = (string)"EmotesLike",
 				Name = (string)"Emotes Like",
 				Description = (string)"The primary Artifact emotes like (causes the emotion of) the related Artifact.",
