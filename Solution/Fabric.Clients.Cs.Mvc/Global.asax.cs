@@ -18,12 +18,12 @@ namespace Fabric.Clients.Cs.Mvc {
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-			const bool LOCAL = false;
+			const bool LOCAL = true;
 			FabricClientConfig config = null;
 
 			if ( LOCAL ) {
-				config = new FabricClientConfig("ClientTest", "http://localhost:9000", 2,
-					"0123456789abcdefghijkLMNOPqrstuv", 4, "http://localhost:49316/OAuth/FabricRedirect",
+				config = new FabricClientConfig("ClientTest", "http://localhost:9000", 6,
+					"0123456789abcdefghijkLMNOPqrstuv", 5, "http://localhost:49316/OAuth/FabricRedirect",
 					FabricSessionContainerProvider);
 			}
 			else {

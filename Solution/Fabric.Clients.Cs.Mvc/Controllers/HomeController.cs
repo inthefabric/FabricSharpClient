@@ -33,7 +33,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 
 			try {
 				model = vFab.Services.Traversal.GetRootStep
-					.ContainsClassList.WhereId((long)id).Get().FirstDataItem();
+					.ClassId((long)id).Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
@@ -43,17 +43,34 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public ActionResult Users() {
-			IList<FabUser> model;
+		public ActionResult ClassNameContains(string id) {
+			if ( id == null ) { return View("404"); }
+			FabClass model;
 
 			try {
-				model = vFab.Services.Traversal.GetRootStep.ContainsUserList.Get().Data;
+				model = vFab.Services.Traversal.GetRootStep
+					.ClassNameContains(id).Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
 			}
 
-			return View("ItemList", model.ToList<object>());
+			return View("Item", model);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public ActionResult UserName(string id) {
+			if ( id == null ) { return View("404"); }
+			FabUser model;
+
+			try {
+				model = vFab.Services.Traversal.GetRootStep.UserName(id).Get().FirstDataItem();
+			}
+			catch ( FabricErrorException e ) {
+				return View("Error", e);
+			}
+
+			return View("Item", model);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
