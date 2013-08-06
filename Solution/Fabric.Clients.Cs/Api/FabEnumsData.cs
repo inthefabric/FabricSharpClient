@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 5/19/2013 9:27:15 PM
+// Generated on 8/5/2013 8:47:45 PM
 
 using System.Collections.Generic;
 
@@ -187,6 +187,11 @@ namespace Fabric.Clients.Cs.Api {
 			///   Requires: The primary Artifact requires, implies, needs, or demands the related Artifact.
 			/// </summary>
 			Requires = 16,
+			
+			/// <summary>
+			///   Interacts With: The primary Artifact interacts, associates, combines, meets, or communicates with the related Artifact.
+			/// </summary>
+			InteractsWith = 17,
 			
 			/// <summary>
 			///   Looks Like: The primary Artifact looks like (has the appearance of) the related Artifact.
@@ -1298,6 +1303,13 @@ namespace Fabric.Clients.Cs.Api {
 				EnumId = (string)"Requires",
 				Name = (string)"Requires",
 				Description = (string)"The primary Artifact requires, implies, needs, or demands the related Artifact.",
+			});
+
+			DescriptorTypeMap.Add(17, new DescriptorType {
+				Id = (byte)17,
+				EnumId = (string)"InteractsWith",
+				Name = (string)"Interacts With",
+				Description = (string)"The primary Artifact interacts, associates, combines, meets, or communicates with the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(18, new DescriptorType {

@@ -1,8 +1,8 @@
 ﻿{
-      "BuildVersion": "0.1.30.4ce2e40",
+      "BuildVersion": "0.2.0.c699edd",
       "BuildYear": 2013,
-      "BuildMonth": 5,
-      "BuildDay": 19,
+      "BuildMonth": 8,
+      "BuildDay": 5,
       "Objects": [
         {
           "Name": "FabApp",
@@ -29,24 +29,24 @@
               "Description": "Links an [[App|Object|FabApp]] to a particular [[Member|Object|FabMember]].",
               "IsOutgoing": true,
               "From": "FabApp",
-              "FromConn": "OutToOneOrMore",
+              "FromConn": "OutOneOrMore",
               "Relation": "Defines",
               "To": "FabMember",
-              "ToConn": "InFromOne",
+              "ToConn": "InOne",
               "FabType": "FabSpecTravLink"
             }
           ],
           "TraversalFunctions": [
             "As",
             "Back",
-            "Limit",
-            "WhereId"
+            "HasId",
+            "Limit"
           ],
           "FabType": "FabSpecObject"
         },
         {
           "Name": "FabArtifact",
-          "Extends": "FabNode",
+          "Extends": "FabVertex",
           "Description": "An object which is able to (via [[Factor|Object|FabFactor]] connections) accumulate meaning, context, user sentiment, and relationships.  Artifacts and [[Factors|Object|FabFactor]] are the central components of the Fabric architecture.\r\n\r\nThere are no restrictions on what an Artifact can represent.  Fabric encourages the generous use of [[Factors|Object|FabFactor]] to identify and describe each new Artifact. Ideally, the [[Factor|Object|FabFactor]] connections will distinguish an Artifact from all others.",
           "IsBaseClass": true,
           "Properties": [
@@ -72,10 +72,10 @@
               "Description": "Links a [[Member|Object|FabMember]] to the [[Artifact|Object|FabArtifact]] that it created.",
               "IsOutgoing": false,
               "From": "FabMember",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "OutZeroOrMore",
               "Relation": "Creates",
               "To": "FabArtifact",
-              "ToConn": "InFromOne",
+              "ToConn": "InOne",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -84,10 +84,10 @@
               "Description": "Links a [[Factor|Object|FabFactor]] to its primary [[Artifact|Object|FabArtifact]], which represents the starting point of the [[Factor|Object|FabFactor]]'s directional [[Artifact|Object|FabArtifact]] relationship.",
               "IsOutgoing": false,
               "From": "FabFactor",
-              "FromConn": "OutToOne",
+              "FromConn": "OutOne",
               "Relation": "UsesPrimary",
               "To": "FabArtifact",
-              "ToConn": "InFromZeroOrMore",
+              "ToConn": "InZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -96,10 +96,10 @@
               "Description": "Links a [[Factor|Object|FabFactor]] to its related [[Artifact|Object|FabArtifact]], which represents the ending point of the [[Factor|Object|FabFactor]]'s directional [[Artifact|Object|FabArtifact]] relationship.",
               "IsOutgoing": false,
               "From": "FabFactor",
-              "FromConn": "OutToOne",
+              "FromConn": "OutOne",
               "Relation": "UsesRelated",
               "To": "FabArtifact",
-              "ToConn": "InFromZeroOrMore",
+              "ToConn": "InZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -108,10 +108,10 @@
               "Description": "Links a [[Descriptor|Object|FabDescriptor]] to an [[Artifact|Object|FabArtifact]] that specifies or clarifies a particular aspect of the [[Factor|Object|FabFactor]]'s primary [[Artifact|Object|FabArtifact]].",
               "IsOutgoing": false,
               "From": "FabFactor",
-              "FromConn": "OutToZeroOrOne",
+              "FromConn": "OutZeroOrOne",
               "Relation": "DescriptorRefinesPrimaryWith",
               "To": "FabArtifact",
-              "ToConn": "InFromZeroOrMore",
+              "ToConn": "InZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -120,10 +120,10 @@
               "Description": "Links a [[Descriptor|Object|FabDescriptor]] to an [[Artifact|Object|FabArtifact]] that specifies or clarifies a particular aspect of the [[Factor|Object|FabFactor]]'s related [[Artifact|Object|FabArtifact]].",
               "IsOutgoing": false,
               "From": "FabFactor",
-              "FromConn": "OutToZeroOrOne",
+              "FromConn": "OutZeroOrOne",
               "Relation": "DescriptorRefinesRelatedWith",
               "To": "FabArtifact",
-              "ToConn": "InFromZeroOrMore",
+              "ToConn": "InZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -132,10 +132,10 @@
               "Description": "Links a [[Descriptor|Object|FabDescriptor]] to an [[Artifact|Object|FabArtifact]] that specifies or clarifies a particular aspect of the DescriptorType's meaning or purpose.",
               "IsOutgoing": false,
               "From": "FabFactor",
-              "FromConn": "OutToZeroOrOne",
+              "FromConn": "OutZeroOrOne",
               "Relation": "DescriptorRefinesTypeWith",
               "To": "FabArtifact",
-              "ToConn": "InFromZeroOrMore",
+              "ToConn": "InZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -144,23 +144,23 @@
               "Description": "Links a [[Vector|Object|FabVector]] to an [[Artifact|Object|FabArtifact]] that 'labels' its value's axis.",
               "IsOutgoing": false,
               "From": "FabFactor",
-              "FromConn": "OutToZeroOrOne",
+              "FromConn": "OutZeroOrOne",
               "Relation": "VectorUsesAxis",
               "To": "FabArtifact",
-              "ToConn": "InFromZeroOrMore",
+              "ToConn": "InZeroOrMore",
               "FabType": "FabSpecTravLink"
             }
           ],
           "TraversalFunctions": [
             "As",
             "Back",
+            "HasId",
             "Limit",
-            "WhereId",
-            "WhereApp",
-            "WhereClass",
-            "WhereInstance",
-            "WhereUrl",
-            "WhereUser"
+            "ToApp",
+            "ToClass",
+            "ToInstance",
+            "ToUrl",
+            "ToUser"
           ],
           "FabType": "FabSpecObject"
         },
@@ -539,8 +539,8 @@
           "TraversalFunctions": [
             "As",
             "Back",
-            "Limit",
-            "WhereId"
+            "HasId",
+            "Limit"
           ],
           "FabType": "FabSpecObject"
         },
@@ -648,7 +648,7 @@
         },
         {
           "Name": "FabFactor",
-          "Extends": "FabNode",
+          "Extends": "FabVertex",
           "Description": "Provides a specific piece of information, knowledge, or opinion about a pair of [[Artifacts|Object|FabArtifact]]. Factors and [[Artifacts|Object|FabArtifact]] are the central components of the Fabric architecture.\r\n\r\nA Factor forms a directional relationship from its primary [[Artifact|Object|FabArtifact]] to its related [[Artifact|Object|FabArtifact]]. It contains one or more components, called Factor Elements. Each Element has a specific ability to refine, describe, and/or supplement this [[Artifact|Object|FabArtifact]] relationship in a meaningful way.\r\n\r\nThere are six Factor Elements: [[Descriptor|Object|FabDescriptor]], [[Director|Object|FabDirector]], [[Eventor|Object|FabEventor]], [[Identor|Object|FabIdentor]], [[Locator|Object|FabLocator]], and [[Vector|Object|FabVector]]. The [[Descriptor|Object|FabDescriptor]] is the only required Element; the rest are optional. A Factor typically uses one or two Elements, but (in very complex cases) could potentially use four or more.\r\n\r\nJust as there are no restrictions on what a particular Artifact can represent, there are no restrictions on the type of meaning or information a Factors can provide. A [[FactorAssertion|Enum|FactorAssertion]] allows a Factor to specify that it represents (among other things) a fact or an opinion. This level of confidence for a particular [[Factor|Object|FabFactor]] allows [[Users|Object|FabUser]] and [[Apps|Object|FabApp]] to more effectively find the type of information they desire.",
           "IsBaseClass": false,
           "Properties": [
@@ -746,10 +746,10 @@
               "Description": "Links a [[Member|Object|FabMember]] to the [[Factor|Object|FabFactor]] that it created.",
               "IsOutgoing": false,
               "From": "FabMember",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "OutZeroOrMore",
               "Relation": "Creates",
               "To": "FabFactor",
-              "ToConn": "InFromOne",
+              "ToConn": "InOne",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -758,10 +758,10 @@
               "Description": "Links a [[Factor|Object|FabFactor]] to its primary [[Artifact|Object|FabArtifact]], which represents the starting point of the [[Factor|Object|FabFactor]]'s directional [[Artifact|Object|FabArtifact]] relationship.",
               "IsOutgoing": true,
               "From": "FabFactor",
-              "FromConn": "OutToOne",
+              "FromConn": "OutOne",
               "Relation": "UsesPrimary",
               "To": "FabArtifact",
-              "ToConn": "InFromZeroOrMore",
+              "ToConn": "InZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -770,10 +770,10 @@
               "Description": "Links a [[Factor|Object|FabFactor]] to its related [[Artifact|Object|FabArtifact]], which represents the ending point of the [[Factor|Object|FabFactor]]'s directional [[Artifact|Object|FabArtifact]] relationship.",
               "IsOutgoing": true,
               "From": "FabFactor",
-              "FromConn": "OutToOne",
+              "FromConn": "OutOne",
               "Relation": "UsesRelated",
               "To": "FabArtifact",
-              "ToConn": "InFromZeroOrMore",
+              "ToConn": "InZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -782,10 +782,10 @@
               "Description": "Links a [[Descriptor|Object|FabDescriptor]] to an [[Artifact|Object|FabArtifact]] that specifies or clarifies a particular aspect of the [[Factor|Object|FabFactor]]'s primary [[Artifact|Object|FabArtifact]].",
               "IsOutgoing": true,
               "From": "FabFactor",
-              "FromConn": "OutToZeroOrOne",
+              "FromConn": "OutZeroOrOne",
               "Relation": "DescriptorRefinesPrimaryWith",
               "To": "FabArtifact",
-              "ToConn": "InFromZeroOrMore",
+              "ToConn": "InZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -794,10 +794,10 @@
               "Description": "Links a [[Descriptor|Object|FabDescriptor]] to an [[Artifact|Object|FabArtifact]] that specifies or clarifies a particular aspect of the [[Factor|Object|FabFactor]]'s related [[Artifact|Object|FabArtifact]].",
               "IsOutgoing": true,
               "From": "FabFactor",
-              "FromConn": "OutToZeroOrOne",
+              "FromConn": "OutZeroOrOne",
               "Relation": "DescriptorRefinesRelatedWith",
               "To": "FabArtifact",
-              "ToConn": "InFromZeroOrMore",
+              "ToConn": "InZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -806,10 +806,10 @@
               "Description": "Links a [[Descriptor|Object|FabDescriptor]] to an [[Artifact|Object|FabArtifact]] that specifies or clarifies a particular aspect of the DescriptorType's meaning or purpose.",
               "IsOutgoing": true,
               "From": "FabFactor",
-              "FromConn": "OutToZeroOrOne",
+              "FromConn": "OutZeroOrOne",
               "Relation": "DescriptorRefinesTypeWith",
               "To": "FabArtifact",
-              "ToConn": "InFromZeroOrMore",
+              "ToConn": "InZeroOrMore",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -818,18 +818,18 @@
               "Description": "Links a [[Vector|Object|FabVector]] to an [[Artifact|Object|FabArtifact]] that 'labels' its value's axis.",
               "IsOutgoing": true,
               "From": "FabFactor",
-              "FromConn": "OutToZeroOrOne",
+              "FromConn": "OutZeroOrOne",
               "Relation": "VectorUsesAxis",
               "To": "FabArtifact",
-              "ToConn": "InFromZeroOrMore",
+              "ToConn": "InZeroOrMore",
               "FabType": "FabSpecTravLink"
             }
           ],
           "TraversalFunctions": [
             "As",
             "Back",
-            "Limit",
-            "WhereId"
+            "HasId",
+            "Limit"
           ],
           "FabType": "FabSpecObject"
         },
@@ -912,8 +912,8 @@
           "TraversalFunctions": [
             "As",
             "Back",
-            "Limit",
-            "WhereId"
+            "HasId",
+            "Limit"
           ],
           "FabType": "FabSpecObject"
         },
@@ -953,7 +953,7 @@
         },
         {
           "Name": "FabMember",
-          "Extends": "FabNode",
+          "Extends": "FabVertex",
           "Description": "An association between a [[User|Object|FabUser]] and an [[App|Object|FabApp]]. The [[App|Object|FabApp]] administrator(s) can grant various access privileges to a Member by creating a [[MemberTypeAssign|Object|FabMemberTypeAssign]] that uses a different [[MemberType|Enum|MemberType]].\r\n\r\nEvery item added to Fabric is associated with a particular Member. This enables Fabric to determine which [[App|Object|FabApp]] or [[User|Object|FabUser]] is responsible for any particular item, enforce applicable access rights, analyze the data for a particular [[App|Object|FabApp]] and/or [[User|Object|FabUser]], etc.",
           "IsBaseClass": false,
           "Properties": [
@@ -972,10 +972,10 @@
               "Description": "Links an [[App|Object|FabApp]] to a particular [[Member|Object|FabMember]].",
               "IsOutgoing": false,
               "From": "FabApp",
-              "FromConn": "OutToOneOrMore",
+              "FromConn": "OutOneOrMore",
               "Relation": "Defines",
               "To": "FabMember",
-              "ToConn": "InFromOne",
+              "ToConn": "InOne",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -984,10 +984,10 @@
               "Description": "Links a [[Member|Object|FabMember]] to its active [[MemberTypeAssign|Object|FabMemberTypeAssign]].",
               "IsOutgoing": true,
               "From": "FabMember",
-              "FromConn": "OutToOne",
+              "FromConn": "OutOne",
               "Relation": "Has",
               "To": "FabMemberTypeAssign",
-              "ToConn": "InFromOne",
+              "ToConn": "InOne",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -996,10 +996,10 @@
               "Description": "Links a [[Member|Object|FabMember]] to a historical [[MemberTypeAssign|Object|FabMemberTypeAssign]].",
               "IsOutgoing": true,
               "From": "FabMember",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "OutZeroOrMore",
               "Relation": "HasHistoric",
               "To": "FabMemberTypeAssign",
-              "ToConn": "InFromOne",
+              "ToConn": "InOne",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -1008,10 +1008,10 @@
               "Description": "Links a [[Member|Object|FabMember]] to the [[Artifact|Object|FabArtifact]] that it created.",
               "IsOutgoing": true,
               "From": "FabMember",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "OutZeroOrMore",
               "Relation": "Creates",
               "To": "FabArtifact",
-              "ToConn": "InFromOne",
+              "ToConn": "InOne",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -1020,10 +1020,10 @@
               "Description": "Links a [[Member|Object|FabMember]] to the [[MemberTypeAssign|Object|FabMemberTypeAssign]] that it created.",
               "IsOutgoing": true,
               "From": "FabMember",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "OutZeroOrMore",
               "Relation": "Creates",
               "To": "FabMemberTypeAssign",
-              "ToConn": "InFromOne",
+              "ToConn": "InOne",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -1032,10 +1032,10 @@
               "Description": "Links a [[Member|Object|FabMember]] to the [[Factor|Object|FabFactor]] that it created.",
               "IsOutgoing": true,
               "From": "FabMember",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "OutZeroOrMore",
               "Relation": "Creates",
               "To": "FabFactor",
-              "ToConn": "InFromOne",
+              "ToConn": "InOne",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -1044,24 +1044,24 @@
               "Description": "Links a [[User|Object|FabUser]] to a particular [[Member|Object|FabMember]].",
               "IsOutgoing": false,
               "From": "FabUser",
-              "FromConn": "OutToOneOrMore",
+              "FromConn": "OutOneOrMore",
               "Relation": "Defines",
               "To": "FabMember",
-              "ToConn": "InFromOne",
+              "ToConn": "InOne",
               "FabType": "FabSpecTravLink"
             }
           ],
           "TraversalFunctions": [
             "As",
             "Back",
-            "Limit",
-            "WhereId"
+            "HasId",
+            "Limit"
           ],
           "FabType": "FabSpecObject"
         },
         {
           "Name": "FabMemberTypeAssign",
-          "Extends": "FabNodeForAction",
+          "Extends": "FabVertexForAction",
           "Description": "An assignment of a [[MemberType|Enum|MemberType]] to a target [[Member|Object|FabMember]]. This action is performed by some [[Member|Object|FabMember]], which is usually (but not always) different from the target [[Member|Object|FabMember]]. Each [[Member|Object|FabMember]] maintains one active [[MemberTypeAssign|Object|FabMemberTypeAssign]] and a list of historical [[MemberTypeAssigns|Object|FabMemberTypeAssign]].",
           "IsBaseClass": false,
           "Properties": [
@@ -1087,10 +1087,10 @@
               "Description": "Links a [[Member|Object|FabMember]] to its active [[MemberTypeAssign|Object|FabMemberTypeAssign]].",
               "IsOutgoing": false,
               "From": "FabMember",
-              "FromConn": "OutToOne",
+              "FromConn": "OutOne",
               "Relation": "Has",
               "To": "FabMemberTypeAssign",
-              "ToConn": "InFromOne",
+              "ToConn": "InOne",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -1099,10 +1099,10 @@
               "Description": "Links a [[Member|Object|FabMember]] to a historical [[MemberTypeAssign|Object|FabMemberTypeAssign]].",
               "IsOutgoing": false,
               "From": "FabMember",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "OutZeroOrMore",
               "Relation": "HasHistoric",
               "To": "FabMemberTypeAssign",
-              "ToConn": "InFromOne",
+              "ToConn": "InOne",
               "FabType": "FabSpecTravLink"
             },
             {
@@ -1111,18 +1111,18 @@
               "Description": "Links a [[Member|Object|FabMember]] to the [[MemberTypeAssign|Object|FabMemberTypeAssign]] that it created.",
               "IsOutgoing": false,
               "From": "FabMember",
-              "FromConn": "OutToZeroOrMore",
+              "FromConn": "OutZeroOrMore",
               "Relation": "Creates",
               "To": "FabMemberTypeAssign",
-              "ToConn": "InFromOne",
+              "ToConn": "InOne",
               "FabType": "FabSpecTravLink"
             }
           ],
           "TraversalFunctions": [
             "As",
             "Back",
-            "Limit",
-            "WhereId"
+            "HasId",
+            "Limit"
           ],
           "FabType": "FabSpecObject"
         },
@@ -1243,53 +1243,6 @@
               "Description": "The year that this build was released.",
               "FabType": "FabSpecObjectProp"
             }
-          ],
-          "FabType": "FabSpecObject"
-        },
-        {
-          "Name": "FabNode",
-          "Extends": "FabObject",
-          "Description": "The base class for all nodes present in the Fabric \"graph\".  Only [[Nodes|Object|FabNode]] are present and traversable via the [[Traversal Service|Serv|Traversal]].",
-          "IsBaseClass": true,
-          "Properties": [
-            {
-              "Name": "Uri",
-              "Type": "string",
-              "Description": "Append this value to the current URI to filter down to this specific [[Node|Object|FabNode]] in current traversal path.",
-              "FabType": "FabSpecObjectProp"
-            }
-          ],
-          "FabType": "FabSpecObject"
-        },
-        {
-          "Name": "FabNodeForAction",
-          "Extends": "FabNode",
-          "Description": "The base class for various \"actions\" that can occur.",
-          "IsBaseClass": true,
-          "Properties": [
-            {
-              "IsNullable": true,
-              "Name": "Note",
-              "Type": "string",
-              "Description": "A brief note describing this action.",
-              "IsOptional": true,
-              "LenMax": 256,
-              "LenMin": 1,
-              "FabType": "FabSpecObjectProp"
-            },
-            {
-              "IsTimestamp": true,
-              "Name": "Performed",
-              "Type": "long",
-              "Description": "The date/time this action was performed.",
-              "FabType": "FabSpecObjectProp"
-            }
-          ],
-          "TraversalFunctions": [
-            "As",
-            "Back",
-            "Limit",
-            "WhereId"
           ],
           "FabType": "FabSpecObject"
         },
@@ -1469,13 +1422,13 @@
             {
               "Name": "Functions",
               "Type": "string[]",
-              "Description": "The traversal functions available for the current node list. This property is only used for [[Traversal Service|Serv|Traversal]] requests.",
+              "Description": "The traversal functions available for the current vertex list. This property is only used for [[Traversal Service|Serv|Traversal]] requests.",
               "FabType": "FabSpecObjectProp"
             },
             {
               "Name": "HasMore",
               "Type": "bool",
-              "Description": "Indicates whether there are more nodes available beyond the returned node list. This property is only used for [[Traversal Service|Serv|Traversal]] requests.",
+              "Description": "Indicates whether there are more vertices available beyond the returned vertex list. This property is only used for [[Traversal Service|Serv|Traversal]] requests.",
               "FabType": "FabSpecObjectProp"
             },
             {
@@ -1487,7 +1440,7 @@
             {
               "Name": "Links",
               "Type": "FabStepLink[]",
-              "Description": "The traversal links available for the current node list. This property is only used for [[Traversal Service|Serv|Traversal]] requests.",
+              "Description": "The traversal links available for the current vertex list. This property is only used for [[Traversal Service|Serv|Traversal]] requests.",
               "FabType": "FabSpecObjectProp"
             },
             {
@@ -1499,7 +1452,7 @@
             {
               "Name": "StartIndex",
               "Type": "long",
-              "Description": "The starting index of the returned node list. This property is only used for [[Traversal Service|Serv|Traversal]] requests.",
+              "Description": "The starting index of the returned vertex list. This property is only used for [[Traversal Service|Serv|Traversal]] requests.",
               "FabType": "FabSpecObjectProp"
             },
             {
@@ -1525,107 +1478,34 @@
         },
         {
           "Name": "FabRoot",
-          "Extends": "FabNode",
+          "Extends": "FabVertex",
           "Description": "Represents the root, or starting point, of all [[Traversal Service|Serv|Traversal]] queries. The Root provides traversal links to all other available objects.",
           "IsBaseClass": false,
           "Properties": [],
-          "TraversalLinks": [
-            {
-              "Name": "ContainsAppList",
-              "Type": "RootContainsApp",
-              "Description": "Links the [[Root|Object|FabRoot]] node to an [[App|Object|FabApp]].",
-              "IsOutgoing": true,
-              "From": "FabRoot",
-              "FromConn": "InFromOne",
-              "Relation": "Contains",
-              "To": "FabApp",
-              "ToConn": "OutToZeroOrMore",
-              "FabType": "FabSpecTravLink"
-            },
-            {
-              "Name": "ContainsClassList",
-              "Type": "RootContainsClass",
-              "Description": "Links the [[Root|Object|FabRoot]] node to a [[Class|Object|FabClass]].",
-              "IsOutgoing": true,
-              "From": "FabRoot",
-              "FromConn": "InFromOne",
-              "Relation": "Contains",
-              "To": "FabClass",
-              "ToConn": "OutToZeroOrMore",
-              "FabType": "FabSpecTravLink"
-            },
-            {
-              "Name": "ContainsInstanceList",
-              "Type": "RootContainsInstance",
-              "Description": "Links the [[Root|Object|FabRoot]] node to an [[Instance|Object|FabInstance]].",
-              "IsOutgoing": true,
-              "From": "FabRoot",
-              "FromConn": "InFromOne",
-              "Relation": "Contains",
-              "To": "FabInstance",
-              "ToConn": "OutToZeroOrMore",
-              "FabType": "FabSpecTravLink"
-            },
-            {
-              "Name": "ContainsMemberList",
-              "Type": "RootContainsMember",
-              "Description": "Links the [[Root|Object|FabRoot]] node to a [[Member|Object|FabMember]].",
-              "IsOutgoing": true,
-              "From": "FabRoot",
-              "FromConn": "InFromOne",
-              "Relation": "Contains",
-              "To": "FabMember",
-              "ToConn": "OutToZeroOrMore",
-              "FabType": "FabSpecTravLink"
-            },
-            {
-              "Name": "ContainsMemberTypeAssignList",
-              "Type": "RootContainsMemberTypeAssign",
-              "Description": "Links the [[Root|Object|FabRoot]] node to a [[MemberTypeAssign|Object|FabMemberTypeAssign]].",
-              "IsOutgoing": true,
-              "From": "FabRoot",
-              "FromConn": "InFromOne",
-              "Relation": "Contains",
-              "To": "FabMemberTypeAssign",
-              "ToConn": "OutToZeroOrMore",
-              "FabType": "FabSpecTravLink"
-            },
-            {
-              "Name": "ContainsUrlList",
-              "Type": "RootContainsUrl",
-              "Description": "Links the [[Root|Object|FabRoot]] node to a [[Url|Object|FabUrl]].",
-              "IsOutgoing": true,
-              "From": "FabRoot",
-              "FromConn": "InFromOne",
-              "Relation": "Contains",
-              "To": "FabUrl",
-              "ToConn": "OutToZeroOrMore",
-              "FabType": "FabSpecTravLink"
-            },
-            {
-              "Name": "ContainsUserList",
-              "Type": "RootContainsUser",
-              "Description": "Links the [[Root|Object|FabRoot]] node to a [[User|Object|FabUser]].",
-              "IsOutgoing": true,
-              "From": "FabRoot",
-              "FromConn": "InFromOne",
-              "Relation": "Contains",
-              "To": "FabUser",
-              "ToConn": "OutToZeroOrMore",
-              "FabType": "FabSpecTravLink"
-            },
-            {
-              "Name": "ContainsFactorList",
-              "Type": "RootContainsFactor",
-              "Description": "Links the [[Root|Object|FabRoot]] node to a [[Factor|Object|FabFactor]].",
-              "IsOutgoing": true,
-              "From": "FabRoot",
-              "FromConn": "InFromOne",
-              "Relation": "Contains",
-              "To": "FabFactor",
-              "ToConn": "OutToZeroOrMore",
-              "FabType": "FabSpecTravLink"
-            }
+          "TraversalFunctions": [
+            "AppId",
+            "AppName",
+            "AppNameContains",
+            "ArtifactCreated",
+            "ArtifactId",
+            "ClassDisambContains",
+            "ClassId",
+            "ClassName",
+            "ClassNameContains",
+            "FactorCreated",
+            "FactorId",
+            "FactorIdentorValue",
+            "FactorIdentorValueContains",
+            "InstanceDisambContains",
+            "InstanceId",
+            "InstanceNameContains",
+            "MemberId",
+            "MemberTypeAssignId",
+            "UrlFullPath",
+            "UrlId",
+            "UrlNameContains",
+            "UserId",
+            "UserName"
           ],
           "FabType": "FabSpecObject"
         },
@@ -1820,6 +1700,11 @@
             },
             {
               "Name": "IsUnique",
+              "Type": "bool?",
+              "FabType": "FabSpecObjectProp"
+            },
+            {
+              "Name": "ToLowerCase",
               "Type": "bool?",
               "FabType": "FabSpecObjectProp"
             }
@@ -2090,25 +1975,25 @@
         {
           "Name": "FabStepLink",
           "Extends": "FabObject",
-          "Description": "Contains all the relevant information about a [[Node|Object|FabNode]]'s traversal link.",
+          "Description": "Contains all the relevant information about a [[Vertex|Object|FabVertex]]'s traversal link.",
           "IsBaseClass": false,
           "Properties": [
             {
               "Name": "Class",
               "Type": "string",
-              "Description": "The [[Node|Object|FabNode]] type returned by the opposite end of this link.",
+              "Description": "The [[Vertex|Object|FabVertex]] type returned by the opposite end of this link.",
+              "FabType": "FabSpecObjectProp"
+            },
+            {
+              "Name": "Edge",
+              "Type": "string",
+              "Description": "The relation type of this link.",
               "FabType": "FabSpecObjectProp"
             },
             {
               "Name": "IsOut",
               "Type": "bool",
-              "Description": "Indicates whether this link is outgoing (starting from the current [[Node|Object|FabNode]]) or incoming (starting from another [[Node|Object|FabNode]]).",
-              "FabType": "FabSpecObjectProp"
-            },
-            {
-              "Name": "Rel",
-              "Type": "string",
-              "Description": "The relation type of this link.",
+              "Description": "Indicates whether this link is outgoing (starting from the current [[Vertex|Object|FabVertex]]) or incoming (starting from another [[Vertex|Object|FabVertex]]).",
               "FabType": "FabSpecObjectProp"
             },
             {
@@ -2128,8 +2013,9 @@
           "Properties": [
             {
               "IsCaseInsensitive": true,
+              "ToLowerCase": true,
               "IsUnique": true,
-              "Name": "AbsoluteUrl",
+              "Name": "FullPath",
               "Type": "string",
               "Description": "A unique, valid absolute URL. The string must include the link's protocol (such as 'http://').",
               "LenMax": 2048,
@@ -2148,8 +2034,8 @@
           "TraversalFunctions": [
             "As",
             "Back",
-            "Limit",
-            "WhereId"
+            "HasId",
+            "Limit"
           ],
           "FabType": "FabSpecObject"
         },
@@ -2178,25 +2064,25 @@
               "Description": "Links a [[User|Object|FabUser]] to a particular [[Member|Object|FabMember]].",
               "IsOutgoing": true,
               "From": "FabUser",
-              "FromConn": "OutToOneOrMore",
+              "FromConn": "OutOneOrMore",
               "Relation": "Defines",
               "To": "FabMember",
-              "ToConn": "InFromOne",
+              "ToConn": "InOne",
               "FabType": "FabSpecTravLink"
             }
           ],
           "TraversalFunctions": [
             "As",
             "Back",
-            "Limit",
-            "WhereId"
+            "HasId",
+            "Limit"
           ],
           "FabType": "FabSpecObject"
         },
         {
           "Name": "FabVector",
           "Extends": "FabObject",
-          "Description": "A [[Factor|Object|FabFactor]] Element that applies a meaningful numeric axis and value to a particular [[Factor|Object|FabFactor]].\r\n\r\nA Vector attaches a numeric value to a [[Factor|Object|FabFactor]], using an arbitrary [[Artifact|Object|FabArtifact]] to define its \"axis\". This axis depends entirely upon the Vector's purpose. For example, a factual Vector might use an [[Artifact|Object|FabArtifact]] like \"Height\" or \"Shutter Speed\". A Vector that provides an opinion might use an [[Artifact|Object|FabArtifact]] like \"Quality\" or \"Excitement\". While the choice of an axis Artififact is not restricted, it can be beneficial to use [[Artifacts|Object|FabArtifact]] which are other [[Apps|Object|FabApp]] or [[Users|Object|FabUser]] are already using as Vector axes. Note: while the axis [[Artifact|Object|FabArtifact]] link is discussed here in the context of a [[Vector|Object|FabVector]], the actual traversal link exists with the [[Factor|Object|FabFactor]].\r\n\r\nThe [[VectorType|Enum|VectorType]] provides boundaries and context for the Vector's value. It can identify the value as a percentage, a level of agreement or disagreement, an opinion-based rating, or simply a plain numeric value. Each [[VectorType|Enum|VectorType]] provides additional information, such as a [[VectorRange|Enum|VectorRange]], to provide further meaning for the levels within the the allowed value boundaries.\r\n\r\nA Vector's numeric value often reflects a measurement or a has a specific unit. Furthermore, a Vector can use [[VectorUnitPrefix|Enum|VectorUnitPrefix]] to specify an order of magnitude for the value. A Vector's value is a long integer, so the prefix is especially useful when fractional values are involved, or when the desired number is larger than a long integer.\r\n[(EX|Small Value Example|_Objective:_\r\nSpecify that image A (which is a photo) has a shutter speed of 1/250 second.\r\n\r\n_Method:_\r\n- The [[Factor|Object|FabFactor]] uses 'Image A' as the primary [[Artifact|Object|FabArtifact]] and 'Photo' as the related [[Artifact|Object|FabArtifact]].\r\n- The [[Descriptor|Object|FabDescriptor]] uses the 'Is A' [[DescriptorType|Enum|DescriptorType]]. \r\n- The Vector uses the 'Shutter Speed' [[Artifact|Object|FabArtifact]] as the axis, the 'Positive Long' [[VectorType|Enum|VectorType]], '4' as the value, the 'Milli' [[VectorUnitPrefix|Enum|VectorUnitPrefix]], and the 'Second' [[VectorUnit|Enum|VectorUnit]].\r\n\r\n_Factor Phrase:_\r\nImage A ... Is A ... Photo, ... (which, along the) Shutter Speed (axis) ... (with a) Positive Long (numerical range), ... (has a value) '4' ... Milli ... Second(s).)] [(EX|Large Value Example|_Objective:_\r\nSpecify that Earth and the Andromeda Galaxy are 2.5 million light years (2.2705 x 10^22 metres) apart.\r\n\r\n_Method:_\r\n- The [[Factor|Object|FabFactor]] uses 'Earth' as the primary [[Artifact|Object|FabArtifact]] and 'Andromeda Galaxy' as the related [[Artifact|Object|FabArtifact]].\r\n- The [[Descriptor|Object|FabDescriptor]] uses the 'Is Related To' [[DescriptorType|Enum|DescriptorType]]. \r\n- The Vector uses the 'Distance' [[Artifact|Object|FabArtifact]] as the axis, the 'Positive Long' [[VectorType|Enum|VectorType]], '22,705' as the value, the 'Exa' [[VectorUnitPrefix|Enum|VectorUnitPrefix]] (represents 10^18), and the 'Metre' [[VectorUnit|Enum|VectorUnit]].\r\n\r\n_Factor Phrase:_\r\nEarth ... Is Related To ... Andromeda Galaxy, ... (which, along the) Distance (axis) ... (with a) Positive Long (numerical range), ... (has a value) '22,705' ... Exa ... Metre(s).)] [(EX|Negative Value Example|_Objective:_\r\nSpecify that article A mentions person B in a very unfair manner, about 80% of the maximum unfairness imaginable.\r\n\r\n_Method:_\r\n- The [[Factor|Object|FabFactor]] uses 'Article A' as the primary [[Artifact|Object|FabArtifact]] and 'Person B' as the related [[Artifact|Object|FabArtifact]].\r\n- The [[Descriptor|Object|FabDescriptor]] uses the 'Refers To' [[DescriptorType|Enum|DescriptorType]]. \r\n- The Vector uses the 'Fairness' [[Artifact|Object|FabArtifact]] as the axis, the 'Opposable Favorability' [[VectorType|Enum|VectorType]], '-80' as the value, the default 'Base' [[VectorUnitPrefix|Enum|VectorUnitPrefix]], and the default 'None' [[VectorUnit|Enum|VectorUnit]]. This [[VectorType|Enum|VectorType]] has bounds of -100 to +100.\r\n\r\n_Factor Phrase:_\r\nArticle A ... Refers To ... Person B, ... (which, along the) Fairness (axis) ... (with a) Opposable Favorabillity (numerical range), ... (has a value) '-80'.)]",
+          "Description": "A [[Factor|Object|FabFactor]] Element that applies a meaningful numeric axis and value to a particular [[Factor|Object|FabFactor]].\r\n\r\nA Vector attaches a numeric value to a [[Factor|Object|FabFactor]], using an arbitrary [[Artifact|Object|FabArtifact]] to define its \"axis\". This axis depends entiedgey upon the Vector's purpose. For example, a factual Vector might use an [[Artifact|Object|FabArtifact]] like \"Height\" or \"Shutter Speed\". A Vector that provides an opinion might use an [[Artifact|Object|FabArtifact]] like \"Quality\" or \"Excitement\". While the choice of an axis Artififact is not restricted, it can be beneficial to use [[Artifacts|Object|FabArtifact]] which are other [[Apps|Object|FabApp]] or [[Users|Object|FabUser]] are already using as Vector axes. Note: while the axis [[Artifact|Object|FabArtifact]] link is discussed here in the context of a [[Vector|Object|FabVector]], the actual traversal link exists with the [[Factor|Object|FabFactor]].\r\n\r\nThe [[VectorType|Enum|VectorType]] provides boundaries and context for the Vector's value. It can identify the value as a percentage, a level of agreement or disagreement, an opinion-based rating, or simply a plain numeric value. Each [[VectorType|Enum|VectorType]] provides additional information, such as a [[VectorRange|Enum|VectorRange]], to provide further meaning for the levels within the the allowed value boundaries.\r\n\r\nA Vector's numeric value often reflects a measurement or a has a specific unit. Furthermore, a Vector can use [[VectorUnitPrefix|Enum|VectorUnitPrefix]] to specify an order of magnitude for the value. A Vector's value is a long integer, so the prefix is especially useful when fractional values are involved, or when the desired number is larger than a long integer.\r\n[(EX|Small Value Example|_Objective:_\r\nSpecify that image A (which is a photo) has a shutter speed of 1/250 second.\r\n\r\n_Method:_\r\n- The [[Factor|Object|FabFactor]] uses 'Image A' as the primary [[Artifact|Object|FabArtifact]] and 'Photo' as the related [[Artifact|Object|FabArtifact]].\r\n- The [[Descriptor|Object|FabDescriptor]] uses the 'Is A' [[DescriptorType|Enum|DescriptorType]]. \r\n- The Vector uses the 'Shutter Speed' [[Artifact|Object|FabArtifact]] as the axis, the 'Positive Long' [[VectorType|Enum|VectorType]], '4' as the value, the 'Milli' [[VectorUnitPrefix|Enum|VectorUnitPrefix]], and the 'Second' [[VectorUnit|Enum|VectorUnit]].\r\n\r\n_Factor Phrase:_\r\nImage A ... Is A ... Photo, ... (which, along the) Shutter Speed (axis) ... (with a) Positive Long (numerical range), ... (has a value) '4' ... Milli ... Second(s).)] [(EX|Large Value Example|_Objective:_\r\nSpecify that Earth and the Andromeda Galaxy are 2.5 million light years (2.2705 x 10^22 metres) apart.\r\n\r\n_Method:_\r\n- The [[Factor|Object|FabFactor]] uses 'Earth' as the primary [[Artifact|Object|FabArtifact]] and 'Andromeda Galaxy' as the related [[Artifact|Object|FabArtifact]].\r\n- The [[Descriptor|Object|FabDescriptor]] uses the 'Is Related To' [[DescriptorType|Enum|DescriptorType]]. \r\n- The Vector uses the 'Distance' [[Artifact|Object|FabArtifact]] as the axis, the 'Positive Long' [[VectorType|Enum|VectorType]], '22,705' as the value, the 'Exa' [[VectorUnitPrefix|Enum|VectorUnitPrefix]] (represents 10^18), and the 'Metre' [[VectorUnit|Enum|VectorUnit]].\r\n\r\n_Factor Phrase:_\r\nEarth ... Is Related To ... Andromeda Galaxy, ... (which, along the) Distance (axis) ... (with a) Positive Long (numerical range), ... (has a value) '22,705' ... Exa ... Metre(s).)] [(EX|Negative Value Example|_Objective:_\r\nSpecify that article A mentions person B in a very unfair manner, about 80% of the maximum unfairness imaginable.\r\n\r\n_Method:_\r\n- The [[Factor|Object|FabFactor]] uses 'Article A' as the primary [[Artifact|Object|FabArtifact]] and 'Person B' as the related [[Artifact|Object|FabArtifact]].\r\n- The [[Descriptor|Object|FabDescriptor]] uses the 'Refers To' [[DescriptorType|Enum|DescriptorType]]. \r\n- The Vector uses the 'Fairness' [[Artifact|Object|FabArtifact]] as the axis, the 'Opposable Favorability' [[VectorType|Enum|VectorType]], '-80' as the value, the default 'Base' [[VectorUnitPrefix|Enum|VectorUnitPrefix]], and the default 'None' [[VectorUnit|Enum|VectorUnit]]. This [[VectorType|Enum|VectorType]] has bounds of -100 to +100.\r\n\r\n_Factor Phrase:_\r\nArticle A ... Refers To ... Person B, ... (which, along the) Fairness (axis) ... (with a) Opposable Favorabillity (numerical range), ... (has a value) '-80'.)]",
           "IsBaseClass": false,
           "Properties": [
             {
@@ -2228,6 +2114,53 @@
             }
           ],
           "FabType": "FabSpecObject"
+        },
+        {
+          "Name": "FabVertex",
+          "Extends": "FabObject",
+          "Description": "The base class for all vertices present in the Fabric \"graph\".  Only Vertices are present and traversable via the [[Traversal Service|Serv|Traversal]].",
+          "IsBaseClass": true,
+          "Properties": [
+            {
+              "Name": "Uri",
+              "Type": "string",
+              "Description": "Append this value to the current URI to filter down to this specific [[Vertex|Object|FabVertex]] in current traversal path.",
+              "FabType": "FabSpecObjectProp"
+            }
+          ],
+          "FabType": "FabSpecObject"
+        },
+        {
+          "Name": "FabVertexForAction",
+          "Extends": "FabVertex",
+          "Description": "The base class for various \"actions\" that can occur.",
+          "IsBaseClass": true,
+          "Properties": [
+            {
+              "IsNullable": true,
+              "Name": "Note",
+              "Type": "string",
+              "Description": "A brief note describing this action.",
+              "IsOptional": true,
+              "LenMax": 256,
+              "LenMin": 1,
+              "FabType": "FabSpecObjectProp"
+            },
+            {
+              "IsTimestamp": true,
+              "Name": "Performed",
+              "Type": "long",
+              "Description": "The date/time this action was performed.",
+              "FabType": "FabSpecObjectProp"
+            }
+          ],
+          "TraversalFunctions": [
+            "As",
+            "Back",
+            "HasId",
+            "Limit"
+          ],
+          "FabType": "FabSpecObject"
         }
       ],
       "Services": [
@@ -2238,6 +2171,83 @@
           "Description": "TODO",
           "ResponseWrapper": "FabResponse",
           "TraversalFunctions": [
+            {
+              "Name": "AppId",
+              "Description": "Obtains an [[App|Object|FabApp]] by its ArtifactId.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Value",
+                  "Type": "long",
+                  "Description": "The ArtifactId of the target [[App|Object|FabApp]].",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "AppName",
+              "Description": "Obtains an [[App|Object|FabApp]] by its entire (case-insensitive) Name.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Value",
+                  "Type": "string",
+                  "Description": "The Name of the target [[App|Object|FabApp]].",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "AppNameContains",
+              "Description": "Search for [[Apps|Object|FabApp]] using string-delimited, case-insensitive tokens. These tokens will be matched against the string-delimited tokens of the Name property.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Tokens",
+                  "Type": "string",
+                  "Description": "The Name search tokens.",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "ArtifactCreated",
+              "Description": "Search for [[Artifacts|Object|FabArtifact]] by their creation date/time.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Operation",
+                  "Type": "string",
+                  "Description": "The operator to use for this search.",
+                  "FabType": "FabSpecTravFuncParam"
+                },
+                {
+                  "Index": 1,
+                  "Name": "Value",
+                  "Type": "long",
+                  "Description": "The date/time to use for this search.",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "ArtifactId",
+              "Description": "Obtains an [[Artifact|Object|FabArtifact]] by its ArtifactId.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Value",
+                  "Type": "long",
+                  "Description": "The ArtifactId of the target [[Artifact|Object|FabArtifact]].",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
             {
               "Name": "As",
               "Description": "Creates a named alias for the current step of the traversal path. Execution of the traversal path can return to this alias using the [[Back|Func|Back]] function.",
@@ -2254,7 +2264,7 @@
             },
             {
               "Name": "Back",
-              "Description": "Returns the execution of the traversal path to a particular named alias. This alias is created using the [[As|Func|As]] function.\r\n\r\nWhen traversal execution reaches a Back function step, the execution retraces (steps backwards through) the traversal path until the alias is reached. Execution then proceeds using the traversal step(s) that immediately follow the Back function step.\r\n\r\nThe return type of the Back function is determined by the return type of the corresponding alias.\r\n[(EX|Return Type Example|_Traversal Steps_\r\nGet a list of [[Members|Object|FabMember]]:\r\n- /Root/ContainsMemberList/As(M)\r\n\r\nGet a list of [[Artifacts|Object|FabArtifact]] created by those [[Members|Object|FabMember]]:\r\n- /Root/ContainsMemberList/As(M)/CreatesArtifactList\r\n\r\nRetrace to the \"M\" alias, which returns [[Members|Object|FabMember]]:\r\n- /Root/ContainsMemberList/As(M)/CreatesArtifactList/Back(M))]\r\n\r\nWhen execution retraces the traversal path, it does so _only_ from the nodes that are currently active at the Back function step. This makes the Back function useful for complex filtering.\r\n\r\n[(EX|Retrace Example|_Objective_\r\nFind all the [[Members|Object|FabMember]] of a particular [[App|Object|FabApp]] (AppId = 123) that have created at least one [[Artifact|Object|FabArtifact]].\r\n\r\n_Traversal Steps_\r\nCreate named alias \"M\" at the [[Member|Object|FabMember]] step:\r\n- /Root/ContainsMemberList/As(M)\r\n\r\nContinue traversing to the target [[App|Object|FabApp]]:\r\n- /Root/ContainsMemberList/As(M)/InAppDefines/WhereId(2)\r\n\r\nRetrace to the [[Member|Object|FabMember]] list, which now contains only [[Members|Object|FabMember]] of \"Great [[App|Object|FabApp]]\":\r\n- /Root/ContainsMemberList/As(M)/InAppDefines/WhereId(2)/Back(M)\r\n\r\nContinue traversing to the [[Artifacts|Object|FabArtifact]] created by these [[Members|Object|FabMember]]:\r\n- /Root/ContainsMemberList/As(M)/InAppDefines/WhereId(2)/Back(M)/CreatesArtifactList\r\n\r\nRetrace to the [[Member|Object|FabMember]] list, which now also excludes any [[Members|Object|FabMember]] who have not created an [[Artifact|Object|FabArtifact]]:\r\n- /Root/ContainsMemberList/As(M)/InAppDefines/WhereId(2)/Back(M)/CreatesArtifactList/Back(M))]",
+              "Description": "Returns the execution of the traversal path to a particular named alias. This alias is created using the [[As|Func|As]] function.\r\n\r\nWhen traversal execution reaches a Back function step, the execution retraces (steps backwards through) the traversal path until the alias is reached. Execution then proceeds using the traversal step(s) that immediately follow the Back function step.\r\n\r\nThe return type of the Back function is determined by the return type of the corresponding alias.\r\n[(EX|Return Type Example|_Traversal Steps_\r\nGet a list of [[Members|Object|FabMember]]:\r\n- /Root/ContainsMemberList/As(M)\r\n\r\nGet a list of [[Artifacts|Object|FabArtifact]] created by those [[Members|Object|FabMember]]:\r\n- /Root/ContainsMemberList/As(M)/CreatesArtifactList\r\n\r\nRetrace to the \"M\" alias, which returns [[Members|Object|FabMember]]:\r\n- /Root/ContainsMemberList/As(M)/CreatesArtifactList/Back(M))]\r\n\r\nWhen execution retraces the traversal path, it does so _only_ from the vertices that are currently active at the Back function step. This makes the Back function useful for complex filtering.\r\n\r\n[(EX|Retrace Example|_Objective_\r\nFind all the [[Members|Object|FabMember]] of a particular [[App|Object|FabApp]] (AppId = 123) that have created at least one [[Artifact|Object|FabArtifact]].\r\n\r\n_Traversal Steps_\r\nCreate named alias \"M\" at the [[Member|Object|FabMember]] step:\r\n- /Root/ContainsMemberList/As(M)\r\n\r\nContinue traversing to the target [[App|Object|FabApp]]:\r\n- /Root/ContainsMemberList/As(M)/InAppDefines/HasId(2)\r\n\r\nRetrace to the [[Member|Object|FabMember]] list, which now contains only [[Members|Object|FabMember]] of \"Great [[App|Object|FabApp]]\":\r\n- /Root/ContainsMemberList/As(M)/InAppDefines/HasId(2)/Back(M)\r\n\r\nContinue traversing to the [[Artifacts|Object|FabArtifact]] created by these [[Members|Object|FabMember]]:\r\n- /Root/ContainsMemberList/As(M)/InAppDefines/HasId(2)/Back(M)/CreatesArtifactList\r\n\r\nRetrace to the [[Member|Object|FabMember]] list, which now also excludes any [[Members|Object|FabMember]] who have not created an [[Artifact|Object|FabArtifact]]:\r\n- /Root/ContainsMemberList/As(M)/InAppDefines/HasId(2)/Back(M)/CreatesArtifactList/Back(M))]",
               "Parameters": [
                 {
                   "Index": 0,
@@ -2267,14 +2277,189 @@
               "FabType": "FabSpecTravFunc"
             },
             {
+              "Name": "ClassDisambContains",
+              "Description": "Search for [[Classes|Object|FabClass]] using string-delimited, case-insensitive tokens. These tokens will be matched against the string-delimited tokens of the Disamb property.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Tokens",
+                  "Type": "string",
+                  "Description": "The Disamb search tokens.",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "ClassId",
+              "Description": "Obtains a [[Class|Object|FabClass]] by its ArtifactId.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Value",
+                  "Type": "long",
+                  "Description": "The ArtifactId of the target [[Class|Object|FabClass]].",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "ClassName",
+              "Description": "Obtains a [[Class|Object|FabClass]] by its entire (case-insensitive) Name.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Value",
+                  "Type": "string",
+                  "Description": "The Name of the target [[Class|Object|FabClass]].",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "ClassNameContains",
+              "Description": "Search for [[Classes|Object|FabClass]] using string-delimited, case-insensitive tokens. These tokens will be matched against the string-delimited tokens of the Name property.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Tokens",
+                  "Type": "string",
+                  "Description": "The Name search tokens.",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "FactorCreated",
+              "Description": "Search for [[Factors|Object|FabFactor]] by their creation date/time.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Operation",
+                  "Type": "string",
+                  "Description": "The operator to use for this search.",
+                  "FabType": "FabSpecTravFuncParam"
+                },
+                {
+                  "Index": 1,
+                  "Name": "Value",
+                  "Type": "long",
+                  "Description": "The date/time to use for this search.",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "FactorId",
+              "Description": "Obtains an [[Factor|Object|FabFactor]] by its FactorId",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Value",
+                  "Type": "long",
+                  "Description": "The FactorId of the target [[Factor|Object|FabFactor]].",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "FactorIdentorValue",
+              "Description": "Obtains a [[Factor|Object|FabFactor]] by its full (case-insensitive) IdentorValue.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Value",
+                  "Type": "string",
+                  "Description": "The IdentorValue of the target [[Factor|Object|FabFactor]].",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "FactorIdentorValueContains",
+              "Description": "Search for [[Factors|Object|FabFactor]] using string-delimited, case-insensitive tokens. These tokens will be matched against the string-delimited tokens of the IdentorValue property.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Tokens",
+                  "Type": "string",
+                  "Description": "The IdentorValue search tokens.",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "HasId",
+              "Description": "Restricts the results to a single Id value. \r\n\r\nNote that each vertex type has its own Id property name. For example, a [[Member|Object|FabMember]] has a MemberId and a [[Factor|Object|FabFactor]] has a FactorId.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Id",
+                  "Type": "long",
+                  "Description": "The target vertex Id.",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "InstanceDisambContains",
+              "Description": "Search for [[Instances|Object|FabInstance]] using string-delimited, case-insensitive tokens. These tokens will be matched against the string-delimited tokens of the Disamb property.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Tokens",
+                  "Type": "string",
+                  "Description": "The Disamb search tokens.",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "InstanceId",
+              "Description": "Obtains an [[Instance|Object|FabInstance]] by its ArtifactId.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Value",
+                  "Type": "long",
+                  "Description": "The ArtifactId of the target [[Instance|Object|FabInstance]].",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "InstanceNameContains",
+              "Description": "Search for [[Instances|Object|FabInstance]] using string-delimited, case-insensitive tokens. These tokens will be matched against the string-delimited tokens of the Name property.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Tokens",
+                  "Type": "string",
+                  "Description": "The Name search tokens.",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
               "Name": "Limit",
-              "Description": "Restricts the size and starting index of the node list. This is typically used as a final traversal step to achieve paging functionality. The Limit function step can be used within a traversal path to filter list results before continuing with traversal execution.",
+              "Description": "Restricts the size and starting index of the vertex list. This is typically used as a final traversal step to achieve paging functionality. The Limit function step can be used within a traversal path to filter list results before continuing with traversal execution.",
               "Parameters": [
                 {
                   "Index": 0,
                   "Name": "Index",
                   "Type": "long",
-                  "Description": "The starting index for the returned list of nodes.",
+                  "Description": "The starting index for the returned list of vertices.",
                   "Min": 0,
                   "FabType": "FabSpecTravFuncParam"
                 },
@@ -2282,7 +2467,7 @@
                   "Index": 1,
                   "Name": "Count",
                   "Type": "int",
-                  "Description": "The maximum number of nodes to return.",
+                  "Description": "The maximum number of vertices to return.",
                   "Min": 0,
                   "Max": 50,
                   "FabType": "FabSpecTravFuncParam"
@@ -2291,47 +2476,131 @@
               "FabType": "FabSpecTravFunc"
             },
             {
-              "Name": "WhereApp",
-              "Description": "Restricts the results to include only [[App|Object|FabApp]] nodes.",
-              "Parameters": [],
-              "FabType": "FabSpecTravFunc"
-            },
-            {
-              "Name": "WhereClass",
-              "Description": "Restricts the results to include only [[Class|Object|FabClass]] nodes.",
-              "Parameters": [],
-              "FabType": "FabSpecTravFunc"
-            },
-            {
-              "Name": "WhereId",
-              "Description": "Restricts the results to a single Id value. \r\n\r\nNote that each node type has its own Id property name. For example, a [[Member|Object|FabMember]] has a MemberId and a [[Factor|Object|FabFactor]] has a FactorId.",
+              "Name": "MemberId",
+              "Description": "Obtains a [[Member|Object|FabMember]] by its MemberId.",
               "Parameters": [
                 {
                   "Index": 0,
-                  "Name": "Id",
+                  "Name": "Value",
                   "Type": "long",
-                  "Description": "The target node Id.",
+                  "Description": "The MemberId of the target [[Member|Object|FabMember]].",
                   "FabType": "FabSpecTravFuncParam"
                 }
               ],
               "FabType": "FabSpecTravFunc"
             },
             {
-              "Name": "WhereInstance",
-              "Description": "Restricts the results to include only [[Instance|Object|FabInstance]] nodes.",
+              "Name": "MemberTypeAssignId",
+              "Description": "Obtains a [[MemberTypeAssign|Object|FabMemberTypeAssign]] by its MemberTypeAssignId.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Value",
+                  "Type": "long",
+                  "Description": "The MemberTypeAssignId of the target [[MemberTypeAssign|Object|FabMemberTypeAssign]].",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "ToApp",
+              "Description": "Restricts the results to include only [[App|Object|FabApp]] vertices.",
               "Parameters": [],
               "FabType": "FabSpecTravFunc"
             },
             {
-              "Name": "WhereUrl",
-              "Description": "Restricts the results to include only [[Url|Object|FabUrl]] nodes.",
+              "Name": "ToClass",
+              "Description": "Restricts the results to include only [[Class|Object|FabClass]] vertices.",
               "Parameters": [],
               "FabType": "FabSpecTravFunc"
             },
             {
-              "Name": "WhereUser",
-              "Description": "Restricts the results to include only [[User|Object|FabUser]] nodes.",
+              "Name": "ToInstance",
+              "Description": "Restricts the results to include only [[Instance|Object|FabInstance]] vertices.",
               "Parameters": [],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "ToUrl",
+              "Description": "Restricts the results to include only [[Url|Object|FabUrl]] vertices.",
+              "Parameters": [],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "ToUser",
+              "Description": "Restricts the results to include only [[User|Object|FabUser]] vertices.",
+              "Parameters": [],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "UrlFullPath",
+              "Description": "Obtains a [[Url|Object|FabUrl]] by its entire (case-insensitive) FullPath.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Value",
+                  "Type": "string",
+                  "Description": "The FullPath of the target [[Url|Object|FabUrl]].",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "UrlId",
+              "Description": "Obtains a [[Url|Object|FabUrl]] by its ArtifactId.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Value",
+                  "Type": "long",
+                  "Description": "The UrlId of the target [[Url|Object|FabUrl]].",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "UrlNameContains",
+              "Description": "Search for [[Urls|Object|FabUrl]] using string-delimited, case-insensitive tokens. These tokens will be matched against the string-delimited tokens of the Name property.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Tokens",
+                  "Type": "string",
+                  "Description": "The Name search tokens.",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "UserId",
+              "Description": "Obtains a [[User|Object|FabUser]] by its ArtifactId.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Value",
+                  "Type": "long",
+                  "Description": "The UserId of the target [[User|Object|FabUser]].",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
+              "FabType": "FabSpecTravFunc"
+            },
+            {
+              "Name": "UserName",
+              "Description": "Obtains a [[User|Object|FabUser]] by its entire (case-insensitive) Name.",
+              "Parameters": [
+                {
+                  "Index": 0,
+                  "Name": "Value",
+                  "Type": "string",
+                  "Description": "The Name of the target [[User|Object|FabUser]].",
+                  "FabType": "FabSpecTravFuncParam"
+                }
+              ],
               "FabType": "FabSpecTravFunc"
             }
           ],
@@ -2910,11 +3179,9 @@
                 {
                   "ParamType": "Form",
                   "Index": 0,
-                  "Name": "AbsoluteUrl",
+                  "Name": "Path",
                   "Type": "string",
                   "Description": "The complete absolute URL for new [[Url|Object|FabUrl]] object. It must include the URL's protocol (such as 'http://').",
-                  "LenMax": 2048,
-                  "LenMin": 1,
                   "FabType": "FabSpecServiceOperationParam"
                 },
                 {
@@ -3506,6 +3773,12 @@
               "EnumId": "Requires",
               "Name": "Requires",
               "Description": "The primary Artifact requires, implies, needs, or demands the related Artifact."
+            },
+            {
+              "Id": 17,
+              "EnumId": "InteractsWith",
+              "Name": "Interacts With",
+              "Description": "The primary Artifact interacts, associates, combines, meets, or communicates with the related Artifact."
             },
             {
               "Id": 18,

@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 5/6/2013 3:35:43 PM
+// Generated on 8/5/2013 8:47:45 PM
 
 using Fabric.Clients.Cs.Session;
 using Fabric.Clients.Cs.Web;
@@ -992,13 +992,13 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Perform the operation.
 		/// </summary>
-		/// <param name="AbsoluteUrl">
+		/// <param name="Path">
 		///   The complete absolute URL for new Url object. It must include the URL's protocol (such as 'http://').
 		/// </param>
 		/// <param name="Name">
 		///   The name of the new Url.
 		/// </param>
-		FabResponse<FabUrl> Post(string AbsoluteUrl, string Name);
+		FabResponse<FabUrl> Post(string Path, string Name);
 
 	}
 	
@@ -1023,16 +1023,16 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabUrl>> Request(string AbsoluteUrl, string Name) {
+		public FabricRequest<FabResponse<FabUrl>> Request(string Path, string Name) {
 			return new FabricRequest<FabResponse<FabUrl>>("POST", Uri, 
 				null,
-				"AbsoluteUrl="+AbsoluteUrl+"&Name="+Name
+				"Path="+Path+"&Name="+Name
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabUrl> Post(string AbsoluteUrl, string Name) {
-			return Request(AbsoluteUrl, Name).Send(vContext);
+		public FabResponse<FabUrl> Post(string Path, string Name) {
+			return Request(Path, Name).Send(vContext);
 		}
 
 	}

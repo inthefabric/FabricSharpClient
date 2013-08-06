@@ -1,11 +1,36 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 5/6/2013 3:35:44 PM
+// Generated on 8/5/2013 8:47:46 PM
 
 namespace Fabric.Clients.Cs.Api {
 
 	// ReSharper disable InconsistentNaming
 
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncAppId : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncAppName : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncAppNameContains : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncArtifactCreated : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncArtifactId : ITraversalStep {}
+
+		
 	/*================================================================================================*/
 	/// <summary />
 	public interface IFuncAs : ITraversalStep {}
@@ -18,37 +43,127 @@ namespace Fabric.Clients.Cs.Api {
 		
 	/*================================================================================================*/
 	/// <summary />
+	public interface IFuncClassDisambContains : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncClassId : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncClassName : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncClassNameContains : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncFactorCreated : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncFactorId : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncFactorIdentorValue : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncFactorIdentorValueContains : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncHasId : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncInstanceDisambContains : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncInstanceId : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncInstanceNameContains : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
 	public interface IFuncLimit : ITraversalStep {}
 
 		
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFuncWhereApp : ITraversalStep {}
+	public interface IFuncMemberId : ITraversalStep {}
 
 		
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFuncWhereClass : ITraversalStep {}
+	public interface IFuncMemberTypeAssignId : ITraversalStep {}
 
 		
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFuncWhereId : ITraversalStep {}
+	public interface IFuncToApp : ITraversalStep {}
 
 		
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFuncWhereInstance : ITraversalStep {}
+	public interface IFuncToClass : ITraversalStep {}
 
 		
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFuncWhereUrl : ITraversalStep {}
+	public interface IFuncToInstance : ITraversalStep {}
 
 		
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFuncWhereUser : ITraversalStep {}
+	public interface IFuncToUrl : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncToUser : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncUrlFullPath : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncUrlId : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncUrlNameContains : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncUserId : ITraversalStep {}
+
+		
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFuncUserName : ITraversalStep {}
 
 		
 	/*================================================================================================*/
@@ -64,6 +179,64 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Obtains an App by its ArtifactId.
+		/// </summary>
+		/// <param name="Value">
+		///   The ArtifactId of the target App.
+		/// </param>
+		public void AppId(long Value) {
+			Trav.AppendToUri("/AppId("+Value+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Obtains an App by its entire (case-insensitive) Name.
+		/// </summary>
+		/// <param name="Value">
+		///   The Name of the target App.
+		/// </param>
+		public void AppName(string Value) {
+			Trav.AppendToUri("/AppName("+Value+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Search for Apps using string-delimited, case-insensitive tokens.
+		/// </summary>
+		/// <param name="Tokens">
+		///   The Name search tokens.
+		/// </param>
+		public void AppNameContains(string Tokens) {
+			Trav.AppendToUri("/AppNameContains("+Tokens+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Search for Artifacts by their creation date/time.
+		/// </summary>
+		/// <param name="Operation">
+		///   The operator to use for this search.
+		/// </param>
+		/// <param name="Value">
+		///   The date/time to use for this search.
+		/// </param>
+		public void ArtifactCreated(string Operation, long Value) {
+			Trav.AppendToUri("/ArtifactCreated("+"+Operation+"+","+Value+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Obtains an Artifact by its ArtifactId.
+		/// </summary>
+		/// <param name="Value">
+		///   The ArtifactId of the target Artifact.
+		/// </param>
+		public void ArtifactId(long Value) {
+			Trav.AppendToUri("/ArtifactId("+Value+")");
+		}
+		
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
 		///   Creates a named alias for the current step of the traversal path.
@@ -88,34 +261,93 @@ namespace Fabric.Clients.Cs.Api {
 		
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the size and starting index of the node list.
+		///   Search for Classes using string-delimited, case-insensitive tokens.
 		/// </summary>
-		/// <param name="Index">
-		///   The starting index for the returned list of nodes.
+		/// <param name="Tokens">
+		///   The Disamb search tokens.
 		/// </param>
-		/// <param name="Count">
-		///   The maximum number of nodes to return.
-		/// </param>
-		public void Limit(long Index, int Count) {
-			Trav.AppendToUri("/Limit("+"+Index+"+","+Count+")");
+		public void ClassDisambContains(string Tokens) {
+			Trav.AppendToUri("/ClassDisambContains("+Tokens+")");
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only App nodes.
+		///   Obtains a Class by its ArtifactId.
 		/// </summary>
-		
-		public void WhereApp() {
-			Trav.AppendToUri("/WhereApp()");
+		/// <param name="Value">
+		///   The ArtifactId of the target Class.
+		/// </param>
+		public void ClassId(long Value) {
+			Trav.AppendToUri("/ClassId("+Value+")");
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only Class nodes.
+		///   Obtains a Class by its entire (case-insensitive) Name.
 		/// </summary>
+		/// <param name="Value">
+		///   The Name of the target Class.
+		/// </param>
+		public void ClassName(string Value) {
+			Trav.AppendToUri("/ClassName("+Value+")");
+		}
 		
-		public void WhereClass() {
-			Trav.AppendToUri("/WhereClass()");
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Search for Classes using string-delimited, case-insensitive tokens.
+		/// </summary>
+		/// <param name="Tokens">
+		///   The Name search tokens.
+		/// </param>
+		public void ClassNameContains(string Tokens) {
+			Trav.AppendToUri("/ClassNameContains("+Tokens+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Search for Factors by their creation date/time.
+		/// </summary>
+		/// <param name="Operation">
+		///   The operator to use for this search.
+		/// </param>
+		/// <param name="Value">
+		///   The date/time to use for this search.
+		/// </param>
+		public void FactorCreated(string Operation, long Value) {
+			Trav.AppendToUri("/FactorCreated("+"+Operation+"+","+Value+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Obtains an Factor by its FactorId
+		/// </summary>
+		/// <param name="Value">
+		///   The FactorId of the target Factor.
+		/// </param>
+		public void FactorId(long Value) {
+			Trav.AppendToUri("/FactorId("+Value+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Obtains a Factor by its full (case-insensitive) IdentorValue.
+		/// </summary>
+		/// <param name="Value">
+		///   The IdentorValue of the target Factor.
+		/// </param>
+		public void FactorIdentorValue(string Value) {
+			Trav.AppendToUri("/FactorIdentorValue("+Value+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Search for Factors using string-delimited, case-insensitive tokens.
+		/// </summary>
+		/// <param name="Tokens">
+		///   The IdentorValue search tokens.
+		/// </param>
+		public void FactorIdentorValueContains(string Tokens) {
+			Trav.AppendToUri("/FactorIdentorValueContains("+Tokens+")");
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -123,37 +355,179 @@ namespace Fabric.Clients.Cs.Api {
 		///   Restricts the results to a single Id value.
 		/// </summary>
 		/// <param name="Id">
-		///   The target node Id.
+		///   The target vertex Id.
 		/// </param>
-		public void WhereId(long Id) {
-			Trav.AppendToUri("/WhereId("+Id+")");
+		public void HasId(long Id) {
+			Trav.AppendToUri("/HasId("+Id+")");
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only Instance nodes.
+		///   Search for Instances using string-delimited, case-insensitive tokens.
 		/// </summary>
-		
-		public void WhereInstance() {
-			Trav.AppendToUri("/WhereInstance()");
+		/// <param name="Tokens">
+		///   The Disamb search tokens.
+		/// </param>
+		public void InstanceDisambContains(string Tokens) {
+			Trav.AppendToUri("/InstanceDisambContains("+Tokens+")");
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only Url nodes.
+		///   Obtains an Instance by its ArtifactId.
 		/// </summary>
-		
-		public void WhereUrl() {
-			Trav.AppendToUri("/WhereUrl()");
+		/// <param name="Value">
+		///   The ArtifactId of the target Instance.
+		/// </param>
+		public void InstanceId(long Value) {
+			Trav.AppendToUri("/InstanceId("+Value+")");
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only User nodes.
+		///   Search for Instances using string-delimited, case-insensitive tokens.
+		/// </summary>
+		/// <param name="Tokens">
+		///   The Name search tokens.
+		/// </param>
+		public void InstanceNameContains(string Tokens) {
+			Trav.AppendToUri("/InstanceNameContains("+Tokens+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Restricts the size and starting index of the vertex list.
+		/// </summary>
+		/// <param name="Index">
+		///   The starting index for the returned list of vertices.
+		/// </param>
+		/// <param name="Count">
+		///   The maximum number of vertices to return.
+		/// </param>
+		public void Limit(long Index, int Count) {
+			Trav.AppendToUri("/Limit("+"+Index+"+","+Count+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Obtains a Member by its MemberId.
+		/// </summary>
+		/// <param name="Value">
+		///   The MemberId of the target Member.
+		/// </param>
+		public void MemberId(long Value) {
+			Trav.AppendToUri("/MemberId("+Value+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Obtains a MemberTypeAssign by its MemberTypeAssignId.
+		/// </summary>
+		/// <param name="Value">
+		///   The MemberTypeAssignId of the target MemberTypeAssign.
+		/// </param>
+		public void MemberTypeAssignId(long Value) {
+			Trav.AppendToUri("/MemberTypeAssignId("+Value+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Restricts the results to include only App vertices.
 		/// </summary>
 		
-		public void WhereUser() {
-			Trav.AppendToUri("/WhereUser()");
+		public void ToApp() {
+			Trav.AppendToUri("/ToApp()");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Restricts the results to include only Class vertices.
+		/// </summary>
+		
+		public void ToClass() {
+			Trav.AppendToUri("/ToClass()");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Restricts the results to include only Instance vertices.
+		/// </summary>
+		
+		public void ToInstance() {
+			Trav.AppendToUri("/ToInstance()");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Restricts the results to include only Url vertices.
+		/// </summary>
+		
+		public void ToUrl() {
+			Trav.AppendToUri("/ToUrl()");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Restricts the results to include only User vertices.
+		/// </summary>
+		
+		public void ToUser() {
+			Trav.AppendToUri("/ToUser()");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Obtains a Url by its entire (case-insensitive) FullPath.
+		/// </summary>
+		/// <param name="Value">
+		///   The FullPath of the target Url.
+		/// </param>
+		public void UrlFullPath(string Value) {
+			Trav.AppendToUri("/UrlFullPath("+Value+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Obtains a Url by its ArtifactId.
+		/// </summary>
+		/// <param name="Value">
+		///   The UrlId of the target Url.
+		/// </param>
+		public void UrlId(long Value) {
+			Trav.AppendToUri("/UrlId("+Value+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Search for Urls using string-delimited, case-insensitive tokens.
+		/// </summary>
+		/// <param name="Tokens">
+		///   The Name search tokens.
+		/// </param>
+		public void UrlNameContains(string Tokens) {
+			Trav.AppendToUri("/UrlNameContains("+Tokens+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Obtains a User by its ArtifactId.
+		/// </summary>
+		/// <param name="Value">
+		///   The UserId of the target User.
+		/// </param>
+		public void UserId(long Value) {
+			Trav.AppendToUri("/UserId("+Value+")");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   Obtains a User by its entire (case-insensitive) Name.
+		/// </summary>
+		/// <param name="Value">
+		///   The Name of the target User.
+		/// </param>
+		public void UserName(string Value) {
+			Trav.AppendToUri("/UserName("+Value+")");
 		}
 		
 	}

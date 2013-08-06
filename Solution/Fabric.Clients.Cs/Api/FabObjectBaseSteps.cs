@@ -1,96 +1,96 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 5/6/2013 3:35:44 PM
+// Generated on 8/5/2013 8:47:45 PM
 
 namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabArtifactStep<T> : IFabNodeStep<T>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId, IFuncWhereApp, IFuncWhereClass, IFuncWhereInstance, IFuncWhereUrl, IFuncWhereUser where T : FabObject {
+	public interface IFabArtifactStep<T> : IFabVertexStep<T>, IFuncAs, IFuncBack, IFuncHasId, IFuncLimit, IFuncToApp, IFuncToClass, IFuncToInstance, IFuncToUrl, IFuncToUser where T : FabObject {
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links a Member to the Artifact that it created. (InFromOne FabMember)
+		///   Links a Member to the Artifact that it created. (InOne FabMember)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links a Member to the Artifact that it created.</para>
 		///   <para>Type: MemberCreatesArtifact</para>
 		///   <para>Relation: Creates</para>
-		///   <para>Connection: InFromOne</para>
+		///   <para>Connection: InOne</para>
 		/// </remarks>
 		IFabMemberStep InMemberCreates { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links a Factor to its primary Artifact, which represents the starting point of the Factor's directional Artifact relationship. (InFromZeroOrMore FabFactor)
+		///   Links a Factor to its primary Artifact, which represents the starting point of the Factor's directional Artifact relationship. (InZeroOrMore FabFactor)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links a Factor to its primary Artifact, which represents the starting point of the Factor's directional Artifact relationship.</para>
 		///   <para>Type: FactorUsesPrimaryArtifact</para>
 		///   <para>Relation: UsesPrimary</para>
-		///   <para>Connection: InFromZeroOrMore</para>
+		///   <para>Connection: InZeroOrMore</para>
 		/// </remarks>
 		IFabFactorStep InFactorListUsesPrimary { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links a Factor to its related Artifact, which represents the ending point of the Factor's directional Artifact relationship. (InFromZeroOrMore FabFactor)
+		///   Links a Factor to its related Artifact, which represents the ending point of the Factor's directional Artifact relationship. (InZeroOrMore FabFactor)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links a Factor to its related Artifact, which represents the ending point of the Factor's directional Artifact relationship.</para>
 		///   <para>Type: FactorUsesRelatedArtifact</para>
 		///   <para>Relation: UsesRelated</para>
-		///   <para>Connection: InFromZeroOrMore</para>
+		///   <para>Connection: InZeroOrMore</para>
 		/// </remarks>
 		IFabFactorStep InFactorListUsesRelated { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's primary Artifact. (InFromZeroOrMore FabFactor)
+		///   Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's primary Artifact. (InZeroOrMore FabFactor)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's primary Artifact.</para>
 		///   <para>Type: FactorDescriptorRefinesPrimaryWithArtifact</para>
 		///   <para>Relation: DescriptorRefinesPrimaryWith</para>
-		///   <para>Connection: InFromZeroOrMore</para>
+		///   <para>Connection: InZeroOrMore</para>
 		/// </remarks>
 		IFabFactorStep InFactorListDescriptorRefinesPrimaryWith { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's related Artifact. (InFromZeroOrMore FabFactor)
+		///   Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's related Artifact. (InZeroOrMore FabFactor)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the Factor's related Artifact.</para>
 		///   <para>Type: FactorDescriptorRefinesRelatedWithArtifact</para>
 		///   <para>Relation: DescriptorRefinesRelatedWith</para>
-		///   <para>Connection: InFromZeroOrMore</para>
+		///   <para>Connection: InZeroOrMore</para>
 		/// </remarks>
 		IFabFactorStep InFactorListDescriptorRefinesRelatedWith { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the DescriptorType's meaning or purpose. (InFromZeroOrMore FabFactor)
+		///   Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the DescriptorType's meaning or purpose. (InZeroOrMore FabFactor)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links a Descriptor to an Artifact that specifies or clarifies a particular aspect of the DescriptorType's meaning or purpose.</para>
 		///   <para>Type: FactorDescriptorRefinesTypeWithArtifact</para>
 		///   <para>Relation: DescriptorRefinesTypeWith</para>
-		///   <para>Connection: InFromZeroOrMore</para>
+		///   <para>Connection: InZeroOrMore</para>
 		/// </remarks>
 		IFabFactorStep InFactorListDescriptorRefinesTypeWith { get; }
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Links a Vector to an Artifact that 'labels' its value's axis. (InFromZeroOrMore FabFactor)
+		///   Links a Vector to an Artifact that 'labels' its value's axis. (InZeroOrMore FabFactor)
 		/// </summary>
 		/// <remarks>
 		///   <para>Links a Vector to an Artifact that 'labels' its value's axis.</para>
 		///   <para>Type: FactorVectorUsesAxisArtifact</para>
 		///   <para>Relation: VectorUsesAxis</para>
-		///   <para>Connection: InFromZeroOrMore</para>
+		///   <para>Connection: InZeroOrMore</para>
 		/// </remarks>
 		IFabFactorStep InFactorListVectorUsesAxis { get; }
 	
@@ -98,7 +98,7 @@ namespace Fabric.Clients.Cs.Api {
 	
 
 	/*================================================================================================*/
-	internal class FabArtifactStep<T> : FabNodeStep<T>, IFabArtifactStep<T> where T : FabObject {
+	internal class FabArtifactStep<T> : FabVertexStep<T>, IFabArtifactStep<T> where T : FabObject {
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -238,84 +238,6 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabNodeStep<T> : IFabObjectStep<T> where T : FabObject {
-		
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-
-	/*================================================================================================*/
-	internal class FabNodeStep<T> : FabObjectStep<T>, IFabNodeStep<T> where T : FabObject {
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabNodeStep(Traversal pTrav) : base(pTrav) {}
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-	
-	/*================================================================================================*/
-	/// <summary />
-	public interface IFabNodeStep : IFabNodeStep<FabNode> {
-
-	}
-
-	
-	/*================================================================================================*/
-	internal class FabNodeStep : FabNodeStep<FabNode>, IFabNodeStep {
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabNodeStep(Traversal pTrav) : base(pTrav) {}
-
-	}
-	
-	/*================================================================================================*/
-	/// <summary />
-	public interface IFabNodeForActionStep<T> : IFabNodeStep<T>, IFuncAs, IFuncBack, IFuncLimit, IFuncWhereId where T : FabObject {
-		
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-
-	/*================================================================================================*/
-	internal class FabNodeForActionStep<T> : FabNodeStep<T>, IFabNodeForActionStep<T> where T : FabObject {
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabNodeForActionStep(Traversal pTrav) : base(pTrav) {}
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-	}
-	
-	
-	/*================================================================================================*/
-	/// <summary />
-	public interface IFabNodeForActionStep : IFabNodeForActionStep<FabNodeForAction> {
-
-	}
-
-	
-	/*================================================================================================*/
-	internal class FabNodeForActionStep : FabNodeForActionStep<FabNodeForAction>, IFabNodeForActionStep {
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabNodeForActionStep(Traversal pTrav) : base(pTrav) {}
-
-	}
-	
-	/*================================================================================================*/
-	/// <summary />
 	public interface IFabObjectStep<T> : ITraversalStep<T> where T : FabObject {
 		
 
@@ -350,6 +272,84 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabObjectStep(Traversal pTrav) : base(pTrav) {}
+
+	}
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabVertexStep<T> : IFabObjectStep<T> where T : FabObject {
+		
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabVertexStep<T> : FabObjectStep<T>, IFabVertexStep<T> where T : FabObject {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabVertexStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabVertexStep : IFabVertexStep<FabVertex> {
+
+	}
+
+	
+	/*================================================================================================*/
+	internal class FabVertexStep : FabVertexStep<FabVertex>, IFabVertexStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabVertexStep(Traversal pTrav) : base(pTrav) {}
+
+	}
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabVertexForActionStep<T> : IFabVertexStep<T>, IFuncAs, IFuncBack, IFuncHasId, IFuncLimit where T : FabObject {
+		
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+
+	/*================================================================================================*/
+	internal class FabVertexForActionStep<T> : FabVertexStep<T>, IFabVertexForActionStep<T> where T : FabObject {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabVertexForActionStep(Traversal pTrav) : base(pTrav) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+	}
+	
+	
+	/*================================================================================================*/
+	/// <summary />
+	public interface IFabVertexForActionStep : IFabVertexForActionStep<FabVertexForAction> {
+
+	}
+
+	
+	/*================================================================================================*/
+	internal class FabVertexForActionStep : FabVertexForActionStep<FabVertexForAction>, IFabVertexForActionStep {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabVertexForActionStep(Traversal pTrav) : base(pTrav) {}
 
 	}
 	

@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 5/6/2013 3:35:44 PM
+// Generated on 8/5/2013 8:47:46 PM
 
 using System;
 using System.Collections.Generic;
@@ -36,7 +36,7 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>An object which is able to (via Factor connections) accumulate meaning, context, user sentiment, and relationships.  Artifacts and Factors are the central components of the Fabric architecture.</para>
 	///   <para>There are no restrictions on what an Artifact can represent.  Fabric encourages the generous use of Factors to identify and describe each new Artifact. Ideally, the Factor connections will distinguish an Artifact from all others.</para>
 	/// </remarks>
-	public class FabArtifact : FabNode {
+	public class FabArtifact : FabVertex {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
@@ -639,7 +639,7 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>There are six Factor Elements: Descriptor, Director, Eventor, Identor, Locator, and Vector. The Descriptor is the only required Element; the rest are optional. A Factor typically uses one or two Elements, but (in very complex cases) could potentially use four or more.</para>
 	///   <para>Just as there are no restrictions on what a particular Artifact can represent, there are no restrictions on the type of meaning or information a Factors can provide. A FactorAssertion allows a Factor to specify that it represents (among other things) a fact or an opinion. This level of confidence for a particular Factor allows Users and Apps to more effectively find the type of information they desire.</para>
 	/// </remarks>
-	public class FabFactor : FabNode {
+	public class FabFactor : FabVertex {
 	
 		/// <summary>
 		///   The date/time of completion.
@@ -909,7 +909,7 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>An association between a User and an App. The App administrator(s) can grant various access privileges to a Member by creating a MemberTypeAssign that uses a different MemberType.</para>
 	///   <para>Every item added to Fabric is associated with a particular Member. This enables Fabric to determine which App or User is responsible for any particular item, enforce applicable access rights, analyze the data for a particular App and/or User, etc.</para>
 	/// </remarks>
-	public class FabMember : FabNode {
+	public class FabMember : FabVertex {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
@@ -926,7 +926,7 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>An assignment of a MemberType to a target Member. This action is performed by some Member, which is usually (but not always) different from the target Member. Each Member maintains one active MemberTypeAssign and a list of historical MemberTypeAssigns.</para>
 	/// </remarks>
-	public class FabMemberTypeAssign : FabNodeForAction {
+	public class FabMemberTypeAssign : FabVertexForAction {
 	
 		/// <summary>
 		///   Uniquely identifies this object amongst all other objects of this type.
@@ -1060,45 +1060,6 @@ namespace Fabric.Clients.Cs.Api {
 		///   The year that this build was released.
 		/// </summary>
 		public int Year { get; set; }
-		
-	}
-
-	
-	/*================================================================================================*/
-	/// <summary>
-	///   The base class for all nodes present in the Fabric "graph".
-	/// </summary>
-	/// <remarks>
-	///   <para>The base class for all nodes present in the Fabric "graph".  Only Nodes are present and traversable via the Traversal Service.</para>
-	/// </remarks>
-	public class FabNode : FabObject {
-	
-		/// <summary>
-		///   Append this value to the current URI to filter down to this specific Node in current traversal path.
-		/// </summary>
-		public string Uri { get; set; }
-		
-	}
-
-	
-	/*================================================================================================*/
-	/// <summary>
-	///   The base class for various "actions" that can occur.
-	/// </summary>
-	/// <remarks>
-	///   <para>The base class for various "actions" that can occur.</para>
-	/// </remarks>
-	public class FabNodeForAction : FabNode {
-	
-		/// <summary>
-		///   A brief note describing this action.
-		/// </summary>
-		public string Note { get; set; }
-		
-		/// <summary>
-		///   The date/time this action was performed.
-		/// </summary>
-		public long Performed { get; set; }
 		
 	}
 
@@ -1274,12 +1235,12 @@ namespace Fabric.Clients.Cs.Api {
 		public FabError Error { get; set; }
 		
 		/// <summary>
-		///   The traversal functions available for the current node list.
+		///   The traversal functions available for the current vertex list.
 		/// </summary>
 		public string[] Functions { get; set; }
 		
 		/// <summary>
-		///   Indicates whether there are more nodes available beyond the returned node list.
+		///   Indicates whether there are more vertices available beyond the returned vertex list.
 		/// </summary>
 		public bool HasMore { get; set; }
 		
@@ -1289,7 +1250,7 @@ namespace Fabric.Clients.Cs.Api {
 		public int HttpStatus { get; set; }
 		
 		/// <summary>
-		///   The traversal links available for the current node list.
+		///   The traversal links available for the current vertex list.
 		/// </summary>
 		public FabStepLink[] Links { get; set; }
 		
@@ -1299,7 +1260,7 @@ namespace Fabric.Clients.Cs.Api {
 		public string RequestUri { get; set; }
 		
 		/// <summary>
-		///   The starting index of the returned node list.
+		///   The starting index of the returned vertex list.
 		/// </summary>
 		public long StartIndex { get; set; }
 		
@@ -1328,7 +1289,7 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Represents the root, or starting point, of all Traversal Service queries. The Root provides traversal links to all other available objects.</para>
 	/// </remarks>
-	public class FabRoot : FabNode {
+	public class FabRoot : FabVertex {
 	
 	}
 
@@ -1541,6 +1502,11 @@ namespace Fabric.Clients.Cs.Api {
 		///   
 		/// </summary>
 		public bool? IsUnique { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public bool? ToLowerCase { get; set; }
 		
 	}
 
@@ -1836,27 +1802,27 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary>
-	///   Contains all the relevant information about a Node's traversal link.
+	///   Contains all the relevant information about a Vertex's traversal link.
 	/// </summary>
 	/// <remarks>
-	///   <para>Contains all the relevant information about a Node's traversal link.</para>
+	///   <para>Contains all the relevant information about a Vertex's traversal link.</para>
 	/// </remarks>
 	public class FabStepLink : FabObject {
 	
 		/// <summary>
-		///   The Node type returned by the opposite end of this link.
+		///   The Vertex type returned by the opposite end of this link.
 		/// </summary>
 		public string Class { get; set; }
 		
 		/// <summary>
-		///   Indicates whether this link is outgoing (starting from the current Node) or incoming (starting from another Node).
-		/// </summary>
-		public bool IsOut { get; set; }
-		
-		/// <summary>
 		///   The relation type of this link.
 		/// </summary>
-		public string Rel { get; set; }
+		public string Edge { get; set; }
+		
+		/// <summary>
+		///   Indicates whether this link is outgoing (starting from the current Vertex) or incoming (starting from another Vertex).
+		/// </summary>
+		public bool IsOut { get; set; }
 		
 		/// <summary>
 		///   Append this value to the current URI to add this link to the traversal path.
@@ -1882,7 +1848,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   A unique, valid absolute URL.
 		/// </summary>
-		public string AbsoluteUrl { get; set; }
+		public string FullPath { get; set; }
 		
 		/// <summary>
 		///   A descriptive name or title.
@@ -1917,7 +1883,7 @@ namespace Fabric.Clients.Cs.Api {
 	/// </summary>
 	/// <remarks>
 	///   <para>A Factor Element that applies a meaningful numeric axis and value to a particular Factor.</para>
-	///   <para>A Vector attaches a numeric value to a Factor, using an arbitrary Artifact to define its "axis". This axis depends entirely upon the Vector's purpose. For example, a factual Vector might use an Artifact like "Height" or "Shutter Speed". A Vector that provides an opinion might use an Artifact like "Quality" or "Excitement". While the choice of an axis Artififact is not restricted, it can be beneficial to use Artifacts which are other Apps or Users are already using as Vector axes. Note: while the axis Artifact link is discussed here in the context of a Vector, the actual traversal link exists with the Factor.</para>
+	///   <para>A Vector attaches a numeric value to a Factor, using an arbitrary Artifact to define its "axis". This axis depends entiedgey upon the Vector's purpose. For example, a factual Vector might use an Artifact like "Height" or "Shutter Speed". A Vector that provides an opinion might use an Artifact like "Quality" or "Excitement". While the choice of an axis Artififact is not restricted, it can be beneficial to use Artifacts which are other Apps or Users are already using as Vector axes. Note: while the axis Artifact link is discussed here in the context of a Vector, the actual traversal link exists with the Factor.</para>
 	///   <para>The VectorType provides boundaries and context for the Vector's value. It can identify the value as a percentage, a level of agreement or disagreement, an opinion-based rating, or simply a plain numeric value. Each VectorType provides additional information, such as a VectorRange, to provide further meaning for the levels within the the allowed value boundaries.</para>
 	///   <para>A Vector's numeric value often reflects a measurement or a has a specific unit. Furthermore, a Vector can use VectorUnitPrefix to specify an order of magnitude for the value. A Vector's value is a long integer, so the prefix is especially useful when fractional values are involved, or when the desired number is larger than a long integer.</para>
 	///   <para>Small Value Example: Objective:</para>
@@ -2006,6 +1972,45 @@ namespace Fabric.Clients.Cs.Api {
 
 			throw new Exception("No VectorUnitPrefix data associated with UnitPrefixId="+UnitPrefixId+".");
 		}
+		
+	}
+
+	
+	/*================================================================================================*/
+	/// <summary>
+	///   The base class for all vertices present in the Fabric "graph".
+	/// </summary>
+	/// <remarks>
+	///   <para>The base class for all vertices present in the Fabric "graph".  Only Vertices are present and traversable via the Traversal Service.</para>
+	/// </remarks>
+	public class FabVertex : FabObject {
+	
+		/// <summary>
+		///   Append this value to the current URI to filter down to this specific Vertex in current traversal path.
+		/// </summary>
+		public string Uri { get; set; }
+		
+	}
+
+	
+	/*================================================================================================*/
+	/// <summary>
+	///   The base class for various "actions" that can occur.
+	/// </summary>
+	/// <remarks>
+	///   <para>The base class for various "actions" that can occur.</para>
+	/// </remarks>
+	public class FabVertexForAction : FabVertex {
+	
+		/// <summary>
+		///   A brief note describing this action.
+		/// </summary>
+		public string Note { get; set; }
+		
+		/// <summary>
+		///   The date/time this action was performed.
+		/// </summary>
+		public long Performed { get; set; }
 		
 	}
 
