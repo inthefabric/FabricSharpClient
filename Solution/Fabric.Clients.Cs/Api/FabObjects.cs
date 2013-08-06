@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 8/5/2013 8:47:46 PM
+// Generated on 8/6/2013 4:15:28 PM
 
 using System;
 using System.Collections.Generic;
@@ -1655,6 +1655,21 @@ namespace Fabric.Clients.Cs.Api {
 		///   
 		/// </summary>
 		public FabSpecTravFuncParam[] Parameters { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public bool ReturnsAliasType { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public string ReturnsObjectType { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public bool ReturnsPreviousType { get; set; }
 		
 		/// <summary>
 		///   

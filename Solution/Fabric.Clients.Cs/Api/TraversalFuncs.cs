@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 8/6/2013 4:12:17 PM
+// Generated on 8/6/2013 4:15:29 PM
 
 namespace Fabric.Clients.Cs.Api {
 
