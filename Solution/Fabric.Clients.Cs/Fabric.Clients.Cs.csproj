@@ -53,6 +53,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Api\TraversalFuncsCustom.cs" />
     <Compile Include="Api\TraversalFuncs.cs">
       <DependentUpon>TraversalFuncs.tt</DependentUpon>
       <AutoGen>True</AutoGen>

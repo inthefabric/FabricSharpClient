@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 8/6/2013 4:15:29 PM
+// Generated on 8/6/2013 4:24:28 PM
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -179,9 +179,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The ArtifactId of the target App.
 		/// </param>
-		public static T AppId<T>(this T PrevStep, long Value) where T : IHasFuncAppId {
+		public static IFabAppStep AppId<T>(this T PrevStep, long Value) where T : IHasFuncAppId {
 			PrevStep.Trav.AppendToUri("/AppId("+Value+")");
-			return PrevStep;
+			return new FabAppStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -192,9 +192,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The Name of the target App.
 		/// </param>
-		public static T AppName<T>(this T PrevStep, string Value) where T : IHasFuncAppName {
+		public static IFabAppStep AppName<T>(this T PrevStep, string Value) where T : IHasFuncAppName {
 			PrevStep.Trav.AppendToUri("/AppName("+Value+")");
-			return PrevStep;
+			return new FabAppStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -205,9 +205,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Tokens">
 		///   The Name search tokens.
 		/// </param>
-		public static T AppNameContains<T>(this T PrevStep, string Tokens) where T : IHasFuncAppNameContains {
+		public static IFabAppStep AppNameContains<T>(this T PrevStep, string Tokens) where T : IHasFuncAppNameContains {
 			PrevStep.Trav.AppendToUri("/AppNameContains("+Tokens+")");
-			return PrevStep;
+			return new FabAppStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -221,9 +221,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The date/time to use for this search.
 		/// </param>
-		public static T ArtifactCreated<T>(this T PrevStep, string Operation, long Value) where T : IHasFuncArtifactCreated {
+		public static IFabArtifactStep ArtifactCreated<T>(this T PrevStep, string Operation, long Value) where T : IHasFuncArtifactCreated {
 			PrevStep.Trav.AppendToUri("/ArtifactCreated("+"+Operation+"+","+Value+")");
-			return PrevStep;
+			return new FabArtifactStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -234,9 +234,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The ArtifactId of the target Artifact.
 		/// </param>
-		public static T ArtifactId<T>(this T PrevStep, long Value) where T : IHasFuncArtifactId {
+		public static IFabArtifactStep ArtifactId<T>(this T PrevStep, long Value) where T : IHasFuncArtifactId {
 			PrevStep.Trav.AppendToUri("/ArtifactId("+Value+")");
-			return PrevStep;
+			return new FabArtifactStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -273,9 +273,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Tokens">
 		///   The Disamb search tokens.
 		/// </param>
-		public static T ClassDisambContains<T>(this T PrevStep, string Tokens) where T : IHasFuncClassDisambContains {
+		public static IFabClassStep ClassDisambContains<T>(this T PrevStep, string Tokens) where T : IHasFuncClassDisambContains {
 			PrevStep.Trav.AppendToUri("/ClassDisambContains("+Tokens+")");
-			return PrevStep;
+			return new FabClassStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -286,9 +286,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The ArtifactId of the target Class.
 		/// </param>
-		public static T ClassId<T>(this T PrevStep, long Value) where T : IHasFuncClassId {
+		public static IFabClassStep ClassId<T>(this T PrevStep, long Value) where T : IHasFuncClassId {
 			PrevStep.Trav.AppendToUri("/ClassId("+Value+")");
-			return PrevStep;
+			return new FabClassStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -299,9 +299,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The Name of the target Class.
 		/// </param>
-		public static T ClassName<T>(this T PrevStep, string Value) where T : IHasFuncClassName {
+		public static IFabClassStep ClassName<T>(this T PrevStep, string Value) where T : IHasFuncClassName {
 			PrevStep.Trav.AppendToUri("/ClassName("+Value+")");
-			return PrevStep;
+			return new FabClassStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -312,9 +312,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Tokens">
 		///   The Name search tokens.
 		/// </param>
-		public static T ClassNameContains<T>(this T PrevStep, string Tokens) where T : IHasFuncClassNameContains {
+		public static IFabClassStep ClassNameContains<T>(this T PrevStep, string Tokens) where T : IHasFuncClassNameContains {
 			PrevStep.Trav.AppendToUri("/ClassNameContains("+Tokens+")");
-			return PrevStep;
+			return new FabClassStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -328,9 +328,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The date/time to use for this search.
 		/// </param>
-		public static T FactorCreated<T>(this T PrevStep, string Operation, long Value) where T : IHasFuncFactorCreated {
+		public static IFabFactorStep FactorCreated<T>(this T PrevStep, string Operation, long Value) where T : IHasFuncFactorCreated {
 			PrevStep.Trav.AppendToUri("/FactorCreated("+"+Operation+"+","+Value+")");
-			return PrevStep;
+			return new FabFactorStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -341,9 +341,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The FactorId of the target Factor.
 		/// </param>
-		public static T FactorId<T>(this T PrevStep, long Value) where T : IHasFuncFactorId {
+		public static IFabFactorStep FactorId<T>(this T PrevStep, long Value) where T : IHasFuncFactorId {
 			PrevStep.Trav.AppendToUri("/FactorId("+Value+")");
-			return PrevStep;
+			return new FabFactorStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -354,9 +354,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The IdentorValue of the target Factor.
 		/// </param>
-		public static T FactorIdentorValue<T>(this T PrevStep, string Value) where T : IHasFuncFactorIdentorValue {
+		public static IFabFactorStep FactorIdentorValue<T>(this T PrevStep, string Value) where T : IHasFuncFactorIdentorValue {
 			PrevStep.Trav.AppendToUri("/FactorIdentorValue("+Value+")");
-			return PrevStep;
+			return new FabFactorStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -367,9 +367,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Tokens">
 		///   The IdentorValue search tokens.
 		/// </param>
-		public static T FactorIdentorValueContains<T>(this T PrevStep, string Tokens) where T : IHasFuncFactorIdentorValueContains {
+		public static IFabFactorStep FactorIdentorValueContains<T>(this T PrevStep, string Tokens) where T : IHasFuncFactorIdentorValueContains {
 			PrevStep.Trav.AppendToUri("/FactorIdentorValueContains("+Tokens+")");
-			return PrevStep;
+			return new FabFactorStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -393,9 +393,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Tokens">
 		///   The Disamb search tokens.
 		/// </param>
-		public static T InstanceDisambContains<T>(this T PrevStep, string Tokens) where T : IHasFuncInstanceDisambContains {
+		public static IFabInstanceStep InstanceDisambContains<T>(this T PrevStep, string Tokens) where T : IHasFuncInstanceDisambContains {
 			PrevStep.Trav.AppendToUri("/InstanceDisambContains("+Tokens+")");
-			return PrevStep;
+			return new FabInstanceStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -406,9 +406,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The ArtifactId of the target Instance.
 		/// </param>
-		public static T InstanceId<T>(this T PrevStep, long Value) where T : IHasFuncInstanceId {
+		public static IFabInstanceStep InstanceId<T>(this T PrevStep, long Value) where T : IHasFuncInstanceId {
 			PrevStep.Trav.AppendToUri("/InstanceId("+Value+")");
-			return PrevStep;
+			return new FabInstanceStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -419,9 +419,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Tokens">
 		///   The Name search tokens.
 		/// </param>
-		public static T InstanceNameContains<T>(this T PrevStep, string Tokens) where T : IHasFuncInstanceNameContains {
+		public static IFabInstanceStep InstanceNameContains<T>(this T PrevStep, string Tokens) where T : IHasFuncInstanceNameContains {
 			PrevStep.Trav.AppendToUri("/InstanceNameContains("+Tokens+")");
-			return PrevStep;
+			return new FabInstanceStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -448,9 +448,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The MemberId of the target Member.
 		/// </param>
-		public static T MemberId<T>(this T PrevStep, long Value) where T : IHasFuncMemberId {
+		public static IFabMemberStep MemberId<T>(this T PrevStep, long Value) where T : IHasFuncMemberId {
 			PrevStep.Trav.AppendToUri("/MemberId("+Value+")");
-			return PrevStep;
+			return new FabMemberStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -461,9 +461,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The MemberTypeAssignId of the target MemberTypeAssign.
 		/// </param>
-		public static T MemberTypeAssignId<T>(this T PrevStep, long Value) where T : IHasFuncMemberTypeAssignId {
+		public static IFabMemberTypeAssignStep MemberTypeAssignId<T>(this T PrevStep, long Value) where T : IHasFuncMemberTypeAssignId {
 			PrevStep.Trav.AppendToUri("/MemberTypeAssignId("+Value+")");
-			return PrevStep;
+			return new FabMemberTypeAssignStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -471,9 +471,9 @@ namespace Fabric.Clients.Cs.Api {
 		///   Restricts the results to include only App vertices.
 		/// </summary>
 		/// <param name="PrevStep"></param>
-		public static T ToApp<T>(this T PrevStep) where T : IHasFuncToApp {
+		public static IFabAppStep ToApp<T>(this T PrevStep) where T : IHasFuncToApp {
 			PrevStep.Trav.AppendToUri("/ToApp()");
-			return PrevStep;
+			return new FabAppStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -481,9 +481,9 @@ namespace Fabric.Clients.Cs.Api {
 		///   Restricts the results to include only Class vertices.
 		/// </summary>
 		/// <param name="PrevStep"></param>
-		public static T ToClass<T>(this T PrevStep) where T : IHasFuncToClass {
+		public static IFabClassStep ToClass<T>(this T PrevStep) where T : IHasFuncToClass {
 			PrevStep.Trav.AppendToUri("/ToClass()");
-			return PrevStep;
+			return new FabClassStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -491,9 +491,9 @@ namespace Fabric.Clients.Cs.Api {
 		///   Restricts the results to include only Instance vertices.
 		/// </summary>
 		/// <param name="PrevStep"></param>
-		public static T ToInstance<T>(this T PrevStep) where T : IHasFuncToInstance {
+		public static IFabInstanceStep ToInstance<T>(this T PrevStep) where T : IHasFuncToInstance {
 			PrevStep.Trav.AppendToUri("/ToInstance()");
-			return PrevStep;
+			return new FabInstanceStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -501,9 +501,9 @@ namespace Fabric.Clients.Cs.Api {
 		///   Restricts the results to include only Url vertices.
 		/// </summary>
 		/// <param name="PrevStep"></param>
-		public static T ToUrl<T>(this T PrevStep) where T : IHasFuncToUrl {
+		public static IFabUrlStep ToUrl<T>(this T PrevStep) where T : IHasFuncToUrl {
 			PrevStep.Trav.AppendToUri("/ToUrl()");
-			return PrevStep;
+			return new FabUrlStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -511,9 +511,9 @@ namespace Fabric.Clients.Cs.Api {
 		///   Restricts the results to include only User vertices.
 		/// </summary>
 		/// <param name="PrevStep"></param>
-		public static T ToUser<T>(this T PrevStep) where T : IHasFuncToUser {
+		public static IFabUserStep ToUser<T>(this T PrevStep) where T : IHasFuncToUser {
 			PrevStep.Trav.AppendToUri("/ToUser()");
-			return PrevStep;
+			return new FabUserStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -524,9 +524,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The FullPath of the target Url.
 		/// </param>
-		public static T UrlFullPath<T>(this T PrevStep, string Value) where T : IHasFuncUrlFullPath {
+		public static IFabUrlStep UrlFullPath<T>(this T PrevStep, string Value) where T : IHasFuncUrlFullPath {
 			PrevStep.Trav.AppendToUri("/UrlFullPath("+Value+")");
-			return PrevStep;
+			return new FabUrlStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -537,9 +537,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The UrlId of the target Url.
 		/// </param>
-		public static T UrlId<T>(this T PrevStep, long Value) where T : IHasFuncUrlId {
+		public static IFabUrlStep UrlId<T>(this T PrevStep, long Value) where T : IHasFuncUrlId {
 			PrevStep.Trav.AppendToUri("/UrlId("+Value+")");
-			return PrevStep;
+			return new FabUrlStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -550,9 +550,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Tokens">
 		///   The Name search tokens.
 		/// </param>
-		public static T UrlNameContains<T>(this T PrevStep, string Tokens) where T : IHasFuncUrlNameContains {
+		public static IFabUrlStep UrlNameContains<T>(this T PrevStep, string Tokens) where T : IHasFuncUrlNameContains {
 			PrevStep.Trav.AppendToUri("/UrlNameContains("+Tokens+")");
-			return PrevStep;
+			return new FabUrlStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -563,9 +563,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The UserId of the target User.
 		/// </param>
-		public static T UserId<T>(this T PrevStep, long Value) where T : IHasFuncUserId {
+		public static IFabUserStep UserId<T>(this T PrevStep, long Value) where T : IHasFuncUserId {
 			PrevStep.Trav.AppendToUri("/UserId("+Value+")");
-			return PrevStep;
+			return new FabUserStep(PrevStep.Trav);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -576,9 +576,9 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The Name of the target User.
 		/// </param>
-		public static T UserName<T>(this T PrevStep, string Value) where T : IHasFuncUserName {
+		public static IFabUserStep UserName<T>(this T PrevStep, string Value) where T : IHasFuncUserName {
 			PrevStep.Trav.AppendToUri("/UserName("+Value+")");
-			return PrevStep;
+			return new FabUserStep(PrevStep.Trav);
 		}
 		
 	}

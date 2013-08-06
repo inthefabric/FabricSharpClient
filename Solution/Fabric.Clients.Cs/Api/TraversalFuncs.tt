@@ -41,6 +41,7 @@ foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
 <#
 foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
 	string access = "public";
+	string returns = (f.ReturnsObjectType == null ? "T" : "I"+f.ReturnsObjectType+"Step");
 
 	switch ( f.Name ) {
 		case "As":
@@ -73,9 +74,20 @@ foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
 		///   <#= SpecBuilder.ToXmlDocSentence(f.Description) #>
 		/// </summary>
 		<#= paramComments #>
-		<#= access #> static T <#= f.Name #><T>(this T PrevStep<#= funcParams #>) where T : IHasFunc<#= f.Name #> {
+		<#= access #> static <#= returns #> <#= f.Name #><T>(this T PrevStep<#= funcParams #>) where T : IHasFunc<#= f.Name #> {
 			PrevStep.Trav.AppendToUri("/<#= f.Name #>(<#= uriParams #>)");
+<#
+	if ( f.ReturnsObjectType != null ) {
+#>
+			return new <#= f.ReturnsObjectType #>Step(PrevStep.Trav);
+<#
+	}
+	else {
+#>
 			return PrevStep;
+<#
+	} //end return type conditions
+#>
 		}
 		
 <#
