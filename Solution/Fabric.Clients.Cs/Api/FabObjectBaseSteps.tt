@@ -35,7 +35,7 @@ foreach ( FabSpecObject o in spec.Objects ) {
 	string interfaces = "";
 
 	foreach ( string funcName in o.TraversalFunctions ) {
-		interfaces += ", IFunc"+funcName;
+		interfaces += ", IHasFunc"+funcName;
 	}
 #>
 	/*================================================================================================*/

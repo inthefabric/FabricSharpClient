@@ -53,6 +53,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Api\TraversalFuncs.cs">
+      <DependentUpon>TraversalFuncs.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Api\FabEnumsData.cs">
       <DependentUpon>FabEnumsData.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -86,11 +91,6 @@
     <Compile Include="Api\ITraversalStepAlias.cs" />
     <Compile Include="Api\ITraversalStepT.cs" />
     <Compile Include="Api\Traversal.cs" />
-    <Compile Include="Api\TraversalFuncs.cs">
-      <DependentUpon>TraversalFuncs.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Api\TraversalStep.cs" />
     <Compile Include="Api\TraversalStepAlias.cs" />
     <Compile Include="Api\TraversalStepT.cs" />
@@ -137,6 +137,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ApiServices.cs</LastGenOutput>
     </None>
+    <None Include="Api\TraversalFuncs.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TraversalFuncs.cs</LastGenOutput>
+    </None>
     <None Include="Api\FabEnumsData.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FabEnumsData.cs</LastGenOutput>
@@ -156,10 +160,6 @@
     <None Include="Api\FabObjectSteps.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FabObjectSteps.cs</LastGenOutput>
-    </None>
-    <None Include="Api\TraversalFuncs.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TraversalFuncs.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

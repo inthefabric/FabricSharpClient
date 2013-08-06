@@ -27,41 +27,34 @@ foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
 #>
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFunc<#= f.Name #> : ITraversalStep {}
+	public interface IHasFunc<#= f.Name #> : ITraversalStep {}
 
 		
 <#
-}
+} //end func loop
 #>
 	/*================================================================================================*/
-	internal class TraversalFuncs {
-	
-		protected Traversal Trav { get; private set; }
-		
-		
+	public static partial class TraversalFuncs {
+
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public TraversalFuncs(Traversal pTrav) {
-			Trav = pTrav;
-		}
-		
-
 <#
-foreach ( FabSpecService s in spec.Services ) {
-	if ( s.Name == "Traversal" ) {
-		trav = s;
-		break;
-	}	
-}
-
 foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
+	string access = "public";
+
+	switch ( f.Name ) {
+		case "As":
+		case "Back":
+			access = "internal";
+			break;
+	}
+
 	string funcParams = "";
 	string uriParams = "";
-	string paramComments = "";
+	string paramComments = "/// <param name=\"PrevStep\"></param>";
 	
 	foreach ( FabSpecTravFuncParam fp in f.Parameters ) {
-		funcParams += (funcParams == "" ? "" : ", ");
-		funcParams += fp.Type+" "+fp.Name;
+		funcParams += ", "+fp.Type+" "+fp.Name;
 		
 		uriParams += (uriParams == "" ? "" : "+\",\"+");
 		uriParams += fp.Name;
@@ -69,7 +62,7 @@ foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
 		if ( uriParams.Length > 0 ) {
 			uriParams = "\"+"+uriParams+"+\"";
 		}
-		
+
 		paramComments += (paramComments == "" ? "" : "\r\n\t\t");
 		paramComments += "/// <param name=\""+fp.Name+"\">\r\n\t\t///   "+
 			SpecBuilder.ToXmlDoc(fp.Description, false)+"\r\n\t\t/// </param>";
@@ -80,12 +73,13 @@ foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
 		///   <#= SpecBuilder.ToXmlDocSentence(f.Description) #>
 		/// </summary>
 		<#= paramComments #>
-		public void <#= f.Name #>(<#= funcParams #>) {
-			Trav.AppendToUri("/<#= f.Name #>(<#= uriParams #>)");
+		<#= access #> static T <#= f.Name #><T>(this T PrevStep<#= funcParams #>) where T : IHasFunc<#= f.Name #> {
+			PrevStep.Trav.AppendToUri("/<#= f.Name #>(<#= uriParams #>)");
+			return PrevStep;
 		}
 		
 <#
-}
+} //end func loop
 #>
 	}
 

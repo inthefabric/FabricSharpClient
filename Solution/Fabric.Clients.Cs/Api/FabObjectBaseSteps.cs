@@ -1,12 +1,12 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 8/5/2013 8:47:45 PM
+// Generated on 8/6/2013 3:11:12 PM
 
 namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabArtifactStep<T> : IFabVertexStep<T>, IFuncAs, IFuncBack, IFuncHasId, IFuncLimit, IFuncToApp, IFuncToClass, IFuncToInstance, IFuncToUrl, IFuncToUser where T : FabObject {
+	public interface IFabArtifactStep<T> : IFabVertexStep<T>, IHasFuncAs, IHasFuncBack, IHasFuncHasId, IHasFuncLimit, IHasFuncToApp, IHasFuncToClass, IHasFuncToInstance, IHasFuncToUrl, IHasFuncToUser where T : FabObject {
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -316,7 +316,7 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabVertexForActionStep<T> : IFabVertexStep<T>, IFuncAs, IFuncBack, IFuncHasId, IFuncLimit where T : FabObject {
+	public interface IFabVertexForActionStep<T> : IFabVertexStep<T>, IHasFuncAs, IHasFuncBack, IHasFuncHasId, IHasFuncLimit where T : FabObject {
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////

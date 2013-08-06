@@ -1,12 +1,12 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 8/5/2013 8:47:46 PM
+// Generated on 8/6/2013 3:03:56 PM
 
 namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabAppStep : IFabArtifactStep<FabApp>, IFuncAs, IFuncBack, IFuncHasId, IFuncLimit {
+	public interface IFabAppStep : IFabArtifactStep<FabApp>, IHasFuncAs, IHasFuncBack, IHasFuncHasId, IHasFuncLimit {
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -238,7 +238,7 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabClassStep : IFabArtifactStep<FabClass>, IFuncAs, IFuncBack, IFuncHasId, IFuncLimit {
+	public interface IFabClassStep : IFabArtifactStep<FabClass>, IHasFuncAs, IHasFuncBack, IHasFuncHasId, IHasFuncLimit {
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -343,7 +343,7 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabFactorStep : IFabVertexStep<FabFactor>, IFuncAs, IFuncBack, IFuncHasId, IFuncLimit {
+	public interface IFabFactorStep : IFabVertexStep<FabFactor>, IHasFuncAs, IHasFuncBack, IHasFuncHasId, IHasFuncLimit {
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -560,7 +560,7 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabInstanceStep : IFabArtifactStep<FabInstance>, IFuncAs, IFuncBack, IFuncHasId, IFuncLimit {
+	public interface IFabInstanceStep : IFabArtifactStep<FabInstance>, IHasFuncAs, IHasFuncBack, IHasFuncHasId, IHasFuncLimit {
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -602,7 +602,7 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabMemberStep : IFabVertexStep<FabMember>, IFuncAs, IFuncBack, IFuncHasId, IFuncLimit {
+	public interface IFabMemberStep : IFabVertexStep<FabMember>, IHasFuncAs, IHasFuncBack, IHasFuncHasId, IHasFuncLimit {
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -777,7 +777,7 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabMemberTypeAssignStep : IFabVertexForActionStep<FabMemberTypeAssign>, IFuncAs, IFuncBack, IFuncHasId, IFuncLimit {
+	public interface IFabMemberTypeAssignStep : IFabVertexForActionStep<FabMemberTypeAssign>, IHasFuncAs, IHasFuncBack, IHasFuncHasId, IHasFuncLimit {
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -990,7 +990,7 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabRootStep : IFabVertexStep<FabRoot>, IFuncAppId, IFuncAppName, IFuncAppNameContains, IFuncArtifactCreated, IFuncArtifactId, IFuncClassDisambContains, IFuncClassId, IFuncClassName, IFuncClassNameContains, IFuncFactorCreated, IFuncFactorId, IFuncFactorIdentorValue, IFuncFactorIdentorValueContains, IFuncInstanceDisambContains, IFuncInstanceId, IFuncInstanceNameContains, IFuncMemberId, IFuncMemberTypeAssignId, IFuncUrlFullPath, IFuncUrlId, IFuncUrlNameContains, IFuncUserId, IFuncUserName {
+	public interface IFabRootStep : IFabVertexStep<FabRoot>, IHasFuncAppId, IHasFuncAppName, IHasFuncAppNameContains, IHasFuncArtifactCreated, IHasFuncArtifactId, IHasFuncClassDisambContains, IHasFuncClassId, IHasFuncClassName, IHasFuncClassNameContains, IHasFuncFactorCreated, IHasFuncFactorId, IHasFuncFactorIdentorValue, IHasFuncFactorIdentorValueContains, IHasFuncInstanceDisambContains, IHasFuncInstanceId, IHasFuncInstanceNameContains, IHasFuncMemberId, IHasFuncMemberTypeAssignId, IHasFuncUrlFullPath, IHasFuncUrlId, IHasFuncUrlNameContains, IHasFuncUserId, IHasFuncUserName {
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1074,7 +1074,7 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabUrlStep : IFabArtifactStep<FabUrl>, IFuncAs, IFuncBack, IFuncHasId, IFuncLimit {
+	public interface IFabUrlStep : IFabArtifactStep<FabUrl>, IHasFuncAs, IHasFuncBack, IHasFuncHasId, IHasFuncLimit {
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1095,7 +1095,7 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public interface IFabUserStep : IFabArtifactStep<FabUser>, IFuncAs, IFuncBack, IFuncHasId, IFuncLimit {
+	public interface IFabUserStep : IFabArtifactStep<FabUser>, IHasFuncAs, IHasFuncBack, IHasFuncHasId, IHasFuncLimit {
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
