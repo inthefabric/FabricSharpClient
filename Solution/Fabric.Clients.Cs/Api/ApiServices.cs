@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 5/6/2013 3:35:43 PM
+// Generated on 9/13/2013 4:41:05 PM
 
 using Fabric.Clients.Cs.Session;
 

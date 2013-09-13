@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 8/5/2013 8:47:45 PM
+// Generated on 9/13/2013 4:41:05 PM
 
 using System.Collections.Generic;
 
@@ -114,7 +114,7 @@ namespace Fabric.Clients.Cs.Api {
 			IsRelatedTo = 1,
 			
 			/// <summary>
-			///   Is A: The primary Artifact is a type of, a subclass of, a subset of, a subordinate of, or in the category defined by the related Artifact.
+			///   Is (A/An): The primary Artifact is a type of, a subclass of, a subset of, a subordinate of, or in the category defined by the related Artifact.
 			/// </summary>
 			IsA = 2,
 			
@@ -124,7 +124,7 @@ namespace Fabric.Clients.Cs.Api {
 			IsAnInstanceOf = 3,
 			
 			/// <summary>
-			///   Has A: The primary Artifact has, as a part, piece, feature, attribute, or component, the related Artifact.
+			///   Has (A/An): The primary Artifact has, as a part, piece, feature, attribute, or component, the related Artifact.
 			/// </summary>
 			HasA = 4,
 			
@@ -862,6 +862,11 @@ namespace Fabric.Clients.Cs.Api {
 			///   Index: index
 			/// </summary>
 			Index = 28,
+			
+			/// <summary>
+			///   Pixel: pixel
+			/// </summary>
+			Pixel = 29,
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -1203,7 +1208,7 @@ namespace Fabric.Clients.Cs.Api {
 			DescriptorTypeMap.Add(2, new DescriptorType {
 				Id = (byte)2,
 				EnumId = (string)"IsA",
-				Name = (string)"Is A",
+				Name = (string)"Is (A/An)",
 				Description = (string)"The primary Artifact is a type of, a subclass of, a subset of, a subordinate of, or in the category defined by the related Artifact.",
 			});
 
@@ -1217,7 +1222,7 @@ namespace Fabric.Clients.Cs.Api {
 			DescriptorTypeMap.Add(4, new DescriptorType {
 				Id = (byte)4,
 				EnumId = (string)"HasA",
-				Name = (string)"Has A",
+				Name = (string)"Has (A/An)",
 				Description = (string)"The primary Artifact has, as a part, piece, feature, attribute, or component, the related Artifact.",
 			});
 
@@ -2324,6 +2329,13 @@ namespace Fabric.Clients.Cs.Api {
 				EnumId = (string)"Index",
 				Name = (string)"Index",
 				Description = (string)"index",
+			});
+
+			VectorUnitMap.Add(29, new VectorUnit {
+				Id = (byte)29,
+				EnumId = (string)"Pixel",
+				Name = (string)"Pixel",
+				Description = (string)"pixel",
 			});
 		}
 

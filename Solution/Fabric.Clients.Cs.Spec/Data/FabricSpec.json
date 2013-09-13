@@ -1,8 +1,8 @@
 ﻿{
-      "BuildVersion": "0.2.0.1801d84",
+      "BuildVersion": "0.2.3.2c7f10c",
       "BuildYear": 2013,
-      "BuildMonth": 8,
-      "BuildDay": 5,
+      "BuildMonth": 9,
+      "BuildDay": 13,
       "Objects": [
         {
           "Name": "FabApp",
@@ -3794,7 +3794,7 @@
             {
               "Id": 2,
               "EnumId": "IsA",
-              "Name": "Is A",
+              "Name": "Is (A/An)",
               "Description": "The primary Artifact is a type of, a subclass of, a subset of, a subordinate of, or in the category defined by the related Artifact."
             },
             {
@@ -3806,7 +3806,7 @@
             {
               "Id": 4,
               "EnumId": "HasA",
-              "Name": "Has A",
+              "Name": "Has (A/An)",
               "Description": "The primary Artifact has, as a part, piece, feature, attribute, or component, the related Artifact."
             },
             {
@@ -4938,6 +4938,12 @@
               "EnumId": "Index",
               "Name": "Index",
               "Description": "index"
+            },
+            {
+              "Id": 29,
+              "EnumId": "Pixel",
+              "Name": "Pixel",
+              "Description": "pixel"
             }
           ],
           "Name": "VectorUnit",
