@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 9/13/2013 4:41:06 PM
+// Generated on 9/18/2013 5:35:53 PM
 
 using System;
 using System.Collections.Generic;
@@ -216,17 +216,37 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   
 		/// </summary>
-		public long DateTime { get; set; }
+		public byte? Day { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		public byte PrecisionId { get; set; }
+		public byte? Hour { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public byte? Minute { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public byte? Month { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public byte? Second { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
 		public byte TypeId { get; set; }
+		
+		/// <summary>
+		///   
+		/// </summary>
+		public long Year { get; set; }
 		
 	}
 
@@ -563,20 +583,20 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>A Factor Element that applies the concept of time to a particular Factor.</para>
 	///   <para>An Eventor places a Factor at a specific point in time and describes why it is significant to the Factor. The EventorType provides this significance, establishing that this particular point in time is when the Factor started, occurred, is expected, etc.</para>
-	///   <para>Each Eventor represents one particular point in time, however, the precision of that point in time can vary. The EventorPrecision allows a point in time to specify a level of accuracy ranging from one second to one year.</para>
+	///   <para>Each Eventor represents one particular point in time, however, the precision of that point in time can vary. The optional time values allow a point in time to provide a level of precision ranging from one second to one year.</para>
 	///   <para>Started Example: Objective:</para>
 	///   <para>Specify that Albert Einstein was born (i.e. started his life) on March 14, 1879.</para>
 	///   <para>Method:</para>
 	///   <para>- The Factor uses 'Albert Einstein' as the primary Artifact and 'Life' as the related Artifact.</para>
 	///   <para>- The Descriptor uses the 'Has A' DescriptorType. </para>
-	///   <para>- The Eventor uses 'March 14, 1879' as its DateTime value, the 'Started' EventorType, and the 'Day' EventorPrecision.</para>
+	///   <para>- The Eventor uses '1879' as its Year value, '3' as its Month value, '14' as its Day value, and the 'Started' EventorType.</para>
 	///   <para>Factor Phrase:</para>
-	///   <para>Albert Einstein ... Has A ... Life, ... (an event which) Started ... (on the) Day ... March 14, 1879. Expected Example: Objective:</para>
+	///   <para>Albert Einstein ... Has A ... Life, ... (an event which) Started ... (on the) Day ... 1879 ... 3 ... 14. Expected Example: Objective:</para>
 	///   <para>Specify that person A plans to attend college B in the year 2024.</para>
 	///   <para>Method:</para>
 	///   <para>- The Factor uses 'Person A' as the primary Artifact and 'College B' as the related Artifact.</para>
 	///   <para>- The Descriptor uses the 'Participates In' DescriptorType and the 'Attend' Artifact to refine it.</para>
-	///   <para>- The Eventor uses '2024' as its DateTime value, the 'Is Expected' EventorType, and the 'Year' EventorPrecision.</para>
+	///   <para>- The Eventor uses '2024' as its Year value and the 'Is Expected' EventorType.</para>
 	///   <para>Factor Phrase:</para>
 	///   <para>Person A ... Participates In (more specifically, by) Attend(ing) ... College B, ... (an event which) Is Expected (to occur) ... (in the) Year ... 2024.</para>
 	///   <para>Note: every Factor recieves a timestamp upon creation. This timestamp is not related to the Eventor.</para>
@@ -584,33 +604,39 @@ namespace Fabric.Clients.Cs.Api {
 	public class FabEventor : FabObject {
 	
 		/// <summary>
-		///   A particular point in time, with a level of accuracy defined by EventorPrecision.
+		///   Specifies the day value.
 		/// </summary>
-		public long DateTime { get; set; }
+		public byte? Day { get; set; }
 		
 		/// <summary>
-		///   Specifies the level of accuracy given to this point in time.
+		///   Specifies the hour value (UTC).
 		/// </summary>
-		public byte PrecisionId { get; set; }
+		public byte? Hour { get; set; }
+		
+		/// <summary>
+		///   Specifies the minute value (UTC).
+		/// </summary>
+		public byte? Minute { get; set; }
+		
+		/// <summary>
+		///   Specifies the month value.
+		/// </summary>
+		public byte? Month { get; set; }
+		
+		/// <summary>
+		///   Specifies the second value (UTC).
+		/// </summary>
+		public byte? Second { get; set; }
 		
 		/// <summary>
 		///   Specifies the significance of this point in time.
 		/// </summary>
 		public byte TypeId { get; set; }
 		
-		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Get the static EventorPrecision data that is associated with this object's PrecisionId value.
+		///   Specifies the year value.
 		/// </summary>
-		public EventorPrecision GetPrecisionData() {
-			EventorPrecision data;
-			
-			if ( FabEnumsData.EventorPrecisionMap.TryGetValue(PrecisionId, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No EventorPrecision data associated with PrecisionId="+PrecisionId+".");
-		}
+		public long Year { get; set; }
 		
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -1790,12 +1816,12 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   
 		/// </summary>
-		public int? Max { get; set; }
+		public long? Max { get; set; }
 		
 		/// <summary>
 		///   
 		/// </summary>
-		public int? Min { get; set; }
+		public long? Min { get; set; }
 		
 		/// <summary>
 		///   

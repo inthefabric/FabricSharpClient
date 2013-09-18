@@ -62,15 +62,15 @@ namespace Fabric.Clients.Cs.Spec.Data {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///      &quot;buildVersion&quot;: &quot;0.1.30.4ce2e40&quot;,
-        ///      &quot;buildYear&quot;: 2013,
-        ///      &quot;buildMonth&quot;: 5,
-        ///      &quot;buildDay&quot;: 19,
-        ///      &quot;objects&quot;: [
+        ///      &quot;BuildVersion&quot;: &quot;0.2.4.37fd2cd&quot;,
+        ///      &quot;BuildYear&quot;: 2013,
+        ///      &quot;BuildMonth&quot;: 9,
+        ///      &quot;BuildDay&quot;: 18,
+        ///      &quot;Objects&quot;: [
         ///        {
-        ///          &quot;name&quot;: &quot;FabApp&quot;,
-        ///          &quot;extends&quot;: &quot;FabArtifact&quot;,
-        ///          &quot;description&quot;: &quot;A registered project, application, or business that has direct access to the Fabric API.\r\n\r\nAn App&apos;s primary purpose is to facilitate [[User|Object|FabUser]] interaction with Fabric. To accomplish this, an App typically creates an interface for its [[Users|Object|FabU [rest of string was truncated]&quot;;.
+        ///          &quot;Name&quot;: &quot;FabApp&quot;,
+        ///          &quot;Extends&quot;: &quot;FabArtifact&quot;,
+        ///          &quot;Description&quot;: &quot;A registered project, application, or business that has direct access to the Fabric API.\r\n\r\nAn App&apos;s primary purpose is to facilitate [[User|Object|FabUser]] interaction with Fabric. To accomplish this, an App typically creates an interface for its [[Users|Object|FabUs [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SpecJson {
             get {

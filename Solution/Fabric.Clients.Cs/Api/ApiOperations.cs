@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 9/13/2013 4:41:05 PM
+// Generated on 9/18/2013 5:35:53 PM
 
 using Fabric.Clients.Cs.Session;
 using Fabric.Clients.Cs.Web;
@@ -1187,13 +1187,25 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="EventorTypeId">
 		///   Identifies the EventorType for the new Eventor.
 		/// </param>
-		/// <param name="EventorPrecisionId">
-		///   Identifies the EventorPrecision for the new Eventor.
+		/// <param name="Year">
+		///   The year value for the new Eventor.
 		/// </param>
-		/// <param name="DateTime">
-		///   The date and time for the new Eventor. This value must be accurate to the level of precision defined by the specified EventorPrecision. Set unused month/day values to 1, and unused hour/minute values (and beyond) to 0.
+		/// <param name="Month">
+		///   The month value for the new Eventor.
 		/// </param>
-		FabResponse<bool> Post(long FactorId, byte EventorTypeId, byte EventorPrecisionId, long DateTime);
+		/// <param name="Day">
+		///   The day value for the new Eventor.
+		/// </param>
+		/// <param name="Hour">
+		///   The hour value for the new Eventor.
+		/// </param>
+		/// <param name="Minute">
+		///   The minute value for the new Eventor.
+		/// </param>
+		/// <param name="Second">
+		///   The second value for the new Eventor.
+		/// </param>
+		FabResponse<bool> Post(long FactorId, byte EventorTypeId, long Year, byte? Month, byte? Day, byte? Hour, byte? Minute, byte? Second);
 
 	}
 	
@@ -1218,16 +1230,16 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<bool>> Request(long FactorId, byte EventorTypeId, byte EventorPrecisionId, long DateTime) {
+		public FabricRequest<FabResponse<bool>> Request(long FactorId, byte EventorTypeId, long Year, byte? Month, byte? Day, byte? Hour, byte? Minute, byte? Second) {
 			return new FabricRequest<FabResponse<bool>>("POST", Uri, 
 				null,
-				"FactorId="+FactorId+"&EventorTypeId="+EventorTypeId+"&EventorPrecisionId="+EventorPrecisionId+"&DateTime="+DateTime
+				"FactorId="+FactorId+"&EventorTypeId="+EventorTypeId+"&Year="+Year+"&Month="+Month+"&Day="+Day+"&Hour="+Hour+"&Minute="+Minute+"&Second="+Second
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<bool> Post(long FactorId, byte EventorTypeId, byte EventorPrecisionId, long DateTime) {
-			return Request(FactorId, EventorTypeId, EventorPrecisionId, DateTime).Send(vContext);
+		public FabResponse<bool> Post(long FactorId, byte EventorTypeId, long Year, byte? Month, byte? Day, byte? Hour, byte? Minute, byte? Second) {
+			return Request(FactorId, EventorTypeId, Year, Month, Day, Hour, Minute, Second).Send(vContext);
 		}
 
 	}

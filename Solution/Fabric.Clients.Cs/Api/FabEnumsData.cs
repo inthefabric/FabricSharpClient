@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 9/13/2013 4:41:05 PM
+// Generated on 9/18/2013 5:35:53 PM
 
 using System.Collections.Generic;
 
@@ -21,9 +21,6 @@ namespace Fabric.Clients.Cs.Api {
 	
 		/// <summary/>
 		public static IDictionary<byte, DirectorAction> DirectorActionMap;
-	
-		/// <summary/>
-		public static IDictionary<byte, EventorPrecision> EventorPrecisionMap;
 	
 		/// <summary/>
 		public static IDictionary<byte, EventorType> EventorTypeMap;
@@ -222,6 +219,11 @@ namespace Fabric.Clients.Cs.Api {
 			///   Emotes Like: The primary Artifact emotes like (causes the emotion of) the related Artifact.
 			/// </summary>
 			EmotesLike = 23,
+			
+			/// <summary>
+			///   Uses: The primary Artifact uses, utilizes, controls, employs, or manipulates the related Artifact.
+			/// </summary>
+			Uses = 24,
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -342,41 +344,6 @@ namespace Fabric.Clients.Cs.Api {
 			///   Stop: Stop (or end) the specified Artifact.
 			/// </summary>
 			Stop = 17,
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum EventorPrecisionId {
-			
-			/// <summary>
-			///   Year: This Eventor date is accurate to the year.
-			/// </summary>
-			Year = 1,
-			
-			/// <summary>
-			///   Month: This Eventor date is accurate to the month.
-			/// </summary>
-			Month = 2,
-			
-			/// <summary>
-			///   Day: This Eventor date is accurate to the day.
-			/// </summary>
-			Day = 3,
-			
-			/// <summary>
-			///   Hour: This Eventor date is accurate to the hour.
-			/// </summary>
-			Hour = 4,
-			
-			/// <summary>
-			///   Minute: This Eventor date is accurate to the minute.
-			/// </summary>
-			Minute = 5,
-			
-			/// <summary>
-			///   Second: This Eventor date is accurate to the second.
-			/// </summary>
-			Second = 6,
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -1117,7 +1084,6 @@ namespace Fabric.Clients.Cs.Api {
 			BuildDescriptorTypeMap();
 			BuildDirectorTypeMap();
 			BuildDirectorActionMap();
-			BuildEventorPrecisionMap();
 			BuildEventorTypeMap();
 			BuildFactorAssertionMap();
 			BuildIdentorTypeMap();
@@ -1358,6 +1324,13 @@ namespace Fabric.Clients.Cs.Api {
 				Name = (string)"Emotes Like",
 				Description = (string)"The primary Artifact emotes like (causes the emotion of) the related Artifact.",
 			});
+
+			DescriptorTypeMap.Add(24, new DescriptorType {
+				Id = (byte)24,
+				EnumId = (string)"Uses",
+				Name = (string)"Uses",
+				Description = (string)"The primary Artifact uses, utilizes, controls, employs, or manipulates the related Artifact.",
+			});
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -1521,53 +1494,6 @@ namespace Fabric.Clients.Cs.Api {
 				EnumId = (string)"Stop",
 				Name = (string)"Stop",
 				Description = (string)"Stop (or end) the specified Artifact.",
-			});
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		private static void BuildEventorPrecisionMap() {
-			EventorPrecisionMap = new Dictionary<byte, EventorPrecision>();
-
-			EventorPrecisionMap.Add(1, new EventorPrecision {
-				Id = (byte)1,
-				EnumId = (string)"Year",
-				Name = (string)"Year",
-				Description = (string)"This Eventor date is accurate to the year.",
-			});
-
-			EventorPrecisionMap.Add(2, new EventorPrecision {
-				Id = (byte)2,
-				EnumId = (string)"Month",
-				Name = (string)"Month",
-				Description = (string)"This Eventor date is accurate to the month.",
-			});
-
-			EventorPrecisionMap.Add(3, new EventorPrecision {
-				Id = (byte)3,
-				EnumId = (string)"Day",
-				Name = (string)"Day",
-				Description = (string)"This Eventor date is accurate to the day.",
-			});
-
-			EventorPrecisionMap.Add(4, new EventorPrecision {
-				Id = (byte)4,
-				EnumId = (string)"Hour",
-				Name = (string)"Hour",
-				Description = (string)"This Eventor date is accurate to the hour.",
-			});
-
-			EventorPrecisionMap.Add(5, new EventorPrecision {
-				Id = (byte)5,
-				EnumId = (string)"Minute",
-				Name = (string)"Minute",
-				Description = (string)"This Eventor date is accurate to the minute.",
-			});
-
-			EventorPrecisionMap.Add(6, new EventorPrecision {
-				Id = (byte)6,
-				EnumId = (string)"Second",
-				Name = (string)"Second",
-				Description = (string)"This Eventor date is accurate to the second.",
 			});
 		}
 

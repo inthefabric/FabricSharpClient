@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 9/13/2013 4:41:05 PM
+// Generated on 9/18/2013 5:35:53 PM
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -80,18 +80,6 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>Describes an action to be taken (via Director) on one of the two Artifacts in a particular Factor.</para>
 	/// </remarks>
 	public class DirectorAction : BaseEnum {
-	
-	}
-
-	
-	/*================================================================================================*/
-	/// <summary>
-	///   Describes the level of date/time precision (via Eventor) given to a particular Factor.
-	/// </summary>
-	/// <remarks>
-	///   <para>Describes the level of date/time precision (via Eventor) given to a particular Factor.</para>
-	/// </remarks>
-	public class EventorPrecision : BaseEnum {
 	
 	}
 
