@@ -155,38 +155,6 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 			catch {}
 		}
 
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		[Test]
-		public void Logger() {
-			var log = new Mock<IFabricLog>();
-
-			FabricClientConfig config = GetConfig();
-			config.Logger = log.Object;
-
-			config.LogInfo("info");
-			log.Verify(x => x.Info(config, It.IsAny<string>()), Times.Once());
-			log.Verify(x => x.Debug(config, It.IsAny<string>()), Times.Never());
-			log.Verify(x => x.Error(config, It.IsAny<string>()), Times.Never());
-			log.Verify(x => x.Fatal(config, It.IsAny<string>()), Times.Never());
-			log.Verify(x => x.Warn(config, It.IsAny<string>()), Times.Never());
-
-			config.LogDebug("debug");
-			log.Verify(x => x.Debug(config, It.IsAny<string>()), Times.Once());
-
-			config.LogError("error");
-			log.Verify(x => x.Error(config, It.IsAny<string>()), Times.Once());
-
-			config.LogFatal("fatal");
-			log.Verify(x => x.Fatal(config, It.IsAny<string>()), Times.Once());
-
-			config.LogWarn("warn");
-			config.LogWarn("warn");
-			config.LogWarn("warn");
-			log.Verify(x => x.Warn(config, It.IsAny<string>()), Times.Exactly(3));
-		}
-
 	}
 
 }

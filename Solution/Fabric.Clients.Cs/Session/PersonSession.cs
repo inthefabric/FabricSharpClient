@@ -28,7 +28,7 @@ namespace Fabric.Clients.Cs.Session {
 				return false;
 			}
 
-			Config.LogInfo("Refreshing Person token...");
+			Config.Logger.Info(SessionId, "Refreshing Person token...");
 
 			GetAccessToken(() => ClientOauth.AccessTokenRefresh
 				.Get(RefreshToken, Config.AppSecret, Config.AppOAuthRedirectUri));
@@ -59,14 +59,14 @@ namespace Fabric.Clients.Cs.Session {
 
 			if ( q["error"] != null ) {
 				err = "GRANT ERROR: "+q;
-				Config.LogError(err);
+				Config.Logger.Error(SessionId, err);
 				throw new Exception(err);
 			}
 
 			if ( q["state"] != SessionId ) {
 				err = "GRANT ERROR: incorrect 'state' value for this OAuth session ("+
 					SessionId+" != "+q["state"]+")";
-				Config.LogError(err);
+				Config.Logger.Error(SessionId, err);
 				throw new Exception(err);
 			}
 			

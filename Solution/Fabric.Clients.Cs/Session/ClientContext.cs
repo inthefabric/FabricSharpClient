@@ -1,4 +1,6 @@
-﻿namespace Fabric.Clients.Cs.Session {
+﻿using System;
+
+namespace Fabric.Clients.Cs.Session {
 	
 	/*================================================================================================*/
 	internal class ClientContext : IClientContext {
@@ -7,6 +9,8 @@
 		public IFabricAppSession AppSess { get; private set; }
 		public IFabricAppDataProvSession AppDataProvSess { get; private set; }
 		public bool UseDataProvPerson { get; set; }
+
+		private IFabricPersonSession vPersonSess;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -25,17 +29,53 @@
 					return AppDataProvSess;
 				}
 
-				IFabricSessionContainer contain = Config.GetSessionContainer();
-				IFabricPersonSession p = contain.Person;
-				
-				if ( p == null ) {
-					p = new PersonSession(Config, new FabricClient(Config.ConfigKey).Services.Oauth);
-					contain.Person = p;
-					Config.LogInfo("New PersonSess: "+p.SessionId);
+				if ( vPersonSess != null ) {
+					return vPersonSess;
 				}
 
-				return p;
+				IFabricSessionContainer contain = Config.GetSessionContainer();
+				vPersonSess = contain.Person;
+
+				if ( vPersonSess == null ) {
+					vPersonSess = new PersonSession(Config,
+						new FabricClient(Config.ConfigKey).Services.Oauth);
+					contain.Person = vPersonSess;
+					LogInfo("New PersonSess: "+vPersonSess.SessionId);
+				}
+
+				return vPersonSess;
 			}
+		}
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public void LogInfo(string pText) { Config.Logger.Info(GetSessId(), pText); }
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public void LogDebug(string pText) { Config.Logger.Debug(GetSessId(), pText); }
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public void LogError(string pText) { Config.Logger.Error(GetSessId(), pText); }
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public void LogFatal(string pText) { Config.Logger.Fatal(GetSessId(), pText); }
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public void LogWarn(string pText) { Config.Logger.Warn(GetSessId(), pText); }
+
+		/*--------------------------------------------------------------------------------------------*/
+		private string GetSessId() {
+			if ( UseDataProvPerson ) {
+				return (AppDataProvSess == null ? null : AppDataProvSess.SessionId);
+			}
+
+			return (vPersonSess == null ? null : vPersonSess.SessionId);
 		}
 
 	}

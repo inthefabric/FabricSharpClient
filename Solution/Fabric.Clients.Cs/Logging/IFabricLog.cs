@@ -1,4 +1,6 @@
-﻿namespace Fabric.Clients.Cs.Logging {
+﻿using Fabric.Clients.Cs.Session;
+
+namespace Fabric.Clients.Cs.Logging {
 
 	/*================================================================================================*/
 	/// <summary />
@@ -8,23 +10,23 @@
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void Info(IFabricClientConfig config, string text);
+		void Info(string sessionId, string text);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void Debug(IFabricClientConfig config, string text);
+		void Debug(string sessionId, string text);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void Error(IFabricClientConfig config, string text);
+		void Error(string sessionId, string text);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void Fatal(IFabricClientConfig config, string text);
+		void Fatal(string sessionId, string text);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void Warn(IFabricClientConfig config, string text);
+		void Warn(string sessionId, string text);
 
 	}
 

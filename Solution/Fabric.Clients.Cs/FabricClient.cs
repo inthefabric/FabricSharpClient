@@ -115,7 +115,7 @@ namespace Fabric.Clients.Cs {
 				Context = new ClientContext(cg.Config, null, null);
 			}
 
-			Context.Config.LogInfo("New FabricClient");
+			Context.LogInfo("New FabricClient");
 			Services = new FabricServices(Context);
 			ApiVersion = Services.ApiVersion;
 		}
@@ -155,7 +155,7 @@ namespace Fabric.Clients.Cs {
 				return Context.UseDataProvPerson;
 			}
 			set {
-				Config.LogInfo("UseDataProviderPerson: "+value);
+				Context.LogInfo("UseDataProviderPerson: "+value);
 				Context.UseDataProvPerson = value;
 			}
 		}

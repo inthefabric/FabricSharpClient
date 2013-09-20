@@ -32,7 +32,8 @@ namespace Fabric.Clients.Cs.Session {
 		public FabOauthLogout Logout() {
 			FabOauthLogout logout = ClientOauth.Logout.Get(BearerToken);
 			ClearToken();
-			Config.LogInfo("Logout: success="+logout.success+", access_token="+logout.access_token);
+			Config.Logger.Info(SessionId,
+				"Logout: success="+logout.success+", access_token="+logout.access_token);
 			return logout;
 		}
 
@@ -52,12 +53,13 @@ namespace Fabric.Clients.Cs.Session {
 				BearerToken = oa.access_token;
 				RefreshToken = oa.refresh_token;
 				Expiration = DateTime.Now.AddSeconds(oa.expires_in-60);
-				Config.LogInfo(SessionDebugName+" GetAccessToken: BearerToken="+BearerToken+
+				Config.Logger.Info(SessionId, SessionDebugName+" "+
+					"GetAccessToken: BearerToken="+BearerToken+
 					", RefreshToken="+RefreshToken+", Expiration="+Expiration+
 					", Now="+DateTime.Now);
 			}
 			catch ( FabricErrorException fe ) {
-				Config.LogInfo("FabricErrorException: "+fe);
+				Config.Logger.Error(SessionId, "FabricErrorException: "+fe);
 				ClearToken();
 				return null;
 			}
@@ -67,7 +69,7 @@ namespace Fabric.Clients.Cs.Session {
 
 		/*--------------------------------------------------------------------------------------------*/
 		protected virtual bool IsRefreshNecessary() {
-			Config.LogInfo("IsRefreshNecessary: "+SessionDebugName+" expires in "+
+			Config.Logger.Info(SessionId, "IsRefreshNecessary: "+SessionDebugName+" expires in "+
 				new TimeSpan(Expiration.Ticks-DateTime.Now.Ticks).TotalSeconds+" sec");
 			return (DateTime.Now >= Expiration);
 		}

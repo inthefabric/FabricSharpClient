@@ -92,28 +92,6 @@ namespace Fabric.Clients.Cs {
 			return vSessProv(ConfigKey);
 		}
 
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
-		public void LogInfo(string pText) { Logger.Info(this, pText); }
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
-		public void LogDebug(string pText) { Logger.Debug(this, pText); }
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
-		public void LogError(string pText) { Logger.Error(this, pText); }
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
-		public void LogFatal(string pText) { Logger.Fatal(this, pText); }
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
-		public void LogWarn(string pText) { Logger.Warn(this, pText); }
-
 	}
 
 }

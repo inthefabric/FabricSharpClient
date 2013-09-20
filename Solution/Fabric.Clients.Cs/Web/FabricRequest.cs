@@ -42,13 +42,13 @@ namespace Fabric.Clients.Cs.Web {
 			FabricResponse<T> resp = GetFabricResponse(pContext);
 
 			if ( resp.RespError != null ) {
-				pContext.Config.LogError("Request Exception: "+resp.RespError.Error.Code+" / "+
+				pContext.LogError("Request Exception: "+resp.RespError.Error.Code+" / "+
 					resp.RespError.Error.Name+" / "+resp.RespError.Error.Message);
 				throw new FabricErrorException(resp.RespError);
 			}
 
 			if ( resp.OauthError != null ) {
-				pContext.Config.LogError("Request OAuth Exception: "+
+				pContext.LogError("Request OAuth Exception: "+
 					resp.OauthError.error+" / "+resp.OauthError.error_description);
 				throw new FabricErrorException(resp.OauthError);
 			}
@@ -59,18 +59,18 @@ namespace Fabric.Clients.Cs.Web {
 		/*--------------------------------------------------------------------------------------------*/
 		protected virtual FabricResponse<T> GetFabricResponse(IClientContext pContext) {
 			string fullPath = pContext.Config.ApiPath+Path+(Query != null ? "?"+Query : "");
-			pContext.Config.LogInfo("Request initiated...");
+			pContext.LogInfo("Request initiated...");
 
 			////
 
 			try {
-				pContext.Config.LogInfo("Request Path: "+Method+" "+Path);
-				pContext.Config.LogInfo("Request URL: "+fullPath);
+				pContext.LogInfo("Request Path: "+Method+" "+Path);
+				pContext.LogInfo("Request URL: "+fullPath);
 
 				IFabricHttpResponse wr = GetHttpWebResponse(pContext, fullPath);
 
 				string data = StreamToString(wr.GetResponseStream());
-				pContext.Config.LogDebug("Request Response: "+data);
+				pContext.LogDebug("Request Response: "+data);
 				return new FabricResponse<T>(JsonSerializer.DeserializeFromString<T>(data));
 				/*return new FabricResponse<T>(
 					JsonSerializer.DeserializeFromStream<T>(wr.GetResponseStream()));*/
@@ -84,7 +84,7 @@ namespace Fabric.Clients.Cs.Web {
 				bool isOauthErr = (data.Length > 9 && data.Substring(0, 9) == "{\"error\":");
 				bool isRespErr = typeof(FabResponse).IsAssignableFrom(typeof(T));
 
-				pContext.Config.LogDebug("Request Error: "+data+
+				pContext.LogDebug("Request Error: "+data+
 					" (IsError="+isRespErr+", IsOauthError="+isOauthErr+")");
 
 				if ( isRespErr ) {

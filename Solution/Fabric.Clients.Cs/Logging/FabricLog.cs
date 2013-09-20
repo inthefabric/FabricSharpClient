@@ -1,6 +1,4 @@
-﻿using Fabric.Clients.Cs.Session;
-
-namespace Fabric.Clients.Cs.Logging {
+﻿namespace Fabric.Clients.Cs.Logging {
 
 	/*================================================================================================*/
 	internal class FabricLog : IFabricLog {
@@ -10,27 +8,25 @@ namespace Fabric.Clients.Cs.Logging {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public void Info(IFabricClientConfig pConfig, string pText) { Out("Info", pConfig, pText); }
+		public void Info(string pSessionId, string pText) { Out("Info", pSessionId, pText); }
 
 		/*--------------------------------------------------------------------------------------------*/
-		public void Debug(IFabricClientConfig pConfig, string pText) { Out("Debug", pConfig, pText); }
+		public void Debug(string pSessionId, string pText) { Out("Debug", pSessionId, pText);}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public void Error(IFabricClientConfig pConfig, string pText) { Out("Error", pConfig, pText); }
+		public void Error(string pSessionId, string pText) { Out("Error", pSessionId, pText);}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public void Fatal(IFabricClientConfig pConfig, string pText) { Out("Fatal", pConfig, pText); }
+		public void Fatal(string pSessionId, string pText) { Out("Fatal", pSessionId, pText);}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public void Warn(IFabricClientConfig pConfig, string pText) { Out("Warn", pConfig, pText); }
+		public void Warn(string pSessionId, string pText) { Out("Warn", pSessionId, pText); }
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public void Out(string pType, IFabricClientConfig pConfig, string pText) {
-			IFabricSessionContainer sc = pConfig.GetSessionContainer();
-			IFabricPersonSession p = (sc != null ? sc.Person : null);
-			string psId = (p == null ? Empty32 : p.SessionId);
+		public void Out(string pType, string pSessionId, string pText) {
+			string psId = (pSessionId ?? Empty32);
 			System.Diagnostics.Debug.WriteLine("Fabric | "+pType.PadRight(5)+" | "+psId+" | "+pText);
 		}
 
