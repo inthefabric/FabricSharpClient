@@ -137,22 +137,14 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
 		public void LoadFromCookies() {
-			var exp = DateTime.UtcNow;
-
-			HttpCookie c = new HttpCookie(OauthSession.CookieKey);
-			c.Value = "sessId|grant|bearer|refresh|"+exp.Ticks;
-
-			var cookies = new HttpCookieCollection();
-			cookies.Add(c);
-
-			bool success = OauthSess.LoadFromCookies(cookies);
+			bool success = OauthSess.LoadFromCookies(CreateWorkingCookie());
 
 			Assert.True(success, "Expected successful result.");
 			Assert.AreEqual("sessId", OauthSess.SessionId, "Incorrect SessionId.");
 			Assert.AreEqual("grant", OauthSess.GrantCode, "Incorrect GrantCode.");
 			Assert.AreEqual("bearer", OauthSess.BearerToken, "Incorrect BearerToken.");
 			Assert.AreEqual("refresh", OauthSess.RefreshToken, "Incorrect RefreshToken.");
-			Assert.AreEqual(exp, OauthSess.Expiration, "Incorrect Expiration.");
+			Assert.AreEqual(123456, OauthSess.Expiration.Ticks, "Incorrect Expiration.");
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -163,7 +155,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		[TestCase(true, "|||||")]
 		public void LoadFromCookiesFail(bool pHasCookie, string pValue) {
 			var cookies = new HttpCookieCollection();
-			HttpCookie c = null;
+			HttpCookie c;
 
 			if ( pHasCookie ) {
 				c = new HttpCookie(OauthSession.CookieKey);
@@ -173,6 +165,18 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 
 			bool success = OauthSess.LoadFromCookies(cookies);
 			Assert.False(success, "Expected failed result.");
+		}
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public static HttpCookieCollection CreateWorkingCookie() {
+			var c = new HttpCookie(OauthSession.CookieKey);
+			c.Value = "sessId|grant|bearer|refresh|123456";
+
+			var cookies = new HttpCookieCollection();
+			cookies.Add(c);
+			return cookies;
 		}
 
 	}

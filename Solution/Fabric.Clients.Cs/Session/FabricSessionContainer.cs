@@ -14,7 +14,6 @@ namespace Fabric.Clients.Cs.Session {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		/// //TEST: FabricSessionContainer.FromCookies()
 		public static IFabricSessionContainer FromCookies(
 												IFabricClient pClient, HttpCookieCollection pCookies) {
 			var ps = new PersonSession(pClient.Config, pClient.Services.Oauth);
