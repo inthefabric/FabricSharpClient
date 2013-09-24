@@ -75,7 +75,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		[TestCase(false, -1, true)]
 		public void RefreshTokenIfNecessary(bool pHasBearer, int pAddSeconds, bool pExpectRefresh) {
 			string bearer = (pHasBearer ? "OldBearerToken" : null);
-			DateTime expiry = DateTime.Now.AddSeconds(pAddSeconds);
+			DateTime expiry = DateTime.UtcNow.AddSeconds(pAddSeconds);
 			AppSess.BearerToken = bearer;
 			AppSess.Expiration = expiry;
 

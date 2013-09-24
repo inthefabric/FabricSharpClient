@@ -91,11 +91,11 @@ namespace Fabric.Clients.Cs.Session {
 
 				BearerToken = oa.access_token;
 				RefreshToken = oa.refresh_token;
-				Expiration = DateTime.Now.AddSeconds(oa.expires_in-60);
+				Expiration = DateTime.UtcNow.AddSeconds(oa.expires_in-60);
 				Config.Logger.Info(SessionId, SessionDebugName+" "+
 					"GetAccessToken: BearerToken="+BearerToken+
 					", RefreshToken="+RefreshToken+", Expiration="+Expiration+
-					", Now="+DateTime.Now);
+					", Now="+DateTime.UtcNow);
 			}
 			catch ( FabricErrorException fe ) {
 				Config.Logger.Error(SessionId, "FabricErrorException: "+fe);
@@ -109,8 +109,8 @@ namespace Fabric.Clients.Cs.Session {
 		/*--------------------------------------------------------------------------------------------*/
 		protected virtual bool IsRefreshNecessary() {
 			Config.Logger.Info(SessionId, "IsRefreshNecessary: "+SessionDebugName+" expires in "+
-				new TimeSpan(Expiration.Ticks-DateTime.Now.Ticks).TotalSeconds+" sec");
-			return (DateTime.Now >= Expiration);
+				new TimeSpan(Expiration.Ticks-DateTime.UtcNow.Ticks).TotalSeconds+" sec");
+			return (DateTime.UtcNow >= Expiration);
 		}
 
 
@@ -120,7 +120,7 @@ namespace Fabric.Clients.Cs.Session {
 			GrantCode = null;
 			BearerToken = null;
 			RefreshToken = null;
-			Expiration = DateTime.Now;
+			Expiration = DateTime.UtcNow;
 		}
 
 	}

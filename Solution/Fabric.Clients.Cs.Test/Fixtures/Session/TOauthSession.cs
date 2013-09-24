@@ -58,13 +58,13 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		protected void CheckSessionProperties(FabOauthAccess pAccess) {
 			Assert.AreEqual(pAccess.access_token, OauthSess.BearerToken, "Incorrect BearerToken.");
 			Assert.AreEqual(pAccess.refresh_token, OauthSess.RefreshToken, "Incorrect RefreshToken.");
-			CheckExpiration(DateTime.Now.AddSeconds(3600-60));
+			CheckExpiration(DateTime.UtcNow.AddSeconds(3600-60));
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		protected void CheckExpiration(DateTime pExpect) {
 			Assert.LessOrEqual(OauthSess.Expiration, new DateTime(pExpect.Ticks).AddSeconds(1),
-				"Expiration should be reset to DateTime.Now.");
+				"Expiration should be reset to DateTime.UtcNow.");
 		}
 
 
@@ -77,7 +77,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			Assert.Null(OauthSess.GrantCode, "GrantCode should be null.");
 			Assert.Null(OauthSess.BearerToken, "BearerToken should be null.");
 			Assert.Null(OauthSess.RefreshToken, "RefreshToken should be null.");
-			CheckExpiration(DateTime.Now);
+			CheckExpiration(DateTime.UtcNow);
 
 			Assert.False(OauthSess.IsAuthenticated, "Incorrect IsAuthenticated.");
 
@@ -99,7 +99,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			OauthSess.GrantCode = "GrantCode1234";
 			OauthSess.BearerToken = "BearerToken1234";
 			OauthSess.RefreshToken = "RefreshToken1234";
-			OauthSess.Expiration = DateTime.Now.AddDays(2);
+			OauthSess.Expiration = DateTime.UtcNow.AddDays(2);
 
 			var expectResult = new FabOauthLogout();
 
@@ -114,7 +114,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			Assert.Null(OauthSess.GrantCode, "GrantCode should be null.");
 			Assert.Null(OauthSess.BearerToken, "BearerToken should be null.");
 			Assert.Null(OauthSess.RefreshToken, "RefreshToken should be null.");
-			CheckExpiration(DateTime.Now);
+			CheckExpiration(DateTime.UtcNow);
 
 			Assert.False(OauthSess.IsAuthenticated, "Incorrect IsAuthenticated.");
 		}

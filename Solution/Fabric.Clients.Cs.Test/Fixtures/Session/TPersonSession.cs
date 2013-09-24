@@ -43,7 +43,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		public virtual void RefreshTokenIfNecessary(
 											bool pHasRefresh, int pAddSeconds, bool pExpectRefresh) {
 			string refresh = (pHasRefresh ? "OldRefreshToken" : null);
-			DateTime expiry = DateTime.Now.AddSeconds(pAddSeconds);
+			DateTime expiry = DateTime.UtcNow.AddSeconds(pAddSeconds);
 			PersonSess.RefreshToken = refresh;
 			PersonSess.Expiration = expiry;
 
