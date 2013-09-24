@@ -107,18 +107,16 @@ namespace Fabric.Clients.Cs.Web {
 			req.Method = Method;
 			req.Accept = "application/json";
 
-			IFabricPersonSession auth = pContext.PersonSess;
-			auth.RefreshTokenIfNecessary();
-			string token = auth.BearerToken;
+			IFabricOauthSession auth = pContext.PersonSess;
+			TryRefresh(auth);
 
-			if ( token == null && pContext.AppSess != null ) {
-				IFabricAppSession appAuth = pContext.AppSess;
-				appAuth.RefreshTokenIfNecessary();
-				token = appAuth.BearerToken;
+			if ( auth.BearerToken == null && pContext.AppSess != null ) {
+				auth = pContext.AppSess;
+				TryRefresh(auth);
 			}
 
-			if ( token != null ) {
-				req.Headers.Add("Authorization", "Bearer "+token);
+			if ( auth.BearerToken != null ) {
+				req.Headers.Add("Authorization", "Bearer "+auth.BearerToken);
 			}
 
 			if ( Method == "POST" && Post != null ) {
@@ -133,6 +131,13 @@ namespace Fabric.Clients.Cs.Web {
 			}
 
 			return vWebReqProv.GetResponse(req);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		protected void TryRefresh(IFabricOauthSession pSession) {
+			if ( Path != AccessTokenRefreshOperation.Uri ) {
+				pSession.RefreshTokenIfNecessary();
+			}
 		}
 
 

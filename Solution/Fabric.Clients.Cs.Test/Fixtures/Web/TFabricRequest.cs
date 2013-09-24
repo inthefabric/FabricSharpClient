@@ -37,7 +37,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		/*--------------------------------------------------------------------------------------------*/
 		[SetUp]
 		public void SetUp() {
-			vConfig = new FabricClientConfig("Test", "http://testFabric.com/api/", 1,
+			vConfig = new FabricClientConfig("Test", "http://localhost/fakeApi", 1,
 				"MySecretCode", 1, "http://testdomain.com/oauth", FabricSessionContainerProvider);
 			vMockAppSess = new Mock<IFabricAppSession>();
 			vMockDpSess = new Mock<IFabricAppDataProvSession>();
@@ -302,26 +302,58 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		[Test]
-		public void RefreshPerson() {
+		[TestCase(false)]
+		[TestCase(true)]
+		public void RefreshPerson(bool pIsRefreshRequest) {
+			vPath = (pIsRefreshRequest ? AccessTokenRefreshOperation.Uri : "test");
 			var req = NewFabricRequest<FabApp>();
 			SetupResponseStream(new FabApp());
 			req.Send(vContext);
-			vMockPerSess.Verify(x => x.RefreshTokenIfNecessary(), Times.Once());
+
+			Times t = (pIsRefreshRequest ? Times.Never() : Times.Once());
+			vMockPerSess.Verify(x => x.RefreshTokenIfNecessary(), t);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		[TestCase("BearerToken1234", false)]
-		[TestCase(null, true)]
-		public void RefreshApp(string pBearer, bool pAppRefresh) {
+		[TestCase("BearerToken1234", false, false)]
+		[TestCase("BearerToken1234", true, false)]
+		[TestCase(null, false, true)]
+		[TestCase(null, true, true)]
+		public void RefreshApp(string pBearer, bool pIsRefreshRequest, bool pAppRefresh) {
+			vPath = (pIsRefreshRequest ? AccessTokenRefreshOperation.Uri : "test");
 			vMockPerSess.SetupGet(x => x.BearerToken).Returns(pBearer);
 
 			var req = NewFabricRequest<FabApp>();
 			SetupResponseStream(new FabApp());
 			req.Send(vContext);
 
-			Times t = (pAppRefresh ? Times.Once() : Times.Never());
+			Times t = (pAppRefresh && !pIsRefreshRequest ? Times.Once() : Times.Never());
 			vMockAppSess.Verify(x => x.RefreshTokenIfNecessary(), t);
+		}
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		[Test]
+		[Category("Integration")]
+		public void RefreshPersonLoop() {
+			var req = NewFabricRequest<FabApp>();
+			SetupResponseStream(new FabApp());
+
+			var fc = new FabricClient();
+			var ps = new PersonSession(fc.Config, fc.Services.Oauth);
+			ps.RefreshToken = "test";
+			ps.Expiration = DateTime.UtcNow.AddSeconds(-1);
+			vSessContain.Person = ps;
+
+			try {
+				req.Send(vContext); //caused infinite loop prior to fix, see GitHub issue #3
+			}
+			catch ( WebException ) {
+				return;
+			}
+
+			Assert.Fail("This should throw a WebException.");
 		}
 
 	}
