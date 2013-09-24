@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using System.Web.SessionState;
 using Fabric.Clients.Cs.Session;
 
 namespace Fabric.Clients.Cs.Mvc {
@@ -39,20 +38,7 @@ namespace Fabric.Clients.Cs.Mvc {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		private static IFabricSessionContainer FabricSessionContainerProvider(string pConfigKey) {
-			string key = "Fabric_"+pConfigKey;
-			HttpSessionState sess = HttpContext.Current.Session;
-
-			if ( sess == null ) {
-				return null;
-			}
-
-			IFabricSessionContainer contain = (sess[key] as IFabricSessionContainer);
-
-			if ( contain == null ) {
-				sess[key] = (contain = new FabricSessionContainer());
-			}
-
-			return contain;
+			return FabricSessionContainer.FromHttpContext(HttpContext.Current, pConfigKey);
 		}
 
 	}
