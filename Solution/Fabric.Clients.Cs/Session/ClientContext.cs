@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Fabric.Clients.Cs.Session {
+﻿namespace Fabric.Clients.Cs.Session {
 	
 	/*================================================================================================*/
 	internal class ClientContext : IClientContext {

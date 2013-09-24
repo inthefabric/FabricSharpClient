@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using Fabric.Clients.Cs.Api;
 
 namespace Fabric.Clients.Cs.Session {
@@ -34,6 +35,10 @@ namespace Fabric.Clients.Cs.Session {
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		bool RefreshTokenIfNecessary();
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		void SaveToCookies(HttpCookieCollection pCookies);
 
 	}
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using Fabric.Clients.Cs.Api;
 
 namespace Fabric.Clients.Cs.Session {
@@ -39,7 +40,45 @@ namespace Fabric.Clients.Cs.Session {
 
 		/*--------------------------------------------------------------------------------------------*/
 		public abstract bool RefreshTokenIfNecessary();
+
+		/*--------------------------------------------------------------------------------------------*/
 		public abstract string SessionDebugName { get; }
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		//TEST: OauthSession.SaveToCookies()
+		public void SaveToCookies(HttpCookieCollection pCookies) {
+			var c = new HttpCookie("FabOauthSess");
+			c.Value = SessionId+"|"+GrantCode+"|"+BearerToken+"|"+RefreshToken+"|"+Expiration.Ticks;
+			pCookies.Add(c);
+			Config.Logger.Info(SessionId, "SaveToCookies: "+c.Value);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		//TEST: OauthSession.LoadFromCookies()
+		public bool LoadFromCookies(HttpCookieCollection pCookies) {
+			HttpCookie c = pCookies["FabOauthSess"];
+			Config.Logger.Info(SessionId, "LoadFromCookies: "+(c == null ? null : c.Value));
+
+			if ( c == null || c.Value == null ) {
+				return false;
+			}
+
+			string[] vals = c.Value.Split('|');
+
+			if ( vals.Length != 5 ) {
+				return false;
+			}
+
+			SessionId = vals[0];
+			GrantCode = vals[1];
+			BearerToken = vals[2];
+			RefreshToken = vals[3];
+			Expiration = new DateTime(long.Parse(vals[4]));
+
+			return true;
+		}
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
