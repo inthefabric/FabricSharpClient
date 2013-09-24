@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using Fabric.Clients.Cs.Api;
 using Fabric.Clients.Cs.Session;
 using Moq;
@@ -117,6 +118,61 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			CheckExpiration(DateTime.UtcNow);
 
 			Assert.False(OauthSess.IsAuthenticated, "Incorrect IsAuthenticated.");
+		}
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		[Test]
+		public void SaveToCookies() {
+			var cookies = new HttpCookieCollection();
+			OauthSess.SaveToCookies(cookies);
+
+			HttpCookie c = cookies[OauthSession.CookieKey];
+			Assert.NotNull(c, "Cookie should be filled.");
+			Assert.NotNull(c.Value, "Cookie.Value should be filled.");
+			Assert.Greater(c.Value.Length, 1, "Cookie.Value should not be empty.");
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		[Test]
+		public void LoadFromCookies() {
+			var exp = DateTime.UtcNow;
+
+			HttpCookie c = new HttpCookie(OauthSession.CookieKey);
+			c.Value = "sessId|grant|bearer|refresh|"+exp.Ticks;
+
+			var cookies = new HttpCookieCollection();
+			cookies.Add(c);
+
+			bool success = OauthSess.LoadFromCookies(cookies);
+
+			Assert.True(success, "Expected successful result.");
+			Assert.AreEqual("sessId", OauthSess.SessionId, "Incorrect SessionId.");
+			Assert.AreEqual("grant", OauthSess.GrantCode, "Incorrect GrantCode.");
+			Assert.AreEqual("bearer", OauthSess.BearerToken, "Incorrect BearerToken.");
+			Assert.AreEqual("refresh", OauthSess.RefreshToken, "Incorrect RefreshToken.");
+			Assert.AreEqual(exp, OauthSess.Expiration, "Incorrect Expiration.");
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		[TestCase(false, null)]
+		[TestCase(true, null)]
+		[TestCase(true, "")]
+		[TestCase(true, "|||")]
+		[TestCase(true, "|||||")]
+		public void LoadFromCookiesFail(bool pHasCookie, string pValue) {
+			var cookies = new HttpCookieCollection();
+			HttpCookie c = null;
+
+			if ( pHasCookie ) {
+				c = new HttpCookie(OauthSession.CookieKey);
+				c.Value = pValue;
+				cookies.Add(c);
+			}
+
+			bool success = OauthSess.LoadFromCookies(cookies);
+			Assert.False(success, "Expected failed result.");
 		}
 
 	}

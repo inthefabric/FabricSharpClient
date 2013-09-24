@@ -7,7 +7,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 	[TestFixture]
 	public class TFabricClient {
 
-		//TODO: test thread-safety of the InitOnce() and AddConfig()
+		//TEST: test thread-safety of the InitOnce() and AddConfig()
 
 		public const string TestConfigKey = "Test";
 

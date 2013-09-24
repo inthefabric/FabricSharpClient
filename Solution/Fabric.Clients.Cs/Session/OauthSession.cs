@@ -6,7 +6,9 @@ namespace Fabric.Clients.Cs.Session {
 
 	/*================================================================================================*/
 	internal abstract class OauthSession : IFabricOauthSession {
-		
+
+		public const string CookieKey = "FabOauthSess";
+
 		public string GrantCode { get; internal set; }
 		public string BearerToken { get; internal set; }
 		public string RefreshToken { get; internal set; }
@@ -47,18 +49,16 @@ namespace Fabric.Clients.Cs.Session {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		//TEST: OauthSession.SaveToCookies()
 		public void SaveToCookies(HttpCookieCollection pCookies) {
-			var c = new HttpCookie("FabOauthSess");
+			var c = new HttpCookie(CookieKey);
 			c.Value = SessionId+"|"+GrantCode+"|"+BearerToken+"|"+RefreshToken+"|"+Expiration.Ticks;
 			pCookies.Add(c);
 			Config.Logger.Info(SessionId, "SaveToCookies: "+c.Value);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		//TEST: OauthSession.LoadFromCookies()
 		public bool LoadFromCookies(HttpCookieCollection pCookies) {
-			HttpCookie c = pCookies["FabOauthSess"];
+			HttpCookie c = pCookies[CookieKey];
 			Config.Logger.Info(SessionId, "LoadFromCookies: "+(c == null ? null : c.Value));
 
 			if ( c == null || c.Value == null ) {
