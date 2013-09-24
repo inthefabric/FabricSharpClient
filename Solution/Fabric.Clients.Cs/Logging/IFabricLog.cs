@@ -1,6 +1,4 @@
-﻿using Fabric.Clients.Cs.Session;
-
-namespace Fabric.Clients.Cs.Logging {
+﻿namespace Fabric.Clients.Cs.Logging {
 
 	/*================================================================================================*/
 	/// <summary />

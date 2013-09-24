@@ -1,7 +1,5 @@
 ﻿using System.Web;
-using Fabric.Clients.Cs.Logging;
 using Fabric.Clients.Cs.Session;
-using Moq;
 using NUnit.Framework;
 
 namespace Fabric.Clients.Cs.Test.Fixtures {
@@ -24,7 +22,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 		[SetUp]
 		public void SetUp() {
 			vKey = "Test";
-			vApiPath = "http://testFabric.com/api/";
+			vApiPath = "http://testFabric.com/api";
 			vAppId = 1;
 			vAppSecret = "MySecretCode";
 			vAppDpId = 4;

@@ -32,7 +32,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		private FabricClientConfig GetConfig(string pName=TestConfigKey) {
-			return new FabricClientConfig(pName, "http://testFabric.com/api/", 1,
+			return new FabricClientConfig(pName, "http://testFabric.com/api", 1,
 				"MySecretCode", 1, "http://testdomain.com/oauth", FabricSessionContainerProvider);
 		}
 
