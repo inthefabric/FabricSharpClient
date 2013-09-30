@@ -43,6 +43,9 @@
 
 				return vPersonSess;
 			}
+			internal set {
+				vPersonSess = value;
+			}
 		}
 
 

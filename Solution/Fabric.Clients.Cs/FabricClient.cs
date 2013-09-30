@@ -22,7 +22,7 @@ namespace Fabric.Clients.Cs {
 		/// <summary />
 		public static string ApiVersion;
 
-		internal IClientContext Context { get; private set; }
+		internal ClientContext Context { get; private set; }
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,6 +95,18 @@ namespace Fabric.Clients.Cs {
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		public FabricClient(string configKey) : this(configKey, true) {}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		//TEST: FabricClient() personSess
+		public FabricClient(IFabricPersonSession personSess) : this(personSess, DefaultConfigKey) {}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		//TEST: FabricClient() personSess
+		public FabricClient(IFabricPersonSession personSess, string configKey) : this(configKey, true) {
+			Context.PersonSess = personSess;
+		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		internal FabricClient(string pConfigKey, bool pIncludeContextSessions) {

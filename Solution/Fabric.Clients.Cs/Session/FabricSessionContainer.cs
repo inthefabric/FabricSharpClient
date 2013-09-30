@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.SessionState;
 
 namespace Fabric.Clients.Cs.Session {
@@ -12,6 +13,21 @@ namespace Fabric.Clients.Cs.Session {
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		//TEST: FabricSessionContainer.FromValues()
+		public static IFabricSessionContainer FromValues(IFabricClient pClient, string pSessionId,
+				string pGrantCode, string pBearerToken, string pRefreshToken, DateTime pExpriration) {
+			var ps = new PersonSession(pClient.Config, pClient.Services.Oauth);
+			ps.SessionId = pSessionId;
+			ps.GrantCode = pGrantCode;
+			ps.BearerToken = pBearerToken;
+			ps.RefreshToken = pRefreshToken;
+			ps.Expiration = pExpriration;
+
+			return new FabricSessionContainer { Person = ps };
+		}
+		
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		public static IFabricSessionContainer FromCookies(
