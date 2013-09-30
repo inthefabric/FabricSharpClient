@@ -1,4 +1,5 @@
 ﻿using Fabric.Clients.Cs.Session;
+using Moq;
 using NUnit.Framework;
 
 namespace Fabric.Clients.Cs.Test.Fixtures {
@@ -68,6 +69,30 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 			FabricClient.AddConfig(GetConfig("Third"));
 			var fab = new FabricClient(pConfigKey);
 			checkClient(fab, pConfigKey);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		[Test]
+		public void NewClient_Person_Default() {
+			var mockPs = new Mock<IFabricPersonSession>();
+			FabricClient.AddConfig(GetConfig("Second"));
+
+			var fab = new FabricClient(mockPs.Object);
+			checkClient(fab, TestConfigKey);
+			Assert.AreEqual(mockPs.Object, fab.PersonSession, "Incorrect PersonSession.");
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		[Test]
+		public void NewClient_Person_Named() {
+			var mockPs = new Mock<IFabricPersonSession>();
+
+			const string key = "Second";
+			FabricClient.AddConfig(GetConfig(key));
+
+			var fab = new FabricClient(mockPs.Object, key);
+			checkClient(fab, key);
+			Assert.AreEqual(mockPs.Object, fab.PersonSession, "Incorrect PersonSession.");
 		}
 
 

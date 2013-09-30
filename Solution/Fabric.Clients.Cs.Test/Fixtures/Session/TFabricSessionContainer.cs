@@ -1,4 +1,4 @@
-﻿using System.IO;
+﻿using System;
 using System.Web;
 using Fabric.Clients.Cs.Session;
 using NUnit.Framework;
@@ -31,6 +31,28 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
+		[Test]
+		[Category("Integration")]
+		public virtual void FromValues() {
+			const string sessId = "sessId";
+			const string grant = "grant";
+			const string bearer = "bearer";
+			const string refresh = "refresh";
+			DateTime exp = DateTime.UtcNow.AddMinutes(30);
+
+			IFabricSessionContainer sc = FabricSessionContainer.FromValues(new FabricClient(),
+				sessId, grant, bearer, refresh, exp);
+
+			Assert.NotNull(sc, "Container should be filled.");
+			Assert.NotNull(sc.Person, "Container.Person should be filled.");
+			Assert.AreEqual(sessId, sc.Person.SessionId, "Incorrect Person.SessionId.");
+			Assert.AreEqual(grant, sc.Person.GrantCode, "Incorrect Person.GrantCode.");
+			Assert.AreEqual(bearer, sc.Person.BearerToken, "Incorrect Person.BearerToken.");
+			Assert.AreEqual(refresh, sc.Person.RefreshToken, "Incorrect Person.RefreshToken.");
+			Assert.AreEqual(exp, sc.Person.Expiration, "Incorrect Person.Expiration.");
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
 		[TestCase(false)]
 		[TestCase(true)]
 		[Category("Integration")]
@@ -51,8 +73,6 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			}
 		}
 
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------* /
 		[TestCase(false)]
 		[TestCase(true)]

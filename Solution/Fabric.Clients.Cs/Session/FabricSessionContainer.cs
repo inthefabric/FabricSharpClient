@@ -15,7 +15,6 @@ namespace Fabric.Clients.Cs.Session {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		//TEST: FabricSessionContainer.FromValues()
 		public static IFabricSessionContainer FromValues(IFabricClient pClient, string pSessionId,
 				string pGrantCode, string pBearerToken, string pRefreshToken, DateTime pExpriration) {
 			var ps = new PersonSession(pClient.Config, pClient.Services.Oauth);

@@ -98,12 +98,10 @@ namespace Fabric.Clients.Cs {
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		//TEST: FabricClient() personSess
 		public FabricClient(IFabricPersonSession personSess) : this(personSess, DefaultConfigKey) {}
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		//TEST: FabricClient() personSess
 		public FabricClient(IFabricPersonSession personSess, string configKey) : this(configKey, true) {
 			Context.PersonSess = personSess;
 		}
