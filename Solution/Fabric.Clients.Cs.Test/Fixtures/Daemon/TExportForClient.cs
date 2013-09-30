@@ -11,7 +11,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 	[TestFixture]
 	public class TExportForClient {
 
-		private Mock<IExportForClientDelegate> vMockDel;
+		private MockExportForClientDelegate vMockDel;
 		private Mock<IFabricClient> vMockClient;
 		private Mock<IFabricServices> vMockServices;
 		private Mock<IModifyService> vMockModify;
@@ -19,11 +19,6 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 		private Mock<IAddInstanceOperation> vMockAddInstance;
 		private Mock<IAddUrlOperation> vMockAddUrl;
 		private Mock<IAddFactorsOperation> vMockAddFactors;
-
-		private IList<IClassData> vNewClasses;
-		private IList<IInstanceData> vNewInstances;
-		private IList<IUrlData> vNewUrls;
-		private IList<FabBatchNewFactor> vNewFactors;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -78,17 +73,8 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 			vMockClient = new Mock<IFabricClient>();
 			vMockClient.SetupGet(x => x.Services).Returns(vMockServices.Object);
 
-			vNewClasses = new List<IClassData>();
-			vNewInstances = new List<IInstanceData>();
-			vNewUrls = new List<IUrlData>();
-			vNewFactors = new List<FabBatchNewFactor>();
-
-			vMockDel = new Mock<IExportForClientDelegate>();
+			vMockDel = new MockExportForClientDelegate();
 			vMockDel.Setup(x => x.GetClient()).Returns(vMockClient.Object);
-			vMockDel.Setup(x => x.GetNewClasses()).Returns(vNewClasses);
-			vMockDel.Setup(x => x.GetNewInstances()).Returns(vNewInstances);
-			vMockDel.Setup(x => x.GetNewUrls()).Returns(vNewUrls);
-			vMockDel.Setup(x => x.GetNewFactors()).Returns(vNewFactors);
 			vMockDel.Setup(x => x.StopExporting()).Returns(false);
 		}
 
@@ -125,70 +111,35 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 		/*--------------------------------------------------------------------------------------------*/
 		[TestCase(0, 0, 0, 0, 0)]
 		[TestCase(1, 1, 1, 1, 1)]
-		[TestCase(20, 20, 20, 20, 1)]
-		[TestCase(0, 10, 0, 21, 2)]
+		[TestCase(20, 20, 20, 20, 2)]
+		[TestCase(0, 10, 0, 21, 3)]
 		[TestCase(5, 0, 5, 0, 0)]
-		[TestCase(0, 0, 0, 50, 3)]
+		[TestCase(0, 0, 0, 50, 5)]
 		public void StartExport(int pClasses, int pInstances, int pUrls, int pFactors, int pFacBatch) {
-			InitLists(pClasses, pInstances, pUrls, pFactors);
+			vMockDel.SetCounts(pClasses, pInstances, pUrls, pFactors);
 
 			var efc = new ExportForClient(vMockDel.Object);
 			efc.StartExport();
 
 			VerifyCounts(pClasses, pInstances, pUrls, pFactors, pFacBatch);
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		[Test]
-		public void StartExportNulls() {
-			vNewClasses = null;
-			vNewInstances = null;
-			vNewUrls = null;
-			vNewFactors = null;
-
-			var efc = new ExportForClient(vMockDel.Object);
-			efc.StartExport();
-
-			VerifyCounts(0, 0, 0, 0, 0);
+			vMockDel.Verify(x => x.OnExportComplete(), Times.Once);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
 		public void StartExportStopExporting() {
 			vMockDel.Setup(x => x.StopExporting()).Returns(true);
-			InitLists(20, 20, 20, 20);
+			vMockDel.SetCounts(20, 20, 20, 20);
 
 			var efc = new ExportForClient(vMockDel.Object);
 			efc.StartExport();
 
 			VerifyCounts(0, 0, 0, 0, 0);
+			vMockDel.Verify(x => x.OnExportComplete(), Times.Once);
 		}
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public void InitLists(int pClasses, int pInstances, int pUrls, int pFactors) {
-			for ( int i = 0 ; i < pClasses ; ++i ) {
-				var mock = new Mock<IClassData>();
-				vNewClasses.Add(mock.Object);
-			}
-
-			for ( int i = 0 ; i < pInstances ; ++i ) {
-				var mock = new Mock<IInstanceData>();
-				vNewInstances.Add(mock.Object);
-			}
-
-			for ( int i = 0 ; i < pUrls ; ++i ) {
-				var mock = new Mock<IUrlData>();
-				vNewUrls.Add(mock.Object);
-			}
-
-			for ( int i = 0 ; i < pFactors ; ++i ) {
-				var mock = new Mock<FabBatchNewFactor>();
-				vNewFactors.Add(mock.Object);
-			}
-		}
-		
 		/*--------------------------------------------------------------------------------------------*/
 		private void VerifyCounts(int pClasses, int pInstances, int pUrls, int pFactors, int pFacBatch){
 			vMockAddClass.Verify(x =>

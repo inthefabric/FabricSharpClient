@@ -14,60 +14,33 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 	public class TExportService {
 
 		private Mock<IFabricClient> vMockDpClient;
-		private Mock<IExportForClientDelegate> vMockDpEfcDel;
-		private Mock<IExportForClient> vMockDpEfc;
-
 		private Mock<IExportServiceDelegate> vMockDel;
 
 		private ExportService vExpSvc;
-		private int vSvcThreadId;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		[SetUp]
 		public void SetUp() {
-			vMockDpClient = new Mock<IFabricClient>();
-			vMockDpEfcDel = new Mock<IExportForClientDelegate>();
-			vMockDpEfc = new Mock<IExportForClient>();
-			vSvcThreadId = -1;
+			vMockDpClient = NewMockClient("DpSess", 1000);
+			vMockDpClient.SetupGet(x => x.UseDataProviderPerson).Returns(true);
 
 			vMockDel = new Mock<IExportServiceDelegate>();
-
 			vMockDel.Setup(x => x.GetDataProvClient()).Returns(vMockDpClient.Object);
-			vMockDel.Setup(x => x.GetExportForClientDelegate(vMockDpClient.Object))
-				.Returns(vMockDpEfcDel.Object);
-			vMockDel.Setup(x => x.GetExportForClient(vMockDpEfcDel.Object)).Returns(vMockDpEfc.Object)
-				.Callback(() => vSvcThreadId = Thread.CurrentThread.ManagedThreadId);
 
 			vExpSvc = new ExportService(vMockDel.Object);
 		}
 
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		[Test]
-		public void StartDataProvExport() {
-			bool result = vExpSvc.StartDataProvExport();
-			Thread.Sleep(400);
+		private Mock<IFabricClient> NewMockClient(string pSessId, int pAddSeconds) {
+			var mockPs = new Mock<IFabricPersonSession>();
+			mockPs.SetupGet(x => x.SessionId).Returns(pSessId);
+			mockPs.SetupGet(x => x.Expiration).Returns(DateTime.UtcNow.AddSeconds(pAddSeconds));
 
-			Assert.True(result, "Incorrect result.");
-			Assert.AreNotEqual(-1, vSvcThreadId, "Thread ID was not set.");
-			Assert.AreNotEqual(Thread.CurrentThread.ManagedThreadId, vSvcThreadId,
-				"ExportForClient should occur on a different thread.");
-
-			vMockDel.Verify(x => x.GetDataProvClient(), Times.Once);
-			vMockDel.Verify(x => x.GetExportForClientDelegate(vMockDpClient.Object), Times.Once);
-			vMockDel.Verify(x => x.GetExportForClient(vMockDpEfcDel.Object), Times.Once);
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		[Test]
-		public void StartDataProvExportTwice() {
-			vExpSvc.StartDataProvExport();
-			bool result = vExpSvc.StartDataProvExport();
-
-			Assert.False(result, "Incorrect result.");
+			var mockFc = new Mock<IFabricClient>();
+			mockFc.SetupGet(x => x.PersonSession).Returns(mockPs.Object);
+			return mockFc;
 		}
 
 
@@ -78,30 +51,32 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 		[TestCase(1, 1)]
 		[TestCase(9, 2)]
 		[TestCase(9, 9)]
-		public void StartNewUserExports(int pCount, int pDuplicates) {
-			var clientList = new List<IFabricClient>();
+		public void StartNewExports(int pCount, int pDuplicates) {
+			var userClients = new List<IFabricClient>();
 			var threadMap = new ConcurrentDictionary<int, bool>();
 
+			var clientsToExport = new List<Mock<IFabricClient>>();
+			clientsToExport.Add(vMockDpClient);
+
 			for ( int i = 0 ; i < pCount+pDuplicates ; ++i ) {
-				var mockPs = new Mock<IFabricPersonSession>();
-				mockPs.SetupGet(x => x.SessionId).Returns("sessId"+(i < pCount ? i : i-pCount));
-				mockPs.SetupGet(x => x.Expiration).Returns(DateTime.UtcNow.AddMinutes(40));
-				
-				var mockFc = new Mock<IFabricClient>();
-				mockFc.SetupGet(x => x.PersonSession).Returns(mockPs.Object);
-				clientList.Add(mockFc.Object);
+				string sessId = "sessId"+(i < pCount ? i : i-pCount);
+				var mockFc = NewMockClient(sessId, 1000);
+				userClients.Add(mockFc.Object);
 
-				if ( i >= pCount ) {
-					continue;
+				if ( i < pCount ) {
+					clientsToExport.Add(mockFc);
 				}
+			}
 
+			foreach ( Mock<IFabricClient> mockFc in clientsToExport ) {
+				IFabricClient fc = mockFc.Object;
 				var mockEfcDel = new Mock<IExportForClientDelegate>();
 				
 				var mockEfc = new Mock<IExportForClient>();
-				mockEfc.SetupGet(x => x.Client).Returns(mockFc.Object);
+				mockEfc.SetupGet(x => x.Client).Returns(fc);
 				mockEfc.Setup(x => x.StartExport()).Callback(() => Thread.Sleep(100));
 
-				vMockDel.Setup(x => x.GetExportForClientDelegate(mockFc.Object))
+				vMockDel.Setup(x => x.GetExportForClientDelegate(fc))
 					.Returns(mockEfcDel.Object);
 
 				vMockDel.Setup(x => x.GetExportForClient(mockEfcDel.Object)).Returns(mockEfc.Object)
@@ -112,40 +87,38 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 					});
 			}
 
-			vMockDel.Setup(x => x.GetUserClients()).Returns(clientList);
+			vMockDel.Setup(x => x.GetUserClients()).Returns(userClients);
 
 			////
 
-			int result = vExpSvc.StartNewUserExports();
+			int result = vExpSvc.StartNewExports();
 			Thread.Sleep(400); //wait for threads to finish
 
-			Assert.AreEqual(pCount, result, "Incorrect result.");
-			Assert.AreEqual(pCount, threadMap.Count, "Incorrect thread count.");
+			int countWithDp = pCount+1;
+			Assert.AreEqual(countWithDp, result, "Incorrect result.");
+			Assert.AreEqual(countWithDp, threadMap.Count, "Incorrect thread count.");
 
+			vMockDel.Verify(x => x.GetDataProvClient(), Times.Once());
 			vMockDel.Verify(x => x.GetUserClients(), Times.Once());
 			vMockDel.Verify(x => x.GetExportForClientDelegate(It.IsAny<IFabricClient>()),
-				Times.Exactly(pCount));
+				Times.Exactly(countWithDp));
 			vMockDel.Verify(x => x.GetExportForClient(It.IsAny<IExportForClientDelegate>()),
-				Times.Exactly(pCount));
+				Times.Exactly(countWithDp));
 
-			for ( int i = 0 ; i < pCount ; ++i ) {
-				vMockDel.Verify(x => x.GetExportForClientDelegate(clientList[i]), Times.Once);
+			for ( int i = 0 ; i < countWithDp ; ++i ) {
+				IFabricClient fc = clientsToExport[i].Object;
+				vMockDel.Verify(x => x.GetExportForClientDelegate(fc), Times.Once);
 			}
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		[TestCase(1)]
 		[TestCase(9)]
-		public void StartNewUserExportsExpired(int pCount) {
+		public void StartNewExportsExpired(int pCount) {
 			var clientList = new List<IFabricClient>();
 
 			for ( int i = 0 ; i < pCount ; ++i ) {
-				var mockPs = new Mock<IFabricPersonSession>();
-				mockPs.SetupGet(x => x.SessionId).Returns("sessId"+i);
-				mockPs.SetupGet(x => x.Expiration).Returns(DateTime.UtcNow.AddSeconds(-1));
-				
-				var mockFc = new Mock<IFabricClient>();
-				mockFc.SetupGet(x => x.PersonSession).Returns(mockPs.Object);
+				var mockFc = NewMockClient("sessId"+i, -1);
 				clientList.Add(mockFc.Object);
 			}
 
@@ -153,14 +126,16 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 
 			////
 
-			int result = vExpSvc.StartNewUserExports();
+			int result = vExpSvc.StartNewExports();
 
-			Assert.AreEqual(0, result, "Incorrect result.");
+			Assert.AreEqual(1, result, "Incorrect result."); //only the Data Prov client
 
-			vMockDel.Verify(x => x.GetUserClients(), Times.Once());
-			vMockDel.Verify(x => x.GetExportForClientDelegate(It.IsAny<IFabricClient>()), Times.Never);
-			vMockDel.Verify(x => x.GetExportForClient(It.IsAny<IExportForClientDelegate>()),
-				Times.Never);
+			vMockDel.Verify(x => x.GetDataProvClient(), Times.Once);
+			vMockDel.Verify(x => x.GetUserClients(), Times.Once);
+			vMockDel.Verify(x => x.GetExportForClientDelegate(It.IsAny<IFabricClient>()), Times.Once);
+			vMockDel.Verify(x => x.GetExportForClient(It.IsAny<IExportForClientDelegate>()),Times.Once);
+			vMockDel.Verify(x => x.HandleExpiredUserClient(It.IsAny<IFabricClient>()),
+				Times.Exactly(pCount));
 		}
 
 	}

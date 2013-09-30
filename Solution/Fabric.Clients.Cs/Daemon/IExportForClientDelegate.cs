@@ -54,6 +54,10 @@ namespace Fabric.Clients.Cs.Daemon {
 		/// <summary />
 		void OnFactorExport(FabBatchResult pFactor);
 
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		void OnExportComplete();
+
 	}
 
 }

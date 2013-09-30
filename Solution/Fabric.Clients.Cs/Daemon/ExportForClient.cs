@@ -27,65 +27,100 @@ namespace Fabric.Clients.Cs.Daemon {
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		public void StartExport() {
-			ExportClasses();
-			ExportInstances();
-			ExportUrls();
-			ExportFactors();
+			while ( true ) {
+				int n = 0;
+
+				while ( ExportClasses() > 0 ) {
+					++n;
+				}
+
+				while ( ExportInstances() > 0 ) {
+					++n;
+				}
+
+				while ( ExportUrls() > 0 ) {
+					++n;
+				}
+
+				while ( ExportFactors() > 0 ) {
+					++n;
+				}
+
+				if ( n > 0 ) {
+					continue;
+				}
+
+				vDelegate.OnExportComplete();
+				return;
+			}
 		}
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private void ExportClasses() {
+		private int ExportClasses() {
 			IList<IClassData> classes = vDelegate.GetNewClasses();
+			int n = 0;
 
 			foreach ( IClassData data in classes ) {
 				if ( vDelegate.StopExporting() ) {
-					return;
+					return n;
 				}
 
 				FabClass cla = Client.Services.Modify.AddClass
 					.Post(data.Name, data.Disamb, data.Note).FirstDataItem();
 				vDelegate.OnClassExport(data, cla);
+				++n;
 			}
+
+			return classes.Count;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private void ExportInstances() {
+		private int ExportInstances() {
 			IList<IInstanceData> instances = vDelegate.GetNewInstances();
+			int n = 0;
 
 			foreach ( IInstanceData data in instances ) {
 				if ( vDelegate.StopExporting() ) {
-					return;
+					return n;
 				}
 
 				FabInstance inst = Client.Services.Modify.AddInstance
 					.Post(data.Name, data.Disamb, data.Note).FirstDataItem();
 				vDelegate.OnInstanceExport(data, inst);
+				++n;
 			}
+
+			return instances.Count;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private void ExportUrls() {
+		private int ExportUrls() {
 			IList<IUrlData> urls = vDelegate.GetNewUrls();
+			int n = 0;
 
 			foreach ( IUrlData data in urls ) {
 				if ( vDelegate.StopExporting() ) {
-					return;
+					return n;
 				}
 
 				FabUrl url = Client.Services.Modify.AddUrl
 					.Post(data.Path, data.Name).FirstDataItem();
 				vDelegate.OnUrlExport(data, url);
+				++n;
 			}
+
+			return n;
 		}
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private void ExportFactors() {
+		private int ExportFactors() {
 			IList<FabBatchNewFactor> factors = vDelegate.GetNewFactors();
 			var batch = new List<FabBatchNewFactor>();
+			int n = 0;
 
 			foreach ( FabBatchNewFactor data in factors ) {
 				batch.Add(data);
@@ -94,19 +129,21 @@ namespace Fabric.Clients.Cs.Daemon {
 					continue;
 				}
 
-				ExportFactorBatch(batch);
+				n += ExportFactorBatch(batch);
 				batch = new List<FabBatchNewFactor>();
 			}
 
 			if ( batch.Count > 0 ) {
-				ExportFactorBatch(batch);
+				n += ExportFactorBatch(batch);
 			}
+
+			return n;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private void ExportFactorBatch(IList<FabBatchNewFactor> pBatch) {
+		private int ExportFactorBatch(IList<FabBatchNewFactor> pBatch) {
 			if ( vDelegate.StopExporting() ) {
-				return;
+				return 0;
 			}
 
 			IList<FabBatchResult> results = Client.Services.Modify.AddFactors
@@ -115,6 +152,8 @@ namespace Fabric.Clients.Cs.Daemon {
 			foreach ( FabBatchResult r in results ) {
 				vDelegate.OnFactorExport(r);
 			}
+
+			return results.Count;
 		}
 	
 	}

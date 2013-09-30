@@ -11,8 +11,7 @@ namespace Fabric.Clients.Cs.Daemon {
 
 		private readonly IExportServiceDelegate vDelegate;
 		private readonly ConcurrentDictionary<string, IFabricClient> vActiveUserClientMap;
-
-		private IFabricClient vDataProvClient;
+		private readonly IFabricClient vDataProvClient;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -21,62 +20,38 @@ namespace Fabric.Clients.Cs.Daemon {
 		public ExportService(IExportServiceDelegate pDelegate) {
 			vDelegate = pDelegate;
 			vActiveUserClientMap = new ConcurrentDictionary<string, IFabricClient>();
+			vDataProvClient = vDelegate.GetDataProvClient();
 		}
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		public bool StartDataProvExport() {
-			if ( vDataProvClient != null ) {
-				return false;
-			}
-
-			vDataProvClient = vDelegate.GetDataProvClient();
-
-			var t = new Thread(esdObj => {
-				try {
-					var efc = vDelegate.GetExportForClient((IExportForClientDelegate)esdObj);
-					efc.StartExport();
-				}
-				catch ( Exception e ) {
-					LogError(vDataProvClient, e);
-				}
-			});
-
-			t.Start(vDelegate.GetExportForClientDelegate(vDataProvClient));
-			return true;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
-		public int StartNewUserExports() {
+		public int StartNewExports() {
 			IList<IFabricClient> userClients = vDelegate.GetUserClients();
 			int n = 0;
 
-			foreach ( IFabricClient userClient in userClients ) {
-				if ( userClient.PersonSession.Expiration <= DateTime.UtcNow ) {
-					vDelegate.HandleExpiredUserClient(userClient);
-					continue;
-				}
+			n += StartExport(vDataProvClient);
 
-				if ( StartUserExport(userClient) ) {
-					n++;
-				}
+			foreach ( IFabricClient uc in userClients ) {
+				n += StartExport(uc);
 			}
 
 			return n;
 		}
 
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private bool StartUserExport(IFabricClient pUserClient) {
-			if ( IsUserClientActive(pUserClient) ) {
-				return false;
+		private int StartExport(IFabricClient pClient) {
+			if ( !pClient.UseDataProviderPerson && pClient.PersonSession.Expiration <= DateTime.UtcNow){
+				vDelegate.HandleExpiredUserClient(pClient);
+				return 0;
 			}
 
-			AddActiveUserClient(pUserClient);
+			if ( IsUserClientActive(pClient) ) {
+				return 0;
+			}
+
+			AddActiveUserClient(pClient);
 
 			var t = new Thread(esdObj => {
 				try {
@@ -85,37 +60,39 @@ namespace Fabric.Clients.Cs.Daemon {
 					RemoveActiveUserClient(efc.Client);
 				}
 				catch ( Exception e ) {
-					LogError(pUserClient, e);
+					LogError(pClient, e);
 				}
 			});
 
-			t.Start(vDelegate.GetExportForClientDelegate(pUserClient));
-			return true;
+			t.Start(vDelegate.GetExportForClientDelegate(pClient));
+			return 1;
 		}
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private static string GetMapKey(IFabricClient pUserClient) {
-			return pUserClient.PersonSession.SessionId;
+		private static string GetMapKey(IFabricClient pClient) {
+			return pClient.PersonSession.SessionId;
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		private void AddActiveUserClient(IFabricClient pUserClient) {
-			vActiveUserClientMap.GetOrAdd(GetMapKey(pUserClient), pUserClient);
+		private void AddActiveUserClient(IFabricClient pClient) {
+			vActiveUserClientMap.GetOrAdd(GetMapKey(pClient), pClient);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		private bool IsUserClientActive(IFabricClient pUserClient) {
-			return vActiveUserClientMap.ContainsKey(GetMapKey(pUserClient));
+		private bool IsUserClientActive(IFabricClient pClient) {
+			return vActiveUserClientMap.ContainsKey(GetMapKey(pClient));
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private void RemoveActiveUserClient(IFabricClient pUserClient) {
+		private void RemoveActiveUserClient(IFabricClient pClient) {
 			IFabricClient rem;
-			vActiveUserClientMap.TryRemove(GetMapKey(pUserClient), out rem);
+			vActiveUserClientMap.TryRemove(GetMapKey(pClient), out rem);
 		}
 
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		private static void LogError(IFabricClient pClient, Exception pEx) {
 			string msg = pEx.Message+"\n"+pEx.StackTrace;
