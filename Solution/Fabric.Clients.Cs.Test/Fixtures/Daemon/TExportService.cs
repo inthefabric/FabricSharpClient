@@ -49,6 +49,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 		[Test]
 		public void StartDataProvExport() {
 			bool result = vExpSvc.StartDataProvExport();
+			Thread.Sleep(400);
 
 			Assert.True(result, "Incorrect result.");
 			Assert.AreNotEqual(-1, vSvcThreadId, "Thread ID was not set.");
@@ -116,7 +117,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 			////
 
 			int result = vExpSvc.StartNewUserExports();
-			Thread.Sleep(500); //wait for threads to finish
+			Thread.Sleep(400); //wait for threads to finish
 
 			Assert.AreEqual(pCount, result, "Incorrect result.");
 			Assert.AreEqual(pCount, threadMap.Count, "Incorrect thread count.");

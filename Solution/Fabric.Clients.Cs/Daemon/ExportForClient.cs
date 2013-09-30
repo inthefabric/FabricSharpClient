@@ -88,8 +88,9 @@ namespace Fabric.Clients.Cs.Daemon {
 			var batch = new List<FabBatchNewFactor>();
 
 			foreach ( FabBatchNewFactor data in factors ) {
+				batch.Add(data);
+
 				if ( batch.Count < 20 ) {
-					batch.Add(data);
 					continue;
 				}
 

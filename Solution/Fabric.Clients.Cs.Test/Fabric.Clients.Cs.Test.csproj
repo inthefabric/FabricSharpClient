@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ThreadedTest.cs" />
+    <Compile Include="Fixtures\Daemon\TExportForClient.cs" />
     <Compile Include="Fixtures\Daemon\TExportService.cs" />
     <Compile Include="Fixtures\Session\TFabricSessionContainer.cs" />
     <Compile Include="Fixtures\TSpec.cs" />
