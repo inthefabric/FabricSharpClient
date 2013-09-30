@@ -102,6 +102,10 @@
     <Compile Include="Api\TraversalStep.cs" />
     <Compile Include="Api\TraversalStepAlias.cs" />
     <Compile Include="Api\TraversalStepT.cs" />
+    <Compile Include="Daemon\Data\ArtifactData.cs" />
+    <Compile Include="Daemon\Data\ClassData.cs" />
+    <Compile Include="Daemon\Data\InstanceData.cs" />
+    <Compile Include="Daemon\Data\UrlData.cs" />
     <Compile Include="Daemon\IExportService.cs" />
     <Compile Include="Daemon\IExportForClientDelegate.cs" />
     <Compile Include="Daemon\ExportForClient.cs" />
