@@ -5,7 +5,7 @@
 	public class ArtifactData {
 
 		/// <summary />
-		public virtual string ExporterId { get; set; }
+		public virtual long ExporterId { get; set; }
 
     }
 

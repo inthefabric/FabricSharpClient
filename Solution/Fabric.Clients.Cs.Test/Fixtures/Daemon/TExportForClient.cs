@@ -111,7 +111,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 		/*--------------------------------------------------------------------------------------------*/
 		[TestCase(0, 0, 0, 0, 0)]
 		[TestCase(1, 1, 1, 1, 1)]
-		[TestCase(20, 20, 20, 20, 2)]
+		[TestCase(18, 17, 19, 20, 2)]
 		[TestCase(0, 10, 0, 21, 3)]
 		[TestCase(5, 0, 5, 0, 0)]
 		[TestCase(0, 0, 0, 50, 5)]
@@ -121,7 +121,8 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 			var efc = new ExportForClient(vMockDel.Object);
 			efc.StartExport();
 
-			VerifyCounts(pClasses, pInstances, pUrls, pFactors, pFacBatch);
+			VerifyFabricCounts(pClasses, pInstances, pUrls, pFacBatch);
+			VerifyExportCounts(pClasses, pInstances, pUrls, pFactors);
 			vMockDel.Verify(x => x.OnExportComplete(), Times.Once);
 		}
 
@@ -134,14 +135,28 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 			var efc = new ExportForClient(vMockDel.Object);
 			efc.StartExport();
 
-			VerifyCounts(0, 0, 0, 0, 0);
+			VerifyFabricCounts(0, 0, 0, 0);
+			VerifyExportCounts(0, 0, 0, 0);
 			vMockDel.Verify(x => x.OnExportComplete(), Times.Once);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		[Test]
+		public void StartExportFakeMode() {
+			vMockDel.SetCounts(1, 2, 3, 4);
+			vMockDel.Setup(x => x.FakeFabricRequestMode()).Returns(true);
+
+			var efc = new ExportForClient(vMockDel.Object);
+			efc.StartExport();
+
+			VerifyFabricCounts(0, 0, 0, 0);
+			VerifyExportCounts(1, 2, 3, 4);
 		}
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private void VerifyCounts(int pClasses, int pInstances, int pUrls, int pFactors, int pFacBatch){
+		private void VerifyFabricCounts(int pClasses, int pInstances, int pUrls, int pFacBatch){
 			vMockAddClass.Verify(x =>
 				x.Post(
 					It.IsAny<string>(),
@@ -166,7 +181,10 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 				x.Post(
 					It.IsAny<FabBatchNewFactor[]>()
 				), Times.Exactly(pFacBatch));
+		}
 
+		/*--------------------------------------------------------------------------------------------*/
+		private void VerifyExportCounts(int pClasses, int pInstances, int pUrls, int pFactors) {
 			vMockDel.Verify(x => x
 				.OnClassExport(
 					It.IsAny<ClassData>(),

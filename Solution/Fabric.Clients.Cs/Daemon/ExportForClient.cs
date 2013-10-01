@@ -67,8 +67,16 @@ namespace Fabric.Clients.Cs.Daemon {
 					return n;
 				}
 
-				FabClass cla = Client.Services.Modify.AddClass
-					.Post(data.Name, data.Disamb, data.Note).FirstDataItem();
+				FabClass cla;
+
+				if ( vDelegate.FakeFabricRequestMode() ) {
+					cla = new FabClass { ArtifactId = 1000000+data.ExporterId };
+				}
+				else {
+					cla = Client.Services.Modify.AddClass
+						.Post(data.Name, data.Disamb, data.Note).FirstDataItem();
+				}
+
 				vDelegate.OnClassExport(data, cla);
 				++n;
 			}
@@ -86,8 +94,16 @@ namespace Fabric.Clients.Cs.Daemon {
 					return n;
 				}
 
-				FabInstance inst = Client.Services.Modify.AddInstance
-					.Post(data.Name, data.Disamb, data.Note).FirstDataItem();
+				FabInstance inst;
+				
+				if ( vDelegate.FakeFabricRequestMode() ) {
+					inst = new FabInstance { ArtifactId = 1000000+data.ExporterId };
+				}
+				else {
+					inst = Client.Services.Modify.AddInstance
+						.Post(data.Name, data.Disamb, data.Note).FirstDataItem();
+				}
+
 				vDelegate.OnInstanceExport(data, inst);
 				++n;
 			}
@@ -105,8 +121,16 @@ namespace Fabric.Clients.Cs.Daemon {
 					return n;
 				}
 
-				FabUrl url = Client.Services.Modify.AddUrl
-					.Post(data.Path, data.Name).FirstDataItem();
+				FabUrl url;
+
+				if ( vDelegate.FakeFabricRequestMode() ) {
+					url = new FabUrl { ArtifactId = 1000000+data.ExporterId };
+				}
+				else {
+					url = Client.Services.Modify.AddUrl
+						.Post(data.Path, data.Name).FirstDataItem();
+				}
+
 				vDelegate.OnUrlExport(data, url);
 				++n;
 			}
@@ -146,8 +170,22 @@ namespace Fabric.Clients.Cs.Daemon {
 				return 0;
 			}
 
-			IList<FabBatchResult> results = Client.Services.Modify.AddFactors
-				.Post(pBatch.ToArray()).Data;
+			IList<FabBatchResult> results;
+
+			if ( vDelegate.FakeFabricRequestMode() ) {
+				results = new List<FabBatchResult>();
+
+				foreach ( FabBatchNewFactor nf in pBatch ) {
+					var br = new FabBatchResult();
+					br.BatchId = nf.BatchId;
+					br.ResultId = 1000000+nf.BatchId;
+					results.Add(br);
+				}
+			}
+			else {
+				results = Client.Services.Modify.AddFactors
+					.Post(pBatch.ToArray()).Data;
+			}
 
 			foreach ( FabBatchResult r in results ) {
 				vDelegate.OnFactorExport(r);
