@@ -111,10 +111,6 @@
     <Compile Include="Daemon\ExportForClient.cs" />
     <Compile Include="Daemon\IExportForClient.cs" />
     <Compile Include="Daemon\ExportService.cs" />
-    <Compile Include="Daemon\Data\IArtifactData.cs" />
-    <Compile Include="Daemon\Data\IUrlData.cs" />
-    <Compile Include="Daemon\Data\IInstanceData.cs" />
-    <Compile Include="Daemon\Data\IClassData.cs" />
     <Compile Include="Daemon\IExportServiceDelegate.cs" />
     <Compile Include="FabricClientConfig.cs" />
     <Compile Include="FabricErrorException.cs" />

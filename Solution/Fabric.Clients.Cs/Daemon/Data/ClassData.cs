@@ -2,16 +2,16 @@
 	
 	/*================================================================================================*/
 	/// <summary />
-	public class ClassData : ArtifactData, IClassData {
+	public class ClassData : ArtifactData {
 
 		/// <summary />
-		public string Name { get; set; }
+		public virtual string Name { get; set; }
 
 		/// <summary />
-		public string Disamb { get; set; }
+		public virtual string Disamb { get; set; }
 
 		/// <summary />
-		public string Note { get; set; }
+		public virtual string Note { get; set; }
 
     }
 

@@ -2,10 +2,10 @@
 	
 	/*================================================================================================*/
 	/// <summary />
-	public class ArtifactData : IArtifactData {
+	public class ArtifactData {
 
 		/// <summary />
-		public long ExporterId { get; set; }
+		public virtual string ExporterId { get; set; }
 
     }
 

@@ -2,13 +2,13 @@
 
 	/*================================================================================================*/
 	/// <summary />
-	public class UrlData : ArtifactData, IUrlData {
+	public class UrlData : ArtifactData {
 
 		/// <summary />
-		public string Name { get; set; }
+		public virtual string Name { get; set; }
 
 		/// <summary />
-		public string Path { get; set; }
+		public virtual string Path { get; set; }
 
 	}
 

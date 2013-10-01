@@ -59,10 +59,10 @@ namespace Fabric.Clients.Cs.Daemon {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		private int ExportClasses() {
-			IList<IClassData> classes = vDelegate.GetNewClasses();
+			IList<ClassData> classes = vDelegate.GetNewClasses();
 			int n = 0;
 
-			foreach ( IClassData data in classes ) {
+			foreach ( ClassData data in classes ) {
 				if ( vDelegate.StopExporting() ) {
 					return n;
 				}
@@ -78,10 +78,10 @@ namespace Fabric.Clients.Cs.Daemon {
 
 		/*--------------------------------------------------------------------------------------------*/
 		private int ExportInstances() {
-			IList<IInstanceData> instances = vDelegate.GetNewInstances();
+			IList<InstanceData> instances = vDelegate.GetNewInstances();
 			int n = 0;
 
-			foreach ( IInstanceData data in instances ) {
+			foreach ( InstanceData data in instances ) {
 				if ( vDelegate.StopExporting() ) {
 					return n;
 				}
@@ -97,10 +97,10 @@ namespace Fabric.Clients.Cs.Daemon {
 
 		/*--------------------------------------------------------------------------------------------*/
 		private int ExportUrls() {
-			IList<IUrlData> urls = vDelegate.GetNewUrls();
+			IList<UrlData> urls = vDelegate.GetNewUrls();
 			int n = 0;
 
-			foreach ( IUrlData data in urls ) {
+			foreach ( UrlData data in urls ) {
 				if ( vDelegate.StopExporting() ) {
 					return n;
 				}

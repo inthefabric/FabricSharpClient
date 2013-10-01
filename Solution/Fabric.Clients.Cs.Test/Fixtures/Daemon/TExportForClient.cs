@@ -169,19 +169,19 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 
 			vMockDel.Verify(x => x
 				.OnClassExport(
-					It.IsAny<IClassData>(),
+					It.IsAny<ClassData>(),
 					It.IsAny<FabClass>()
 				), Times.Exactly(pClasses));
 
 			vMockDel.Verify(x => x
 				.OnInstanceExport(
-					It.IsAny<IInstanceData>(),
+					It.IsAny<InstanceData>(),
 					It.IsAny<FabInstance>()
 				), Times.Exactly(pInstances));
 
 			vMockDel.Verify(x => x
 				.OnUrlExport(
-					It.IsAny<IUrlData>(),
+					It.IsAny<UrlData>(),
 					It.IsAny<FabUrl>()
 				), Times.Exactly(pUrls));
 

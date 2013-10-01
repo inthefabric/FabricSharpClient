@@ -22,15 +22,15 @@ namespace Fabric.Clients.Cs.Daemon {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		IList<IClassData> GetNewClasses();
+		IList<ClassData> GetNewClasses();
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		IList<IInstanceData> GetNewInstances();
+		IList<InstanceData> GetNewInstances();
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		IList<IUrlData> GetNewUrls();
+		IList<UrlData> GetNewUrls();
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
@@ -40,15 +40,15 @@ namespace Fabric.Clients.Cs.Daemon {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void OnClassExport(IClassData pClassData, FabClass pClass);
+		void OnClassExport(ClassData pClassData, FabClass pClass);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void OnInstanceExport(IInstanceData pInstanceData, FabInstance pInstance);
+		void OnInstanceExport(InstanceData pInstanceData, FabInstance pInstance);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void OnUrlExport(IUrlData pUrlData, FabUrl pUrl);
+		void OnUrlExport(UrlData pUrlData, FabUrl pUrl);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />

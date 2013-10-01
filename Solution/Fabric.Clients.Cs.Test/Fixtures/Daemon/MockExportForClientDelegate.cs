@@ -22,14 +22,14 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 		/*--------------------------------------------------------------------------------------------*/
 		public void SetCounts(int pClasses, int pInstances, int pUrls, int pFactors) {
 			vRemainMap = new Dictionary<string, int>();
-			vRemainMap.Add(typeof(IClassData).Name, pClasses);
-			vRemainMap.Add(typeof(IInstanceData).Name, pInstances);
-			vRemainMap.Add(typeof(IUrlData).Name, pUrls);
+			vRemainMap.Add(typeof(ClassData).Name, pClasses);
+			vRemainMap.Add(typeof(InstanceData).Name, pInstances);
+			vRemainMap.Add(typeof(UrlData).Name, pUrls);
 			vRemainMap.Add(typeof(FabBatchNewFactor).Name, pFactors);
 
-			Setup(x => x.GetNewClasses()).Returns(NewList<IClassData>);
-			Setup(x => x.GetNewInstances()).Returns(NewList<IInstanceData>);
-			Setup(x => x.GetNewUrls()).Returns(NewList<IUrlData>);
+			Setup(x => x.GetNewClasses()).Returns(NewList<ClassData>);
+			Setup(x => x.GetNewInstances()).Returns(NewList<InstanceData>);
+			Setup(x => x.GetNewUrls()).Returns(NewList<UrlData>);
 			Setup(x => x.GetNewFactors()).Returns(NewList<FabBatchNewFactor>);
 		}
 
