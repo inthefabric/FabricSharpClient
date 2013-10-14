@@ -56,13 +56,7 @@ foreach ( FabSpecTravFunc f in trav.TraversalFunctions ) {
 	
 	foreach ( FabSpecTravFuncParam fp in f.Parameters ) {
 		funcParams += ", "+fp.Type+" "+fp.Name;
-		
-		uriParams += (uriParams == "" ? "" : "+\",\"+");
-		uriParams += fp.Name;
-
-		if ( uriParams.Length > 0 ) {
-			uriParams = "\"+"+uriParams+"+\"";
-		}
+		uriParams += (uriParams == "" ? "" : ",")+"\"+"+fp.Name+"+\"";
 
 		paramComments += (paramComments == "" ? "" : "\r\n\t\t");
 		paramComments += "/// <param name=\""+fp.Name+"\">\r\n\t\t///   "+

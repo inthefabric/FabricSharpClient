@@ -1,6 +1,6 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 9/13/2013 4:41:06 PM
+// Generated on 10/14/2013 1:13:20 PM
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -222,7 +222,7 @@ namespace Fabric.Clients.Cs.Api {
 		///   The date/time to use for this search.
 		/// </param>
 		public static IFabArtifactStep ArtifactCreated<T>(this T PrevStep, string Operation, long Value) where T : IHasFuncArtifactCreated {
-			PrevStep.Trav.AppendToUri("/ArtifactCreated("+"+Operation+"+","+Value+")");
+			PrevStep.Trav.AppendToUri("/ArtifactCreated("+Operation+","+Value+")");
 			return new FabArtifactStep(PrevStep.Trav);
 		}
 		
@@ -329,7 +329,7 @@ namespace Fabric.Clients.Cs.Api {
 		///   The date/time to use for this search.
 		/// </param>
 		public static IFabFactorStep FactorCreated<T>(this T PrevStep, string Operation, long Value) where T : IHasFuncFactorCreated {
-			PrevStep.Trav.AppendToUri("/FactorCreated("+"+Operation+"+","+Value+")");
+			PrevStep.Trav.AppendToUri("/FactorCreated("+Operation+","+Value+")");
 			return new FabFactorStep(PrevStep.Trav);
 		}
 		
@@ -436,7 +436,7 @@ namespace Fabric.Clients.Cs.Api {
 		///   The maximum number of vertices to return.
 		/// </param>
 		public static T Limit<T>(this T PrevStep, long Index, int Count) where T : IHasFuncLimit {
-			PrevStep.Trav.AppendToUri("/Limit("+"+Index+"+","+Count+")");
+			PrevStep.Trav.AppendToUri("/Limit("+Index+","+Count+")");
 			return PrevStep;
 		}
 		
