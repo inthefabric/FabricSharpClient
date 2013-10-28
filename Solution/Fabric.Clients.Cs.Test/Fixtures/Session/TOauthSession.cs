@@ -15,6 +15,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		internal Mock<IOauthService> MockOauth { get; private set; }
 		internal OauthSession OauthSess { get; private set; }
 
+		private string vRedirUri;
 		private FabricSessionContainer vSessContain;
 
 
@@ -23,9 +24,10 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		[SetUp]
 		public virtual void SetUp() {
 			vSessContain = new FabricSessionContainer();
+			vRedirUri = "http://testdomain.com/oauth";
 
 			Config = new FabricClientConfig("Test", "http://testFabric.com/api", 1,
-				"MySecretCode", 1, "http://testdomain.com/oauth", FabricSessionContainerProvider);
+				"MySecretCode", 1, (k => vRedirUri), SessionContainerProvider);
 			MockOauth = new Mock<IOauthService>();
 			OauthSess = NewOauthSess(Config, MockOauth.Object);
 		}
@@ -37,7 +39,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		protected virtual IFabricSessionContainer FabricSessionContainerProvider(string pConfigKey) {
+		protected virtual IFabricSessionContainer SessionContainerProvider(string pConfigKey) {
 			return vSessContain;
 		}
 
@@ -84,6 +86,8 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 
 			Assert.NotNull(OauthSess.SessionId, "SessionId should be filled.");
 			Assert.AreEqual(32, OauthSess.SessionId.Length, "Incorrect SessionId length.");
+			Assert.AreEqual(Config.GetOauthRedirectUri(), OauthSess.OAuthRedirectUri,
+				"Incorrect OAuthRedirectUri.");
 		}
 
 		/*--------------------------------------------------------------------------------------------*/

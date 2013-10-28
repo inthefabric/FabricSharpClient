@@ -24,7 +24,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			vSessProvCounter = 0;
 
 			vConfig = new FabricClientConfig("Test", "http://testFabric.com/api", 1,
-				"MySecretCode", 1, "http://testdomain.com/oauth", FabricSessionContainerProvider);
+				"MySecretCode", 1, (k => "http://testdomain.com/oauth"), SessionContainerProvider);
 			vAppSess = new AppSession(vConfig, null);
 			vDpSess = new AppDataProvSession(vConfig, null, vAppSess);
 			vSessContain = new FabricSessionContainer();
@@ -42,7 +42,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private IFabricSessionContainer FabricSessionContainerProvider(string pConfigKey) {
+		private IFabricSessionContainer SessionContainerProvider(string pConfigKey) {
 			vSessProvCounter++;
 			return vSessContain;
 		}

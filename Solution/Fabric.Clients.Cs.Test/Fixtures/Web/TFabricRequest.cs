@@ -38,7 +38,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		[SetUp]
 		public void SetUp() {
 			vConfig = new FabricClientConfig("Test", "http://localhost/fakeApi", 1,
-				"MySecretCode", 1, "http://testdomain.com/oauth", FabricSessionContainerProvider);
+				"MySecretCode", 1, (k => "http://testdomain.com/oauth"), (k => vSessContain));
 			vMockAppSess = new Mock<IFabricAppSession>();
 			vMockDpSess = new Mock<IFabricAppDataProvSession>();
 			vMockPerSess = new Mock<IFabricPersonSession>();
@@ -77,11 +77,6 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		/*--------------------------------------------------------------------------------------------*/
 		private FabricRequest<T> NewFabricRequest<T>() {
 			return new FabricRequest<T>(vMoqHttpProv.Object, vMethod, vPath, vQuery, vPost);
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		private IFabricSessionContainer FabricSessionContainerProvider(string pConfigKey) {
-			return vSessContain;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/

@@ -17,7 +17,8 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		[SetUp]
 		public virtual void SetUp() {
 			vConfig = new FabricClientConfig("Test", "http://testFabric.com/api", 1,
-				"MySecretCode", 1, "http://testdomain.com/oauth", k => new FabricSessionContainer());
+				"MySecretCode", 1, (k => "http://testdomain.com/oauth"), 
+				(k => new FabricSessionContainer()));
 
 			FabricClient.InitOnce(vConfig);
 		}

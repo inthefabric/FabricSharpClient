@@ -23,9 +23,6 @@ namespace Fabric.Clients.Cs {
 		long AppDataProvPersonId { get; }
 
 		/// <summary />
-		string AppOAuthRedirectUri { get; }
-
-		/// <summary />
 		IFabricLog Logger { get; set; }
 
 
@@ -33,6 +30,10 @@ namespace Fabric.Clients.Cs {
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		IFabricSessionContainer GetSessionContainer();
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		string GetOauthRedirectUri();
 
 	}
 

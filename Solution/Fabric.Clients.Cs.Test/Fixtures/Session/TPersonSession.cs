@@ -27,7 +27,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			return Config.ApiPath+"/Oauth/Login?"+
 				"response_type=code"+
 				"&client_id="+Config.AppId+
-				"&redirect_uri="+Config.AppOAuthRedirectUri+
+				"&redirect_uri="+Config.GetOauthRedirectUri()+
 				"&scope="+
 				"&state="+pPerSess.SessionId+
 				"&switchMode="+(pSwitchUser ? "1" : "0");
@@ -53,7 +53,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 				.Setup(x => x.AccessTokenRefresh.Get(
 					refresh,
 					Config.AppSecret,
-					Config.AppOAuthRedirectUri
+					Config.GetOauthRedirectUri()
 				))
 				.Returns(expectResult);
 
@@ -118,7 +118,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 				.Setup(x => x.AccessTokenAuthCode.Get(
 					grantCode,
 					Config.AppSecret,
-					Config.AppOAuthRedirectUri
+					Config.GetOauthRedirectUri()
 				))
 				.Returns(expectResult);
 

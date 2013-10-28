@@ -25,12 +25,12 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		protected override IFabricSessionContainer FabricSessionContainerProvider(string pConfigKey) {
+		protected override IFabricSessionContainer SessionContainerProvider(string pConfigKey) {
 			if ( vThreadedTest != null ) {
 				return vThreadedTest.GetSessionContainer();
 			}
 
-			return base.FabricSessionContainerProvider(pConfigKey);
+			return base.SessionContainerProvider(pConfigKey);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -45,7 +45,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 				.Setup(x => x.AccessTokenClientCredentials.Get(
 					Config.AppId+"",
 					Config.AppSecret,
-					Config.AppOAuthRedirectUri
+					Config.GetOauthRedirectUri()
 				))
 				.Returns(pResult);
 

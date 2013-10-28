@@ -27,11 +27,9 @@ namespace Fabric.Clients.Cs {
 		public long AppDataProvPersonId { get; private set; }
 
 		/// <summary />
-		public string AppOAuthRedirectUri { get; private set; }
-
-		/// <summary />
 		public IFabricLog Logger { get; set; }
 
+		private readonly OauthRedirectUriProvider vRedirProv;
 		private readonly SessionContainerProvider vSessProv;
 
 
@@ -39,8 +37,8 @@ namespace Fabric.Clients.Cs {
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		public FabricClientConfig(string configKey, string apiPath, long appId, string appSecret,
-												long appDataProvPersonId, string appOauthRedirectUri,
-												SessionContainerProvider sessionContainerProvider) {
+							long appDataProvPersonId, OauthRedirectUriProvider oauthRedirectUriProvider,
+							SessionContainerProvider sessionContainerProvider) {
 
 			if ( string.IsNullOrWhiteSpace(configKey) ) {
 				throw new Exception("Invalid ConfigKey.");
@@ -58,8 +56,8 @@ namespace Fabric.Clients.Cs {
 				throw new Exception("Invalid AppSecret.");
 			}
 
-			if ( string.IsNullOrWhiteSpace(appOauthRedirectUri) ) {
-				throw new Exception("Invalid AppOAuthRedirectUri.");
+			if ( oauthRedirectUriProvider == null ) {
+				throw new Exception("Invalid OauthRedirectUriProvider.");
 			}
 
 			if ( sessionContainerProvider == null ) {
@@ -77,10 +75,14 @@ namespace Fabric.Clients.Cs {
 			AppId = appId;
 			AppSecret = appSecret;
 			AppDataProvPersonId = appDataProvPersonId;
-			AppOAuthRedirectUri = HttpUtility.UrlEncode(appOauthRedirectUri);
 
+			vRedirProv = oauthRedirectUriProvider;
 			vSessProv = sessionContainerProvider;
 		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public delegate string OauthRedirectUriProvider(string configKey);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
@@ -90,6 +92,12 @@ namespace Fabric.Clients.Cs {
 		/// <summary />
 		public IFabricSessionContainer GetSessionContainer() {
 			return vSessProv(ConfigKey);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public string GetOauthRedirectUri() {
+			return HttpUtility.UrlEncode(vRedirProv(ConfigKey));
 		}
 
 	}

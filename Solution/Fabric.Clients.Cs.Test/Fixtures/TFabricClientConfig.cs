@@ -15,6 +15,8 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 		private int vAppDpId;
 		private string vAppOauthRedir;
 		private FabricSessionContainer vSessContain;
+		private FabricClientConfig.OauthRedirectUriProvider vRedirProv;
+		private FabricClientConfig.SessionContainerProvider vContainProv;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,23 +30,18 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 			vAppDpId = 4;
 			vAppOauthRedir = "http://testdomain.com/oauth";
 			vSessContain = new FabricSessionContainer();
+			vRedirProv = (k => vAppOauthRedir);
+			vContainProv = (k => vSessContain);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		[TearDown]
 		public void TearDown() { }
 
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		private IFabricSessionContainer FabricSessionContainerProvider(string pConfigKey) {
-			return vSessContain;
-		}
-
 		/*--------------------------------------------------------------------------------------------*/
 		private FabricClientConfig GetConfig() {
 			return new FabricClientConfig(vKey, vApiPath, vAppId, vAppSecret, vAppDpId,
-				vAppOauthRedir, FabricSessionContainerProvider);
+				vRedirProv, vContainProv);
 		}
 
 
@@ -60,7 +57,8 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 			Assert.AreEqual(vAppId, config.AppId, "Incorrect AppId.");
 			Assert.AreEqual(vAppSecret, config.AppSecret, "Incorrect AppSecret.");
 			Assert.AreEqual(vAppDpId, config.AppDataProvPersonId, "Incorrect AppDataProvPersonId.");
-			Assert.AreEqual(HttpUtility.UrlEncode(vAppOauthRedir), config.AppOAuthRedirectUri,
+
+			Assert.AreEqual(HttpUtility.UrlEncode(vAppOauthRedir), config.GetOauthRedirectUri(),
 				"Incorrect AppOAuthRedirectUri.");
 
 			Assert.AreEqual(vSessContain, config.GetSessionContainer(), "Incorrect SessionContainer.");
@@ -143,8 +141,20 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
+		public void InvalidRedirProv() {
+			vRedirProv = null;
+
+			try {
+				GetConfig();
+				Assert.Fail("Exception was not thrown.");
+			}
+			catch { }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		[Test]
 		public void InvalidContainerProv() {
-			vSessContain = null;
+			vContainProv = null;
 
 			try {
 				GetConfig();

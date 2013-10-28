@@ -9,6 +9,7 @@ namespace Fabric.Clients.Cs.Session {
 
 		public const string CookieKey = "FabOauthSess";
 
+		public string OAuthRedirectUri { get; private set; }
 		public string GrantCode { get; internal set; }
 		public string BearerToken { get; internal set; }
 		public string RefreshToken { get; internal set; }
@@ -26,6 +27,7 @@ namespace Fabric.Clients.Cs.Session {
 			Config = pConfig;
 			ClientOauth = pClientOauth;
 			SessionId = Guid.NewGuid().ToString("N");
+			OAuthRedirectUri = pConfig.GetOauthRedirectUri();
 			ClearToken();
 		}
 

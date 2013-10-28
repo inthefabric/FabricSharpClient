@@ -9,6 +9,9 @@ namespace Fabric.Clients.Cs.Session {
 	public interface IFabricOauthSession {
 
 		/// <summary />
+		string OAuthRedirectUri { get; }
+
+		/// <summary />
 		string GrantCode { get; }
 
 		/// <summary />

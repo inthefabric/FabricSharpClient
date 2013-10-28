@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -18,17 +19,15 @@ namespace Fabric.Clients.Cs.Mvc {
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 
 			const bool LOCAL = true;
-			FabricClientConfig config = null;
+			FabricClientConfig config;
 
 			if ( LOCAL ) {
 				config = new FabricClientConfig("ClientTest", "http://localhost:9000", 6,
-					"0123456789abcdefghijkLMNOPqrstuv", 5, "http://localhost:49316/OAuth/FabricRedirect",
-					FabricSessionContainerProvider);
+					"0123456789abcdefghijkLMNOPqrstuv", 5, RedirProv, SessionContainerProvider);
 			}
 			else {
 				config = new FabricClientConfig("ClientTest", "http://api.inthefabric.com", 1,
-					"abcdefghijklmnopqrstuvwxyZ012345", 1, "http://localhost:49316/OAuth/FabricRedirect",
-					FabricSessionContainerProvider);
+					"abcdefghijklmnopqrstuvwxyZ012345", 1, RedirProv, SessionContainerProvider);
 			}
 			
 			FabricClient.InitOnce(config);
@@ -37,7 +36,13 @@ namespace Fabric.Clients.Cs.Mvc {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private static IFabricSessionContainer FabricSessionContainerProvider(string pConfigKey) {
+		private static string RedirProv(string pConfigKey) {
+			return HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)+
+				"/Oauth/FabricRedirect";
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		private static IFabricSessionContainer SessionContainerProvider(string pConfigKey) {
 			return FabricSessionContainer.FromHttpContext(HttpContext.Current, pConfigKey);
 		}
 
