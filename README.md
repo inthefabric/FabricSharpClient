@@ -8,4 +8,4 @@ The official, fluent Fabric API client (for .NET/C#).
 PM> Install-Package FabricClient
 ```
 
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/1ab6e39b9218a4621924e9e9c3e85ebe "githalytics.com")](http://githalytics.com/inthefabric/FabricSharpClient)
+[![githalytics.com alpha](https://cruel-carlota.gopagoda.com/1ab6e39b9218a4621924e9e9c3e85ebe "githalytics.com")](http://githalytics.com/inthefabric/FabricSharpClient)
