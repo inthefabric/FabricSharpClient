@@ -135,7 +135,7 @@ namespace Fabric.Clients.Cs.Web {
 
 		/*--------------------------------------------------------------------------------------------*/
 		protected void TryRefresh(IFabricOauthSession pSession) {
-			if ( Path != AccessTokenRefreshOperation.Uri ) {
+			if ( Path != OauthAccessTokenRefreshGetOperation.Uri ) {
 				pSession.RefreshTokenIfNecessary();
 			}
 		}
@@ -175,59 +175,5 @@ namespace Fabric.Clients.Cs.Web {
 		}
 
 	}
-
-	/*================================================================================================* /
-	internal class FabricRequestWrapped<T> : FabricRequest<FabResponse<T>> where T : FabObject {
-
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------* /
-		public FabricRequestWrapped(string pMethod, string pPath, string pQuery=null,
-											string pPost=null) : base(pMethod, pPath, pQuery, pPost) {}
-
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------* /
-		protected override FabricResponse<FabResponse<T>> GetFabricResponse(IClientContext pContext) {
-			string fullPath = pContext.Config.ApiPath+Path+(Query != null ? "?"+Query : "");
-			pContext.Config.LogInfo("Request initiated...");
-
-			////
-
-			try {
-				pContext.Config.LogInfo("Request Path: "+Method+" "+Path);
-				pContext.Config.LogInfo("Request URL: "+fullPath);
-
-				IFabricHttpResponse wr = GetHttpWebResponse(pContext, fullPath);
-
-				string data = StreamToString(wr.GetResponseStream());
-				pContext.Config.LogDebug("Request Response: "+data);
-
-				FabResponse<T> fr = JsonSerializer.DeserializeFromString<FabResponse<T>>(data);
-				var test = new FabricResponse<FabResponse<T>>(fr);
-				return test;
-			}
-			catch ( WebException we ) {
-				if ( we.Response == null ) {
-					throw new Exception("No Fabric response from "+Method+" "+fullPath);
-				}
-
-				string data = StreamToString(we.Response.GetResponseStream());
-				bool isRespErr = typeof(FabResponse).IsAssignableFrom(typeof(T));
-
-				pContext.Config.LogDebug("Request Error: "+data+" (IsError="+isRespErr+")");
-
-				if ( isRespErr ) {
-					string payload = GetDataPayload(data);
-					FabResponse respErr = JsonSerializer.DeserializeFromString<FabResponse>(data);
-					respErr.Error = JsonSerializer.DeserializeFromString<FabError>(payload);
-					return new FabricResponse<FabResponse<T>>(respErr);
-				}
-
-				throw;
-			}
-		}
-
-	}*/
 
 }

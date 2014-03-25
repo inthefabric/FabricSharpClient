@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Fabric.Clients.Cs.Api;
 using Fabric.Clients.Cs.Daemon;
-using Fabric.Clients.Cs.Daemon.Data;
 using Moq;
 using NUnit.Framework;
 
@@ -15,57 +14,45 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 		private Mock<IFabricClient> vMockClient;
 		private Mock<IFabricServices> vMockServices;
 		private Mock<IModifyService> vMockModify;
-		private Mock<IAddClassOperation> vMockAddClass;
-		private Mock<IAddInstanceOperation> vMockAddInstance;
-		private Mock<IAddUrlOperation> vMockAddUrl;
-		private Mock<IAddFactorsOperation> vMockAddFactors;
+		private Mock<IModifyClassesPostOperation> vMockAddClass;
+		private Mock<IModifyInstancesPostOperation> vMockAddInstance;
+		private Mock<IModifyUrlsPostOperation> vMockAddUrl;
+		private Mock<IModifyFactorsPostOperation> vMockAddFactor;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		[SetUp]
 		public void SetUp() {
-			vMockAddClass = new Mock<IAddClassOperation>();
-			vMockAddClass.Setup(x =>
-				x.Post(
-					It.IsAny<string>(),
-					It.IsAny<string>(),
-					It.IsAny<string>()
-				))
-				.Returns(NewFabResp<FabClass>());
+			vMockAddClass = new Mock<IModifyClassesPostOperation>();
+			vMockAddClass.Setup(x => x
+				.Post(It.IsAny<CreateFabClass>()))
+				.Returns(NewFabResp<FabClass>()
+			);
 
-			vMockAddInstance = new Mock<IAddInstanceOperation>();
+			vMockAddInstance = new Mock<IModifyInstancesPostOperation>();
 			vMockAddInstance.Setup(x =>
-				x.Post(
-					It.IsAny<string>(),
-					It.IsAny<string>(),
-					It.IsAny<string>()
-				))
-				.Returns(NewFabResp<FabInstance>());
+				x.Post(It.IsAny<CreateFabInstance>()))
+				.Returns(NewFabResp<FabInstance>()
+			);
 
-			vMockAddUrl = new Mock<IAddUrlOperation>();
+			vMockAddUrl = new Mock<IModifyUrlsPostOperation>();
 			vMockAddUrl.Setup(x =>
-				x.Post(
-					It.IsAny<string>(),
-					It.IsAny<string>()
-				))
-				.Returns(NewFabResp<FabUrl>());
+				x.Post(It.IsAny<CreateFabUrl>()))
+				.Returns(NewFabResp<FabUrl>()
+			);
 
-			vMockAddFactors = new Mock<IAddFactorsOperation>();
-
-			for ( int i = 0 ; i <= 20 ; ++i ) {
-				int size = i;
-
-				vMockAddFactors.Setup(x => x
-					.Post(It.Is<FabBatchNewFactor[]>(nf => (nf.Length == size))))
-					.Returns(NewFabRespList<FabBatchResult>(size));
-			}
+			vMockAddFactor = new Mock<IModifyFactorsPostOperation>();
+			vMockAddFactor.Setup(x =>
+				x.Post(It.IsAny<CreateFabFactor>()))
+				.Returns(NewFabResp<FabFactor>()
+			);
 
 			vMockModify = new Mock<IModifyService>();
-			vMockModify.SetupGet(x => x.AddClass).Returns(vMockAddClass.Object);
-			vMockModify.SetupGet(x => x.AddInstance).Returns(vMockAddInstance.Object);
-			vMockModify.SetupGet(x => x.AddUrl).Returns(vMockAddUrl.Object);
-			vMockModify.SetupGet(x => x.AddFactors).Returns(vMockAddFactors.Object);
+			vMockModify.SetupGet(x => x.Classes).Returns(vMockAddClass.Object);
+			vMockModify.SetupGet(x => x.Instances).Returns(vMockAddInstance.Object);
+			vMockModify.SetupGet(x => x.Urls).Returns(vMockAddUrl.Object);
+			vMockModify.SetupGet(x => x.Factors).Returns(vMockAddFactor.Object);
 
 			vMockServices = new Mock<IFabricServices>();
 			vMockServices.SetupGet(x => x.Modify).Returns(vMockModify.Object);
@@ -158,54 +145,42 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 		/*--------------------------------------------------------------------------------------------*/
 		private void VerifyFabricCounts(int pClasses, int pInstances, int pUrls, int pFacBatch){
 			vMockAddClass.Verify(x =>
-				x.Post(
-					It.IsAny<string>(),
-					It.IsAny<string>(),
-					It.IsAny<string>()
-				), Times.Exactly(pClasses));
+				x.Post(It.IsAny<CreateFabClass>()), Times.Exactly(pClasses));
 
 			vMockAddInstance.Verify(x =>
-				x.Post(
-					It.IsAny<string>(),
-					It.IsAny<string>(),
-					It.IsAny<string>()
-				), Times.Exactly(pInstances));
+				x.Post(It.IsAny<CreateFabInstance>()), Times.Exactly(pInstances));
 
 			vMockAddUrl.Verify(x =>
-				x.Post(
-					It.IsAny<string>(),
-					It.IsAny<string>()
-				), Times.Exactly(pUrls));
+				x.Post(It.IsAny<CreateFabUrl>()), Times.Exactly(pUrls));
 
-			vMockAddFactors.Verify(x =>
-				x.Post(
-					It.IsAny<FabBatchNewFactor[]>()
-				), Times.Exactly(pFacBatch));
+			vMockAddFactor.Verify(x =>
+				x.Post(It.IsAny<CreateFabFactor>()), Times.Exactly(pFacBatch));
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		private void VerifyExportCounts(int pClasses, int pInstances, int pUrls, int pFactors) {
 			vMockDel.Verify(x => x
 				.OnClassExport(
-					It.IsAny<ClassData>(),
+					It.IsAny<CreateFabClass>(),
 					It.IsAny<FabClass>()
 				), Times.Exactly(pClasses));
 
 			vMockDel.Verify(x => x
 				.OnInstanceExport(
-					It.IsAny<InstanceData>(),
+					It.IsAny<CreateFabInstance>(),
 					It.IsAny<FabInstance>()
 				), Times.Exactly(pInstances));
 
 			vMockDel.Verify(x => x
 				.OnUrlExport(
-					It.IsAny<UrlData>(),
+					It.IsAny<CreateFabUrl>(),
 					It.IsAny<FabUrl>()
 				), Times.Exactly(pUrls));
 
 			vMockDel.Verify(x => x
 				.OnFactorExport(
-					It.IsAny<FabBatchResult>()
+					It.IsAny<CreateFabFactor>(),
+					It.IsAny<FabFactor>()
 				), Times.Exactly(pFactors));
 		}
 

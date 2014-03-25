@@ -5,7 +5,7 @@ namespace Fabric.Clients.Cs.Spec.SpecDto {
 	/*================================================================================================*/
 	public class FabSpecEnum : FabSpecObject {
 
-		public List<Dictionary<string, object>> Data { get; set; }
+		public List<Dictionary<string, object>> Items { get; set; }
 
 	}
 

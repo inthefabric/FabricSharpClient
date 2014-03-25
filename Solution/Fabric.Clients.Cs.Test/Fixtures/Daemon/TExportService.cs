@@ -24,7 +24,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 		[SetUp]
 		public void SetUp() {
 			vMockDpClient = NewMockClient("DpSess", 1000);
-			vMockDpClient.SetupGet(x => x.UseDataProviderPerson).Returns(true);
+			vMockDpClient.SetupGet(x => x.UseAppDataProvider).Returns(true);
 
 			vMockDel = new Mock<IExportServiceDelegate>();
 			vMockDel.Setup(x => x.GetDataProvClient()).Returns(vMockDpClient.Object);

@@ -47,7 +47,7 @@ namespace Fabric.Clients.Cs.Session {
 				//Config.LogDebug("... Client_credentials Start");
 				//FabOauthAccess oa =
 				return ClientOauth.AccessTokenClientCredentials.Get(
-					Config.AppId+"", Config.AppSecret, OAuthRedirectUri);
+					Config.AppId, Config.AppSecret, OAuthRedirectUri);
 				//Config.LogDebug("... Client_credentials Complete");
 				//return oa;
 			}

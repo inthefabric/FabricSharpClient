@@ -18,7 +18,6 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 
 		private FabricClientConfig vConfig;
 		private Mock<IFabricAppSession> vMockAppSess;
-		private Mock<IFabricAppDataProvSession> vMockDpSess;
 		private Mock<IFabricPersonSession> vMockPerSess;
 		private FabricSessionContainer vSessContain;
 		private ClientContext vContext;
@@ -40,10 +39,9 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 			vConfig = new FabricClientConfig("Test", "http://localhost/fakeApi", 1,
 				"MySecretCode", 1, (k => "http://testdomain.com/oauth"), (k => vSessContain));
 			vMockAppSess = new Mock<IFabricAppSession>();
-			vMockDpSess = new Mock<IFabricAppDataProvSession>();
 			vMockPerSess = new Mock<IFabricPersonSession>();
 			vSessContain = new FabricSessionContainer { Person = vMockPerSess.Object };
-			vContext = new ClientContext(vConfig, vMockAppSess.Object, vMockDpSess.Object);
+			vContext = new ClientContext(vConfig, vMockAppSess.Object);
 
 			vHttpReq = new TestFabricHttpRequest();
 			vMockResp = new Mock<IFabricHttpResponse>();
@@ -300,7 +298,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		[TestCase(false)]
 		[TestCase(true)]
 		public void RefreshPerson(bool pIsRefreshRequest) {
-			vPath = (pIsRefreshRequest ? AccessTokenRefreshOperation.Uri : "test");
+			vPath = (pIsRefreshRequest ? OauthAccessTokenRefreshGetOperation.Uri : "test");
 			var req = NewFabricRequest<FabApp>();
 			SetupResponseStream(new FabApp());
 			req.Send(vContext);
@@ -315,7 +313,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		[TestCase(null, false, true)]
 		[TestCase(null, true, true)]
 		public void RefreshApp(string pBearer, bool pIsRefreshRequest, bool pAppRefresh) {
-			vPath = (pIsRefreshRequest ? AccessTokenRefreshOperation.Uri : "test");
+			vPath = (pIsRefreshRequest ? OauthAccessTokenRefreshGetOperation.Uri : "test");
 			vMockPerSess.SetupGet(x => x.BearerToken).Returns(pBearer);
 
 			var req = NewFabricRequest<FabApp>();

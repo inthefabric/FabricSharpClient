@@ -36,6 +36,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SpecStepRuleRow.cs" />
     <Compile Include="Data\FabricResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -49,10 +50,9 @@
     <Compile Include="SpecDto\FabSpecObjectProp.cs" />
     <Compile Include="SpecDto\FabSpecService.cs" />
     <Compile Include="SpecDto\FabSpecServiceOperation.cs" />
-    <Compile Include="SpecDto\FabSpecServiceOperationParam.cs" />
-    <Compile Include="SpecDto\FabSpecTravFunc.cs" />
-    <Compile Include="SpecDto\FabSpecTravFuncParam.cs" />
-    <Compile Include="SpecDto\FabSpecTravLink.cs" />
+    <Compile Include="SpecDto\FabSpecServiceParam.cs" />
+    <Compile Include="SpecDto\FabSpecServiceStep.cs" />
+    <Compile Include="SpecDto\FabSpecServiceStepRule.cs" />
     <Compile Include="SpecDto\FabSpecValue.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -67,7 +67,5 @@
     <None Include="Data\FabricSpec.json" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Web\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

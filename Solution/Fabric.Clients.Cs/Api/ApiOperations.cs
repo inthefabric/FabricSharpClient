@@ -1,6 +1,5 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 9/18/2013 5:35:53 PM
 
 using Fabric.Clients.Cs.Session;
 using Fabric.Clients.Cs.Web;
@@ -13,25 +12,25 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary>
-	///   Get the App that is associated with the currently authenticated Member.
+	///   Get the latest specifications and documentation for all Fabric API services.
 	/// </summary>
 	/// <remarks>
-	///   <para>Get the App that is associated with the currently authenticated Member.</para>
+	///   <para>Get the latest specifications and documentation for all Fabric API services. This is useful for building Fabric API clients and reference documentation sites like the one you are viewing right now.</para>
 	/// </remarks>
-	public interface IGetActiveAppOperation : IOperation {
+	public interface IMetaSpecGetOperation : IOperation {
 		
 		/// <summary>
 		///   Perform the operation.
 		/// </summary>
-		FabResponse<FabApp> Get();
+		FabResponse<FabSpec> Get();
 
 	}
 	
 
 	/*================================================================================================*/
-	internal class GetActiveAppOperation : IGetActiveAppOperation {
+	internal class MetaSpecGetOperation : IMetaSpecGetOperation {
 
-		public const string Uri = "/Trav/ActiveApp";
+		public const string Uri = "/Meta/Spec";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -41,22 +40,21 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public GetActiveAppOperation(IClientContext pContext) {
+		public MetaSpecGetOperation(IClientContext pContext) {
 			vContext = pContext;
 		}
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabApp>> Request() {
-			return new FabricRequest<FabResponse<FabApp>>("GET", Uri, 
-				null,
+		public FabricRequest<FabResponse<FabSpec>> Request() {
+			return new FabricRequest<FabResponse<FabSpec>>("GET", Uri, "",
 				null
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabApp> Get() {
+		public FabResponse<FabSpec> Get() {
 			return Request().Send(vContext);
 		}
 
@@ -65,25 +63,25 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary>
-	///   Get the the currently authenticated Member.
+	///   Get the current Fabric version.
 	/// </summary>
 	/// <remarks>
-	///   <para>Get the the currently authenticated Member.</para>
+	///   <para>Get the current Fabric version.</para>
 	/// </remarks>
-	public interface IGetActiveMemberOperation : IOperation {
+	public interface IMetaVersionGetOperation : IOperation {
 		
 		/// <summary>
 		///   Perform the operation.
 		/// </summary>
-		FabResponse<FabMember> Get();
+		FabResponse<FabMetaVersion> Get();
 
 	}
 	
 
 	/*================================================================================================*/
-	internal class GetActiveMemberOperation : IGetActiveMemberOperation {
+	internal class MetaVersionGetOperation : IMetaVersionGetOperation {
 
-		public const string Uri = "/Trav/ActiveMember";
+		public const string Uri = "/Meta/Version";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -93,22 +91,21 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public GetActiveMemberOperation(IClientContext pContext) {
+		public MetaVersionGetOperation(IClientContext pContext) {
 			vContext = pContext;
 		}
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabMember>> Request() {
-			return new FabricRequest<FabResponse<FabMember>>("GET", Uri, 
-				null,
+		public FabricRequest<FabResponse<FabMetaVersion>> Request() {
+			return new FabricRequest<FabResponse<FabMetaVersion>>("GET", Uri, "",
 				null
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabMember> Get() {
+		public FabResponse<FabMetaVersion> Get() {
 			return Request().Send(vContext);
 		}
 
@@ -117,25 +114,25 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary>
-	///   Get the User that is associated with the currently authenticated Member.
+	///   Get the current Fabric server time.
 	/// </summary>
 	/// <remarks>
-	///   <para>Get the User that is associated with the currently authenticated Member.</para>
+	///   <para>Get the current Fabric server time.</para>
 	/// </remarks>
-	public interface IGetActiveUserOperation : IOperation {
+	public interface IMetaTimeGetOperation : IOperation {
 		
 		/// <summary>
 		///   Perform the operation.
 		/// </summary>
-		FabResponse<FabUser> Get();
+		FabResponse<FabMetaTime> Get();
 
 	}
 	
 
 	/*================================================================================================*/
-	internal class GetActiveUserOperation : IGetActiveUserOperation {
+	internal class MetaTimeGetOperation : IMetaTimeGetOperation {
 
-		public const string Uri = "/Trav/ActiveUser";
+		public const string Uri = "/Meta/Time";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -145,22 +142,21 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public GetActiveUserOperation(IClientContext pContext) {
+		public MetaTimeGetOperation(IClientContext pContext) {
 			vContext = pContext;
 		}
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabUser>> Request() {
-			return new FabricRequest<FabResponse<FabUser>>("GET", Uri, 
-				null,
+		public FabricRequest<FabResponse<FabMetaTime>> Request() {
+			return new FabricRequest<FabResponse<FabMetaTime>>("GET", Uri, "",
 				null
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabUser> Get() {
+		public FabResponse<FabMetaTime> Get() {
 			return Request().Send(vContext);
 		}
 
@@ -169,51 +165,269 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary>
-	///   The starting point for all traversal queries.
+	///   Create a new Class.
 	/// </summary>
 	/// <remarks>
-	///   <para>The starting point for all traversal queries. Use traversal links and traversal functions to navigate through Fabric's objects. These links and functions are capable of performing both simple and highly complex queries.</para>
+	///   <para>Create a new Class. Attach Factors to this Class immediately after creation to give it meaning and relevance within Fabric.</para>
 	/// </remarks>
-	public interface IGetRootOperation : IOperation {
+	public interface IModifyClassesPostOperation : IOperation {
 		
 		/// <summary>
 		///   Perform the operation.
 		/// </summary>
-		FabResponse<FabRoot> Get();
+		/// <param name="Data">
+		///   The data (in JSON format) for the new Class.
+		/// </param>
+		FabResponse<FabClass> Post(CreateFabClass Data);
 
 	}
 	
 
 	/*================================================================================================*/
-	internal class GetRootOperation : IGetRootOperation {
+	internal class ModifyClassesPostOperation : IModifyClassesPostOperation {
 
-		public const string Uri = "/Trav/Root";
+		public const string Uri = "/Mod/Classes";
 		
-		public string Method { get { return "GET"; } }
-		public string RequiredAuth { get { return "None"; } }
+		public string Method { get { return "POST"; } }
+		public string RequiredAuth { get { return "Member"; } }
 		
 		private readonly IClientContext vContext;
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public GetRootOperation(IClientContext pContext) {
+		public ModifyClassesPostOperation(IClientContext pContext) {
 			vContext = pContext;
 		}
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabRoot>> Request() {
-			return new FabricRequest<FabResponse<FabRoot>>("GET", Uri, 
-				null,
-				null
+		public FabricRequest<FabResponse<FabClass>> Request(CreateFabClass Data) {
+			return new FabricRequest<FabResponse<FabClass>>("POST", Uri, "",
+				"Data="+Data.ToJson()
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabRoot> Get() {
-			return Request().Send(vContext);
+		public FabResponse<FabClass> Post(CreateFabClass Data) {
+			return Request(Data).Send(vContext);
+		}
+
+	}
+
+
+	/*================================================================================================*/
+	/// <summary>
+	///   Create a new Factor.
+	/// </summary>
+	/// <remarks>
+	///   <para>Create a new Factor. The Factor begins in the 'incomplete' state, with no FactorElements attached.</para>
+	/// </remarks>
+	public interface IModifyFactorsPostOperation : IOperation {
+		
+		/// <summary>
+		///   Perform the operation.
+		/// </summary>
+		/// <param name="Data">
+		///   The data (in JSON format) for the new Factor.
+		/// </param>
+		FabResponse<FabFactor> Post(CreateFabFactor Data);
+
+	}
+	
+
+	/*================================================================================================*/
+	internal class ModifyFactorsPostOperation : IModifyFactorsPostOperation {
+
+		public const string Uri = "/Mod/Factors";
+		
+		public string Method { get { return "POST"; } }
+		public string RequiredAuth { get { return "Member"; } }
+		
+		private readonly IClientContext vContext;
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public ModifyFactorsPostOperation(IClientContext pContext) {
+			vContext = pContext;
+		}
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabricRequest<FabResponse<FabFactor>> Request(CreateFabFactor Data) {
+			return new FabricRequest<FabResponse<FabFactor>>("POST", Uri, "",
+				"Data="+Data.ToJson()
+			);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public FabResponse<FabFactor> Post(CreateFabFactor Data) {
+			return Request(Data).Send(vContext);
+		}
+
+	}
+
+
+	/*================================================================================================*/
+	/// <summary>
+	///   Create a new Instance.
+	/// </summary>
+	/// <remarks>
+	///   <para>Create a new Instance. Attach Factors to this Instance immediately after creation to give it meaning and relevance within Fabric.</para>
+	/// </remarks>
+	public interface IModifyInstancesPostOperation : IOperation {
+		
+		/// <summary>
+		///   Perform the operation.
+		/// </summary>
+		/// <param name="Data">
+		///   The data (in JSON format) for the new Instance.
+		/// </param>
+		FabResponse<FabInstance> Post(CreateFabInstance Data);
+
+	}
+	
+
+	/*================================================================================================*/
+	internal class ModifyInstancesPostOperation : IModifyInstancesPostOperation {
+
+		public const string Uri = "/Mod/Instances";
+		
+		public string Method { get { return "POST"; } }
+		public string RequiredAuth { get { return "Member"; } }
+		
+		private readonly IClientContext vContext;
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public ModifyInstancesPostOperation(IClientContext pContext) {
+			vContext = pContext;
+		}
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabricRequest<FabResponse<FabInstance>> Request(CreateFabInstance Data) {
+			return new FabricRequest<FabResponse<FabInstance>>("POST", Uri, "",
+				"Data="+Data.ToJson()
+			);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public FabResponse<FabInstance> Post(CreateFabInstance Data) {
+			return Request(Data).Send(vContext);
+		}
+
+	}
+
+
+	/*================================================================================================*/
+	/// <summary>
+	///   Create a new Member.
+	/// </summary>
+	/// <remarks>
+	///   <para>Create a new Member.</para>
+	/// </remarks>
+	public interface IModifyMembersPostOperation : IOperation {
+		
+		/// <summary>
+		///   Perform the operation.
+		/// </summary>
+		/// <param name="Data">
+		///   The data (in JSON format) for the new Member.
+		/// </param>
+		FabResponse<FabMember> Post(CreateFabMember Data);
+
+	}
+	
+
+	/*================================================================================================*/
+	internal class ModifyMembersPostOperation : IModifyMembersPostOperation {
+
+		public const string Uri = "/Mod/Members";
+		
+		public string Method { get { return "POST"; } }
+		public string RequiredAuth { get { return "Member"; } }
+		
+		private readonly IClientContext vContext;
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public ModifyMembersPostOperation(IClientContext pContext) {
+			vContext = pContext;
+		}
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabricRequest<FabResponse<FabMember>> Request(CreateFabMember Data) {
+			return new FabricRequest<FabResponse<FabMember>>("POST", Uri, "",
+				"Data="+Data.ToJson()
+			);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public FabResponse<FabMember> Post(CreateFabMember Data) {
+			return Request(Data).Send(vContext);
+		}
+
+	}
+
+
+	/*================================================================================================*/
+	/// <summary>
+	///   Create a new Url.
+	/// </summary>
+	/// <remarks>
+	///   <para>Create a new Url.</para>
+	/// </remarks>
+	public interface IModifyUrlsPostOperation : IOperation {
+		
+		/// <summary>
+		///   Perform the operation.
+		/// </summary>
+		/// <param name="Data">
+		///   The data (in JSON format) for the new Url.
+		/// </param>
+		FabResponse<FabUrl> Post(CreateFabUrl Data);
+
+	}
+	
+
+	/*================================================================================================*/
+	internal class ModifyUrlsPostOperation : IModifyUrlsPostOperation {
+
+		public const string Uri = "/Mod/Urls";
+		
+		public string Method { get { return "POST"; } }
+		public string RequiredAuth { get { return "Member"; } }
+		
+		private readonly IClientContext vContext;
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public ModifyUrlsPostOperation(IClientContext pContext) {
+			vContext = pContext;
+		}
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabricRequest<FabResponse<FabUrl>> Request(CreateFabUrl Data) {
+			return new FabricRequest<FabResponse<FabUrl>>("POST", Uri, "",
+				"Data="+Data.ToJson()
+			);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public FabResponse<FabUrl> Post(CreateFabUrl Data) {
+			return Request(Data).Send(vContext);
 		}
 
 	}
@@ -228,16 +442,16 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>An OAuth access token must be included with every Fabric API request (with the exception of the OAuth requests).  This token is the result of a successful login, an accepted App scope, a confirmed App secret code, and a confirmed authorization code.  Thus, each token is associated with a specific App, User, and successful OAuth process.  When included with an API request, Fabric obtains the relevant App and User ID values, and generates a response accordingly.</para>
 	///   <para>See FabOauthAccess for information on how to include an OAuth access token with a Fabric API request.</para>
 	/// </remarks>
-	public interface IAccessTokenOperation : IOperation {
+	public interface IOauthAccessTokenGetOperation : IOperation {
 		
 		/// <summary>
 		///   Perform the operation.
 		/// </summary>
 		/// <param name="grant_type">
-		///   Defines the desired access token flow.  The four accepted (case-sensitive) values are 'authorization_code', 'refresh', 'client_credentials', and 'client_data_provider'.
+		///   Defines the desired access token flow.  The three accepted (case-sensitive) values are 'authorization_code', 'refresh', and 'client_credentials'.
 		/// </param>
 		/// <param name="client_id">
-		///   The App ID value (an integer) for the App making the request. This parameter is only used by the 'Client Credentials' and 'Client Data Provider' flows.
+		///   The App ID value (an integer) for the App making the request. This parameter is only used by the 'Client Credentials' flow.
 		/// </param>
 		/// <param name="client_secret">
 		///   The alpha-numeric Secret for the App making the request. This verifies that the App itself is making the request, and not an imposter.  For this reason, the secret code should not be shared with anyone.
@@ -251,16 +465,13 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="redirect_uri">
 		///   This value must be exactly the same as the redirect URI provided for the OAuth entry process.
 		/// </param>
-		/// <param name="data_prov_userid">
-		///   The User ID value (an integer) for the Data Provider of the App making the request. Upon App creation, Fabric creates a special 'Data Provider' User which the App uses for creating items in the Fabric system. This parameter is only used by the 'Client Data Provider' flow.
-		/// </param>
-		FabOauthAccess Get(string grant_type, string client_id, string client_secret, string code, string refresh_token, string redirect_uri, string data_prov_userid);
+		FabOauthAccess Get(string grant_type, long client_id, string client_secret, string code, string refresh_token, string redirect_uri);
 
 	}
 	
 
 	/*================================================================================================*/
-	internal class AccessTokenOperation : IAccessTokenOperation {
+	internal class OauthAccessTokenGetOperation : IOauthAccessTokenGetOperation {
 
 		public const string Uri = "/Oauth/AccessToken";
 		
@@ -272,23 +483,22 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public AccessTokenOperation(IClientContext pContext) {
+		public OauthAccessTokenGetOperation(IClientContext pContext) {
 			vContext = pContext;
 		}
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabOauthAccess> Request(string grant_type, string client_id, string client_secret, string code, string refresh_token, string redirect_uri, string data_prov_userid) {
-			return new FabricRequest<FabOauthAccess>("GET", Uri, 
-				"grant_type="+grant_type+"&client_id="+client_id+"&client_secret="+client_secret+"&code="+code+"&refresh_token="+refresh_token+"&redirect_uri="+redirect_uri+"&data_prov_userid="+data_prov_userid,
-				null
+		public FabricRequest<FabOauthAccess> Request(string grant_type, long client_id, string client_secret, string code, string refresh_token, string redirect_uri) {
+			return new FabricRequest<FabOauthAccess>("GET", Uri, "",
+				"grant_type="+grant_type+"&client_id="+client_id+"&client_secret="+client_secret+"&code="+code+"&refresh_token="+refresh_token+"&redirect_uri="+redirect_uri
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthAccess Get(string grant_type, string client_id, string client_secret, string code, string refresh_token, string redirect_uri, string data_prov_userid) {
-			return Request(grant_type, client_id, client_secret, code, refresh_token, redirect_uri, data_prov_userid).Send(vContext);
+		public FabOauthAccess Get(string grant_type, long client_id, string client_secret, string code, string refresh_token, string redirect_uri) {
+			return Request(grant_type, client_id, client_secret, code, refresh_token, redirect_uri).Send(vContext);
 		}
 
 	}
@@ -302,7 +512,7 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>This OAuth flow should be used immediately after obtaining an authorization code from the OAuth entry process. Fabric verifies the authorization code, determines the associated App and User IDs, and generates a new access token.</para>
 	///   <para>See Access Token for general information about the OAuth process.</para>
 	/// </remarks>
-	public interface IAccessTokenAuthCodeOperation : IOperation {
+	public interface IOauthAccessTokenAuthCodeGetOperation : IOperation {
 		
 		/// <summary>
 		///   Perform the operation.
@@ -322,7 +532,7 @@ namespace Fabric.Clients.Cs.Api {
 	
 
 	/*================================================================================================*/
-	internal class AccessTokenAuthCodeOperation : IAccessTokenAuthCodeOperation {
+	internal class OauthAccessTokenAuthCodeGetOperation : IOauthAccessTokenAuthCodeGetOperation {
 
 		public const string Uri = "/Oauth/AccessTokenAuthCode";
 		
@@ -334,7 +544,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public AccessTokenAuthCodeOperation(IClientContext pContext) {
+		public OauthAccessTokenAuthCodeGetOperation(IClientContext pContext) {
 			vContext = pContext;
 		}
 
@@ -342,142 +552,14 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabOauthAccess> Request(string code, string client_secret, string redirect_uri) {
-			return new FabricRequest<FabOauthAccess>("GET", Uri, 
-				"code="+code+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri,
-				null
+			return new FabricRequest<FabOauthAccess>("GET", Uri, "",
+				"code="+code+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
 		public FabOauthAccess Get(string code, string client_secret, string redirect_uri) {
 			return Request(code, client_secret, redirect_uri).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   This OAuth flow should be used to begin an OAuth session for your Fabric App.
-	/// </summary>
-	/// <remarks>
-	///   <para>This OAuth flow should be used to begin an OAuth session for your Fabric App. This flow does not require an authorization code from the typical OAuth entry process.</para>
-	///   <para>See Access Token or general information about the OAuth process.</para>
-	/// </remarks>
-	public interface IAccessTokenClientCredentialsOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="client_id">
-		///   The App ID value (an integer) for the App making the request. This parameter is only used by the 'Client Credentials' and 'Client Data Provider' flows.
-		/// </param>
-		/// <param name="client_secret">
-		///   The alpha-numeric Secret for the App making the request. This verifies that the App itself is making the request, and not an imposter.  For this reason, the secret code should not be shared with anyone.
-		/// </param>
-		/// <param name="redirect_uri">
-		///   This value must be exactly the same as the redirect URI provided for the OAuth entry process.
-		/// </param>
-		FabOauthAccess Get(string client_id, string client_secret, string redirect_uri);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class AccessTokenClientCredentialsOperation : IAccessTokenClientCredentialsOperation {
-
-		public const string Uri = "/Oauth/AccessTokenClientCredentials";
-		
-		public string Method { get { return "GET"; } }
-		public string RequiredAuth { get { return "None"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public AccessTokenClientCredentialsOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabOauthAccess> Request(string client_id, string client_secret, string redirect_uri) {
-			return new FabricRequest<FabOauthAccess>("GET", Uri, 
-				"client_id="+client_id+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri,
-				null
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthAccess Get(string client_id, string client_secret, string redirect_uri) {
-			return Request(client_id, client_secret, redirect_uri).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   This OAuth flow should be used to begin an OAuth session for your Fabric App's Data Provider User.
-	/// </summary>
-	/// <remarks>
-	///   <para>This OAuth flow should be used to begin an OAuth session for your Fabric App's Data Provider User. This flow does not require an authorization code from the typical OAuth entry process. Note: this flow is not defined by the OAuth 2.0 specification; it is specifically designed to meet a Fabric App's OAuth needs.</para>
-	///   <para>See Access Token for general information about the OAuth process.</para>
-	/// </remarks>
-	public interface IAccessTokenClientDataProvOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="client_id">
-		///   The App ID value (an integer) for the App making the request. This parameter is only used by the 'Client Credentials' and 'Client Data Provider' flows.
-		/// </param>
-		/// <param name="client_secret">
-		///   The alpha-numeric Secret for the App making the request. This verifies that the App itself is making the request, and not an imposter.  For this reason, the secret code should not be shared with anyone.
-		/// </param>
-		/// <param name="redirect_uri">
-		///   This value must be exactly the same as the redirect URI provided for the OAuth entry process.
-		/// </param>
-		/// <param name="data_prov_userid">
-		///   The User ID value (an integer) for the Data Provider of the App making the request. Upon App creation, Fabric creates a special 'Data Provider' User which the App uses for creating items in the Fabric system. This parameter is only used by the 'Client Data Provider' flow.
-		/// </param>
-		FabOauthAccess Get(string client_id, string client_secret, string redirect_uri, string data_prov_userid);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class AccessTokenClientDataProvOperation : IAccessTokenClientDataProvOperation {
-
-		public const string Uri = "/Oauth/AccessTokenClientDataProv";
-		
-		public string Method { get { return "GET"; } }
-		public string RequiredAuth { get { return "None"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public AccessTokenClientDataProvOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabOauthAccess> Request(string client_id, string client_secret, string redirect_uri, string data_prov_userid) {
-			return new FabricRequest<FabOauthAccess>("GET", Uri, 
-				"client_id="+client_id+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri+"&data_prov_userid="+data_prov_userid,
-				null
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthAccess Get(string client_id, string client_secret, string redirect_uri, string data_prov_userid) {
-			return Request(client_id, client_secret, redirect_uri, data_prov_userid).Send(vContext);
 		}
 
 	}
@@ -492,7 +574,7 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>App-only access tokens (obtained with the 'Client Credentials' flow) should not be refreshed; the App should simply request a new access token.</para>
 	///   <para>See Access Token for general information about the OAuth process.</para>
 	/// </remarks>
-	public interface IAccessTokenRefreshOperation : IOperation {
+	public interface IOauthAccessTokenRefreshGetOperation : IOperation {
 		
 		/// <summary>
 		///   Perform the operation.
@@ -512,7 +594,7 @@ namespace Fabric.Clients.Cs.Api {
 	
 
 	/*================================================================================================*/
-	internal class AccessTokenRefreshOperation : IAccessTokenRefreshOperation {
+	internal class OauthAccessTokenRefreshGetOperation : IOauthAccessTokenRefreshGetOperation {
 
 		public const string Uri = "/Oauth/AccessTokenRefresh";
 		
@@ -524,7 +606,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public AccessTokenRefreshOperation(IClientContext pContext) {
+		public OauthAccessTokenRefreshGetOperation(IClientContext pContext) {
 			vContext = pContext;
 		}
 
@@ -532,9 +614,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabOauthAccess> Request(string refresh_token, string client_secret, string redirect_uri) {
-			return new FabricRequest<FabOauthAccess>("GET", Uri, 
-				"refresh_token="+refresh_token+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri,
-				null
+			return new FabricRequest<FabOauthAccess>("GET", Uri, "",
+				"refresh_token="+refresh_token+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri
 			);
 		}
 		
@@ -548,21 +629,79 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary>
-	///   This API request is unique -- it represents the entry point for Fabric's OAuth 2.0 authentication process.
+	///   This OAuth flow should be used to begin an OAuth session for your Fabric App.
 	/// </summary>
 	/// <remarks>
-	///   <para>This API request is unique -- it represents the entry point for Fabric's OAuth 2.0 authentication process.  Instead of making this API request directly from a Fabric App, the App should provide a link so that its users can load this request's URL (including the required query-string parameters) in their browser.</para>
-	///   <para>A web-based Fabric App would typically load this OAuth entry page as a browser popup window. Once the user completes the full OAuth process (or upon an error), Fabric will redirect the browser to the App's specified redirect URI.  This redirect includes query-string parameters that provide success or error information.</para>
-	///   <para>	</para>
+	///   <para>This OAuth flow should be used to begin an OAuth session for your Fabric App. This flow does not require an authorization code from the typical OAuth entry process.</para>
+	///   <para>See Access Token or general information about the OAuth process.</para>
+	/// </remarks>
+	public interface IOauthAccessTokenClientCredentialsGetOperation : IOperation {
+		
+		/// <summary>
+		///   Perform the operation.
+		/// </summary>
+		/// <param name="client_id">
+		///   The App ID value (an integer) for the App making the request. This parameter is only used by the 'Client Credentials' flow.
+		/// </param>
+		/// <param name="client_secret">
+		///   The alpha-numeric Secret for the App making the request. This verifies that the App itself is making the request, and not an imposter.  For this reason, the secret code should not be shared with anyone.
+		/// </param>
+		/// <param name="redirect_uri">
+		///   This value must be exactly the same as the redirect URI provided for the OAuth entry process.
+		/// </param>
+		FabOauthAccess Get(long client_id, string client_secret, string redirect_uri);
+
+	}
+	
+
+	/*================================================================================================*/
+	internal class OauthAccessTokenClientCredentialsGetOperation : IOauthAccessTokenClientCredentialsGetOperation {
+
+		public const string Uri = "/Oauth/AccessTokenClientCredentials";
+		
+		public string Method { get { return "GET"; } }
+		public string RequiredAuth { get { return "None"; } }
+		
+		private readonly IClientContext vContext;
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public OauthAccessTokenClientCredentialsGetOperation(IClientContext pContext) {
+			vContext = pContext;
+		}
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabricRequest<FabOauthAccess> Request(long client_id, string client_secret, string redirect_uri) {
+			return new FabricRequest<FabOauthAccess>("GET", Uri, "",
+				"client_id="+client_id+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri
+			);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public FabOauthAccess Get(long client_id, string client_secret, string redirect_uri) {
+			return Request(client_id, client_secret, redirect_uri).Send(vContext);
+		}
+
+	}
+
+
+	/*================================================================================================*/
+	/// <summary>
+	///   This API request is unique -- it represents the entry point for Fabric's 'sOAuth 2.0 authentication process.
+	/// </summary>
+	/// <remarks>
+	///   <para>This API request is unique -- it represents the entry point for Fabric's 'sOAuth 2.0 authentication process.  Instead of making this API request directly from a Fabric App, the App should provide a link so that its users can load this request's 'sURL (including the required query-string parameters) in their browser.</para>
+	///   <para>A web-based Fabric App would typically load this OAuth entry page as a browser popup window. Once the user completes the full OAuth process (or upon an error), Fabric will redirect the browser to the App's 'sspecified redirect URI.  This redirect includes query-string parameters that provide success or error information.</para>
 	///   <para>For a user, this OAuth process includes two steps: login and 'scope' acceptance.</para>
-	///   <para>The first step is login, where the user is prompted to enter their username and password. If a user has already logged into Fabric (i.e. has an active authentication cookie from Fabric) and the App has not requested 'switchMode', the login step is skipped.  Important note: login occurs on Fabric's server -- a Fabric App never receives or sends a Fabric user's login credentials.</para>
+	///   <para>The first step is login, where the user is prompted to enter their username and password. If a user has already logged into Fabric (i.e. has an active authentication cookie from Fabric) and the App has not requested 'switchMode', the login step is skipped.  Important note: login occurs on Fabric's 'sserver -- a Fabric App never receives or sends a Fabric user's 'slogin credentials.</para>
 	///   <para>The second step is 'scope' acceptance.  The page tells the user that a particular Fabric App wants to connect to their Fabric account, and briefly explains what this means to the user and the App. The user must accept or deny access.  Upon acceptance, the page redirects to the App with a 'success' message.  Upon denial, Fabric performs an error redirect.</para>
-	///   <para>	</para>
 	///   <para>Similar to the login step, if a user has already accepted 'scope' for a particular App, the second step is skipped.  Thus, in the case where a user is already authenticated with Fabric and has already allowed App access, the entire process results in a success redirect.</para>
-	///   <para>	</para>
 	///   <para>See FabOauthLogin for the query string parameters that can be included in the success and error redirects.</para>
 	/// </remarks>
-	public interface ILoginOperation : IOperation {
+	public interface IOauthLoginGetOperation : IOperation {
 		
 		/// <summary>
 		///   Perform the operation.
@@ -571,16 +710,16 @@ namespace Fabric.Clients.Cs.Api {
 		///   Describes which type of authentication should be performed. For now, this value should always be 'code'. Fabric may accept more response types in the future.
 		/// </param>
 		/// <param name="client_id">
-		///   The ID of the Fabric App making the OAuth Login request.  The access code provided after a successful OAuth process will be associated with this App ID and the authenticated User's ID.
+		///   The ID of the Fabric App making the OAuth Login request.  The access code provided after a successful OAuth process will be associated with this App ID and the authenticated User's 'sID.
 		/// </param>
 		/// <param name="redirect_uri">
 		///   The URL which will receive success/error redirects from the OAuth Login process.  This URL should handle the following query-string parameters: access_code, error, error_description, state.
 		/// </param>
 		/// <param name="scope">
-		///   Describes the level of access the App will have to the User's account.  This value is required by the OAuth 2.0 specification, however, Fabric currently ignores it.  All OAuth requests currently receive the same level of access to the User's account.  Fabric may begin using this parameter in the future.
+		///   Describes the level of access the App will have to the User's 'saccount.  This value is required by the OAuth 2.0 specification, however, Fabric currently ignores it.  All OAuth requests currently receive the same level of access to the User's 'saccount.  Fabric may begin using this parameter in the future.
 		/// </param>
 		/// <param name="state">
-		///   Provides a security function for a Fabric App.  All success/message redirect responses include a 'state' query-string parameter.  The App should check this value against the state value provided in the initial request.  The two values should always be equal. If the values are not equal, then the redirect did not come from the Fabric OAuth process (or from a different user's process), and should be handled accordingly.
+		///   Provides a security function for a Fabric App.  All success/message redirect responses include a 'state' query-string parameter.  The App should check this value against the state value provided in the initial request.  The two values should always be equal. If the values are not equal, then the redirect did not come from the Fabric OAuth process (or from a different user's 'sprocess), and should be handled accordingly.
 		/// </param>
 		/// <param name="switchMode">
 		///   Causes the login process to behave in different ways.  If a value of '1' is provided, the user will see the login page even if they are currently authenticated with Fabric.  This is useful shared-computer scenarios, where the most-recently authenticated user may be different from the user making the current request.
@@ -591,7 +730,7 @@ namespace Fabric.Clients.Cs.Api {
 	
 
 	/*================================================================================================*/
-	internal class LoginOperation : ILoginOperation {
+	internal class OauthLoginGetOperation : IOauthLoginGetOperation {
 
 		public const string Uri = "/Oauth/Login";
 		
@@ -603,7 +742,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public LoginOperation(IClientContext pContext) {
+		public OauthLoginGetOperation(IClientContext pContext) {
 			vContext = pContext;
 		}
 
@@ -611,9 +750,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabOauthLogin> Request(string response_type, string client_id, string redirect_uri, string scope, string state, string switchMode) {
-			return new FabricRequest<FabOauthLogin>("GET", Uri, 
-				"response_type="+response_type+"&client_id="+client_id+"&redirect_uri="+redirect_uri+"&scope="+scope+"&state="+state+"&switchMode="+switchMode,
-				null
+			return new FabricRequest<FabOauthLogin>("GET", Uri, "",
+				"response_type="+response_type+"&client_id="+client_id+"&redirect_uri="+redirect_uri+"&scope="+scope+"&state="+state+"&switchMode="+switchMode
 			);
 		}
 		
@@ -627,13 +765,13 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary>
-	///   Terminates a particular OAuth session by invalidating the session's access token.
+	///   Terminates a particular OAuth session by invalidating the session's 'saccess token.
 	/// </summary>
 	/// <remarks>
-	///   <para>Terminates a particular OAuth session by invalidating the session's access token. Any further OAuth requests made with this particular access token are rejected.</para>
-	///   <para>Logging out of an OAuth session does not revoke the the App scope accepted by the User (during the first OAuth login process).  Furthermore, it does not end the User's authenticated session with Fabric.  Thus, a subsequent OAuth entry by the same user may actually require zero input from the user -- they could potentially bypass both OAuth entry steps (login and scope acceptance).  This allows a user to begin a new OAuth session seamlessly, even after logging out.</para>
+	///   <para>Terminates a particular OAuth session by invalidating the session's 'saccess token. Any further OAuth requests made with this particular access token are rejected.</para>
+	///   <para>Logging out of an OAuth session does not revoke the the App scope accepted by the User (during the first OAuth login process).  Furthermore, it does not end the User's 'sauthenticated session with Fabric.  Thus, a subsequent OAuth entry by the same user may actually require zero input from the user -- they could potentially bypass both OAuth entry steps (login and scope acceptance).  This allows a user to begin a new OAuth session seamlessly, even after logging out.</para>
 	/// </remarks>
-	public interface ILogoutOperation : IOperation {
+	public interface IOauthLogoutGetOperation : IOperation {
 		
 		/// <summary>
 		///   Perform the operation.
@@ -647,7 +785,7 @@ namespace Fabric.Clients.Cs.Api {
 	
 
 	/*================================================================================================*/
-	internal class LogoutOperation : ILogoutOperation {
+	internal class OauthLogoutGetOperation : IOauthLogoutGetOperation {
 
 		public const string Uri = "/Oauth/Logout";
 		
@@ -659,7 +797,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public LogoutOperation(IClientContext pContext) {
+		public OauthLogoutGetOperation(IClientContext pContext) {
 			vContext = pContext;
 		}
 
@@ -667,9 +805,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabOauthLogout> Request(string access_token) {
-			return new FabricRequest<FabOauthLogout>("GET", Uri, 
-				"access_token="+access_token,
-				null
+			return new FabricRequest<FabOauthLogout>("GET", Uri, "",
+				"access_token="+access_token
 			);
 		}
 		
@@ -683,903 +820,25 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary>
-	///   Create a new Class.
+	///   Begins a traversal with an App entry point.
 	/// </summary>
 	/// <remarks>
-	///   <para>Create a new Class. Attach Factors to this Class immediately after creation to give it meaning and relevance within Fabric.</para>
+	///   <para>Begins a traversal with an App entry point.</para>
 	/// </remarks>
-	public interface IAddClassOperation : IOperation {
+	public partial interface ITraversalAppsGetOperation : IOperation {
 		
 		/// <summary>
 		///   Perform the operation.
 		/// </summary>
-		/// <param name="Name">
-		///   The name of the new Class. It must be unique on its own, or be unique in combination with the disambiguation text.
-		/// </param>
-		/// <param name="Disamb">
-		///   The disambiguation text for the new Class.  When provided, the disambiguation text permits the use of a non-unique name.
-		/// </param>
-		/// <param name="Note">
-		///   A brief description of the new Class. It can be useful for helping others understand the creator's intended purpose or meaning.
-		/// </param>
-		FabResponse<FabClass> Post(string Name, string Disamb, string Note);
+		FabResponse<FabTravAppRoot> Get();
 
 	}
 	
 
 	/*================================================================================================*/
-	internal class AddClassOperation : IAddClassOperation {
+	internal partial class TraversalAppsGetOperation : ITraversalAppsGetOperation {
 
-		public const string Uri = "/Mod/Classes";
-		
-		public string Method { get { return "POST"; } }
-		public string RequiredAuth { get { return "Member"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public AddClassOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabClass>> Request(string Name, string Disamb, string Note) {
-			return new FabricRequest<FabResponse<FabClass>>("POST", Uri, 
-				null,
-				"Name="+Name+"&Disamb="+Disamb+"&Note="+Note
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabClass> Post(string Name, string Disamb, string Note) {
-			return Request(Name, Disamb, Note).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   TODO
-	/// </summary>
-	/// <remarks>
-	///   <para>TODO</para>
-	/// </remarks>
-	public interface IAddClassesOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="Classes">
-		///   TODO
-		/// </param>
-		FabResponse<FabBatchResult> Post(FabBatchNewClass[] Classes);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class AddClassesOperation : IAddClassesOperation {
-
-		public const string Uri = "/Mod/Classes/Batch";
-		
-		public string Method { get { return "POST"; } }
-		public string RequiredAuth { get { return "Member"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public AddClassesOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabBatchResult>> Request(FabBatchNewClass[] Classes) {
-			return new FabricRequest<FabResponse<FabBatchResult>>("POST", Uri, 
-				null,
-				"Classes="+Classes.ToJson()
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabBatchResult> Post(FabBatchNewClass[] Classes) {
-			return Request(Classes).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Create a new Factor.
-	/// </summary>
-	/// <remarks>
-	///   <para>Create a new Factor. The Factor begins in the 'incomplete' state, with no FactorElements attached.</para>
-	/// </remarks>
-	public interface IAddFactorOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="PrimaryArtifactId">
-		///   Identifies the primary Artifact for the new Factor.
-		/// </param>
-		/// <param name="RelatedArtifactId">
-		///   Identifies the related Artifact for the new Factor. The related Artifact cannot be the same as the primary Artifact.
-		/// </param>
-		/// <param name="FactorAssertionId">
-		///   Identifies the FactorAssertion for the new Factor. In cases where the assertion type is unclear or not known, please use the 'Undefined' FactorAssertion.
-		/// </param>
-		/// <param name="IsDefining">
-		///   The IsDefining value for the new Factor.
-		/// </param>
-		/// <param name="Note">
-		///   A sentence or short paragraph describing (in a human-readable format) the intended meaning of the new Factor. A descriptive note can help others understand the creator's intended purpose or meaning for the Factor.
-		/// </param>
-		FabResponse<FabFactor> Post(long PrimaryArtifactId, long RelatedArtifactId, byte FactorAssertionId, bool IsDefining, string Note);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class AddFactorOperation : IAddFactorOperation {
-
-		public const string Uri = "/Mod/Factors";
-		
-		public string Method { get { return "POST"; } }
-		public string RequiredAuth { get { return "Member"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public AddFactorOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabFactor>> Request(long PrimaryArtifactId, long RelatedArtifactId, byte FactorAssertionId, bool IsDefining, string Note) {
-			return new FabricRequest<FabResponse<FabFactor>>("POST", Uri, 
-				null,
-				"PrimaryArtifactId="+PrimaryArtifactId+"&RelatedArtifactId="+RelatedArtifactId+"&FactorAssertionId="+FactorAssertionId+"&IsDefining="+IsDefining+"&Note="+Note
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabFactor> Post(long PrimaryArtifactId, long RelatedArtifactId, byte FactorAssertionId, bool IsDefining, string Note) {
-			return Request(PrimaryArtifactId, RelatedArtifactId, FactorAssertionId, IsDefining, Note).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   TODO
-	/// </summary>
-	/// <remarks>
-	///   <para>TODO</para>
-	/// </remarks>
-	public interface IAddFactorsOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="Factors">
-		///   TODO
-		/// </param>
-		FabResponse<FabBatchResult> Post(FabBatchNewFactor[] Factors);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class AddFactorsOperation : IAddFactorsOperation {
-
-		public const string Uri = "/Mod/Factors/Batch";
-		
-		public string Method { get { return "POST"; } }
-		public string RequiredAuth { get { return "Member"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public AddFactorsOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabBatchResult>> Request(FabBatchNewFactor[] Factors) {
-			return new FabricRequest<FabResponse<FabBatchResult>>("POST", Uri, 
-				null,
-				"Factors="+Factors.ToJson()
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabBatchResult> Post(FabBatchNewFactor[] Factors) {
-			return Request(Factors).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Create a new Instance.
-	/// </summary>
-	/// <remarks>
-	///   <para>Create a new Instance. Attach Factors to this Instance immediately after creation to give it meaning and relevance within Fabric.</para>
-	/// </remarks>
-	public interface IAddInstanceOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="Name">
-		///   The name of the new Instance. It does not need to be unique.
-		/// </param>
-		/// <param name="Disamb">
-		///   The disambiguation text for the new Instance. When provided, the disambiguation text permits the use of a non-unique name.
-		/// </param>
-		/// <param name="Note">
-		///   A brief description of the new Instance.  It can be useful for helping others understand the creator's intended purpose or meaning.
-		/// </param>
-		FabResponse<FabInstance> Post(string Name, string Disamb, string Note);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class AddInstanceOperation : IAddInstanceOperation {
-
-		public const string Uri = "/Mod/Instances";
-		
-		public string Method { get { return "POST"; } }
-		public string RequiredAuth { get { return "Member"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public AddInstanceOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabInstance>> Request(string Name, string Disamb, string Note) {
-			return new FabricRequest<FabResponse<FabInstance>>("POST", Uri, 
-				null,
-				"Name="+Name+"&Disamb="+Disamb+"&Note="+Note
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabInstance> Post(string Name, string Disamb, string Note) {
-			return Request(Name, Disamb, Note).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Create a new Url.
-	/// </summary>
-	/// <remarks>
-	///   <para>Create a new Url.</para>
-	/// </remarks>
-	public interface IAddUrlOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="Path">
-		///   The complete absolute URL for new Url object. It must include the URL's protocol (such as 'http://').
-		/// </param>
-		/// <param name="Name">
-		///   The name of the new Url.
-		/// </param>
-		FabResponse<FabUrl> Post(string Path, string Name);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class AddUrlOperation : IAddUrlOperation {
-
-		public const string Uri = "/Mod/Urls";
-		
-		public string Method { get { return "POST"; } }
-		public string RequiredAuth { get { return "Member"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public AddUrlOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabUrl>> Request(string Path, string Name) {
-			return new FabricRequest<FabResponse<FabUrl>>("POST", Uri, 
-				null,
-				"Path="+Path+"&Name="+Name
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabUrl> Post(string Path, string Name) {
-			return Request(Path, Name).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Create a new Descriptor and attach it to the specified Factor.
-	/// </summary>
-	/// <remarks>
-	///   <para>Create a new Descriptor and attach it to the specified Factor.</para>
-	/// </remarks>
-	public interface IAttachDescriptorToFactorOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="FactorId">
-		///   Identifies the incomplete Factor that will receive the Descriptor attachment.
-		/// </param>
-		/// <param name="DescriptorTypeId">
-		///   Identifies the DescriptorType for the new Descriptor.
-		/// </param>
-		/// <param name="PrimaryArtifactRefineId">
-		///   Identifies the Artifact that refines the Factor's primary Artifact.
-		/// </param>
-		/// <param name="RelatedArtifactRefineId">
-		///   Identifies the Artifact that refines the Factor's related Artifact.
-		/// </param>
-		/// <param name="DescriptorTypeRefineId">
-		///   Identifies the Artifact that refines the new Descriptor's DescriptorType.
-		/// </param>
-		FabResponse<bool> Post(long FactorId, byte DescriptorTypeId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId, long? DescriptorTypeRefineId);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class AttachDescriptorToFactorOperation : IAttachDescriptorToFactorOperation {
-
-		public const string Uri = "/Mod/Descriptors";
-		
-		public string Method { get { return "POST"; } }
-		public string RequiredAuth { get { return "Member"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public AttachDescriptorToFactorOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<bool>> Request(long FactorId, byte DescriptorTypeId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId, long? DescriptorTypeRefineId) {
-			return new FabricRequest<FabResponse<bool>>("POST", Uri, 
-				null,
-				"FactorId="+FactorId+"&DescriptorTypeId="+DescriptorTypeId+"&PrimaryArtifactRefineId="+PrimaryArtifactRefineId+"&RelatedArtifactRefineId="+RelatedArtifactRefineId+"&DescriptorTypeRefineId="+DescriptorTypeRefineId
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<bool> Post(long FactorId, byte DescriptorTypeId, long? PrimaryArtifactRefineId, long? RelatedArtifactRefineId, long? DescriptorTypeRefineId) {
-			return Request(FactorId, DescriptorTypeId, PrimaryArtifactRefineId, RelatedArtifactRefineId, DescriptorTypeRefineId).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Create a new Director and attach it to the specified Factor.
-	/// </summary>
-	/// <remarks>
-	///   <para>Create a new Director and attach it to the specified Factor.</para>
-	/// </remarks>
-	public interface IAttachDirectorToFactorOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="FactorId">
-		///   Identifies the incomplete Factor that will receive the Director attachment.
-		/// </param>
-		/// <param name="DirectorTypeId">
-		///   Identifies the DirectorType for the new Director.
-		/// </param>
-		/// <param name="PrimaryDirectorActionId">
-		///   Identifies the DirectorAction associated with the Factor's primary Artifact.
-		/// </param>
-		/// <param name="RelatedDirectorActionId">
-		///   Identifies the DirectorAction associated with the Factor's related Artifact.
-		/// </param>
-		FabResponse<bool> Post(long FactorId, byte DirectorTypeId, byte PrimaryDirectorActionId, byte RelatedDirectorActionId);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class AttachDirectorToFactorOperation : IAttachDirectorToFactorOperation {
-
-		public const string Uri = "/Mod/Directors";
-		
-		public string Method { get { return "POST"; } }
-		public string RequiredAuth { get { return "Member"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public AttachDirectorToFactorOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<bool>> Request(long FactorId, byte DirectorTypeId, byte PrimaryDirectorActionId, byte RelatedDirectorActionId) {
-			return new FabricRequest<FabResponse<bool>>("POST", Uri, 
-				null,
-				"FactorId="+FactorId+"&DirectorTypeId="+DirectorTypeId+"&PrimaryDirectorActionId="+PrimaryDirectorActionId+"&RelatedDirectorActionId="+RelatedDirectorActionId
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<bool> Post(long FactorId, byte DirectorTypeId, byte PrimaryDirectorActionId, byte RelatedDirectorActionId) {
-			return Request(FactorId, DirectorTypeId, PrimaryDirectorActionId, RelatedDirectorActionId).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Create a new Eventor and attach it to the specified Factor.
-	/// </summary>
-	/// <remarks>
-	///   <para>Create a new Eventor and attach it to the specified Factor.</para>
-	/// </remarks>
-	public interface IAttachEventorToFactorOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="FactorId">
-		///   Identifies the incomplete Factor that will receive the Eventor attachment.
-		/// </param>
-		/// <param name="EventorTypeId">
-		///   Identifies the EventorType for the new Eventor.
-		/// </param>
-		/// <param name="Year">
-		///   The year value for the new Eventor.
-		/// </param>
-		/// <param name="Month">
-		///   The month value for the new Eventor.
-		/// </param>
-		/// <param name="Day">
-		///   The day value for the new Eventor.
-		/// </param>
-		/// <param name="Hour">
-		///   The hour value for the new Eventor.
-		/// </param>
-		/// <param name="Minute">
-		///   The minute value for the new Eventor.
-		/// </param>
-		/// <param name="Second">
-		///   The second value for the new Eventor.
-		/// </param>
-		FabResponse<bool> Post(long FactorId, byte EventorTypeId, long Year, byte? Month, byte? Day, byte? Hour, byte? Minute, byte? Second);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class AttachEventorToFactorOperation : IAttachEventorToFactorOperation {
-
-		public const string Uri = "/Mod/Eventors";
-		
-		public string Method { get { return "POST"; } }
-		public string RequiredAuth { get { return "Member"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public AttachEventorToFactorOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<bool>> Request(long FactorId, byte EventorTypeId, long Year, byte? Month, byte? Day, byte? Hour, byte? Minute, byte? Second) {
-			return new FabricRequest<FabResponse<bool>>("POST", Uri, 
-				null,
-				"FactorId="+FactorId+"&EventorTypeId="+EventorTypeId+"&Year="+Year+"&Month="+Month+"&Day="+Day+"&Hour="+Hour+"&Minute="+Minute+"&Second="+Second
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<bool> Post(long FactorId, byte EventorTypeId, long Year, byte? Month, byte? Day, byte? Hour, byte? Minute, byte? Second) {
-			return Request(FactorId, EventorTypeId, Year, Month, Day, Hour, Minute, Second).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Create a new Identor and attach it to the specified Factor.
-	/// </summary>
-	/// <remarks>
-	///   <para>Create a new Identor and attach it to the specified Factor.</para>
-	/// </remarks>
-	public interface IAttachIdentorToFactorOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="FactorId">
-		///   Identifies the incomplete Factor that will receive the Identor attachment.
-		/// </param>
-		/// <param name="IdentorTypeId">
-		///   Identifies the IdentorType for the new Identor.
-		/// </param>
-		/// <param name="Value">
-		///   The text-based value for the new Identor.
-		/// </param>
-		FabResponse<bool> Post(long FactorId, byte IdentorTypeId, string Value);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class AttachIdentorToFactorOperation : IAttachIdentorToFactorOperation {
-
-		public const string Uri = "/Mod/Identors";
-		
-		public string Method { get { return "POST"; } }
-		public string RequiredAuth { get { return "Member"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public AttachIdentorToFactorOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<bool>> Request(long FactorId, byte IdentorTypeId, string Value) {
-			return new FabricRequest<FabResponse<bool>>("POST", Uri, 
-				null,
-				"FactorId="+FactorId+"&IdentorTypeId="+IdentorTypeId+"&Value="+Value
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<bool> Post(long FactorId, byte IdentorTypeId, string Value) {
-			return Request(FactorId, IdentorTypeId, Value).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Create a new Locator and attach it to the specified Factor.
-	/// </summary>
-	/// <remarks>
-	///   <para>Create a new Locator and attach it to the specified Factor.</para>
-	/// </remarks>
-	public interface IAttachLocatorToFactorOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="FactorId">
-		///   Identifies the incomplete Factor that will receive the Locator attachment.
-		/// </param>
-		/// <param name="LocatorTypeId">
-		///   Identifies the LocatorType for the new Locator.
-		/// </param>
-		/// <param name="ValueX">
-		///   The X value for the new Locator.
-		/// </param>
-		/// <param name="ValueY">
-		///   The Y value for the new Locator.
-		/// </param>
-		/// <param name="ValueZ">
-		///   The Z value for the new Locator.
-		/// </param>
-		FabResponse<bool> Post(long FactorId, byte LocatorTypeId, double ValueX, double ValueY, double ValueZ);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class AttachLocatorToFactorOperation : IAttachLocatorToFactorOperation {
-
-		public const string Uri = "/Mod/Locators";
-		
-		public string Method { get { return "POST"; } }
-		public string RequiredAuth { get { return "Member"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public AttachLocatorToFactorOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<bool>> Request(long FactorId, byte LocatorTypeId, double ValueX, double ValueY, double ValueZ) {
-			return new FabricRequest<FabResponse<bool>>("POST", Uri, 
-				null,
-				"FactorId="+FactorId+"&LocatorTypeId="+LocatorTypeId+"&ValueX="+ValueX+"&ValueY="+ValueY+"&ValueZ="+ValueZ
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<bool> Post(long FactorId, byte LocatorTypeId, double ValueX, double ValueY, double ValueZ) {
-			return Request(FactorId, LocatorTypeId, ValueX, ValueY, ValueZ).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Create a new Vector and attach it to the specified Factor.
-	/// </summary>
-	/// <remarks>
-	///   <para>Create a new Vector and attach it to the specified Factor.</para>
-	/// </remarks>
-	public interface IAttachVectorToFactorOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="FactorId">
-		///   Identifies the incomplete Factor that will receive the Vector attachment.
-		/// </param>
-		/// <param name="VectorTypeId">
-		///   Identifies the VectorType for the new Vector.
-		/// </param>
-		/// <param name="Value">
-		///   The value for the new Vector. This value must be within the range specified by the VectorType. Decimal values are not supported; if additional precision is required, use a VectorUnitPrefix such as Milli or Micro.
-		/// </param>
-		/// <param name="AxisArtifactId">
-		///   The Artifact which provides meaning for the new Vector.
-		/// </param>
-		/// <param name="VectorUnitId">
-		///   Identifies the VectorUnit for the new Vector.
-		/// </param>
-		/// <param name="VectorUnitPrefixId">
-		///   Identifies the VectorUnitPrefix for the new Vector.
-		/// </param>
-		FabResponse<bool> Post(long FactorId, byte VectorTypeId, long Value, long AxisArtifactId, byte VectorUnitId, byte VectorUnitPrefixId);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class AttachVectorToFactorOperation : IAttachVectorToFactorOperation {
-
-		public const string Uri = "/Mod/Vectors";
-		
-		public string Method { get { return "POST"; } }
-		public string RequiredAuth { get { return "Member"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public AttachVectorToFactorOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<bool>> Request(long FactorId, byte VectorTypeId, long Value, long AxisArtifactId, byte VectorUnitId, byte VectorUnitPrefixId) {
-			return new FabricRequest<FabResponse<bool>>("POST", Uri, 
-				null,
-				"FactorId="+FactorId+"&VectorTypeId="+VectorTypeId+"&Value="+Value+"&AxisArtifactId="+AxisArtifactId+"&VectorUnitId="+VectorUnitId+"&VectorUnitPrefixId="+VectorUnitPrefixId
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<bool> Post(long FactorId, byte VectorTypeId, long Value, long AxisArtifactId, byte VectorUnitId, byte VectorUnitPrefixId) {
-			return Request(FactorId, VectorTypeId, Value, AxisArtifactId, VectorUnitId, VectorUnitPrefixId).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Move a Factor from the 'incomplete' state to the 'complete' state.
-	/// </summary>
-	/// <remarks>
-	///   <para>Move a Factor from the 'incomplete' state to the 'complete' state.  A Factor must have a Descriptor before it can be completed. Once a Factor is completed, it can only be deleted -- no further modifications are permitted.</para>
-	/// </remarks>
-	public interface ICompleteFactorOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="FactorId">
-		///   Identifies the incomplete Factor to be completed.
-		/// </param>
-		/// <param name="IsCompleted">
-		///   The IsCompleted value must be 'true'.
-		/// </param>
-		FabResponse<FabFactor> Put(long FactorId, bool IsCompleted);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class CompleteFactorOperation : ICompleteFactorOperation {
-
-		public const string Uri = "/Mod/Factors";
-		
-		public string Method { get { return "PUT"; } }
-		public string RequiredAuth { get { return "Member"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public CompleteFactorOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabFactor>> Request(long FactorId, bool IsCompleted) {
-			return new FabricRequest<FabResponse<FabFactor>>("PUT", Uri, 
-				null,
-				"FactorId="+FactorId+"&IsCompleted="+IsCompleted
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabFactor> Put(long FactorId, bool IsCompleted) {
-			return Request(FactorId, IsCompleted).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Delete a Factor.
-	/// </summary>
-	/// <remarks>
-	///   <para>Delete a Factor.</para>
-	/// </remarks>
-	public interface IDeleteFactorOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		/// <param name="FactorId">
-		///   Identifies the Factor to be deleted.
-		/// </param>
-		/// <param name="IsDeleted">
-		///   The IsDeleted value must be 'true'.
-		/// </param>
-		FabResponse<FabFactor> Delete(long FactorId, bool IsDeleted);
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class DeleteFactorOperation : IDeleteFactorOperation {
-
-		public const string Uri = "/Mod/Factors";
-		
-		public string Method { get { return "DELETE"; } }
-		public string RequiredAuth { get { return "Member"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public DeleteFactorOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabFactor>> Request(long FactorId, bool IsDeleted) {
-			return new FabricRequest<FabResponse<FabFactor>>("DELETE", Uri, 
-				null,
-				"FactorId="+FactorId+"&IsDeleted="+IsDeleted
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabFactor> Delete(long FactorId, bool IsDeleted) {
-			return Request(FactorId, IsDeleted).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Get the latest specifications and documentation for all Fabric API services.
-	/// </summary>
-	/// <remarks>
-	///   <para>Get the latest specifications and documentation for all Fabric API services.</para>
-	/// </remarks>
-	public interface IGetSpecificationOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		FabResponse<FabSpec> Get();
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class GetSpecificationOperation : IGetSpecificationOperation {
-
-		public const string Uri = "/Meta/Spec";
+		public const string Uri = "/Trav/Apps";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -1589,22 +848,21 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public GetSpecificationOperation(IClientContext pContext) {
+		public TraversalAppsGetOperation(IClientContext pContext) {
 			vContext = pContext;
 		}
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabSpec>> Request() {
-			return new FabricRequest<FabResponse<FabSpec>>("GET", Uri, 
-				null,
+		public FabricRequest<FabResponse<FabTravAppRoot>> Request() {
+			return new FabricRequest<FabResponse<FabTravAppRoot>>("GET", Uri, "",
 				null
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabSpec> Get() {
+		public FabResponse<FabTravAppRoot> Get() {
 			return Request().Send(vContext);
 		}
 
@@ -1613,25 +871,25 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary>
-	///   Get the current Fabric server time.
+	///   Begins a traversal with an Artifact entry point.
 	/// </summary>
 	/// <remarks>
-	///   <para>Get the current Fabric server time.</para>
+	///   <para>Begins a traversal with an Artifact entry point.</para>
 	/// </remarks>
-	public interface IGetTimeOperation : IOperation {
+	public partial interface ITraversalArtifactsGetOperation : IOperation {
 		
 		/// <summary>
 		///   Perform the operation.
 		/// </summary>
-		FabResponse<FabMetaTime> Get();
+		FabResponse<FabTravArtifactRoot> Get();
 
 	}
 	
 
 	/*================================================================================================*/
-	internal class GetTimeOperation : IGetTimeOperation {
+	internal partial class TraversalArtifactsGetOperation : ITraversalArtifactsGetOperation {
 
-		public const string Uri = "/Meta/Time";
+		public const string Uri = "/Trav/Artifacts";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -1641,22 +899,21 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public GetTimeOperation(IClientContext pContext) {
+		public TraversalArtifactsGetOperation(IClientContext pContext) {
 			vContext = pContext;
 		}
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabMetaTime>> Request() {
-			return new FabricRequest<FabResponse<FabMetaTime>>("GET", Uri, 
-				null,
+		public FabricRequest<FabResponse<FabTravArtifactRoot>> Request() {
+			return new FabricRequest<FabResponse<FabTravArtifactRoot>>("GET", Uri, "",
 				null
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabMetaTime> Get() {
+		public FabResponse<FabTravArtifactRoot> Get() {
 			return Request().Send(vContext);
 		}
 
@@ -1665,25 +922,25 @@ namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary>
-	///   Get the current Fabric version.
+	///   Begins a traversal with an Class entry point.
 	/// </summary>
 	/// <remarks>
-	///   <para>Get the current Fabric version.</para>
+	///   <para>Begins a traversal with an Class entry point.</para>
 	/// </remarks>
-	public interface IGetVersionOperation : IOperation {
+	public partial interface ITraversalClassesGetOperation : IOperation {
 		
 		/// <summary>
 		///   Perform the operation.
 		/// </summary>
-		FabResponse<FabMetaVersion> Get();
+		FabResponse<FabTravClassRoot> Get();
 
 	}
 	
 
 	/*================================================================================================*/
-	internal class GetVersionOperation : IGetVersionOperation {
+	internal partial class TraversalClassesGetOperation : ITraversalClassesGetOperation {
 
-		public const string Uri = "/Meta/Version";
+		public const string Uri = "/Trav/Classes";
 		
 		public string Method { get { return "GET"; } }
 		public string RequiredAuth { get { return "None"; } }
@@ -1693,22 +950,327 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public GetVersionOperation(IClientContext pContext) {
+		public TraversalClassesGetOperation(IClientContext pContext) {
 			vContext = pContext;
 		}
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabMetaVersion>> Request() {
-			return new FabricRequest<FabResponse<FabMetaVersion>>("GET", Uri, 
-				null,
+		public FabricRequest<FabResponse<FabTravClassRoot>> Request() {
+			return new FabricRequest<FabResponse<FabTravClassRoot>>("GET", Uri, "",
 				null
 			);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabMetaVersion> Get() {
+		public FabResponse<FabTravClassRoot> Get() {
+			return Request().Send(vContext);
+		}
+
+	}
+
+
+	/*================================================================================================*/
+	/// <summary>
+	///   Begins a traversal with an Factor entry point.
+	/// </summary>
+	/// <remarks>
+	///   <para>Begins a traversal with an Factor entry point.</para>
+	/// </remarks>
+	public partial interface ITraversalFactorsGetOperation : IOperation {
+		
+		/// <summary>
+		///   Perform the operation.
+		/// </summary>
+		FabResponse<FabTravFactorRoot> Get();
+
+	}
+	
+
+	/*================================================================================================*/
+	internal partial class TraversalFactorsGetOperation : ITraversalFactorsGetOperation {
+
+		public const string Uri = "/Trav/Factors";
+		
+		public string Method { get { return "GET"; } }
+		public string RequiredAuth { get { return "None"; } }
+		
+		private readonly IClientContext vContext;
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public TraversalFactorsGetOperation(IClientContext pContext) {
+			vContext = pContext;
+		}
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabricRequest<FabResponse<FabTravFactorRoot>> Request() {
+			return new FabricRequest<FabResponse<FabTravFactorRoot>>("GET", Uri, "",
+				null
+			);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public FabResponse<FabTravFactorRoot> Get() {
+			return Request().Send(vContext);
+		}
+
+	}
+
+
+	/*================================================================================================*/
+	/// <summary>
+	///   Begins a traversal with an Instance entry point.
+	/// </summary>
+	/// <remarks>
+	///   <para>Begins a traversal with an Instance entry point.</para>
+	/// </remarks>
+	public partial interface ITraversalInstancesGetOperation : IOperation {
+		
+		/// <summary>
+		///   Perform the operation.
+		/// </summary>
+		FabResponse<FabTravInstanceRoot> Get();
+
+	}
+	
+
+	/*================================================================================================*/
+	internal partial class TraversalInstancesGetOperation : ITraversalInstancesGetOperation {
+
+		public const string Uri = "/Trav/Instances";
+		
+		public string Method { get { return "GET"; } }
+		public string RequiredAuth { get { return "None"; } }
+		
+		private readonly IClientContext vContext;
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public TraversalInstancesGetOperation(IClientContext pContext) {
+			vContext = pContext;
+		}
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabricRequest<FabResponse<FabTravInstanceRoot>> Request() {
+			return new FabricRequest<FabResponse<FabTravInstanceRoot>>("GET", Uri, "",
+				null
+			);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public FabResponse<FabTravInstanceRoot> Get() {
+			return Request().Send(vContext);
+		}
+
+	}
+
+
+	/*================================================================================================*/
+	/// <summary>
+	///   Begins a traversal with an Member entry point.
+	/// </summary>
+	/// <remarks>
+	///   <para>Begins a traversal with an Member entry point.</para>
+	/// </remarks>
+	public partial interface ITraversalMembersGetOperation : IOperation {
+		
+		/// <summary>
+		///   Perform the operation.
+		/// </summary>
+		FabResponse<FabTravMemberRoot> Get();
+
+	}
+	
+
+	/*================================================================================================*/
+	internal partial class TraversalMembersGetOperation : ITraversalMembersGetOperation {
+
+		public const string Uri = "/Trav/Members";
+		
+		public string Method { get { return "GET"; } }
+		public string RequiredAuth { get { return "None"; } }
+		
+		private readonly IClientContext vContext;
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public TraversalMembersGetOperation(IClientContext pContext) {
+			vContext = pContext;
+		}
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabricRequest<FabResponse<FabTravMemberRoot>> Request() {
+			return new FabricRequest<FabResponse<FabTravMemberRoot>>("GET", Uri, "",
+				null
+			);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public FabResponse<FabTravMemberRoot> Get() {
+			return Request().Send(vContext);
+		}
+
+	}
+
+
+	/*================================================================================================*/
+	/// <summary>
+	///   Begins a traversal with an Url entry point.
+	/// </summary>
+	/// <remarks>
+	///   <para>Begins a traversal with an Url entry point.</para>
+	/// </remarks>
+	public partial interface ITraversalUrlsGetOperation : IOperation {
+		
+		/// <summary>
+		///   Perform the operation.
+		/// </summary>
+		FabResponse<FabTravUrlRoot> Get();
+
+	}
+	
+
+	/*================================================================================================*/
+	internal partial class TraversalUrlsGetOperation : ITraversalUrlsGetOperation {
+
+		public const string Uri = "/Trav/Urls";
+		
+		public string Method { get { return "GET"; } }
+		public string RequiredAuth { get { return "None"; } }
+		
+		private readonly IClientContext vContext;
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public TraversalUrlsGetOperation(IClientContext pContext) {
+			vContext = pContext;
+		}
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabricRequest<FabResponse<FabTravUrlRoot>> Request() {
+			return new FabricRequest<FabResponse<FabTravUrlRoot>>("GET", Uri, "",
+				null
+			);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public FabResponse<FabTravUrlRoot> Get() {
+			return Request().Send(vContext);
+		}
+
+	}
+
+
+	/*================================================================================================*/
+	/// <summary>
+	///   Begins a traversal with an User entry point.
+	/// </summary>
+	/// <remarks>
+	///   <para>Begins a traversal with an User entry point.</para>
+	/// </remarks>
+	public partial interface ITraversalUsersGetOperation : IOperation {
+		
+		/// <summary>
+		///   Perform the operation.
+		/// </summary>
+		FabResponse<FabTravUserRoot> Get();
+
+	}
+	
+
+	/*================================================================================================*/
+	internal partial class TraversalUsersGetOperation : ITraversalUsersGetOperation {
+
+		public const string Uri = "/Trav/Users";
+		
+		public string Method { get { return "GET"; } }
+		public string RequiredAuth { get { return "None"; } }
+		
+		private readonly IClientContext vContext;
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public TraversalUsersGetOperation(IClientContext pContext) {
+			vContext = pContext;
+		}
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabricRequest<FabResponse<FabTravUserRoot>> Request() {
+			return new FabricRequest<FabResponse<FabTravUserRoot>>("GET", Uri, "",
+				null
+			);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public FabResponse<FabTravUserRoot> Get() {
+			return Request().Send(vContext);
+		}
+
+	}
+
+
+	/*================================================================================================*/
+	/// <summary>
+	///   Begins a traversal with an Vertex entry point.
+	/// </summary>
+	/// <remarks>
+	///   <para>Begins a traversal with an Vertex entry point.</para>
+	/// </remarks>
+	public partial interface ITraversalVerticesGetOperation : IOperation {
+		
+		/// <summary>
+		///   Perform the operation.
+		/// </summary>
+		FabResponse<FabTravVertexRoot> Get();
+
+	}
+	
+
+	/*================================================================================================*/
+	internal partial class TraversalVerticesGetOperation : ITraversalVerticesGetOperation {
+
+		public const string Uri = "/Trav/Vertices";
+		
+		public string Method { get { return "GET"; } }
+		public string RequiredAuth { get { return "None"; } }
+		
+		private readonly IClientContext vContext;
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public TraversalVerticesGetOperation(IClientContext pContext) {
+			vContext = pContext;
+		}
+
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public FabricRequest<FabResponse<FabTravVertexRoot>> Request() {
+			return new FabricRequest<FabResponse<FabTravVertexRoot>>("GET", Uri, "",
+				null
+			);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public FabResponse<FabTravVertexRoot> Get() {
 			return Request().Send(vContext);
 		}
 

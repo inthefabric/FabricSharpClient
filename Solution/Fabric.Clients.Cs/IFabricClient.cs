@@ -17,13 +17,13 @@ namespace Fabric.Clients.Cs {
 		IFabricAppSession AppSession { get; }
 
 		/// <summary />
-		IFabricAppDataProvSession AppDataProvSession { get; }
+		IFabricOauthSession ActiveSession { get; }
 
 		/// <summary />
 		IFabricServices Services { get; }
 
 		/// <summary />
-		bool UseDataProviderPerson { get; set; }
+		bool UseAppDataProvider { get; set; }
 
 	}
 

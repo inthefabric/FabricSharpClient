@@ -42,7 +42,7 @@ namespace Fabric.Clients.Cs.Daemon {
 
 		/*--------------------------------------------------------------------------------------------*/
 		private int StartExport(IFabricClient pClient) {
-			if ( !pClient.UseDataProviderPerson && pClient.PersonSession.Expiration <= DateTime.UtcNow){
+			if ( !pClient.UseAppDataProvider && pClient.ActiveSession.Expiration <= DateTime.UtcNow ) {
 				vDelegate.HandleExpiredUserClient(pClient);
 				return 0;
 			}
@@ -72,7 +72,7 @@ namespace Fabric.Clients.Cs.Daemon {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		private static string GetMapKey(IFabricClient pClient) {
-			return pClient.PersonSession.SessionId;
+			return pClient.ActiveSession.SessionId;
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -102,7 +102,7 @@ namespace Fabric.Clients.Cs.Daemon {
 				return;
 			}
 
-			string sessId = (pClient.PersonSession == null ? null : pClient.PersonSession.SessionId);
+			string sessId = (pClient.ActiveSession == null ? null : pClient.ActiveSession.SessionId);
 			pClient.Config.Logger.Error(sessId, msg);
 		}
 

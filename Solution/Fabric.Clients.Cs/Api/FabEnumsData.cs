@@ -1,6 +1,5 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 9/18/2013 5:35:53 PM
 
 using System.Collections.Generic;
 
@@ -11,16 +10,13 @@ namespace Fabric.Clients.Cs.Api {
 	public static class FabEnumsData {
 
 		/// <summary/>
-		public static IDictionary<byte, MemberType> MemberTypeMap;
-	
-		/// <summary/>
 		public static IDictionary<byte, DescriptorType> DescriptorTypeMap;
 	
 		/// <summary/>
-		public static IDictionary<byte, DirectorType> DirectorTypeMap;
+		public static IDictionary<byte, DirectorAction> DirectorActionMap;
 	
 		/// <summary/>
-		public static IDictionary<byte, DirectorAction> DirectorActionMap;
+		public static IDictionary<byte, DirectorType> DirectorTypeMap;
 	
 		/// <summary/>
 		public static IDictionary<byte, EventorType> EventorTypeMap;
@@ -35,72 +31,33 @@ namespace Fabric.Clients.Cs.Api {
 		public static IDictionary<byte, LocatorType> LocatorTypeMap;
 	
 		/// <summary/>
-		public static IDictionary<byte, VectorType> VectorTypeMap;
-	
-		/// <summary/>
-		public static IDictionary<byte, VectorRangeLevel> VectorRangeLevelMap;
+		public static IDictionary<byte, MemberType> MemberTypeMap;
 	
 		/// <summary/>
 		public static IDictionary<byte, VectorRange> VectorRangeMap;
 	
 		/// <summary/>
+		public static IDictionary<byte, VectorRangeLevel> VectorRangeLevelMap;
+	
+		/// <summary/>
+		public static IDictionary<byte, VectorType> VectorTypeMap;
+	
+		/// <summary/>
 		public static IDictionary<byte, VectorUnit> VectorUnitMap;
+	
+		/// <summary/>
+		public static IDictionary<byte, VectorUnitDerived> VectorUnitDerivedMap;
 	
 		/// <summary/>
 		public static IDictionary<byte, VectorUnitPrefix> VectorUnitPrefixMap;
 	
 		/// <summary/>
-		public static IDictionary<byte, VectorUnitDerived> VectorUnitDerivedMap;
+		public static IDictionary<byte, VertexType> VertexTypeMap;
 	
 		private static bool IsInit = Init();
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum MemberTypeId {
-			
-			/// <summary>
-			///   None: The User is not associated with this App.
-			/// </summary>
-			None = 1,
-			
-			/// <summary>
-			///   Request: The user would like to become a member of this App.
-			/// </summary>
-			Request = 2,
-			
-			/// <summary>
-			///   Invite: The User has been invited to become a member of this App.
-			/// </summary>
-			Invite = 3,
-			
-			/// <summary>
-			///   Member: The User is a member of this App.
-			/// </summary>
-			Member = 4,
-			
-			/// <summary>
-			///   Staff: The User is a staff member of this App.
-			/// </summary>
-			Staff = 5,
-			
-			/// <summary>
-			///   Admin: The User is an administrator of this App.
-			/// </summary>
-			Admin = 6,
-			
-			/// <summary>
-			///   Owner: The User owns this App.
-			/// </summary>
-			Owner = 7,
-			
-			/// <summary>
-			///   Data Provider: The User has a special membership that allows it to interact with Fabric on behalf of the App.
-			/// </summary>
-			DataProvider = 8,
-		}
-
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary/>
 		public enum DescriptorTypeId {
@@ -228,36 +185,6 @@ namespace Fabric.Clients.Cs.Api {
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary/>
-		public enum DirectorTypeId {
-			
-			/// <summary>
-			///   Hyperlink: There is a hyperlink from the primary Artifact to the related Artifact.
-			/// </summary>
-			Hyperlink = 1,
-			
-			/// <summary>
-			///   Defined Path: There is an expected, pre-defined path from the primary Artifact to the related Artifact.
-			/// </summary>
-			DefinedPath = 2,
-			
-			/// <summary>
-			///   Suggested Path: There is a suggested, recommented path from the primary Artifact to the related Artifact.
-			/// </summary>
-			SuggestPath = 3,
-			
-			/// <summary>
-			///   Avoid Path: There is an unsuitable, non-recommented path from the primary Artifact to the related Artifact.
-			/// </summary>
-			AvoidPath = 4,
-			
-			/// <summary>
-			///   Causality: The primary Artifact causes an effect/action to occur upon the related Artifact.
-			/// </summary>
-			Causality = 5,
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
 		public enum DirectorActionId {
 			
 			/// <summary>
@@ -348,6 +275,36 @@ namespace Fabric.Clients.Cs.Api {
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary/>
+		public enum DirectorTypeId {
+			
+			/// <summary>
+			///   Hyperlink: There is a hyperlink from the primary Artifact to the related Artifact.
+			/// </summary>
+			Hyperlink = 1,
+			
+			/// <summary>
+			///   Defined Path: There is an expected, pre-defined path from the primary Artifact to the related Artifact.
+			/// </summary>
+			DefinedPath = 2,
+			
+			/// <summary>
+			///   Suggested Path: There is a suggested, recommented path from the primary Artifact to the related Artifact.
+			/// </summary>
+			SuggestedPath = 3,
+			
+			/// <summary>
+			///   Avoid Path: There is an unsuitable, non-recommented path from the primary Artifact to the related Artifact.
+			/// </summary>
+			AvoidPath = 4,
+			
+			/// <summary>
+			///   Causality: The primary Artifact causes an effect/action to occur upon the related Artifact.
+			/// </summary>
+			Causality = 5,
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary/>
 		public enum EventorTypeId {
 			
 			/// <summary>
@@ -431,17 +388,17 @@ namespace Fabric.Clients.Cs.Api {
 		public enum LocatorTypeId {
 			
 			/// <summary>
-			///   Earth Coordinate: A coordinate position on Earth.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).
+			///   Earth Coordinate: A coordinate position on Earth.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).
 			/// </summary>
 			EarthCoord = 1,
 			
 			/// <summary>
-			///   Moon Coordinate: A coordinate position on Earth's Moon.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).
+			///   Moon Coordinate: A coordinate position on Earth's Moon.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).
 			/// </summary>
 			MoonCoord = 2,
 			
 			/// <summary>
-			///   Mars Coordinate: A coordinate position on Mars.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).
+			///   Mars Coordinate: A coordinate position on Mars.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).
 			/// </summary>
 			MarsCoord = 3,
 			
@@ -463,57 +420,87 @@ namespace Fabric.Clients.Cs.Api {
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary/>
-		public enum VectorTypeId {
+		public enum MemberTypeId {
 			
 			/// <summary>
-			///   Full Bounds
+			///   None: The User is not associated with this App.
 			/// </summary>
-			FullLong = 1,
+			None = 1,
 			
 			/// <summary>
-			///   Positive Bounds
+			///   Request: The user would like to become a member of this App.
 			/// </summary>
-			PosLong = 2,
+			Request = 2,
 			
 			/// <summary>
-			///   Negative Bounds
+			///   Invite: The User has been invited to become a member of this App.
 			/// </summary>
-			NegLong = 3,
+			Invite = 3,
 			
 			/// <summary>
-			///   Full Percentage
+			///   Member: The User is a member of this App.
 			/// </summary>
-			FullPerc = 4,
+			Member = 4,
 			
 			/// <summary>
-			///   Standard Percentage
+			///   Staff: The User is a staff member of this App.
 			/// </summary>
-			StdPerc = 5,
+			Staff = 5,
 			
 			/// <summary>
-			///   Opposable Percentage
+			///   Admin: The User is an administrator of this App.
 			/// </summary>
-			OppPerc = 6,
+			Admin = 6,
 			
 			/// <summary>
-			///   Standard Agreement
+			///   Owner: The User owns this App.
 			/// </summary>
-			StdAgree = 7,
+			Owner = 7,
 			
 			/// <summary>
-			///   Opposable Agreement
+			///   Data Provider: The User has a special membership that allows it to interact with Fabric on behalf of the App.
 			/// </summary>
-			OppAgree = 8,
+			DataProv = 8,
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary/>
+		public enum VectorRangeId {
 			
 			/// <summary>
-			///   Standard Favorability
+			///   Full Numeric
 			/// </summary>
-			StdFavor = 9,
+			FullNum = 1,
 			
 			/// <summary>
-			///   Opposable Favorability
+			///   Positive Numeric
 			/// </summary>
-			OppFavor = 10,
+			PosNum = 2,
+			
+			/// <summary>
+			///   Negative Numeric
+			/// </summary>
+			NegNum = 3,
+			
+			/// <summary>
+			///   Full Agreement
+			/// </summary>
+			FullAgree = 4,
+			
+			/// <summary>
+			///   Positive Agreement
+			/// </summary>
+			PosAgree = 5,
+			
+			/// <summary>
+			///   Full Favorability
+			/// </summary>
+			FullFavor = 6,
+			
+			/// <summary>
+			///   Positive Favorability
+			/// </summary>
+			PosFavor = 7,
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -648,42 +635,57 @@ namespace Fabric.Clients.Cs.Api {
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary/>
-		public enum VectorRangeId {
+		public enum VectorTypeId {
 			
 			/// <summary>
-			///   Full Numeric
+			///   Full Bounds
 			/// </summary>
-			FullNum = 1,
+			FullLong = 1,
 			
 			/// <summary>
-			///   Positive Numeric
+			///   Positive Bounds
 			/// </summary>
-			PosNum = 2,
+			PosLong = 2,
 			
 			/// <summary>
-			///   Negative Numeric
+			///   Negative Bounds
 			/// </summary>
-			NegNum = 3,
+			NegLong = 3,
 			
 			/// <summary>
-			///   Full Agreement
+			///   Full Percentage
 			/// </summary>
-			FullAgree = 4,
+			FullPerc = 4,
 			
 			/// <summary>
-			///   Positive Agreement
+			///   Standard Percentage
 			/// </summary>
-			PosAgree = 5,
+			StdPerc = 5,
 			
 			/// <summary>
-			///   Full Favorability
+			///   Opposable Percentage
 			/// </summary>
-			FullFavor = 6,
+			OppPerc = 6,
 			
 			/// <summary>
-			///   Positive Favorability
+			///   Standard Agreement
 			/// </summary>
-			PosFavor = 7,
+			StdAgree = 7,
+			
+			/// <summary>
+			///   Opposable Agreement
+			/// </summary>
+			OppAgree = 8,
+			
+			/// <summary>
+			///   Standard Favorability
+			/// </summary>
+			StdFavor = 9,
+			
+			/// <summary>
+			///   Opposable Favorability
+			/// </summary>
+			OppFavor = 10,
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -741,7 +743,7 @@ namespace Fabric.Clients.Cs.Api {
 			Bit = 10,
 			
 			/// <summary>
-			///   long: B
+			///   Byte: B
 			/// </summary>
 			Byte = 11,
 			
@@ -834,106 +836,6 @@ namespace Fabric.Clients.Cs.Api {
 			///   Pixel: pixel
 			/// </summary>
 			Pixel = 29,
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum VectorUnitPrefixId {
-			
-			/// <summary>
-			///   Base
-			/// </summary>
-			Base = 1,
-			
-			/// <summary>
-			///   Kilo: k
-			/// </summary>
-			Kilo = 2,
-			
-			/// <summary>
-			///   Mega: M
-			/// </summary>
-			Mega = 3,
-			
-			/// <summary>
-			///   Giga: G
-			/// </summary>
-			Giga = 4,
-			
-			/// <summary>
-			///   Tera: T
-			/// </summary>
-			Tera = 5,
-			
-			/// <summary>
-			///   Peta: P
-			/// </summary>
-			Peta = 6,
-			
-			/// <summary>
-			///   Exa: E
-			/// </summary>
-			Exa = 7,
-			
-			/// <summary>
-			///   Milli: m
-			/// </summary>
-			Milli = 8,
-			
-			/// <summary>
-			///   Micro: μ
-			/// </summary>
-			Micro = 9,
-			
-			/// <summary>
-			///   Nano: n
-			/// </summary>
-			Nano = 10,
-			
-			/// <summary>
-			///   Pico: p
-			/// </summary>
-			Pico = 11,
-			
-			/// <summary>
-			///   Femto: f
-			/// </summary>
-			Femto = 12,
-			
-			/// <summary>
-			///   Atto: a
-			/// </summary>
-			Atto = 13,
-			
-			/// <summary>
-			///   Kibi: Ki
-			/// </summary>
-			Kibi = 14,
-			
-			/// <summary>
-			///   Mebi: Mi
-			/// </summary>
-			Mebi = 15,
-			
-			/// <summary>
-			///   Gibi: Gi
-			/// </summary>
-			Gibi = 16,
-			
-			/// <summary>
-			///   Tebi: Ti
-			/// </summary>
-			Tebi = 17,
-			
-			/// <summary>
-			///   Pebi: Pi
-			/// </summary>
-			Pebi = 18,
-			
-			/// <summary>
-			///   Exbi: Ei
-			/// </summary>
-			Exbi = 19,
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -1076,300 +978,360 @@ namespace Fabric.Clients.Cs.Api {
 			AccelSec = 27,
 		}
 
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary/>
+		public enum VectorUnitPrefixId {
+			
+			/// <summary>
+			///   Base
+			/// </summary>
+			Base = 1,
+			
+			/// <summary>
+			///   Kilo: k
+			/// </summary>
+			Kilo = 2,
+			
+			/// <summary>
+			///   Mega: M
+			/// </summary>
+			Mega = 3,
+			
+			/// <summary>
+			///   Giga: G
+			/// </summary>
+			Giga = 4,
+			
+			/// <summary>
+			///   Tera: T
+			/// </summary>
+			Tera = 5,
+			
+			/// <summary>
+			///   Peta: P
+			/// </summary>
+			Peta = 6,
+			
+			/// <summary>
+			///   Exa: E
+			/// </summary>
+			Exa = 7,
+			
+			/// <summary>
+			///   Milli: m
+			/// </summary>
+			Milli = 8,
+			
+			/// <summary>
+			///   Micro: μ
+			/// </summary>
+			Micro = 9,
+			
+			/// <summary>
+			///   Nano: n
+			/// </summary>
+			Nano = 10,
+			
+			/// <summary>
+			///   Pico: p
+			/// </summary>
+			Pico = 11,
+			
+			/// <summary>
+			///   Femto: f
+			/// </summary>
+			Femto = 12,
+			
+			/// <summary>
+			///   Atto: a
+			/// </summary>
+			Atto = 13,
+			
+			/// <summary>
+			///   Kibi: Ki
+			/// </summary>
+			Kibi = 14,
+			
+			/// <summary>
+			///   Mebi: Mi
+			/// </summary>
+			Mebi = 15,
+			
+			/// <summary>
+			///   Gibi: Gi
+			/// </summary>
+			Gibi = 16,
+			
+			/// <summary>
+			///   Tebi: Ti
+			/// </summary>
+			Tebi = 17,
+			
+			/// <summary>
+			///   Pebi: Pi
+			/// </summary>
+			Pebi = 18,
+			
+			/// <summary>
+			///   Exbi: Ei
+			/// </summary>
+			Exbi = 19,
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary/>
+		public enum VertexTypeId {
+			
+			/// <summary>
+			///   Vertex
+			/// </summary>
+			Vertex = 1,
+			
+			/// <summary>
+			///   App
+			/// </summary>
+			App = 2,
+			
+			/// <summary>
+			///   Class
+			/// </summary>
+			Class = 3,
+			
+			/// <summary>
+			///   Instance
+			/// </summary>
+			Instance = 4,
+			
+			/// <summary>
+			///   Url
+			/// </summary>
+			Url = 5,
+			
+			/// <summary>
+			///   User
+			/// </summary>
+			User = 6,
+			
+			/// <summary>
+			///   Member
+			/// </summary>
+			Member = 7,
+			
+			/// <summary>
+			///   Artifact
+			/// </summary>
+			Artifact = 8,
+			
+			/// <summary>
+			///   Factor
+			/// </summary>
+			Factor = 9,
+			
+			/// <summary>
+			///   Email
+			/// </summary>
+			Email = 10,
+			
+			/// <summary>
+			///   OauthAccess
+			/// </summary>
+			OauthAccess = 11,
+		}
+
 	
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		private static bool Init() {
-			BuildMemberTypeMap();
 			BuildDescriptorTypeMap();
-			BuildDirectorTypeMap();
 			BuildDirectorActionMap();
+			BuildDirectorTypeMap();
 			BuildEventorTypeMap();
 			BuildFactorAssertionMap();
 			BuildIdentorTypeMap();
 			BuildLocatorTypeMap();
-			BuildVectorTypeMap();
-			BuildVectorRangeLevelMap();
+			BuildMemberTypeMap();
 			BuildVectorRangeMap();
+			BuildVectorRangeLevelMap();
+			BuildVectorTypeMap();
 			BuildVectorUnitMap();
-			BuildVectorUnitPrefixMap();
 			BuildVectorUnitDerivedMap();
+			BuildVectorUnitPrefixMap();
+			BuildVertexTypeMap();
 			return true;
 		}
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private static void BuildMemberTypeMap() {
-			MemberTypeMap = new Dictionary<byte, MemberType>();
-
-			MemberTypeMap.Add(1, new MemberType {
-				Id = (byte)1,
-				EnumId = (string)"None",
-				Name = (string)"None",
-				Description = (string)"The User is not associated with this App.",
-			});
-
-			MemberTypeMap.Add(2, new MemberType {
-				Id = (byte)2,
-				EnumId = (string)"Request",
-				Name = (string)"Request",
-				Description = (string)"The user would like to become a member of this App.",
-			});
-
-			MemberTypeMap.Add(3, new MemberType {
-				Id = (byte)3,
-				EnumId = (string)"Invite",
-				Name = (string)"Invite",
-				Description = (string)"The User has been invited to become a member of this App.",
-			});
-
-			MemberTypeMap.Add(4, new MemberType {
-				Id = (byte)4,
-				EnumId = (string)"Member",
-				Name = (string)"Member",
-				Description = (string)"The User is a member of this App.",
-			});
-
-			MemberTypeMap.Add(5, new MemberType {
-				Id = (byte)5,
-				EnumId = (string)"Staff",
-				Name = (string)"Staff",
-				Description = (string)"The User is a staff member of this App.",
-			});
-
-			MemberTypeMap.Add(6, new MemberType {
-				Id = (byte)6,
-				EnumId = (string)"Admin",
-				Name = (string)"Admin",
-				Description = (string)"The User is an administrator of this App.",
-			});
-
-			MemberTypeMap.Add(7, new MemberType {
-				Id = (byte)7,
-				EnumId = (string)"Owner",
-				Name = (string)"Owner",
-				Description = (string)"The User owns this App.",
-			});
-
-			MemberTypeMap.Add(8, new MemberType {
-				Id = (byte)8,
-				EnumId = (string)"DataProvider",
-				Name = (string)"Data Provider",
-				Description = (string)"The User has a special membership that allows it to interact with Fabric on behalf of the App.",
-			});
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
 		private static void BuildDescriptorTypeMap() {
 			DescriptorTypeMap = new Dictionary<byte, DescriptorType>();
 
 			DescriptorTypeMap.Add(1, new DescriptorType {
-				Id = (byte)1,
-				EnumId = (string)"IsRelatedTo",
-				Name = (string)"Is Related To",
-				Description = (string)"The primary Artifact is related to the related Artifact in some way. This is the default (and least meaningful) DescriptorType.",
+				Id = 1,
+				EnumId = "IsRelatedTo",
+				Name = "Is Related To",
+				Description = "The primary Artifact is related to the related Artifact in some way. This is the default (and least meaningful) DescriptorType.",
 			});
 
 			DescriptorTypeMap.Add(2, new DescriptorType {
-				Id = (byte)2,
-				EnumId = (string)"IsA",
-				Name = (string)"Is (A/An)",
-				Description = (string)"The primary Artifact is a type of, a subclass of, a subset of, a subordinate of, or in the category defined by the related Artifact.",
+				Id = 2,
+				EnumId = "IsA",
+				Name = "Is (A/An)",
+				Description = "The primary Artifact is a type of, a subclass of, a subset of, a subordinate of, or in the category defined by the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(3, new DescriptorType {
-				Id = (byte)3,
-				EnumId = (string)"IsAnInstanceOf",
-				Name = (string)"Is An Instance Of",
-				Description = (string)"The primary Artifact is an instance, case, example, or representation of the related Artifact.",
+				Id = 3,
+				EnumId = "IsAnInstanceOf",
+				Name = "Is An Instance Of",
+				Description = "The primary Artifact is an instance, case, example, or representation of the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(4, new DescriptorType {
-				Id = (byte)4,
-				EnumId = (string)"HasA",
-				Name = (string)"Has (A/An)",
-				Description = (string)"The primary Artifact has, as a part, piece, feature, attribute, or component, the related Artifact.",
+				Id = 4,
+				EnumId = "HasA",
+				Name = "Has (A/An)",
+				Description = "The primary Artifact has, as a part, piece, feature, attribute, or component, the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(5, new DescriptorType {
-				Id = (byte)5,
-				EnumId = (string)"IsLike",
-				Name = (string)"Is Like",
-				Description = (string)"The primary Artifact is like or similar to the related Artifact.",
+				Id = 5,
+				EnumId = "IsLike",
+				Name = "Is Like",
+				Description = "The primary Artifact is like or similar to the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(6, new DescriptorType {
-				Id = (byte)6,
-				EnumId = (string)"IsNotLike",
-				Name = (string)"Is Not Like",
-				Description = (string)"The primary Artifact is not like or not similar to the related Artifact",
+				Id = 6,
+				EnumId = "IsNotLike",
+				Name = "Is Not Like",
+				Description = "The primary Artifact is not like or not similar to the related Artifact",
 			});
 
 			DescriptorTypeMap.Add(7, new DescriptorType {
-				Id = (byte)7,
-				EnumId = (string)"RefersTo",
-				Name = (string)"Refers To",
-				Description = (string)"The primary Artifact refers to, mentions, discusses, links to, or references the related Artifact.",
+				Id = 7,
+				EnumId = "RefersTo",
+				Name = "Refers To",
+				Description = "The primary Artifact refers to, mentions, discusses, links to, or references the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(8, new DescriptorType {
-				Id = (byte)8,
-				EnumId = (string)"IsCreatedBy",
-				Name = (string)"Is Created By",
-				Description = (string)"The primary Artifact is created, built, designed, invented, formed, or performed by the related Artifact.",
+				Id = 8,
+				EnumId = "IsCreatedBy",
+				Name = "Is Created By",
+				Description = "The primary Artifact is created, built, designed, invented, formed, or performed by the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(9, new DescriptorType {
-				Id = (byte)9,
-				EnumId = (string)"IsInterestedIn",
-				Name = (string)"Is Interested In",
-				Description = (string)"The primary Artifact is interested in, fond of, attracted to, enjoys, prefers, or desires the related Artifact.",
+				Id = 9,
+				EnumId = "IsInterestedIn",
+				Name = "Is Interested In",
+				Description = "The primary Artifact is interested in, fond of, attracted to, enjoys, prefers, or desires the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(10, new DescriptorType {
-				Id = (byte)10,
-				EnumId = (string)"Receives",
-				Name = (string)"Receives",
-				Description = (string)"The primary Artifact receives, gets, obtains, or is awarded the related Artifact.",
+				Id = 10,
+				EnumId = "Receives",
+				Name = "Receives",
+				Description = "The primary Artifact receives, gets, obtains, or is awarded the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(11, new DescriptorType {
-				Id = (byte)11,
-				EnumId = (string)"Consumes",
-				Name = (string)"Consumes",
-				Description = (string)"The primary Artifact consumes, eats, is powered by, uses up, depletes, or destroys the related Artifact.",
+				Id = 11,
+				EnumId = "Consumes",
+				Name = "Consumes",
+				Description = "The primary Artifact consumes, eats, is powered by, uses up, depletes, or destroys the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(12, new DescriptorType {
-				Id = (byte)12,
-				EnumId = (string)"Produces",
-				Name = (string)"Produces",
-				Description = (string)"The primary Artifact produces, has a byproduct of, creates, or generates the related Artifact. This is similar to 'Is Created By', but in the opposite direction and meant to be less specific.",
+				Id = 12,
+				EnumId = "Produces",
+				Name = "Produces",
+				Description = "The primary Artifact produces, has a byproduct of, creates, or generates the related Artifact. This is similar to 'Is Created By', but in the opposite direction and meant to be less specific.",
 			});
 
 			DescriptorTypeMap.Add(13, new DescriptorType {
-				Id = (byte)13,
-				EnumId = (string)"ParticipatesIn",
-				Name = (string)"Participates In",
-				Description = (string)"The primary Artifact participates in, competes in, attends, is a member of, or is involved in the related Artifact.",
+				Id = 13,
+				EnumId = "ParticipatesIn",
+				Name = "Participates In",
+				Description = "The primary Artifact participates in, competes in, attends, is a member of, or is involved in the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(14, new DescriptorType {
-				Id = (byte)14,
-				EnumId = (string)"IsFoundIn",
-				Name = (string)"Is Found In",
-				Description = (string)"The primary Artifact is found in, located at, lives in, or is contained by the related Artifact.",
+				Id = 14,
+				EnumId = "IsFoundIn",
+				Name = "Is Found In",
+				Description = "The primary Artifact is found in, located at, lives in, or is contained by the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(15, new DescriptorType {
-				Id = (byte)15,
-				EnumId = (string)"BelongsTo",
-				Name = (string)"Belongs To",
-				Description = (string)"The primary Artifact belongs to, is controlled by, or is owned by the related Artifact.",
+				Id = 15,
+				EnumId = "BelongsTo",
+				Name = "Belongs To",
+				Description = "The primary Artifact belongs to, is controlled by, or is owned by the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(16, new DescriptorType {
-				Id = (byte)16,
-				EnumId = (string)"Requires",
-				Name = (string)"Requires",
-				Description = (string)"The primary Artifact requires, implies, needs, or demands the related Artifact.",
+				Id = 16,
+				EnumId = "Requires",
+				Name = "Requires",
+				Description = "The primary Artifact requires, implies, needs, or demands the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(17, new DescriptorType {
-				Id = (byte)17,
-				EnumId = (string)"InteractsWith",
-				Name = (string)"Interacts With",
-				Description = (string)"The primary Artifact interacts, associates, combines, meets, or communicates with the related Artifact.",
+				Id = 17,
+				EnumId = "InteractsWith",
+				Name = "Interacts With",
+				Description = "The primary Artifact interacts, associates, combines, meets, or communicates with the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(18, new DescriptorType {
-				Id = (byte)18,
-				EnumId = (string)"LooksLike",
-				Name = (string)"Looks Like",
-				Description = (string)"The primary Artifact looks like (has the appearance of) the related Artifact.",
+				Id = 18,
+				EnumId = "LooksLike",
+				Name = "Looks Like",
+				Description = "The primary Artifact looks like (has the appearance of) the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(19, new DescriptorType {
-				Id = (byte)19,
-				EnumId = (string)"SmellsLike",
-				Name = (string)"Smells Like",
-				Description = (string)"The primary Artifact smells like (has the odor, aroma, or fragrance of) the related Artifact.",
+				Id = 19,
+				EnumId = "SmellsLike",
+				Name = "Smells Like",
+				Description = "The primary Artifact smells like (has the odor, aroma, or fragrance of) the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(20, new DescriptorType {
-				Id = (byte)20,
-				EnumId = (string)"TastesLike",
-				Name = (string)"Tastes Like",
-				Description = (string)"The primary Artifact tastes like (has the flavor of) the related Artifact.",
+				Id = 20,
+				EnumId = "TastesLike",
+				Name = "Tastes Like",
+				Description = "The primary Artifact tastes like (has the flavor of) the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(21, new DescriptorType {
-				Id = (byte)21,
-				EnumId = (string)"SoundsLike",
-				Name = (string)"Sounds Like",
-				Description = (string)"The primary Artifact sounds like (has the aural characteristics of) the related Artifact.",
+				Id = 21,
+				EnumId = "SoundsLike",
+				Name = "Sounds Like",
+				Description = "The primary Artifact sounds like (has the aural characteristics of) the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(22, new DescriptorType {
-				Id = (byte)22,
-				EnumId = (string)"FeelsLike",
-				Name = (string)"Feels Like",
-				Description = (string)"The primary Artifact feels like (has the tactile characteristics of) the related Artifact.",
+				Id = 22,
+				EnumId = "FeelsLike",
+				Name = "Feels Like",
+				Description = "The primary Artifact feels like (has the tactile characteristics of) the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(23, new DescriptorType {
-				Id = (byte)23,
-				EnumId = (string)"EmotesLike",
-				Name = (string)"Emotes Like",
-				Description = (string)"The primary Artifact emotes like (causes the emotion of) the related Artifact.",
+				Id = 23,
+				EnumId = "EmotesLike",
+				Name = "Emotes Like",
+				Description = "The primary Artifact emotes like (causes the emotion of) the related Artifact.",
 			});
 
 			DescriptorTypeMap.Add(24, new DescriptorType {
-				Id = (byte)24,
-				EnumId = (string)"Uses",
-				Name = (string)"Uses",
-				Description = (string)"The primary Artifact uses, utilizes, controls, employs, or manipulates the related Artifact.",
-			});
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		private static void BuildDirectorTypeMap() {
-			DirectorTypeMap = new Dictionary<byte, DirectorType>();
-
-			DirectorTypeMap.Add(1, new DirectorType {
-				Id = (byte)1,
-				EnumId = (string)"Hyperlink",
-				Name = (string)"Hyperlink",
-				Description = (string)"There is a hyperlink from the primary Artifact to the related Artifact.",
-			});
-
-			DirectorTypeMap.Add(2, new DirectorType {
-				Id = (byte)2,
-				EnumId = (string)"DefinedPath",
-				Name = (string)"Defined Path",
-				Description = (string)"There is an expected, pre-defined path from the primary Artifact to the related Artifact.",
-			});
-
-			DirectorTypeMap.Add(3, new DirectorType {
-				Id = (byte)3,
-				EnumId = (string)"SuggestPath",
-				Name = (string)"Suggested Path",
-				Description = (string)"There is a suggested, recommented path from the primary Artifact to the related Artifact.",
-			});
-
-			DirectorTypeMap.Add(4, new DirectorType {
-				Id = (byte)4,
-				EnumId = (string)"AvoidPath",
-				Name = (string)"Avoid Path",
-				Description = (string)"There is an unsuitable, non-recommented path from the primary Artifact to the related Artifact.",
-			});
-
-			DirectorTypeMap.Add(5, new DirectorType {
-				Id = (byte)5,
-				EnumId = (string)"Causality",
-				Name = (string)"Causality",
-				Description = (string)"The primary Artifact causes an effect/action to occur upon the related Artifact.",
+				Id = 24,
+				EnumId = "Uses",
+				Name = "Uses",
+				Description = "The primary Artifact uses, utilizes, controls, employs, or manipulates the related Artifact.",
 			});
 		}
 
@@ -1378,122 +1340,162 @@ namespace Fabric.Clients.Cs.Api {
 			DirectorActionMap = new Dictionary<byte, DirectorAction>();
 
 			DirectorActionMap.Add(1, new DirectorAction {
-				Id = (byte)1,
-				EnumId = (string)"Read",
-				Name = (string)"Read",
-				Description = (string)"Read the specified Artifact.",
+				Id = 1,
+				EnumId = "Read",
+				Name = "Read",
+				Description = "Read the specified Artifact.",
 			});
 
 			DirectorActionMap.Add(2, new DirectorAction {
-				Id = (byte)2,
-				EnumId = (string)"Listen",
-				Name = (string)"Listen",
-				Description = (string)"Listen to the specified Artifact.",
+				Id = 2,
+				EnumId = "Listen",
+				Name = "Listen",
+				Description = "Listen to the specified Artifact.",
 			});
 
 			DirectorActionMap.Add(3, new DirectorAction {
-				Id = (byte)3,
-				EnumId = (string)"View",
-				Name = (string)"View",
-				Description = (string)"View (or watch, observe) the specified Artifact.",
+				Id = 3,
+				EnumId = "View",
+				Name = "View",
+				Description = "View (or watch, observe) the specified Artifact.",
 			});
 
 			DirectorActionMap.Add(4, new DirectorAction {
-				Id = (byte)4,
-				EnumId = (string)"Consume",
-				Name = (string)"Consume",
-				Description = (string)"Consume (or use, eat, drink, taste, smell) the specified Artifact.",
+				Id = 4,
+				EnumId = "Consume",
+				Name = "Consume",
+				Description = "Consume (or use, eat, drink, taste, smell) the specified Artifact.",
 			});
 
 			DirectorActionMap.Add(5, new DirectorAction {
-				Id = (byte)5,
-				EnumId = (string)"Perform",
-				Name = (string)"Perform",
-				Description = (string)"Perform (or act, do, carry out, speak, sing, say, work, write) the specified Artifact.",
+				Id = 5,
+				EnumId = "Perform",
+				Name = "Perform",
+				Description = "Perform (or act, do, carry out, speak, sing, say, work, write) the specified Artifact.",
 			});
 
 			DirectorActionMap.Add(6, new DirectorAction {
-				Id = (byte)6,
-				EnumId = (string)"Produce",
-				Name = (string)"Produce",
-				Description = (string)"Produce (or create, build, make, invent) the specified Artifact.",
+				Id = 6,
+				EnumId = "Produce",
+				Name = "Produce",
+				Description = "Produce (or create, build, make, invent) the specified Artifact.",
 			});
 
 			DirectorActionMap.Add(7, new DirectorAction {
-				Id = (byte)7,
-				EnumId = (string)"Destroy",
-				Name = (string)"Destroy",
-				Description = (string)"Destroy (or remove, delete, kill, erase) the specified Artifact.",
+				Id = 7,
+				EnumId = "Destroy",
+				Name = "Destroy",
+				Description = "Destroy (or remove, delete, kill, erase) the specified Artifact.",
 			});
 
 			DirectorActionMap.Add(8, new DirectorAction {
-				Id = (byte)8,
-				EnumId = (string)"Modify",
-				Name = (string)"Modify",
-				Description = (string)"Modify (or change) the specified Artifact.",
+				Id = 8,
+				EnumId = "Modify",
+				Name = "Modify",
+				Description = "Modify (or change) the specified Artifact.",
 			});
 
 			DirectorActionMap.Add(9, new DirectorAction {
-				Id = (byte)9,
-				EnumId = (string)"Obtain",
-				Name = (string)"Obtain",
-				Description = (string)"Obtain (or get, purchase, acquire, steal) the specified Artifact.",
+				Id = 9,
+				EnumId = "Obtain",
+				Name = "Obtain",
+				Description = "Obtain (or get, purchase, acquire, steal) the specified Artifact.",
 			});
 
 			DirectorActionMap.Add(10, new DirectorAction {
-				Id = (byte)10,
-				EnumId = (string)"Locate",
-				Name = (string)"Locate",
-				Description = (string)"Locate (or find) the specified Artifact.",
+				Id = 10,
+				EnumId = "Locate",
+				Name = "Locate",
+				Description = "Locate (or find) the specified Artifact.",
 			});
 
 			DirectorActionMap.Add(11, new DirectorAction {
-				Id = (byte)11,
-				EnumId = (string)"Travel",
-				Name = (string)"Travel",
-				Description = (string)"Travel (or visit, walk, run, fly, ride, drive) the specified Artifact.",
+				Id = 11,
+				EnumId = "Travel",
+				Name = "Travel",
+				Description = "Travel (or visit, walk, run, fly, ride, drive) the specified Artifact.",
 			});
 
 			DirectorActionMap.Add(12, new DirectorAction {
-				Id = (byte)12,
-				EnumId = (string)"Become",
-				Name = (string)"Become",
-				Description = (string)"Become the specified Artifact.",
+				Id = 12,
+				EnumId = "Become",
+				Name = "Become",
+				Description = "Become the specified Artifact.",
 			});
 
 			DirectorActionMap.Add(13, new DirectorAction {
-				Id = (byte)13,
-				EnumId = (string)"Explain",
-				Name = (string)"Explain",
-				Description = (string)"Explain (or describe) the specified Artifact.",
+				Id = 13,
+				EnumId = "Explain",
+				Name = "Explain",
+				Description = "Explain (or describe) the specified Artifact.",
 			});
 
 			DirectorActionMap.Add(14, new DirectorAction {
-				Id = (byte)14,
-				EnumId = (string)"Give",
-				Name = (string)"Give",
-				Description = (string)"Give the specified Artifact.",
+				Id = 14,
+				EnumId = "Give",
+				Name = "Give",
+				Description = "Give the specified Artifact.",
 			});
 
 			DirectorActionMap.Add(15, new DirectorAction {
-				Id = (byte)15,
-				EnumId = (string)"Learn",
-				Name = (string)"Learn",
-				Description = (string)"Learn (or study, understand) the specified Artifact.",
+				Id = 15,
+				EnumId = "Learn",
+				Name = "Learn",
+				Description = "Learn (or study, understand) the specified Artifact.",
 			});
 
 			DirectorActionMap.Add(16, new DirectorAction {
-				Id = (byte)16,
-				EnumId = (string)"Start",
-				Name = (string)"Start",
-				Description = (string)"Start (or begin) the specified Artifact.",
+				Id = 16,
+				EnumId = "Start",
+				Name = "Start",
+				Description = "Start (or begin) the specified Artifact.",
 			});
 
 			DirectorActionMap.Add(17, new DirectorAction {
-				Id = (byte)17,
-				EnumId = (string)"Stop",
-				Name = (string)"Stop",
-				Description = (string)"Stop (or end) the specified Artifact.",
+				Id = 17,
+				EnumId = "Stop",
+				Name = "Stop",
+				Description = "Stop (or end) the specified Artifact.",
+			});
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		private static void BuildDirectorTypeMap() {
+			DirectorTypeMap = new Dictionary<byte, DirectorType>();
+
+			DirectorTypeMap.Add(1, new DirectorType {
+				Id = 1,
+				EnumId = "Hyperlink",
+				Name = "Hyperlink",
+				Description = "There is a hyperlink from the primary Artifact to the related Artifact.",
+			});
+
+			DirectorTypeMap.Add(2, new DirectorType {
+				Id = 2,
+				EnumId = "DefinedPath",
+				Name = "Defined Path",
+				Description = "There is an expected, pre-defined path from the primary Artifact to the related Artifact.",
+			});
+
+			DirectorTypeMap.Add(3, new DirectorType {
+				Id = 3,
+				EnumId = "SuggestedPath",
+				Name = "Suggested Path",
+				Description = "There is a suggested, recommented path from the primary Artifact to the related Artifact.",
+			});
+
+			DirectorTypeMap.Add(4, new DirectorType {
+				Id = 4,
+				EnumId = "AvoidPath",
+				Name = "Avoid Path",
+				Description = "There is an unsuitable, non-recommented path from the primary Artifact to the related Artifact.",
+			});
+
+			DirectorTypeMap.Add(5, new DirectorType {
+				Id = 5,
+				EnumId = "Causality",
+				Name = "Causality",
+				Description = "The primary Artifact causes an effect/action to occur upon the related Artifact.",
 			});
 		}
 
@@ -1502,52 +1504,52 @@ namespace Fabric.Clients.Cs.Api {
 			EventorTypeMap = new Dictionary<byte, EventorType>();
 
 			EventorTypeMap.Add(1, new EventorType {
-				Id = (byte)1,
-				EnumId = (string)"Start",
-				Name = (string)"Start",
-				Description = (string)"This Factor starts, begins, or commences on the specified date.",
+				Id = 1,
+				EnumId = "Start",
+				Name = "Start",
+				Description = "This Factor starts, begins, or commences on the specified date.",
 			});
 
 			EventorTypeMap.Add(2, new EventorType {
-				Id = (byte)2,
-				EnumId = (string)"End",
-				Name = (string)"End",
-				Description = (string)"This Factor ends, stops, or terminates on the specified date.",
+				Id = 2,
+				EnumId = "End",
+				Name = "End",
+				Description = "This Factor ends, stops, or terminates on the specified date.",
 			});
 
 			EventorTypeMap.Add(3, new EventorType {
-				Id = (byte)3,
-				EnumId = (string)"Pause",
-				Name = (string)"Pause",
-				Description = (string)"This Factor pauses, suspendeds, or waits on the specified date.",
+				Id = 3,
+				EnumId = "Pause",
+				Name = "Pause",
+				Description = "This Factor pauses, suspendeds, or waits on the specified date.",
 			});
 
 			EventorTypeMap.Add(4, new EventorType {
-				Id = (byte)4,
-				EnumId = (string)"Unpause",
-				Name = (string)"Unpause",
-				Description = (string)"This Factor unpauses or resumes on the specified date.",
+				Id = 4,
+				EnumId = "Unpause",
+				Name = "Unpause",
+				Description = "This Factor unpauses or resumes on the specified date.",
 			});
 
 			EventorTypeMap.Add(5, new EventorType {
-				Id = (byte)5,
-				EnumId = (string)"Continue",
-				Name = (string)"Continue",
-				Description = (string)"This Factor continues in its current state on the specified date.",
+				Id = 5,
+				EnumId = "Continue",
+				Name = "Continue",
+				Description = "This Factor continues in its current state on the specified date.",
 			});
 
 			EventorTypeMap.Add(6, new EventorType {
-				Id = (byte)6,
-				EnumId = (string)"Occur",
-				Name = (string)"Occur",
-				Description = (string)"This Factor occurrs or happens on the specified date.",
+				Id = 6,
+				EnumId = "Occur",
+				Name = "Occur",
+				Description = "This Factor occurrs or happens on the specified date.",
 			});
 
 			EventorTypeMap.Add(7, new EventorType {
-				Id = (byte)7,
-				EnumId = (string)"Expected",
-				Name = (string)"Expected",
-				Description = (string)"This Factor is/was expected, anticipated, or due on the specified date.",
+				Id = 7,
+				EnumId = "Expected",
+				Name = "Expected",
+				Description = "This Factor is/was expected, anticipated, or due on the specified date.",
 			});
 		}
 
@@ -1556,31 +1558,31 @@ namespace Fabric.Clients.Cs.Api {
 			FactorAssertionMap = new Dictionary<byte, FactorAssertion>();
 
 			FactorAssertionMap.Add(1, new FactorAssertion {
-				Id = (byte)1,
-				EnumId = (string)"Undefined",
-				Name = (string)"Undefined",
-				Description = (string)"The Factor's assertion type is not known or not defined.",
+				Id = 1,
+				EnumId = "Undefined",
+				Name = "Undefined",
+				Description = "The Factor's assertion type is not known or not defined.",
 			});
 
 			FactorAssertionMap.Add(2, new FactorAssertion {
-				Id = (byte)2,
-				EnumId = (string)"Fact",
-				Name = (string)"Fact",
-				Description = (string)"The Factor represents a factual statement.",
+				Id = 2,
+				EnumId = "Fact",
+				Name = "Fact",
+				Description = "The Factor represents a factual statement.",
 			});
 
 			FactorAssertionMap.Add(3, new FactorAssertion {
-				Id = (byte)3,
-				EnumId = (string)"Opinion",
-				Name = (string)"Opinion",
-				Description = (string)"The Factor represents an opinion.",
+				Id = 3,
+				EnumId = "Opinion",
+				Name = "Opinion",
+				Description = "The Factor represents an opinion.",
 			});
 
 			FactorAssertionMap.Add(4, new FactorAssertion {
-				Id = (byte)4,
-				EnumId = (string)"Guess",
-				Name = (string)"Guess",
-				Description = (string)"The Factor represents a guess.",
+				Id = 4,
+				EnumId = "Guess",
+				Name = "Guess",
+				Description = "The Factor represents a guess.",
 			});
 		}
 
@@ -1589,17 +1591,17 @@ namespace Fabric.Clients.Cs.Api {
 			IdentorTypeMap = new Dictionary<byte, IdentorType>();
 
 			IdentorTypeMap.Add(1, new IdentorType {
-				Id = (byte)1,
-				EnumId = (string)"Text",
-				Name = (string)"Text",
-				Description = (string)"A value (a string, typically a name).",
+				Id = 1,
+				EnumId = "Text",
+				Name = "Text",
+				Description = "A value (a string, typically a name).",
 			});
 
 			IdentorTypeMap.Add(2, new IdentorType {
-				Id = (byte)2,
-				EnumId = (string)"Key",
-				Name = (string)"Key",
-				Description = (string)"A value (numeric or otherwise) representing a unique key or ID.",
+				Id = 2,
+				EnumId = "Key",
+				Name = "Key",
+				Description = "A value (numeric or otherwise) representing a unique key or ID.",
 			});
 		}
 
@@ -1608,391 +1610,142 @@ namespace Fabric.Clients.Cs.Api {
 			LocatorTypeMap = new Dictionary<byte, LocatorType>();
 
 			LocatorTypeMap.Add(1, new LocatorType {
-				Id = (byte)1,
-				EnumId = (string)"EarthCoord",
-				Name = (string)"Earth Coordinate",
-				Description = (string)"A coordinate position on Earth.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).",
-				MinX = (double)-180,
-				MaxX = (double)180,
-				MinY = (double)-90,
-				MaxY = (double)90,
-				MinZ = (double)-1.79769313486231e+308,
-				MaxZ = (double)1.79769313486231e+308,
+				Id = 1,
+				EnumId = "EarthCoord",
+				Name = "Earth Coordinate",
+				Description = "A coordinate position on Earth.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).",
+				MinX = -180,
+				MaxX = 180,
+				MinY = -90,
+				MaxY = 90,
+				MinZ = -1.79769313486231e+308,
+				MaxZ = 1.79769313486231e+308,
 			});
 
 			LocatorTypeMap.Add(2, new LocatorType {
-				Id = (byte)2,
-				EnumId = (string)"MoonCoord",
-				Name = (string)"Moon Coordinate",
-				Description = (string)"A coordinate position on Earth's Moon.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).",
-				MinX = (double)-180,
-				MaxX = (double)180,
-				MinY = (double)-90,
-				MaxY = (double)90,
-				MinZ = (double)-1.79769313486231e+308,
-				MaxZ = (double)1.79769313486231e+308,
+				Id = 2,
+				EnumId = "MoonCoord",
+				Name = "Moon Coordinate",
+				Description = "A coordinate position on Earth's Moon.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).",
+				MinX = -180,
+				MaxX = 180,
+				MinY = -90,
+				MaxY = 90,
+				MinZ = -1.79769313486231e+308,
+				MaxZ = 1.79769313486231e+308,
 			});
 
 			LocatorTypeMap.Add(3, new LocatorType {
-				Id = (byte)3,
-				EnumId = (string)"MarsCoord",
-				Name = (string)"Mars Coordinate",
-				Description = (string)"A coordinate position on Mars.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).",
-				MinX = (double)-180,
-				MaxX = (double)180,
-				MinY = (double)-90,
-				MaxY = (double)90,
-				MinZ = (double)-1.79769313486231e+308,
-				MaxZ = (double)1.79769313486231e+308,
+				Id = 3,
+				EnumId = "MarsCoord",
+				Name = "Mars Coordinate",
+				Description = "A coordinate position on Mars.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).",
+				MinX = -180,
+				MaxX = 180,
+				MinY = -90,
+				MaxY = 90,
+				MinZ = -1.79769313486231e+308,
+				MaxZ = 1.79769313486231e+308,
 			});
 
 			LocatorTypeMap.Add(4, new LocatorType {
-				Id = (byte)4,
-				EnumId = (string)"RelPos1D",
-				Name = (string)"Relative Position 1D",
-				Description = (string)"A one-dimensional position, using X=Time. A position is relative to the Artifact's dimensions. For example, X=0.25 represents a position (starting from the origin) that is 25% of the distance to the maximum X dimension.",
-				MinX = (double)-1.79769313486231e+308,
-				MaxX = (double)1.79769313486231e+308,
-				MinY = (double)0,
-				MaxY = (double)0,
-				MinZ = (double)0,
-				MaxZ = (double)0,
+				Id = 4,
+				EnumId = "RelPos1D",
+				Name = "Relative Position 1D",
+				Description = "A one-dimensional position, using X=Time. A position is relative to the Artifact's dimensions. For example, X=0.25 represents a position (starting from the origin) that is 25% of the distance to the maximum X dimension.",
+				MinX = -1.79769313486231e+308,
+				MaxX = 1.79769313486231e+308,
+				MinY = 0,
+				MaxY = 0,
+				MinZ = 0,
+				MaxZ = 0,
 			});
 
 			LocatorTypeMap.Add(5, new LocatorType {
-				Id = (byte)5,
-				EnumId = (string)"RelPos2D",
-				Name = (string)"Relative Position 2D",
-				Description = (string)"A two-dimensional position, using X=Width and Y=Height. A position is relative to the Artifact's dimensions. For example, X=0.25 represents a position (starting from the origin) that is 25% of the distance to the maximum X dimension.",
-				MinX = (double)-1.79769313486231e+308,
-				MaxX = (double)1.79769313486231e+308,
-				MinY = (double)-1.79769313486231e+308,
-				MaxY = (double)1.79769313486231e+308,
-				MinZ = (double)0,
-				MaxZ = (double)0,
+				Id = 5,
+				EnumId = "RelPos2D",
+				Name = "Relative Position 2D",
+				Description = "A two-dimensional position, using X=Width and Y=Height. A position is relative to the Artifact's dimensions. For example, X=0.25 represents a position (starting from the origin) that is 25% of the distance to the maximum X dimension.",
+				MinX = -1.79769313486231e+308,
+				MaxX = 1.79769313486231e+308,
+				MinY = -1.79769313486231e+308,
+				MaxY = 1.79769313486231e+308,
+				MinZ = 0,
+				MaxZ = 0,
 			});
 
 			LocatorTypeMap.Add(6, new LocatorType {
-				Id = (byte)6,
-				EnumId = (string)"RelPos3D",
-				Name = (string)"Relative Position 3D",
-				Description = (string)"A three-dimensional position, using X, Y, and Z axes. A position is relative to the Artifact's dimensions. For example, X=0.25 represents a position (starting from the origin) that is 25% of the distance to the maximum X dimension.",
-				MinX = (double)-1.79769313486231e+308,
-				MaxX = (double)1.79769313486231e+308,
-				MinY = (double)-1.79769313486231e+308,
-				MaxY = (double)1.79769313486231e+308,
-				MinZ = (double)-1.79769313486231e+308,
-				MaxZ = (double)1.79769313486231e+308,
+				Id = 6,
+				EnumId = "RelPos3D",
+				Name = "Relative Position 3D",
+				Description = "A three-dimensional position, using X, Y, and Z axes. A position is relative to the Artifact's dimensions. For example, X=0.25 represents a position (starting from the origin) that is 25% of the distance to the maximum X dimension.",
+				MinX = -1.79769313486231e+308,
+				MaxX = 1.79769313486231e+308,
+				MinY = -1.79769313486231e+308,
+				MaxY = 1.79769313486231e+308,
+				MinZ = -1.79769313486231e+308,
+				MaxZ = 1.79769313486231e+308,
 			});
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private static void BuildVectorTypeMap() {
-			VectorTypeMap = new Dictionary<byte, VectorType>();
+		private static void BuildMemberTypeMap() {
+			MemberTypeMap = new Dictionary<byte, MemberType>();
 
-			VectorTypeMap.Add(1, new VectorType {
-				Id = (byte)1,
-				EnumId = (string)"FullLong",
-				Name = (string)"Full Bounds",
-				Description = (string)"",
-				VectorRangeId = (byte)1,
-				Min = (long)-9223372036854775808,
-				Max = (long)9223372036854775807,
+			MemberTypeMap.Add(1, new MemberType {
+				Id = 1,
+				EnumId = "None",
+				Name = "None",
+				Description = "The User is not associated with this App.",
 			});
 
-			VectorTypeMap.Add(2, new VectorType {
-				Id = (byte)2,
-				EnumId = (string)"PosLong",
-				Name = (string)"Positive Bounds",
-				Description = (string)"",
-				VectorRangeId = (byte)2,
-				Min = (long)0,
-				Max = (long)9223372036854775807,
+			MemberTypeMap.Add(2, new MemberType {
+				Id = 2,
+				EnumId = "Request",
+				Name = "Request",
+				Description = "The user would like to become a member of this App.",
 			});
 
-			VectorTypeMap.Add(3, new VectorType {
-				Id = (byte)3,
-				EnumId = (string)"NegLong",
-				Name = (string)"Negative Bounds",
-				Description = (string)"",
-				VectorRangeId = (byte)3,
-				Min = (long)-9223372036854775808,
-				Max = (long)0,
+			MemberTypeMap.Add(3, new MemberType {
+				Id = 3,
+				EnumId = "Invite",
+				Name = "Invite",
+				Description = "The User has been invited to become a member of this App.",
 			});
 
-			VectorTypeMap.Add(4, new VectorType {
-				Id = (byte)4,
-				EnumId = (string)"FullPerc",
-				Name = (string)"Full Percentage",
-				Description = (string)"",
-				VectorRangeId = (byte)1,
-				Min = (long)-9223372036854775808,
-				Max = (long)9223372036854775807,
+			MemberTypeMap.Add(4, new MemberType {
+				Id = 4,
+				EnumId = "Member",
+				Name = "Member",
+				Description = "The User is a member of this App.",
 			});
 
-			VectorTypeMap.Add(5, new VectorType {
-				Id = (byte)5,
-				EnumId = (string)"StdPerc",
-				Name = (string)"Standard Percentage",
-				Description = (string)"",
-				VectorRangeId = (byte)2,
-				Min = (long)0,
-				Max = (long)100,
+			MemberTypeMap.Add(5, new MemberType {
+				Id = 5,
+				EnumId = "Staff",
+				Name = "Staff",
+				Description = "The User is a staff member of this App.",
 			});
 
-			VectorTypeMap.Add(6, new VectorType {
-				Id = (byte)6,
-				EnumId = (string)"OppPerc",
-				Name = (string)"Opposable Percentage",
-				Description = (string)"",
-				VectorRangeId = (byte)1,
-				Min = (long)-100,
-				Max = (long)100,
+			MemberTypeMap.Add(6, new MemberType {
+				Id = 6,
+				EnumId = "Admin",
+				Name = "Admin",
+				Description = "The User is an administrator of this App.",
 			});
 
-			VectorTypeMap.Add(7, new VectorType {
-				Id = (byte)7,
-				EnumId = (string)"StdAgree",
-				Name = (string)"Standard Agreement",
-				Description = (string)"",
-				VectorRangeId = (byte)5,
-				Min = (long)0,
-				Max = (long)100,
+			MemberTypeMap.Add(7, new MemberType {
+				Id = 7,
+				EnumId = "Owner",
+				Name = "Owner",
+				Description = "The User owns this App.",
 			});
 
-			VectorTypeMap.Add(8, new VectorType {
-				Id = (byte)8,
-				EnumId = (string)"OppAgree",
-				Name = (string)"Opposable Agreement",
-				Description = (string)"",
-				VectorRangeId = (byte)4,
-				Min = (long)-100,
-				Max = (long)100,
-			});
-
-			VectorTypeMap.Add(9, new VectorType {
-				Id = (byte)9,
-				EnumId = (string)"StdFavor",
-				Name = (string)"Standard Favorability",
-				Description = (string)"",
-				VectorRangeId = (byte)7,
-				Min = (long)0,
-				Max = (long)100,
-			});
-
-			VectorTypeMap.Add(10, new VectorType {
-				Id = (byte)10,
-				EnumId = (string)"OppFavor",
-				Name = (string)"Opposable Favorability",
-				Description = (string)"",
-				VectorRangeId = (byte)6,
-				Min = (long)-100,
-				Max = (long)100,
-			});
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		private static void BuildVectorRangeLevelMap() {
-			VectorRangeLevelMap = new Dictionary<byte, VectorRangeLevel>();
-
-			VectorRangeLevelMap.Add(1, new VectorRangeLevel {
-				Id = (byte)1,
-				EnumId = (string)"Zero0",
-				Name = (string)"Zero",
-				Description = (string)"",
-				Position = (float)0,
-			});
-
-			VectorRangeLevelMap.Add(2, new VectorRangeLevel {
-				Id = (byte)2,
-				EnumId = (string)"Zero05",
-				Name = (string)"Zero",
-				Description = (string)"",
-				Position = (float)0.5,
-			});
-
-			VectorRangeLevelMap.Add(3, new VectorRangeLevel {
-				Id = (byte)3,
-				EnumId = (string)"Zero1",
-				Name = (string)"Zero",
-				Description = (string)"",
-				Position = (float)1,
-			});
-
-			VectorRangeLevelMap.Add(4, new VectorRangeLevel {
-				Id = (byte)4,
-				EnumId = (string)"Min0",
-				Name = (string)"Minimum",
-				Description = (string)"",
-				Position = (float)0,
-			});
-
-			VectorRangeLevelMap.Add(5, new VectorRangeLevel {
-				Id = (byte)5,
-				EnumId = (string)"Max1",
-				Name = (string)"Maximum",
-				Description = (string)"",
-				Position = (float)1,
-			});
-
-			VectorRangeLevelMap.Add(6, new VectorRangeLevel {
-				Id = (byte)6,
-				EnumId = (string)"CompDisagree",
-				Name = (string)"Completely Disagree",
-				Description = (string)"",
-				Position = (float)0,
-			});
-
-			VectorRangeLevelMap.Add(7, new VectorRangeLevel {
-				Id = (byte)7,
-				EnumId = (string)"MostDisagree",
-				Name = (string)"Mostly Disagree",
-				Description = (string)"",
-				Position = (float)0.1666667,
-			});
-
-			VectorRangeLevelMap.Add(8, new VectorRangeLevel {
-				Id = (byte)8,
-				EnumId = (string)"SomeDisagree",
-				Name = (string)"Somewhat Disagree",
-				Description = (string)"",
-				Position = (float)0.3333333,
-			});
-
-			VectorRangeLevelMap.Add(9, new VectorRangeLevel {
-				Id = (byte)9,
-				EnumId = (string)"NoOpinion05",
-				Name = (string)"No Opinion",
-				Description = (string)"",
-				Position = (float)0.5,
-			});
-
-			VectorRangeLevelMap.Add(10, new VectorRangeLevel {
-				Id = (byte)10,
-				EnumId = (string)"SomeAgree",
-				Name = (string)"Somewhat Agree",
-				Description = (string)"",
-				Position = (float)0.6666667,
-			});
-
-			VectorRangeLevelMap.Add(11, new VectorRangeLevel {
-				Id = (byte)11,
-				EnumId = (string)"MostAgree",
-				Name = (string)"Mostly Agree",
-				Description = (string)"",
-				Position = (float)0.8333333,
-			});
-
-			VectorRangeLevelMap.Add(12, new VectorRangeLevel {
-				Id = (byte)12,
-				EnumId = (string)"CompAgree",
-				Name = (string)"Completely Agree",
-				Description = (string)"",
-				Position = (float)1,
-			});
-
-			VectorRangeLevelMap.Add(13, new VectorRangeLevel {
-				Id = (byte)13,
-				EnumId = (string)"NoOpinion0",
-				Name = (string)"No Opinion",
-				Description = (string)"",
-				Position = (float)0,
-			});
-
-			VectorRangeLevelMap.Add(14, new VectorRangeLevel {
-				Id = (byte)14,
-				EnumId = (string)"SomeAgreePos",
-				Name = (string)"Somewhat Agree",
-				Description = (string)"",
-				Position = (float)0.3333333,
-			});
-
-			VectorRangeLevelMap.Add(15, new VectorRangeLevel {
-				Id = (byte)15,
-				EnumId = (string)"MostAgreePos",
-				Name = (string)"Mostly Agree",
-				Description = (string)"",
-				Position = (float)0.6666667,
-			});
-
-			VectorRangeLevelMap.Add(16, new VectorRangeLevel {
-				Id = (byte)16,
-				EnumId = (string)"CompAgreePos",
-				Name = (string)"Completely Agree",
-				Description = (string)"",
-				Position = (float)1,
-			});
-
-			VectorRangeLevelMap.Add(17, new VectorRangeLevel {
-				Id = (byte)17,
-				EnumId = (string)"CompUnfavor",
-				Name = (string)"Completely Unfavorable",
-				Description = (string)"",
-				Position = (float)0,
-			});
-
-			VectorRangeLevelMap.Add(18, new VectorRangeLevel {
-				Id = (byte)18,
-				EnumId = (string)"MostUnfavor",
-				Name = (string)"Mostly Unfavorable",
-				Description = (string)"",
-				Position = (float)0.1666667,
-			});
-
-			VectorRangeLevelMap.Add(19, new VectorRangeLevel {
-				Id = (byte)19,
-				EnumId = (string)"SomeUnfavor",
-				Name = (string)"Somewhat Unfavorable",
-				Description = (string)"",
-				Position = (float)0.3333333,
-			});
-
-			VectorRangeLevelMap.Add(20, new VectorRangeLevel {
-				Id = (byte)20,
-				EnumId = (string)"SomeFavor",
-				Name = (string)"Somewhat Favorable",
-				Description = (string)"",
-				Position = (float)0.6666667,
-			});
-
-			VectorRangeLevelMap.Add(21, new VectorRangeLevel {
-				Id = (byte)21,
-				EnumId = (string)"MostFavor",
-				Name = (string)"Mostly Favorable",
-				Description = (string)"",
-				Position = (float)0.8333333,
-			});
-
-			VectorRangeLevelMap.Add(22, new VectorRangeLevel {
-				Id = (byte)22,
-				EnumId = (string)"CompFavor",
-				Name = (string)"Completely Favorable",
-				Description = (string)"",
-				Position = (float)1,
-			});
-
-			VectorRangeLevelMap.Add(23, new VectorRangeLevel {
-				Id = (byte)23,
-				EnumId = (string)"SomeFavorPos",
-				Name = (string)"Somewhat Favorable",
-				Description = (string)"",
-				Position = (float)0.3333333,
-			});
-
-			VectorRangeLevelMap.Add(24, new VectorRangeLevel {
-				Id = (byte)24,
-				EnumId = (string)"MostFavorPos",
-				Name = (string)"Mostly Favorable",
-				Description = (string)"",
-				Position = (float)0.6666667,
-			});
-
-			VectorRangeLevelMap.Add(25, new VectorRangeLevel {
-				Id = (byte)25,
-				EnumId = (string)"CompFavorPos",
-				Name = (string)"Completely Favorable",
-				Description = (string)"",
-				Position = (float)1,
+			MemberTypeMap.Add(8, new MemberType {
+				Id = 8,
+				EnumId = "DataProv",
+				Name = "Data Provider",
+				Description = "The User has a special membership that allows it to interact with Fabric on behalf of the App.",
 			});
 		}
 
@@ -2001,59 +1754,363 @@ namespace Fabric.Clients.Cs.Api {
 			VectorRangeMap = new Dictionary<byte, VectorRange>();
 
 			VectorRangeMap.Add(1, new VectorRange {
-				Id = (byte)1,
-				EnumId = (string)"FullNum",
-				Name = (string)"Full Numeric",
-				Description = (string)"",
-				VectorRangeLevelIds = (byte[])new byte[] { 4, 2, 5 },
+				Id = 1,
+				EnumId = "FullNum",
+				Name = "Full Numeric",
+				Levels = new[] {
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.Min0],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.Zero05],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.Max1],
+				},
 			});
 
 			VectorRangeMap.Add(2, new VectorRange {
-				Id = (byte)2,
-				EnumId = (string)"PosNum",
-				Name = (string)"Positive Numeric",
-				Description = (string)"",
-				VectorRangeLevelIds = (byte[])new byte[] { 1, 5 },
+				Id = 2,
+				EnumId = "PosNum",
+				Name = "Positive Numeric",
+				Levels = new[] {
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.Zero0],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.Max1],
+				},
 			});
 
 			VectorRangeMap.Add(3, new VectorRange {
-				Id = (byte)3,
-				EnumId = (string)"NegNum",
-				Name = (string)"Negative Numeric",
-				Description = (string)"",
-				VectorRangeLevelIds = (byte[])new byte[] { 4, 3 },
+				Id = 3,
+				EnumId = "NegNum",
+				Name = "Negative Numeric",
+				Levels = new[] {
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.Min0],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.Zero1],
+				},
 			});
 
 			VectorRangeMap.Add(4, new VectorRange {
-				Id = (byte)4,
-				EnumId = (string)"FullAgree",
-				Name = (string)"Full Agreement",
-				Description = (string)"",
-				VectorRangeLevelIds = (byte[])new byte[] { 6, 7, 8, 9, 10, 11, 12 },
+				Id = 4,
+				EnumId = "FullAgree",
+				Name = "Full Agreement",
+				Levels = new[] {
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.CompDisagree],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.MostDisagree],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.SomeDisagree],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.NoOpinion05],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.SomeAgree],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.MostAgree],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.CompAgree],
+				},
 			});
 
 			VectorRangeMap.Add(5, new VectorRange {
-				Id = (byte)5,
-				EnumId = (string)"PosAgree",
-				Name = (string)"Positive Agreement",
-				Description = (string)"",
-				VectorRangeLevelIds = (byte[])new byte[] { 13, 14, 15, 16 },
+				Id = 5,
+				EnumId = "PosAgree",
+				Name = "Positive Agreement",
+				Levels = new[] {
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.NoOpinion0],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.SomeAgreePos],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.MostAgreePos],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.CompAgreePos],
+				},
 			});
 
 			VectorRangeMap.Add(6, new VectorRange {
-				Id = (byte)6,
-				EnumId = (string)"FullFavor",
-				Name = (string)"Full Favorability",
-				Description = (string)"",
-				VectorRangeLevelIds = (byte[])new byte[] { 17, 18, 19, 9, 20, 21, 22 },
+				Id = 6,
+				EnumId = "FullFavor",
+				Name = "Full Favorability",
+				Levels = new[] {
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.CompUnfavor],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.MostUnfavor],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.SomeUnfavor],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.NoOpinion05],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.SomeFavor],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.MostFavor],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.CompFavor],
+				},
 			});
 
 			VectorRangeMap.Add(7, new VectorRange {
-				Id = (byte)7,
-				EnumId = (string)"PosFavor",
-				Name = (string)"Positive Favorability",
-				Description = (string)"",
-				VectorRangeLevelIds = (byte[])new byte[] { 13, 23, 24, 25 },
+				Id = 7,
+				EnumId = "PosFavor",
+				Name = "Positive Favorability",
+				Levels = new[] {
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.NoOpinion0],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.SomeFavorPos],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.MostFavorPos],
+					VectorRangeLevelMap[(byte)VectorRangeLevelId.CompFavorPos],
+				},
+			});
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		private static void BuildVectorRangeLevelMap() {
+			VectorRangeLevelMap = new Dictionary<byte, VectorRangeLevel>();
+
+			VectorRangeLevelMap.Add(1, new VectorRangeLevel {
+				Id = 1,
+				EnumId = "Zero0",
+				Name = "Zero",
+				Position = 0f,
+			});
+
+			VectorRangeLevelMap.Add(2, new VectorRangeLevel {
+				Id = 2,
+				EnumId = "Zero05",
+				Name = "Zero",
+				Position = 0.5f,
+			});
+
+			VectorRangeLevelMap.Add(3, new VectorRangeLevel {
+				Id = 3,
+				EnumId = "Zero1",
+				Name = "Zero",
+				Position = 1f,
+			});
+
+			VectorRangeLevelMap.Add(4, new VectorRangeLevel {
+				Id = 4,
+				EnumId = "Min0",
+				Name = "Minimum",
+				Position = 0f,
+			});
+
+			VectorRangeLevelMap.Add(5, new VectorRangeLevel {
+				Id = 5,
+				EnumId = "Max1",
+				Name = "Maximum",
+				Position = 1f,
+			});
+
+			VectorRangeLevelMap.Add(6, new VectorRangeLevel {
+				Id = 6,
+				EnumId = "CompDisagree",
+				Name = "Completely Disagree",
+				Position = 0f,
+			});
+
+			VectorRangeLevelMap.Add(7, new VectorRangeLevel {
+				Id = 7,
+				EnumId = "MostDisagree",
+				Name = "Mostly Disagree",
+				Position = 0.1666667f,
+			});
+
+			VectorRangeLevelMap.Add(8, new VectorRangeLevel {
+				Id = 8,
+				EnumId = "SomeDisagree",
+				Name = "Somewhat Disagree",
+				Position = 0.3333333f,
+			});
+
+			VectorRangeLevelMap.Add(9, new VectorRangeLevel {
+				Id = 9,
+				EnumId = "NoOpinion05",
+				Name = "No Opinion",
+				Position = 0.5f,
+			});
+
+			VectorRangeLevelMap.Add(10, new VectorRangeLevel {
+				Id = 10,
+				EnumId = "SomeAgree",
+				Name = "Somewhat Agree",
+				Position = 0.6666667f,
+			});
+
+			VectorRangeLevelMap.Add(11, new VectorRangeLevel {
+				Id = 11,
+				EnumId = "MostAgree",
+				Name = "Mostly Agree",
+				Position = 0.8333333f,
+			});
+
+			VectorRangeLevelMap.Add(12, new VectorRangeLevel {
+				Id = 12,
+				EnumId = "CompAgree",
+				Name = "Completely Agree",
+				Position = 1f,
+			});
+
+			VectorRangeLevelMap.Add(13, new VectorRangeLevel {
+				Id = 13,
+				EnumId = "NoOpinion0",
+				Name = "No Opinion",
+				Position = 0f,
+			});
+
+			VectorRangeLevelMap.Add(14, new VectorRangeLevel {
+				Id = 14,
+				EnumId = "SomeAgreePos",
+				Name = "Somewhat Agree",
+				Position = 0.3333333f,
+			});
+
+			VectorRangeLevelMap.Add(15, new VectorRangeLevel {
+				Id = 15,
+				EnumId = "MostAgreePos",
+				Name = "Mostly Agree",
+				Position = 0.6666667f,
+			});
+
+			VectorRangeLevelMap.Add(16, new VectorRangeLevel {
+				Id = 16,
+				EnumId = "CompAgreePos",
+				Name = "Completely Agree",
+				Position = 1f,
+			});
+
+			VectorRangeLevelMap.Add(17, new VectorRangeLevel {
+				Id = 17,
+				EnumId = "CompUnfavor",
+				Name = "Completely Unfavorable",
+				Position = 0f,
+			});
+
+			VectorRangeLevelMap.Add(18, new VectorRangeLevel {
+				Id = 18,
+				EnumId = "MostUnfavor",
+				Name = "Mostly Unfavorable",
+				Position = 0.1666667f,
+			});
+
+			VectorRangeLevelMap.Add(19, new VectorRangeLevel {
+				Id = 19,
+				EnumId = "SomeUnfavor",
+				Name = "Somewhat Unfavorable",
+				Position = 0.3333333f,
+			});
+
+			VectorRangeLevelMap.Add(20, new VectorRangeLevel {
+				Id = 20,
+				EnumId = "SomeFavor",
+				Name = "Somewhat Favorable",
+				Position = 0.6666667f,
+			});
+
+			VectorRangeLevelMap.Add(21, new VectorRangeLevel {
+				Id = 21,
+				EnumId = "MostFavor",
+				Name = "Mostly Favorable",
+				Position = 0.8333333f,
+			});
+
+			VectorRangeLevelMap.Add(22, new VectorRangeLevel {
+				Id = 22,
+				EnumId = "CompFavor",
+				Name = "Completely Favorable",
+				Position = 1f,
+			});
+
+			VectorRangeLevelMap.Add(23, new VectorRangeLevel {
+				Id = 23,
+				EnumId = "SomeFavorPos",
+				Name = "Somewhat Favorable",
+				Position = 0.3333333f,
+			});
+
+			VectorRangeLevelMap.Add(24, new VectorRangeLevel {
+				Id = 24,
+				EnumId = "MostFavorPos",
+				Name = "Mostly Favorable",
+				Position = 0.6666667f,
+			});
+
+			VectorRangeLevelMap.Add(25, new VectorRangeLevel {
+				Id = 25,
+				EnumId = "CompFavorPos",
+				Name = "Completely Favorable",
+				Position = 1f,
+			});
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		private static void BuildVectorTypeMap() {
+			VectorTypeMap = new Dictionary<byte, VectorType>();
+
+			VectorTypeMap.Add(1, new VectorType {
+				Id = 1,
+				EnumId = "FullLong",
+				Name = "Full Bounds",
+				VectorRange = VectorRangeMap[(byte)VectorRangeId.FullNum],
+				Min = -9223372036854775808,
+				Max = 9223372036854775807,
+			});
+
+			VectorTypeMap.Add(2, new VectorType {
+				Id = 2,
+				EnumId = "PosLong",
+				Name = "Positive Bounds",
+				VectorRange = VectorRangeMap[(byte)VectorRangeId.PosNum],
+				Min = 0,
+				Max = 9223372036854775807,
+			});
+
+			VectorTypeMap.Add(3, new VectorType {
+				Id = 3,
+				EnumId = "NegLong",
+				Name = "Negative Bounds",
+				VectorRange = VectorRangeMap[(byte)VectorRangeId.NegNum],
+				Min = -9223372036854775808,
+				Max = 0,
+			});
+
+			VectorTypeMap.Add(4, new VectorType {
+				Id = 4,
+				EnumId = "FullPerc",
+				Name = "Full Percentage",
+				VectorRange = VectorRangeMap[(byte)VectorRangeId.FullNum],
+				Min = -9223372036854775808,
+				Max = 9223372036854775807,
+			});
+
+			VectorTypeMap.Add(5, new VectorType {
+				Id = 5,
+				EnumId = "StdPerc",
+				Name = "Standard Percentage",
+				VectorRange = VectorRangeMap[(byte)VectorRangeId.PosNum],
+				Min = 0,
+				Max = 100,
+			});
+
+			VectorTypeMap.Add(6, new VectorType {
+				Id = 6,
+				EnumId = "OppPerc",
+				Name = "Opposable Percentage",
+				VectorRange = VectorRangeMap[(byte)VectorRangeId.FullNum],
+				Min = -100,
+				Max = 100,
+			});
+
+			VectorTypeMap.Add(7, new VectorType {
+				Id = 7,
+				EnumId = "StdAgree",
+				Name = "Standard Agreement",
+				VectorRange = VectorRangeMap[(byte)VectorRangeId.PosAgree],
+				Min = 0,
+				Max = 100,
+			});
+
+			VectorTypeMap.Add(8, new VectorType {
+				Id = 8,
+				EnumId = "OppAgree",
+				Name = "Opposable Agreement",
+				VectorRange = VectorRangeMap[(byte)VectorRangeId.FullAgree],
+				Min = -100,
+				Max = 100,
+			});
+
+			VectorTypeMap.Add(9, new VectorType {
+				Id = 9,
+				EnumId = "StdFavor",
+				Name = "Standard Favorability",
+				VectorRange = VectorRangeMap[(byte)VectorRangeId.PosFavor],
+				Min = 0,
+				Max = 100,
+			});
+
+			VectorTypeMap.Add(10, new VectorType {
+				Id = 10,
+				EnumId = "OppFavor",
+				Name = "Opposable Favorability",
+				VectorRange = VectorRangeMap[(byte)VectorRangeId.FullFavor],
+				Min = -100,
+				Max = 100,
 			});
 		}
 
@@ -2062,363 +2119,204 @@ namespace Fabric.Clients.Cs.Api {
 			VectorUnitMap = new Dictionary<byte, VectorUnit>();
 
 			VectorUnitMap.Add(1, new VectorUnit {
-				Id = (byte)1,
-				EnumId = (string)"None",
-				Name = (string)"None",
-				Description = (string)"",
+				Id = 1,
+				EnumId = "None",
+				Name = "None",
 			});
 
 			VectorUnitMap.Add(2, new VectorUnit {
-				Id = (byte)2,
-				EnumId = (string)"Unit",
-				Name = (string)"Unit",
-				Description = (string)"",
+				Id = 2,
+				EnumId = "Unit",
+				Name = "Unit",
 			});
 
 			VectorUnitMap.Add(3, new VectorUnit {
-				Id = (byte)3,
-				EnumId = (string)"Metre",
-				Name = (string)"Metre",
-				Description = (string)"m",
+				Id = 3,
+				EnumId = "Metre",
+				Name = "Metre",
+				Description = "m",
 			});
 
 			VectorUnitMap.Add(4, new VectorUnit {
-				Id = (byte)4,
-				EnumId = (string)"Gram",
-				Name = (string)"Gram",
-				Description = (string)"g",
+				Id = 4,
+				EnumId = "Gram",
+				Name = "Gram",
+				Description = "g",
 			});
 
 			VectorUnitMap.Add(5, new VectorUnit {
-				Id = (byte)5,
-				EnumId = (string)"Second",
-				Name = (string)"Second",
-				Description = (string)"s",
+				Id = 5,
+				EnumId = "Second",
+				Name = "Second",
+				Description = "s",
 			});
 
 			VectorUnitMap.Add(6, new VectorUnit {
-				Id = (byte)6,
-				EnumId = (string)"Ampere",
-				Name = (string)"Ampere",
-				Description = (string)"A",
+				Id = 6,
+				EnumId = "Ampere",
+				Name = "Ampere",
+				Description = "A",
 			});
 
 			VectorUnitMap.Add(7, new VectorUnit {
-				Id = (byte)7,
-				EnumId = (string)"Celsius",
-				Name = (string)"Celsius",
-				Description = (string)"C",
+				Id = 7,
+				EnumId = "Celsius",
+				Name = "Celsius",
+				Description = "C",
 			});
 
 			VectorUnitMap.Add(8, new VectorUnit {
-				Id = (byte)8,
-				EnumId = (string)"Candela",
-				Name = (string)"Candela",
-				Description = (string)"cd",
+				Id = 8,
+				EnumId = "Candela",
+				Name = "Candela",
+				Description = "cd",
 			});
 
 			VectorUnitMap.Add(9, new VectorUnit {
-				Id = (byte)9,
-				EnumId = (string)"Mole",
-				Name = (string)"Mole",
-				Description = (string)"mol",
+				Id = 9,
+				EnumId = "Mole",
+				Name = "Mole",
+				Description = "mol",
 			});
 
 			VectorUnitMap.Add(10, new VectorUnit {
-				Id = (byte)10,
-				EnumId = (string)"Bit",
-				Name = (string)"Bit",
-				Description = (string)"b",
+				Id = 10,
+				EnumId = "Bit",
+				Name = "Bit",
+				Description = "b",
 			});
 
 			VectorUnitMap.Add(11, new VectorUnit {
-				Id = (byte)11,
-				EnumId = (string)"Byte",
-				Name = (string)"long",
-				Description = (string)"B",
+				Id = 11,
+				EnumId = "Byte",
+				Name = "Byte",
+				Description = "B",
 			});
 
 			VectorUnitMap.Add(12, new VectorUnit {
-				Id = (byte)12,
-				EnumId = (string)"Hertz",
-				Name = (string)"Hertz",
-				Description = (string)"Hz",
+				Id = 12,
+				EnumId = "Hertz",
+				Name = "Hertz",
+				Description = "Hz",
 			});
 
 			VectorUnitMap.Add(13, new VectorUnit {
-				Id = (byte)13,
-				EnumId = (string)"Radian",
-				Name = (string)"Radian",
-				Description = (string)"rad",
+				Id = 13,
+				EnumId = "Radian",
+				Name = "Radian",
+				Description = "rad",
 			});
 
 			VectorUnitMap.Add(14, new VectorUnit {
-				Id = (byte)14,
-				EnumId = (string)"Newton",
-				Name = (string)"Newton",
-				Description = (string)"N",
+				Id = 14,
+				EnumId = "Newton",
+				Name = "Newton",
+				Description = "N",
 			});
 
 			VectorUnitMap.Add(15, new VectorUnit {
-				Id = (byte)15,
-				EnumId = (string)"Pascal",
-				Name = (string)"Pascal",
-				Description = (string)"Pa",
+				Id = 15,
+				EnumId = "Pascal",
+				Name = "Pascal",
+				Description = "Pa",
 			});
 
 			VectorUnitMap.Add(16, new VectorUnit {
-				Id = (byte)16,
-				EnumId = (string)"Joule",
-				Name = (string)"Joule",
-				Description = (string)"J",
+				Id = 16,
+				EnumId = "Joule",
+				Name = "Joule",
+				Description = "J",
 			});
 
 			VectorUnitMap.Add(17, new VectorUnit {
-				Id = (byte)17,
-				EnumId = (string)"Watt",
-				Name = (string)"Watt",
-				Description = (string)"W",
+				Id = 17,
+				EnumId = "Watt",
+				Name = "Watt",
+				Description = "W",
 			});
 
 			VectorUnitMap.Add(18, new VectorUnit {
-				Id = (byte)18,
-				EnumId = (string)"Volt",
-				Name = (string)"Volt",
-				Description = (string)"V",
+				Id = 18,
+				EnumId = "Volt",
+				Name = "Volt",
+				Description = "V",
 			});
 
 			VectorUnitMap.Add(19, new VectorUnit {
-				Id = (byte)19,
-				EnumId = (string)"Ohm",
-				Name = (string)"Ohm",
-				Description = (string)"Ω",
+				Id = 19,
+				EnumId = "Ohm",
+				Name = "Ohm",
+				Description = "Ω",
 			});
 
 			VectorUnitMap.Add(20, new VectorUnit {
-				Id = (byte)20,
-				EnumId = (string)"Area",
-				Name = (string)"Area",
-				Description = (string)"m^2",
+				Id = 20,
+				EnumId = "Area",
+				Name = "Area",
+				Description = "m^2",
 			});
 
 			VectorUnitMap.Add(21, new VectorUnit {
-				Id = (byte)21,
-				EnumId = (string)"Volume",
-				Name = (string)"Volume",
-				Description = (string)"m^3",
+				Id = 21,
+				EnumId = "Volume",
+				Name = "Volume",
+				Description = "m^3",
 			});
 
 			VectorUnitMap.Add(22, new VectorUnit {
-				Id = (byte)22,
-				EnumId = (string)"Speed",
-				Name = (string)"Speed",
-				Description = (string)"m/s",
+				Id = 22,
+				EnumId = "Speed",
+				Name = "Speed",
+				Description = "m/s",
 			});
 
 			VectorUnitMap.Add(23, new VectorUnit {
-				Id = (byte)23,
-				EnumId = (string)"Acceleration",
-				Name = (string)"Acceleration",
-				Description = (string)"m^3/s",
+				Id = 23,
+				EnumId = "Acceleration",
+				Name = "Acceleration",
+				Description = "m^3/s",
 			});
 
 			VectorUnitMap.Add(24, new VectorUnit {
-				Id = (byte)24,
-				EnumId = (string)"Point",
-				Name = (string)"Point",
-				Description = (string)"pt",
+				Id = 24,
+				EnumId = "Point",
+				Name = "Point",
+				Description = "pt",
 			});
 
 			VectorUnitMap.Add(25, new VectorUnit {
-				Id = (byte)25,
-				EnumId = (string)"Item",
-				Name = (string)"Item",
-				Description = (string)"item",
+				Id = 25,
+				EnumId = "Item",
+				Name = "Item",
+				Description = "item",
 			});
 
 			VectorUnitMap.Add(26, new VectorUnit {
-				Id = (byte)26,
-				EnumId = (string)"Person",
-				Name = (string)"Person",
-				Description = (string)"person",
+				Id = 26,
+				EnumId = "Person",
+				Name = "Person",
+				Description = "person",
 			});
 
 			VectorUnitMap.Add(27, new VectorUnit {
-				Id = (byte)27,
-				EnumId = (string)"Percent",
-				Name = (string)"Percent",
-				Description = (string)"%",
+				Id = 27,
+				EnumId = "Percent",
+				Name = "Percent",
+				Description = "%",
 			});
 
 			VectorUnitMap.Add(28, new VectorUnit {
-				Id = (byte)28,
-				EnumId = (string)"Index",
-				Name = (string)"Index",
-				Description = (string)"index",
+				Id = 28,
+				EnumId = "Index",
+				Name = "Index",
+				Description = "index",
 			});
 
 			VectorUnitMap.Add(29, new VectorUnit {
-				Id = (byte)29,
-				EnumId = (string)"Pixel",
-				Name = (string)"Pixel",
-				Description = (string)"pixel",
-			});
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		private static void BuildVectorUnitPrefixMap() {
-			VectorUnitPrefixMap = new Dictionary<byte, VectorUnitPrefix>();
-
-			VectorUnitPrefixMap.Add(1, new VectorUnitPrefix {
-				Id = (byte)1,
-				EnumId = (string)"Base",
-				Name = (string)"Base",
-				Description = (string)"",
-				Amount = (double)1,
-			});
-
-			VectorUnitPrefixMap.Add(2, new VectorUnitPrefix {
-				Id = (byte)2,
-				EnumId = (string)"Kilo",
-				Name = (string)"Kilo",
-				Description = (string)"k",
-				Amount = (double)1000,
-			});
-
-			VectorUnitPrefixMap.Add(3, new VectorUnitPrefix {
-				Id = (byte)3,
-				EnumId = (string)"Mega",
-				Name = (string)"Mega",
-				Description = (string)"M",
-				Amount = (double)1000000,
-			});
-
-			VectorUnitPrefixMap.Add(4, new VectorUnitPrefix {
-				Id = (byte)4,
-				EnumId = (string)"Giga",
-				Name = (string)"Giga",
-				Description = (string)"G",
-				Amount = (double)1000000000,
-			});
-
-			VectorUnitPrefixMap.Add(5, new VectorUnitPrefix {
-				Id = (byte)5,
-				EnumId = (string)"Tera",
-				Name = (string)"Tera",
-				Description = (string)"T",
-				Amount = (double)1000000000000,
-			});
-
-			VectorUnitPrefixMap.Add(6, new VectorUnitPrefix {
-				Id = (byte)6,
-				EnumId = (string)"Peta",
-				Name = (string)"Peta",
-				Description = (string)"P",
-				Amount = (double)1000000000000000,
-			});
-
-			VectorUnitPrefixMap.Add(7, new VectorUnitPrefix {
-				Id = (byte)7,
-				EnumId = (string)"Exa",
-				Name = (string)"Exa",
-				Description = (string)"E",
-				Amount = (double)1000000000000000000,
-			});
-
-			VectorUnitPrefixMap.Add(8, new VectorUnitPrefix {
-				Id = (byte)8,
-				EnumId = (string)"Milli",
-				Name = (string)"Milli",
-				Description = (string)"m",
-				Amount = (double)0.001,
-			});
-
-			VectorUnitPrefixMap.Add(9, new VectorUnitPrefix {
-				Id = (byte)9,
-				EnumId = (string)"Micro",
-				Name = (string)"Micro",
-				Description = (string)"μ",
-				Amount = (double)0.000001,
-			});
-
-			VectorUnitPrefixMap.Add(10, new VectorUnitPrefix {
-				Id = (byte)10,
-				EnumId = (string)"Nano",
-				Name = (string)"Nano",
-				Description = (string)"n",
-				Amount = (double)1e-9,
-			});
-
-			VectorUnitPrefixMap.Add(11, new VectorUnitPrefix {
-				Id = (byte)11,
-				EnumId = (string)"Pico",
-				Name = (string)"Pico",
-				Description = (string)"p",
-				Amount = (double)1e-12,
-			});
-
-			VectorUnitPrefixMap.Add(12, new VectorUnitPrefix {
-				Id = (byte)12,
-				EnumId = (string)"Femto",
-				Name = (string)"Femto",
-				Description = (string)"f",
-				Amount = (double)1e-15,
-			});
-
-			VectorUnitPrefixMap.Add(13, new VectorUnitPrefix {
-				Id = (byte)13,
-				EnumId = (string)"Atto",
-				Name = (string)"Atto",
-				Description = (string)"a",
-				Amount = (double)1e-18,
-			});
-
-			VectorUnitPrefixMap.Add(14, new VectorUnitPrefix {
-				Id = (byte)14,
-				EnumId = (string)"Kibi",
-				Name = (string)"Kibi",
-				Description = (string)"Ki",
-				Amount = (double)1024,
-			});
-
-			VectorUnitPrefixMap.Add(15, new VectorUnitPrefix {
-				Id = (byte)15,
-				EnumId = (string)"Mebi",
-				Name = (string)"Mebi",
-				Description = (string)"Mi",
-				Amount = (double)1048576,
-			});
-
-			VectorUnitPrefixMap.Add(16, new VectorUnitPrefix {
-				Id = (byte)16,
-				EnumId = (string)"Gibi",
-				Name = (string)"Gibi",
-				Description = (string)"Gi",
-				Amount = (double)1073741824,
-			});
-
-			VectorUnitPrefixMap.Add(17, new VectorUnitPrefix {
-				Id = (byte)17,
-				EnumId = (string)"Tebi",
-				Name = (string)"Tebi",
-				Description = (string)"Ti",
-				Amount = (double)1099511627776,
-			});
-
-			VectorUnitPrefixMap.Add(18, new VectorUnitPrefix {
-				Id = (byte)18,
-				EnumId = (string)"Pebi",
-				Name = (string)"Pebi",
-				Description = (string)"Pi",
-				Amount = (double)1125899906842620,
-			});
-
-			VectorUnitPrefixMap.Add(19, new VectorUnitPrefix {
-				Id = (byte)19,
-				EnumId = (string)"Exbi",
-				Name = (string)"Exbi",
-				Description = (string)"Ei",
-				Amount = (double)1152921504606850000,
+				Id = 29,
+				EnumId = "Pixel",
+				Name = "Pixel",
+				Description = "pixel",
 			});
 		}
 
@@ -2427,300 +2325,473 @@ namespace Fabric.Clients.Cs.Api {
 			VectorUnitDerivedMap = new Dictionary<byte, VectorUnitDerived>();
 
 			VectorUnitDerivedMap.Add(1, new VectorUnitDerived {
-				Id = (byte)1,
-				EnumId = (string)"HertzSec",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)12,
-				RaisesVectorUnitId = (byte)5,
-				WithExponent = (int)-1,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 1,
+				EnumId = "HertzSec",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Hertz],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				WithExponent = -1,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(2, new VectorUnitDerived {
-				Id = (byte)2,
-				EnumId = (string)"NewtonGram",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)14,
-				RaisesVectorUnitId = (byte)4,
-				WithExponent = (int)1,
-				RaisesVectorUnitPrefixId = (byte)2,
+				Id = 2,
+				EnumId = "NewtonGram",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Newton],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Gram],
+				WithExponent = 1,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Kilo],
 			});
 
 			VectorUnitDerivedMap.Add(3, new VectorUnitDerived {
-				Id = (byte)3,
-				EnumId = (string)"NewtonMetre",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)14,
-				RaisesVectorUnitId = (byte)3,
-				WithExponent = (int)1,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 3,
+				EnumId = "NewtonMetre",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Newton],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				WithExponent = 1,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(4, new VectorUnitDerived {
-				Id = (byte)4,
-				EnumId = (string)"NewtonSec",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)14,
-				RaisesVectorUnitId = (byte)5,
-				WithExponent = (int)-2,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 4,
+				EnumId = "NewtonSec",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Newton],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				WithExponent = -2,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(5, new VectorUnitDerived {
-				Id = (byte)5,
-				EnumId = (string)"PascalGram",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)15,
-				RaisesVectorUnitId = (byte)4,
-				WithExponent = (int)1,
-				RaisesVectorUnitPrefixId = (byte)2,
+				Id = 5,
+				EnumId = "PascalGram",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Pascal],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Gram],
+				WithExponent = 1,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Kilo],
 			});
 
 			VectorUnitDerivedMap.Add(6, new VectorUnitDerived {
-				Id = (byte)6,
-				EnumId = (string)"PascalMetre",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)15,
-				RaisesVectorUnitId = (byte)3,
-				WithExponent = (int)-1,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 6,
+				EnumId = "PascalMetre",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Pascal],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				WithExponent = -1,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(7, new VectorUnitDerived {
-				Id = (byte)7,
-				EnumId = (string)"PascalSec",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)15,
-				RaisesVectorUnitId = (byte)5,
-				WithExponent = (int)-2,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 7,
+				EnumId = "PascalSec",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Pascal],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				WithExponent = -2,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(8, new VectorUnitDerived {
-				Id = (byte)8,
-				EnumId = (string)"JouleGram",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)16,
-				RaisesVectorUnitId = (byte)4,
-				WithExponent = (int)1,
-				RaisesVectorUnitPrefixId = (byte)2,
+				Id = 8,
+				EnumId = "JouleGram",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Joule],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Gram],
+				WithExponent = 1,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Kilo],
 			});
 
 			VectorUnitDerivedMap.Add(9, new VectorUnitDerived {
-				Id = (byte)9,
-				EnumId = (string)"JouleMetre",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)16,
-				RaisesVectorUnitId = (byte)3,
-				WithExponent = (int)2,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 9,
+				EnumId = "JouleMetre",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Joule],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				WithExponent = 2,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(10, new VectorUnitDerived {
-				Id = (byte)10,
-				EnumId = (string)"JouleSec",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)16,
-				RaisesVectorUnitId = (byte)5,
-				WithExponent = (int)-2,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 10,
+				EnumId = "JouleSec",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Joule],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				WithExponent = -2,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(11, new VectorUnitDerived {
-				Id = (byte)11,
-				EnumId = (string)"WattGram",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)17,
-				RaisesVectorUnitId = (byte)4,
-				WithExponent = (int)1,
-				RaisesVectorUnitPrefixId = (byte)2,
+				Id = 11,
+				EnumId = "WattGram",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Watt],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Gram],
+				WithExponent = 1,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Kilo],
 			});
 
 			VectorUnitDerivedMap.Add(12, new VectorUnitDerived {
-				Id = (byte)12,
-				EnumId = (string)"WattMetre",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)17,
-				RaisesVectorUnitId = (byte)3,
-				WithExponent = (int)2,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 12,
+				EnumId = "WattMetre",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Watt],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				WithExponent = 2,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(13, new VectorUnitDerived {
-				Id = (byte)13,
-				EnumId = (string)"WattSec",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)17,
-				RaisesVectorUnitId = (byte)5,
-				WithExponent = (int)-3,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 13,
+				EnumId = "WattSec",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Watt],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				WithExponent = -3,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(14, new VectorUnitDerived {
-				Id = (byte)14,
-				EnumId = (string)"VoltGram",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)18,
-				RaisesVectorUnitId = (byte)4,
-				WithExponent = (int)1,
-				RaisesVectorUnitPrefixId = (byte)2,
+				Id = 14,
+				EnumId = "VoltGram",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Volt],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Gram],
+				WithExponent = 1,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Kilo],
 			});
 
 			VectorUnitDerivedMap.Add(15, new VectorUnitDerived {
-				Id = (byte)15,
-				EnumId = (string)"VoltMetre",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)18,
-				RaisesVectorUnitId = (byte)3,
-				WithExponent = (int)2,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 15,
+				EnumId = "VoltMetre",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Volt],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				WithExponent = 2,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(16, new VectorUnitDerived {
-				Id = (byte)16,
-				EnumId = (string)"VoltSec",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)18,
-				RaisesVectorUnitId = (byte)5,
-				WithExponent = (int)-3,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 16,
+				EnumId = "VoltSec",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Volt],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				WithExponent = -3,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(17, new VectorUnitDerived {
-				Id = (byte)17,
-				EnumId = (string)"VoltAmp",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)18,
-				RaisesVectorUnitId = (byte)6,
-				WithExponent = (int)-1,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 17,
+				EnumId = "VoltAmp",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Volt],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Ampere],
+				WithExponent = -1,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(18, new VectorUnitDerived {
-				Id = (byte)18,
-				EnumId = (string)"OhmGram",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)19,
-				RaisesVectorUnitId = (byte)4,
-				WithExponent = (int)1,
-				RaisesVectorUnitPrefixId = (byte)2,
+				Id = 18,
+				EnumId = "OhmGram",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Ohm],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Gram],
+				WithExponent = 1,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Kilo],
 			});
 
 			VectorUnitDerivedMap.Add(19, new VectorUnitDerived {
-				Id = (byte)19,
-				EnumId = (string)"OhmMetre",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)19,
-				RaisesVectorUnitId = (byte)3,
-				WithExponent = (int)2,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 19,
+				EnumId = "OhmMetre",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Ohm],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				WithExponent = 2,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(20, new VectorUnitDerived {
-				Id = (byte)20,
-				EnumId = (string)"OhmSec",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)19,
-				RaisesVectorUnitId = (byte)5,
-				WithExponent = (int)-3,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 20,
+				EnumId = "OhmSec",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Ohm],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				WithExponent = -3,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(21, new VectorUnitDerived {
-				Id = (byte)21,
-				EnumId = (string)"OhmAmp",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)19,
-				RaisesVectorUnitId = (byte)6,
-				WithExponent = (int)-2,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 21,
+				EnumId = "OhmAmp",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Ohm],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Ampere],
+				WithExponent = -2,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(22, new VectorUnitDerived {
-				Id = (byte)22,
-				EnumId = (string)"AreaMetre",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)20,
-				RaisesVectorUnitId = (byte)3,
-				WithExponent = (int)2,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 22,
+				EnumId = "AreaMetre",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Area],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				WithExponent = 2,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(23, new VectorUnitDerived {
-				Id = (byte)23,
-				EnumId = (string)"VolumeMetre",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)21,
-				RaisesVectorUnitId = (byte)3,
-				WithExponent = (int)3,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 23,
+				EnumId = "VolumeMetre",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Volume],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				WithExponent = 3,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(24, new VectorUnitDerived {
-				Id = (byte)24,
-				EnumId = (string)"SpeedMetre",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)22,
-				RaisesVectorUnitId = (byte)3,
-				WithExponent = (int)1,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 24,
+				EnumId = "SpeedMetre",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Speed],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				WithExponent = 1,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(25, new VectorUnitDerived {
-				Id = (byte)25,
-				EnumId = (string)"SpeedSec",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)22,
-				RaisesVectorUnitId = (byte)5,
-				WithExponent = (int)-1,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 25,
+				EnumId = "SpeedSec",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Speed],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				WithExponent = -1,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(26, new VectorUnitDerived {
-				Id = (byte)26,
-				EnumId = (string)"AccelMetre",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)23,
-				RaisesVectorUnitId = (byte)3,
-				WithExponent = (int)1,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 26,
+				EnumId = "AccelMetre",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Acceleration],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				WithExponent = 1,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
 			});
 
 			VectorUnitDerivedMap.Add(27, new VectorUnitDerived {
-				Id = (byte)27,
-				EnumId = (string)"AccelSec",
-				Name = (string)"",
-				Description = (string)"",
-				DefinesVectorUnitId = (byte)23,
-				RaisesVectorUnitId = (byte)5,
-				WithExponent = (int)-2,
-				RaisesVectorUnitPrefixId = (byte)1,
+				Id = 27,
+				EnumId = "AccelSec",
+				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Acceleration],
+				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				WithExponent = -2,
+				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+			});
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		private static void BuildVectorUnitPrefixMap() {
+			VectorUnitPrefixMap = new Dictionary<byte, VectorUnitPrefix>();
+
+			VectorUnitPrefixMap.Add(1, new VectorUnitPrefix {
+				Id = 1,
+				EnumId = "Base",
+				Name = "Base",
+				Amount = 1,
+			});
+
+			VectorUnitPrefixMap.Add(2, new VectorUnitPrefix {
+				Id = 2,
+				EnumId = "Kilo",
+				Name = "Kilo",
+				Description = "k",
+				Amount = 1000,
+			});
+
+			VectorUnitPrefixMap.Add(3, new VectorUnitPrefix {
+				Id = 3,
+				EnumId = "Mega",
+				Name = "Mega",
+				Description = "M",
+				Amount = 1000000,
+			});
+
+			VectorUnitPrefixMap.Add(4, new VectorUnitPrefix {
+				Id = 4,
+				EnumId = "Giga",
+				Name = "Giga",
+				Description = "G",
+				Amount = 1000000000,
+			});
+
+			VectorUnitPrefixMap.Add(5, new VectorUnitPrefix {
+				Id = 5,
+				EnumId = "Tera",
+				Name = "Tera",
+				Description = "T",
+				Amount = 1000000000000,
+			});
+
+			VectorUnitPrefixMap.Add(6, new VectorUnitPrefix {
+				Id = 6,
+				EnumId = "Peta",
+				Name = "Peta",
+				Description = "P",
+				Amount = 1000000000000000,
+			});
+
+			VectorUnitPrefixMap.Add(7, new VectorUnitPrefix {
+				Id = 7,
+				EnumId = "Exa",
+				Name = "Exa",
+				Description = "E",
+				Amount = 1000000000000000000,
+			});
+
+			VectorUnitPrefixMap.Add(8, new VectorUnitPrefix {
+				Id = 8,
+				EnumId = "Milli",
+				Name = "Milli",
+				Description = "m",
+				Amount = 0.001,
+			});
+
+			VectorUnitPrefixMap.Add(9, new VectorUnitPrefix {
+				Id = 9,
+				EnumId = "Micro",
+				Name = "Micro",
+				Description = "μ",
+				Amount = 0.000001,
+			});
+
+			VectorUnitPrefixMap.Add(10, new VectorUnitPrefix {
+				Id = 10,
+				EnumId = "Nano",
+				Name = "Nano",
+				Description = "n",
+				Amount = 1e-9,
+			});
+
+			VectorUnitPrefixMap.Add(11, new VectorUnitPrefix {
+				Id = 11,
+				EnumId = "Pico",
+				Name = "Pico",
+				Description = "p",
+				Amount = 1e-12,
+			});
+
+			VectorUnitPrefixMap.Add(12, new VectorUnitPrefix {
+				Id = 12,
+				EnumId = "Femto",
+				Name = "Femto",
+				Description = "f",
+				Amount = 1e-15,
+			});
+
+			VectorUnitPrefixMap.Add(13, new VectorUnitPrefix {
+				Id = 13,
+				EnumId = "Atto",
+				Name = "Atto",
+				Description = "a",
+				Amount = 1e-18,
+			});
+
+			VectorUnitPrefixMap.Add(14, new VectorUnitPrefix {
+				Id = 14,
+				EnumId = "Kibi",
+				Name = "Kibi",
+				Description = "Ki",
+				Amount = 1024,
+			});
+
+			VectorUnitPrefixMap.Add(15, new VectorUnitPrefix {
+				Id = 15,
+				EnumId = "Mebi",
+				Name = "Mebi",
+				Description = "Mi",
+				Amount = 1048576,
+			});
+
+			VectorUnitPrefixMap.Add(16, new VectorUnitPrefix {
+				Id = 16,
+				EnumId = "Gibi",
+				Name = "Gibi",
+				Description = "Gi",
+				Amount = 1073741824,
+			});
+
+			VectorUnitPrefixMap.Add(17, new VectorUnitPrefix {
+				Id = 17,
+				EnumId = "Tebi",
+				Name = "Tebi",
+				Description = "Ti",
+				Amount = 1099511627776,
+			});
+
+			VectorUnitPrefixMap.Add(18, new VectorUnitPrefix {
+				Id = 18,
+				EnumId = "Pebi",
+				Name = "Pebi",
+				Description = "Pi",
+				Amount = 1125899906842620,
+			});
+
+			VectorUnitPrefixMap.Add(19, new VectorUnitPrefix {
+				Id = 19,
+				EnumId = "Exbi",
+				Name = "Exbi",
+				Description = "Ei",
+				Amount = 1152921504606850000,
+			});
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		private static void BuildVertexTypeMap() {
+			VertexTypeMap = new Dictionary<byte, VertexType>();
+
+			VertexTypeMap.Add(1, new VertexType {
+				Id = 1,
+				EnumId = "Vertex",
+				Name = "Vertex",
+			});
+
+			VertexTypeMap.Add(2, new VertexType {
+				Id = 2,
+				EnumId = "App",
+				Name = "App",
+			});
+
+			VertexTypeMap.Add(3, new VertexType {
+				Id = 3,
+				EnumId = "Class",
+				Name = "Class",
+			});
+
+			VertexTypeMap.Add(4, new VertexType {
+				Id = 4,
+				EnumId = "Instance",
+				Name = "Instance",
+			});
+
+			VertexTypeMap.Add(5, new VertexType {
+				Id = 5,
+				EnumId = "Url",
+				Name = "Url",
+			});
+
+			VertexTypeMap.Add(6, new VertexType {
+				Id = 6,
+				EnumId = "User",
+				Name = "User",
+			});
+
+			VertexTypeMap.Add(7, new VertexType {
+				Id = 7,
+				EnumId = "Member",
+				Name = "Member",
+			});
+
+			VertexTypeMap.Add(8, new VertexType {
+				Id = 8,
+				EnumId = "Artifact",
+				Name = "Artifact",
+			});
+
+			VertexTypeMap.Add(9, new VertexType {
+				Id = 9,
+				EnumId = "Factor",
+				Name = "Factor",
+			});
+
+			VertexTypeMap.Add(10, new VertexType {
+				Id = 10,
+				EnumId = "Email",
+				Name = "Email",
+			});
+
+			VertexTypeMap.Add(11, new VertexType {
+				Id = 11,
+				EnumId = "OauthAccess",
+				Name = "OauthAccess",
 			});
 		}
 

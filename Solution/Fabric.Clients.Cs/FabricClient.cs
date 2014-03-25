@@ -82,8 +82,6 @@ namespace Fabric.Clients.Cs {
 			cg.Config = pConfig;
 			cg.AppSess = new AppSession(pConfig,
 				new FabricClient(pConfig.ConfigKey, false).Services.Oauth);
-			cg.DataProvSess = new AppDataProvSession(pConfig,
-				new FabricClient(pConfig.ConfigKey).Services.Oauth, cg.AppSess);
 		}
 
 
@@ -119,10 +117,10 @@ namespace Fabric.Clients.Cs {
 			ConfigGroup cg = ConfigGroups[pConfigKey];
 
 			if ( pIncludeContextSessions ) {
-				Context = new ClientContext(cg.Config, cg.AppSess, cg.DataProvSess);
+				Context = new ClientContext(cg.Config, cg.AppSess);
 			}
 			else {
-				Context = new ClientContext(cg.Config, null, null);
+				Context = new ClientContext(cg.Config, null);
 			}
 
 			Context.LogInfo("New FabricClient");
@@ -146,9 +144,7 @@ namespace Fabric.Clients.Cs {
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		public IFabricAppDataProvSession AppDataProvSession {
-			get { return Context.AppDataProvSess; }
-		}
+		public IFabricOauthSession ActiveSession { get { return Context.ActiveSess; } }
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -160,13 +156,13 @@ namespace Fabric.Clients.Cs {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		public bool UseDataProviderPerson {
+		public bool UseAppDataProvider {
 			get {
-				return Context.UseDataProvPerson;
+				return Context.UseAppDataProvider;
 			}
 			set {
 				Context.LogInfo("UseDataProviderPerson: "+value);
-				Context.UseDataProvPerson = value;
+				Context.UseAppDataProvider = value;
 			}
 		}
 
@@ -178,7 +174,6 @@ namespace Fabric.Clients.Cs {
 
 		public IFabricClientConfig Config { get; set; }
 		public AppSession AppSess { get; set; }
-		public AppDataProvSession DataProvSess { get; set; }
 
 	}
 

@@ -11,7 +11,6 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 
 		private FabricClientConfig vConfig;
 		private AppSession vAppSess;
-		private AppDataProvSession vDpSess;
 		private FabricSessionContainer vSessContain;
 		private ClientContext vContext;
 		private int vSessProvCounter;
@@ -26,9 +25,8 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			vConfig = new FabricClientConfig("Test", "http://testFabric.com/api", 1,
 				"MySecretCode", 1, (k => "http://testdomain.com/oauth"), SessionContainerProvider);
 			vAppSess = new AppSession(vConfig, null);
-			vDpSess = new AppDataProvSession(vConfig, null, vAppSess);
 			vSessContain = new FabricSessionContainer();
-			vContext = new ClientContext(vConfig, vAppSess, vDpSess);
+			vContext = new ClientContext(vConfig, vAppSess);
 
 			FabricClient.InitOnce(vConfig);
 		}
@@ -55,13 +53,11 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			Assert.NotNull(vContext, "Context should be filled.");
 			Assert.NotNull(vContext.Config, "Config should be filled.");
 			Assert.NotNull(vContext.AppSess, "AppSess should be filled.");
-			Assert.NotNull(vContext.AppDataProvSess, "AppDataProvSess should be filled.");
 			Assert.NotNull(vContext.PersonSess, "PersonSess should be filled.");
 
 			Assert.AreEqual(vConfig, vContext.Config, "Incorrect Config.");
 			Assert.AreEqual(vAppSess, vContext.AppSess, "Incorrect Config.");
-			Assert.AreEqual(vDpSess, vContext.AppDataProvSess, "Incorrect Config.");
-			Assert.False(vContext.UseDataProvPerson, "Incorrect UseDataProvPerson value.");
+			Assert.False(vContext.UseAppDataProvider, "Incorrect UseDataProvPerson value.");
 
 			Assert.AreEqual(1, vSessProvCounter, "Incorrect Session Provider count.");
 		}
@@ -79,20 +75,20 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
 		public void UseDataProvPerson() {
-			Assert.False(vContext.UseDataProvPerson, "Incorrect UseDataProvPerson value.");
-			IFabricPersonSession perSess = vContext.PersonSess;
-			Assert.AreNotEqual(vDpSess, perSess, "Incorrect PersonSess.");
+			Assert.False(vContext.UseAppDataProvider, "Incorrect UseDataProvPerson value.");
+			IFabricOauthSession actSess = vContext.ActiveSess;
+			Assert.AreNotEqual(vAppSess, actSess, "Incorrect PersonSess.");
 			Assert.AreEqual(1, vSessProvCounter, "Incorrect Session Provider count.");
 
-			vContext.UseDataProvPerson = true;
-			Assert.True(vContext.UseDataProvPerson, "Incorrect UseDataProvPerson value.");
-			Assert.AreEqual(vDpSess, vContext.PersonSess, "Incorrect PersonSess.");
+			vContext.UseAppDataProvider = true;
+			Assert.True(vContext.UseAppDataProvider, "Incorrect UseDataProvPerson value.");
+			Assert.AreEqual(vAppSess, vContext.PersonSess, "Incorrect PersonSess.");
 			Assert.AreEqual(1, vSessProvCounter, "Incorrect Session Provider count.");
 
-			vContext.UseDataProvPerson = false;
-			Assert.False(vContext.UseDataProvPerson, "Incorrect UseDataProvPerson value.");
+			vContext.UseAppDataProvider = false;
+			Assert.False(vContext.UseAppDataProvider, "Incorrect UseDataProvPerson value.");
 			IFabricPersonSession perSess2 = vContext.PersonSess;
-			Assert.AreEqual(perSess, perSess2, "Incorrect PersonSess.");
+			Assert.AreEqual(actSess, perSess2, "Incorrect PersonSess.");
 			Assert.AreEqual(1, vSessProvCounter, "Incorrect Session Provider count.");
 		}
 
@@ -105,8 +101,8 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			var log = new Mock<IFabricLog>();
 			vConfig.Logger = log.Object;
 
-			vContext.UseDataProvPerson = pUseDataProv;
-			string sessId = (pUseDataProv ? vDpSess.SessionId : null);
+			vContext.UseAppDataProvider = pUseDataProv;
+			string sessId = (pUseDataProv ? vAppSess.SessionId : null);
 
 			vContext.LogInfo("info");
 			log.Verify(x => x.Info(sessId, It.IsAny<string>()), Times.Once());

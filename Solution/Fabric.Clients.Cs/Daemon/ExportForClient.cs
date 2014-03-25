@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using Fabric.Clients.Cs.Api;
-using Fabric.Clients.Cs.Daemon.Data;
-using ServiceStack.Text;
 
 namespace Fabric.Clients.Cs.Daemon {
 
@@ -59,10 +57,10 @@ namespace Fabric.Clients.Cs.Daemon {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		private int ExportClasses() {
-			IList<ClassData> classes = vDelegate.GetNewClasses();
+			IList<CreateFabClass> classes = vDelegate.GetNewClasses();
 			int n = 0;
 
-			foreach ( ClassData data in classes ) {
+			foreach ( CreateFabClass data in classes ) {
 				if ( vDelegate.StopExporting() ) {
 					return n;
 				}
@@ -70,11 +68,16 @@ namespace Fabric.Clients.Cs.Daemon {
 				FabClass cla;
 
 				if ( vDelegate.FakeFabricRequestMode() ) {
-					cla = new FabClass { ArtifactId = 1000000+data.ExporterId };
+					cla = new FabClass { Id = 1000000 };
 				}
 				else {
-					cla = Client.Services.Modify.AddClass
-						.Post(data.Name, data.Disamb, data.Note).FirstDataItem();
+					var cc = new CreateFabClass {
+						Name = data.Name,
+						Disamb = data.Disamb,
+						Note = data.Note
+					};
+
+					cla = Client.Services.Modify.Classes.Post(cc).FirstDataItem();
 				}
 
 				vDelegate.OnClassExport(data, cla);
@@ -86,10 +89,10 @@ namespace Fabric.Clients.Cs.Daemon {
 
 		/*--------------------------------------------------------------------------------------------*/
 		private int ExportInstances() {
-			IList<InstanceData> instances = vDelegate.GetNewInstances();
+			IList<CreateFabInstance> instances = vDelegate.GetNewInstances();
 			int n = 0;
 
-			foreach ( InstanceData data in instances ) {
+			foreach ( CreateFabInstance data in instances ) {
 				if ( vDelegate.StopExporting() ) {
 					return n;
 				}
@@ -97,11 +100,10 @@ namespace Fabric.Clients.Cs.Daemon {
 				FabInstance inst;
 				
 				if ( vDelegate.FakeFabricRequestMode() ) {
-					inst = new FabInstance { ArtifactId = 1000000+data.ExporterId };
+					inst = new FabInstance { Id = 1000000 };
 				}
 				else {
-					inst = Client.Services.Modify.AddInstance
-						.Post(data.Name, data.Disamb, data.Note).FirstDataItem();
+					inst = Client.Services.Modify.Instances.Post(data).FirstDataItem();
 				}
 
 				vDelegate.OnInstanceExport(data, inst);
@@ -113,10 +115,10 @@ namespace Fabric.Clients.Cs.Daemon {
 
 		/*--------------------------------------------------------------------------------------------*/
 		private int ExportUrls() {
-			IList<UrlData> urls = vDelegate.GetNewUrls();
+			IList<CreateFabUrl> urls = vDelegate.GetNewUrls();
 			int n = 0;
 
-			foreach ( UrlData data in urls ) {
+			foreach ( CreateFabUrl data in urls ) {
 				if ( vDelegate.StopExporting() ) {
 					return n;
 				}
@@ -124,11 +126,10 @@ namespace Fabric.Clients.Cs.Daemon {
 				FabUrl url;
 
 				if ( vDelegate.FakeFabricRequestMode() ) {
-					url = new FabUrl { ArtifactId = 1000000+data.ExporterId };
+					url = new FabUrl { Id = 1000000 };
 				}
 				else {
-					url = Client.Services.Modify.AddUrl
-						.Post(data.Path, data.Name).FirstDataItem();
+					url = Client.Services.Modify.Urls.Post(data).FirstDataItem();
 				}
 
 				vDelegate.OnUrlExport(data, url);
@@ -138,60 +139,30 @@ namespace Fabric.Clients.Cs.Daemon {
 			return n;
 		}
 
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		private int ExportFactors() {
-			IList<FabBatchNewFactor> factors = vDelegate.GetNewFactors();
-			var batch = new List<FabBatchNewFactor>();
+			IList<CreateFabFactor> factors = vDelegate.GetNewFactors();
 			int n = 0;
 
-			foreach ( FabBatchNewFactor data in factors ) {
-				batch.Add(data);
-
-				if ( batch.Count < 20 ) {
-					continue;
+			foreach ( CreateFabFactor data in factors ) {
+				if ( vDelegate.StopExporting() ) {
+					return n;
 				}
 
-				n += ExportFactorBatch(batch);
-				batch = new List<FabBatchNewFactor>();
-			}
+				FabFactor factor;
 
-			if ( batch.Count > 0 ) {
-				n += ExportFactorBatch(batch);
+				if ( vDelegate.FakeFabricRequestMode() ) {
+					factor = new FabFactor { Id = 1000000 };
+				}
+				else {
+					factor = Client.Services.Modify.Factors.Post(data).FirstDataItem();
+				}
+
+				vDelegate.OnFactorExport(data, factor);
+				++n;
 			}
 
 			return n;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		private int ExportFactorBatch(IList<FabBatchNewFactor> pBatch) {
-			if ( vDelegate.StopExporting() ) {
-				return 0;
-			}
-
-			IList<FabBatchResult> results;
-
-			if ( vDelegate.FakeFabricRequestMode() ) {
-				results = new List<FabBatchResult>();
-
-				foreach ( FabBatchNewFactor nf in pBatch ) {
-					var br = new FabBatchResult();
-					br.BatchId = nf.BatchId;
-					br.ResultId = 1000000+nf.BatchId;
-					results.Add(br);
-				}
-			}
-			else {
-				results = Client.Services.Modify.AddFactors
-					.Post(pBatch.ToArray()).Data;
-			}
-
-			foreach ( FabBatchResult r in results ) {
-				vDelegate.OnFactorExport(r);
-			}
-
-			return results.Count;
 		}
 	
 	}

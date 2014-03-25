@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Fabric.Clients.Cs.Api;
 using Fabric.Clients.Cs.Daemon;
-using Fabric.Clients.Cs.Daemon.Data;
 using Moq;
 
 namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
@@ -22,15 +21,15 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 		/*--------------------------------------------------------------------------------------------*/
 		public void SetCounts(int pClasses, int pInstances, int pUrls, int pFactors) {
 			vRemainMap = new Dictionary<string, int>();
-			vRemainMap.Add(typeof(ClassData).Name, pClasses);
-			vRemainMap.Add(typeof(InstanceData).Name, pInstances);
-			vRemainMap.Add(typeof(UrlData).Name, pUrls);
-			vRemainMap.Add(typeof(FabBatchNewFactor).Name, pFactors);
+			vRemainMap.Add(typeof(CreateFabClass).Name, pClasses);
+			vRemainMap.Add(typeof(CreateFabInstance).Name, pInstances);
+			vRemainMap.Add(typeof(CreateFabUrl).Name, pUrls);
+			vRemainMap.Add(typeof(CreateFabFactor).Name, pFactors);
 
-			Setup(x => x.GetNewClasses()).Returns(NewList<ClassData>);
-			Setup(x => x.GetNewInstances()).Returns(NewList<InstanceData>);
-			Setup(x => x.GetNewUrls()).Returns(NewList<UrlData>);
-			Setup(x => x.GetNewFactors()).Returns(NewList<FabBatchNewFactor>);
+			Setup(x => x.GetNewClasses()).Returns(NewList<CreateFabClass>);
+			Setup(x => x.GetNewInstances()).Returns(NewList<CreateFabInstance>);
+			Setup(x => x.GetNewUrls()).Returns(NewList<CreateFabUrl>);
+			Setup(x => x.GetNewFactors()).Returns(NewList<CreateFabFactor>);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/

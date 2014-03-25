@@ -60,12 +60,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Api\TraversalFuncsCustom.cs" />
-    <Compile Include="Api\TraversalFuncs.cs">
-      <DependentUpon>TraversalFuncs.tt</DependentUpon>
+    <Compile Include="Api\ApiOperationsTraversal.cs">
+      <DependentUpon>ApiOperationsTraversal.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Api\TraversalStepsExt.cs" />
     <Compile Include="Api\FabEnumsData.cs">
       <DependentUpon>FabEnumsData.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -76,36 +76,24 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Api\FabObjectBaseSteps.cs">
-      <DependentUpon>FabObjectBaseSteps.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Api\FabResponsePartial.cs" />
     <Compile Include="Api\FabObjects.cs">
       <DependentUpon>FabObjects.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Api\FabObjectSteps.cs">
-      <DependentUpon>FabObjectSteps.tt</DependentUpon>
+    <Compile Include="Api\TraversalSteps.cs">
+      <DependentUpon>TraversalSteps.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Api\ApiServicesPartial.cs" />
     <Compile Include="Api\IOperation.cs" />
     <Compile Include="Api\IService.cs" />
     <Compile Include="Api\ITraversalStep.cs" />
     <Compile Include="Api\ITraversalStepAlias.cs" />
-    <Compile Include="Api\ITraversalStepT.cs" />
-    <Compile Include="Api\Traversal.cs" />
+    <Compile Include="Api\TraversalPath.cs" />
     <Compile Include="Api\TraversalStep.cs" />
     <Compile Include="Api\TraversalStepAlias.cs" />
-    <Compile Include="Api\TraversalStepT.cs" />
-    <Compile Include="Daemon\Data\ArtifactData.cs" />
-    <Compile Include="Daemon\Data\ClassData.cs" />
-    <Compile Include="Daemon\Data\InstanceData.cs" />
-    <Compile Include="Daemon\Data\UrlData.cs" />
     <Compile Include="Daemon\IExportService.cs" />
     <Compile Include="Daemon\IExportForClientDelegate.cs" />
     <Compile Include="Daemon\ExportForClient.cs" />
@@ -121,7 +109,6 @@
     <Compile Include="Logging\IFabricLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FabricClient.cs" />
-    <Compile Include="Session\AppDataProvSession.cs" />
     <Compile Include="Session\AppSession.cs" />
     <Compile Include="Session\ClientContext.cs" />
     <Compile Include="Session\IClientContext.cs" />
@@ -155,9 +142,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ApiServices.cs</LastGenOutput>
     </None>
-    <None Include="Api\TraversalFuncs.tt">
+    <None Include="Api\ApiOperationsTraversal.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TraversalFuncs.cs</LastGenOutput>
+      <LastGenOutput>ApiOperationsTraversal.cs</LastGenOutput>
     </None>
     <None Include="Api\FabEnumsData.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -167,17 +154,13 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FabEnums.cs</LastGenOutput>
     </None>
-    <None Include="Api\FabObjectBaseSteps.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>FabObjectBaseSteps.cs</LastGenOutput>
-    </None>
     <None Include="Api\FabObjects.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FabObjects.cs</LastGenOutput>
     </None>
-    <None Include="Api\FabObjectSteps.tt">
+    <None Include="Api\TraversalSteps.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>FabObjectSteps.cs</LastGenOutput>
+      <LastGenOutput>TraversalSteps.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

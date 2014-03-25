@@ -1,6 +1,5 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 9/18/2013 5:35:53 PM
 
 using Fabric.Clients.Cs.Session;
 
@@ -16,24 +15,24 @@ namespace Fabric.Clients.Cs.Api {
 		string ApiVersion { get; }
 
 		/// <summary>
-		///   TODO
+		///   Load information about the API and its services.
 		/// </summary>
-		ITraversalService Traversal { get; }
+		IMetaService Meta { get; }
 
 		/// <summary>
-		///   TODO
-		/// </summary>
-		IOauthService Oauth { get; }
-
-		/// <summary>
-		///   TODO
+		///   Update the Fabric graph with new items and modifications.
 		/// </summary>
 		IModifyService Modify { get; }
 
 		/// <summary>
-		///   TODO
+		///   Authenticate Apps and/or Users using various flows based on the Oauth 2.0 specification.
 		/// </summary>
-		IMetaService Meta { get; }
+		IOauthService Oauth { get; }
+
+		/// <summary>
+		///   Query the Fabric graph using predefined traversal steps and functions.
+		/// </summary>
+		ITraversalService Traversal { get; }
 
 	}
 
@@ -51,18 +50,13 @@ namespace Fabric.Clients.Cs.Api {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public string ApiVersion { get { return "0.2.4.37fd2cd"; } }
+		public string ApiVersion { get { return "0.3.0.4b054df"; } }
 
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public ITraversalService Traversal {
-			get { return new TraversalService(vContext); }
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public IOauthService Oauth {
-			get { return new OauthService(vContext); }
+		public IMetaService Meta {
+			get { return new MetaService(vContext); }
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -71,8 +65,13 @@ namespace Fabric.Clients.Cs.Api {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public IMetaService Meta {
-			get { return new MetaService(vContext); }
+		public IOauthService Oauth {
+			get { return new OauthService(vContext); }
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public ITraversalService Traversal {
+			get { return new TraversalService(vContext); }
 		}
 
 	}

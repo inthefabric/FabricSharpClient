@@ -6,7 +6,6 @@
 <#@ output extension=".cs" #>
 // GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on <#= DateTime.Now.ToString() #>
 
 using Fabric.Clients.Cs.Session;
 
@@ -17,7 +16,7 @@ FabSpec spec = SpecBuilder.Spec;
 
 
 foreach ( FabSpecService s in spec.Services ) {
-	string partial = (s.Name == "Traversal" ? "partial " : "");
+	bool isTrav = (s.Name == "Traversal");
 #>
 	/*================================================================================================*/
 	/// <summary>
@@ -26,15 +25,21 @@ foreach ( FabSpecService s in spec.Services ) {
 	/// <remarks>
 	///   <#= SpecBuilder.ToXmlDoc(s.Description, true) #>
 	/// </remarks>
-	public <#= partial #>interface I<#= s.Name #>Service : IService {
+	public interface I<#= s.Name #>Service : IService {
 
 <#
 	foreach ( FabSpecServiceOperation op in s.Operations ) {
+		string opName = s.Name+op.Name+SpecBuilder.CapitalFirst(op.Method)+"Operation";
+		string type = op.Return.Replace("FabResponse", "").Trim(new[] { '<', '>' });
+
+		if ( isTrav ) {
+			opName = type+"Step";
+		}
 #>
 		/// <summary>
 		///   <#= SpecBuilder.ToXmlDocSentence(op.Description) #>
 		/// </summary>
-		I<#= op.Name #>Operation <#= op.Name #> { get; }
+		I<#= opName #> <#= op.Name #> { get; }
 
 <#
 	}
@@ -43,7 +48,7 @@ foreach ( FabSpecService s in spec.Services ) {
 
 
 	/*================================================================================================*/
-	internal <#= partial #>class <#= s.Name #>Service : I<#= s.Name #>Service {
+	internal class <#= s.Name #>Service : I<#= s.Name #>Service {
 	
 		private readonly IClientContext vContext;
 
@@ -58,13 +63,31 @@ foreach ( FabSpecService s in spec.Services ) {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 <#
 	foreach ( FabSpecServiceOperation op in s.Operations ) {
+		if ( isTrav ) {
+			string type = op.Return.Replace("FabResponse", "").Trim(new[] { '<', '>' });
 #>
 		/*--------------------------------------------------------------------------------------------*/
-		public I<#= op.Name #>Operation <#= op.Name #> {
-			get { return new <#= op.Name #>Operation(vContext); }
+		public I<#= type #>Step <#= op.Name #> {
+			get {
+				var path = new TraversalPath(vContext, "<#= s.Uri+op.Uri #>");
+				return new <#= type #>Step(path);
+			}
 		}
 
 <#
+		}
+		else {
+			string opName = s.Name+op.Name+SpecBuilder.CapitalFirst(op.Method)+"Operation";
+#>
+		/*--------------------------------------------------------------------------------------------*/
+		public I<#= opName #> <#= op.Name #> {
+			get {
+				return new <#= opName #>(vContext);
+			}
+		}
+
+<#
+		} //end "isTrav" condition
 	}
 #>
 	}

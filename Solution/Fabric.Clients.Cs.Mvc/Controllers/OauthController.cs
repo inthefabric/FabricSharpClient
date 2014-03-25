@@ -68,21 +68,21 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------------------------* /
 		public ActionResult RequestDpAuth() {
 			try { vFab.AppDataProvSession.RequestAuthentication(); }
 			catch ( FabricErrorException e ) { return View("Error", e); }
 			return RedirectToAction("Index");
 		}
 
-		/*--------------------------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------------------------* /
 		public ActionResult DpLogout() {
 			try { vFab.AppDataProvSession.Logout(); }
 			catch ( FabricErrorException e ) { return View("Error", e); }
 			return RedirectToAction("Index");
 		}
 
-		/*--------------------------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------------------------* /
 		public ActionResult DpRefresh() {
 			try { vFab.AppDataProvSession.RefreshTokenIfNecessary(); }
 			catch ( FabricErrorException e ) { return View("Error", e); }

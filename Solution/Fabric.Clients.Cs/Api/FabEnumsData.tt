@@ -7,7 +7,6 @@
 <#@ output extension=".cs" #>
 // GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on <#= DateTime.Now.ToString() #>
 
 using System.Collections.Generic;
 
@@ -37,16 +36,17 @@ foreach ( FabSpecEnum e in spec.Enums ) {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 <#		
 foreach ( FabSpecEnum e in spec.Enums ) {
+
 	if ( e.Extends == null ) { continue; }
 #>
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary/>
 		public enum <#= e.Name #>Id {
 <#
-	foreach ( Dictionary<string, object> row in e.Data ) {
-		string summ = row["Name"]+"";
+	foreach ( Dictionary<string, object> row in e.Items ) {
+		string summ = (row.ContainsKey("Name") ? row["Name"]+"" : "");
 
-		if ( !string.IsNullOrWhiteSpace(row["Description"]+"") ) {
+		if ( row.ContainsKey("Description") && !string.IsNullOrWhiteSpace(row["Description"]+"") ) {
 			summ += ": "+row["Description"];
 		}
 #>
@@ -92,21 +92,47 @@ foreach ( FabSpecEnum e in spec.Enums ) {
 		private static void Build<#= e.Name #>Map() {
 			<#= e.Name #>Map = new Dictionary<byte, <#= e.Name #>>();
 <#
-	foreach ( Dictionary<string, object> row in e.Data ) {
+	foreach ( Dictionary<string, object> row in e.Items ) {
 #>
 
 			<#= e.Name #>Map.Add(<#= row["Id"] #>, new <#= e.Name #> {
 <#
 		foreach ( FabSpecObjectProp p in props ) {
+			if ( !row.ContainsKey(p.Name) ) {
+				continue;
+			}
+
 			string val = row[p.Name]+"";
-			if ( p.Type == "string" ) { val = '"'+val+'"'; }
-			
-			if ( p.Type == "byte[]" ) {
-				val = val.Substring(1, val.Length-2).Replace("\r\n", " ").Replace("  ", "");
-				val = "new byte[] {"+val+"}";
+
+			if ( p.Type == "string" ) {
+				val = '"'+val+'"';
+			}
+			else if ( p.Type == "float" ) {
+				val = val+"f";
+			}
+			else if ( p.Type == "int" || p.Type == "byte" || p.Type == "double" || p.Type == "long" ) {
+			}
+			else if ( p.Type.Contains("[]") ) {
+				string arrayType = p.Type.Replace("[]", "");
+				string[] arrayItems= val
+					.Trim(new [] { '[', ']' })
+					.Replace("\r\n", "")
+					.Replace(" ", "")
+					.Split(',');
+
+				val = "new[] {";
+
+				foreach ( string arrayItem in arrayItems ) {
+					val += "\r\n\t\t\t\t\t"+arrayType+"Map[(byte)"+arrayType+"Id."+arrayItem+"],";
+				}
+
+				val += "\r\n\t\t\t\t}";
+			}
+			else {
+				val = p.Type+"Map[(byte)"+p.Type+"Id."+val+"]";
 			}
 #>
-				<#= p.Name #> = (<#= p.Type #>)<#= val #>,
+				<#= p.Name #> = <#= val #>,
 <#
 		} //end prop loop
 #>

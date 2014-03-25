@@ -1,0 +1,127 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="$(SolutionDir)Fabric.Clients.Cs.Spec\bin\Debug\Fabric.Clients.Cs.Spec.dll" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="Fabric.Clients.Cs.Spec" #>
+<#@ import namespace="Fabric.Clients.Cs.Spec.SpecDto" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+// GENERATED CODE
+// Changes made to this source file will be overwritten
+
+namespace Fabric.Clients.Cs.Api {
+	
+	// ReSharper disable InconsistentNaming
+
+	/*================================================================================================*/
+	/// <summary />
+	public interface IHasAsStep : ITraversalStep {}
+
+
+	/*================================================================================================*/
+	/// <summary />
+	public interface IHasBackStep : ITraversalStep {}
+
+
+<#
+FabSpec spec = SpecBuilder.Spec;
+
+foreach ( FabSpecObject o in spec.Objects ) {
+	IList<SpecStepRuleRow> ruleRows = SpecBuilder.GetStepRuleRows(o.Name);
+
+	if ( ruleRows == null ) {
+		continue;
+	}
+
+	string interfaces = "";
+
+	foreach ( SpecStepRuleRow row in ruleRows ) {
+		string name = row.Rule.Name;
+
+		if ( name == "As" || name == "Back" ) {
+			interfaces += ", IHas"+name+"Step";
+		}
+	}
+#>
+	/*================================================================================================*/
+	/// <summary />
+	public interface I<#= o.Name #>Step : ITraversalStep<<#= o.Name #>><#= interfaces #> {
+		
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+<#
+	foreach ( SpecStepRuleRow row in ruleRows ) {
+		if ( row.Rule.ReturnsAliasType == true ) {
+			continue;
+		}
+		
+		string funcParams = "";
+		string paramComments = "";
+	
+		foreach ( FabSpecServiceParam fp in row.Step.Parameters ) {
+			string funcType = (fp.Type == "T" ? row.Rule.T : fp.Type);
+			funcParams += (funcParams == "" ? "" : ", ")+funcType+" "+fp.Name;
+
+			paramComments += (paramComments == "" ? "" : "\r\n\t\t");
+			paramComments += "/// <param name=\""+fp.Name+"\">\r\n\t\t///   "+
+				SpecBuilder.ToXmlDoc(fp.Description, false)+"\r\n\t\t/// </param>";
+		}
+#>
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary>
+		///   <#= SpecBuilder.ToXmlDoc(row.Step.Description, false) #>
+		/// </summary>
+		/// <remarks>
+		///   <#= SpecBuilder.ToXmlDoc(row.Step.Description, true) #>
+		/// </remarks>
+		<#= paramComments #>
+		I<#= row.Rule.Return #>Step <#= row.Rule.Name #>(<#= funcParams #>);
+	
+<#
+	} //end row loop
+#>
+	}
+
+
+	/*================================================================================================*/
+	internal class <#= o.Name #>Step : TraversalStep<<#= o.Name #>>, I<#= o.Name #>Step {
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public <#= o.Name #>Step(TraversalPath pTravPath) : base(pTravPath) {}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+<#
+	foreach ( SpecStepRuleRow row in ruleRows ) {
+		if ( row.Rule.ReturnsAliasType == true ) {
+			continue;
+		}
+		
+		string funcParams = "";
+		string uriParams = "";
+	
+		foreach ( FabSpecServiceParam fp in row.Step.Parameters ) {
+			string funcType = (fp.Type == "T" ? row.Rule.T : fp.Type);
+			funcParams += (funcParams == "" ? "" : ", ")+funcType+" "+fp.Name;
+			uriParams += (uriParams == "" ? "" : ",")+"\"+"+fp.Name+"+\"";
+		}
+#>
+		/*--------------------------------------------------------------------------------------------*/
+		public I<#= row.Rule.Return #>Step <#= row.Rule.Name #>(<#= funcParams #>) {
+			TravPath.AppendToUri("/<#= row.Rule.Name #>(<#= uriParams #>)");
+			return new <#= row.Rule.Return #>Step(TravPath);
+		}
+		
+<#
+	}
+#>
+	}
+	
+	
+<#
+}
+#>
+	// ReSharper restore InconsistentNaming
+
+}

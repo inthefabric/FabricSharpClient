@@ -30,7 +30,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 		[Test]
 		public void CheckRoot() {
 			foreach ( FabSpecObject so in vSpec.Objects ) {
-				Console.WriteLine(so.Name+" / "+so.TraversalFunctions);
+				//Console.WriteLine(so.Name+" / "+so.TraversalFunctions);
 			}
 		}
 

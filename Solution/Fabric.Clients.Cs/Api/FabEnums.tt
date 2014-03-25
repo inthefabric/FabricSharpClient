@@ -6,7 +6,6 @@
 <#@ output extension=".cs" #>
 // GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on <#= DateTime.Now.ToString() #>
 
 namespace Fabric.Clients.Cs.Api {
 

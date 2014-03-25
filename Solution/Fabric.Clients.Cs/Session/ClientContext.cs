@@ -5,28 +5,32 @@
 
 		public IFabricClientConfig Config { get; private set; }
 		public IFabricAppSession AppSess { get; private set; }
-		public IFabricAppDataProvSession AppDataProvSess { get; private set; }
-		public bool UseDataProvPerson { get; set; }
+		public bool UseAppDataProvider { get; set; }
 
 		private IFabricPersonSession vPersonSess;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public ClientContext(IFabricClientConfig pConfig, IFabricAppSession pAppSess,
-														IFabricAppDataProvSession pAppDataProvSess) {
+		public ClientContext(IFabricClientConfig pConfig, IFabricAppSession pAppSess) {
 			Config = pConfig;
 			AppSess = pAppSess;
-			AppDataProvSess = pAppDataProvSess;
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public IFabricOauthSession ActiveSess {
+			get {
+				if ( UseAppDataProvider ) {
+					return AppSess;
+				}
+
+				return PersonSess;
+			}
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public IFabricPersonSession PersonSess {
 			get {
-				if ( UseDataProvPerson ) {
-					return AppDataProvSess;
-				}
-
 				if ( vPersonSess != null ) {
 					return vPersonSess;
 				}
@@ -72,11 +76,7 @@
 
 		/*--------------------------------------------------------------------------------------------*/
 		private string GetSessId() {
-			if ( UseDataProvPerson ) {
-				return (AppDataProvSess == null ? null : AppDataProvSess.SessionId);
-			}
-
-			return (vPersonSess == null ? null : vPersonSess.SessionId);
+			return (ActiveSess == null ? null : ActiveSess.SessionId);
 		}
 
 	}

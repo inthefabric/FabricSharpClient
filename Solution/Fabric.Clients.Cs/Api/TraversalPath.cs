@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Fabric.Clients.Cs.Session;
 using Fabric.Clients.Cs.Web;
 
@@ -6,23 +5,17 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary />
-	public class Traversal {
+	internal class TraversalPath {
 
 		private readonly IClientContext vContext;
 		private string vUri;
-		private readonly IList<ITraversalStep> vSteps;
-		private readonly FabRootStep vRoot;
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		internal Traversal(IClientContext pContext, string pBaseUri) {
+		internal TraversalPath(IClientContext pContext, string pBaseUri) {
 			vContext = pContext;
 			vUri = pBaseUri+"";
-			vSteps = new List<ITraversalStep>();
-			vRoot = new FabRootStep(this);
-
-			AddStep(vRoot);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -34,23 +27,8 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		internal IFabRootStep RootStep() {
-			return vRoot;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		internal void AddStep(ITraversalStep pStep) {
-			vSteps.Add(pStep);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
 		internal void AppendToUri(string pPartialUri) {
 			vUri += pPartialUri;
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		internal IList<ITraversalStep> GetSteps() {
-			return vSteps;
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/

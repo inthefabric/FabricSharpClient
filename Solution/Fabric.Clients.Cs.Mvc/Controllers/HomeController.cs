@@ -31,8 +31,8 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 			FabClass model;
 
 			try {
-				model = vFab.Services.Traversal.GetRootStep
-					.ClassId((long)id).Get().FirstDataItem();
+				model = vFab.Services.Traversal.Classes
+					.WithId((long)id).Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
@@ -47,8 +47,8 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 			FabClass model;
 
 			try {
-				model = vFab.Services.Traversal.GetRootStep
-					.ClassNameContains(id).Get().FirstDataItem();
+				model = vFab.Services.Traversal.Classes
+					.WhereNameContains(id).Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
@@ -63,7 +63,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 			FabUser model;
 
 			try {
-				model = vFab.Services.Traversal.GetRootStep.UserName(id).Get().FirstDataItem();
+				model = vFab.Services.Traversal.Users.WithName(id).Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
@@ -97,7 +97,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 			FabApp model;
 
 			try {
-				model = vFab.Services.Traversal.GetActiveApp.Get().FirstDataItem();
+				model = null; //TODO: vFab.Services.Traversal.GetActiveApp.Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
@@ -111,8 +111,8 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 			FabUser model;
 
 			try {
-				vFab.UseDataProviderPerson = true;
-				model = vFab.Services.Traversal.GetActiveUser.Get().FirstDataItem();
+				vFab.UseAppDataProvider = true;
+				model = null; //TODO: vFab.Services.Traversal.GetActiveUser.Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
@@ -126,7 +126,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 			FabUser model;
 
 			try {
-				model = vFab.Services.Traversal.GetActiveUser.Get().FirstDataItem();
+				model = null; //TODO: vFab.Services.Traversal.GetActiveUser.Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
@@ -142,7 +142,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 			FabMetaVersion model;
 
 			try {
-				model = vFab.Services.Meta.GetVersion.Get().FirstDataItem();
+				model = vFab.Services.Meta.Version.Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
@@ -156,7 +156,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 			FabMetaTime model;
 
 			try {
-				model = vFab.Services.Meta.GetTime.Get().FirstDataItem();
+				model = vFab.Services.Meta.Time.Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
@@ -170,7 +170,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 			FabSpec model;
 
 			try {
-				model = vFab.Services.Meta.GetSpecification.Get().FirstDataItem();
+				model = vFab.Services.Meta.Spec.Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);

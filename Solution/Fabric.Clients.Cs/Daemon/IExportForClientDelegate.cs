@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Fabric.Clients.Cs.Api;
-using Fabric.Clients.Cs.Daemon.Data;
 
 namespace Fabric.Clients.Cs.Daemon {
 
@@ -26,37 +25,37 @@ namespace Fabric.Clients.Cs.Daemon {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		IList<ClassData> GetNewClasses();
+		IList<CreateFabClass> GetNewClasses();
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		IList<InstanceData> GetNewInstances();
+		IList<CreateFabInstance> GetNewInstances();
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		IList<UrlData> GetNewUrls();
+		IList<CreateFabUrl> GetNewUrls();
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		IList<FabBatchNewFactor> GetNewFactors();
+		IList<CreateFabFactor> GetNewFactors();
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void OnClassExport(ClassData pClassData, FabClass pClass);
+		void OnClassExport(CreateFabClass pClassData, FabClass pClass);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void OnInstanceExport(InstanceData pInstanceData, FabInstance pInstance);
+		void OnInstanceExport(CreateFabInstance pInstanceData, FabInstance pInstance);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void OnUrlExport(UrlData pUrlData, FabUrl pUrl);
+		void OnUrlExport(CreateFabUrl pUrlData, FabUrl pUrl);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void OnFactorExport(FabBatchResult pFactor);
+		void OnFactorExport(CreateFabFactor pFactorData, FabFactor pFactor);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />

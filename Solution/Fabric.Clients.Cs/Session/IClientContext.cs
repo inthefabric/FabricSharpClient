@@ -5,31 +5,31 @@
 
 		IFabricClientConfig Config { get; }
 		IFabricAppSession AppSess { get; }
-		IFabricAppDataProvSession AppDataProvSess { get; }
-		bool UseDataProvPerson { get; set; }
 		IFabricPersonSession PersonSess { get; }
+		IFabricOauthSession ActiveSess { get; }
+		bool UseAppDataProvider { get; set; }
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void LogInfo(string text);
+		void LogInfo(string pText);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void LogDebug(string text);
+		void LogDebug(string pText);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void LogError(string text);
+		void LogError(string pText);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void LogFatal(string text);
+		void LogFatal(string pText);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		void LogWarn(string text);
+		void LogWarn(string pText);
 
 	}
 

@@ -6,10 +6,8 @@
 <#@ output extension=".cs" #>
 // GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on <#= DateTime.Now.ToString() #>
 
 using System;
-using System.Collections.Generic;
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -17,8 +15,8 @@ namespace Fabric.Clients.Cs.Api {
 FabSpec spec = SpecBuilder.Spec;
 
 foreach ( FabSpecObject o in spec.Objects ) {
-	string extends = (o.Extends == null ? "" : " : "+o.Extends);
-	string partial = (o.Name == "FabResponse" ? "partial " : "");
+	string extends = (o.Extends == null || o.Extends == "Object" ? "" : " : "+o.Extends);
+	string part = (o.Name == "FabResponse" ? "partial " : "");
 #>
 	/*================================================================================================*/
 	/// <summary>
@@ -27,7 +25,7 @@ foreach ( FabSpecObject o in spec.Objects ) {
 	/// <remarks>
 	///   <#= SpecBuilder.ToXmlDoc(o.Description, true) #>
 	/// </remarks>
-	public <#= partial #>class <#= o.Name+extends #> {
+	public <#= part #>class <#= o.Name+extends #> {
 	
 <#
 	foreach ( FabSpecObjectProp p in o.Properties ) {
@@ -50,6 +48,8 @@ foreach ( FabSpecObject o in spec.Objects ) {
 	foreach ( FabSpecObjectProp p in o.Properties ) {
 		if ( string.IsNullOrWhiteSpace(p.Enum) ) { continue; }
 #>
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
 		///   Get the static <#= p.Enum #> data that is associated with this object's <#= p.Name #> value.

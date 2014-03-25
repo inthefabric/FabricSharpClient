@@ -96,9 +96,9 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 		[Test]
 		public void UseDataProvPerson() {
 			var fab = new FabricClient();
-			fab.UseDataProviderPerson = true;
+			fab.UseAppDataProvider = true;
 			checkClient(fab, TestConfigKey);
-			Assert.AreEqual(fab.Context.AppDataProvSess, fab.Context.PersonSess,
+			Assert.AreEqual(fab.Context.ActiveSess, fab.Context.ActiveSess,
 				"Incorrect PersonSess, expected the DataProv Person.");
 		}
 
@@ -213,7 +213,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 			Assert.NotNull(pFab.Config, "Config should be filled.");
 			Assert.NotNull(pFab.PersonSession, "PersonSession should be filled.");
 			Assert.NotNull(pFab.AppSession, "AppSession should be filled.");
-			Assert.NotNull(pFab.AppDataProvSession, "AppDataProvSession should be filled.");
+			Assert.NotNull(pFab.ActiveSession, "ActiveSession should be filled.");
 
 			Assert.NotNull(pFab.Services, "Services should be filled.");
 
@@ -221,15 +221,15 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 
 			Assert.NotNull(pFab.Context, "Context should be filled.");
 			Assert.NotNull(pFab.Context.AppSess, "Context.AppSess should be filled.");
-			Assert.NotNull(pFab.Context.AppDataProvSess, "Context.AppDataProvSess should be filled.");
+			Assert.NotNull(pFab.Context.ActiveSess, "Context.ActiveSess should be filled.");
 			Assert.NotNull(pFab.Context.PersonSess, "Context.PersonSess should be filled.");
 
-			Assert.AreEqual(pFab.UseDataProviderPerson, pFab.Context.UseDataProvPerson,
+			Assert.AreEqual(pFab.UseAppDataProvider, pFab.Context.UseAppDataProvider,
 				"Incorrect Context.UseDataProvPerson.");
 			Assert.AreEqual(pFab.Config, pFab.Context.Config, "Incorrect Context.Config.");
 			Assert.AreEqual(pFab.AppSession, pFab.Context.AppSess, "Incorrect Context.AppSess.");
-			Assert.AreEqual(pFab.AppDataProvSession, pFab.Context.AppDataProvSess,
-				"Incorrect Context.AppDataProvSess.");
+			Assert.AreEqual(pFab.ActiveSession, pFab.Context.ActiveSess,
+				"Incorrect Context.ActiveSess.");
 		}
 
 	}

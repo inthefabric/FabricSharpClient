@@ -43,7 +43,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		protected void SetupMockAccessToken(FabOauthAccess pResult, Action pCallback=null) {
 			IReturnsResult<IOauthService> rr = MockOauth
 				.Setup(x => x.AccessTokenClientCredentials.Get(
-					Config.AppId+"",
+					Config.AppId,
 					Config.AppSecret,
 					Config.GetOauthRedirectUri()
 				))
@@ -105,7 +105,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			vThreadedTest.RunTest(ThreadRequestAuth);
 
 			MockOauth.Verify(x => x.AccessTokenClientCredentials.Get(
-				It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
+				It.IsAny<long>(), It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -116,7 +116,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			vThreadedTest.RunTest(ThreadRefreshIfNecc);
 			
 			MockOauth.Verify(x => x.AccessTokenClientCredentials.Get(
-				It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()), Times.Once());
+				It.IsAny<long>(), It.IsAny<string>(), It.IsAny<string>()), Times.Once());
 		}
 
 		/*--------------------------------------------------------------------------------------------*/

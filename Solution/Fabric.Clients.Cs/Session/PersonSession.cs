@@ -39,7 +39,7 @@ namespace Fabric.Clients.Cs.Session {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public virtual string GetGrantCodeUrl(bool pSwitchUser=false) {
-			LoginOperation op = (LoginOperation)ClientOauth.Login;
+			OauthLoginGetOperation op = (OauthLoginGetOperation)ClientOauth.Login;
 			FabricRequest<FabOauthLogin> req = op.Request("code", Config.AppId+"",
 				OAuthRedirectUri, null, SessionId, (pSwitchUser ? "1" : "0"));
 			return Config.ApiPath+req.Path+"?"+req.Query;

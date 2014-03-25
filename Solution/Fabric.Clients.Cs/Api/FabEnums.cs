@@ -1,9 +1,44 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
-// Generated on 9/18/2013 5:35:53 PM
 
 namespace Fabric.Clients.Cs.Api {
 
+	/*================================================================================================*/
+	/// <summary>
+	///   Provides meaning (via Descriptor) to the relationship between the two Artifacts in a particular Factor.
+	/// </summary>
+	/// <remarks>
+	///   <para>Provides meaning (via Descriptor) to the relationship between the two Artifacts in a particular Factor.</para>
+	/// </remarks>
+	public class DescriptorType : EnumObject {
+	
+	}
+
+	
+	/*================================================================================================*/
+	/// <summary>
+	///   Describes an action to be taken (via Director) on one of the two Artifacts in a particular Factor.
+	/// </summary>
+	/// <remarks>
+	///   <para>Describes an action to be taken (via Director) on one of the two Artifacts in a particular Factor.</para>
+	/// </remarks>
+	public class DirectorAction : EnumObject {
+	
+	}
+
+	
+	/*================================================================================================*/
+	/// <summary>
+	///   Provides meaning (via Director) to the directional connection between the two Artifacts in a particular Factor.
+	/// </summary>
+	/// <remarks>
+	///   <para>Provides meaning (via Director) to the directional connection between the two Artifacts in a particular Factor.</para>
+	/// </remarks>
+	public class DirectorType : EnumObject {
+	
+	}
+
+	
 	/*================================================================================================*/
 	/// <summary>
 	///   The base class for all Fabric enumerations.
@@ -11,7 +46,7 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>The base class for all Fabric enumerations.</para>
 	/// </remarks>
-	public class BaseEnum {
+	public class EnumObject {
 	
 		/// <summary>
 		///   The numeric identifier for this enumeration item.
@@ -29,58 +64,10 @@ namespace Fabric.Clients.Cs.Api {
 		public string Name { get; set; }
 		
 		/// <summary>
-		///   A summary of this object's intended meaning or purpose.
+		///   A summary of this object's 'sintended meaning or purpose.
 		/// </summary>
 		public string Description { get; set; }
 		
-	}
-
-	
-	/*================================================================================================*/
-	/// <summary>
-	///   Describes the level of access and control given to a particular Member.
-	/// </summary>
-	/// <remarks>
-	///   <para>Describes the level of access and control given to a particular Member.</para>
-	/// </remarks>
-	public class MemberType : BaseEnum {
-	
-	}
-
-	
-	/*================================================================================================*/
-	/// <summary>
-	///   Provides meaning (via Descriptor) to the relationship between the two Artifacts in a particular Factor.
-	/// </summary>
-	/// <remarks>
-	///   <para>Provides meaning (via Descriptor) to the relationship between the two Artifacts in a particular Factor.</para>
-	/// </remarks>
-	public class DescriptorType : BaseEnum {
-	
-	}
-
-	
-	/*================================================================================================*/
-	/// <summary>
-	///   Provides meaning (via Director) to the directional connection between the two Artifacts in a particular Factor.
-	/// </summary>
-	/// <remarks>
-	///   <para>Provides meaning (via Director) to the directional connection between the two Artifacts in a particular Factor.</para>
-	/// </remarks>
-	public class DirectorType : BaseEnum {
-	
-	}
-
-	
-	/*================================================================================================*/
-	/// <summary>
-	///   Describes an action to be taken (via Director) on one of the two Artifacts in a particular Factor.
-	/// </summary>
-	/// <remarks>
-	///   <para>Describes an action to be taken (via Director) on one of the two Artifacts in a particular Factor.</para>
-	/// </remarks>
-	public class DirectorAction : BaseEnum {
-	
 	}
 
 	
@@ -91,7 +78,7 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Provides temporal significance (via Eventor) for a particular Factor.</para>
 	/// </remarks>
-	public class EventorType : BaseEnum {
+	public class EventorType : EnumObject {
 	
 	}
 
@@ -103,7 +90,7 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Describes the type of information (and/or level of confidence) provided by a particular Factor.</para>
 	/// </remarks>
-	public class FactorAssertion : BaseEnum {
+	public class FactorAssertion : EnumObject {
 	
 	}
 
@@ -115,7 +102,7 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Provides a hint about the text (via Identor) that identifies a particular Factor.</para>
 	/// </remarks>
-	public class IdentorType : BaseEnum {
+	public class IdentorType : EnumObject {
 	
 	}
 
@@ -127,7 +114,7 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Provides spatial context and boundaries (via Locator) for a particular Factor.</para>
 	/// </remarks>
-	public class LocatorType : BaseEnum {
+	public class LocatorType : EnumObject {
 	
 		/// <summary>
 		///   The minimum Locator X-coordinate value.
@@ -164,17 +151,63 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary>
+	///   Describes the level of access and control given to a particular Member.
+	/// </summary>
+	/// <remarks>
+	///   <para>Describes the level of access and control given to a particular Member.</para>
+	/// </remarks>
+	public class MemberType : EnumObject {
+	
+	}
+
+	
+	/*================================================================================================*/
+	/// <summary>
+	///   Provides meaning (using relatively-positioned points/labels) across the numerical range of a particular VectorType.
+	/// </summary>
+	/// <remarks>
+	///   <para>Provides meaning (using relatively-positioned points/labels) across the numerical range of a particular VectorType.</para>
+	/// </remarks>
+	public class VectorRange : EnumObject {
+	
+		/// <summary>
+		///   The set of points/labels that describe a numerical range.
+		/// </summary>
+		public VectorRangeLevel[] Levels { get; set; }
+		
+	}
+
+	
+	/*================================================================================================*/
+	/// <summary>
+	///   A relatively-positioned point which provides meaning to a numerical range.
+	/// </summary>
+	/// <remarks>
+	///   <para>A relatively-positioned point which provides meaning to a numerical range.</para>
+	/// </remarks>
+	public class VectorRangeLevel : EnumObject {
+	
+		/// <summary>
+		///   A value (between 0.0 and 1.0) which defines the relative position between a numeric range's 'sminimum and maximum boundaries.
+		/// </summary>
+		public float Position { get; set; }
+		
+	}
+
+	
+	/*================================================================================================*/
+	/// <summary>
 	///   Provides meaning and boundaries (via Vector) for a numeric value given to a particular Factor.
 	/// </summary>
 	/// <remarks>
 	///   <para>Provides meaning and boundaries (via Vector) for a numeric value given to a particular Factor.</para>
 	/// </remarks>
-	public class VectorType : BaseEnum {
+	public class VectorType : EnumObject {
 	
 		/// <summary>
 		///   Specifies a meaningful points/labels mapped to the numerical range.
 		/// </summary>
-		public byte VectorRangeId { get; set; }
+		public VectorRange VectorRange { get; set; }
 		
 		/// <summary>
 		///   The minimum Vector value allowed.
@@ -191,47 +224,45 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary>
-	///   A relatively-positioned point which provides meaning to a numerical range.
-	/// </summary>
-	/// <remarks>
-	///   <para>A relatively-positioned point which provides meaning to a numerical range.</para>
-	/// </remarks>
-	public class VectorRangeLevel : BaseEnum {
-	
-		/// <summary>
-		///   A value (between 0.0 and 1.0) which defines the relative position between a numeric range's minimum and maximum boundaries.
-		/// </summary>
-		public float Position { get; set; }
-		
-	}
-
-	
-	/*================================================================================================*/
-	/// <summary>
-	///   Provides meaning (using relatively-positioned points/labels) across the numerical range of a particular VectorType.
-	/// </summary>
-	/// <remarks>
-	///   <para>Provides meaning (using relatively-positioned points/labels) across the numerical range of a particular VectorType.</para>
-	/// </remarks>
-	public class VectorRange : BaseEnum {
-	
-		/// <summary>
-		///   The set of points/labels that describe a numerical range.
-		/// </summary>
-		public byte[] VectorRangeLevelIds { get; set; }
-		
-	}
-
-	
-	/*================================================================================================*/
-	/// <summary>
 	///   Provides a unit of measurement for the numeric value of a particular Vector.
 	/// </summary>
 	/// <remarks>
 	///   <para>Provides a unit of measurement for the numeric value of a particular Vector.</para>
 	/// </remarks>
-	public class VectorUnit : BaseEnum {
+	public class VectorUnit : EnumObject {
 	
+	}
+
+	
+	/*================================================================================================*/
+	/// <summary>
+	///   Provides conversion formulas from the "derived" VectorUnit to one or more "raises" VectorUnits.
+	/// </summary>
+	/// <remarks>
+	///   <para>Provides conversion formulas from the "derived" VectorUnit to one or more "raises" VectorUnits. Each "raises" unit receives a VectorUnitPrefix and an exponent value.</para>
+	/// </remarks>
+	public class VectorUnitDerived : EnumObject {
+	
+		/// <summary>
+		///   One or more VectorUnitDerived items are used to represent a conversion into this particular VectorUnit.
+		/// </summary>
+		public VectorUnit DefinesVectorUnit { get; set; }
+		
+		/// <summary>
+		///   The VectorUnit for this particular item.
+		/// </summary>
+		public VectorUnit RaisesVectorUnit { get; set; }
+		
+		/// <summary>
+		///   The exponent that affects the "raises" unit.
+		/// </summary>
+		public int WithExponent { get; set; }
+		
+		/// <summary>
+		///   The VectorUnitPrefix that affects the "raises" unit.
+		/// </summary>
+		public VectorUnitPrefix RaisesVectorUnitPrefix { get; set; }
+		
 	}
 
 	
@@ -242,7 +273,7 @@ namespace Fabric.Clients.Cs.Api {
 	/// <remarks>
 	///   <para>Provides a level of magnitude for the numeric value of a particular Vector.</para>
 	/// </remarks>
-	public class VectorUnitPrefix : BaseEnum {
+	public class VectorUnitPrefix : EnumObject {
 	
 		/// <summary>
 		///   The difference in magnitude (a multipler) relative to the base unit.
@@ -254,41 +285,13 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary>
-	///   Provides conversion formulas from the "derived" unit to one or more "raises" units.
+	///   Provides the specific type of a particular Vertex.
 	/// </summary>
 	/// <remarks>
-	///   <para>Provides conversion formulas from the "derived" unit to one or more "raises" units. Each "raises" unit receives a unit prefix and an exponent value.</para>
-	///   <para>Watt Example: Description</para>
-	///   <para>The Watt unit conversion is defined with three seperate VectorUnitDerived items:</para>
-	///   <para>- WattGram</para>
-	///   <para>- WattMetre</para>
-	///   <para>- WattSec</para>
-	///   <para>Equation</para>
-	///   <para>Those three items represent the Watt conversion equation:</para>
-	///   <para>1 Watt = 1 (Kg)*(m^2)/(s^3)</para>
+	///   <para>Provides the specific type of a particular Vertex.</para>
 	/// </remarks>
-	public class VectorUnitDerived : BaseEnum {
+	public class VertexType : EnumObject {
 	
-		/// <summary>
-		///   One or more VectorUnitDerived items are used to represent a conversion into this particular unit.
-		/// </summary>
-		public byte DefinesVectorUnitId { get; set; }
-		
-		/// <summary>
-		///   The unit for this particular item.
-		/// </summary>
-		public byte RaisesVectorUnitId { get; set; }
-		
-		/// <summary>
-		///   The exponent that affects the "raises" unit.
-		/// </summary>
-		public int WithExponent { get; set; }
-		
-		/// <summary>
-		///   The unit prefix that affects the "raises" unit.
-		/// </summary>
-		public byte RaisesVectorUnitPrefixId { get; set; }
-		
 	}
 
 	

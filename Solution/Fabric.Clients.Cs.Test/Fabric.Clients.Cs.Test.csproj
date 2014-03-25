@@ -50,7 +50,6 @@
     <Compile Include="Fixtures\Daemon\TExportService.cs" />
     <Compile Include="Fixtures\Session\TFabricSessionContainer.cs" />
     <Compile Include="Fixtures\TSpec.cs" />
-    <Compile Include="Fixtures\Session\TAppDataProvSession.cs" />
     <Compile Include="Fixtures\Session\TAppSession.cs" />
     <Compile Include="Fixtures\Session\TClientContext.cs" />
     <Compile Include="Fixtures\Session\TOauthSession.cs" />
