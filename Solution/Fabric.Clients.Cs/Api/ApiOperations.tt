@@ -29,6 +29,7 @@ foreach ( FabSpecService s in spec.Services ) {
 		string paramList = "";
 		string paramFill = "";
 		string paramComments = "";
+		string query = "";
 		string form = "";
 		string paramFunc = "";
 
@@ -50,10 +51,16 @@ foreach ( FabSpecService s in spec.Services ) {
 					paramFunc = ".ToJson()";
 				}
 
-				form += (form == "" ? "" : "&")+p.Name+"=\"+"+p.Name+paramFunc+"+\"";
+				if ( op.Method == "GET" ) {
+					query += (query == "" ? "" : "&")+p.Name+"=\"+"+p.Name+paramFunc+"+\"";
+				}
+				else {
+					form += (form == "" ? "" : "&")+p.Name+"=\"+"+p.Name+paramFunc+"+\"";
+				}
 			}
 		}
 		
+		query = (query == "" ? "null" : "\""+query.Substring(0, query.Length-2));
 		form = (form == "" ? "null" : "\""+form.Substring(0, form.Length-2));
 #>
 	/*================================================================================================*/
@@ -94,7 +101,8 @@ foreach ( FabSpecService s in spec.Services ) {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<<#= returns #>> Request(<#= paramList #>) {
-			return new FabricRequest<<#= returns #>>("<#= op.Method #>", Uri, "",
+			return new FabricRequest<<#= returns #>>("<#= op.Method #>", Uri,
+				<#= query #>,
 				<#= form #>
 			);
 		}

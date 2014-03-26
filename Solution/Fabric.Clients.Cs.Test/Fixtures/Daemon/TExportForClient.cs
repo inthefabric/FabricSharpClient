@@ -96,19 +96,19 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		[TestCase(0, 0, 0, 0, 0)]
-		[TestCase(1, 1, 1, 1, 1)]
-		[TestCase(18, 17, 19, 20, 2)]
-		[TestCase(0, 10, 0, 21, 3)]
-		[TestCase(5, 0, 5, 0, 0)]
-		[TestCase(0, 0, 0, 50, 5)]
-		public void StartExport(int pClasses, int pInstances, int pUrls, int pFactors, int pFacBatch) {
+		[TestCase(0, 0, 0, 0)]
+		[TestCase(1, 1, 1, 1)]
+		[TestCase(18, 17, 19, 20)]
+		[TestCase(0, 10, 0, 21)]
+		[TestCase(5, 0, 5, 0)]
+		[TestCase(0, 0, 0, 50)]
+		public void StartExport(int pClasses, int pInstances, int pUrls, int pFactors) {
 			vMockDel.SetCounts(pClasses, pInstances, pUrls, pFactors);
 
 			var efc = new ExportForClient(vMockDel.Object);
 			efc.StartExport();
 
-			VerifyFabricCounts(pClasses, pInstances, pUrls, pFacBatch);
+			VerifyFabricCounts(pClasses, pInstances, pUrls, pFactors);
 			VerifyExportCounts(pClasses, pInstances, pUrls, pFactors);
 			vMockDel.Verify(x => x.OnExportComplete(), Times.Once);
 		}
@@ -143,7 +143,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private void VerifyFabricCounts(int pClasses, int pInstances, int pUrls, int pFacBatch){
+		private void VerifyFabricCounts(int pClasses, int pInstances, int pUrls, int pFactors){
 			vMockAddClass.Verify(x =>
 				x.Post(It.IsAny<CreateFabClass>()), Times.Exactly(pClasses));
 
@@ -154,7 +154,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 				x.Post(It.IsAny<CreateFabUrl>()), Times.Exactly(pUrls));
 
 			vMockAddFactor.Verify(x =>
-				x.Post(It.IsAny<CreateFabFactor>()), Times.Exactly(pFacBatch));
+				x.Post(It.IsAny<CreateFabFactor>()), Times.Exactly(pFactors));
 		}
 
 		/*--------------------------------------------------------------------------------------------*/

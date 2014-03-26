@@ -39,7 +39,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 			mockPs.SetupGet(x => x.Expiration).Returns(DateTime.UtcNow.AddSeconds(pAddSeconds));
 
 			var mockFc = new Mock<IFabricClient>();
-			mockFc.SetupGet(x => x.PersonSession).Returns(mockPs.Object);
+			mockFc.SetupGet(x => x.ActiveSession).Returns(mockPs.Object);
 			return mockFc;
 		}
 

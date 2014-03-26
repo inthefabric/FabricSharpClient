@@ -48,7 +48,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabSpec>> Request() {
-			return new FabricRequest<FabResponse<FabSpec>>("GET", Uri, "",
+			return new FabricRequest<FabResponse<FabSpec>>("GET", Uri,
+				null,
 				null
 			);
 		}
@@ -99,7 +100,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabMetaVersion>> Request() {
-			return new FabricRequest<FabResponse<FabMetaVersion>>("GET", Uri, "",
+			return new FabricRequest<FabResponse<FabMetaVersion>>("GET", Uri,
+				null,
 				null
 			);
 		}
@@ -150,7 +152,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabMetaTime>> Request() {
-			return new FabricRequest<FabResponse<FabMetaTime>>("GET", Uri, "",
+			return new FabricRequest<FabResponse<FabMetaTime>>("GET", Uri,
+				null,
 				null
 			);
 		}
@@ -204,7 +207,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabClass>> Request(CreateFabClass Data) {
-			return new FabricRequest<FabResponse<FabClass>>("POST", Uri, "",
+			return new FabricRequest<FabResponse<FabClass>>("POST", Uri,
+				null,
 				"Data="+Data.ToJson()
 			);
 		}
@@ -258,7 +262,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabFactor>> Request(CreateFabFactor Data) {
-			return new FabricRequest<FabResponse<FabFactor>>("POST", Uri, "",
+			return new FabricRequest<FabResponse<FabFactor>>("POST", Uri,
+				null,
 				"Data="+Data.ToJson()
 			);
 		}
@@ -312,7 +317,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabInstance>> Request(CreateFabInstance Data) {
-			return new FabricRequest<FabResponse<FabInstance>>("POST", Uri, "",
+			return new FabricRequest<FabResponse<FabInstance>>("POST", Uri,
+				null,
 				"Data="+Data.ToJson()
 			);
 		}
@@ -366,7 +372,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabMember>> Request(CreateFabMember Data) {
-			return new FabricRequest<FabResponse<FabMember>>("POST", Uri, "",
+			return new FabricRequest<FabResponse<FabMember>>("POST", Uri,
+				null,
 				"Data="+Data.ToJson()
 			);
 		}
@@ -420,7 +427,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabUrl>> Request(CreateFabUrl Data) {
-			return new FabricRequest<FabResponse<FabUrl>>("POST", Uri, "",
+			return new FabricRequest<FabResponse<FabUrl>>("POST", Uri,
+				null,
 				"Data="+Data.ToJson()
 			);
 		}
@@ -491,8 +499,9 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabOauthAccess> Request(string grant_type, long client_id, string client_secret, string code, string refresh_token, string redirect_uri) {
-			return new FabricRequest<FabOauthAccess>("GET", Uri, "",
-				"grant_type="+grant_type+"&client_id="+client_id+"&client_secret="+client_secret+"&code="+code+"&refresh_token="+refresh_token+"&redirect_uri="+redirect_uri
+			return new FabricRequest<FabOauthAccess>("GET", Uri,
+				"grant_type="+grant_type+"&client_id="+client_id+"&client_secret="+client_secret+"&code="+code+"&refresh_token="+refresh_token+"&redirect_uri="+redirect_uri,
+				null
 			);
 		}
 		
@@ -552,8 +561,9 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabOauthAccess> Request(string code, string client_secret, string redirect_uri) {
-			return new FabricRequest<FabOauthAccess>("GET", Uri, "",
-				"code="+code+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri
+			return new FabricRequest<FabOauthAccess>("GET", Uri,
+				"code="+code+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri,
+				null
 			);
 		}
 		
@@ -614,8 +624,9 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabOauthAccess> Request(string refresh_token, string client_secret, string redirect_uri) {
-			return new FabricRequest<FabOauthAccess>("GET", Uri, "",
-				"refresh_token="+refresh_token+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri
+			return new FabricRequest<FabOauthAccess>("GET", Uri,
+				"refresh_token="+refresh_token+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri,
+				null
 			);
 		}
 		
@@ -675,8 +686,9 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabOauthAccess> Request(long client_id, string client_secret, string redirect_uri) {
-			return new FabricRequest<FabOauthAccess>("GET", Uri, "",
-				"client_id="+client_id+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri
+			return new FabricRequest<FabOauthAccess>("GET", Uri,
+				"client_id="+client_id+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri,
+				null
 			);
 		}
 		
@@ -750,8 +762,9 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabOauthLogin> Request(string response_type, string client_id, string redirect_uri, string scope, string state, string switchMode) {
-			return new FabricRequest<FabOauthLogin>("GET", Uri, "",
-				"response_type="+response_type+"&client_id="+client_id+"&redirect_uri="+redirect_uri+"&scope="+scope+"&state="+state+"&switchMode="+switchMode
+			return new FabricRequest<FabOauthLogin>("GET", Uri,
+				"response_type="+response_type+"&client_id="+client_id+"&redirect_uri="+redirect_uri+"&scope="+scope+"&state="+state+"&switchMode="+switchMode,
+				null
 			);
 		}
 		
@@ -805,8 +818,9 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabOauthLogout> Request(string access_token) {
-			return new FabricRequest<FabOauthLogout>("GET", Uri, "",
-				"access_token="+access_token
+			return new FabricRequest<FabOauthLogout>("GET", Uri,
+				"access_token="+access_token,
+				null
 			);
 		}
 		
@@ -856,7 +870,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabTravAppRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravAppRoot>>("GET", Uri, "",
+			return new FabricRequest<FabResponse<FabTravAppRoot>>("GET", Uri,
+				null,
 				null
 			);
 		}
@@ -907,7 +922,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabTravArtifactRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravArtifactRoot>>("GET", Uri, "",
+			return new FabricRequest<FabResponse<FabTravArtifactRoot>>("GET", Uri,
+				null,
 				null
 			);
 		}
@@ -958,7 +974,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabTravClassRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravClassRoot>>("GET", Uri, "",
+			return new FabricRequest<FabResponse<FabTravClassRoot>>("GET", Uri,
+				null,
 				null
 			);
 		}
@@ -1009,7 +1026,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabTravFactorRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravFactorRoot>>("GET", Uri, "",
+			return new FabricRequest<FabResponse<FabTravFactorRoot>>("GET", Uri,
+				null,
 				null
 			);
 		}
@@ -1060,7 +1078,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabTravInstanceRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravInstanceRoot>>("GET", Uri, "",
+			return new FabricRequest<FabResponse<FabTravInstanceRoot>>("GET", Uri,
+				null,
 				null
 			);
 		}
@@ -1111,7 +1130,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabTravMemberRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravMemberRoot>>("GET", Uri, "",
+			return new FabricRequest<FabResponse<FabTravMemberRoot>>("GET", Uri,
+				null,
 				null
 			);
 		}
@@ -1162,7 +1182,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabTravUrlRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravUrlRoot>>("GET", Uri, "",
+			return new FabricRequest<FabResponse<FabTravUrlRoot>>("GET", Uri,
+				null,
 				null
 			);
 		}
@@ -1213,7 +1234,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabTravUserRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravUserRoot>>("GET", Uri, "",
+			return new FabricRequest<FabResponse<FabTravUserRoot>>("GET", Uri,
+				null,
 				null
 			);
 		}
@@ -1264,7 +1286,8 @@ namespace Fabric.Clients.Cs.Api {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabricRequest<FabResponse<FabTravVertexRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravVertexRoot>>("GET", Uri, "",
+			return new FabricRequest<FabResponse<FabTravVertexRoot>>("GET", Uri,
+				null,
 				null
 			);
 		}

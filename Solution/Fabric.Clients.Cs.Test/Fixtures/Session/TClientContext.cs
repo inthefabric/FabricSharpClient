@@ -77,18 +77,18 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		public void UseDataProvPerson() {
 			Assert.False(vContext.UseAppDataProvider, "Incorrect UseDataProvPerson value.");
 			IFabricOauthSession actSess = vContext.ActiveSess;
-			Assert.AreNotEqual(vAppSess, actSess, "Incorrect PersonSess.");
+			Assert.AreNotEqual(vAppSess, actSess, "Incorrect ActiveSess.");
 			Assert.AreEqual(1, vSessProvCounter, "Incorrect Session Provider count.");
 
 			vContext.UseAppDataProvider = true;
 			Assert.True(vContext.UseAppDataProvider, "Incorrect UseDataProvPerson value.");
-			Assert.AreEqual(vAppSess, vContext.PersonSess, "Incorrect PersonSess.");
+			Assert.AreEqual(vAppSess, vContext.ActiveSess, "Incorrect ActiveSess.");
 			Assert.AreEqual(1, vSessProvCounter, "Incorrect Session Provider count.");
 
 			vContext.UseAppDataProvider = false;
 			Assert.False(vContext.UseAppDataProvider, "Incorrect UseDataProvPerson value.");
-			IFabricPersonSession perSess2 = vContext.PersonSess;
-			Assert.AreEqual(actSess, perSess2, "Incorrect PersonSess.");
+			IFabricOauthSession actSess2 = vContext.ActiveSess;
+			Assert.AreEqual(actSess, actSess2, "Incorrect ActiveSess.");
 			Assert.AreEqual(1, vSessProvCounter, "Incorrect Session Provider count.");
 		}
 

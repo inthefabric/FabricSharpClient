@@ -76,7 +76,11 @@
 
 		/*--------------------------------------------------------------------------------------------*/
 		private string GetSessId() {
-			return (ActiveSess == null ? null : ActiveSess.SessionId);
+			if ( UseAppDataProvider ) {
+				return (AppSess == null ? null : AppSess.SessionId);
+			}
+
+			return (vPersonSess == null ? null : vPersonSess.SessionId);
 		}
 
 	}
