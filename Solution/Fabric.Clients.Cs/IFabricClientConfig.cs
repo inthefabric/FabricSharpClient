@@ -20,9 +20,6 @@ namespace Fabric.Clients.Cs {
 		string AppSecret { get; }
 
 		/// <summary />
-		long AppDataProvPersonId { get; }
-
-		/// <summary />
 		IFabricLog Logger { get; set; }
 
 

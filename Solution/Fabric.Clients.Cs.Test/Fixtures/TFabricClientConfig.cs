@@ -12,7 +12,6 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 		private string vApiPath;
 		private int vAppId;
 		private string vAppSecret;
-		private int vAppDpId;
 		private string vAppOauthRedir;
 		private FabricSessionContainer vSessContain;
 		private FabricClientConfig.OauthRedirectUriProvider vRedirProv;
@@ -27,7 +26,6 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 			vApiPath = "http://testFabric.com/api";
 			vAppId = 1;
 			vAppSecret = "MySecretCode";
-			vAppDpId = 4;
 			vAppOauthRedir = "http://testdomain.com/oauth";
 			vSessContain = new FabricSessionContainer();
 			vRedirProv = (k => vAppOauthRedir);
@@ -40,8 +38,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 
 		/*--------------------------------------------------------------------------------------------*/
 		private FabricClientConfig GetConfig() {
-			return new FabricClientConfig(vKey, vApiPath, vAppId, vAppSecret, vAppDpId,
-				vRedirProv, vContainProv);
+			return new FabricClientConfig(vKey, vApiPath, vAppId, vAppSecret, vRedirProv, vContainProv);
 		}
 
 
@@ -56,7 +53,6 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 			Assert.AreEqual(vApiPath, config.ApiPath, "Incorrect ApiPath.");
 			Assert.AreEqual(vAppId, config.AppId, "Incorrect AppId.");
 			Assert.AreEqual(vAppSecret, config.AppSecret, "Incorrect AppSecret.");
-			Assert.AreEqual(vAppDpId, config.AppDataProvPersonId, "Incorrect AppDataProvPersonId.");
 
 			Assert.AreEqual(HttpUtility.UrlEncode(vAppOauthRedir), config.GetOauthRedirectUri(),
 				"Incorrect AppOAuthRedirectUri.");

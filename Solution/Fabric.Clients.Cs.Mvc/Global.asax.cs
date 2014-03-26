@@ -22,12 +22,12 @@ namespace Fabric.Clients.Cs.Mvc {
 			FabricClientConfig config;
 
 			if ( LOCAL ) {
-				config = new FabricClientConfig("ClientTest", "http://localhost:9000", 6,
-					"0123456789abcdefghijkLMNOPqrstuv", 5, RedirProv, SessionContainerProvider);
+				config = new FabricClientConfig("ClientTest", "http://localhost:9000", 14,
+					"0123456789abcdefghijkLMNOPqrstuv", RedirProv, SessionContainerProv);
 			}
 			else {
 				config = new FabricClientConfig("ClientTest", "http://api.inthefabric.com", 1,
-					"abcdefghijklmnopqrstuvwxyZ012345", 1, RedirProv, SessionContainerProvider);
+					"abcdefghijklmnopqrstuvwxyZ012345", RedirProv, SessionContainerProv);
 			}
 			
 			FabricClient.InitOnce(config);
@@ -42,7 +42,7 @@ namespace Fabric.Clients.Cs.Mvc {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		private static IFabricSessionContainer SessionContainerProvider(string pConfigKey) {
+		private static IFabricSessionContainer SessionContainerProv(string pConfigKey) {
 			return FabricSessionContainer.FromHttpContext(HttpContext.Current, pConfigKey);
 		}
 

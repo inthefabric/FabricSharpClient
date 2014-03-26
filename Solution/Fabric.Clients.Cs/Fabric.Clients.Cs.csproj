@@ -113,7 +113,6 @@
     <Compile Include="Session\ClientContext.cs" />
     <Compile Include="Session\IClientContext.cs" />
     <Compile Include="Session\FabricSessionContainer.cs" />
-    <Compile Include="Session\IFabricAppDataProvSession.cs" />
     <Compile Include="Session\IFabricAppSession.cs" />
     <Compile Include="Session\IFabricOauthSession.cs" />
     <Compile Include="Session\IFabricPersonSession.cs" />

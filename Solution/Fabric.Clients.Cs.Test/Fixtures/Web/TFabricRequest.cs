@@ -37,7 +37,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		[SetUp]
 		public void SetUp() {
 			vConfig = new FabricClientConfig("Test", "http://localhost/fakeApi", 1,
-				"MySecretCode", 1, (k => "http://testdomain.com/oauth"), (k => vSessContain));
+				"MySecretCode", (k => "http://testdomain.com/oauth"), (k => vSessContain));
 			vMockAppSess = new Mock<IFabricAppSession>();
 			vMockPerSess = new Mock<IFabricPersonSession>();
 			vSessContain = new FabricSessionContainer { Person = vMockPerSess.Object };

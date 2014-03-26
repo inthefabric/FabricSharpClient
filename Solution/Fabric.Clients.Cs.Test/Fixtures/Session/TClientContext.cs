@@ -23,7 +23,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			vSessProvCounter = 0;
 
 			vConfig = new FabricClientConfig("Test", "http://testFabric.com/api", 1,
-				"MySecretCode", 1, (k => "http://testdomain.com/oauth"), SessionContainerProvider);
+				"MySecretCode", (k => "http://testdomain.com/oauth"), SessionContainerProvider);
 			vAppSess = new AppSession(vConfig, null);
 			vSessContain = new FabricSessionContainer();
 			vContext = new ClientContext(vConfig, vAppSess);

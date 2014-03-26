@@ -17,6 +17,8 @@ namespace Fabric.Clients.Cs.Web {
 		public string Post { get; private set; }
 
 		private readonly FabricHttpProvider vWebReqProv;
+		private IFabricOauthSession ActiveSess;
+
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -39,6 +41,7 @@ namespace Fabric.Clients.Cs.Web {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public T Send(IClientContext pContext) {
+			ActiveSess = pContext.ActiveSess;
 			FabricResponse<T> resp = GetFabricResponse(pContext);
 
 			if ( resp.RespError != null ) {
@@ -107,16 +110,12 @@ namespace Fabric.Clients.Cs.Web {
 			req.Method = Method;
 			req.Accept = "application/json";
 
-			IFabricOauthSession auth = pContext.PersonSess;
-			TryRefresh(auth);
-
-			if ( auth.BearerToken == null && pContext.AppSess != null ) {
-				auth = pContext.AppSess;
-				TryRefresh(auth);
+			if ( Path != OauthAccessTokenRefreshGetOperation.Uri ) {
+				ActiveSess.RefreshTokenIfNecessary();
 			}
 
-			if ( auth.BearerToken != null ) {
-				req.Headers.Add("Authorization", "Bearer "+auth.BearerToken);
+			if ( ActiveSess.BearerToken != null ) {
+				req.Headers.Add("Authorization", "Bearer "+ActiveSess.BearerToken);
 			}
 
 			if ( Method == "POST" && Post != null ) {
@@ -135,9 +134,7 @@ namespace Fabric.Clients.Cs.Web {
 
 		/*--------------------------------------------------------------------------------------------*/
 		protected void TryRefresh(IFabricOauthSession pSession) {
-			if ( Path != OauthAccessTokenRefreshGetOperation.Uri ) {
-				pSession.RefreshTokenIfNecessary();
-			}
+			
 		}
 
 

@@ -24,9 +24,6 @@ namespace Fabric.Clients.Cs {
 		public string AppSecret { get; private set; }
 
 		/// <summary />
-		public long AppDataProvPersonId { get; private set; }
-
-		/// <summary />
 		public IFabricLog Logger { get; set; }
 
 		private readonly OauthRedirectUriProvider vRedirProv;
@@ -37,8 +34,8 @@ namespace Fabric.Clients.Cs {
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		public FabricClientConfig(string configKey, string apiPath, long appId, string appSecret,
-							long appDataProvPersonId, OauthRedirectUriProvider oauthRedirectUriProvider,
-							SessionContainerProvider sessionContainerProvider) {
+													OauthRedirectUriProvider oauthRedirectUriProvider,
+													SessionContainerProvider sessionContainerProvider) {
 
 			if ( string.IsNullOrWhiteSpace(configKey) ) {
 				throw new Exception("Invalid ConfigKey.");
@@ -74,7 +71,6 @@ namespace Fabric.Clients.Cs {
 
 			AppId = appId;
 			AppSecret = appSecret;
-			AppDataProvPersonId = appDataProvPersonId;
 
 			vRedirProv = oauthRedirectUriProvider;
 			vSessProv = sessionContainerProvider;

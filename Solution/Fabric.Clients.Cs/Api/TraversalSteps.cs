@@ -402,50 +402,50 @@ namespace Fabric.Clients.Cs.Api {
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only App vertices.
+		///   Casts the results to the specified vertex type, and filters out any results that are incompatible.
 		/// </summary>
 		/// <remarks>
-		///   <para>Restricts the results to include only App vertices.</para>
+		///   <para>Casts the results to the specified vertex type, and filters out any results that are incompatible.</para>
 		/// </remarks>
 		
 		IFabAppStep ToApp();
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only App vertices.
+		///   Casts the results to the specified vertex type, and filters out any results that are incompatible.
 		/// </summary>
 		/// <remarks>
-		///   <para>Restricts the results to include only App vertices.</para>
+		///   <para>Casts the results to the specified vertex type, and filters out any results that are incompatible.</para>
 		/// </remarks>
 		
 		IFabClassStep ToClass();
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only App vertices.
+		///   Casts the results to the specified vertex type, and filters out any results that are incompatible.
 		/// </summary>
 		/// <remarks>
-		///   <para>Restricts the results to include only App vertices.</para>
+		///   <para>Casts the results to the specified vertex type, and filters out any results that are incompatible.</para>
 		/// </remarks>
 		
 		IFabInstanceStep ToInstance();
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only App vertices.
+		///   Casts the results to the specified vertex type, and filters out any results that are incompatible.
 		/// </summary>
 		/// <remarks>
-		///   <para>Restricts the results to include only App vertices.</para>
+		///   <para>Casts the results to the specified vertex type, and filters out any results that are incompatible.</para>
 		/// </remarks>
 		
 		IFabUrlStep ToUrl();
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only App vertices.
+		///   Casts the results to the specified vertex type, and filters out any results that are incompatible.
 		/// </summary>
 		/// <remarks>
-		///   <para>Restricts the results to include only App vertices.</para>
+		///   <para>Casts the results to the specified vertex type, and filters out any results that are incompatible.</para>
 		/// </remarks>
 		
 		IFabUserStep ToUser();
@@ -3698,80 +3698,80 @@ namespace Fabric.Clients.Cs.Api {
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only App vertices.
+		///   Casts the results to the specified vertex type, and filters out any results that are incompatible.
 		/// </summary>
 		/// <remarks>
-		///   <para>Restricts the results to include only App vertices.</para>
+		///   <para>Casts the results to the specified vertex type, and filters out any results that are incompatible.</para>
 		/// </remarks>
 		
 		IFabAppStep ToApp();
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only App vertices.
+		///   Casts the results to the specified vertex type, and filters out any results that are incompatible.
 		/// </summary>
 		/// <remarks>
-		///   <para>Restricts the results to include only App vertices.</para>
+		///   <para>Casts the results to the specified vertex type, and filters out any results that are incompatible.</para>
 		/// </remarks>
 		
 		IFabArtifactStep ToArtifact();
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only App vertices.
+		///   Casts the results to the specified vertex type, and filters out any results that are incompatible.
 		/// </summary>
 		/// <remarks>
-		///   <para>Restricts the results to include only App vertices.</para>
+		///   <para>Casts the results to the specified vertex type, and filters out any results that are incompatible.</para>
 		/// </remarks>
 		
 		IFabClassStep ToClass();
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only App vertices.
+		///   Casts the results to the specified vertex type, and filters out any results that are incompatible.
 		/// </summary>
 		/// <remarks>
-		///   <para>Restricts the results to include only App vertices.</para>
+		///   <para>Casts the results to the specified vertex type, and filters out any results that are incompatible.</para>
 		/// </remarks>
 		
 		IFabFactorStep ToFactor();
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only App vertices.
+		///   Casts the results to the specified vertex type, and filters out any results that are incompatible.
 		/// </summary>
 		/// <remarks>
-		///   <para>Restricts the results to include only App vertices.</para>
+		///   <para>Casts the results to the specified vertex type, and filters out any results that are incompatible.</para>
 		/// </remarks>
 		
 		IFabInstanceStep ToInstance();
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only App vertices.
+		///   Casts the results to the specified vertex type, and filters out any results that are incompatible.
 		/// </summary>
 		/// <remarks>
-		///   <para>Restricts the results to include only App vertices.</para>
+		///   <para>Casts the results to the specified vertex type, and filters out any results that are incompatible.</para>
 		/// </remarks>
 		
 		IFabMemberStep ToMember();
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only App vertices.
+		///   Casts the results to the specified vertex type, and filters out any results that are incompatible.
 		/// </summary>
 		/// <remarks>
-		///   <para>Restricts the results to include only App vertices.</para>
+		///   <para>Casts the results to the specified vertex type, and filters out any results that are incompatible.</para>
 		/// </remarks>
 		
 		IFabUrlStep ToUrl();
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
-		///   Restricts the results to include only App vertices.
+		///   Casts the results to the specified vertex type, and filters out any results that are incompatible.
 		/// </summary>
 		/// <remarks>
-		///   <para>Restricts the results to include only App vertices.</para>
+		///   <para>Casts the results to the specified vertex type, and filters out any results that are incompatible.</para>
 		/// </remarks>
 		
 		IFabUserStep ToUser();

@@ -27,7 +27,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			vRedirUri = "http://testdomain.com/oauth";
 
 			Config = new FabricClientConfig("Test", "http://testFabric.com/api", 1,
-				"MySecretCode", 1, (k => vRedirUri), SessionContainerProvider);
+				"MySecretCode", (k => vRedirUri), SessionContainerProvider);
 			MockOauth = new Mock<IOauthService>();
 			OauthSess = NewOauthSess(Config, MockOauth.Object);
 		}
