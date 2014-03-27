@@ -14,9 +14,11 @@ namespace Fabric.Clients.Cs {
 	/// <summary />
 	public class FabricClient : IFabricClient {
 
-		private static bool IsInit = false;
-		private static Dictionary<string, ConfigGroup> ConfigGroups =
-			new Dictionary<string, ConfigGroup>();
+		private static bool IsInit;
+		private static Dictionary<string, IFabricClientConfig> ConfigMap =
+			new Dictionary<string, IFabricClientConfig>();
+		private static Dictionary<string, IFabricAppSession> AppSessMap =
+			new Dictionary<string, IFabricAppSession>();
 		private static string DefaultConfigKey;
 
 		/// <summary />
@@ -30,7 +32,8 @@ namespace Fabric.Clients.Cs {
 		/// <summary />
 		public static void ResetInitialization() {
 			IsInit = false;
-			ConfigGroups = new Dictionary<string, ConfigGroup>();
+			ConfigMap = new Dictionary<string, IFabricClientConfig>();
+			AppSessMap = new Dictionary<string, IFabricAppSession>();
 			DefaultConfigKey = null;
 		}
 		
@@ -43,7 +46,7 @@ namespace Fabric.Clients.Cs {
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		public static void InitOnce(IFabricClientConfig config) {
-			lock ( ConfigGroups ) {
+			lock ( ConfigMap ) {
 				if ( IsInit ) {
 					throw new Exception("FabricClient.InitOnce() has already been called.");
 				}
@@ -57,7 +60,7 @@ namespace Fabric.Clients.Cs {
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
 		public static void AddConfig(IFabricClientConfig config) {
-			lock ( ConfigGroups ) {
+			lock ( ConfigMap ) {
 				if ( !IsInit ) {
 					throw new Exception("FabricClient.InitOnce() has not been called yet.");
 				}
@@ -72,16 +75,19 @@ namespace Fabric.Clients.Cs {
 				throw new Exception("The provided IFabricClientConfig is null.");
 			}
 
-			if ( ConfigGroups.ContainsKey(pConfig.ConfigKey) ) {
+			if ( ConfigMap.ContainsKey(pConfig.ConfigKey) ) {
 				throw new Exception("The configKey '"+pConfig.ConfigKey+"' is already in use.");
 			}
 
-			var cg = new ConfigGroup();
-			ConfigGroups.Add(pConfig.ConfigKey, cg);
+			ConfigMap.Add(pConfig.ConfigKey, pConfig);
 
-			cg.Config = pConfig;
-			cg.AppSess = new AppSession(pConfig,
-				new FabricClient(pConfig.ConfigKey, false).Services.Oauth);
+			var context = new ClientContext(pConfig);
+			var services = new FabricServices(context);
+			var appSess = new AppSession(pConfig, services.Oauth);
+			context.AppSess = appSess;
+			AppSessMap[pConfig.ConfigKey] = appSess;
+
+			ApiVersion = services.ApiVersion;
 		}
 
 
@@ -92,40 +98,32 @@ namespace Fabric.Clients.Cs {
 		
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		public FabricClient(string configKey) : this(configKey, true) {}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary />
 		public FabricClient(IFabricPersonSession personSess) : this(personSess, DefaultConfigKey) {}
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		public FabricClient(IFabricPersonSession personSess, string configKey) : this(configKey, true) {
+		public FabricClient(IFabricPersonSession personSess, string configKey) : this(configKey) {
 			Context.PersonSess = personSess;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		internal FabricClient(string pConfigKey, bool pIncludeContextSessions) {
+		/// <summary />
+		public FabricClient(string pConfigKey) {
 			if ( !IsInit ) {
 				throw new Exception("FabricClient.InitOnce() has not been called yet.");
 			}
 
-			if ( !ConfigGroups.ContainsKey(pConfigKey) ) {
+			if ( !ConfigMap.ContainsKey(pConfigKey) ) {
 				throw new Exception("Configuration not found for configKey '"+pConfigKey+"'.");
 			}
 
-			ConfigGroup cg = ConfigGroups[pConfigKey];
+			IFabricClientConfig config = ConfigMap[pConfigKey];
 
-			if ( pIncludeContextSessions ) {
-				Context = new ClientContext(cg.Config, cg.AppSess);
-			}
-			else {
-				Context = new ClientContext(cg.Config, null);
-			}
-
+			Context = new ClientContext(config);
+			Context.AppSess = AppSessMap[pConfigKey];
 			Context.LogInfo("New FabricClient");
+
 			Services = new FabricServices(Context);
-			ApiVersion = Services.ApiVersion;
 		}
 
 
@@ -165,15 +163,6 @@ namespace Fabric.Clients.Cs {
 				Context.UseAppDataProvider = value;
 			}
 		}
-
-	}
-	
-
-	/*================================================================================================*/
-	internal class ConfigGroup {
-
-		public IFabricClientConfig Config { get; set; }
-		public AppSession AppSess { get; set; }
 
 	}
 

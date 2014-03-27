@@ -1,4 +1,5 @@
 using System;
+using Fabric.Clients.Cs.Session;
 
 namespace Fabric.Clients.Cs.Api {
 
@@ -35,8 +36,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<T> Get() {
-			return TravPath.Execute(this);
+		public FabResponse<T> Get(SessionType pSessionType=SessionType.Default) {
+			return TravPath.Execute(this, pSessionType);
 		}
 
 	}

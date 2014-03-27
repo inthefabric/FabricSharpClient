@@ -37,7 +37,7 @@ namespace Fabric.Clients.Cs.Session {
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		bool RefreshTokenIfNecessary();
+		bool RefreshTokenIfNecessary(string pApiPath);
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />

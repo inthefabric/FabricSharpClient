@@ -5,33 +5,25 @@ namespace Fabric.Clients.Cs.Session {
 	/*================================================================================================*/
 	internal class AppSession : OauthSession, IFabricAppSession {
 
-		private readonly object vAccessLock;
-
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public AppSession(IFabricClientConfig pConfig, IOauthService pClientOauth) :
-																		base(pConfig, pClientOauth) {
-			vAccessLock = new object();
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public override string SessionDebugName {
-			get { return "App"; }
-		}
+																		base(pConfig, pClientOauth) {}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public FabOauthAccess RequestAuthentication() {
-			return GetAccessToken(GetClientAccess);
+			return GetAccessToken(GetAccessTokenClient);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public override bool RefreshTokenIfNecessary() {
-			//Config.LogDebug("RefreshTokenIfNecessary()");
+		public override bool RefreshTokenIfNecessary(string pApiPath) {
+			lock ( Config ) {
+				if ( IsOauthOperation(pApiPath) || !IsExpired() ) {
+					return false;
+				}
 
-			lock ( vAccessLock ) {
-				if ( IsAuthenticated && !IsRefreshNecessary() ) { return false; }
-				GetAccessToken(GetClientAccess);
+				GetAccessToken(GetAccessTokenClient);
 			}
 
 			return true;
@@ -40,16 +32,10 @@ namespace Fabric.Clients.Cs.Session {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private FabOauthAccess GetClientAccess() {
-			//Config.LogDebug("GetClientAccess()");
-
-			lock ( vAccessLock ) {
-				//Config.LogDebug("... Client_credentials Start");
-				//FabOauthAccess oa =
+		private FabOauthAccess GetAccessTokenClient() {
+			lock ( Config ) {
 				return ClientOauth.AccessTokenClientCredentials.Get(
-					Config.AppId, Config.AppSecret, OAuthRedirectUri);
-				//Config.LogDebug("... Client_credentials Complete");
-				//return oa;
+					Config.AppId, Config.AppSecret, OAuthRedirectUri, SessionType.App);
 			}
 		}
 

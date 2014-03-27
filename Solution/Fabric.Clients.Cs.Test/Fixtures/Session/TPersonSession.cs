@@ -17,17 +17,17 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		internal override OauthSession NewOauthSess(FabricClientConfig pConfig, 
+		internal override OauthSession NewOauthSess(IFabricClientConfig pConfig, 
 																		IOauthService pClientOauth) {
 			return new PersonSession(pConfig, pClientOauth);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		private string BuildGrantCodeUrl(PersonSession pPerSess, bool pSwitchUser=false) {
-			return Config.ApiPath+"/Oauth/Login?"+
+			return MockConfig.Object.ApiPath+"/Oauth/Login?"+
 				"response_type=code"+
-				"&client_id="+Config.AppId+
-				"&redirect_uri="+Config.GetOauthRedirectUri()+
+				"&client_id="+MockConfig.Object.AppId+
+				"&redirect_uri="+MockConfig.Object.GetOauthRedirectUri()+
 				"&scope="+
 				"&state="+pPerSess.SessionId+
 				"&switchMode="+(pSwitchUser ? "1" : "0");
@@ -52,12 +52,13 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			MockOauth
 				.Setup(x => x.AccessTokenRefresh.Get(
 					refresh,
-					Config.AppSecret,
-					Config.GetOauthRedirectUri()
+					MockConfig.Object.AppSecret,
+					MockConfig.Object.GetOauthRedirectUri(),
+					SessionType.Default
 				))
 				.Returns(expectResult);
 
-			bool result = PersonSess.RefreshTokenIfNecessary();
+			bool result = PersonSess.RefreshTokenIfNecessary(null);
 
 			Assert.AreEqual(pExpectRefresh, result, "Incorrect result.");
 
@@ -76,7 +77,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		[TestCase(false)]
 		[TestCase(true)]
 		public virtual void GetGrantCodeUrl(bool pSwitchUser) {
-			var perSess = new PersonSession(Config, new OauthService(null));
+			var perSess = new PersonSession(MockConfig.Object, new OauthService(null));
 			string expectUrl = BuildGrantCodeUrl(perSess, pSwitchUser);
 
 			string url = perSess.GetGrantCodeUrl(pSwitchUser);
@@ -88,7 +89,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		[TestCase(null)]
 		[TestCase("http://testurl.com/whatever/dude")]
 		public virtual void GetGrantWindowOpenScript(string pGrantCodeUrl) {
-			var perSess = new PersonSession(Config, new OauthService(null));
+			var perSess = new PersonSession(MockConfig.Object, new OauthService(null));
 			string url = (pGrantCodeUrl ?? BuildGrantCodeUrl(perSess));
 			string expectScript = "window.open('"+url+"', 'fabOauth', 'status=0,toolbar=0,menubar=0,"+
 				"directories=0,width=500,height=400,resizable=1,scrollbars=1');";
@@ -117,8 +118,9 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			MockOauth
 				.Setup(x => x.AccessTokenAuthCode.Get(
 					grantCode,
-					Config.AppSecret,
-					Config.GetOauthRedirectUri()
+					MockConfig.Object.AppSecret,
+					MockConfig.Object.GetOauthRedirectUri(),
+					SessionType.Default
 				))
 				.Returns(expectResult);
 

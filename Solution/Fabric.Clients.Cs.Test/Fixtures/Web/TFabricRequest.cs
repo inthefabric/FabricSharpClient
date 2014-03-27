@@ -16,11 +16,11 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 	[TestFixture]
 	public class TFabricRequest {
 
-		private FabricClientConfig vConfig;
 		private Mock<IFabricAppSession> vMockAppSess;
 		private Mock<IFabricPersonSession> vMockPerSess;
-		private FabricSessionContainer vSessContain;
-		private ClientContext vContext;
+		private Mock<IFabricClientConfig> vMockConfig;
+		private Mock<IClientContext> vMockContext;
+		private IClientContext vContext;
 
 		private Mock<FabricHttpProvider> vMoqHttpProv;
 		private TestFabricHttpRequest vHttpReq;
@@ -36,12 +36,16 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		/*--------------------------------------------------------------------------------------------*/
 		[SetUp]
 		public void SetUp() {
-			vConfig = new FabricClientConfig("Test", "http://localhost/fakeApi", 1,
-				"MySecretCode", (k => "http://testdomain.com/oauth"), (k => vSessContain));
 			vMockAppSess = new Mock<IFabricAppSession>();
 			vMockPerSess = new Mock<IFabricPersonSession>();
-			vSessContain = new FabricSessionContainer { Person = vMockPerSess.Object };
-			vContext = new ClientContext(vConfig, vMockAppSess.Object);
+			vMockConfig = new Mock<IFabricClientConfig>();
+
+			vMockContext = new Mock<IClientContext>();
+			vMockContext.SetupGet(x => x.Config).Returns(vMockConfig.Object);
+			vMockContext.SetupGet(x => x.ActiveSess).Returns(vMockAppSess.Object);
+			vMockContext.SetupGet(x => x.AppSess).Returns(vMockAppSess.Object);
+			vMockContext.SetupGet(x => x.PersonSess).Returns(vMockPerSess.Object);
+			vContext = vMockContext.Object;
 
 			vHttpReq = new TestFabricHttpRequest();
 			vMockResp = new Mock<IFabricHttpResponse>();
@@ -62,8 +66,6 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 			vPath = "test/path/items";
 			vQuery = "test=1&other=false";
 			vPost = "post=true&notes=abcdefg";
-
-			FabricClient.InitOnce(vConfig);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -117,7 +119,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 			var app = new FabApp { Name = "TestApp" };
 			SetupResponseStream(app);
 
-			FabApp result = req.Send(vContext);
+			FabApp result = req.Send(vContext, SessionType.Default);
 
 			Assert.NotNull(result, "Result should be filled.");
 			Assert.AreEqual(app.Name, result.Name, "Incorrect result.");
@@ -133,7 +135,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 			var req = NewFabricRequest<FabApp>();
 
 			try {
-				req.Send(vContext);
+				req.Send(vContext, SessionType.Default);
 				Assert.Fail("Exception expected.");
 			}
 			catch {}
@@ -160,7 +162,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 			var req = NewFabricRequest<FabResponse<FabApp>>();
 
 			try {
-				req.Send(vContext);
+				req.Send(vContext, SessionType.Default);
 				Assert.Fail("WebException expected, but not thrown.");
 			}
 			catch ( FabricErrorException errEx ) {
@@ -192,7 +194,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 			var req = NewFabricRequest<FabOauthAccess>();
 
 			try {
-				req.Send(vContext);
+				req.Send(vContext, SessionType.Default);
 				Assert.Fail("WebException expected, but not thrown.");
 			}
 			catch ( FabricErrorException errEx ) {
@@ -218,13 +220,16 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 			vPath = pPath;
 			vQuery = pQuery;
 
-			var expect = vConfig.ApiPath+pPath;
+			const string apiPath = "this/is/a/test/";
+			vMockConfig.Setup(x => x.ApiPath).Returns(apiPath);
+
+			string expect = apiPath+pPath;
 			if ( pQuery != null ) { expect += "?"+pQuery; }
 
 			var req = NewFabricRequest<FabApp>();
 			SetupResponseStream(new FabApp());
 
-			req.Send(vContext);
+			req.Send(vContext, SessionType.Default);
 
 			Assert.AreEqual(expect, vHttpReq.RequestUri, "Incorrect RequestUri.");
 		}
@@ -238,7 +243,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 
 			var req = NewFabricRequest<FabApp>();
 			SetupResponseStream(new FabApp());
-			req.Send(vContext);
+			req.Send(vContext, SessionType.Default);
 
 			Assert.AreEqual("application/x-www-form-urlencoded", vHttpReq.ContentType,
 				"Incorrect ContentType.");
@@ -260,27 +265,38 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 
 			var req = NewFabricRequest<FabApp>();
 			SetupResponseStream(new FabApp());
-			req.Send(vContext);
+			req.Send(vContext, SessionType.Default);
 
 			Assert.AreEqual(pMethod, vHttpReq.Method, "Incorrect Method.");
 			Assert.AreEqual("application/json", vHttpReq.Accept, "Incorrect Accept.");
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		[TestCase(true, "BearerToken1234")]
-		[TestCase(false, "BearerToken1234")]
-		[TestCase(false, null)]
-		public void HeaderAuthorization(bool pFromPerson, string pBearer) {
-			if ( pFromPerson ) {
-				vMockPerSess.SetupGet(x => x.BearerToken).Returns(pBearer);
-			}
-			else {
-				vMockAppSess.SetupGet(x => x.BearerToken).Returns(pBearer);
+		[TestCase(SessionType.Default, "BearerToken1234")]
+		[TestCase(SessionType.Default, null)]
+		[TestCase(SessionType.App, "BearerToken1234")]
+		[TestCase(SessionType.App, null)]
+		[TestCase(SessionType.Person, "BearerToken1234")]
+		[TestCase(SessionType.Person, null)]
+		public void HeaderAuthorization(SessionType pSessType, string pBearer) {
+			switch ( pSessType ) {
+				case SessionType.Default:
+					vMockAppSess.SetupGet(x => x.BearerToken).Returns(pBearer);
+					break;
+					
+				case SessionType.App:
+					vMockAppSess.SetupGet(x => x.BearerToken).Returns(pBearer);
+					break;
+
+				case SessionType.Person:
+					vMockPerSess.SetupGet(x => x.BearerToken).Returns(pBearer);
+					break;
+
 			}
 
 			var req = NewFabricRequest<FabApp>();
 			SetupResponseStream(new FabApp());
-			req.Send(vContext);
+			req.Send(vContext, pSessType);
 
 			if ( pBearer != null ) {
 				Assert.AreEqual("Bearer "+pBearer, vHttpReq.Headers["Authorization"],
@@ -295,41 +311,41 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		[TestCase(false)]
-		[TestCase(true)]
-		public void RefreshPerson(bool pIsRefreshRequest) {
-			vPath = (pIsRefreshRequest ? OauthAccessTokenRefreshGetOperation.Uri : "test");
+		[TestCase("BearerToken1234")]
+		[TestCase(null)]
+		public void RefreshPerson(string pBearer) {
 			var req = NewFabricRequest<FabApp>();
 			SetupResponseStream(new FabApp());
-			req.Send(vContext);
+			req.Send(vContext, SessionType.Person);
 
-			Times t = (pIsRefreshRequest ? Times.Never() : Times.Once());
-			vMockPerSess.Verify(x => x.RefreshTokenIfNecessary(), t);
+			vMockPerSess.Verify(x => x.RefreshTokenIfNecessary(vPath), Times.Once);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		[TestCase("BearerToken1234", false, false)]
-		[TestCase("BearerToken1234", true, false)]
-		[TestCase(null, false, true)]
-		[TestCase(null, true, true)]
-		public void RefreshApp(string pBearer, bool pIsRefreshRequest, bool pAppRefresh) {
-			vPath = (pIsRefreshRequest ? OauthAccessTokenRefreshGetOperation.Uri : "test");
+		[TestCase("BearerToken1234")]
+		[TestCase(null)]
+		public void RefreshApp(string pBearer) {
 			vMockPerSess.SetupGet(x => x.BearerToken).Returns(pBearer);
 
 			var req = NewFabricRequest<FabApp>();
 			SetupResponseStream(new FabApp());
-			req.Send(vContext);
+			req.Send(vContext, SessionType.App);
 
-			Times t = (pAppRefresh && !pIsRefreshRequest ? Times.Once() : Times.Never());
-			vMockAppSess.Verify(x => x.RefreshTokenIfNecessary(), t);
+			vMockAppSess.Verify(x => x.RefreshTokenIfNecessary(vPath), Times.Once);
 		}
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------------------------* /
 		[Test]
 		[Category("Integration")]
 		public void RefreshPersonLoop() {
+			var sessContain = new FabricSessionContainer { Person = vMockPerSess.Object };
+			var config = new FabricClientConfig("Test", "http://localhost/fakeApi", 1,
+				"MySecretCode", (k => "http://testdomain.com/oauth"), (k => sessContain));
+			var context = new ClientContext(config, vMockAppSess.Object);
+			FabricClient.InitOnce(config);
+
 			var req = NewFabricRequest<FabApp>();
 			SetupResponseStream(new FabApp());
 
@@ -337,17 +353,18 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 			var ps = new PersonSession(fc.Config, fc.Services.Oauth);
 			ps.RefreshToken = "test";
 			ps.Expiration = DateTime.UtcNow.AddSeconds(-1);
-			vSessContain.Person = ps;
+			sessContain.Person = ps;
 
 			try {
-				req.Send(vContext); //caused infinite loop prior to fix, see GitHub issue #3
+				//caused infinite loop prior to fix, see GitHub issue #3
+				req.Send(context, SessionType.Default);
 			}
 			catch ( WebException ) {
 				return;
 			}
 
 			Assert.Fail("This should throw a WebException.");
-		}
+		}*/
 
 	}
 

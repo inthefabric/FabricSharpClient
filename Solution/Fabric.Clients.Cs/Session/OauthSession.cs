@@ -35,7 +35,8 @@ namespace Fabric.Clients.Cs.Session {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public FabOauthLogout Logout() {
-			FabOauthLogout logout = ClientOauth.Logout.Get(BearerToken);
+			SessionType type = (this as AppSession == null ? SessionType.Person : SessionType.App);
+			FabOauthLogout logout = ClientOauth.Logout.Get(BearerToken, type);
 			ClearToken();
 			Config.Logger.Info(SessionId,
 				"Logout: success="+logout.success+", access_token="+logout.access_token);
@@ -43,10 +44,12 @@ namespace Fabric.Clients.Cs.Session {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public abstract bool RefreshTokenIfNecessary();
+		public abstract bool RefreshTokenIfNecessary(string pApiPath);
 
 		/*--------------------------------------------------------------------------------------------*/
-		public abstract string SessionDebugName { get; }
+		private string GetDebugName() {
+			return GetType().Name;
+		}
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -94,7 +97,7 @@ namespace Fabric.Clients.Cs.Session {
 				BearerToken = oa.access_token;
 				RefreshToken = oa.refresh_token;
 				Expiration = DateTime.UtcNow.AddSeconds(oa.expires_in-60);
-				Config.Logger.Info(SessionId, SessionDebugName+" "+
+				Config.Logger.Info(SessionId, GetDebugName()+" "+
 					"GetAccessToken: BearerToken="+BearerToken+
 					", RefreshToken="+RefreshToken+", Expiration="+Expiration+
 					", Now="+DateTime.UtcNow);
@@ -109,10 +112,27 @@ namespace Fabric.Clients.Cs.Session {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		protected virtual bool IsRefreshNecessary() {
-			Config.Logger.Info(SessionId, "IsRefreshNecessary: "+SessionDebugName+" expires in "+
+		protected virtual bool IsExpired() {
+			Config.Logger.Info(SessionId, "IsRefreshNecessary: "+GetDebugName()+" expires in "+
 				new TimeSpan(Expiration.Ticks-DateTime.UtcNow.Ticks).TotalSeconds+" sec");
 			return (DateTime.UtcNow >= Expiration);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		protected bool IsOauthOperation(string pApiPath) {
+			Config.Logger.Info(SessionId, "OAUTH? "+pApiPath+" / "+OauthAccessTokenClientCredentialsGetOperation.Uri);
+
+			switch ( pApiPath ) {
+				case OauthAccessTokenGetOperation.Uri:
+				case OauthAccessTokenAuthCodeGetOperation.Uri:
+				case OauthAccessTokenRefreshGetOperation.Uri:
+				case OauthAccessTokenClientCredentialsGetOperation.Uri:
+				case OauthLoginGetOperation.Uri:
+				case OauthLogoutGetOperation.Uri:
+					return true;
+			}
+
+			return false;
 		}
 
 

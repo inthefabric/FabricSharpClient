@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Fabric.Clients.Cs.Api;
 using Fabric.Clients.Cs.Daemon;
+using Fabric.Clients.Cs.Session;
 using Moq;
 using NUnit.Framework;
 
@@ -26,25 +27,25 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 		public void SetUp() {
 			vMockAddClass = new Mock<IModifyClassesPostOperation>();
 			vMockAddClass.Setup(x => x
-				.Post(It.IsAny<CreateFabClass>()))
+				.Post(It.IsAny<CreateFabClass>(), SessionType.Default))
 				.Returns(NewFabResp<FabClass>()
 			);
 
 			vMockAddInstance = new Mock<IModifyInstancesPostOperation>();
 			vMockAddInstance.Setup(x =>
-				x.Post(It.IsAny<CreateFabInstance>()))
+				x.Post(It.IsAny<CreateFabInstance>(), SessionType.Default))
 				.Returns(NewFabResp<FabInstance>()
 			);
 
 			vMockAddUrl = new Mock<IModifyUrlsPostOperation>();
 			vMockAddUrl.Setup(x =>
-				x.Post(It.IsAny<CreateFabUrl>()))
+				x.Post(It.IsAny<CreateFabUrl>(), SessionType.Default))
 				.Returns(NewFabResp<FabUrl>()
 			);
 
 			vMockAddFactor = new Mock<IModifyFactorsPostOperation>();
 			vMockAddFactor.Setup(x =>
-				x.Post(It.IsAny<CreateFabFactor>()))
+				x.Post(It.IsAny<CreateFabFactor>(), SessionType.Default))
 				.Returns(NewFabResp<FabFactor>()
 			);
 
@@ -145,16 +146,16 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 		/*--------------------------------------------------------------------------------------------*/
 		private void VerifyFabricCounts(int pClasses, int pInstances, int pUrls, int pFactors){
 			vMockAddClass.Verify(x =>
-				x.Post(It.IsAny<CreateFabClass>()), Times.Exactly(pClasses));
+				x.Post(It.IsAny<CreateFabClass>(), SessionType.Default), Times.Exactly(pClasses));
 
 			vMockAddInstance.Verify(x =>
-				x.Post(It.IsAny<CreateFabInstance>()), Times.Exactly(pInstances));
+				x.Post(It.IsAny<CreateFabInstance>(), SessionType.Default), Times.Exactly(pInstances));
 
 			vMockAddUrl.Verify(x =>
-				x.Post(It.IsAny<CreateFabUrl>()), Times.Exactly(pUrls));
+				x.Post(It.IsAny<CreateFabUrl>(), SessionType.Default), Times.Exactly(pUrls));
 
 			vMockAddFactor.Verify(x =>
-				x.Post(It.IsAny<CreateFabFactor>()), Times.Exactly(pFactors));
+				x.Post(It.IsAny<CreateFabFactor>(), SessionType.Default), Times.Exactly(pFactors));
 		}
 
 		/*--------------------------------------------------------------------------------------------*/

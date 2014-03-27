@@ -34,7 +34,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		internal override OauthSession NewOauthSess(FabricClientConfig pConfig, 
+		internal override OauthSession NewOauthSess(IFabricClientConfig pConfig, 
 																		IOauthService pClientOauth) {
 			return new AppSession(pConfig, pClientOauth);
 		}
@@ -43,9 +43,10 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		protected void SetupMockAccessToken(FabOauthAccess pResult, Action pCallback=null) {
 			IReturnsResult<IOauthService> rr = MockOauth
 				.Setup(x => x.AccessTokenClientCredentials.Get(
-					Config.AppId,
-					Config.AppSecret,
-					Config.GetOauthRedirectUri()
+					MockConfig.Object.AppId,
+					MockConfig.Object.AppSecret,
+					MockConfig.Object.GetOauthRedirectUri(),
+					SessionType.Default
 				))
 				.Returns(pResult);
 
@@ -82,7 +83,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			FabOauthAccess expectResult = NewFabOauthAccess();
 			SetupMockAccessToken(expectResult);
 
-			bool result = AppSess.RefreshTokenIfNecessary();
+			bool result = AppSess.RefreshTokenIfNecessary(null);
 
 			Assert.AreEqual(pExpectRefresh, result, "Incorrect result.");
 
@@ -104,8 +105,15 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			SetupMockAccessToken(NewFabOauthAccess(), vThreadedTest.MockEntryCallback);
 			vThreadedTest.RunTest(ThreadRequestAuth);
 
-			MockOauth.Verify(x => x.AccessTokenClientCredentials.Get(
-				It.IsAny<long>(), It.IsAny<string>(), It.IsAny<string>()), Times.Exactly(2));
+			MockOauth.Verify(x => 
+				x.AccessTokenClientCredentials.Get(
+					It.IsAny<long>(),
+					It.IsAny<string>(),
+					It.IsAny<string>(),
+					SessionType.Default
+				),
+				Times.Exactly(2)
+			);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -115,8 +123,15 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			SetupMockAccessToken(NewFabOauthAccess(), vThreadedTest.MockEntryCallback);
 			vThreadedTest.RunTest(ThreadRefreshIfNecc);
 			
-			MockOauth.Verify(x => x.AccessTokenClientCredentials.Get(
-				It.IsAny<long>(), It.IsAny<string>(), It.IsAny<string>()), Times.Once());
+			MockOauth.Verify(x => 
+				x.AccessTokenClientCredentials.Get(
+					It.IsAny<long>(),
+					It.IsAny<string>(),
+					It.IsAny<string>(),
+					SessionType.Default
+				),
+				Times.Once()
+			);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -128,7 +143,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		/*--------------------------------------------------------------------------------------------*/
 		private void ThreadRefreshIfNecc(object pTest) {
 			vThreadedTest.SetThreadTest(pTest);
-			AppSess.RefreshTokenIfNecessary();
+			AppSess.RefreshTokenIfNecessary(null);
 		}
 
 	}

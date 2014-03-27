@@ -4,7 +4,7 @@
 	internal class ClientContext : IClientContext {
 
 		public IFabricClientConfig Config { get; private set; }
-		public IFabricAppSession AppSess { get; private set; }
+		public IFabricAppSession AppSess { get; internal set; }
 		public bool UseAppDataProvider { get; set; }
 
 		private IFabricPersonSession vPersonSess;
@@ -12,9 +12,8 @@
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public ClientContext(IFabricClientConfig pConfig, IFabricAppSession pAppSess) {
+		public ClientContext(IFabricClientConfig pConfig) {
 			Config = pConfig;
-			AppSess = pAppSess;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/

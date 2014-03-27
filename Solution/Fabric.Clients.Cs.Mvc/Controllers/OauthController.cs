@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using Fabric.Clients.Cs.Api;
+using ServiceStack.Text;
 
 namespace Fabric.Clients.Cs.Mvc.Controllers {
 
@@ -32,14 +33,17 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 
 			//close the login popup if authentication was successful
 			if ( vFab.PersonSession.IsAuthenticated ) {
-				Response.Write("<script type='text/javascript'>"+
-					"window.opener.location.reload();"+
-					"window.close();"+
-					"</script>");
+				Response.Write(
+					"<script type='text/javascript'>"+
+						"window.opener.location.reload();"+
+						"window.close();"+
+					"</script>"
+				);
+				Response.Write("Success!<br/><br/>"+JsonSerializer.SerializeToString(result));
 				return null;
 			}
 
-			ViewBag.Message = result.ToString();
+			ViewBag.Message = JsonSerializer.SerializeToString(result);
 			return View();
 		}
 
@@ -61,7 +65,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 
 		/*--------------------------------------------------------------------------------------------*/
 		public ActionResult AppRefresh() {
-			try { vFab.AppSession.RefreshTokenIfNecessary(); }
+			try { vFab.AppSession.RefreshTokenIfNecessary(null); }
 			catch ( FabricErrorException e ) { return View("Error", e); }
 			return RedirectToAction("Index");
 		}
@@ -95,12 +99,12 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 		public ActionResult PersonLogout() {
 			try { vFab.PersonSession.Logout(); }
 			catch ( FabricErrorException e ) { return View("Error", e); }
-			return RedirectToAction("Index");
+			return null; //RedirectToAction("Index");
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public ActionResult PersonRefresh() {
-			try { vFab.PersonSession.RefreshTokenIfNecessary(); }
+			try { vFab.PersonSession.RefreshTokenIfNecessary(null); }
 			catch ( FabricErrorException e ) { return View("Error", e); }
 			return RedirectToAction("Index");
 		}

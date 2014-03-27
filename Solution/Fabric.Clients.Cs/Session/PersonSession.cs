@@ -16,22 +16,13 @@ namespace Fabric.Clients.Cs.Session {
 																		base(pConfig, pClientOauth) {}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public override string SessionDebugName { get { return "Person"; } }
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public override bool RefreshTokenIfNecessary() {
-			if ( RefreshToken == null ) {
-				return false;
-			}
-
-			if ( !IsRefreshNecessary() ) {
+		public override bool RefreshTokenIfNecessary(string pApiPath) {
+			if ( RefreshToken == null || !IsExpired() || IsOauthOperation(pApiPath) ) {
 				return false;
 			}
 
 			Config.Logger.Info(SessionId, "Refreshing Person token...");
-
-			GetAccessToken(() => ClientOauth.AccessTokenRefresh
-				.Get(RefreshToken, Config.AppSecret, OAuthRedirectUri));
+			GetAccessToken(GetAccessTokenRefresh);
 			return true;
 		}
 
@@ -71,9 +62,25 @@ namespace Fabric.Clients.Cs.Session {
 			}
 			
 			GrantCode = pRedirectRequest.QueryString["code"];
+			return GetAccessToken(GetAccessTokenAuthCode);
+		}
 
-			return GetAccessToken(() => ClientOauth.AccessTokenAuthCode
-				.Get(GrantCode, Config.AppSecret, OAuthRedirectUri));
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		private FabOauthAccess GetAccessTokenRefresh() {
+			lock ( Config ) {
+				return ClientOauth.AccessTokenRefresh
+					.Get(RefreshToken, Config.AppSecret, OAuthRedirectUri, SessionType.Person);
+			}
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		private FabOauthAccess GetAccessTokenAuthCode() {
+			lock ( Config ) {
+				return ClientOauth.AccessTokenAuthCode
+					.Get(GrantCode, Config.AppSecret, OAuthRedirectUri, SessionType.Person);
+			}
 		}
 
 	}

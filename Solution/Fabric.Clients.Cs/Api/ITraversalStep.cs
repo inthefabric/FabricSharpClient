@@ -1,12 +1,11 @@
 using System;
+using Fabric.Clients.Cs.Session;
 
 namespace Fabric.Clients.Cs.Api {
 
 	/*================================================================================================*/
 	/// <summary />
 	public interface ITraversalStep {
-
-		//TraversalPath TravPath { get; }
 
 	}
 
@@ -23,7 +22,10 @@ namespace Fabric.Clients.Cs.Api {
 
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary />
-		FabResponse<T> Get();
+		/// <param name="pSessionType">
+		///   Specifies which session authentication to send with the Fabric API request.
+		/// </param>
+		FabResponse<T> Get(SessionType pSessionType=SessionType.Default);
 
 	}
 	

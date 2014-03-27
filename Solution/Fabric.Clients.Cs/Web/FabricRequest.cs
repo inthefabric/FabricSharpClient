@@ -17,8 +17,7 @@ namespace Fabric.Clients.Cs.Web {
 		public string Post { get; private set; }
 
 		private readonly FabricHttpProvider vWebReqProv;
-		private IFabricOauthSession ActiveSess;
-
+		private IFabricOauthSession vSess;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -40,8 +39,22 @@ namespace Fabric.Clients.Cs.Web {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public T Send(IClientContext pContext) {
-			ActiveSess = pContext.ActiveSess;
+		public T Send(IClientContext pContext, SessionType pSessionType) {
+			switch ( pSessionType ) {
+				case SessionType.Default:
+					vSess = pContext.ActiveSess;
+					break;
+
+				case SessionType.App:
+					vSess = pContext.AppSess;
+					break;
+
+				case SessionType.Person:
+					vSess = pContext.PersonSess;
+					break;
+			}
+
+			pContext.LogDebug("SEND: "+pSessionType+" / "+vSess+" / "+pContext.AppSess);
 			FabricResponse<T> resp = GetFabricResponse(pContext);
 
 			if ( resp.RespError != null ) {
@@ -70,13 +83,11 @@ namespace Fabric.Clients.Cs.Web {
 				pContext.LogInfo("Request Path: "+Method+" "+Path);
 				pContext.LogInfo("Request URL: "+fullPath);
 
-				IFabricHttpResponse wr = GetHttpWebResponse(pContext, fullPath);
+				IFabricHttpResponse wr = GetHttpWebResponse(fullPath);
 
 				string data = StreamToString(wr.GetResponseStream());
 				pContext.LogDebug("Request Response: "+data);
 				return new FabricResponse<T>(JsonSerializer.DeserializeFromString<T>(data));
-				/*return new FabricResponse<T>(
-					JsonSerializer.DeserializeFromStream<T>(wr.GetResponseStream()));*/
 			}
 			catch ( WebException we ) {
 				if ( we.Response == null ) {
@@ -105,17 +116,15 @@ namespace Fabric.Clients.Cs.Web {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		protected IFabricHttpResponse GetHttpWebResponse(IClientContext pContext, string pFullPath) {
+		protected IFabricHttpResponse GetHttpWebResponse(string pFullPath) {
 			IFabricHttpRequest req = vWebReqProv.CreateRequest(pFullPath);
 			req.Method = Method;
 			req.Accept = "application/json";
 
-			if ( Path != OauthAccessTokenRefreshGetOperation.Uri ) {
-				ActiveSess.RefreshTokenIfNecessary();
-			}
+			vSess.RefreshTokenIfNecessary(Path);
 
-			if ( ActiveSess.BearerToken != null ) {
-				req.Headers.Add("Authorization", "Bearer "+ActiveSess.BearerToken);
+			if ( vSess.BearerToken != null ) {
+				req.Headers.Add("Authorization", "Bearer "+vSess.BearerToken);
 			}
 
 			if ( Method == "POST" && Post != null ) {
@@ -130,11 +139,6 @@ namespace Fabric.Clients.Cs.Web {
 			}
 
 			return vWebReqProv.GetResponse(req);
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		protected void TryRefresh(IFabricOauthSession pSession) {
-			
 		}
 
 

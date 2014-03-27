@@ -60,11 +60,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Api\ApiOperationsTraversal.cs">
-      <DependentUpon>ApiOperationsTraversal.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Api\TraversalStepsExt.cs" />
     <Compile Include="Api\FabEnumsData.cs">
       <DependentUpon>FabEnumsData.tt</DependentUpon>
@@ -111,6 +106,7 @@
     <Compile Include="FabricClient.cs" />
     <Compile Include="Session\AppSession.cs" />
     <Compile Include="Session\ClientContext.cs" />
+    <Compile Include="Session\SessionType.cs" />
     <Compile Include="Session\IClientContext.cs" />
     <Compile Include="Session\FabricSessionContainer.cs" />
     <Compile Include="Session\IFabricAppSession.cs" />
@@ -140,10 +136,6 @@
     <None Include="Api\ApiServices.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ApiServices.cs</LastGenOutput>
-    </None>
-    <None Include="Api\ApiOperationsTraversal.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ApiOperationsTraversal.cs</LastGenOutput>
     </None>
     <None Include="Api\FabEnumsData.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

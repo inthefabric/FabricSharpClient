@@ -20,7 +20,9 @@ namespace Fabric.Clients.Cs.Api {
 FabSpec spec = SpecBuilder.Spec;
 
 foreach ( FabSpecService s in spec.Services ) {
-	string part = (s.Name == "Traversal" ? "partial " : "");
+	if ( s.Name == "Traversal" ) {
+		continue;
+	}
 
 	foreach ( FabSpecServiceOperation op in s.Operations ) {
 		string method = SpecBuilder.CapitalFirst(op.Method);
@@ -35,12 +37,11 @@ foreach ( FabSpecService s in spec.Services ) {
 
 		if ( op.Parameters != null ) {
 			foreach ( FabSpecServiceParam p in op.Parameters ) {
-				if ( paramList != "" ) {
-					paramList += ", ";
+				if ( paramFill != "" ) {
 					paramFill += ", ";
 				}
 
-				paramList += p.Type+" "+p.Name;
+				paramList += p.Type+" "+p.Name+", ";
 				paramFill += p.Name;
 				
 				paramComments += "\r\n\t\t";
@@ -70,18 +71,21 @@ foreach ( FabSpecService s in spec.Services ) {
 	/// <remarks>
 	///   <#= SpecBuilder.ToXmlDoc(op.Description, true) #>
 	/// </remarks>
-	public <#= part #>interface I<#= opName #>Operation : IOperation {
+	public interface I<#= opName #>Operation : IOperation {
 		
 		/// <summary>
 		///   Perform the operation.
 		/// </summary><#= paramComments #>
-		<#= returns #> <#= method #>(<#= paramList #>);
+		/// <param name="UseSessionType">
+		///   Specifies which session authentication to send with the Fabric API request.
+		/// </param>
+		<#= returns #> <#= method #>(<#= paramList #>SessionType UseSessionType=SessionType.Default);
 
 	}
 	
 
 	/*================================================================================================*/
-	internal <#= part #>class <#= opName #>Operation : I<#= opName #>Operation {
+	internal class <#= opName #>Operation : I<#= opName #>Operation {
 
 		public const string Uri = "<#= s.Uri+op.Uri #>";
 		
@@ -100,7 +104,7 @@ foreach ( FabSpecService s in spec.Services ) {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<<#= returns #>> Request(<#= paramList #>) {
+		public FabricRequest<<#= returns #>> Request(<#= paramList #>SessionType UseSessionType=SessionType.Default) {
 			return new FabricRequest<<#= returns #>>("<#= op.Method #>", Uri,
 				<#= query #>,
 				<#= form #>
@@ -108,8 +112,8 @@ foreach ( FabSpecService s in spec.Services ) {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public <#= returns #> <#= method #>(<#= paramList #>) {
-			return Request(<#= paramFill #>).Send(vContext);
+		public <#= returns #> <#= method #>(<#= paramList #>SessionType UseSessionType=SessionType.Default) {
+			return Request(<#= paramFill #>).Send(vContext, UseSessionType);
 		}
 
 	}

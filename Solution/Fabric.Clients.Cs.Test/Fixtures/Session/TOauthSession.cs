@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web;
 using Fabric.Clients.Cs.Api;
+using Fabric.Clients.Cs.Logging;
 using Fabric.Clients.Cs.Session;
 using Moq;
 using NUnit.Framework;
@@ -11,7 +12,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 	[TestFixture]
 	public abstract class TOauthSession {
 
-		protected FabricClientConfig Config { get; private set; }
+		protected Mock<IFabricClientConfig> MockConfig { get; private set; }
 		internal Mock<IOauthService> MockOauth { get; private set; }
 		internal OauthSession OauthSess { get; private set; }
 
@@ -26,10 +27,13 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			vSessContain = new FabricSessionContainer();
 			vRedirUri = "http://testdomain.com/oauth";
 
-			Config = new FabricClientConfig("Test", "http://testFabric.com/api", 1,
-				"MySecretCode", (k => vRedirUri), SessionContainerProvider);
+			//Config = new FabricClientConfig("Test", "http://testFabric.com/api", 1,
+			//	"MySecretCode", (k => vRedirUri), SessionContainerProvider);
+			MockConfig = new Mock<IFabricClientConfig>();
+			MockConfig.SetupGet(x => x.Logger).Returns(new FabricLog());
+
 			MockOauth = new Mock<IOauthService>();
-			OauthSess = NewOauthSess(Config, MockOauth.Object);
+			OauthSess = NewOauthSess(MockConfig.Object, MockOauth.Object);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -44,7 +48,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		internal abstract OauthSession NewOauthSess(FabricClientConfig pConfig,
+		internal abstract OauthSession NewOauthSess(IFabricClientConfig pConfig,
 																			IOauthService pClientOauth);
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -86,7 +90,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 
 			Assert.NotNull(OauthSess.SessionId, "SessionId should be filled.");
 			Assert.AreEqual(32, OauthSess.SessionId.Length, "Incorrect SessionId length.");
-			Assert.AreEqual(Config.GetOauthRedirectUri(), OauthSess.OAuthRedirectUri,
+			Assert.AreEqual(MockConfig.Object.GetOauthRedirectUri(), OauthSess.OAuthRedirectUri,
 				"Incorrect OAuthRedirectUri.");
 		}
 
@@ -109,7 +113,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			var expectResult = new FabOauthLogout();
 
 			MockOauth
-				.Setup(x => x.Logout.Get(It.IsAny<string>()))
+				.Setup(x => x.Logout.Get(It.IsAny<string>(), SessionType.Default))
 				.Returns(expectResult);
 
 			FabOauthLogout result = OauthSess.Logout();

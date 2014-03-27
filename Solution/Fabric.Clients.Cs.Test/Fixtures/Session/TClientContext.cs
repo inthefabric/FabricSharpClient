@@ -26,7 +26,8 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 				"MySecretCode", (k => "http://testdomain.com/oauth"), SessionContainerProvider);
 			vAppSess = new AppSession(vConfig, null);
 			vSessContain = new FabricSessionContainer();
-			vContext = new ClientContext(vConfig, vAppSess);
+			vContext = new ClientContext(vConfig);
+			vContext.AppSess = vAppSess;
 
 			FabricClient.InitOnce(vConfig);
 		}

@@ -22,7 +22,10 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Perform the operation.
 		/// </summary>
-		FabResponse<FabSpec> Get();
+		/// <param name="UseSessionType">
+		///   Specifies which session authentication to send with the Fabric API request.
+		/// </param>
+		FabResponse<FabSpec> Get(SessionType UseSessionType=SessionType.Default);
 
 	}
 	
@@ -47,7 +50,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabSpec>> Request() {
+		public FabricRequest<FabResponse<FabSpec>> Request(SessionType UseSessionType=SessionType.Default) {
 			return new FabricRequest<FabResponse<FabSpec>>("GET", Uri,
 				null,
 				null
@@ -55,8 +58,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabSpec> Get() {
-			return Request().Send(vContext);
+		public FabResponse<FabSpec> Get(SessionType UseSessionType=SessionType.Default) {
+			return Request().Send(vContext, UseSessionType);
 		}
 
 	}
@@ -74,7 +77,10 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Perform the operation.
 		/// </summary>
-		FabResponse<FabMetaVersion> Get();
+		/// <param name="UseSessionType">
+		///   Specifies which session authentication to send with the Fabric API request.
+		/// </param>
+		FabResponse<FabMetaVersion> Get(SessionType UseSessionType=SessionType.Default);
 
 	}
 	
@@ -99,7 +105,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabMetaVersion>> Request() {
+		public FabricRequest<FabResponse<FabMetaVersion>> Request(SessionType UseSessionType=SessionType.Default) {
 			return new FabricRequest<FabResponse<FabMetaVersion>>("GET", Uri,
 				null,
 				null
@@ -107,8 +113,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabMetaVersion> Get() {
-			return Request().Send(vContext);
+		public FabResponse<FabMetaVersion> Get(SessionType UseSessionType=SessionType.Default) {
+			return Request().Send(vContext, UseSessionType);
 		}
 
 	}
@@ -126,7 +132,10 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Perform the operation.
 		/// </summary>
-		FabResponse<FabMetaTime> Get();
+		/// <param name="UseSessionType">
+		///   Specifies which session authentication to send with the Fabric API request.
+		/// </param>
+		FabResponse<FabMetaTime> Get(SessionType UseSessionType=SessionType.Default);
 
 	}
 	
@@ -151,7 +160,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabMetaTime>> Request() {
+		public FabricRequest<FabResponse<FabMetaTime>> Request(SessionType UseSessionType=SessionType.Default) {
 			return new FabricRequest<FabResponse<FabMetaTime>>("GET", Uri,
 				null,
 				null
@@ -159,8 +168,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabMetaTime> Get() {
-			return Request().Send(vContext);
+		public FabResponse<FabMetaTime> Get(SessionType UseSessionType=SessionType.Default) {
+			return Request().Send(vContext, UseSessionType);
 		}
 
 	}
@@ -181,7 +190,10 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Data">
 		///   The data (in JSON format) for the new Class.
 		/// </param>
-		FabResponse<FabClass> Post(CreateFabClass Data);
+		/// <param name="UseSessionType">
+		///   Specifies which session authentication to send with the Fabric API request.
+		/// </param>
+		FabResponse<FabClass> Post(CreateFabClass Data, SessionType UseSessionType=SessionType.Default);
 
 	}
 	
@@ -206,7 +218,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabClass>> Request(CreateFabClass Data) {
+		public FabricRequest<FabResponse<FabClass>> Request(CreateFabClass Data, SessionType UseSessionType=SessionType.Default) {
 			return new FabricRequest<FabResponse<FabClass>>("POST", Uri,
 				null,
 				"Data="+Data.ToJson()
@@ -214,8 +226,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabClass> Post(CreateFabClass Data) {
-			return Request(Data).Send(vContext);
+		public FabResponse<FabClass> Post(CreateFabClass Data, SessionType UseSessionType=SessionType.Default) {
+			return Request(Data).Send(vContext, UseSessionType);
 		}
 
 	}
@@ -236,7 +248,10 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Data">
 		///   The data (in JSON format) for the new Factor.
 		/// </param>
-		FabResponse<FabFactor> Post(CreateFabFactor Data);
+		/// <param name="UseSessionType">
+		///   Specifies which session authentication to send with the Fabric API request.
+		/// </param>
+		FabResponse<FabFactor> Post(CreateFabFactor Data, SessionType UseSessionType=SessionType.Default);
 
 	}
 	
@@ -261,7 +276,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabFactor>> Request(CreateFabFactor Data) {
+		public FabricRequest<FabResponse<FabFactor>> Request(CreateFabFactor Data, SessionType UseSessionType=SessionType.Default) {
 			return new FabricRequest<FabResponse<FabFactor>>("POST", Uri,
 				null,
 				"Data="+Data.ToJson()
@@ -269,8 +284,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabFactor> Post(CreateFabFactor Data) {
-			return Request(Data).Send(vContext);
+		public FabResponse<FabFactor> Post(CreateFabFactor Data, SessionType UseSessionType=SessionType.Default) {
+			return Request(Data).Send(vContext, UseSessionType);
 		}
 
 	}
@@ -291,7 +306,10 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Data">
 		///   The data (in JSON format) for the new Instance.
 		/// </param>
-		FabResponse<FabInstance> Post(CreateFabInstance Data);
+		/// <param name="UseSessionType">
+		///   Specifies which session authentication to send with the Fabric API request.
+		/// </param>
+		FabResponse<FabInstance> Post(CreateFabInstance Data, SessionType UseSessionType=SessionType.Default);
 
 	}
 	
@@ -316,7 +334,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabInstance>> Request(CreateFabInstance Data) {
+		public FabricRequest<FabResponse<FabInstance>> Request(CreateFabInstance Data, SessionType UseSessionType=SessionType.Default) {
 			return new FabricRequest<FabResponse<FabInstance>>("POST", Uri,
 				null,
 				"Data="+Data.ToJson()
@@ -324,8 +342,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabInstance> Post(CreateFabInstance Data) {
-			return Request(Data).Send(vContext);
+		public FabResponse<FabInstance> Post(CreateFabInstance Data, SessionType UseSessionType=SessionType.Default) {
+			return Request(Data).Send(vContext, UseSessionType);
 		}
 
 	}
@@ -346,7 +364,10 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Data">
 		///   The data (in JSON format) for the new Member.
 		/// </param>
-		FabResponse<FabMember> Post(CreateFabMember Data);
+		/// <param name="UseSessionType">
+		///   Specifies which session authentication to send with the Fabric API request.
+		/// </param>
+		FabResponse<FabMember> Post(CreateFabMember Data, SessionType UseSessionType=SessionType.Default);
 
 	}
 	
@@ -371,7 +392,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabMember>> Request(CreateFabMember Data) {
+		public FabricRequest<FabResponse<FabMember>> Request(CreateFabMember Data, SessionType UseSessionType=SessionType.Default) {
 			return new FabricRequest<FabResponse<FabMember>>("POST", Uri,
 				null,
 				"Data="+Data.ToJson()
@@ -379,8 +400,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabMember> Post(CreateFabMember Data) {
-			return Request(Data).Send(vContext);
+		public FabResponse<FabMember> Post(CreateFabMember Data, SessionType UseSessionType=SessionType.Default) {
+			return Request(Data).Send(vContext, UseSessionType);
 		}
 
 	}
@@ -401,7 +422,10 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Data">
 		///   The data (in JSON format) for the new Url.
 		/// </param>
-		FabResponse<FabUrl> Post(CreateFabUrl Data);
+		/// <param name="UseSessionType">
+		///   Specifies which session authentication to send with the Fabric API request.
+		/// </param>
+		FabResponse<FabUrl> Post(CreateFabUrl Data, SessionType UseSessionType=SessionType.Default);
 
 	}
 	
@@ -426,7 +450,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabUrl>> Request(CreateFabUrl Data) {
+		public FabricRequest<FabResponse<FabUrl>> Request(CreateFabUrl Data, SessionType UseSessionType=SessionType.Default) {
 			return new FabricRequest<FabResponse<FabUrl>>("POST", Uri,
 				null,
 				"Data="+Data.ToJson()
@@ -434,8 +458,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabUrl> Post(CreateFabUrl Data) {
-			return Request(Data).Send(vContext);
+		public FabResponse<FabUrl> Post(CreateFabUrl Data, SessionType UseSessionType=SessionType.Default) {
+			return Request(Data).Send(vContext, UseSessionType);
 		}
 
 	}
@@ -473,7 +497,10 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="redirect_uri">
 		///   This value must be exactly the same as the redirect URI provided for the OAuth entry process.
 		/// </param>
-		FabOauthAccess Get(string grant_type, long client_id, string client_secret, string code, string refresh_token, string redirect_uri);
+		/// <param name="UseSessionType">
+		///   Specifies which session authentication to send with the Fabric API request.
+		/// </param>
+		FabOauthAccess Get(string grant_type, long client_id, string client_secret, string code, string refresh_token, string redirect_uri, SessionType UseSessionType=SessionType.Default);
 
 	}
 	
@@ -498,7 +525,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabOauthAccess> Request(string grant_type, long client_id, string client_secret, string code, string refresh_token, string redirect_uri) {
+		public FabricRequest<FabOauthAccess> Request(string grant_type, long client_id, string client_secret, string code, string refresh_token, string redirect_uri, SessionType UseSessionType=SessionType.Default) {
 			return new FabricRequest<FabOauthAccess>("GET", Uri,
 				"grant_type="+grant_type+"&client_id="+client_id+"&client_secret="+client_secret+"&code="+code+"&refresh_token="+refresh_token+"&redirect_uri="+redirect_uri,
 				null
@@ -506,8 +533,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthAccess Get(string grant_type, long client_id, string client_secret, string code, string refresh_token, string redirect_uri) {
-			return Request(grant_type, client_id, client_secret, code, refresh_token, redirect_uri).Send(vContext);
+		public FabOauthAccess Get(string grant_type, long client_id, string client_secret, string code, string refresh_token, string redirect_uri, SessionType UseSessionType=SessionType.Default) {
+			return Request(grant_type, client_id, client_secret, code, refresh_token, redirect_uri).Send(vContext, UseSessionType);
 		}
 
 	}
@@ -535,7 +562,10 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="redirect_uri">
 		///   This value must be exactly the same as the redirect URI provided for the OAuth entry process.
 		/// </param>
-		FabOauthAccess Get(string code, string client_secret, string redirect_uri);
+		/// <param name="UseSessionType">
+		///   Specifies which session authentication to send with the Fabric API request.
+		/// </param>
+		FabOauthAccess Get(string code, string client_secret, string redirect_uri, SessionType UseSessionType=SessionType.Default);
 
 	}
 	
@@ -560,7 +590,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabOauthAccess> Request(string code, string client_secret, string redirect_uri) {
+		public FabricRequest<FabOauthAccess> Request(string code, string client_secret, string redirect_uri, SessionType UseSessionType=SessionType.Default) {
 			return new FabricRequest<FabOauthAccess>("GET", Uri,
 				"code="+code+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri,
 				null
@@ -568,8 +598,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthAccess Get(string code, string client_secret, string redirect_uri) {
-			return Request(code, client_secret, redirect_uri).Send(vContext);
+		public FabOauthAccess Get(string code, string client_secret, string redirect_uri, SessionType UseSessionType=SessionType.Default) {
+			return Request(code, client_secret, redirect_uri).Send(vContext, UseSessionType);
 		}
 
 	}
@@ -598,7 +628,10 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="redirect_uri">
 		///   This value must be exactly the same as the redirect URI provided for the OAuth entry process.
 		/// </param>
-		FabOauthAccess Get(string refresh_token, string client_secret, string redirect_uri);
+		/// <param name="UseSessionType">
+		///   Specifies which session authentication to send with the Fabric API request.
+		/// </param>
+		FabOauthAccess Get(string refresh_token, string client_secret, string redirect_uri, SessionType UseSessionType=SessionType.Default);
 
 	}
 	
@@ -623,7 +656,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabOauthAccess> Request(string refresh_token, string client_secret, string redirect_uri) {
+		public FabricRequest<FabOauthAccess> Request(string refresh_token, string client_secret, string redirect_uri, SessionType UseSessionType=SessionType.Default) {
 			return new FabricRequest<FabOauthAccess>("GET", Uri,
 				"refresh_token="+refresh_token+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri,
 				null
@@ -631,8 +664,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthAccess Get(string refresh_token, string client_secret, string redirect_uri) {
-			return Request(refresh_token, client_secret, redirect_uri).Send(vContext);
+		public FabOauthAccess Get(string refresh_token, string client_secret, string redirect_uri, SessionType UseSessionType=SessionType.Default) {
+			return Request(refresh_token, client_secret, redirect_uri).Send(vContext, UseSessionType);
 		}
 
 	}
@@ -660,7 +693,10 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="redirect_uri">
 		///   This value must be exactly the same as the redirect URI provided for the OAuth entry process.
 		/// </param>
-		FabOauthAccess Get(long client_id, string client_secret, string redirect_uri);
+		/// <param name="UseSessionType">
+		///   Specifies which session authentication to send with the Fabric API request.
+		/// </param>
+		FabOauthAccess Get(long client_id, string client_secret, string redirect_uri, SessionType UseSessionType=SessionType.Default);
 
 	}
 	
@@ -685,7 +721,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabOauthAccess> Request(long client_id, string client_secret, string redirect_uri) {
+		public FabricRequest<FabOauthAccess> Request(long client_id, string client_secret, string redirect_uri, SessionType UseSessionType=SessionType.Default) {
 			return new FabricRequest<FabOauthAccess>("GET", Uri,
 				"client_id="+client_id+"&client_secret="+client_secret+"&redirect_uri="+redirect_uri,
 				null
@@ -693,8 +729,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthAccess Get(long client_id, string client_secret, string redirect_uri) {
-			return Request(client_id, client_secret, redirect_uri).Send(vContext);
+		public FabOauthAccess Get(long client_id, string client_secret, string redirect_uri, SessionType UseSessionType=SessionType.Default) {
+			return Request(client_id, client_secret, redirect_uri).Send(vContext, UseSessionType);
 		}
 
 	}
@@ -736,7 +772,10 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="switchMode">
 		///   Causes the login process to behave in different ways.  If a value of '1' is provided, the user will see the login page even if they are currently authenticated with Fabric.  This is useful shared-computer scenarios, where the most-recently authenticated user may be different from the user making the current request.
 		/// </param>
-		FabOauthLogin Get(string response_type, string client_id, string redirect_uri, string scope, string state, string switchMode);
+		/// <param name="UseSessionType">
+		///   Specifies which session authentication to send with the Fabric API request.
+		/// </param>
+		FabOauthLogin Get(string response_type, string client_id, string redirect_uri, string scope, string state, string switchMode, SessionType UseSessionType=SessionType.Default);
 
 	}
 	
@@ -761,7 +800,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabOauthLogin> Request(string response_type, string client_id, string redirect_uri, string scope, string state, string switchMode) {
+		public FabricRequest<FabOauthLogin> Request(string response_type, string client_id, string redirect_uri, string scope, string state, string switchMode, SessionType UseSessionType=SessionType.Default) {
 			return new FabricRequest<FabOauthLogin>("GET", Uri,
 				"response_type="+response_type+"&client_id="+client_id+"&redirect_uri="+redirect_uri+"&scope="+scope+"&state="+state+"&switchMode="+switchMode,
 				null
@@ -769,8 +808,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthLogin Get(string response_type, string client_id, string redirect_uri, string scope, string state, string switchMode) {
-			return Request(response_type, client_id, redirect_uri, scope, state, switchMode).Send(vContext);
+		public FabOauthLogin Get(string response_type, string client_id, string redirect_uri, string scope, string state, string switchMode, SessionType UseSessionType=SessionType.Default) {
+			return Request(response_type, client_id, redirect_uri, scope, state, switchMode).Send(vContext, UseSessionType);
 		}
 
 	}
@@ -792,7 +831,10 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="access_token">
 		///   The access token for the desired OAuth session. This request will fail if the token has already been invalidated by a previous logout.
 		/// </param>
-		FabOauthLogout Get(string access_token);
+		/// <param name="UseSessionType">
+		///   Specifies which session authentication to send with the Fabric API request.
+		/// </param>
+		FabOauthLogout Get(string access_token, SessionType UseSessionType=SessionType.Default);
 
 	}
 	
@@ -817,7 +859,7 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabOauthLogout> Request(string access_token) {
+		public FabricRequest<FabOauthLogout> Request(string access_token, SessionType UseSessionType=SessionType.Default) {
 			return new FabricRequest<FabOauthLogout>("GET", Uri,
 				"access_token="+access_token,
 				null
@@ -825,476 +867,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public FabOauthLogout Get(string access_token) {
-			return Request(access_token).Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Begins a traversal with an App entry point.
-	/// </summary>
-	/// <remarks>
-	///   <para>Begins a traversal with an App entry point.</para>
-	/// </remarks>
-	public partial interface ITraversalAppsGetOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		FabResponse<FabTravAppRoot> Get();
-
-	}
-	
-
-	/*================================================================================================*/
-	internal partial class TraversalAppsGetOperation : ITraversalAppsGetOperation {
-
-		public const string Uri = "/Trav/Apps";
-		
-		public string Method { get { return "GET"; } }
-		public string RequiredAuth { get { return "None"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public TraversalAppsGetOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabTravAppRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravAppRoot>>("GET", Uri,
-				null,
-				null
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabTravAppRoot> Get() {
-			return Request().Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Begins a traversal with an Artifact entry point.
-	/// </summary>
-	/// <remarks>
-	///   <para>Begins a traversal with an Artifact entry point.</para>
-	/// </remarks>
-	public partial interface ITraversalArtifactsGetOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		FabResponse<FabTravArtifactRoot> Get();
-
-	}
-	
-
-	/*================================================================================================*/
-	internal partial class TraversalArtifactsGetOperation : ITraversalArtifactsGetOperation {
-
-		public const string Uri = "/Trav/Artifacts";
-		
-		public string Method { get { return "GET"; } }
-		public string RequiredAuth { get { return "None"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public TraversalArtifactsGetOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabTravArtifactRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravArtifactRoot>>("GET", Uri,
-				null,
-				null
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabTravArtifactRoot> Get() {
-			return Request().Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Begins a traversal with an Class entry point.
-	/// </summary>
-	/// <remarks>
-	///   <para>Begins a traversal with an Class entry point.</para>
-	/// </remarks>
-	public partial interface ITraversalClassesGetOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		FabResponse<FabTravClassRoot> Get();
-
-	}
-	
-
-	/*================================================================================================*/
-	internal partial class TraversalClassesGetOperation : ITraversalClassesGetOperation {
-
-		public const string Uri = "/Trav/Classes";
-		
-		public string Method { get { return "GET"; } }
-		public string RequiredAuth { get { return "None"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public TraversalClassesGetOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabTravClassRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravClassRoot>>("GET", Uri,
-				null,
-				null
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabTravClassRoot> Get() {
-			return Request().Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Begins a traversal with an Factor entry point.
-	/// </summary>
-	/// <remarks>
-	///   <para>Begins a traversal with an Factor entry point.</para>
-	/// </remarks>
-	public partial interface ITraversalFactorsGetOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		FabResponse<FabTravFactorRoot> Get();
-
-	}
-	
-
-	/*================================================================================================*/
-	internal partial class TraversalFactorsGetOperation : ITraversalFactorsGetOperation {
-
-		public const string Uri = "/Trav/Factors";
-		
-		public string Method { get { return "GET"; } }
-		public string RequiredAuth { get { return "None"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public TraversalFactorsGetOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabTravFactorRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravFactorRoot>>("GET", Uri,
-				null,
-				null
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabTravFactorRoot> Get() {
-			return Request().Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Begins a traversal with an Instance entry point.
-	/// </summary>
-	/// <remarks>
-	///   <para>Begins a traversal with an Instance entry point.</para>
-	/// </remarks>
-	public partial interface ITraversalInstancesGetOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		FabResponse<FabTravInstanceRoot> Get();
-
-	}
-	
-
-	/*================================================================================================*/
-	internal partial class TraversalInstancesGetOperation : ITraversalInstancesGetOperation {
-
-		public const string Uri = "/Trav/Instances";
-		
-		public string Method { get { return "GET"; } }
-		public string RequiredAuth { get { return "None"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public TraversalInstancesGetOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabTravInstanceRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravInstanceRoot>>("GET", Uri,
-				null,
-				null
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabTravInstanceRoot> Get() {
-			return Request().Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Begins a traversal with an Member entry point.
-	/// </summary>
-	/// <remarks>
-	///   <para>Begins a traversal with an Member entry point.</para>
-	/// </remarks>
-	public partial interface ITraversalMembersGetOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		FabResponse<FabTravMemberRoot> Get();
-
-	}
-	
-
-	/*================================================================================================*/
-	internal partial class TraversalMembersGetOperation : ITraversalMembersGetOperation {
-
-		public const string Uri = "/Trav/Members";
-		
-		public string Method { get { return "GET"; } }
-		public string RequiredAuth { get { return "None"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public TraversalMembersGetOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabTravMemberRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravMemberRoot>>("GET", Uri,
-				null,
-				null
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabTravMemberRoot> Get() {
-			return Request().Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Begins a traversal with an Url entry point.
-	/// </summary>
-	/// <remarks>
-	///   <para>Begins a traversal with an Url entry point.</para>
-	/// </remarks>
-	public partial interface ITraversalUrlsGetOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		FabResponse<FabTravUrlRoot> Get();
-
-	}
-	
-
-	/*================================================================================================*/
-	internal partial class TraversalUrlsGetOperation : ITraversalUrlsGetOperation {
-
-		public const string Uri = "/Trav/Urls";
-		
-		public string Method { get { return "GET"; } }
-		public string RequiredAuth { get { return "None"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public TraversalUrlsGetOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabTravUrlRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravUrlRoot>>("GET", Uri,
-				null,
-				null
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabTravUrlRoot> Get() {
-			return Request().Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Begins a traversal with an User entry point.
-	/// </summary>
-	/// <remarks>
-	///   <para>Begins a traversal with an User entry point.</para>
-	/// </remarks>
-	public partial interface ITraversalUsersGetOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		FabResponse<FabTravUserRoot> Get();
-
-	}
-	
-
-	/*================================================================================================*/
-	internal partial class TraversalUsersGetOperation : ITraversalUsersGetOperation {
-
-		public const string Uri = "/Trav/Users";
-		
-		public string Method { get { return "GET"; } }
-		public string RequiredAuth { get { return "None"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public TraversalUsersGetOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabTravUserRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravUserRoot>>("GET", Uri,
-				null,
-				null
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabTravUserRoot> Get() {
-			return Request().Send(vContext);
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	/// <summary>
-	///   Begins a traversal with an Vertex entry point.
-	/// </summary>
-	/// <remarks>
-	///   <para>Begins a traversal with an Vertex entry point.</para>
-	/// </remarks>
-	public partial interface ITraversalVerticesGetOperation : IOperation {
-		
-		/// <summary>
-		///   Perform the operation.
-		/// </summary>
-		FabResponse<FabTravVertexRoot> Get();
-
-	}
-	
-
-	/*================================================================================================*/
-	internal partial class TraversalVerticesGetOperation : ITraversalVerticesGetOperation {
-
-		public const string Uri = "/Trav/Vertices";
-		
-		public string Method { get { return "GET"; } }
-		public string RequiredAuth { get { return "None"; } }
-		
-		private readonly IClientContext vContext;
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public TraversalVerticesGetOperation(IClientContext pContext) {
-			vContext = pContext;
-		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		public FabricRequest<FabResponse<FabTravVertexRoot>> Request() {
-			return new FabricRequest<FabResponse<FabTravVertexRoot>>("GET", Uri,
-				null,
-				null
-			);
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public FabResponse<FabTravVertexRoot> Get() {
-			return Request().Send(vContext);
+		public FabOauthLogout Get(string access_token, SessionType UseSessionType=SessionType.Default) {
+			return Request(access_token).Send(vContext, UseSessionType);
 		}
 
 	}
