@@ -16,7 +16,6 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		internal Mock<IOauthService> MockOauth { get; private set; }
 		internal OauthSession OauthSess { get; private set; }
 
-		private string vRedirUri;
 		private FabricSessionContainer vSessContain;
 
 
@@ -25,10 +24,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		[SetUp]
 		public virtual void SetUp() {
 			vSessContain = new FabricSessionContainer();
-			vRedirUri = "http://testdomain.com/oauth";
 
-			//Config = new FabricClientConfig("Test", "http://testFabric.com/api", 1,
-			//	"MySecretCode", (k => vRedirUri), SessionContainerProvider);
 			MockConfig = new Mock<IFabricClientConfig>();
 			MockConfig.SetupGet(x => x.Logger).Returns(new FabricLog());
 
@@ -111,9 +107,10 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			OauthSess.Expiration = DateTime.UtcNow.AddDays(2);
 
 			var expectResult = new FabOauthLogout();
+			var expectSess = ((this as TAppSession) == null ? SessionType.Person : SessionType.App);
 
 			MockOauth
-				.Setup(x => x.Logout.Get(It.IsAny<string>(), SessionType.Default))
+				.Setup(x => x.Logout.Get(It.IsAny<string>(), expectSess))
 				.Returns(expectResult);
 
 			FabOauthLogout result = OauthSess.Logout();

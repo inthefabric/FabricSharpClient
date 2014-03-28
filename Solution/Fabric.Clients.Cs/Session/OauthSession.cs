@@ -120,8 +120,6 @@ namespace Fabric.Clients.Cs.Session {
 
 		/*--------------------------------------------------------------------------------------------*/
 		protected bool IsOauthOperation(string pApiPath) {
-			Config.Logger.Info(SessionId, "OAUTH? "+pApiPath+" / "+OauthAccessTokenClientCredentialsGetOperation.Uri);
-
 			switch ( pApiPath ) {
 				case OauthAccessTokenGetOperation.Uri:
 				case OauthAccessTokenAuthCodeGetOperation.Uri:

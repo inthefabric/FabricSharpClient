@@ -46,7 +46,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 					MockConfig.Object.AppId,
 					MockConfig.Object.AppSecret,
 					MockConfig.Object.GetOauthRedirectUri(),
-					SessionType.Default
+					SessionType.App
 				))
 				.Returns(pResult);
 
@@ -70,11 +70,16 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		[TestCase(true, 1, false)]
-		[TestCase(true, -1, true)]
-		[TestCase(false, 1, true)]
-		[TestCase(false, -1, true)]
-		public void RefreshTokenIfNecessary(bool pHasBearer, int pAddSeconds, bool pExpectRefresh) {
+		[TestCase(true, 1, null, false)]
+		[TestCase(true, -1, null, true)]
+		[TestCase(false, 1, null, true)]
+		[TestCase(false, -1, null, true)]
+		[TestCase(true, 1, OauthAccessTokenGetOperation.Uri, false)]
+		[TestCase(true, -1, OauthAccessTokenGetOperation.Uri, false)]
+		[TestCase(false, 1, OauthAccessTokenGetOperation.Uri, false)]
+		[TestCase(false, -1, OauthAccessTokenGetOperation.Uri, false)]
+		public void RefreshTokenIfNecessary(bool pHasBearer, int pAddSeconds, 
+																string pApiPath, bool pExpectRefresh) {
 			string bearer = (pHasBearer ? "OldBearerToken" : null);
 			DateTime expiry = DateTime.UtcNow.AddSeconds(pAddSeconds);
 			AppSess.BearerToken = bearer;
@@ -83,7 +88,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			FabOauthAccess expectResult = NewFabOauthAccess();
 			SetupMockAccessToken(expectResult);
 
-			bool result = AppSess.RefreshTokenIfNecessary(null);
+			bool result = AppSess.RefreshTokenIfNecessary(pApiPath);
 
 			Assert.AreEqual(pExpectRefresh, result, "Incorrect result.");
 
@@ -110,7 +115,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 					It.IsAny<long>(),
 					It.IsAny<string>(),
 					It.IsAny<string>(),
-					SessionType.Default
+					SessionType.App
 				),
 				Times.Exactly(2)
 			);
@@ -128,7 +133,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 					It.IsAny<long>(),
 					It.IsAny<string>(),
 					It.IsAny<string>(),
-					SessionType.Default
+					SessionType.App
 				),
 				Times.Once()
 			);

@@ -19,7 +19,11 @@ namespace Fabric.Clients.Cs.Session {
 		/*--------------------------------------------------------------------------------------------*/
 		public override bool RefreshTokenIfNecessary(string pApiPath) {
 			lock ( Config ) {
-				if ( IsOauthOperation(pApiPath) || !IsExpired() ) {
+				if ( IsAuthenticated && !IsExpired() ) {
+					return false;
+				}
+
+				if ( IsOauthOperation(pApiPath) ) {
 					return false;
 				}
 

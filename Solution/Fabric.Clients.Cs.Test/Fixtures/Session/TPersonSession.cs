@@ -36,12 +36,16 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		[TestCase(true, 1, false)]
-		[TestCase(true, -1, true)]
-		[TestCase(false, 1, false)]
-		[TestCase(false, -1, false)]
-		public virtual void RefreshTokenIfNecessary(
-											bool pHasRefresh, int pAddSeconds, bool pExpectRefresh) {
+		[TestCase(true, 1, null, false)]
+		[TestCase(true, -1, null, true)]
+		[TestCase(false, 1, null, false)]
+		[TestCase(false, -1, null, false)]
+		[TestCase(true, 1, OauthAccessTokenGetOperation.Uri, false)]
+		[TestCase(true, -1, OauthAccessTokenGetOperation.Uri, false)]
+		[TestCase(false, 1, OauthAccessTokenGetOperation.Uri, false)]
+		[TestCase(false, -1, OauthAccessTokenGetOperation.Uri, false)]
+		public virtual void RefreshTokenIfNecessary(bool pHasRefresh, int pAddSeconds, 
+																string pApiPath, bool pExpectRefresh) {
 			string refresh = (pHasRefresh ? "OldRefreshToken" : null);
 			DateTime expiry = DateTime.UtcNow.AddSeconds(pAddSeconds);
 			PersonSess.RefreshToken = refresh;
@@ -54,11 +58,11 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 					refresh,
 					MockConfig.Object.AppSecret,
 					MockConfig.Object.GetOauthRedirectUri(),
-					SessionType.Default
+					SessionType.Person
 				))
 				.Returns(expectResult);
 
-			bool result = PersonSess.RefreshTokenIfNecessary(null);
+			bool result = PersonSess.RefreshTokenIfNecessary(pApiPath);
 
 			Assert.AreEqual(pExpectRefresh, result, "Incorrect result.");
 
@@ -120,7 +124,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 					grantCode,
 					MockConfig.Object.AppSecret,
 					MockConfig.Object.GetOauthRedirectUri(),
-					SessionType.Default
+					SessionType.Person
 				))
 				.Returns(expectResult);
 
