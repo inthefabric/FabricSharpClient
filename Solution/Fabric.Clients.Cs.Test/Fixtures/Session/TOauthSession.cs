@@ -25,10 +25,14 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		public virtual void SetUp() {
 			vSessContain = new FabricSessionContainer();
 
-			MockConfig = new Mock<IFabricClientConfig>();
+			MockConfig = new Mock<IFabricClientConfig>(MockBehavior.Strict);
 			MockConfig.SetupGet(x => x.Logger).Returns(new FabricLog());
+			MockConfig.SetupGet(x => x.ApiPath).Returns("my/api/path");
+			MockConfig.SetupGet(x => x.AppId).Returns(1234);
+			MockConfig.SetupGet(x => x.AppSecret).Returns("myAppSecret");
+			MockConfig.Setup(x => x.GetOauthRedirectUri()).Returns("re/dir/ect/uri");
 
-			MockOauth = new Mock<IOauthService>();
+			MockOauth = new Mock<IOauthService>(MockBehavior.Strict);
 			OauthSess = NewOauthSess(MockConfig.Object, MockOauth.Object);
 		}
 

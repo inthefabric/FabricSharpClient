@@ -69,7 +69,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
 		public void NewClient_Person_Default() {
-			var mockPs = new Mock<IFabricPersonSession>();
+			var mockPs = new Mock<IFabricPersonSession>(MockBehavior.Strict);
 			FabricClient.AddConfig(GetConfig("Second"));
 
 			var fab = new FabricClient(mockPs.Object);
@@ -80,7 +80,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures {
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
 		public void NewClient_Person_Named() {
-			var mockPs = new Mock<IFabricPersonSession>();
+			var mockPs = new Mock<IFabricPersonSession>(MockBehavior.Strict);
 
 			const string key = "Second";
 			FabricClient.AddConfig(GetConfig(key));

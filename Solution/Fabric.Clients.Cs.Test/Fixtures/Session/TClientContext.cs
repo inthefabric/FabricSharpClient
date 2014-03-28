@@ -99,7 +99,12 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		[TestCase(false)]
 		[TestCase(true)]
 		public void Log(bool pUseDataProv) {
-			var log = new Mock<IFabricLog>();
+			var log = new Mock<IFabricLog>(MockBehavior.Strict);
+			log.Setup(x => x.Info(It.IsAny<string>(), It.IsAny<string>()));
+			log.Setup(x => x.Debug(It.IsAny<string>(), It.IsAny<string>()));
+			log.Setup(x => x.Error(It.IsAny<string>(), It.IsAny<string>()));
+			log.Setup(x => x.Fatal(It.IsAny<string>(), It.IsAny<string>()));
+			log.Setup(x => x.Warn(It.IsAny<string>(), It.IsAny<string>()));
 			vConfig.Logger = log.Object;
 
 			vContext.UseAppDataProvider = pUseDataProv;

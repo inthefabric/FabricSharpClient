@@ -29,11 +29,11 @@ namespace Fabric.Clients.Cs.Test.Common {
 
 		/*--------------------------------------------------------------------------------------------*/
 		public void RunTest(ParameterizedThreadStart pDelegate) {
-			var mockPerA = new Mock<IFabricPersonSession>();
+			var mockPerA = new Mock<IFabricPersonSession>(MockBehavior.Strict);
 			mockPerA.SetupGet(x => x.SessionId).Returns("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 			var sessContainA = new FabricSessionContainer { Person = mockPerA.Object };
 
-			var mockPerB = new Mock<IFabricPersonSession>();
+			var mockPerB = new Mock<IFabricPersonSession>(MockBehavior.Strict);
 			mockPerB.SetupGet(x => x.SessionId).Returns("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
 			var sessContainB = new FabricSessionContainer { Person = mockPerB.Object };
 

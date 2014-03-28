@@ -114,7 +114,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			q.Add("code", grantCode);
 			q.Add("state", PersonSess.SessionId);
 
-			var mockReq = new Mock<HttpRequestBase>();
+			var mockReq = new Mock<HttpRequestBase>(MockBehavior.Strict);
 			mockReq.SetupGet(x => x.QueryString).Returns(q);
 
 			var expectResult = NewFabOauthAccess();
@@ -145,7 +145,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			q.Add("error", pError);
 			q.Add("state", (pState ?? PersonSess.SessionId));
 
-			var mockReq = new Mock<HttpRequestBase>();
+			var mockReq = new Mock<HttpRequestBase>(MockBehavior.Strict);
 			mockReq.SetupGet(x => x.QueryString).Returns(q);
 
 			try {

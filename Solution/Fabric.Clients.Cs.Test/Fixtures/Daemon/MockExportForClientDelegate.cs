@@ -41,7 +41,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 			var list = new List<T>();
 
 			for ( int i = 0 ; i < rem ; ++i ) {
-				list.Add(new Mock<T>().Object);
+				list.Add(new Mock<T>(MockBehavior.Strict).Object);
 			}
 
 			return list;

@@ -36,21 +36,36 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		/*--------------------------------------------------------------------------------------------*/
 		[SetUp]
 		public void SetUp() {
-			vMockAppSess = new Mock<IFabricAppSession>();
-			vMockPerSess = new Mock<IFabricPersonSession>();
-			vMockConfig = new Mock<IFabricClientConfig>();
+			vMethod = "GET";
+			vPath = "test/path/items";
+			vQuery = "test=1&other=false";
+			vPost = "post=true&notes=abcdefg";
 
-			vMockContext = new Mock<IClientContext>();
+			vMockAppSess = new Mock<IFabricAppSession>(MockBehavior.Strict);
+			vMockAppSess.SetupGet(x => x.BearerToken).Returns((string)null);
+			vMockAppSess.Setup(x => x.RefreshTokenIfNecessary(vPath)).Returns(false);
+
+			vMockPerSess = new Mock<IFabricPersonSession>(MockBehavior.Strict);
+			vMockPerSess.SetupGet(x => x.BearerToken).Returns((string)null);
+			vMockPerSess.Setup(x => x.RefreshTokenIfNecessary(vPath)).Returns(false);
+
+			vMockConfig = new Mock<IFabricClientConfig>(MockBehavior.Strict);
+			vMockConfig.SetupGet(x => x.ApiPath).Returns(vPath);
+
+			vMockContext = new Mock<IClientContext>(MockBehavior.Strict);
 			vMockContext.SetupGet(x => x.Config).Returns(vMockConfig.Object);
 			vMockContext.SetupGet(x => x.ActiveSess).Returns(vMockAppSess.Object);
 			vMockContext.SetupGet(x => x.AppSess).Returns(vMockAppSess.Object);
 			vMockContext.SetupGet(x => x.PersonSess).Returns(vMockPerSess.Object);
+			vMockContext.Setup(x => x.LogDebug(It.IsAny<string>()));
+			vMockContext.Setup(x => x.LogInfo(It.IsAny<string>()));
+			vMockContext.Setup(x => x.LogError(It.IsAny<string>()));
 			vContext = vMockContext.Object;
 
 			vHttpReq = new TestFabricHttpRequest();
-			vMockResp = new Mock<IFabricHttpResponse>();
+			vMockResp = new Mock<IFabricHttpResponse>(MockBehavior.Strict);
 
-			vMoqHttpProv = new Mock<FabricHttpProvider>();
+			vMoqHttpProv = new Mock<FabricHttpProvider>(MockBehavior.Strict);
 
 			vMoqHttpProv
 				.Setup(x => x.CreateRequest(It.IsAny<string>()))
@@ -61,11 +76,6 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 			vMoqHttpProv
 				.Setup(x => x.GetResponse(vHttpReq))
 				.Returns(vMockResp.Object);
-
-			vMethod = "GET";
-			vPath = "test/path/items";
-			vQuery = "test=1&other=false";
-			vPost = "post=true&notes=abcdefg";
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -222,6 +232,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 
 			const string apiPath = "this/is/a/test/";
 			vMockConfig.Setup(x => x.ApiPath).Returns(apiPath);
+			vMockAppSess.Setup(x => x.RefreshTokenIfNecessary(vPath)).Returns(false);
 
 			string expect = apiPath+pPath;
 			if ( pQuery != null ) { expect += "?"+pQuery; }
@@ -281,9 +292,6 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 		public void HeaderAuthorization(SessionType pSessType, string pBearer) {
 			switch ( pSessType ) {
 				case SessionType.Default:
-					vMockAppSess.SetupGet(x => x.BearerToken).Returns(pBearer);
-					break;
-					
 				case SessionType.App:
 					vMockAppSess.SetupGet(x => x.BearerToken).Returns(pBearer);
 					break;
@@ -291,7 +299,6 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Web {
 				case SessionType.Person:
 					vMockPerSess.SetupGet(x => x.BearerToken).Returns(pBearer);
 					break;
-
 			}
 
 			var req = NewFabricRequest<FabApp>();

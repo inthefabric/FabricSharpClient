@@ -25,40 +25,40 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 		/*--------------------------------------------------------------------------------------------*/
 		[SetUp]
 		public void SetUp() {
-			vMockAddClass = new Mock<IModifyClassesPostOperation>();
+			vMockAddClass = new Mock<IModifyClassesPostOperation>(MockBehavior.Strict);
 			vMockAddClass.Setup(x => x
 				.Post(It.IsAny<CreateFabClass>(), SessionType.Default))
 				.Returns(NewFabResp<FabClass>()
 			);
 
-			vMockAddInstance = new Mock<IModifyInstancesPostOperation>();
+			vMockAddInstance = new Mock<IModifyInstancesPostOperation>(MockBehavior.Strict);
 			vMockAddInstance.Setup(x =>
 				x.Post(It.IsAny<CreateFabInstance>(), SessionType.Default))
 				.Returns(NewFabResp<FabInstance>()
 			);
 
-			vMockAddUrl = new Mock<IModifyUrlsPostOperation>();
+			vMockAddUrl = new Mock<IModifyUrlsPostOperation>(MockBehavior.Strict);
 			vMockAddUrl.Setup(x =>
 				x.Post(It.IsAny<CreateFabUrl>(), SessionType.Default))
 				.Returns(NewFabResp<FabUrl>()
 			);
 
-			vMockAddFactor = new Mock<IModifyFactorsPostOperation>();
+			vMockAddFactor = new Mock<IModifyFactorsPostOperation>(MockBehavior.Strict);
 			vMockAddFactor.Setup(x =>
 				x.Post(It.IsAny<CreateFabFactor>(), SessionType.Default))
 				.Returns(NewFabResp<FabFactor>()
 			);
 
-			vMockModify = new Mock<IModifyService>();
+			vMockModify = new Mock<IModifyService>(MockBehavior.Strict);
 			vMockModify.SetupGet(x => x.Classes).Returns(vMockAddClass.Object);
 			vMockModify.SetupGet(x => x.Instances).Returns(vMockAddInstance.Object);
 			vMockModify.SetupGet(x => x.Urls).Returns(vMockAddUrl.Object);
 			vMockModify.SetupGet(x => x.Factors).Returns(vMockAddFactor.Object);
 
-			vMockServices = new Mock<IFabricServices>();
+			vMockServices = new Mock<IFabricServices>(MockBehavior.Strict);
 			vMockServices.SetupGet(x => x.Modify).Returns(vMockModify.Object);
 
-			vMockClient = new Mock<IFabricClient>();
+			vMockClient = new Mock<IFabricClient>(MockBehavior.Strict);
 			vMockClient.SetupGet(x => x.Services).Returns(vMockServices.Object);
 
 			vMockDel = new MockExportForClientDelegate();

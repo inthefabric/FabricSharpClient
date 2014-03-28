@@ -26,20 +26,24 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 			vMockDpClient = NewMockClient("DpSess", 1000);
 			vMockDpClient.SetupGet(x => x.UseAppDataProvider).Returns(true);
 
-			vMockDel = new Mock<IExportServiceDelegate>();
+			vMockDel = new Mock<IExportServiceDelegate>(MockBehavior.Strict);
 			vMockDel.Setup(x => x.GetDataProvClient()).Returns(vMockDpClient.Object);
+			vMockDel.Setup(x => x.GetExportForClientDelegate(It.IsAny<IFabricClient>()))
+				.Returns((IExportForClientDelegate)null);
+			vMockDel.Setup(x => x.HandleExpiredUserClient(It.IsAny<IFabricClient>()));
 
 			vExpSvc = new ExportService(vMockDel.Object);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		private Mock<IFabricClient> NewMockClient(string pSessId, int pAddSeconds) {
-			var mockPs = new Mock<IFabricPersonSession>();
+			var mockPs = new Mock<IFabricPersonSession>(MockBehavior.Strict);
 			mockPs.SetupGet(x => x.SessionId).Returns(pSessId);
 			mockPs.SetupGet(x => x.Expiration).Returns(DateTime.UtcNow.AddSeconds(pAddSeconds));
 
-			var mockFc = new Mock<IFabricClient>();
+			var mockFc = new Mock<IFabricClient>(MockBehavior.Strict);
 			mockFc.SetupGet(x => x.ActiveSession).Returns(mockPs.Object);
+			mockFc.SetupGet(x => x.UseAppDataProvider).Returns(false);
 			return mockFc;
 		}
 
@@ -70,9 +74,9 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Daemon {
 
 			foreach ( Mock<IFabricClient> mockFc in clientsToExport ) {
 				IFabricClient fc = mockFc.Object;
-				var mockEfcDel = new Mock<IExportForClientDelegate>();
-				
-				var mockEfc = new Mock<IExportForClient>();
+				var mockEfcDel = new Mock<IExportForClientDelegate>(MockBehavior.Strict);
+
+				var mockEfc = new Mock<IExportForClient>(MockBehavior.Strict);
 				mockEfc.SetupGet(x => x.Client).Returns(fc);
 				mockEfc.Setup(x => x.StartExport()).Callback(() => Thread.Sleep(100));
 
