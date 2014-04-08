@@ -97,7 +97,8 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 			FabApp model;
 
 			try {
-				model = null; //TODO: vFab.Services.Traversal.GetActiveApp.Get().FirstDataItem();
+				vFab.UseAppDataProvider = true;
+				model = vFab.Services.Traversal.Members.Active().DefinedByApp().Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
@@ -112,7 +113,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 
 			try {
 				vFab.UseAppDataProvider = true;
-				model = null; //TODO: vFab.Services.Traversal.GetActiveUser.Get().FirstDataItem();
+				model = vFab.Services.Traversal.Members.Active().DefinedByUser().Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
@@ -126,7 +127,7 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 			FabUser model;
 
 			try {
-				model = null; //TODO: vFab.Services.Traversal.GetActiveUser.Get().FirstDataItem();
+				model = vFab.Services.Traversal.Members.Active().DefinedByUser().Get().FirstDataItem();
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);
