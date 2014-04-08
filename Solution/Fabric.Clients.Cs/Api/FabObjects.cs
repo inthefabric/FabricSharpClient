@@ -83,7 +83,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Identifies the DescriptorType for the new Descriptor.
 		/// </summary>
-		public byte Type { get; set; }
+		public DescriptorTypeId Type { get; set; }
 		
 		/// <summary>
 		///   Identifies the Artifact that refines the Factor's 'sprimary Artifact.
@@ -125,17 +125,17 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Identifies the DirectorType for the new Director.
 		/// </summary>
-		public byte Type { get; set; }
+		public DirectorTypeId Type { get; set; }
 		
 		/// <summary>
 		///   Identifies the DirectorAction associated with the Factor's 'sprimary Artifact.
 		/// </summary>
-		public byte PrimaryAction { get; set; }
+		public DirectorActionId PrimaryAction { get; set; }
 		
 		/// <summary>
 		///   Identifies the DirectorAction associated with the Factor's 'srelated Artifact.
 		/// </summary>
-		public byte RelatedAction { get; set; }
+		public DirectorActionId RelatedAction { get; set; }
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -194,7 +194,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Identifies the EventorType for the new Eventor.
 		/// </summary>
-		public byte Type { get; set; }
+		public EventorTypeId Type { get; set; }
 		
 		/// <summary>
 		///   The year value for the new Eventor.
@@ -251,7 +251,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Identifies the FactorAssertion for the new Factor.
 		/// </summary>
-		public byte AssertionType { get; set; }
+		public FactorAssertionId AssertionType { get; set; }
 		
 		/// <summary>
 		///   The IsDefining value for the new Factor.
@@ -328,7 +328,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Identifies the IdentorType for the new Identor.
 		/// </summary>
-		public byte Type { get; set; }
+		public IdentorTypeId Type { get; set; }
 		
 		/// <summary>
 		///   The text-based value for the new Identor.
@@ -387,7 +387,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Identifies the LocatorType for the new Locator.
 		/// </summary>
-		public byte Type { get; set; }
+		public LocatorTypeId Type { get; set; }
 		
 		/// <summary>
 		///   The X value for the new Locator.
@@ -429,7 +429,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Identifies the MemberType for the new Member.
 		/// </summary>
-		public byte Type { get; set; }
+		public MemberTypeId Type { get; set; }
 		
 		/// <summary>
 		///   Identifies the App that defines the new Member.
@@ -500,17 +500,17 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Identifies the VectorType for the new Vector.
 		/// </summary>
-		public byte Type { get; set; }
+		public VectorTypeId Type { get; set; }
 		
 		/// <summary>
 		///   Identifies the VectorUnit for the new Vector.
 		/// </summary>
-		public byte Unit { get; set; }
+		public VectorUnitId Unit { get; set; }
 		
 		/// <summary>
 		///   Identifies the VectorUnitPrefix for the new Vector.
 		/// </summary>
-		public byte UnitPrefix { get; set; }
+		public VectorUnitPrefixId UnitPrefix { get; set; }
 		
 		/// <summary>
 		///   The value for the new Vector.
@@ -679,7 +679,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Specifies the type of relationship or connection.
 		/// </summary>
-		public byte Type { get; set; }
+		public DescriptorTypeId Type { get; set; }
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -708,17 +708,17 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Specifies the type and reason for the pathway.
 		/// </summary>
-		public byte Type { get; set; }
+		public DirectorTypeId Type { get; set; }
 		
 		/// <summary>
 		///   Specifies the action to be performed on the Factor's 'sprimary Artifact.
 		/// </summary>
-		public byte PrimaryAction { get; set; }
+		public DirectorActionId PrimaryAction { get; set; }
 		
 		/// <summary>
 		///   Specifies the action to be performed on the Factor's 'srelated Artifact.
 		/// </summary>
-		public byte RelatedAction { get; set; }
+		public DirectorActionId RelatedAction { get; set; }
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -807,7 +807,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Specifies the significance of this point in time.
 		/// </summary>
-		public byte Type { get; set; }
+		public EventorTypeId Type { get; set; }
 		
 		/// <summary>
 		///   Specifies the year value (UTC).
@@ -867,7 +867,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Describes the type of information (and/or level of confidence) provided by a particular Factor.
 		/// </summary>
-		public byte AssertionType { get; set; }
+		public FactorAssertionId AssertionType { get; set; }
 		
 		/// <summary>
 		///   Specifies whether this Factor helps to directly and uniquely define the primary Artifact.
@@ -963,7 +963,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Specifies the value's 'spurpose or intent.
 		/// </summary>
-		public byte Type { get; set; }
+		public IdentorTypeId Type { get; set; }
 		
 		/// <summary>
 		///   A text-based value that can represent names, numbers, IDs, GUIDs, etc.
@@ -1051,7 +1051,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Specifies the spatial context of the coordinate.
 		/// </summary>
-		public byte Type { get; set; }
+		public LocatorTypeId Type { get; set; }
 		
 		/// <summary>
 		///   A value representing longitude, time/progress, width, or a particular three-dimensional axis.
@@ -1094,7 +1094,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Specifies the Member's 'sstate and/or access privileges.
 		/// </summary>
-		public byte Type { get; set; }
+		public MemberTypeId Type { get; set; }
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2023,17 +2023,17 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Specifies its value's 'sboundaries and context.
 		/// </summary>
-		public byte Type { get; set; }
+		public VectorTypeId Type { get; set; }
 		
 		/// <summary>
 		///   Specifies its value's 'sunit of measurement.
 		/// </summary>
-		public byte Unit { get; set; }
+		public VectorUnitId Unit { get; set; }
 		
 		/// <summary>
 		///   Specifies its value's 'sorder of magnitude.
 		/// </summary>
-		public byte UnitPrefix { get; set; }
+		public VectorUnitPrefixId UnitPrefix { get; set; }
 		
 		/// <summary>
 		///   An integral value which is to be plotted along the specified axis.
@@ -2095,7 +2095,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Specifies the Vertex type.
 		/// </summary>
-		public byte VertexType { get; set; }
+		public VertexTypeId VertexType { get; set; }
 		
 
 		////////////////////////////////////////////////////////////////////////////////////////////////

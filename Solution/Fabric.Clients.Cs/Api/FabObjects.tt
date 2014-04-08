@@ -29,7 +29,7 @@ foreach ( FabSpecObject o in spec.Objects ) {
 	
 <#
 	foreach ( FabSpecObjectProp p in o.Properties ) {
-		string type = p.Type;
+		string type = (p.Enum != null ? p.Enum+"Id" : p.Type);
 		string name = p.Name;
 
 		if ( o.Name == "FabResponse" && p.Name == "Data" ) {

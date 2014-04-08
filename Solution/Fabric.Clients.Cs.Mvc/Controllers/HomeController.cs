@@ -136,6 +136,20 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 			return View("Item", model);
 		}
 
+		/*--------------------------------------------------------------------------------------------*/
+		public ActionResult MyMember() {
+			FabMember model;
+
+			try {
+				model = vFab.Services.Traversal.Members.Active().Get().FirstDataItem();
+			}
+			catch ( FabricErrorException e ) {
+				return View("Error", e);
+			}
+
+			return View("Item", model);
+		}
+
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
