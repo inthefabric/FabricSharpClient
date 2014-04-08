@@ -66,8 +66,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Api\FabEnums.cs">
-      <DependentUpon>FabEnums.tt</DependentUpon>
+    <Compile Include="Api\FabEnumObjects.cs">
+      <DependentUpon>FabEnumObjects.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -141,9 +141,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FabEnumsData.cs</LastGenOutput>
     </None>
-    <None Include="Api\FabEnums.tt">
+    <None Include="Api\FabEnumObjects.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>FabEnums.cs</LastGenOutput>
+      <LastGenOutput>FabEnumObjects.cs</LastGenOutput>
     </None>
     <None Include="Api\FabObjects.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

@@ -54,14 +54,8 @@ foreach ( FabSpecObject o in spec.Objects ) {
 		/// <summary>
 		///   Get the static <#= p.Enum #> data that is associated with this object's <#= p.Name #> value.
 		/// </summary>
-		public <#= p.Enum #> Get<#= p.Name.Substring(0, p.Name.Length-2) #>Data() {
-			<#= p.Enum #> data;
-			
-			if ( FabEnumsData.<#= p.Enum #>Map.TryGetValue(<#= p.Name #>, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No <#= p.Enum #> data associated with <#= p.Name #>="+<#= p.Name #>+".");
+		public <#= p.Enum #> Get<#= p.Name #>Data() {
+			return FabEnumsData.Get<#= p.Enum #>(<#= p.Name #>);
 		}
 		
 <#

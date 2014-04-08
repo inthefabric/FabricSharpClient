@@ -8,40 +8,23 @@
 // GENERATED CODE
 // Changes made to this source file will be overwritten
 
+using System;
 using System.Collections.Generic;
 
 namespace Fabric.Clients.Cs.Api {
-
-	/*================================================================================================*/
-	/// <summary/>
-	public static class FabEnumsData {
-
 <#
 FabSpec spec = SpecBuilder.Spec;
 var specEnumMap = new Dictionary<string, FabSpecEnum>();
 
 foreach ( FabSpecEnum e in spec.Enums ) {
-	specEnumMap.Add(e.Name, e);
-	if ( e.Extends == null ) { continue; }
-#>
-		/// <summary/>
-		public static IDictionary<byte, <#= e.Name #>> <#= e.Name #>Map;
-	
-<#
-} //end enum loop
-#>
-		private static bool IsInit = Init();
-
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
-<#		
-foreach ( FabSpecEnum e in spec.Enums ) {
 
 	if ( e.Extends == null ) { continue; }
 #>
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum <#= e.Name #>Id {
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public enum <#= e.Name #>Id : byte {
 <#
 	foreach ( Dictionary<string, object> row in e.Items ) {
 		string summ = (row.ContainsKey("Name") ? row["Name"]+"" : "");
@@ -51,45 +34,82 @@ foreach ( FabSpecEnum e in spec.Enums ) {
 		}
 #>
 			
-			/// <summary>
-			///   <#= summ #>
-			/// </summary>
-			<#= row["EnumId"] #> = <#= row["Id"] #>,
+		/// <summary>
+		///   <#= summ #>
+		/// </summary>
+		<#= row["EnumId"] #> = <#= row["Id"] #>,
 <#
 	} //end data loop
 #>
-		}
-
+	}
 <#
 } //end enum loop
 #>
-	
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public static class FabEnumsData {
+
+<#
+foreach ( FabSpecEnum e in spec.Enums ) {
+	specEnumMap.Add(e.Name, e);
+	if ( e.Extends == null ) { continue; }
+#>
+		private static IDictionary<byte, <#= e.Name #>> <#= e.Name #>Map;
+<#
+} //end enum loop
+#>
+
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private static bool Init() {
-<#		
-foreach ( FabSpecEnum e in spec.Enums ) {
-	if ( e.Extends == null ) { continue; }
-#>
-			Build<#= e.Name #>Map();
-<#
-} //end enum loop
-#>
-			return true;
+		private static T TryGet<T>(IDictionary<byte, T> pMap, string pName, byte pId) {
+			T data;
+			
+			if ( !pMap.TryGetValue(pId, out data) ) {
+				throw new Exception("There is no "+pName+" data for ID="+pId+".");
+			}
+
+			return data;
 		}
-
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-<#		
+<#
 foreach ( FabSpecEnum e in spec.Enums ) {
 	if ( e.Extends == null ) { continue; }
-
+		
 	var props = new List<FabSpecObjectProp>();
 	props.AddRange(specEnumMap[e.Extends].Properties);
 	props.AddRange(e.Properties);
 #>
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static ICollection<<#= e.Name #>> Get<#= e.Name #>Items() {
+			Build<#= e.Name #>Map();
+			return <#= e.Name #>Map.Values;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static <#= e.Name #> Get<#= e.Name #>(<#= e.Name #>Id pId) {
+			return Get<#= e.Name #>((byte)pId);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static <#= e.Name #> Get<#= e.Name #>(byte pId) {
+			Build<#= e.Name #>Map();
+			return TryGet(<#= e.Name #>Map, "<#= e.Name #>", pId);
+		}
+
 		/*--------------------------------------------------------------------------------------------*/
 		private static void Build<#= e.Name #>Map() {
+			if ( <#= e.Name #>Map != null ) {
+				return;
+			}
+			
 			<#= e.Name #>Map = new Dictionary<byte, <#= e.Name #>>();
 <#
 	foreach ( Dictionary<string, object> row in e.Items ) {
@@ -123,13 +143,13 @@ foreach ( FabSpecEnum e in spec.Enums ) {
 				val = "new[] {";
 
 				foreach ( string arrayItem in arrayItems ) {
-					val += "\r\n\t\t\t\t\t"+arrayType+"Map[(byte)"+arrayType+"Id."+arrayItem+"],";
+					val += "\r\n\t\t\t\t\tGet"+arrayType+"("+arrayType+"Id."+arrayItem+"),";
 				}
 
 				val += "\r\n\t\t\t\t}";
 			}
 			else {
-				val = p.Type+"Map[(byte)"+p.Type+"Id."+val+"]";
+				val = "Get"+p.Type+"("+p.Type+"Id."+val+")";
 			}
 #>
 				<#= p.Name #> = <#= val #>,
@@ -141,7 +161,6 @@ foreach ( FabSpecEnum e in spec.Enums ) {
 	} //end data loop
 #>
 		}
-
 <#
 } //end enum loop
 #>

@@ -106,14 +106,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static DescriptorType data that is associated with this object's Type value.
 		/// </summary>
-		public DescriptorType GetTyData() {
-			DescriptorType data;
-			
-			if ( FabEnumsData.DescriptorTypeMap.TryGetValue(Type, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No DescriptorType data associated with Type="+Type+".");
+		public DescriptorType GetTypeData() {
+			return FabEnumsData.GetDescriptorType(Type);
 		}
 		
 	}
@@ -149,14 +143,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static DirectorType data that is associated with this object's Type value.
 		/// </summary>
-		public DirectorType GetTyData() {
-			DirectorType data;
-			
-			if ( FabEnumsData.DirectorTypeMap.TryGetValue(Type, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No DirectorType data associated with Type="+Type+".");
+		public DirectorType GetTypeData() {
+			return FabEnumsData.GetDirectorType(Type);
 		}
 		
 
@@ -165,14 +153,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static DirectorAction data that is associated with this object's PrimaryAction value.
 		/// </summary>
-		public DirectorAction GetPrimaryActiData() {
-			DirectorAction data;
-			
-			if ( FabEnumsData.DirectorActionMap.TryGetValue(PrimaryAction, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No DirectorAction data associated with PrimaryAction="+PrimaryAction+".");
+		public DirectorAction GetPrimaryActionData() {
+			return FabEnumsData.GetDirectorAction(PrimaryAction);
 		}
 		
 
@@ -181,14 +163,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static DirectorAction data that is associated with this object's RelatedAction value.
 		/// </summary>
-		public DirectorAction GetRelatedActiData() {
-			DirectorAction data;
-			
-			if ( FabEnumsData.DirectorActionMap.TryGetValue(RelatedAction, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No DirectorAction data associated with RelatedAction="+RelatedAction+".");
+		public DirectorAction GetRelatedActionData() {
+			return FabEnumsData.GetDirectorAction(RelatedAction);
 		}
 		
 	}
@@ -256,14 +232,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static EventorType data that is associated with this object's Type value.
 		/// </summary>
-		public EventorType GetTyData() {
-			EventorType data;
-			
-			if ( FabEnumsData.EventorTypeMap.TryGetValue(Type, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No EventorType data associated with Type="+Type+".");
+		public EventorType GetTypeData() {
+			return FabEnumsData.GetEventorType(Type);
 		}
 		
 	}
@@ -339,14 +309,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static FactorAssertion data that is associated with this object's AssertionType value.
 		/// </summary>
-		public FactorAssertion GetAssertionTyData() {
-			FactorAssertion data;
-			
-			if ( FabEnumsData.FactorAssertionMap.TryGetValue(AssertionType, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No FactorAssertion data associated with AssertionType="+AssertionType+".");
+		public FactorAssertion GetAssertionTypeData() {
+			return FabEnumsData.GetFactorAssertion(AssertionType);
 		}
 		
 	}
@@ -377,14 +341,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static IdentorType data that is associated with this object's Type value.
 		/// </summary>
-		public IdentorType GetTyData() {
-			IdentorType data;
-			
-			if ( FabEnumsData.IdentorTypeMap.TryGetValue(Type, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No IdentorType data associated with Type="+Type+".");
+		public IdentorType GetTypeData() {
+			return FabEnumsData.GetIdentorType(Type);
 		}
 		
 	}
@@ -452,14 +410,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static LocatorType data that is associated with this object's Type value.
 		/// </summary>
-		public LocatorType GetTyData() {
-			LocatorType data;
-			
-			if ( FabEnumsData.LocatorTypeMap.TryGetValue(Type, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No LocatorType data associated with Type="+Type+".");
+		public LocatorType GetTypeData() {
+			return FabEnumsData.GetLocatorType(Type);
 		}
 		
 	}
@@ -495,14 +447,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static MemberType data that is associated with this object's Type value.
 		/// </summary>
-		public MemberType GetTyData() {
-			MemberType data;
-			
-			if ( FabEnumsData.MemberTypeMap.TryGetValue(Type, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No MemberType data associated with Type="+Type+".");
+		public MemberType GetTypeData() {
+			return FabEnumsData.GetMemberType(Type);
 		}
 		
 	}
@@ -582,14 +528,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static VectorType data that is associated with this object's Type value.
 		/// </summary>
-		public VectorType GetTyData() {
-			VectorType data;
-			
-			if ( FabEnumsData.VectorTypeMap.TryGetValue(Type, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No VectorType data associated with Type="+Type+".");
+		public VectorType GetTypeData() {
+			return FabEnumsData.GetVectorType(Type);
 		}
 		
 
@@ -598,14 +538,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static VectorUnit data that is associated with this object's Unit value.
 		/// </summary>
-		public VectorUnit GetUnData() {
-			VectorUnit data;
-			
-			if ( FabEnumsData.VectorUnitMap.TryGetValue(Unit, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No VectorUnit data associated with Unit="+Unit+".");
+		public VectorUnit GetUnitData() {
+			return FabEnumsData.GetVectorUnit(Unit);
 		}
 		
 
@@ -614,14 +548,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static VectorUnitPrefix data that is associated with this object's UnitPrefix value.
 		/// </summary>
-		public VectorUnitPrefix GetUnitPrefData() {
-			VectorUnitPrefix data;
-			
-			if ( FabEnumsData.VectorUnitPrefixMap.TryGetValue(UnitPrefix, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No VectorUnitPrefix data associated with UnitPrefix="+UnitPrefix+".");
+		public VectorUnitPrefix GetUnitPrefixData() {
+			return FabEnumsData.GetVectorUnitPrefix(UnitPrefix);
 		}
 		
 	}
@@ -759,14 +687,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static DescriptorType data that is associated with this object's Type value.
 		/// </summary>
-		public DescriptorType GetTyData() {
-			DescriptorType data;
-			
-			if ( FabEnumsData.DescriptorTypeMap.TryGetValue(Type, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No DescriptorType data associated with Type="+Type+".");
+		public DescriptorType GetTypeData() {
+			return FabEnumsData.GetDescriptorType(Type);
 		}
 		
 	}
@@ -804,14 +726,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static DirectorType data that is associated with this object's Type value.
 		/// </summary>
-		public DirectorType GetTyData() {
-			DirectorType data;
-			
-			if ( FabEnumsData.DirectorTypeMap.TryGetValue(Type, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No DirectorType data associated with Type="+Type+".");
+		public DirectorType GetTypeData() {
+			return FabEnumsData.GetDirectorType(Type);
 		}
 		
 
@@ -820,14 +736,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static DirectorAction data that is associated with this object's PrimaryAction value.
 		/// </summary>
-		public DirectorAction GetPrimaryActiData() {
-			DirectorAction data;
-			
-			if ( FabEnumsData.DirectorActionMap.TryGetValue(PrimaryAction, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No DirectorAction data associated with PrimaryAction="+PrimaryAction+".");
+		public DirectorAction GetPrimaryActionData() {
+			return FabEnumsData.GetDirectorAction(PrimaryAction);
 		}
 		
 
@@ -836,14 +746,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static DirectorAction data that is associated with this object's RelatedAction value.
 		/// </summary>
-		public DirectorAction GetRelatedActiData() {
-			DirectorAction data;
-			
-			if ( FabEnumsData.DirectorActionMap.TryGetValue(RelatedAction, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No DirectorAction data associated with RelatedAction="+RelatedAction+".");
+		public DirectorAction GetRelatedActionData() {
+			return FabEnumsData.GetDirectorAction(RelatedAction);
 		}
 		
 	}
@@ -941,14 +845,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static EventorType data that is associated with this object's Type value.
 		/// </summary>
-		public EventorType GetTyData() {
-			EventorType data;
-			
-			if ( FabEnumsData.EventorTypeMap.TryGetValue(Type, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No EventorType data associated with Type="+Type+".");
+		public EventorType GetTypeData() {
+			return FabEnumsData.GetEventorType(Type);
 		}
 		
 	}
@@ -1017,14 +915,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static FactorAssertion data that is associated with this object's AssertionType value.
 		/// </summary>
-		public FactorAssertion GetAssertionTyData() {
-			FactorAssertion data;
-			
-			if ( FabEnumsData.FactorAssertionMap.TryGetValue(AssertionType, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No FactorAssertion data associated with AssertionType="+AssertionType+".");
+		public FactorAssertion GetAssertionTypeData() {
+			return FabEnumsData.GetFactorAssertion(AssertionType);
 		}
 		
 	}
@@ -1084,14 +976,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static IdentorType data that is associated with this object's Type value.
 		/// </summary>
-		public IdentorType GetTyData() {
-			IdentorType data;
-			
-			if ( FabEnumsData.IdentorTypeMap.TryGetValue(Type, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No IdentorType data associated with Type="+Type+".");
+		public IdentorType GetTypeData() {
+			return FabEnumsData.GetIdentorType(Type);
 		}
 		
 	}
@@ -1188,14 +1074,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static LocatorType data that is associated with this object's Type value.
 		/// </summary>
-		public LocatorType GetTyData() {
-			LocatorType data;
-			
-			if ( FabEnumsData.LocatorTypeMap.TryGetValue(Type, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No LocatorType data associated with Type="+Type+".");
+		public LocatorType GetTypeData() {
+			return FabEnumsData.GetLocatorType(Type);
 		}
 		
 	}
@@ -1222,14 +1102,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static MemberType data that is associated with this object's Type value.
 		/// </summary>
-		public MemberType GetTyData() {
-			MemberType data;
-			
-			if ( FabEnumsData.MemberTypeMap.TryGetValue(Type, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No MemberType data associated with Type="+Type+".");
+		public MemberType GetTypeData() {
+			return FabEnumsData.GetMemberType(Type);
 		}
 		
 	}
@@ -2172,14 +2046,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static VectorType data that is associated with this object's Type value.
 		/// </summary>
-		public VectorType GetTyData() {
-			VectorType data;
-			
-			if ( FabEnumsData.VectorTypeMap.TryGetValue(Type, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No VectorType data associated with Type="+Type+".");
+		public VectorType GetTypeData() {
+			return FabEnumsData.GetVectorType(Type);
 		}
 		
 
@@ -2188,14 +2056,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static VectorUnit data that is associated with this object's Unit value.
 		/// </summary>
-		public VectorUnit GetUnData() {
-			VectorUnit data;
-			
-			if ( FabEnumsData.VectorUnitMap.TryGetValue(Unit, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No VectorUnit data associated with Unit="+Unit+".");
+		public VectorUnit GetUnitData() {
+			return FabEnumsData.GetVectorUnit(Unit);
 		}
 		
 
@@ -2204,14 +2066,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static VectorUnitPrefix data that is associated with this object's UnitPrefix value.
 		/// </summary>
-		public VectorUnitPrefix GetUnitPrefData() {
-			VectorUnitPrefix data;
-			
-			if ( FabEnumsData.VectorUnitPrefixMap.TryGetValue(UnitPrefix, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No VectorUnitPrefix data associated with UnitPrefix="+UnitPrefix+".");
+		public VectorUnitPrefix GetUnitPrefixData() {
+			return FabEnumsData.GetVectorUnitPrefix(UnitPrefix);
 		}
 		
 	}
@@ -2247,14 +2103,8 @@ namespace Fabric.Clients.Cs.Api {
 		/// <summary>
 		///   Get the static VertexType data that is associated with this object's VertexType value.
 		/// </summary>
-		public VertexType GetVertexTyData() {
-			VertexType data;
-			
-			if ( FabEnumsData.VertexTypeMap.TryGetValue(VertexType, out data) ) {
-				return data;
-			}
-
-			throw new Exception("No VertexType data associated with VertexType="+VertexType+".");
+		public VertexType GetVertexTypeData() {
+			return FabEnumsData.GetVertexType(VertexType);
 		}
 		
 	}

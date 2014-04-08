@@ -75,13 +75,13 @@ namespace Fabric.Clients.Cs.Mvc.Controllers {
 		/*--------------------------------------------------------------------------------------------*/
 		public ActionResult DescriptorTypes(byte? id) {
 			if ( id == null ) {
-				return View("ItemList", FabEnumsData.DescriptorTypeMap.Values.ToList<object>());
+				return View("ItemList", FabEnumsData.GetDescriptorTypeItems().ToList<object>());
 			}
 
 			DescriptorType model;
 
 			try {
-				model = FabEnumsData.DescriptorTypeMap[(byte)id];
+				model = FabEnumsData.GetDescriptorType((byte)id);
 			}
 			catch ( FabricErrorException e ) {
 				return View("Error", e);

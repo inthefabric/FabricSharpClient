@@ -1,1169 +1,1168 @@
 ﻿// GENERATED CODE
 // Changes made to this source file will be overwritten
 
+using System;
 using System.Collections.Generic;
 
 namespace Fabric.Clients.Cs.Api {
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public enum DescriptorTypeId : byte {
+			
+		/// <summary>
+		///   Is Related To: The primary Artifact is related to the related Artifact in some way. This is the default (and least meaningful) DescriptorType.
+		/// </summary>
+		IsRelatedTo = 1,
+			
+		/// <summary>
+		///   Is (A/An): The primary Artifact is a type of, a subclass of, a subset of, a subordinate of, or in the category defined by the related Artifact.
+		/// </summary>
+		IsA = 2,
+			
+		/// <summary>
+		///   Is An Instance Of: The primary Artifact is an instance, case, example, or representation of the related Artifact.
+		/// </summary>
+		IsAnInstanceOf = 3,
+			
+		/// <summary>
+		///   Has (A/An): The primary Artifact has, as a part, piece, feature, attribute, or component, the related Artifact.
+		/// </summary>
+		HasA = 4,
+			
+		/// <summary>
+		///   Is Like: The primary Artifact is like or similar to the related Artifact.
+		/// </summary>
+		IsLike = 5,
+			
+		/// <summary>
+		///   Is Not Like: The primary Artifact is not like or not similar to the related Artifact
+		/// </summary>
+		IsNotLike = 6,
+			
+		/// <summary>
+		///   Refers To: The primary Artifact refers to, mentions, discusses, links to, or references the related Artifact.
+		/// </summary>
+		RefersTo = 7,
+			
+		/// <summary>
+		///   Is Created By: The primary Artifact is created, built, designed, invented, formed, or performed by the related Artifact.
+		/// </summary>
+		IsCreatedBy = 8,
+			
+		/// <summary>
+		///   Is Interested In: The primary Artifact is interested in, fond of, attracted to, enjoys, prefers, or desires the related Artifact.
+		/// </summary>
+		IsInterestedIn = 9,
+			
+		/// <summary>
+		///   Receives: The primary Artifact receives, gets, obtains, or is awarded the related Artifact.
+		/// </summary>
+		Receives = 10,
+			
+		/// <summary>
+		///   Consumes: The primary Artifact consumes, eats, is powered by, uses up, depletes, or destroys the related Artifact.
+		/// </summary>
+		Consumes = 11,
+			
+		/// <summary>
+		///   Produces: The primary Artifact produces, has a byproduct of, creates, or generates the related Artifact. This is similar to 'Is Created By', but in the opposite direction and meant to be less specific.
+		/// </summary>
+		Produces = 12,
+			
+		/// <summary>
+		///   Participates In: The primary Artifact participates in, competes in, attends, is a member of, or is involved in the related Artifact.
+		/// </summary>
+		ParticipatesIn = 13,
+			
+		/// <summary>
+		///   Is Found In: The primary Artifact is found in, located at, lives in, or is contained by the related Artifact.
+		/// </summary>
+		IsFoundIn = 14,
+			
+		/// <summary>
+		///   Belongs To: The primary Artifact belongs to, is controlled by, or is owned by the related Artifact.
+		/// </summary>
+		BelongsTo = 15,
+			
+		/// <summary>
+		///   Requires: The primary Artifact requires, implies, needs, or demands the related Artifact.
+		/// </summary>
+		Requires = 16,
+			
+		/// <summary>
+		///   Interacts With: The primary Artifact interacts, associates, combines, meets, or communicates with the related Artifact.
+		/// </summary>
+		InteractsWith = 17,
+			
+		/// <summary>
+		///   Looks Like: The primary Artifact looks like (has the appearance of) the related Artifact.
+		/// </summary>
+		LooksLike = 18,
+			
+		/// <summary>
+		///   Smells Like: The primary Artifact smells like (has the odor, aroma, or fragrance of) the related Artifact.
+		/// </summary>
+		SmellsLike = 19,
+			
+		/// <summary>
+		///   Tastes Like: The primary Artifact tastes like (has the flavor of) the related Artifact.
+		/// </summary>
+		TastesLike = 20,
+			
+		/// <summary>
+		///   Sounds Like: The primary Artifact sounds like (has the aural characteristics of) the related Artifact.
+		/// </summary>
+		SoundsLike = 21,
+			
+		/// <summary>
+		///   Feels Like: The primary Artifact feels like (has the tactile characteristics of) the related Artifact.
+		/// </summary>
+		FeelsLike = 22,
+			
+		/// <summary>
+		///   Emotes Like: The primary Artifact emotes like (causes the emotion of) the related Artifact.
+		/// </summary>
+		EmotesLike = 23,
+			
+		/// <summary>
+		///   Uses: The primary Artifact uses, utilizes, controls, employs, or manipulates the related Artifact.
+		/// </summary>
+		Uses = 24,
+	}
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public enum DirectorActionId : byte {
+			
+		/// <summary>
+		///   Read: Read the specified Artifact.
+		/// </summary>
+		Read = 1,
+			
+		/// <summary>
+		///   Listen: Listen to the specified Artifact.
+		/// </summary>
+		Listen = 2,
+			
+		/// <summary>
+		///   View: View (or watch, observe) the specified Artifact.
+		/// </summary>
+		View = 3,
+			
+		/// <summary>
+		///   Consume: Consume (or use, eat, drink, taste, smell) the specified Artifact.
+		/// </summary>
+		Consume = 4,
+			
+		/// <summary>
+		///   Perform: Perform (or act, do, carry out, speak, sing, say, work, write) the specified Artifact.
+		/// </summary>
+		Perform = 5,
+			
+		/// <summary>
+		///   Produce: Produce (or create, build, make, invent) the specified Artifact.
+		/// </summary>
+		Produce = 6,
+			
+		/// <summary>
+		///   Destroy: Destroy (or remove, delete, kill, erase) the specified Artifact.
+		/// </summary>
+		Destroy = 7,
+			
+		/// <summary>
+		///   Modify: Modify (or change) the specified Artifact.
+		/// </summary>
+		Modify = 8,
+			
+		/// <summary>
+		///   Obtain: Obtain (or get, purchase, acquire, steal) the specified Artifact.
+		/// </summary>
+		Obtain = 9,
+			
+		/// <summary>
+		///   Locate: Locate (or find) the specified Artifact.
+		/// </summary>
+		Locate = 10,
+			
+		/// <summary>
+		///   Travel: Travel (or visit, walk, run, fly, ride, drive) the specified Artifact.
+		/// </summary>
+		Travel = 11,
+			
+		/// <summary>
+		///   Become: Become the specified Artifact.
+		/// </summary>
+		Become = 12,
+			
+		/// <summary>
+		///   Explain: Explain (or describe) the specified Artifact.
+		/// </summary>
+		Explain = 13,
+			
+		/// <summary>
+		///   Give: Give the specified Artifact.
+		/// </summary>
+		Give = 14,
+			
+		/// <summary>
+		///   Learn: Learn (or study, understand) the specified Artifact.
+		/// </summary>
+		Learn = 15,
+			
+		/// <summary>
+		///   Start: Start (or begin) the specified Artifact.
+		/// </summary>
+		Start = 16,
+			
+		/// <summary>
+		///   Stop: Stop (or end) the specified Artifact.
+		/// </summary>
+		Stop = 17,
+	}
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public enum DirectorTypeId : byte {
+			
+		/// <summary>
+		///   Hyperlink: There is a hyperlink from the primary Artifact to the related Artifact.
+		/// </summary>
+		Hyperlink = 1,
+			
+		/// <summary>
+		///   Defined Path: There is an expected, pre-defined path from the primary Artifact to the related Artifact.
+		/// </summary>
+		DefinedPath = 2,
+			
+		/// <summary>
+		///   Suggested Path: There is a suggested, recommented path from the primary Artifact to the related Artifact.
+		/// </summary>
+		SuggestedPath = 3,
+			
+		/// <summary>
+		///   Avoid Path: There is an unsuitable, non-recommented path from the primary Artifact to the related Artifact.
+		/// </summary>
+		AvoidPath = 4,
+			
+		/// <summary>
+		///   Causality: The primary Artifact causes an effect/action to occur upon the related Artifact.
+		/// </summary>
+		Causality = 5,
+	}
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public enum EventorTypeId : byte {
+			
+		/// <summary>
+		///   Start: This Factor starts, begins, or commences on the specified date.
+		/// </summary>
+		Start = 1,
+			
+		/// <summary>
+		///   End: This Factor ends, stops, or terminates on the specified date.
+		/// </summary>
+		End = 2,
+			
+		/// <summary>
+		///   Pause: This Factor pauses, suspendeds, or waits on the specified date.
+		/// </summary>
+		Pause = 3,
+			
+		/// <summary>
+		///   Unpause: This Factor unpauses or resumes on the specified date.
+		/// </summary>
+		Unpause = 4,
+			
+		/// <summary>
+		///   Continue: This Factor continues in its current state on the specified date.
+		/// </summary>
+		Continue = 5,
+			
+		/// <summary>
+		///   Occur: This Factor occurrs or happens on the specified date.
+		/// </summary>
+		Occur = 6,
+			
+		/// <summary>
+		///   Expected: This Factor is/was expected, anticipated, or due on the specified date.
+		/// </summary>
+		Expected = 7,
+	}
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public enum FactorAssertionId : byte {
+			
+		/// <summary>
+		///   Undefined: The Factor's assertion type is not known or not defined.
+		/// </summary>
+		Undefined = 1,
+			
+		/// <summary>
+		///   Fact: The Factor represents a factual statement.
+		/// </summary>
+		Fact = 2,
+			
+		/// <summary>
+		///   Opinion: The Factor represents an opinion.
+		/// </summary>
+		Opinion = 3,
+			
+		/// <summary>
+		///   Guess: The Factor represents a guess.
+		/// </summary>
+		Guess = 4,
+	}
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public enum IdentorTypeId : byte {
+			
+		/// <summary>
+		///   Text: A value (a string, typically a name).
+		/// </summary>
+		Text = 1,
+			
+		/// <summary>
+		///   Key: A value (numeric or otherwise) representing a unique key or ID.
+		/// </summary>
+		Key = 2,
+	}
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public enum LocatorTypeId : byte {
+			
+		/// <summary>
+		///   Earth Coordinate: A coordinate position on Earth.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).
+		/// </summary>
+		EarthCoord = 1,
+			
+		/// <summary>
+		///   Moon Coordinate: A coordinate position on Earth's Moon.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).
+		/// </summary>
+		MoonCoord = 2,
+			
+		/// <summary>
+		///   Mars Coordinate: A coordinate position on Mars.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).
+		/// </summary>
+		MarsCoord = 3,
+			
+		/// <summary>
+		///   Relative Position 1D: A one-dimensional position, using X=Time. A position is relative to the Artifact's dimensions. For example, X=0.25 represents a position (starting from the origin) that is 25% of the distance to the maximum X dimension.
+		/// </summary>
+		RelPos1D = 4,
+			
+		/// <summary>
+		///   Relative Position 2D: A two-dimensional position, using X=Width and Y=Height. A position is relative to the Artifact's dimensions. For example, X=0.25 represents a position (starting from the origin) that is 25% of the distance to the maximum X dimension.
+		/// </summary>
+		RelPos2D = 5,
+			
+		/// <summary>
+		///   Relative Position 3D: A three-dimensional position, using X, Y, and Z axes. A position is relative to the Artifact's dimensions. For example, X=0.25 represents a position (starting from the origin) that is 25% of the distance to the maximum X dimension.
+		/// </summary>
+		RelPos3D = 6,
+	}
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public enum MemberTypeId : byte {
+			
+		/// <summary>
+		///   None: The User is not associated with this App.
+		/// </summary>
+		None = 1,
+			
+		/// <summary>
+		///   Request: The user would like to become a member of this App.
+		/// </summary>
+		Request = 2,
+			
+		/// <summary>
+		///   Invite: The User has been invited to become a member of this App.
+		/// </summary>
+		Invite = 3,
+			
+		/// <summary>
+		///   Member: The User is a member of this App.
+		/// </summary>
+		Member = 4,
+			
+		/// <summary>
+		///   Staff: The User is a staff member of this App.
+		/// </summary>
+		Staff = 5,
+			
+		/// <summary>
+		///   Admin: The User is an administrator of this App.
+		/// </summary>
+		Admin = 6,
+			
+		/// <summary>
+		///   Owner: The User owns this App.
+		/// </summary>
+		Owner = 7,
+			
+		/// <summary>
+		///   Data Provider: The User has a special membership that allows it to interact with Fabric on behalf of the App.
+		/// </summary>
+		DataProv = 8,
+	}
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public enum VectorRangeId : byte {
+			
+		/// <summary>
+		///   Full Numeric
+		/// </summary>
+		FullNum = 1,
+			
+		/// <summary>
+		///   Positive Numeric
+		/// </summary>
+		PosNum = 2,
+			
+		/// <summary>
+		///   Negative Numeric
+		/// </summary>
+		NegNum = 3,
+			
+		/// <summary>
+		///   Full Agreement
+		/// </summary>
+		FullAgree = 4,
+			
+		/// <summary>
+		///   Positive Agreement
+		/// </summary>
+		PosAgree = 5,
+			
+		/// <summary>
+		///   Full Favorability
+		/// </summary>
+		FullFavor = 6,
+			
+		/// <summary>
+		///   Positive Favorability
+		/// </summary>
+		PosFavor = 7,
+	}
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public enum VectorRangeLevelId : byte {
+			
+		/// <summary>
+		///   Zero
+		/// </summary>
+		Zero0 = 1,
+			
+		/// <summary>
+		///   Zero
+		/// </summary>
+		Zero05 = 2,
+			
+		/// <summary>
+		///   Zero
+		/// </summary>
+		Zero1 = 3,
+			
+		/// <summary>
+		///   Minimum
+		/// </summary>
+		Min0 = 4,
+			
+		/// <summary>
+		///   Maximum
+		/// </summary>
+		Max1 = 5,
+			
+		/// <summary>
+		///   Completely Disagree
+		/// </summary>
+		CompDisagree = 6,
+			
+		/// <summary>
+		///   Mostly Disagree
+		/// </summary>
+		MostDisagree = 7,
+			
+		/// <summary>
+		///   Somewhat Disagree
+		/// </summary>
+		SomeDisagree = 8,
+			
+		/// <summary>
+		///   No Opinion
+		/// </summary>
+		NoOpinion05 = 9,
+			
+		/// <summary>
+		///   Somewhat Agree
+		/// </summary>
+		SomeAgree = 10,
+			
+		/// <summary>
+		///   Mostly Agree
+		/// </summary>
+		MostAgree = 11,
+			
+		/// <summary>
+		///   Completely Agree
+		/// </summary>
+		CompAgree = 12,
+			
+		/// <summary>
+		///   No Opinion
+		/// </summary>
+		NoOpinion0 = 13,
+			
+		/// <summary>
+		///   Somewhat Agree
+		/// </summary>
+		SomeAgreePos = 14,
+			
+		/// <summary>
+		///   Mostly Agree
+		/// </summary>
+		MostAgreePos = 15,
+			
+		/// <summary>
+		///   Completely Agree
+		/// </summary>
+		CompAgreePos = 16,
+			
+		/// <summary>
+		///   Completely Unfavorable
+		/// </summary>
+		CompUnfavor = 17,
+			
+		/// <summary>
+		///   Mostly Unfavorable
+		/// </summary>
+		MostUnfavor = 18,
+			
+		/// <summary>
+		///   Somewhat Unfavorable
+		/// </summary>
+		SomeUnfavor = 19,
+			
+		/// <summary>
+		///   Somewhat Favorable
+		/// </summary>
+		SomeFavor = 20,
+			
+		/// <summary>
+		///   Mostly Favorable
+		/// </summary>
+		MostFavor = 21,
+			
+		/// <summary>
+		///   Completely Favorable
+		/// </summary>
+		CompFavor = 22,
+			
+		/// <summary>
+		///   Somewhat Favorable
+		/// </summary>
+		SomeFavorPos = 23,
+			
+		/// <summary>
+		///   Mostly Favorable
+		/// </summary>
+		MostFavorPos = 24,
+			
+		/// <summary>
+		///   Completely Favorable
+		/// </summary>
+		CompFavorPos = 25,
+	}
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public enum VectorTypeId : byte {
+			
+		/// <summary>
+		///   Full Bounds
+		/// </summary>
+		FullLong = 1,
+			
+		/// <summary>
+		///   Positive Bounds
+		/// </summary>
+		PosLong = 2,
+			
+		/// <summary>
+		///   Negative Bounds
+		/// </summary>
+		NegLong = 3,
+			
+		/// <summary>
+		///   Full Percentage
+		/// </summary>
+		FullPerc = 4,
+			
+		/// <summary>
+		///   Standard Percentage
+		/// </summary>
+		StdPerc = 5,
+			
+		/// <summary>
+		///   Opposable Percentage
+		/// </summary>
+		OppPerc = 6,
+			
+		/// <summary>
+		///   Standard Agreement
+		/// </summary>
+		StdAgree = 7,
+			
+		/// <summary>
+		///   Opposable Agreement
+		/// </summary>
+		OppAgree = 8,
+			
+		/// <summary>
+		///   Standard Favorability
+		/// </summary>
+		StdFavor = 9,
+			
+		/// <summary>
+		///   Opposable Favorability
+		/// </summary>
+		OppFavor = 10,
+	}
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public enum VectorUnitId : byte {
+			
+		/// <summary>
+		///   None
+		/// </summary>
+		None = 1,
+			
+		/// <summary>
+		///   Unit
+		/// </summary>
+		Unit = 2,
+			
+		/// <summary>
+		///   Metre: m
+		/// </summary>
+		Metre = 3,
+			
+		/// <summary>
+		///   Gram: g
+		/// </summary>
+		Gram = 4,
+			
+		/// <summary>
+		///   Second: s
+		/// </summary>
+		Second = 5,
+			
+		/// <summary>
+		///   Ampere: A
+		/// </summary>
+		Ampere = 6,
+			
+		/// <summary>
+		///   Celsius: C
+		/// </summary>
+		Celsius = 7,
+			
+		/// <summary>
+		///   Candela: cd
+		/// </summary>
+		Candela = 8,
+			
+		/// <summary>
+		///   Mole: mol
+		/// </summary>
+		Mole = 9,
+			
+		/// <summary>
+		///   Bit: b
+		/// </summary>
+		Bit = 10,
+			
+		/// <summary>
+		///   Byte: B
+		/// </summary>
+		Byte = 11,
+			
+		/// <summary>
+		///   Hertz: Hz
+		/// </summary>
+		Hertz = 12,
+			
+		/// <summary>
+		///   Radian: rad
+		/// </summary>
+		Radian = 13,
+			
+		/// <summary>
+		///   Newton: N
+		/// </summary>
+		Newton = 14,
+			
+		/// <summary>
+		///   Pascal: Pa
+		/// </summary>
+		Pascal = 15,
+			
+		/// <summary>
+		///   Joule: J
+		/// </summary>
+		Joule = 16,
+			
+		/// <summary>
+		///   Watt: W
+		/// </summary>
+		Watt = 17,
+			
+		/// <summary>
+		///   Volt: V
+		/// </summary>
+		Volt = 18,
+			
+		/// <summary>
+		///   Ohm: Ω
+		/// </summary>
+		Ohm = 19,
+			
+		/// <summary>
+		///   Area: m^2
+		/// </summary>
+		Area = 20,
+			
+		/// <summary>
+		///   Volume: m^3
+		/// </summary>
+		Volume = 21,
+			
+		/// <summary>
+		///   Speed: m/s
+		/// </summary>
+		Speed = 22,
+			
+		/// <summary>
+		///   Acceleration: m^3/s
+		/// </summary>
+		Acceleration = 23,
+			
+		/// <summary>
+		///   Point: pt
+		/// </summary>
+		Point = 24,
+			
+		/// <summary>
+		///   Item: item
+		/// </summary>
+		Item = 25,
+			
+		/// <summary>
+		///   Person: person
+		/// </summary>
+		Person = 26,
+			
+		/// <summary>
+		///   Percent: %
+		/// </summary>
+		Percent = 27,
+			
+		/// <summary>
+		///   Index: index
+		/// </summary>
+		Index = 28,
+			
+		/// <summary>
+		///   Pixel: pixel
+		/// </summary>
+		Pixel = 29,
+	}
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public enum VectorUnitDerivedId : byte {
+			
+		/// <summary>
+		///   
+		/// </summary>
+		HertzSec = 1,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		NewtonGram = 2,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		NewtonMetre = 3,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		NewtonSec = 4,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		PascalGram = 5,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		PascalMetre = 6,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		PascalSec = 7,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		JouleGram = 8,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		JouleMetre = 9,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		JouleSec = 10,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		WattGram = 11,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		WattMetre = 12,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		WattSec = 13,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		VoltGram = 14,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		VoltMetre = 15,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		VoltSec = 16,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		VoltAmp = 17,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		OhmGram = 18,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		OhmMetre = 19,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		OhmSec = 20,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		OhmAmp = 21,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		AreaMetre = 22,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		VolumeMetre = 23,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		SpeedMetre = 24,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		SpeedSec = 25,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		AccelMetre = 26,
+			
+		/// <summary>
+		///   
+		/// </summary>
+		AccelSec = 27,
+	}
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public enum VectorUnitPrefixId : byte {
+			
+		/// <summary>
+		///   Base
+		/// </summary>
+		Base = 1,
+			
+		/// <summary>
+		///   Kilo: k
+		/// </summary>
+		Kilo = 2,
+			
+		/// <summary>
+		///   Mega: M
+		/// </summary>
+		Mega = 3,
+			
+		/// <summary>
+		///   Giga: G
+		/// </summary>
+		Giga = 4,
+			
+		/// <summary>
+		///   Tera: T
+		/// </summary>
+		Tera = 5,
+			
+		/// <summary>
+		///   Peta: P
+		/// </summary>
+		Peta = 6,
+			
+		/// <summary>
+		///   Exa: E
+		/// </summary>
+		Exa = 7,
+			
+		/// <summary>
+		///   Milli: m
+		/// </summary>
+		Milli = 8,
+			
+		/// <summary>
+		///   Micro: μ
+		/// </summary>
+		Micro = 9,
+			
+		/// <summary>
+		///   Nano: n
+		/// </summary>
+		Nano = 10,
+			
+		/// <summary>
+		///   Pico: p
+		/// </summary>
+		Pico = 11,
+			
+		/// <summary>
+		///   Femto: f
+		/// </summary>
+		Femto = 12,
+			
+		/// <summary>
+		///   Atto: a
+		/// </summary>
+		Atto = 13,
+			
+		/// <summary>
+		///   Kibi: Ki
+		/// </summary>
+		Kibi = 14,
+			
+		/// <summary>
+		///   Mebi: Mi
+		/// </summary>
+		Mebi = 15,
+			
+		/// <summary>
+		///   Gibi: Gi
+		/// </summary>
+		Gibi = 16,
+			
+		/// <summary>
+		///   Tebi: Ti
+		/// </summary>
+		Tebi = 17,
+			
+		/// <summary>
+		///   Pebi: Pi
+		/// </summary>
+		Pebi = 18,
+			
+		/// <summary>
+		///   Exbi: Ei
+		/// </summary>
+		Exbi = 19,
+	}
+
+
+	/*================================================================================================*/
+	/// <summary/>
+	public enum VertexTypeId : byte {
+			
+		/// <summary>
+		///   Vertex
+		/// </summary>
+		Vertex = 1,
+			
+		/// <summary>
+		///   App
+		/// </summary>
+		App = 2,
+			
+		/// <summary>
+		///   Class
+		/// </summary>
+		Class = 3,
+			
+		/// <summary>
+		///   Instance
+		/// </summary>
+		Instance = 4,
+			
+		/// <summary>
+		///   Url
+		/// </summary>
+		Url = 5,
+			
+		/// <summary>
+		///   User
+		/// </summary>
+		User = 6,
+			
+		/// <summary>
+		///   Member
+		/// </summary>
+		Member = 7,
+			
+		/// <summary>
+		///   Artifact
+		/// </summary>
+		Artifact = 8,
+			
+		/// <summary>
+		///   Factor
+		/// </summary>
+		Factor = 9,
+			
+		/// <summary>
+		///   Email
+		/// </summary>
+		Email = 10,
+			
+		/// <summary>
+		///   OauthAccess
+		/// </summary>
+		OauthAccess = 11,
+	}
+
 
 	/*================================================================================================*/
 	/// <summary/>
 	public static class FabEnumsData {
 
-		/// <summary/>
-		public static IDictionary<byte, DescriptorType> DescriptorTypeMap;
-	
-		/// <summary/>
-		public static IDictionary<byte, DirectorAction> DirectorActionMap;
-	
-		/// <summary/>
-		public static IDictionary<byte, DirectorType> DirectorTypeMap;
-	
-		/// <summary/>
-		public static IDictionary<byte, EventorType> EventorTypeMap;
-	
-		/// <summary/>
-		public static IDictionary<byte, FactorAssertion> FactorAssertionMap;
-	
-		/// <summary/>
-		public static IDictionary<byte, IdentorType> IdentorTypeMap;
-	
-		/// <summary/>
-		public static IDictionary<byte, LocatorType> LocatorTypeMap;
-	
-		/// <summary/>
-		public static IDictionary<byte, MemberType> MemberTypeMap;
-	
-		/// <summary/>
-		public static IDictionary<byte, VectorRange> VectorRangeMap;
-	
-		/// <summary/>
-		public static IDictionary<byte, VectorRangeLevel> VectorRangeLevelMap;
-	
-		/// <summary/>
-		public static IDictionary<byte, VectorType> VectorTypeMap;
-	
-		/// <summary/>
-		public static IDictionary<byte, VectorUnit> VectorUnitMap;
-	
-		/// <summary/>
-		public static IDictionary<byte, VectorUnitDerived> VectorUnitDerivedMap;
-	
-		/// <summary/>
-		public static IDictionary<byte, VectorUnitPrefix> VectorUnitPrefixMap;
-	
-		/// <summary/>
-		public static IDictionary<byte, VertexType> VertexTypeMap;
-	
-		private static bool IsInit = Init();
+		private static IDictionary<byte, DescriptorType> DescriptorTypeMap;
+		private static IDictionary<byte, DirectorAction> DirectorActionMap;
+		private static IDictionary<byte, DirectorType> DirectorTypeMap;
+		private static IDictionary<byte, EventorType> EventorTypeMap;
+		private static IDictionary<byte, FactorAssertion> FactorAssertionMap;
+		private static IDictionary<byte, IdentorType> IdentorTypeMap;
+		private static IDictionary<byte, LocatorType> LocatorTypeMap;
+		private static IDictionary<byte, MemberType> MemberTypeMap;
+		private static IDictionary<byte, VectorRange> VectorRangeMap;
+		private static IDictionary<byte, VectorRangeLevel> VectorRangeLevelMap;
+		private static IDictionary<byte, VectorType> VectorTypeMap;
+		private static IDictionary<byte, VectorUnit> VectorUnitMap;
+		private static IDictionary<byte, VectorUnitDerived> VectorUnitDerivedMap;
+		private static IDictionary<byte, VectorUnitPrefix> VectorUnitPrefixMap;
+		private static IDictionary<byte, VertexType> VertexTypeMap;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum DescriptorTypeId {
+		private static T TryGet<T>(IDictionary<byte, T> pMap, string pName, byte pId) {
+			T data;
 			
-			/// <summary>
-			///   Is Related To: The primary Artifact is related to the related Artifact in some way. This is the default (and least meaningful) DescriptorType.
-			/// </summary>
-			IsRelatedTo = 1,
-			
-			/// <summary>
-			///   Is (A/An): The primary Artifact is a type of, a subclass of, a subset of, a subordinate of, or in the category defined by the related Artifact.
-			/// </summary>
-			IsA = 2,
-			
-			/// <summary>
-			///   Is An Instance Of: The primary Artifact is an instance, case, example, or representation of the related Artifact.
-			/// </summary>
-			IsAnInstanceOf = 3,
-			
-			/// <summary>
-			///   Has (A/An): The primary Artifact has, as a part, piece, feature, attribute, or component, the related Artifact.
-			/// </summary>
-			HasA = 4,
-			
-			/// <summary>
-			///   Is Like: The primary Artifact is like or similar to the related Artifact.
-			/// </summary>
-			IsLike = 5,
-			
-			/// <summary>
-			///   Is Not Like: The primary Artifact is not like or not similar to the related Artifact
-			/// </summary>
-			IsNotLike = 6,
-			
-			/// <summary>
-			///   Refers To: The primary Artifact refers to, mentions, discusses, links to, or references the related Artifact.
-			/// </summary>
-			RefersTo = 7,
-			
-			/// <summary>
-			///   Is Created By: The primary Artifact is created, built, designed, invented, formed, or performed by the related Artifact.
-			/// </summary>
-			IsCreatedBy = 8,
-			
-			/// <summary>
-			///   Is Interested In: The primary Artifact is interested in, fond of, attracted to, enjoys, prefers, or desires the related Artifact.
-			/// </summary>
-			IsInterestedIn = 9,
-			
-			/// <summary>
-			///   Receives: The primary Artifact receives, gets, obtains, or is awarded the related Artifact.
-			/// </summary>
-			Receives = 10,
-			
-			/// <summary>
-			///   Consumes: The primary Artifact consumes, eats, is powered by, uses up, depletes, or destroys the related Artifact.
-			/// </summary>
-			Consumes = 11,
-			
-			/// <summary>
-			///   Produces: The primary Artifact produces, has a byproduct of, creates, or generates the related Artifact. This is similar to 'Is Created By', but in the opposite direction and meant to be less specific.
-			/// </summary>
-			Produces = 12,
-			
-			/// <summary>
-			///   Participates In: The primary Artifact participates in, competes in, attends, is a member of, or is involved in the related Artifact.
-			/// </summary>
-			ParticipatesIn = 13,
-			
-			/// <summary>
-			///   Is Found In: The primary Artifact is found in, located at, lives in, or is contained by the related Artifact.
-			/// </summary>
-			IsFoundIn = 14,
-			
-			/// <summary>
-			///   Belongs To: The primary Artifact belongs to, is controlled by, or is owned by the related Artifact.
-			/// </summary>
-			BelongsTo = 15,
-			
-			/// <summary>
-			///   Requires: The primary Artifact requires, implies, needs, or demands the related Artifact.
-			/// </summary>
-			Requires = 16,
-			
-			/// <summary>
-			///   Interacts With: The primary Artifact interacts, associates, combines, meets, or communicates with the related Artifact.
-			/// </summary>
-			InteractsWith = 17,
-			
-			/// <summary>
-			///   Looks Like: The primary Artifact looks like (has the appearance of) the related Artifact.
-			/// </summary>
-			LooksLike = 18,
-			
-			/// <summary>
-			///   Smells Like: The primary Artifact smells like (has the odor, aroma, or fragrance of) the related Artifact.
-			/// </summary>
-			SmellsLike = 19,
-			
-			/// <summary>
-			///   Tastes Like: The primary Artifact tastes like (has the flavor of) the related Artifact.
-			/// </summary>
-			TastesLike = 20,
-			
-			/// <summary>
-			///   Sounds Like: The primary Artifact sounds like (has the aural characteristics of) the related Artifact.
-			/// </summary>
-			SoundsLike = 21,
-			
-			/// <summary>
-			///   Feels Like: The primary Artifact feels like (has the tactile characteristics of) the related Artifact.
-			/// </summary>
-			FeelsLike = 22,
-			
-			/// <summary>
-			///   Emotes Like: The primary Artifact emotes like (causes the emotion of) the related Artifact.
-			/// </summary>
-			EmotesLike = 23,
-			
-			/// <summary>
-			///   Uses: The primary Artifact uses, utilizes, controls, employs, or manipulates the related Artifact.
-			/// </summary>
-			Uses = 24,
+			if ( !pMap.TryGetValue(pId, out data) ) {
+				throw new Exception("There is no "+pName+" data for ID="+pId+".");
+			}
+
+			return data;
 		}
 
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum DirectorActionId {
-			
-			/// <summary>
-			///   Read: Read the specified Artifact.
-			/// </summary>
-			Read = 1,
-			
-			/// <summary>
-			///   Listen: Listen to the specified Artifact.
-			/// </summary>
-			Listen = 2,
-			
-			/// <summary>
-			///   View: View (or watch, observe) the specified Artifact.
-			/// </summary>
-			View = 3,
-			
-			/// <summary>
-			///   Consume: Consume (or use, eat, drink, taste, smell) the specified Artifact.
-			/// </summary>
-			Consume = 4,
-			
-			/// <summary>
-			///   Perform: Perform (or act, do, carry out, speak, sing, say, work, write) the specified Artifact.
-			/// </summary>
-			Perform = 5,
-			
-			/// <summary>
-			///   Produce: Produce (or create, build, make, invent) the specified Artifact.
-			/// </summary>
-			Produce = 6,
-			
-			/// <summary>
-			///   Destroy: Destroy (or remove, delete, kill, erase) the specified Artifact.
-			/// </summary>
-			Destroy = 7,
-			
-			/// <summary>
-			///   Modify: Modify (or change) the specified Artifact.
-			/// </summary>
-			Modify = 8,
-			
-			/// <summary>
-			///   Obtain: Obtain (or get, purchase, acquire, steal) the specified Artifact.
-			/// </summary>
-			Obtain = 9,
-			
-			/// <summary>
-			///   Locate: Locate (or find) the specified Artifact.
-			/// </summary>
-			Locate = 10,
-			
-			/// <summary>
-			///   Travel: Travel (or visit, walk, run, fly, ride, drive) the specified Artifact.
-			/// </summary>
-			Travel = 11,
-			
-			/// <summary>
-			///   Become: Become the specified Artifact.
-			/// </summary>
-			Become = 12,
-			
-			/// <summary>
-			///   Explain: Explain (or describe) the specified Artifact.
-			/// </summary>
-			Explain = 13,
-			
-			/// <summary>
-			///   Give: Give the specified Artifact.
-			/// </summary>
-			Give = 14,
-			
-			/// <summary>
-			///   Learn: Learn (or study, understand) the specified Artifact.
-			/// </summary>
-			Learn = 15,
-			
-			/// <summary>
-			///   Start: Start (or begin) the specified Artifact.
-			/// </summary>
-			Start = 16,
-			
-			/// <summary>
-			///   Stop: Stop (or end) the specified Artifact.
-			/// </summary>
-			Stop = 17,
-		}
 
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum DirectorTypeId {
-			
-			/// <summary>
-			///   Hyperlink: There is a hyperlink from the primary Artifact to the related Artifact.
-			/// </summary>
-			Hyperlink = 1,
-			
-			/// <summary>
-			///   Defined Path: There is an expected, pre-defined path from the primary Artifact to the related Artifact.
-			/// </summary>
-			DefinedPath = 2,
-			
-			/// <summary>
-			///   Suggested Path: There is a suggested, recommented path from the primary Artifact to the related Artifact.
-			/// </summary>
-			SuggestedPath = 3,
-			
-			/// <summary>
-			///   Avoid Path: There is an unsuitable, non-recommented path from the primary Artifact to the related Artifact.
-			/// </summary>
-			AvoidPath = 4,
-			
-			/// <summary>
-			///   Causality: The primary Artifact causes an effect/action to occur upon the related Artifact.
-			/// </summary>
-			Causality = 5,
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum EventorTypeId {
-			
-			/// <summary>
-			///   Start: This Factor starts, begins, or commences on the specified date.
-			/// </summary>
-			Start = 1,
-			
-			/// <summary>
-			///   End: This Factor ends, stops, or terminates on the specified date.
-			/// </summary>
-			End = 2,
-			
-			/// <summary>
-			///   Pause: This Factor pauses, suspendeds, or waits on the specified date.
-			/// </summary>
-			Pause = 3,
-			
-			/// <summary>
-			///   Unpause: This Factor unpauses or resumes on the specified date.
-			/// </summary>
-			Unpause = 4,
-			
-			/// <summary>
-			///   Continue: This Factor continues in its current state on the specified date.
-			/// </summary>
-			Continue = 5,
-			
-			/// <summary>
-			///   Occur: This Factor occurrs or happens on the specified date.
-			/// </summary>
-			Occur = 6,
-			
-			/// <summary>
-			///   Expected: This Factor is/was expected, anticipated, or due on the specified date.
-			/// </summary>
-			Expected = 7,
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum FactorAssertionId {
-			
-			/// <summary>
-			///   Undefined: The Factor's assertion type is not known or not defined.
-			/// </summary>
-			Undefined = 1,
-			
-			/// <summary>
-			///   Fact: The Factor represents a factual statement.
-			/// </summary>
-			Fact = 2,
-			
-			/// <summary>
-			///   Opinion: The Factor represents an opinion.
-			/// </summary>
-			Opinion = 3,
-			
-			/// <summary>
-			///   Guess: The Factor represents a guess.
-			/// </summary>
-			Guess = 4,
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum IdentorTypeId {
-			
-			/// <summary>
-			///   Text: A value (a string, typically a name).
-			/// </summary>
-			Text = 1,
-			
-			/// <summary>
-			///   Key: A value (numeric or otherwise) representing a unique key or ID.
-			/// </summary>
-			Key = 2,
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum LocatorTypeId {
-			
-			/// <summary>
-			///   Earth Coordinate: A coordinate position on Earth.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).
-			/// </summary>
-			EarthCoord = 1,
-			
-			/// <summary>
-			///   Moon Coordinate: A coordinate position on Earth's Moon.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).
-			/// </summary>
-			MoonCoord = 2,
-			
-			/// <summary>
-			///   Mars Coordinate: A coordinate position on Mars.Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).Coordinates use X=Longitude, Y=Latitude, and Z=Elevation (in metres).
-			/// </summary>
-			MarsCoord = 3,
-			
-			/// <summary>
-			///   Relative Position 1D: A one-dimensional position, using X=Time. A position is relative to the Artifact's dimensions. For example, X=0.25 represents a position (starting from the origin) that is 25% of the distance to the maximum X dimension.
-			/// </summary>
-			RelPos1D = 4,
-			
-			/// <summary>
-			///   Relative Position 2D: A two-dimensional position, using X=Width and Y=Height. A position is relative to the Artifact's dimensions. For example, X=0.25 represents a position (starting from the origin) that is 25% of the distance to the maximum X dimension.
-			/// </summary>
-			RelPos2D = 5,
-			
-			/// <summary>
-			///   Relative Position 3D: A three-dimensional position, using X, Y, and Z axes. A position is relative to the Artifact's dimensions. For example, X=0.25 represents a position (starting from the origin) that is 25% of the distance to the maximum X dimension.
-			/// </summary>
-			RelPos3D = 6,
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum MemberTypeId {
-			
-			/// <summary>
-			///   None: The User is not associated with this App.
-			/// </summary>
-			None = 1,
-			
-			/// <summary>
-			///   Request: The user would like to become a member of this App.
-			/// </summary>
-			Request = 2,
-			
-			/// <summary>
-			///   Invite: The User has been invited to become a member of this App.
-			/// </summary>
-			Invite = 3,
-			
-			/// <summary>
-			///   Member: The User is a member of this App.
-			/// </summary>
-			Member = 4,
-			
-			/// <summary>
-			///   Staff: The User is a staff member of this App.
-			/// </summary>
-			Staff = 5,
-			
-			/// <summary>
-			///   Admin: The User is an administrator of this App.
-			/// </summary>
-			Admin = 6,
-			
-			/// <summary>
-			///   Owner: The User owns this App.
-			/// </summary>
-			Owner = 7,
-			
-			/// <summary>
-			///   Data Provider: The User has a special membership that allows it to interact with Fabric on behalf of the App.
-			/// </summary>
-			DataProv = 8,
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum VectorRangeId {
-			
-			/// <summary>
-			///   Full Numeric
-			/// </summary>
-			FullNum = 1,
-			
-			/// <summary>
-			///   Positive Numeric
-			/// </summary>
-			PosNum = 2,
-			
-			/// <summary>
-			///   Negative Numeric
-			/// </summary>
-			NegNum = 3,
-			
-			/// <summary>
-			///   Full Agreement
-			/// </summary>
-			FullAgree = 4,
-			
-			/// <summary>
-			///   Positive Agreement
-			/// </summary>
-			PosAgree = 5,
-			
-			/// <summary>
-			///   Full Favorability
-			/// </summary>
-			FullFavor = 6,
-			
-			/// <summary>
-			///   Positive Favorability
-			/// </summary>
-			PosFavor = 7,
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum VectorRangeLevelId {
-			
-			/// <summary>
-			///   Zero
-			/// </summary>
-			Zero0 = 1,
-			
-			/// <summary>
-			///   Zero
-			/// </summary>
-			Zero05 = 2,
-			
-			/// <summary>
-			///   Zero
-			/// </summary>
-			Zero1 = 3,
-			
-			/// <summary>
-			///   Minimum
-			/// </summary>
-			Min0 = 4,
-			
-			/// <summary>
-			///   Maximum
-			/// </summary>
-			Max1 = 5,
-			
-			/// <summary>
-			///   Completely Disagree
-			/// </summary>
-			CompDisagree = 6,
-			
-			/// <summary>
-			///   Mostly Disagree
-			/// </summary>
-			MostDisagree = 7,
-			
-			/// <summary>
-			///   Somewhat Disagree
-			/// </summary>
-			SomeDisagree = 8,
-			
-			/// <summary>
-			///   No Opinion
-			/// </summary>
-			NoOpinion05 = 9,
-			
-			/// <summary>
-			///   Somewhat Agree
-			/// </summary>
-			SomeAgree = 10,
-			
-			/// <summary>
-			///   Mostly Agree
-			/// </summary>
-			MostAgree = 11,
-			
-			/// <summary>
-			///   Completely Agree
-			/// </summary>
-			CompAgree = 12,
-			
-			/// <summary>
-			///   No Opinion
-			/// </summary>
-			NoOpinion0 = 13,
-			
-			/// <summary>
-			///   Somewhat Agree
-			/// </summary>
-			SomeAgreePos = 14,
-			
-			/// <summary>
-			///   Mostly Agree
-			/// </summary>
-			MostAgreePos = 15,
-			
-			/// <summary>
-			///   Completely Agree
-			/// </summary>
-			CompAgreePos = 16,
-			
-			/// <summary>
-			///   Completely Unfavorable
-			/// </summary>
-			CompUnfavor = 17,
-			
-			/// <summary>
-			///   Mostly Unfavorable
-			/// </summary>
-			MostUnfavor = 18,
-			
-			/// <summary>
-			///   Somewhat Unfavorable
-			/// </summary>
-			SomeUnfavor = 19,
-			
-			/// <summary>
-			///   Somewhat Favorable
-			/// </summary>
-			SomeFavor = 20,
-			
-			/// <summary>
-			///   Mostly Favorable
-			/// </summary>
-			MostFavor = 21,
-			
-			/// <summary>
-			///   Completely Favorable
-			/// </summary>
-			CompFavor = 22,
-			
-			/// <summary>
-			///   Somewhat Favorable
-			/// </summary>
-			SomeFavorPos = 23,
-			
-			/// <summary>
-			///   Mostly Favorable
-			/// </summary>
-			MostFavorPos = 24,
-			
-			/// <summary>
-			///   Completely Favorable
-			/// </summary>
-			CompFavorPos = 25,
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum VectorTypeId {
-			
-			/// <summary>
-			///   Full Bounds
-			/// </summary>
-			FullLong = 1,
-			
-			/// <summary>
-			///   Positive Bounds
-			/// </summary>
-			PosLong = 2,
-			
-			/// <summary>
-			///   Negative Bounds
-			/// </summary>
-			NegLong = 3,
-			
-			/// <summary>
-			///   Full Percentage
-			/// </summary>
-			FullPerc = 4,
-			
-			/// <summary>
-			///   Standard Percentage
-			/// </summary>
-			StdPerc = 5,
-			
-			/// <summary>
-			///   Opposable Percentage
-			/// </summary>
-			OppPerc = 6,
-			
-			/// <summary>
-			///   Standard Agreement
-			/// </summary>
-			StdAgree = 7,
-			
-			/// <summary>
-			///   Opposable Agreement
-			/// </summary>
-			OppAgree = 8,
-			
-			/// <summary>
-			///   Standard Favorability
-			/// </summary>
-			StdFavor = 9,
-			
-			/// <summary>
-			///   Opposable Favorability
-			/// </summary>
-			OppFavor = 10,
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum VectorUnitId {
-			
-			/// <summary>
-			///   None
-			/// </summary>
-			None = 1,
-			
-			/// <summary>
-			///   Unit
-			/// </summary>
-			Unit = 2,
-			
-			/// <summary>
-			///   Metre: m
-			/// </summary>
-			Metre = 3,
-			
-			/// <summary>
-			///   Gram: g
-			/// </summary>
-			Gram = 4,
-			
-			/// <summary>
-			///   Second: s
-			/// </summary>
-			Second = 5,
-			
-			/// <summary>
-			///   Ampere: A
-			/// </summary>
-			Ampere = 6,
-			
-			/// <summary>
-			///   Celsius: C
-			/// </summary>
-			Celsius = 7,
-			
-			/// <summary>
-			///   Candela: cd
-			/// </summary>
-			Candela = 8,
-			
-			/// <summary>
-			///   Mole: mol
-			/// </summary>
-			Mole = 9,
-			
-			/// <summary>
-			///   Bit: b
-			/// </summary>
-			Bit = 10,
-			
-			/// <summary>
-			///   Byte: B
-			/// </summary>
-			Byte = 11,
-			
-			/// <summary>
-			///   Hertz: Hz
-			/// </summary>
-			Hertz = 12,
-			
-			/// <summary>
-			///   Radian: rad
-			/// </summary>
-			Radian = 13,
-			
-			/// <summary>
-			///   Newton: N
-			/// </summary>
-			Newton = 14,
-			
-			/// <summary>
-			///   Pascal: Pa
-			/// </summary>
-			Pascal = 15,
-			
-			/// <summary>
-			///   Joule: J
-			/// </summary>
-			Joule = 16,
-			
-			/// <summary>
-			///   Watt: W
-			/// </summary>
-			Watt = 17,
-			
-			/// <summary>
-			///   Volt: V
-			/// </summary>
-			Volt = 18,
-			
-			/// <summary>
-			///   Ohm: Ω
-			/// </summary>
-			Ohm = 19,
-			
-			/// <summary>
-			///   Area: m^2
-			/// </summary>
-			Area = 20,
-			
-			/// <summary>
-			///   Volume: m^3
-			/// </summary>
-			Volume = 21,
-			
-			/// <summary>
-			///   Speed: m/s
-			/// </summary>
-			Speed = 22,
-			
-			/// <summary>
-			///   Acceleration: m^3/s
-			/// </summary>
-			Acceleration = 23,
-			
-			/// <summary>
-			///   Point: pt
-			/// </summary>
-			Point = 24,
-			
-			/// <summary>
-			///   Item: item
-			/// </summary>
-			Item = 25,
-			
-			/// <summary>
-			///   Person: person
-			/// </summary>
-			Person = 26,
-			
-			/// <summary>
-			///   Percent: %
-			/// </summary>
-			Percent = 27,
-			
-			/// <summary>
-			///   Index: index
-			/// </summary>
-			Index = 28,
-			
-			/// <summary>
-			///   Pixel: pixel
-			/// </summary>
-			Pixel = 29,
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum VectorUnitDerivedId {
-			
-			/// <summary>
-			///   
-			/// </summary>
-			HertzSec = 1,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			NewtonGram = 2,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			NewtonMetre = 3,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			NewtonSec = 4,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			PascalGram = 5,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			PascalMetre = 6,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			PascalSec = 7,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			JouleGram = 8,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			JouleMetre = 9,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			JouleSec = 10,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			WattGram = 11,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			WattMetre = 12,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			WattSec = 13,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			VoltGram = 14,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			VoltMetre = 15,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			VoltSec = 16,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			VoltAmp = 17,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			OhmGram = 18,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			OhmMetre = 19,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			OhmSec = 20,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			OhmAmp = 21,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			AreaMetre = 22,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			VolumeMetre = 23,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			SpeedMetre = 24,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			SpeedSec = 25,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			AccelMetre = 26,
-			
-			/// <summary>
-			///   
-			/// </summary>
-			AccelSec = 27,
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum VectorUnitPrefixId {
-			
-			/// <summary>
-			///   Base
-			/// </summary>
-			Base = 1,
-			
-			/// <summary>
-			///   Kilo: k
-			/// </summary>
-			Kilo = 2,
-			
-			/// <summary>
-			///   Mega: M
-			/// </summary>
-			Mega = 3,
-			
-			/// <summary>
-			///   Giga: G
-			/// </summary>
-			Giga = 4,
-			
-			/// <summary>
-			///   Tera: T
-			/// </summary>
-			Tera = 5,
-			
-			/// <summary>
-			///   Peta: P
-			/// </summary>
-			Peta = 6,
-			
-			/// <summary>
-			///   Exa: E
-			/// </summary>
-			Exa = 7,
-			
-			/// <summary>
-			///   Milli: m
-			/// </summary>
-			Milli = 8,
-			
-			/// <summary>
-			///   Micro: μ
-			/// </summary>
-			Micro = 9,
-			
-			/// <summary>
-			///   Nano: n
-			/// </summary>
-			Nano = 10,
-			
-			/// <summary>
-			///   Pico: p
-			/// </summary>
-			Pico = 11,
-			
-			/// <summary>
-			///   Femto: f
-			/// </summary>
-			Femto = 12,
-			
-			/// <summary>
-			///   Atto: a
-			/// </summary>
-			Atto = 13,
-			
-			/// <summary>
-			///   Kibi: Ki
-			/// </summary>
-			Kibi = 14,
-			
-			/// <summary>
-			///   Mebi: Mi
-			/// </summary>
-			Mebi = 15,
-			
-			/// <summary>
-			///   Gibi: Gi
-			/// </summary>
-			Gibi = 16,
-			
-			/// <summary>
-			///   Tebi: Ti
-			/// </summary>
-			Tebi = 17,
-			
-			/// <summary>
-			///   Pebi: Pi
-			/// </summary>
-			Pebi = 18,
-			
-			/// <summary>
-			///   Exbi: Ei
-			/// </summary>
-			Exbi = 19,
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		/// <summary/>
-		public enum VertexTypeId {
-			
-			/// <summary>
-			///   Vertex
-			/// </summary>
-			Vertex = 1,
-			
-			/// <summary>
-			///   App
-			/// </summary>
-			App = 2,
-			
-			/// <summary>
-			///   Class
-			/// </summary>
-			Class = 3,
-			
-			/// <summary>
-			///   Instance
-			/// </summary>
-			Instance = 4,
-			
-			/// <summary>
-			///   Url
-			/// </summary>
-			Url = 5,
-			
-			/// <summary>
-			///   User
-			/// </summary>
-			User = 6,
-			
-			/// <summary>
-			///   Member
-			/// </summary>
-			Member = 7,
-			
-			/// <summary>
-			///   Artifact
-			/// </summary>
-			Artifact = 8,
-			
-			/// <summary>
-			///   Factor
-			/// </summary>
-			Factor = 9,
-			
-			/// <summary>
-			///   Email
-			/// </summary>
-			Email = 10,
-			
-			/// <summary>
-			///   OauthAccess
-			/// </summary>
-			OauthAccess = 11,
-		}
-
-	
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private static bool Init() {
+		/// <summary />
+		public static ICollection<DescriptorType> GetDescriptorTypeItems() {
 			BuildDescriptorTypeMap();
-			BuildDirectorActionMap();
-			BuildDirectorTypeMap();
-			BuildEventorTypeMap();
-			BuildFactorAssertionMap();
-			BuildIdentorTypeMap();
-			BuildLocatorTypeMap();
-			BuildMemberTypeMap();
-			BuildVectorRangeMap();
-			BuildVectorRangeLevelMap();
-			BuildVectorTypeMap();
-			BuildVectorUnitMap();
-			BuildVectorUnitDerivedMap();
-			BuildVectorUnitPrefixMap();
-			BuildVertexTypeMap();
-			return true;
+			return DescriptorTypeMap.Values;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static DescriptorType GetDescriptorType(DescriptorTypeId pId) {
+			return GetDescriptorType((byte)pId);
 		}
 
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static DescriptorType GetDescriptorType(byte pId) {
+			BuildDescriptorTypeMap();
+			return TryGet(DescriptorTypeMap, "DescriptorType", pId);
+		}
+
 		/*--------------------------------------------------------------------------------------------*/
 		private static void BuildDescriptorTypeMap() {
+			if ( DescriptorTypeMap != null ) {
+				return;
+			}
+			
 			DescriptorTypeMap = new Dictionary<byte, DescriptorType>();
 
 			DescriptorTypeMap.Add(1, new DescriptorType {
@@ -1335,8 +1334,34 @@ namespace Fabric.Clients.Cs.Api {
 			});
 		}
 
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static ICollection<DirectorAction> GetDirectorActionItems() {
+			BuildDirectorActionMap();
+			return DirectorActionMap.Values;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static DirectorAction GetDirectorAction(DirectorActionId pId) {
+			return GetDirectorAction((byte)pId);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static DirectorAction GetDirectorAction(byte pId) {
+			BuildDirectorActionMap();
+			return TryGet(DirectorActionMap, "DirectorAction", pId);
+		}
+
 		/*--------------------------------------------------------------------------------------------*/
 		private static void BuildDirectorActionMap() {
+			if ( DirectorActionMap != null ) {
+				return;
+			}
+			
 			DirectorActionMap = new Dictionary<byte, DirectorAction>();
 
 			DirectorActionMap.Add(1, new DirectorAction {
@@ -1459,8 +1484,34 @@ namespace Fabric.Clients.Cs.Api {
 			});
 		}
 
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static ICollection<DirectorType> GetDirectorTypeItems() {
+			BuildDirectorTypeMap();
+			return DirectorTypeMap.Values;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static DirectorType GetDirectorType(DirectorTypeId pId) {
+			return GetDirectorType((byte)pId);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static DirectorType GetDirectorType(byte pId) {
+			BuildDirectorTypeMap();
+			return TryGet(DirectorTypeMap, "DirectorType", pId);
+		}
+
 		/*--------------------------------------------------------------------------------------------*/
 		private static void BuildDirectorTypeMap() {
+			if ( DirectorTypeMap != null ) {
+				return;
+			}
+			
 			DirectorTypeMap = new Dictionary<byte, DirectorType>();
 
 			DirectorTypeMap.Add(1, new DirectorType {
@@ -1499,8 +1550,34 @@ namespace Fabric.Clients.Cs.Api {
 			});
 		}
 
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static ICollection<EventorType> GetEventorTypeItems() {
+			BuildEventorTypeMap();
+			return EventorTypeMap.Values;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static EventorType GetEventorType(EventorTypeId pId) {
+			return GetEventorType((byte)pId);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static EventorType GetEventorType(byte pId) {
+			BuildEventorTypeMap();
+			return TryGet(EventorTypeMap, "EventorType", pId);
+		}
+
 		/*--------------------------------------------------------------------------------------------*/
 		private static void BuildEventorTypeMap() {
+			if ( EventorTypeMap != null ) {
+				return;
+			}
+			
 			EventorTypeMap = new Dictionary<byte, EventorType>();
 
 			EventorTypeMap.Add(1, new EventorType {
@@ -1553,8 +1630,34 @@ namespace Fabric.Clients.Cs.Api {
 			});
 		}
 
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static ICollection<FactorAssertion> GetFactorAssertionItems() {
+			BuildFactorAssertionMap();
+			return FactorAssertionMap.Values;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static FactorAssertion GetFactorAssertion(FactorAssertionId pId) {
+			return GetFactorAssertion((byte)pId);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static FactorAssertion GetFactorAssertion(byte pId) {
+			BuildFactorAssertionMap();
+			return TryGet(FactorAssertionMap, "FactorAssertion", pId);
+		}
+
 		/*--------------------------------------------------------------------------------------------*/
 		private static void BuildFactorAssertionMap() {
+			if ( FactorAssertionMap != null ) {
+				return;
+			}
+			
 			FactorAssertionMap = new Dictionary<byte, FactorAssertion>();
 
 			FactorAssertionMap.Add(1, new FactorAssertion {
@@ -1586,8 +1689,34 @@ namespace Fabric.Clients.Cs.Api {
 			});
 		}
 
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static ICollection<IdentorType> GetIdentorTypeItems() {
+			BuildIdentorTypeMap();
+			return IdentorTypeMap.Values;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static IdentorType GetIdentorType(IdentorTypeId pId) {
+			return GetIdentorType((byte)pId);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static IdentorType GetIdentorType(byte pId) {
+			BuildIdentorTypeMap();
+			return TryGet(IdentorTypeMap, "IdentorType", pId);
+		}
+
 		/*--------------------------------------------------------------------------------------------*/
 		private static void BuildIdentorTypeMap() {
+			if ( IdentorTypeMap != null ) {
+				return;
+			}
+			
 			IdentorTypeMap = new Dictionary<byte, IdentorType>();
 
 			IdentorTypeMap.Add(1, new IdentorType {
@@ -1605,8 +1734,34 @@ namespace Fabric.Clients.Cs.Api {
 			});
 		}
 
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static ICollection<LocatorType> GetLocatorTypeItems() {
+			BuildLocatorTypeMap();
+			return LocatorTypeMap.Values;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static LocatorType GetLocatorType(LocatorTypeId pId) {
+			return GetLocatorType((byte)pId);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static LocatorType GetLocatorType(byte pId) {
+			BuildLocatorTypeMap();
+			return TryGet(LocatorTypeMap, "LocatorType", pId);
+		}
+
 		/*--------------------------------------------------------------------------------------------*/
 		private static void BuildLocatorTypeMap() {
+			if ( LocatorTypeMap != null ) {
+				return;
+			}
+			
 			LocatorTypeMap = new Dictionary<byte, LocatorType>();
 
 			LocatorTypeMap.Add(1, new LocatorType {
@@ -1688,8 +1843,34 @@ namespace Fabric.Clients.Cs.Api {
 			});
 		}
 
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static ICollection<MemberType> GetMemberTypeItems() {
+			BuildMemberTypeMap();
+			return MemberTypeMap.Values;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static MemberType GetMemberType(MemberTypeId pId) {
+			return GetMemberType((byte)pId);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static MemberType GetMemberType(byte pId) {
+			BuildMemberTypeMap();
+			return TryGet(MemberTypeMap, "MemberType", pId);
+		}
+
 		/*--------------------------------------------------------------------------------------------*/
 		private static void BuildMemberTypeMap() {
+			if ( MemberTypeMap != null ) {
+				return;
+			}
+			
 			MemberTypeMap = new Dictionary<byte, MemberType>();
 
 			MemberTypeMap.Add(1, new MemberType {
@@ -1749,8 +1930,34 @@ namespace Fabric.Clients.Cs.Api {
 			});
 		}
 
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static ICollection<VectorRange> GetVectorRangeItems() {
+			BuildVectorRangeMap();
+			return VectorRangeMap.Values;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static VectorRange GetVectorRange(VectorRangeId pId) {
+			return GetVectorRange((byte)pId);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static VectorRange GetVectorRange(byte pId) {
+			BuildVectorRangeMap();
+			return TryGet(VectorRangeMap, "VectorRange", pId);
+		}
+
 		/*--------------------------------------------------------------------------------------------*/
 		private static void BuildVectorRangeMap() {
+			if ( VectorRangeMap != null ) {
+				return;
+			}
+			
 			VectorRangeMap = new Dictionary<byte, VectorRange>();
 
 			VectorRangeMap.Add(1, new VectorRange {
@@ -1758,9 +1965,9 @@ namespace Fabric.Clients.Cs.Api {
 				EnumId = "FullNum",
 				Name = "Full Numeric",
 				Levels = new[] {
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.Min0],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.Zero05],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.Max1],
+					GetVectorRangeLevel(VectorRangeLevelId.Min0),
+					GetVectorRangeLevel(VectorRangeLevelId.Zero05),
+					GetVectorRangeLevel(VectorRangeLevelId.Max1),
 				},
 			});
 
@@ -1769,8 +1976,8 @@ namespace Fabric.Clients.Cs.Api {
 				EnumId = "PosNum",
 				Name = "Positive Numeric",
 				Levels = new[] {
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.Zero0],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.Max1],
+					GetVectorRangeLevel(VectorRangeLevelId.Zero0),
+					GetVectorRangeLevel(VectorRangeLevelId.Max1),
 				},
 			});
 
@@ -1779,8 +1986,8 @@ namespace Fabric.Clients.Cs.Api {
 				EnumId = "NegNum",
 				Name = "Negative Numeric",
 				Levels = new[] {
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.Min0],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.Zero1],
+					GetVectorRangeLevel(VectorRangeLevelId.Min0),
+					GetVectorRangeLevel(VectorRangeLevelId.Zero1),
 				},
 			});
 
@@ -1789,13 +1996,13 @@ namespace Fabric.Clients.Cs.Api {
 				EnumId = "FullAgree",
 				Name = "Full Agreement",
 				Levels = new[] {
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.CompDisagree],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.MostDisagree],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.SomeDisagree],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.NoOpinion05],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.SomeAgree],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.MostAgree],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.CompAgree],
+					GetVectorRangeLevel(VectorRangeLevelId.CompDisagree),
+					GetVectorRangeLevel(VectorRangeLevelId.MostDisagree),
+					GetVectorRangeLevel(VectorRangeLevelId.SomeDisagree),
+					GetVectorRangeLevel(VectorRangeLevelId.NoOpinion05),
+					GetVectorRangeLevel(VectorRangeLevelId.SomeAgree),
+					GetVectorRangeLevel(VectorRangeLevelId.MostAgree),
+					GetVectorRangeLevel(VectorRangeLevelId.CompAgree),
 				},
 			});
 
@@ -1804,10 +2011,10 @@ namespace Fabric.Clients.Cs.Api {
 				EnumId = "PosAgree",
 				Name = "Positive Agreement",
 				Levels = new[] {
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.NoOpinion0],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.SomeAgreePos],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.MostAgreePos],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.CompAgreePos],
+					GetVectorRangeLevel(VectorRangeLevelId.NoOpinion0),
+					GetVectorRangeLevel(VectorRangeLevelId.SomeAgreePos),
+					GetVectorRangeLevel(VectorRangeLevelId.MostAgreePos),
+					GetVectorRangeLevel(VectorRangeLevelId.CompAgreePos),
 				},
 			});
 
@@ -1816,13 +2023,13 @@ namespace Fabric.Clients.Cs.Api {
 				EnumId = "FullFavor",
 				Name = "Full Favorability",
 				Levels = new[] {
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.CompUnfavor],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.MostUnfavor],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.SomeUnfavor],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.NoOpinion05],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.SomeFavor],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.MostFavor],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.CompFavor],
+					GetVectorRangeLevel(VectorRangeLevelId.CompUnfavor),
+					GetVectorRangeLevel(VectorRangeLevelId.MostUnfavor),
+					GetVectorRangeLevel(VectorRangeLevelId.SomeUnfavor),
+					GetVectorRangeLevel(VectorRangeLevelId.NoOpinion05),
+					GetVectorRangeLevel(VectorRangeLevelId.SomeFavor),
+					GetVectorRangeLevel(VectorRangeLevelId.MostFavor),
+					GetVectorRangeLevel(VectorRangeLevelId.CompFavor),
 				},
 			});
 
@@ -1831,16 +2038,42 @@ namespace Fabric.Clients.Cs.Api {
 				EnumId = "PosFavor",
 				Name = "Positive Favorability",
 				Levels = new[] {
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.NoOpinion0],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.SomeFavorPos],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.MostFavorPos],
-					VectorRangeLevelMap[(byte)VectorRangeLevelId.CompFavorPos],
+					GetVectorRangeLevel(VectorRangeLevelId.NoOpinion0),
+					GetVectorRangeLevel(VectorRangeLevelId.SomeFavorPos),
+					GetVectorRangeLevel(VectorRangeLevelId.MostFavorPos),
+					GetVectorRangeLevel(VectorRangeLevelId.CompFavorPos),
 				},
 			});
 		}
 
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static ICollection<VectorRangeLevel> GetVectorRangeLevelItems() {
+			BuildVectorRangeLevelMap();
+			return VectorRangeLevelMap.Values;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static VectorRangeLevel GetVectorRangeLevel(VectorRangeLevelId pId) {
+			return GetVectorRangeLevel((byte)pId);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static VectorRangeLevel GetVectorRangeLevel(byte pId) {
+			BuildVectorRangeLevelMap();
+			return TryGet(VectorRangeLevelMap, "VectorRangeLevel", pId);
+		}
+
 		/*--------------------------------------------------------------------------------------------*/
 		private static void BuildVectorRangeLevelMap() {
+			if ( VectorRangeLevelMap != null ) {
+				return;
+			}
+			
 			VectorRangeLevelMap = new Dictionary<byte, VectorRangeLevel>();
 
 			VectorRangeLevelMap.Add(1, new VectorRangeLevel {
@@ -2019,15 +2252,41 @@ namespace Fabric.Clients.Cs.Api {
 			});
 		}
 
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static ICollection<VectorType> GetVectorTypeItems() {
+			BuildVectorTypeMap();
+			return VectorTypeMap.Values;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static VectorType GetVectorType(VectorTypeId pId) {
+			return GetVectorType((byte)pId);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static VectorType GetVectorType(byte pId) {
+			BuildVectorTypeMap();
+			return TryGet(VectorTypeMap, "VectorType", pId);
+		}
+
 		/*--------------------------------------------------------------------------------------------*/
 		private static void BuildVectorTypeMap() {
+			if ( VectorTypeMap != null ) {
+				return;
+			}
+			
 			VectorTypeMap = new Dictionary<byte, VectorType>();
 
 			VectorTypeMap.Add(1, new VectorType {
 				Id = 1,
 				EnumId = "FullLong",
 				Name = "Full Bounds",
-				VectorRange = VectorRangeMap[(byte)VectorRangeId.FullNum],
+				VectorRange = GetVectorRange(VectorRangeId.FullNum),
 				Min = -9223372036854775808,
 				Max = 9223372036854775807,
 			});
@@ -2036,7 +2295,7 @@ namespace Fabric.Clients.Cs.Api {
 				Id = 2,
 				EnumId = "PosLong",
 				Name = "Positive Bounds",
-				VectorRange = VectorRangeMap[(byte)VectorRangeId.PosNum],
+				VectorRange = GetVectorRange(VectorRangeId.PosNum),
 				Min = 0,
 				Max = 9223372036854775807,
 			});
@@ -2045,7 +2304,7 @@ namespace Fabric.Clients.Cs.Api {
 				Id = 3,
 				EnumId = "NegLong",
 				Name = "Negative Bounds",
-				VectorRange = VectorRangeMap[(byte)VectorRangeId.NegNum],
+				VectorRange = GetVectorRange(VectorRangeId.NegNum),
 				Min = -9223372036854775808,
 				Max = 0,
 			});
@@ -2054,7 +2313,7 @@ namespace Fabric.Clients.Cs.Api {
 				Id = 4,
 				EnumId = "FullPerc",
 				Name = "Full Percentage",
-				VectorRange = VectorRangeMap[(byte)VectorRangeId.FullNum],
+				VectorRange = GetVectorRange(VectorRangeId.FullNum),
 				Min = -9223372036854775808,
 				Max = 9223372036854775807,
 			});
@@ -2063,7 +2322,7 @@ namespace Fabric.Clients.Cs.Api {
 				Id = 5,
 				EnumId = "StdPerc",
 				Name = "Standard Percentage",
-				VectorRange = VectorRangeMap[(byte)VectorRangeId.PosNum],
+				VectorRange = GetVectorRange(VectorRangeId.PosNum),
 				Min = 0,
 				Max = 100,
 			});
@@ -2072,7 +2331,7 @@ namespace Fabric.Clients.Cs.Api {
 				Id = 6,
 				EnumId = "OppPerc",
 				Name = "Opposable Percentage",
-				VectorRange = VectorRangeMap[(byte)VectorRangeId.FullNum],
+				VectorRange = GetVectorRange(VectorRangeId.FullNum),
 				Min = -100,
 				Max = 100,
 			});
@@ -2081,7 +2340,7 @@ namespace Fabric.Clients.Cs.Api {
 				Id = 7,
 				EnumId = "StdAgree",
 				Name = "Standard Agreement",
-				VectorRange = VectorRangeMap[(byte)VectorRangeId.PosAgree],
+				VectorRange = GetVectorRange(VectorRangeId.PosAgree),
 				Min = 0,
 				Max = 100,
 			});
@@ -2090,7 +2349,7 @@ namespace Fabric.Clients.Cs.Api {
 				Id = 8,
 				EnumId = "OppAgree",
 				Name = "Opposable Agreement",
-				VectorRange = VectorRangeMap[(byte)VectorRangeId.FullAgree],
+				VectorRange = GetVectorRange(VectorRangeId.FullAgree),
 				Min = -100,
 				Max = 100,
 			});
@@ -2099,7 +2358,7 @@ namespace Fabric.Clients.Cs.Api {
 				Id = 9,
 				EnumId = "StdFavor",
 				Name = "Standard Favorability",
-				VectorRange = VectorRangeMap[(byte)VectorRangeId.PosFavor],
+				VectorRange = GetVectorRange(VectorRangeId.PosFavor),
 				Min = 0,
 				Max = 100,
 			});
@@ -2108,14 +2367,40 @@ namespace Fabric.Clients.Cs.Api {
 				Id = 10,
 				EnumId = "OppFavor",
 				Name = "Opposable Favorability",
-				VectorRange = VectorRangeMap[(byte)VectorRangeId.FullFavor],
+				VectorRange = GetVectorRange(VectorRangeId.FullFavor),
 				Min = -100,
 				Max = 100,
 			});
 		}
 
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static ICollection<VectorUnit> GetVectorUnitItems() {
+			BuildVectorUnitMap();
+			return VectorUnitMap.Values;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static VectorUnit GetVectorUnit(VectorUnitId pId) {
+			return GetVectorUnit((byte)pId);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static VectorUnit GetVectorUnit(byte pId) {
+			BuildVectorUnitMap();
+			return TryGet(VectorUnitMap, "VectorUnit", pId);
+		}
+
 		/*--------------------------------------------------------------------------------------------*/
 		private static void BuildVectorUnitMap() {
+			if ( VectorUnitMap != null ) {
+				return;
+			}
+			
 			VectorUnitMap = new Dictionary<byte, VectorUnit>();
 
 			VectorUnitMap.Add(1, new VectorUnit {
@@ -2320,256 +2605,308 @@ namespace Fabric.Clients.Cs.Api {
 			});
 		}
 
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static ICollection<VectorUnitDerived> GetVectorUnitDerivedItems() {
+			BuildVectorUnitDerivedMap();
+			return VectorUnitDerivedMap.Values;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static VectorUnitDerived GetVectorUnitDerived(VectorUnitDerivedId pId) {
+			return GetVectorUnitDerived((byte)pId);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static VectorUnitDerived GetVectorUnitDerived(byte pId) {
+			BuildVectorUnitDerivedMap();
+			return TryGet(VectorUnitDerivedMap, "VectorUnitDerived", pId);
+		}
+
 		/*--------------------------------------------------------------------------------------------*/
 		private static void BuildVectorUnitDerivedMap() {
+			if ( VectorUnitDerivedMap != null ) {
+				return;
+			}
+			
 			VectorUnitDerivedMap = new Dictionary<byte, VectorUnitDerived>();
 
 			VectorUnitDerivedMap.Add(1, new VectorUnitDerived {
 				Id = 1,
 				EnumId = "HertzSec",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Hertz],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Hertz),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Second),
 				WithExponent = -1,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(2, new VectorUnitDerived {
 				Id = 2,
 				EnumId = "NewtonGram",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Newton],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Gram],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Newton),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Gram),
 				WithExponent = 1,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Kilo],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Kilo),
 			});
 
 			VectorUnitDerivedMap.Add(3, new VectorUnitDerived {
 				Id = 3,
 				EnumId = "NewtonMetre",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Newton],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Newton),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Metre),
 				WithExponent = 1,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(4, new VectorUnitDerived {
 				Id = 4,
 				EnumId = "NewtonSec",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Newton],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Newton),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Second),
 				WithExponent = -2,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(5, new VectorUnitDerived {
 				Id = 5,
 				EnumId = "PascalGram",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Pascal],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Gram],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Pascal),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Gram),
 				WithExponent = 1,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Kilo],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Kilo),
 			});
 
 			VectorUnitDerivedMap.Add(6, new VectorUnitDerived {
 				Id = 6,
 				EnumId = "PascalMetre",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Pascal],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Pascal),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Metre),
 				WithExponent = -1,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(7, new VectorUnitDerived {
 				Id = 7,
 				EnumId = "PascalSec",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Pascal],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Pascal),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Second),
 				WithExponent = -2,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(8, new VectorUnitDerived {
 				Id = 8,
 				EnumId = "JouleGram",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Joule],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Gram],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Joule),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Gram),
 				WithExponent = 1,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Kilo],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Kilo),
 			});
 
 			VectorUnitDerivedMap.Add(9, new VectorUnitDerived {
 				Id = 9,
 				EnumId = "JouleMetre",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Joule],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Joule),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Metre),
 				WithExponent = 2,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(10, new VectorUnitDerived {
 				Id = 10,
 				EnumId = "JouleSec",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Joule],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Joule),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Second),
 				WithExponent = -2,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(11, new VectorUnitDerived {
 				Id = 11,
 				EnumId = "WattGram",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Watt],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Gram],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Watt),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Gram),
 				WithExponent = 1,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Kilo],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Kilo),
 			});
 
 			VectorUnitDerivedMap.Add(12, new VectorUnitDerived {
 				Id = 12,
 				EnumId = "WattMetre",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Watt],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Watt),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Metre),
 				WithExponent = 2,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(13, new VectorUnitDerived {
 				Id = 13,
 				EnumId = "WattSec",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Watt],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Watt),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Second),
 				WithExponent = -3,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(14, new VectorUnitDerived {
 				Id = 14,
 				EnumId = "VoltGram",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Volt],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Gram],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Volt),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Gram),
 				WithExponent = 1,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Kilo],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Kilo),
 			});
 
 			VectorUnitDerivedMap.Add(15, new VectorUnitDerived {
 				Id = 15,
 				EnumId = "VoltMetre",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Volt],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Volt),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Metre),
 				WithExponent = 2,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(16, new VectorUnitDerived {
 				Id = 16,
 				EnumId = "VoltSec",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Volt],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Volt),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Second),
 				WithExponent = -3,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(17, new VectorUnitDerived {
 				Id = 17,
 				EnumId = "VoltAmp",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Volt],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Ampere],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Volt),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Ampere),
 				WithExponent = -1,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(18, new VectorUnitDerived {
 				Id = 18,
 				EnumId = "OhmGram",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Ohm],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Gram],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Ohm),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Gram),
 				WithExponent = 1,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Kilo],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Kilo),
 			});
 
 			VectorUnitDerivedMap.Add(19, new VectorUnitDerived {
 				Id = 19,
 				EnumId = "OhmMetre",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Ohm],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Ohm),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Metre),
 				WithExponent = 2,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(20, new VectorUnitDerived {
 				Id = 20,
 				EnumId = "OhmSec",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Ohm],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Ohm),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Second),
 				WithExponent = -3,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(21, new VectorUnitDerived {
 				Id = 21,
 				EnumId = "OhmAmp",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Ohm],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Ampere],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Ohm),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Ampere),
 				WithExponent = -2,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(22, new VectorUnitDerived {
 				Id = 22,
 				EnumId = "AreaMetre",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Area],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Area),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Metre),
 				WithExponent = 2,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(23, new VectorUnitDerived {
 				Id = 23,
 				EnumId = "VolumeMetre",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Volume],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Volume),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Metre),
 				WithExponent = 3,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(24, new VectorUnitDerived {
 				Id = 24,
 				EnumId = "SpeedMetre",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Speed],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Speed),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Metre),
 				WithExponent = 1,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(25, new VectorUnitDerived {
 				Id = 25,
 				EnumId = "SpeedSec",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Speed],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Speed),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Second),
 				WithExponent = -1,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(26, new VectorUnitDerived {
 				Id = 26,
 				EnumId = "AccelMetre",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Acceleration],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Metre],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Acceleration),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Metre),
 				WithExponent = 1,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
 
 			VectorUnitDerivedMap.Add(27, new VectorUnitDerived {
 				Id = 27,
 				EnumId = "AccelSec",
-				DefinesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Acceleration],
-				RaisesVectorUnit = VectorUnitMap[(byte)VectorUnitId.Second],
+				DefinesVectorUnit = GetVectorUnit(VectorUnitId.Acceleration),
+				RaisesVectorUnit = GetVectorUnit(VectorUnitId.Second),
 				WithExponent = -2,
-				RaisesVectorUnitPrefix = VectorUnitPrefixMap[(byte)VectorUnitPrefixId.Base],
+				RaisesVectorUnitPrefix = GetVectorUnitPrefix(VectorUnitPrefixId.Base),
 			});
+		}
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static ICollection<VectorUnitPrefix> GetVectorUnitPrefixItems() {
+			BuildVectorUnitPrefixMap();
+			return VectorUnitPrefixMap.Values;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static VectorUnitPrefix GetVectorUnitPrefix(VectorUnitPrefixId pId) {
+			return GetVectorUnitPrefix((byte)pId);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static VectorUnitPrefix GetVectorUnitPrefix(byte pId) {
+			BuildVectorUnitPrefixMap();
+			return TryGet(VectorUnitPrefixMap, "VectorUnitPrefix", pId);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		private static void BuildVectorUnitPrefixMap() {
+			if ( VectorUnitPrefixMap != null ) {
+				return;
+			}
+			
 			VectorUnitPrefixMap = new Dictionary<byte, VectorUnitPrefix>();
 
 			VectorUnitPrefixMap.Add(1, new VectorUnitPrefix {
@@ -2724,8 +3061,34 @@ namespace Fabric.Clients.Cs.Api {
 			});
 		}
 
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static ICollection<VertexType> GetVertexTypeItems() {
+			BuildVertexTypeMap();
+			return VertexTypeMap.Values;
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static VertexType GetVertexType(VertexTypeId pId) {
+			return GetVertexType((byte)pId);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		/// <summary />
+		public static VertexType GetVertexType(byte pId) {
+			BuildVertexTypeMap();
+			return TryGet(VertexTypeMap, "VertexType", pId);
+		}
+
 		/*--------------------------------------------------------------------------------------------*/
 		private static void BuildVertexTypeMap() {
+			if ( VertexTypeMap != null ) {
+				return;
+			}
+			
 			VertexTypeMap = new Dictionary<byte, VertexType>();
 
 			VertexTypeMap.Add(1, new VertexType {
@@ -2794,7 +3157,6 @@ namespace Fabric.Clients.Cs.Api {
 				Name = "OauthAccess",
 			});
 		}
-
 
 	}
 
