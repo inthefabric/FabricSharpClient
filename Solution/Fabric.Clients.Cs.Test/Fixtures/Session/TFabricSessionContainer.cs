@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Web;
+using Fabric.Clients.Cs.Api;
+using Fabric.Clients.Cs.Logging;
 using Fabric.Clients.Cs.Session;
+using Moq;
 using NUnit.Framework;
 
 namespace Fabric.Clients.Cs.Test.Fixtures.Session {
@@ -9,31 +12,33 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 	[TestFixture]
 	public class TFabricSessionContainer {
 
-		private FabricClientConfig vConfig;
+		private Mock<IFabricClientConfig> vMockConfig;
+		private Mock<IOauthService> vMockOauthService;
+		private Mock<IFabricServices> vMockServices;
+		private Mock<IFabricClient> vMockClient;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		[SetUp]
 		public virtual void SetUp() {
-			vConfig = new FabricClientConfig("Test", "http://testFabric.com/api", 1,
-				"MySecretCode", (k => "http://testdomain.com/oauth"), 
-				(k => new FabricSessionContainer()));
+			vMockConfig = new Mock<IFabricClientConfig>(MockBehavior.Strict);
+			vMockConfig.Setup(x => x.GetOauthRedirectUri()).Returns("testRedirUri");
 
-			FabricClient.InitOnce(vConfig);
-		}
+			vMockOauthService = new Mock<IOauthService>(MockBehavior.Strict);
 
-		/*--------------------------------------------------------------------------------------------*/
-		[TearDown]
-		public void TearDown() {
-			FabricClient.ResetInitialization();
+			vMockServices = new Mock<IFabricServices>(MockBehavior.Strict);
+			vMockServices.SetupGet(x => x.Oauth).Returns(vMockOauthService.Object);
+
+			vMockClient = new Mock<IFabricClient>(MockBehavior.Strict);
+			vMockClient.SetupGet(x => x.Config).Returns(vMockConfig.Object);
+			vMockClient.SetupGet(x => x.Services).Returns(vMockServices.Object);
 		}
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		[Test]
-		[Category("Integration")]
 		public virtual void FromValues() {
 			const string sessId = "sessId";
 			const string grant = "grant";
@@ -41,7 +46,7 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 			const string refresh = "refresh";
 			DateTime exp = DateTime.UtcNow.AddMinutes(30);
 
-			IFabricSessionContainer sc = FabricSessionContainer.FromValues(new FabricClient(),
+			IFabricSessionContainer sc = FabricSessionContainer.FromValues(vMockClient.Object,
 				sessId, grant, bearer, refresh, exp);
 
 			Assert.NotNull(sc, "Container should be filled.");
@@ -56,13 +61,17 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		/*--------------------------------------------------------------------------------------------*/
 		[TestCase(false)]
 		[TestCase(true)]
-		[Category("Integration")]
 		public virtual void FromCookies(bool pHasCookie) {
 			var cookies = (pHasCookie ? 
 				TOauthSession.CreateWorkingCookie() : new HttpCookieCollection());
 
+			var mockLogger = new Mock<IFabricLog>(MockBehavior.Strict);
+			mockLogger.Setup(x => x.Info(It.IsAny<string>(), It.IsAny<string>()));
+
+			vMockConfig.SetupGet(x => x.Logger).Returns(mockLogger.Object);
+
 			IFabricSessionContainer sc = 
-				FabricSessionContainer.FromCookies(new FabricClient(), cookies);
+				FabricSessionContainer.FromCookies(vMockClient.Object, cookies);
 
 			if ( pHasCookie ) {
 				Assert.NotNull(sc, "Container should be filled.");
@@ -77,7 +86,6 @@ namespace Fabric.Clients.Cs.Test.Fixtures.Session {
 		/*--------------------------------------------------------------------------------------------* /
 		[TestCase(false)]
 		[TestCase(true)]
-		[Category("Integration")]
 		public virtual void FromHttpContext(bool pHasCookie) {
 			var req = new HttpRequest("file", "http://test.com", null);
 			var resp = new HttpResponse(new StringWriter());
