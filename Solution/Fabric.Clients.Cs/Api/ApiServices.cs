@@ -189,12 +189,12 @@ namespace Fabric.Clients.Cs.Api {
 		IOauthAccessTokenClientCredentialsGetOperation AccessTokenClientCredentials { get; }
 
 		/// <summary>
-		///   This API request is unique -- it represents the entry point for Fabric's 'sOAuth 2.0 authentication process.
+		///   This API request is unique -- it represents the entry point for Fabric's OAuth 2.0 authentication process.
 		/// </summary>
 		IOauthLoginGetOperation Login { get; }
 
 		/// <summary>
-		///   Terminates a particular OAuth session by invalidating the session's 'saccess token.
+		///   Terminates a particular OAuth session by invalidating the session's access token.
 		/// </summary>
 		IOauthLogoutGetOperation Logout { get; }
 

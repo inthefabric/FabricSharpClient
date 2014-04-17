@@ -64,7 +64,7 @@ namespace Fabric.Clients.Cs.Api {
 		public string Name { get; set; }
 		
 		/// <summary>
-		///   A summary of this object's 'sintended meaning or purpose.
+		///   A summary of this object's intended meaning or purpose.
 		/// </summary>
 		public string Description { get; set; }
 		
@@ -188,7 +188,7 @@ namespace Fabric.Clients.Cs.Api {
 	public class VectorRangeLevel : EnumObject {
 	
 		/// <summary>
-		///   A value (between 0.0 and 1.0) which defines the relative position between a numeric range's 'sminimum and maximum boundaries.
+		///   A value (between 0.0 and 1.0) which defines the relative position between a numeric range's minimum and maximum boundaries.
 		/// </summary>
 		public float Position { get; set; }
 		

@@ -34,6 +34,23 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary>
+	///   The response wrapper for traversal API requests.
+	/// </summary>
+	/// <remarks>
+	///   <para>The response wrapper for traversal API requests.</para>
+	/// </remarks>
+	public class FabTravResponse : FabResponse {
+	
+		/// <summary>
+		///   The list of traversal steps available from the current traversal position.
+		/// </summary>
+		public FabTravStep[] Steps { get; set; }
+		
+	}
+
+	
+	/*================================================================================================*/
+	/// <summary>
 	///   The base class for the creation of Artifacts.
 	/// </summary>
 	/// <remarks>
@@ -86,17 +103,17 @@ namespace Fabric.Clients.Cs.Api {
 		public DescriptorTypeId Type { get; set; }
 		
 		/// <summary>
-		///   Identifies the Artifact that refines the Factor's 'sprimary Artifact.
+		///   Identifies the Artifact that refines the Factor's primary Artifact.
 		/// </summary>
 		public long? RefinesPrimaryWithArtifactId { get; set; }
 		
 		/// <summary>
-		///   Identifies the Artifact that refines the Factor's 'srelated Artifact.
+		///   Identifies the Artifact that refines the Factor's related Artifact.
 		/// </summary>
 		public long? RefinesRelatedWithArtifactId { get; set; }
 		
 		/// <summary>
-		///   Identifies the Artifact that refines the new Descriptor's 'sDescriptorType.
+		///   Identifies the Artifact that refines the new Descriptor's DescriptorType.
 		/// </summary>
 		public long? RefinesTypeWithArtifactId { get; set; }
 		
@@ -128,12 +145,12 @@ namespace Fabric.Clients.Cs.Api {
 		public DirectorTypeId Type { get; set; }
 		
 		/// <summary>
-		///   Identifies the DirectorAction associated with the Factor's 'sprimary Artifact.
+		///   Identifies the DirectorAction associated with the Factor's primary Artifact.
 		/// </summary>
 		public DirectorActionId PrimaryAction { get; set; }
 		
 		/// <summary>
-		///   Identifies the DirectorAction associated with the Factor's 'srelated Artifact.
+		///   Identifies the DirectorAction associated with the Factor's related Artifact.
 		/// </summary>
 		public DirectorActionId RelatedAction { get; set; }
 		
@@ -569,13 +586,13 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary>
-	///   A registered project, application, or business that has direct access to the Fabric API. An App's 'sprimary purpose is to facilitate User interaction with Fabric.
+	///   A registered project, application, or business that has direct access to the Fabric API. An App's primary purpose is to facilitate User interaction with Fabric.
 	/// </summary>
 	/// <remarks>
 	///   <para>A registered project, application, or business that has direct access to the Fabric API.</para>
-	///   <para>An App's 'sprimary purpose is to facilitate User interaction with Fabric. To accomplish this, an App typically creates an interface for its Users. This interface hides the complex details of the Fabric API, and instead provides intuitive features like custom inputs, searches, summaries, and visualizations. </para>
-	///   <para>When a User becomes a Member of an App, they are granting that App permission to perform various actions on their behalf (via the App's 'sinterface). It is vital for an App to provide each User with a positive experience and do nothing to violate the User's 'strust.</para>
-	///   <para>Every App has a special 'Data Provider' Member, which is typically controlled by that App's 'sadministrator. The 'Data Provider' allows the App to interact with Fabric as itself (rather than on behalf of a particular User).</para>
+	///   <para>An App's primary purpose is to facilitate User interaction with Fabric. To accomplish this, an App typically creates an interface for its Users. This interface hides the complex details of the Fabric API, and instead provides intuitive features like custom inputs, searches, summaries, and visualizations. </para>
+	///   <para>When a User becomes a Member of an App, they are granting that App permission to perform various actions on their behalf (via the App's interface). It is vital for an App to provide each User with a positive experience and do nothing to violate the User's trust.</para>
+	///   <para>Every App has a special 'Data Provider' Member, which is typically controlled by that App's administrator. The 'Data Provider' allows the App to interact with Fabric as itself (rather than on behalf of a particular User).</para>
 	///   <para>Every item added to Fabric is associated with (via Member) a User and and an App. Thus, Fabric can determine which App is responsible for any particular item, enforce applicable access rights, analyze the data for a particular App or Member, etc.</para>
 	/// </remarks>
 	public class FabApp : FabArtifact {
@@ -658,7 +675,7 @@ namespace Fabric.Clients.Cs.Api {
 		public string Disamb { get; set; }
 		
 		/// <summary>
-		///   A summary of the Class's 'sintended meaning or purpose.
+		///   A summary of the Class's intended meaning or purpose.
 		/// </summary>
 		public string Note { get; set; }
 		
@@ -667,12 +684,12 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary>
-	///   A Factor component that describes and refines the relationship between the Factor's 'stwo Artifacts.
+	///   A Factor component that describes and refines the relationship between the Factor's two Artifacts.
 	/// </summary>
 	/// <remarks>
-	///   <para>A Factor component that describes and refines the relationship between the Factor's 'stwo Artifacts. Descriptors are the only required Factor component.</para>
-	///   <para>First, the DescriptorType provides semantic meaning to the relationship, such as: a A "is a" B, or C "sounds like" D. Since this relationship is directional (flowing from the Factor's 'sprimary Artifact and to the related Artifact), the DescriptorType must coordinate correctly with the relationship's 'sdirection.</para>
-	///   <para>Descriptors also offer optional (but powerful) refinement capabilities, which allow a Descriptor to be very specific. Using any Artifact, a Descriptor may refine the DescriptorType, the Factor's 'sprimary Artifact, and/or the Factor's 'srelated Artifact. Note: while these Artifact links are discussed here in the context of a Descriptor, the actual traversal links exist with the Factor.</para>
+	///   <para>A Factor component that describes and refines the relationship between the Factor's two Artifacts. Descriptors are the only required Factor component.</para>
+	///   <para>First, the DescriptorType provides semantic meaning to the relationship, such as: a A "is a" B, or C "sounds like" D. Since this relationship is directional (flowing from the Factor's primary Artifact and to the related Artifact), the DescriptorType must coordinate correctly with the relationship's direction.</para>
+	///   <para>Descriptors also offer optional (but powerful) refinement capabilities, which allow a Descriptor to be very specific. Using any Artifact, a Descriptor may refine the DescriptorType, the Factor's primary Artifact, and/or the Factor's related Artifact. Note: while these Artifact links are discussed here in the context of a Descriptor, the actual traversal links exist with the Factor.</para>
 	/// </remarks>
 	public class FabDescriptor : FabObject {
 	
@@ -696,12 +713,12 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary>
-	///   A Factor component that creates a directional, action-based flow between the Factor's 'stwo Artifacts. The nature of a Director's 'spathway depends on its DirectorType.
+	///   A Factor component that creates a directional, action-based flow between the Factor's two Artifacts. The nature of a Director's pathway depends on its DirectorType.
 	/// </summary>
 	/// <remarks>
-	///   <para>A Factor component that creates a directional, action-based flow between the Factor's 'stwo Artifacts.</para>
-	///   <para>The nature of a Director's 'spathway depends on its DirectorType. The Director can  represent a factual, well-defined path, a virtual link, a suggested flow, etc.</para>
-	///   <para>A Director specifies a DirectorAction for each of the Factor's 'sArtifacts, which give additional meaning to the Director's 'spathway. The primary action is meant to be performed on the primary Artifact before the pathway begins. The related action is meant to be performed on the related Artifact after the pathway ends.</para>
+	///   <para>A Factor component that creates a directional, action-based flow between the Factor's two Artifacts.</para>
+	///   <para>The nature of a Director's pathway depends on its DirectorType. The Director can  represent a factual, well-defined path, a virtual link, a suggested flow, etc.</para>
+	///   <para>A Director specifies a DirectorAction for each of the Factor's Artifacts, which give additional meaning to the Director's pathway. The primary action is meant to be performed on the primary Artifact before the pathway begins. The related action is meant to be performed on the related Artifact after the pathway ends.</para>
 	/// </remarks>
 	public class FabDirector : FabObject {
 	
@@ -711,12 +728,12 @@ namespace Fabric.Clients.Cs.Api {
 		public DirectorTypeId Type { get; set; }
 		
 		/// <summary>
-		///   Specifies the action to be performed on the Factor's 'sprimary Artifact.
+		///   Specifies the action to be performed on the Factor's primary Artifact.
 		/// </summary>
 		public DirectorActionId PrimaryAction { get; set; }
 		
 		/// <summary>
-		///   Specifies the action to be performed on the Factor's 'srelated Artifact.
+		///   Specifies the action to be performed on the Factor's related Artifact.
 		/// </summary>
 		public DirectorActionId RelatedAction { get; set; }
 		
@@ -755,10 +772,10 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary>
-	///   An item (Vertex or Link) in Fabric's 'sgraph structure.
+	///   An item (Vertex or Link) in Fabric's graph structure.
 	/// </summary>
 	/// <remarks>
-	///   <para>An item (Vertex or Link) in Fabric's 'sgraph structure.</para>
+	///   <para>An item (Vertex or Link) in Fabric's graph structure.</para>
 	/// </remarks>
 	public class FabElement : FabObject {
 	
@@ -858,8 +875,8 @@ namespace Fabric.Clients.Cs.Api {
 	/// </summary>
 	/// <remarks>
 	///   <para>Provides a specific piece of information, knowledge, or opinion about a pair of Artifacts. Factors and Artifacts are the central components of the Fabric architecture.</para>
-	///   <para>A Factor forms a directional relationship from its primary Artifact to its related Artifact. It contains one or more components, called Factor components. Each Element has a specific ability to refine, describe, and/or supplement this Artifact relationship in a meaningful way.</para>
-	///   <para>There are six Factor components: Descriptor, Director, Eventor, Identor, Locator, and Vector. The Descriptor is the only required Element; the rest are optional. A Factor typically uses one or two Elements, but (in very complex cases) could potentially use four or more.</para>
+	///   <para>A Factor forms a directional relationship from its primary Artifact to its related Artifact. It contains one or more components, called Factor components. Each component has a specific ability to refine, describe, and/or supplement this Artifact relationship in a meaningful way.</para>
+	///   <para>There are six Factor components: Descriptor, Director, Eventor, Identor, Locator, and Vector. The Descriptor is the only required component; the rest are optional. A Factor typically uses one or two component, but (in very complex cases) could potentially use four or more.</para>
 	///   <para>Just as there are no restrictions on what a particular Artifact can represent, there are no restrictions on the type of meaning or information a Factors can provide. A FactorAssertion allows a Factor to specify that it represents (among other things) a fact or an opinion. This level of confidence for a particular Factor allows Users and Apps to more effectively find the type of information they desire.</para>
 	/// </remarks>
 	public class FabFactor : FabVertex {
@@ -875,7 +892,7 @@ namespace Fabric.Clients.Cs.Api {
 		public bool IsDefining { get; set; }
 		
 		/// <summary>
-		///   A summary of the Factor's 'sintended meaning or purpose.
+		///   A summary of the Factor's intended meaning or purpose.
 		/// </summary>
 		public string Note { get; set; }
 		
@@ -961,7 +978,7 @@ namespace Fabric.Clients.Cs.Api {
 	public class FabIdentor : FabObject {
 	
 		/// <summary>
-		///   Specifies the value's 'spurpose or intent.
+		///   Specifies the value's purpose or intent.
 		/// </summary>
 		public IdentorTypeId Type { get; set; }
 		
@@ -1004,7 +1021,7 @@ namespace Fabric.Clients.Cs.Api {
 		public string Disamb { get; set; }
 		
 		/// <summary>
-		///   A summary of the Instance's 'sintended meaning or purpose.
+		///   A summary of the Instance's intended meaning or purpose.
 		/// </summary>
 		public string Note { get; set; }
 		
@@ -1041,10 +1058,10 @@ namespace Fabric.Clients.Cs.Api {
 	///   <para>A Factor component that positions a Factor using geographic or relative coordinates.</para>
 	///   <para>A Locator attaches a three-dimensional coordinate to a Factor. The LocatorType defines the spatial context of the coordinate, supporting both geographic and relative positioning.</para>
 	///   <para>Geographic coordinates represent a position on a sphere, like Earth.  They use X for longitude, Y for latitude, and Z for elevation (in metres above sea level). Use zero for elevation if it is not known or specified.</para>
-	///   <para>Relative coordinates represent a position relative to the origin and size/bounds of the Factor's 'sprimary Artifact. There are LocatorTypes for one, two, and three-dimensional relative coordinates. For coordinates which have</para>
+	///   <para>Relative coordinates represent a position relative to the origin and size/bounds of the Factor's primary Artifact. There are LocatorTypes for one, two, and three-dimensional relative coordinates. For coordinates which have</para>
 	///   <para>- One dimension, use X for time or progress, and leave Y and Z equal to zero</para>
 	///   <para>- Two dimensions, use X for width, Y for height, and leave Z equal to zero</para>
-	///   <para>- Three dimensions, use X, Y, and Z values which correspond to the Artifact's 'sX, Y, and Z values. If these axes are undefined, use X for width (or breadth), Y for length (or depth), and Z for height (or elevation).</para>
+	///   <para>- Three dimensions, use X, Y, and Z values which correspond to the Artifact's X, Y, and Z values. If these axes are undefined, use X for width (or breadth), Y for length (or depth), and Z for height (or elevation).</para>
 	/// </remarks>
 	public class FabLocator : FabObject {
 	
@@ -1092,7 +1109,7 @@ namespace Fabric.Clients.Cs.Api {
 	public class FabMember : FabVertex {
 	
 		/// <summary>
-		///   Specifies the Member's 'sstate and/or access privileges.
+		///   Specifies the Member's state and/or access privileges.
 		/// </summary>
 		public MemberTypeId Type { get; set; }
 		
@@ -1200,7 +1217,7 @@ namespace Fabric.Clients.Cs.Api {
 	public class FabMetaVersion : FabObject {
 	
 		/// <summary>
-		///   This build's 'sfull version string, in the format: "Major.Minor.Patch.Revision".
+		///   This build's full version string, in the format: "Major.Minor.Patch.Revision".
 		/// </summary>
 		public string Version { get; set; }
 		
@@ -1353,10 +1370,10 @@ namespace Fabric.Clients.Cs.Api {
 	
 	/*================================================================================================*/
 	/// <summary>
-	///   The base class for all Objects returned by Fabric's 'sservices.
+	///   The base class for all Objects returned by Fabric's services.
 	/// </summary>
 	/// <remarks>
-	///   <para>The base class for all Objects returned by Fabric's 'sservices.</para>
+	///   <para>The base class for all Objects returned by Fabric's services.</para>
 	/// </remarks>
 	public class FabObject {
 	
@@ -1982,7 +1999,7 @@ namespace Fabric.Clients.Cs.Api {
 	///   A registered Fabric account that has indirect access (via Apps) to the Fabric API.
 	/// </summary>
 	/// <remarks>
-	///   <para>A registered Fabric account that has indirect access (via Apps) to the Fabric API. A User can become a Member of an App, and then use the App's 'sinterface to interact with Fabric. An App's 'sinterface hides the complex details of the Fabric API, and instead provides intuitive features like custom inputs, searches, summaries, and visualizations. </para>
+	///   <para>A registered Fabric account that has indirect access (via Apps) to the Fabric API. A User can become a Member of an App, and then use the App's interface to interact with Fabric. An App's interface hides the complex details of the Fabric API, and instead provides intuitive features like custom inputs, searches, summaries, and visualizations. </para>
 	///   <para>Users control their private account data and preferences using the Fabric website.</para>
 	///   <para>Every item added to Fabric is associated with (via Member) a User and and an App. Thus, Fabric can determine which User is responsible for any particular item, enforce applicable access rights, analyze the data for a particular User or Member, etc.</para>
 	/// </remarks>
@@ -2014,24 +2031,24 @@ namespace Fabric.Clients.Cs.Api {
 	/// </summary>
 	/// <remarks>
 	///   <para>A Factor component that applies a meaningful numeric axis and value to a particular Factor.</para>
-	///   <para>A Vector attaches a numeric value to a Factor, using an arbitrary Artifact to define its "axis". This axis depends entiedgey upon the Vector's 'spurpose. For example, a factual Vector might use an Artifact like "Height" or "Shutter Speed". A Vector that provides an opinion might use an Artifact like "Quality" or "Excitement". While the choice of an axis Artififact is not restricted, it can be beneficial to use Artifacts which are other Apps or Users are already using as Vector axes. Note: while the axis Artifact link is discussed here in the context of a Vector, the actual traversal link exists with the Factor.</para>
-	///   <para>The VectorType provides boundaries and context for the Vector's 'svalue. It can identify the value as a percentage, a level of agreement or disagreement, an opinion-based rating, or simply a plain numeric value. Each VectorType provides additional information, such as a VectorRange, to provide further meaning for the levels within the the allowed value boundaries.</para>
-	///   <para>A Vector's 'snumeric value often reflects a measurement or a has a specific unit. Furthermore, a Vector can use VectorUnitPrefix to specify an order of magnitude for the value. A Vector's 'svalue is a long integer, so the prefix is especially useful when fractional values are involved, or when the desired number is larger than a long integer.</para>
+	///   <para>A Vector attaches a numeric value to a Factor, using an arbitrary Artifact to define its "axis". This axis depends entiedgey upon the Vector's purpose. For example, a factual Vector might use an Artifact like "Height" or "Shutter Speed". A Vector that provides an opinion might use an Artifact like "Quality" or "Excitement". While the choice of an axis Artififact is not restricted, it can be beneficial to use Artifacts which are other Apps or Users are already using as Vector axes. Note: while the axis Artifact link is discussed here in the context of a Vector, the actual traversal link exists with the Factor.</para>
+	///   <para>The VectorType provides boundaries and context for the Vector's value. It can identify the value as a percentage, a level of agreement or disagreement, an opinion-based rating, or simply a plain numeric value. Each VectorType provides additional information, such as a VectorRange, to provide further meaning for the levels within the the allowed value boundaries.</para>
+	///   <para>A Vector's numeric value often reflects a measurement or a has a specific unit. Furthermore, a Vector can use VectorUnitPrefix to specify an order of magnitude for the value. A Vector's value is a long integer, so the prefix is especially useful when fractional values are involved, or when the desired number is larger than a long integer.</para>
 	/// </remarks>
 	public class FabVector : FabObject {
 	
 		/// <summary>
-		///   Specifies its value's 'sboundaries and context.
+		///   Specifies its value's boundaries and context.
 		/// </summary>
 		public VectorTypeId Type { get; set; }
 		
 		/// <summary>
-		///   Specifies its value's 'sunit of measurement.
+		///   Specifies its value's unit of measurement.
 		/// </summary>
 		public VectorUnitId Unit { get; set; }
 		
 		/// <summary>
-		///   Specifies its value's 'sorder of magnitude.
+		///   Specifies its value's order of magnitude.
 		/// </summary>
 		public VectorUnitPrefixId UnitPrefix { get; set; }
 		

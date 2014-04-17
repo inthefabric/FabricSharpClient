@@ -2389,7 +2389,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The boundary value for the search range.
 		/// </param>
-		IFabAppStep Timestamp(string Operation, long Value);
+		IFabAppStep WhereTimestamp(string Operation, long Value);
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -2429,8 +2429,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public IFabAppStep Timestamp(string Operation, long Value) {
-			TravPath.AppendToUri("/Timestamp("+Operation+","+Value+")");
+		public IFabAppStep WhereTimestamp(string Operation, long Value) {
+			TravPath.AppendToUri("/WhereTimestamp("+Operation+","+Value+")");
 			return new FabAppStep(TravPath);
 		}
 		
@@ -2474,7 +2474,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The boundary value for the search range.
 		/// </param>
-		IFabArtifactStep Timestamp(string Operation, long Value);
+		IFabArtifactStep WhereTimestamp(string Operation, long Value);
 	
 	}
 
@@ -2496,8 +2496,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public IFabArtifactStep Timestamp(string Operation, long Value) {
-			TravPath.AppendToUri("/Timestamp("+Operation+","+Value+")");
+		public IFabArtifactStep WhereTimestamp(string Operation, long Value) {
+			TravPath.AppendToUri("/WhereTimestamp("+Operation+","+Value+")");
 			return new FabArtifactStep(TravPath);
 		}
 		
@@ -2547,7 +2547,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The boundary value for the search range.
 		/// </param>
-		IFabClassStep Timestamp(string Operation, long Value);
+		IFabClassStep WhereTimestamp(string Operation, long Value);
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -2599,8 +2599,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public IFabClassStep Timestamp(string Operation, long Value) {
-			TravPath.AppendToUri("/Timestamp("+Operation+","+Value+")");
+		public IFabClassStep WhereTimestamp(string Operation, long Value) {
+			TravPath.AppendToUri("/WhereTimestamp("+Operation+","+Value+")");
 			return new FabClassStep(TravPath);
 		}
 		
@@ -2635,7 +2635,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The exact value to match for this search.
 		/// </param>
-		IFabFactorStep WithValue(string Value);
+		IFabFactorStep WithIdentorValue(string Value);
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -2662,7 +2662,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The boundary value for the search range.
 		/// </param>
-		IFabFactorStep Timestamp(string Operation, long Value);
+		IFabFactorStep WhereTimestamp(string Operation, long Value);
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -2674,7 +2674,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Tokens">
 		///   The space-delimited, case-insensitive search tokens.
 		/// </param>
-		IFabFactorStep WhereValueContains(string Tokens);
+		IFabFactorStep WhereIdentorValueContains(string Tokens);
 	
 	}
 
@@ -2690,8 +2690,8 @@ namespace Fabric.Clients.Cs.Api {
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public IFabFactorStep WithValue(string Value) {
-			TravPath.AppendToUri("/WithValue("+Value+")");
+		public IFabFactorStep WithIdentorValue(string Value) {
+			TravPath.AppendToUri("/WithIdentorValue("+Value+")");
 			return new FabFactorStep(TravPath);
 		}
 		
@@ -2702,14 +2702,14 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public IFabFactorStep Timestamp(string Operation, long Value) {
-			TravPath.AppendToUri("/Timestamp("+Operation+","+Value+")");
+		public IFabFactorStep WhereTimestamp(string Operation, long Value) {
+			TravPath.AppendToUri("/WhereTimestamp("+Operation+","+Value+")");
 			return new FabFactorStep(TravPath);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public IFabFactorStep WhereValueContains(string Tokens) {
-			TravPath.AppendToUri("/WhereValueContains("+Tokens+")");
+		public IFabFactorStep WhereIdentorValueContains(string Tokens) {
+			TravPath.AppendToUri("/WhereIdentorValueContains("+Tokens+")");
 			return new FabFactorStep(TravPath);
 		}
 		
@@ -2747,7 +2747,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The boundary value for the search range.
 		/// </param>
-		IFabInstanceStep Timestamp(string Operation, long Value);
+		IFabInstanceStep WhereTimestamp(string Operation, long Value);
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -2793,8 +2793,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public IFabInstanceStep Timestamp(string Operation, long Value) {
-			TravPath.AppendToUri("/Timestamp("+Operation+","+Value+")");
+		public IFabInstanceStep WhereTimestamp(string Operation, long Value) {
+			TravPath.AppendToUri("/WhereTimestamp("+Operation+","+Value+")");
 			return new FabInstanceStep(TravPath);
 		}
 		
@@ -2844,7 +2844,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The boundary value for the search range.
 		/// </param>
-		IFabMemberStep Timestamp(string Operation, long Value);
+		IFabMemberStep WhereTimestamp(string Operation, long Value);
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -2876,8 +2876,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public IFabMemberStep Timestamp(string Operation, long Value) {
-			TravPath.AppendToUri("/Timestamp("+Operation+","+Value+")");
+		public IFabMemberStep WhereTimestamp(string Operation, long Value) {
+			TravPath.AppendToUri("/WhereTimestamp("+Operation+","+Value+")");
 			return new FabMemberStep(TravPath);
 		}
 		
@@ -2933,7 +2933,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The boundary value for the search range.
 		/// </param>
-		IFabUrlStep Timestamp(string Operation, long Value);
+		IFabUrlStep WhereTimestamp(string Operation, long Value);
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -2973,8 +2973,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public IFabUrlStep Timestamp(string Operation, long Value) {
-			TravPath.AppendToUri("/Timestamp("+Operation+","+Value+")");
+		public IFabUrlStep WhereTimestamp(string Operation, long Value) {
+			TravPath.AppendToUri("/WhereTimestamp("+Operation+","+Value+")");
 			return new FabUrlStep(TravPath);
 		}
 		
@@ -3030,7 +3030,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The boundary value for the search range.
 		/// </param>
-		IFabUserStep Timestamp(string Operation, long Value);
+		IFabUserStep WhereTimestamp(string Operation, long Value);
 	
 		/*--------------------------------------------------------------------------------------------*/
 		/// <summary>
@@ -3070,8 +3070,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public IFabUserStep Timestamp(string Operation, long Value) {
-			TravPath.AppendToUri("/Timestamp("+Operation+","+Value+")");
+		public IFabUserStep WhereTimestamp(string Operation, long Value) {
+			TravPath.AppendToUri("/WhereTimestamp("+Operation+","+Value+")");
 			return new FabUserStep(TravPath);
 		}
 		
@@ -3115,7 +3115,7 @@ namespace Fabric.Clients.Cs.Api {
 		/// <param name="Value">
 		///   The boundary value for the search range.
 		/// </param>
-		IFabVertexStep Timestamp(string Operation, long Value);
+		IFabVertexStep WhereTimestamp(string Operation, long Value);
 	
 	}
 
@@ -3137,8 +3137,8 @@ namespace Fabric.Clients.Cs.Api {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public IFabVertexStep Timestamp(string Operation, long Value) {
-			TravPath.AppendToUri("/Timestamp("+Operation+","+Value+")");
+		public IFabVertexStep WhereTimestamp(string Operation, long Value) {
+			TravPath.AppendToUri("/WhereTimestamp("+Operation+","+Value+")");
 			return new FabVertexStep(TravPath);
 		}
 		
