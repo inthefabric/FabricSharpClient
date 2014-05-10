@@ -18,7 +18,7 @@ namespace Fabric.Clients.Cs.Mvc {
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-			const bool LOCAL = true;
+			const bool LOCAL = false;
 			FabricClientConfig config;
 
 			if ( LOCAL ) {
@@ -26,8 +26,9 @@ namespace Fabric.Clients.Cs.Mvc {
 					"0123456789abcdefghijkLMNOPqrstuv", RedirProv, SessionContainerProv);
 			}
 			else {
-				config = new FabricClientConfig("ClientTest", "http://api.inthefabric.com", 1,
-					"abcdefghijklmnopqrstuvwxyZ012345", RedirProv, SessionContainerProv);
+				config = new FabricClientConfig("ClientTest", "http://api.inthefabric.com",
+					77886052004528128, "ffb885b329d94e3a8fd96361388f6fde",
+					RedirProv, SessionContainerProv);
 			}
 			
 			FabricClient.InitOnce(config);
