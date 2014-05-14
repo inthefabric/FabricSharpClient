@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Fabric.Clients.Cs.Api;
 using Fabric.Clients.Cs.Session;
+using ServiceStack.Text;
 
 [assembly:InternalsVisibleTo("Fabric.Clients.Cs.Test")]
 [assembly:InternalsVisibleTo("Moq")]
@@ -54,6 +55,7 @@ namespace Fabric.Clients.Cs {
 				IsInit = true;
 				AttachNewConfigGroup(config);
 				DefaultConfigKey = config.ConfigKey;
+				JsConfig.TreatEnumAsInteger = true;
 			}
 		}
 

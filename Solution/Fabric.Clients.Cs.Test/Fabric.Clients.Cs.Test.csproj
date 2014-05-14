@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ThreadedTest.cs" />
+    <Compile Include="Fixtures\TJson.cs" />
     <Compile Include="Fixtures\Daemon\MockExportForClientDelegate.cs" />
     <Compile Include="Fixtures\Daemon\TExportForClient.cs" />
     <Compile Include="Fixtures\Daemon\TExportService.cs" />
